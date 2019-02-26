@@ -1,0 +1,61 @@
+* {
+  font-family: 'Lato';
+}
+
+body {
+  /* min-height: 75rem; */
+  padding-top: 4.5rem;
+}
+
+/* navbar */
+.burger-icon {
+  font-size: 2em;
+  margin-right: 30px;
+}
+
+.notification-icon {
+  font-size: 1.5em;
+}
+
+.profile-link:link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  color: #b99bff;
+  text-decoration: none;
+}
+
+.nav-profile-photo {
+  width: 2.5em;
+  /* border: 2px solid #ac9dc9; */
+  border-radius: 50%;
+}
+
+/* /navbar */
+
+.text-white-50 {
+  color: rgba(255, 255, 255, .5);
+}
+
+.bg-purple {
+  background-color: #6f42c1;
+}
+
+.lh-100 {
+  line-height: 1;
+}
+
+.lh-125 {
+  line-height: 1.25;
+}
+
+.lh-150 {
+  line-height: 1.5;
+}
