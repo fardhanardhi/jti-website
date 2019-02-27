@@ -5,6 +5,7 @@
 body {
   /* min-height: 75rem; */
   padding-top: 4.5rem;
+  background-color: #CECEEF !important;
 }
 
 /* navbar */
@@ -44,8 +45,8 @@ body {
   color: rgba(255, 255, 255, .5);
 }
 
-.bg-purple {
-  background-color: #6f42c1;
+.bg-blue {
+  background-color: #40407A;
 }
 
 .lh-100 {
