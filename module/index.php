@@ -94,8 +94,8 @@
         <div class="modal-body pb-0">
           <div class="row">
             <div class="col-md-12">
-              <center><img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" id="fotoPrev"
-                  height="150px" width="150px" class="rounded-circle" /></center>
+              <center><img src="../attachment/img/avatar.jpeg" id="fotoPrev" height="150px" width="150px"
+                  class="rounded-circle" /></center>
               <br>
               <center>AVATAR</center>
               <br>
@@ -302,7 +302,7 @@
             
       if($level=="mahasiswa" || $level=="admin" || $level=="dosen"){
       ?>
-        <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
+    <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
     <?php
       }
       ?>
