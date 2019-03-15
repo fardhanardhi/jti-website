@@ -16,6 +16,11 @@ body {
 
 .notification-icon {
   font-size: 1.5em;
+
+  /* bagian notification bubble */
+  /* position: relative;
+  color: grey;
+  cursor: pointer; */
 }
 
 .profile-link:link {
@@ -60,3 +65,19 @@ body {
 .lh-150 {
   line-height: 1.5;
 }
+
+/* bagian notification bubble */
+/* span.fa-comment {
+  position: absolute;
+  font-size: 0.6em;
+  top: -4px;
+  color: red;
+  right: -4px;
+}
+span.num {
+  position: absolute;
+  font-size: 0.3em;
+  top: 0px;
+  color: #fff;
+  right: 0px;
+} */
