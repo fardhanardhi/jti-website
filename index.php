@@ -9,7 +9,7 @@
   <title>JTI Website</title>
 
   <?php
-    include "config/styles.css";
+    include "config/styles.php";
   ?>
 </head>
 
