@@ -7,9 +7,5 @@
         </nav>
       </div>
     </div>
-
-    <div class="circle">
-      <i class="fas fa-comment-alt"></i>
-    </div>
   </div>
 </main>
