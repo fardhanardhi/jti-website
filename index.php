@@ -72,7 +72,7 @@
           </div>
         </div>
 
-        <div class="col-md-4 p-0">
+        <div class="col-md-3 p-0">
           <div class="m-2 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
             <div class="media text-muted pt-3">
@@ -90,7 +90,7 @@
           </div>
         </div>
 
-        <div class="col-md-8 p-0">
+        <div class="col-md-9 p-0">
           <div class="m-2 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
             <div class="media text-muted pt-3">
