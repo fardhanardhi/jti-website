@@ -25,17 +25,13 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <!-- memberi space ditengah navbar -->
       <div class="mr-auto"></div>
-      <!-- <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
       <i class="notification-icon text-white far fa-bell">
 
-  <!-- bagian notification bubble -->
-  <!-- <span class="fa fa-comment"></span>
-  <span class="num">10</span> -->
-  
-</i>
+        <!-- bagian notification bubble -->
+        <span class="fas fa-circle notification-bubble"></span>
+        <span class="notification-bubble-num">10</span>
+
+      </i>
       <img class="nav-profile-photo ml-4" src="attachment/img/avatar.jpeg">
       <div class="dropdown">
         <a href="#" class="dropdown-toggle ml-2 profile-link" id="dropdownMenuButton" data-toggle="dropdown"
