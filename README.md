@@ -12,7 +12,7 @@ jti-website/
 ├── config/
 │   ├── connection.php
 │   └── const.php
-├── view/
+├── modul/
 |   ├── mahasiswa
 |   |   ├── home.php
 |   |   ├── setting.php
@@ -66,13 +66,9 @@ jti-website/
 |   ├── CRUD_jadwal.php
 |   ├── CRUD_chat.php
 |   └── CRUD_prodi.php
-├── router/
-|   ├── mahasiswaRouter.php
-|   ├── dosenRouter.php
-|   └── adminRouter.php
 └── index.php
 ```
 
-- Susunan view berdasarkan halaman sesuai user level
-- Susunan router berdasarkan halaman sesuai user level
+- Susunan modul berdasarkan halaman sesuai user level
+- Folder modul untuk file halaman / tampilan
 - Susunan process berdasarkan tabel pada database
