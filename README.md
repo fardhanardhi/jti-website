@@ -12,7 +12,7 @@ jti-website/
 ├── config/
 │   ├── connection.php
 │   └── const.php
-├── modul/
+├── module/
 |   ├── mahasiswa
 |   |   ├── home.php
 |   |   ├── setting.php
