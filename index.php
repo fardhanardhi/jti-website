@@ -16,12 +16,13 @@
 <body>
   <!-- navigation -->
   <div id="navigation" class="container-fluid h-100">
+    <a class="btn btn-primary">oke</a>
   </div>
 
 
   <!-- navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-blue shadow-sm fixed-top">
-    <a class="ml-5 mr-5" href="#" id="navigation-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
+  <nav class="app-navbar navbar navbar-expand-md navbar-dark bg-blue shadow-sm sticky-top">
+    <a class="ml-5 mr-5" id="navigation-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
     <a class="navbar-brand " href="#"><b>JTI Website</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,13 +37,14 @@
         <span class="fas fa-circle notification-bubble"></span>
         <span class="notification-bubble-num">10</span>
       </i>
-      
-      <img class="nav-profile-photo ml-4" src="attachment/img/avatar.jpeg">
+
       <div class="dropdown mr-5">
+        <img class="dropdown-toggle nav-profile-photo ml-4 " src="attachment/img/avatar.jpeg" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
         <a href="#" class="dropdown-toggle ml-2 profile-link" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Avatar <b class="caret"></b></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <b class="caret d-none d-lg-block d-xl-block"></b>
+          <b class="caret d-none d-lg-block d-xl-block"></b>
           <a class="dropdown-item" href="#">Ganti Password</a>
           <hr class="hr-light m-0">
           <a class="dropdown-item" href="#">Log Out</a>
@@ -118,7 +120,7 @@
         </div>
 
         <div class="col-md-3 p-0 ">
-          <div class="sticky-top">
+          <div class="sticky-sidebar sticky-top">
             <div class="m-2 p-3 bg-white rounded shadow-sm">
               <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
               <div class="media text-muted pt-3">
@@ -231,7 +233,7 @@
         </div>
 
         <div class="col-md-3 p-0">
-          <div class="sticky-top">
+          <div class="sticky-sidebar sticky-top">
             <div class="m-2 p-3 bg-white rounded shadow-sm">
               <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
               <div class="media text-muted pt-3">
