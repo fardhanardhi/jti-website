@@ -90,7 +90,7 @@ body {
 /* navigation */
 #navigation {
   z-index: 1;
-  position: absolute;
+  position: fixed;
   background-color: #000000;
   opacity: 0.9;
 }
