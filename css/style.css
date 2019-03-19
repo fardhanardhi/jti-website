@@ -81,3 +81,10 @@ body {
 .lh-150 {
   line-height: 1.5;
 }
+
+/* sticky-top */
+
+.sticky-top {
+
+  top: 70px;
+}
