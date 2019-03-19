@@ -16,15 +16,15 @@
 <body>
   <!-- navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-blue shadow-sm">
-    <i class="burger-icon text-white fas fa-bars"></i>
-    <a class="navbar-brand" href="#"><b>JTI Website</b></a>
+    <i class="burger-icon text-white fas fa-bars ml-5"></i>
+    <a class="navbar-brand " href="#"><b>JTI Website</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <!-- memberi space ditengah navbar -->
-      <div class="mr-auto"></div>
+      <div class="mx-auto"></div>
       <i class="notification-icon text-white far fa-bell">
 
         <!-- bagian notification bubble -->
@@ -33,7 +33,7 @@
 
       </i>
       <img class="nav-profile-photo ml-4" src="attachment/img/avatar.jpeg">
-      <div class="dropdown">
+      <div class="dropdown mr-5">
         <a href="#" class="dropdown-toggle ml-2 profile-link" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Avatar <b class="caret"></b></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -46,7 +46,7 @@
 
   <!-- konten -->
   <div class="container-fluid">
-    <main role="main" class="container">
+    <main role="main" class="container-fluid px-5">
       <div class="row">
         <div class="col-md-12 p-0">
           <div class="m-2 bg-white shadow-sm rounded">
