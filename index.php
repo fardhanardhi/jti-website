@@ -14,9 +14,14 @@
 </head>
 
 <body>
+  <!-- navigation -->
+  <div id="navigation" class="container-fluid h-100">
+  </div>
+
+
   <!-- navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-blue shadow-sm">
-    <i class="burger-icon text-white fas fa-bars ml-5"></i>
+  <nav class="navbar navbar-expand-md navbar-dark bg-blue shadow-sm">
+    <a class="ml-5 mr-5" href="#" id="navigation-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
     <a class="navbar-brand " href="#"><b>JTI Website</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,6 +48,8 @@
       </div>
     </div>
   </nav>
+
+
 
   <!-- konten -->
   <div class="container-fluid">
@@ -169,12 +176,10 @@
     </main>
   </div>
 
-  <script src="js/script.js"></script>
 
   <!-- jquery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
   <!-- popper -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -186,6 +191,7 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
 
+  <script src="js/script.js"></script>
 </body>
 
 </html>

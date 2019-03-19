@@ -4,14 +4,14 @@
 
 body {
   /* min-height: 75rem; */
-  padding-top: 4.5rem;
+  /* padding-top: 4.5rem; */
   background-color: #ceceef !important;
 }
 
 /* navbar */
+
 .burger-icon {
   font-size: 2em;
-  margin-right: 30px;
 }
 
 .notification-icon {
@@ -85,4 +85,12 @@ body {
 
 .lh-150 {
   line-height: 1.5;
+}
+
+/* navigation */
+#navigation {
+  z-index: 1;
+  position: absolute;
+  background-color: #000000;
+  opacity: 0.9;
 }
