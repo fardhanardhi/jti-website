@@ -97,6 +97,6 @@ body {
 
 /* sticky-top */
 .sticky-top {
-  top: 1em;
+  top: 4.5em;
   z-index: 0;
 }
