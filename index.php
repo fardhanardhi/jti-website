@@ -14,17 +14,22 @@
 </head>
 
 <body>
+  <!-- navigation -->
+  <div id="navigation" class="container-fluid h-100">
+  </div>
+
+
   <!-- navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-blue shadow-sm">
-    <i class="burger-icon text-white fas fa-bars"></i>
-    <a class="navbar-brand" href="#"><b>JTI Website</b></a>
+  <nav class="navbar navbar-expand-md navbar-dark bg-blue shadow-sm fixed-top">
+    <a class="ml-5 mr-5" href="#" id="navigation-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
+    <a class="navbar-brand " href="#"><b>JTI Website</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <!-- memberi space ditengah navbar -->
-      <div class="mr-auto"></div>
+      <div class="mx-auto"></div>
       <i class="notification-icon text-white far fa-bell">
 
         <!-- bagian notification bubble -->
@@ -33,6 +38,7 @@
       </i>
       
       <img class="nav-profile-photo ml-4" src="attachment/img/avatar.jpeg">
+      <div class="dropdown mr-5">
         <a href="#" class="dropdown-toggle ml-2 profile-link" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Avatar <b class="caret"></b></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -45,9 +51,11 @@
     </div>
   </nav>
 
+
+
   <!-- konten -->
   <div class="container-fluid">
-    <main role="main" class="container">
+    <main role="main" class="container-fluid px-5">
       <div class="row">
         <div class="col-md-12 p-0">
           <div class="m-2 bg-white shadow-sm rounded">
@@ -109,21 +117,23 @@
           </div>
         </div>
 
-        <div class="col-md-3 p-0">
-          <div class="m-2 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-            <div class="media text-muted pt-3">
-              <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <div class="d-flex justify-content-between align-items-center w-100">
-                  <strong class="text-gray-dark">Full Name</strong>
-                  <a href="#">Follow</a>
+        <div class="col-md-3 p-0 ">
+          <div class="sticky-top">
+            <div class="m-2 p-3 bg-white rounded shadow-sm">
+              <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
+              <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                  <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">Full Name</strong>
+                    <a href="#">Follow</a>
+                  </div>
+                  <span class="d-block">@username</span>
                 </div>
-                <span class="d-block">@username</span>
               </div>
+              <small class="d-block text-right mt-3">
+                <a href="#">All suggestions</a>
+              </small>
             </div>
-            <small class="d-block text-right mt-3">
-              <a href="#">All suggestions</a>
-            </small>
           </div>
         </div>
 
@@ -135,8 +145,83 @@
                 <div class="d-flex justify-content-between align-items-center w-100">
                   <strong class="text-gray-dark">Full Name</strong>
                   <a href="#">Follow</a>
+
                 </div>
                 <span class="d-block">@username</span>
+                <div class="isi">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
+                  reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
+                  consectetur eum recusandae sapiente quam omnis.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
+                  totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
+                  assumenda?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
+                  sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
+                  fugiat facere!
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
+                  impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
+                  debitis error omnis.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
+                  dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
+                  est quia culpa placeat minus laborum!
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
+                  minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
+                  tempora possimus earum dicta officia.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
+                  Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
+                  consectetur, doloremque non sed, quisquam molestias.
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
+                  molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
+                  adipisci?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
+                  reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
+                  consectetur eum recusandae sapiente quam omnis.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
+                  totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
+                  assumenda?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
+                  sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
+                  fugiat facere!
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
+                  impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
+                  debitis error omnis.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
+                  dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
+                  est quia culpa placeat minus laborum!
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
+                  minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
+                  tempora possimus earum dicta officia.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
+                  Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
+                  consectetur, doloremque non sed, quisquam molestias.
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
+                  molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
+                  adipisci?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
+                  reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
+                  consectetur eum recusandae sapiente quam omnis.
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
+                  totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
+                  assumenda?
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
+                  sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
+                  fugiat facere!
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
+                  impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
+                  debitis error omnis.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
+                  dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
+                  est quia culpa placeat minus laborum!
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
+                  minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
+                  tempora possimus earum dicta officia.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
+                  Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
+                  consectetur, doloremque non sed, quisquam molestias.
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
+                  molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
+                  adipisci?
+                </div>
               </div>
             </div>
             <small class="d-block text-right mt-3">
@@ -146,82 +231,32 @@
         </div>
 
         <div class="col-md-3 p-0">
-          <div class="m-2 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-            <div class="media text-muted pt-3">
-              <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <div class="d-flex justify-content-between align-items-center w-100">
-                  <strong class="text-gray-dark">Full Name</strong>
-                  <a href="#">Follow</a>
+          <div class="sticky-top">
+            <div class="m-2 p-3 bg-white rounded shadow-sm">
+              <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
+              <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                  <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">Full Name</strong>
+                    <a href="#">Follow</a>
+                  </div>
+                  <span class="d-block">@username</span>
                 </div>
-                <span class="d-block">@username</span>
               </div>
+              <small class="d-block text-right mt-3">
+                <a href="#">All suggestions</a>
+              </small>
             </div>
-            <small class="d-block text-right mt-3">
-              <a href="#">All suggestions</a>
-            </small>
           </div>
         </div>
-
-
-
       </div>
 
     </main>
   </div>
 
-  <script src="js/script.js"></script>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script type="text/javascript">
-			
-			function DropDown(el) {
-				this.dd = el;
-				this.placeholder = this.dd.children('span');
-				this.opts = this.dd.find('ul.dropdown > li');
-				this.val = '';
-				this.index = -1;
-				this.initEvents();
-			}
-			DropDown.prototype = {
-				initEvents : function() {
-					var obj = this;
-
-					obj.dd.on('click', function(event){
-						$(this).toggleClass('active');
-						return false;
-					});
-
-					obj.opts.on('click',function(){
-						var opt = $(this);
-						obj.val = opt.text();
-						obj.index = opt.index();
-						obj.placeholder.text(obj.val);
-					});
-				},
-				getValue : function() {
-					return this.val;
-				},
-				getIndex : function() {
-					return this.index;
-				}
-			}
-
-			$(function() {
-
-				var dd = new DropDown( $('#dd') );
-
-				$(document).click(function() {
-					// all dropdowns
-					$('.wrapper-dropdown-3').removeClass('active');
-				});
-
-			});
-
-		</script>
   <!-- jquery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
   <!-- popper -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -233,6 +268,7 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
 
+  <script src="js/script.js"></script>
 </body>
 
 </html>

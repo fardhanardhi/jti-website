@@ -1,17 +1,17 @@
 * {
-  font-family: 'Lato';
+  font-family: "Lato";
 }
 
 body {
   /* min-height: 75rem; */
-  padding-top: 4.5rem;
-  background-color: #CECEEF !important;
+  /* padding-top: 4.5rem; */
+  background-color: #ceceef !important;
 }
 
 /* navbar */
+
 .burger-icon {
   font-size: 2em;
-  margin-right: 30px;
 }
 
 .notification-icon {
@@ -35,11 +35,16 @@ body {
   position: absolute;
   font-size: 0.3em;
   top: 0px;
-  color: #fff;
+  color: #ffffff;
   right: 0px;
 }
 
 .profile-link:link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.profile-link {
   color: #ffffff;
   text-decoration: none;
 }
@@ -63,11 +68,11 @@ body {
 /* /navbar */
 
 .text-white-50 {
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .bg-blue {
-  background-color: #40407A;
+  background-color: #40407a;
 }
 
 .lh-100 {
@@ -93,4 +98,17 @@ body {
   bottom: 100%;
   right: 15px;
   border-color: white transparent;  
+}
+/* navigation */
+#navigation {
+  z-index: 1;
+  position: fixed;
+  background-color: #000000;
+  opacity: 0.9;
+}
+
+/* sticky-top */
+.sticky-top {
+  top: 4.5em;
+  z-index: 0;
 }
