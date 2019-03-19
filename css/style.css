@@ -98,4 +98,5 @@ body {
 /* sticky-top */
 .sticky-top {
   top: 1em;
+  z-index: 0;
 }
