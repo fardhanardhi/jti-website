@@ -81,3 +81,16 @@ body {
 .lh-150 {
   line-height: 1.5;
 }
+
+.dropdown-menu{
+  right: 1%;
+}
+.dropdown-menu::before{
+  content: "";
+  border-width: 0px 8px 10px 8px;
+  border-style: solid;
+  position: absolute;
+  bottom: 100%;
+  right: 15px;
+  border-color: white transparent;  
+}
