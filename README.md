@@ -55,6 +55,7 @@ jti-website/
 |   |       ├── tampilData.php
 |   |       ├── tambah.php
 |   |       └── update.php
+|   ├── index.php
 |   └── login.php   
 ├── process/
 |   ├── login.php
@@ -71,4 +72,5 @@ jti-website/
 
 - Susunan modul berdasarkan halaman sesuai user level
 - Folder modul untuk file halaman / tampilan
+- File setiap halaman, diinclude-kan ke modul/index.php sesuai nama halaman & hak akses
 - Susunan process berdasarkan tabel pada database
