@@ -100,3 +100,21 @@ body {
   top: 1em;
   z-index: 0;
 }
+
+/* comment */
+.circle{
+  position: sticky;
+  bottom : 8%;
+  left: 90.7%;
+  background: #40407a;
+  width: 4.4em;
+  height: 4.4em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-comment-alt{
+ font-size: 200%; 
+}
