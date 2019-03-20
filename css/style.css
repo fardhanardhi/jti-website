@@ -95,15 +95,15 @@ body {
 }
 
 .dropdown-menu {
-  right: 1%;
+  top: 2.5em;
 }
-.dropdown-menu::before {
+.dropdown-menu::before{
   content: "";
   border-width: 0px 8px 10px 8px;
   border-style: solid;
   position: absolute;
-  bottom: 100%;
-  right: 15px;
+  bottom:100%;
+  right: 2em;
   border-color: white transparent;
 }
 
