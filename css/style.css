@@ -97,12 +97,12 @@ body {
 .dropdown-menu {
   top: 2.5em;
 }
-.dropdown-menu::before{
+.dropdown-menu::before {
   content: "";
   border-width: 0px 8px 10px 8px;
   border-style: solid;
   position: absolute;
-  bottom:100%;
+  bottom: 100%;
   right: 2em;
   border-color: white transparent;
 }
@@ -115,8 +115,17 @@ body {
 #navigation {
   z-index: 2;
   position: fixed;
-  background-color: rgba(00, 00, 00, 0.9);
+  background-color: rgba(19, 15, 64, 0.9);
   display: none;
+  display: ;
+}
+
+#navigation .navigation-menu {
+  cursor: pointer;
+}
+
+#navigation .navigation-menu:hover {
+  filter: brightness(150%);
 }
 
 /* sidebar */
@@ -126,9 +135,9 @@ body {
 }
 
 /* comment */
-.circle{
+.circle {
   position: fixed;
-  bottom : 5.5%;
+  bottom: 5.5%;
   left: 90.7%;
   background: #40407a;
   width: 4.4em;
@@ -139,7 +148,7 @@ body {
   align-items: center;
 }
 
-.fas.fa-comments{
- font-size: 200%;
- color: white; 
+.fas.fa-comments {
+  font-size: 200%;
+  color: white;
 }

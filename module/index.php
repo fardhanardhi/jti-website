@@ -20,7 +20,31 @@
 <body>
   <!-- navigation -->
   <div id="navigation" class="container-fluid h-100">
-    <a class="btn btn-primary">oke</a>
+    <div class="row h-100">
+      <div class="col-md-12 my-auto">
+        <div class="row text-center text-white font-weight-bold">
+          <div class="col-md-0 col-lg"></div>
+          <div onclick="location.href='index.php?module=home';" class="navigation-menu col-md-3 col-lg-2 my-1">
+            <img src="../img/navigation/home.svg">
+            <p class="mt-3">HOME</p>
+          </div>
+          <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
+            <img src="../img/navigation/jadwalKuliah.svg">
+            <p class="mt-3">JADWAL KULIAH</p>
+          </div>
+          <div onclick="location.href='index.php?module=nilaiMahasiswa';"
+            class="navigation-menu col-md-3 col-lg-2 my-1">
+            <img src="../img/navigation/nilaiMahasiswa.svg">
+            <p class="mt-3">NILAI MAHASISWA</p>
+          </div>
+          <div onclick="location.href='index.php?module=kompenAbsen';" class="navigation-menu col-md-3 col-lg-2 my-1">
+            <img src="../img/navigation/absensi.svg">
+            <p class="mt-3">ABSENSI & KOMPEN</p>
+          </div>
+          <div class="col-md-0 col-lg"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -98,10 +122,10 @@
             
             if($level=="mahasiswa" || $level=="admin"){
               ?>
-              <div class="circle">
-                  <i class="fas fa-comments"></i>
-              </div>
-            <?php
+    <div class="circle">
+      <i class="fas fa-comments"></i>
+    </div>
+    <?php
             }
         ?>
   </div>
