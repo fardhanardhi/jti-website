@@ -1,15 +1,15 @@
-<div id="nilaiError" class="container-fluid">
+<div class="container-fluid">
     <main role="main" class="container-fluid px-5">
         <div class="row">
             <div class="col-md-3 p-0">
                 <div class="m-2 p-3 bg-white rounded shadow-sm">
                     <div class="media text-muted pt-3">
                         <div class="media-body pb-3 mb-0 small lh-125">
-                            <center><img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="250" width="250"></center>
+                        <center><img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="250" width="250"></center>
                             <br>
                             <h5 class="border-bottom border-gray" align="center">NAMA</h5>
                             <h5 class="border-bottom border-gray" align="center">NIM MHS</h5>
-                            <h5 class="border-bottom border-gray" align="center">PRODI</h5>
+                            <h5 class="border-bottom border-gray" align="center">PRODI</h5><h5 class="border-bottom border-gray" align="center">JURUSAN</h5>
                         </div>
                     </div>
                 </div>
@@ -36,16 +36,29 @@
                     </select>
                     <button type="button" class="btn btn-success">Filter</button><br><br>
 
-                    <!-- <div class="card text-white mb-3" style="max-width: 45rem;"> -->
-                    <center>
-                    <div class="warna-card col-md-9 border border-danger mt-3">
-                        <div class="card-body" style="position: center">
-                                <p class="card-title">| Informasi |</p>
-                                <p class="card-text" style="color:red">*tidak dapat menampilkan data*</p>
-                                <p class="card-text">- anda belum menempuh semester ini</p>
-                    </center>
-                        </div>
-                    </div>
+                    <p>Indeks Prestasi Semester: </p>
+                    <p>Indeks Prestasi Kumulatif: </p>
+
+                    <table class="table table-striped table-primary">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Mata Kuliah</th>
+                                <th scope="col">SKS</th>
+                                <th scope="col">Jam</th>
+                                <th scope="col">Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Matkul A</td>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>A</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -10,3 +10,4 @@
 <!-- add file css here! -->
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/login.css">
+<link rel="stylesheet" href="../css/nilaiError.css">

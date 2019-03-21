@@ -78,6 +78,9 @@
                     case "jadwal":
                         include "mahasiswa/jadwal.php";
                     break;
+                    case "nilaiMahasiswa":
+                        include "mahasiswa/nilaiMahasiswa.php";
+                    break;
                     case "nilaiError":
                         include "mahasiswa/nilaiMahasiswaError.php";
                     break;
