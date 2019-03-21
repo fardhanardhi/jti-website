@@ -89,7 +89,7 @@
             if($level=="mahasiswa" || $level=="admin"){
               ?>
               <div class="circle">
-                  <i class="far fa-comments"></i>
+                  <i class="fas fa-comments"></i>
               </div>
             <?php
             }
