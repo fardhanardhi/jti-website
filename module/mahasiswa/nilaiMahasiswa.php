@@ -9,7 +9,7 @@
                             <br>
                             <h5 class="border-bottom border-gray" align="center">NAMA</h5>
                             <h5 class="border-bottom border-gray" align="center">NIM MHS</h5>
-                            <h5 class="border-bottom border-gray" align="center">PRODI</h5><h5 class="border-bottom border-gray" align="center">JURUSAN</h5>
+                            <h5 class="border-bottom border-gray" align="center">PRODI</h5>
                         </div>
                     </div>
                 </div>
