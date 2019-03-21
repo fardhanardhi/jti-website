@@ -1,0 +1,12 @@
+body {
+  padding-top: 0 !important;
+}
+
+.fullscreen {
+  height: 100vh;
+}
+
+#eye {
+  border-radius: 0;
+  cursor: pointer;
+}
