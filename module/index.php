@@ -88,7 +88,8 @@
                         include "mahasiswa/kelasKosong.php";
                     break;
                     default:
-                    include "mahasiswa/coba.php";
+                    echo("404 page not found");
+                    // include "mahasiswa/coba.php";
                 }
             }
             
@@ -115,6 +116,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
+
+  <!-- JqueryUI -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
   <script src="../js/script.js"></script>
 </body>

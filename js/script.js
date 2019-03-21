@@ -28,3 +28,7 @@ function showPassword() {
     eye.add("fa-eye")
   }
 }
+
+$( function() {
+  $( "#datepicker" ).datepicker();
+} );
