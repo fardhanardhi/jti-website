@@ -87,6 +87,9 @@
                     case "kelasKosong":
                         include "mahasiswa/kelasKosong.php";
                     break;
+                    case "kelasKosongDipesan":
+                        include "mahasiswa/kelasKosongDipesan.php";
+                    break;
                     default:
                     echo("404 page not found");
                     // include "mahasiswa/coba.php";
