@@ -78,7 +78,7 @@
                     case "jadwal":
                         include "mahasiswa/jadwal.php";
                     break;
-                    case "homeHafiz":
+                    case "homeMahasiswa":
                         include "mahasiswa/home.php";
                     break;
                     default:
