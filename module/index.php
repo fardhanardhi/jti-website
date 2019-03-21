@@ -68,6 +68,9 @@
                     case "jadwal":
                         include "mahasiswa/jadwal.php";
                     break;
+                    case "homeHafiz":
+                        include "mahasiswa/home.php";
+                    break;
                     default:
                     include "mahasiswa/coba.php";
                 }
