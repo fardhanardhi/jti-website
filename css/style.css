@@ -127,8 +127,8 @@ body {
 
 /* comment */
 .circle{
-  position: sticky;
-  bottom : 8%;
+  position: fixed;
+  bottom : 5.5%;
   left: 90.7%;
   background: #40407a;
   width: 4.4em;
@@ -139,6 +139,7 @@ body {
   align-items: center;
 }
 
-.fa-comment-alt{
- font-size: 200%; 
+.fas.fa-comments{
+ font-size: 200%;
+ color: white; 
 }
