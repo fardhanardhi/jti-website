@@ -17,7 +17,7 @@
                 <p>6 Maret 2019</p>
               </div>
               <div class="col-sm-2 mt-2">
-                <span class="kategori">Berita</span>
+                <span id="kategori">Berita</span>
               </div>
             </div>  
           
