@@ -84,6 +84,9 @@
                     case "nilaiError":
                         include "mahasiswa/nilaiMahasiswaError.php";
                     break;
+                    case "kelasKosong":
+                        include "mahasiswa/kelasKosong.php";
+                    break;
                     default:
                     include "mahasiswa/coba.php";
                 }
