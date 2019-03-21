@@ -63,7 +63,7 @@
             $module=$_GET["module"];
             if($level=="mahasiswa"){
                 switch($module){
-										case "home":
+										case "homeMahasiswa":
 												include "mahasiswa/home.php";
 										break;
 										case "kompenAbsen":
