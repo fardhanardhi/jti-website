@@ -85,7 +85,8 @@
                         include "mahasiswa/nilaiMahasiswaError.php";
                     break;
                     default:
-                    include "mahasiswa/coba.php";
+                    echo("404 page not found");
+                    // include "mahasiswa/coba.php";
                 }
             }
             
