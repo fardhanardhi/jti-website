@@ -1,0 +1,42 @@
+#kelasKosong .btn-hari{
+    border-radius: 10px;
+    width: 5.5em;
+    height:1.8em;
+    padding:0;
+}
+
+#kelasKosong .optionJam{
+    border-radius: 10px;
+    width: 5.5em;
+    height:1.8em;
+    padding-left: 5px;
+}
+
+#kelasKosong .active{
+    background-color: #0275d8;
+    border-color: #0275d8;
+}
+
+#kelasKosong .ruang{
+    background-color: #F2F0F0;
+    width: 46%;
+}
+
+#kelasKosong .btn-pesan{
+    width: 5.5em;
+}
+
+#kelasKosong .lantai{
+    font-size: 0.7em;
+}
+
+#kelasKosong .kelas{
+    font-size: 1.2em;
+}
+
+#kelasKosong .btn-checkout{
+    width: 5.9em;
+    padding-bottom:2px;
+    padding-top:0.5px;
+    font-size:0.9em
+}

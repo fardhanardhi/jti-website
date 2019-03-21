@@ -15,3 +15,4 @@
 <link rel="stylesheet" href="../css/login.css">
 <link rel="stylesheet" href="../css/nilaiError.css">
 <link rel="stylesheet" href="../css/nilaiMahasiswa.css">
+<link rel="stylesheet" href="../css/kelasKosong.css">
