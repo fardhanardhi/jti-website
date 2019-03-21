@@ -72,6 +72,14 @@
                     include "mahasiswa/coba.php";
                 }
             }
+            
+            if($level=="mahasiswa" || $level=="admin"){
+              ?>
+              <div class="circle">
+                  <i class="far fa-comments"></i>
+              </div>
+            <?php
+            }
         ?>
     </div>
 
