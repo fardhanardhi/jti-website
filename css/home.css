@@ -46,3 +46,15 @@
 .table-condensed {
   width: 100%;
 }
+
+/* Button Modal */
+.check-modal {
+  width: 100%;
+  background-color: #40407A;
+  color: white;
+}
+
+.check-modal:hover {
+  background-color: rgba(64, 64, 122, 0.548);
+  color: white;
+}

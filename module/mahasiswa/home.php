@@ -18,6 +18,46 @@
     </div>
 
     <div class="col-md-6 p-0 pb-3">
+      <div class="m-2 p-3 bg-white rounded shadow-sm">
+        <h5 class="border-bottom border-gray pb-2 mb-3"><strong>Kuisioner</strong></h5>
+        <div class="isi-mhs small lh-125 mb-2">
+          note : Apabila tidak mengisi kuisioner maka akan mendapat sanksi berupa aplha 1(satu) jam setiap mata kuliah
+        </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="check-modal btn" data-toggle="modal" data-target="#modelId">Isi Kuisioner</button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Kuisioner</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  Add rows here
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <script>
+          $('#exampleModal').on('show.bs.modal', event => {
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            // Use above variables to manipulate the DOM
+            
+          });
+        </script>
+      </div>
       <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm">
         <div class="border-bottom border-gray">
           <div class="row">
@@ -94,43 +134,6 @@
           </div>
         </div>
       </div>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
-        Launch
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="container-fluid">
-                Add rows here
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <script>
-      $('#exampleModal').on('show.bs.modal', event => {
-        var button = $(event.relatedTarget);
-        var modal = $(this);
-        // Use above variables to manipulate the DOM
-
-      });
-      </script>
     </div>
 
     <div class="col-md-3 p-0">
