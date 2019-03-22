@@ -32,7 +32,7 @@
             <img src="../img/navigation/jadwalKuliah.svg">
             <p class="mt-3">JADWAL KULIAH</p>
           </div>
-          <div onclick="location.href='index.php?module=nilaiMahasiswa';"
+          <div onclick="location.href='index.php?module=nilai';"
             class="navigation-menu col-md-3 col-lg-2 my-1">
             <img src="../img/navigation/nilaiMahasiswa.svg">
             <p class="mt-3">NILAI MAHASISWA</p>
