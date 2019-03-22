@@ -10,7 +10,7 @@
           <!-- datepicker hidden input -->
           <input type="hidden" id="my_hidden_input">
           <div class="search-null text-center">
-            <img src="../attachment/img/search.jpg" alt="Search Not Found" class="p-3">
+            <img src="../img/magnifier.svg" alt="Search Not Found" class="p-3">
             <p>Tidak ada berita pada tanggal "22 Maret 2019"</p>
           </div>
         </div>

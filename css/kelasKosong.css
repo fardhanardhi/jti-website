@@ -52,8 +52,14 @@
 
 #kelasKosong .dipesan{
     background-color: rgba(189, 189, 189, 0.5);
+    color: #6c757d;
 }
 
 #kelasKosong .dipesan .btn-pesan{
     visibility: hidden;
+}
+
+#kelasKosong .btn-confirm{
+    padding: 0.5px 2em 1px 2em;
+    border-radius: 10px;
 }
