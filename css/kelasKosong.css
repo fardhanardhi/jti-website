@@ -52,6 +52,7 @@
 
 #kelasKosong .dipesan{
     background-color: rgba(189, 189, 189, 0.5);
+    color: #6c757d;
 }
 
 #kelasKosong .dipesan .btn-pesan{
