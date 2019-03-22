@@ -73,7 +73,7 @@
           aria-haspopup="true" aria-expanded="false">Avatar <b class="caret"></b></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
           <b class="caret d-none d-lg-block d-xl-block"></b>
-          <a class="dropdown-item" href="#">Ganti Password</a>
+          <a class="dropdown-item" href="#">Pengaturan</a>
           <hr class="hr-light m-0">
           <a class="dropdown-item" href="#">Log Out</a>
         </div>

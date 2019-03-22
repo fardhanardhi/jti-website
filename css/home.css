@@ -1,6 +1,27 @@
-.col-sm-10 p {
+.col-sm-8 p {
     font-size: 11px;
 }
-#kategori {
-    
+
+.isi-mhs {
+    color: black;
+}
+.kategori {
+    padding: 7px;
+    background-color: #C4C4C4;
+    color: white;
+    border-radius: 25%;
+}
+.isi-beasiswa{
+    font-size: 11px;
+}
+.check {
+    background-color: #40407A;
+    color: white;
+}
+.check a {
+    text-decoration: none;
+    color: white;
+}
+.search-null {
+    font-size: 12px;
 }
