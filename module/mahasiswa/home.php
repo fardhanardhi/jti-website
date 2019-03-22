@@ -3,8 +3,12 @@
     <div class="col-md-3 p-0 ">
       <div class="sticky-sidebar sticky-top">
           <div class="m-2 p-3 bg-white rounded shadow-sm">
-          <h5><strong>Pencarian Berita</strong></h5>
-          <div id="datepicker"></div>
+            <h5><strong>Pencarian Berita</strong></h5>
+            <div id="datepicker" class="pb-3 border-bottom border-gray"></div>
+            <div class="search-null text-center">
+              <img src="../attachment/img/search.jpg" alt="Search Not Found" class="p-3">
+              <p>Tidak ada berita pada tanggal "22 Maret 2019"</p>
+            </div>
           </div>
       </div>
     </div>
@@ -13,14 +17,14 @@
       <div class="m-2 p-3 bg-white rounded shadow-sm">
         <div class="border-bottom border-gray">
           <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <div class="judul pl-3">
                 <h5><strong>5 Dosen dikirim ke Jepang</strong></h5>
                 <p>6 Maret 2019</p>
               </div>
             </div>
-            <div class="col-sm-2 mt-2">
-              <span class="kategori">Berita</span>
+            <div class="col-sm-4 mt-2 text-right">
+              <label for="kategori" class="kategori ">Berita</label>
             </div>
           </div>  
         </div>
@@ -50,14 +54,14 @@
       <div class="m-2 p-3 bg-white rounded shadow-sm">
           <div class="border-bottom border-gray">
             <div class="row">
-              <div class="col-sm-10">
+              <div class="col-sm-8">
                 <div class="judul pl-3">
                   <h5><strong>5 Dosen dikirim ke Jepang</strong></h5>
                   <p>6 Maret 2019</p>
                 </div>
               </div>
-              <div class="col-sm-2 mt-2">
-                <span class="kategori">Berita</span>
+              <div class="col-sm-4 mt-2 text-right">
+                <label for="kategori" class="kategori ">Pengumuman</label>
               </div>
             </div>  
           </div>
