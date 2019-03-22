@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-md-6 p-0 pb-3">
-      <div class="m-2 p-3 bg-white rounded shadow-sm">
+      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm">
         <div class="border-bottom border-gray">
           <div class="row">
             <div class="col-sm-8">
