@@ -93,20 +93,17 @@
               case "kompenAbsen":
                   include "mahasiswa/kompenAbsen.php";
               break;
-              case "nilai":
-                  include "mahasiswa/nilai.php";
-              break;
               case "coba":
                   include "mahasiswa/coba.php";
               break;
               case "jadwal":
                   include "mahasiswa/jadwal.php";
               break;
-              case "nilaiMahasiswa":
-                  include "mahasiswa/nilaiMahasiswa.php";
+              case "nilai":
+                  include "mahasiswa/nilai.php";
               break;
               case "nilaiError":
-                  include "mahasiswa/nilaiMahasiswaError.php";
+                  include "mahasiswa/nilaiError.php";
               break;
               case "kelasKosong":
                   include "mahasiswa/kelasKosong.php";

@@ -1,5 +1,5 @@
 <main role="main" class="container-fluid">
-    <div id="nilai" class="row">
+    <div id="nilaiError" class="row">
         <div class="col-md-12 p-0">
             <div class="m-2 bg-white shadow-sm rounded">
                 <nav class="nav nav-underline">
@@ -23,7 +23,7 @@
 
         <div class="col-md-9 p-0">
             <div class="m-2 p-3 bg-white rounded shadow-sm">
-            <h6 class="border-bottom border-gray pb-2 mb-0">TRANSKIP NILAI</h6>
+                <h6 class="border-bottom border-gray pb-2 mb-0">TRANSKIP NILAI</h6>
                 <div class="media text-muted pt-3">
                     <p class="media-body pb-3 mb-0 small lh-125">
                     <strong class="d-block text-dark">Periode Semester</strong>
@@ -43,29 +43,16 @@
                 </select>
                 <button type="button" class="btn btn-success">Filter</button><br><br>
 
-                <p>Indeks Prestasi Semester: </p>
-                <p>Indeks Prestasi Kumulatif: </p>
-
-                <table class="table table-striped">
-                    <thead class="bg-primary text-white">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama Mata Kuliah</th>
-                            <th scope="col">SKS</th>
-                            <th scope="col">Jam</th>
-                            <th scope="col">Nilai</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Matkul A</td>
-                            <td>2</td>
-                            <td>4</td>
-                            <td>A</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <center>
+                <div class="warna-card col-md-12 border border-danger mt-3">
+                    <div class="teks card-body" style="position: center">
+                        <!-- <p class="card-title">| <img src="../img/navigation/icon.svg"></a> Informasi|</p> -->
+                        <p class="card-title">| <i class="fas fa-info"></i>  Informasi |</p>
+                        <p class="card-text" style="color:#950101">*Tidak dapat menampilkan data*</p>
+                        <p class="card-text">- Anda belum menempuh semester ini</p>
+                    </div>
+                </center>
+                </div>
             </div>
         </div>
     </div>
