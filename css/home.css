@@ -24,3 +24,14 @@
 .search-null {
   font-size: 12px;
 }
+
+/* datepicker */
+.datepicker-days,
+.datepicker-inline {
+  width: inherit;
+  max-width: none !important;
+}
+
+.table-condensed {
+  width: 100%;
+}
