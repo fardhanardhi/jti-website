@@ -84,50 +84,47 @@
   <!-- konten -->
   <div class="container-fluid px-5">
     <?php
-            $module=$_GET["module"];
-            if($level=="mahasiswa"){
-                switch($module){
-										case "home":
-												include "mahasiswa/home.php";
-										break;
-										case "kompenAbsen":
-                        include "mahasiswa/kompenAbsen.php";
-										break;
-										case "nilai":
-                        include "mahasiswa/nilai.php";
-                    break;
-                    case "coba":
-                        include "mahasiswa/coba.php";
-                    break;
-                    case "jadwal":
-                        include "mahasiswa/jadwal.php";
-                    break;
-                    case "nilaiMahasiswa":
-                        include "mahasiswa/nilaiMahasiswa.php";
-                    break;
-                    case "nilaiError":
-                        include "mahasiswa/nilaiMahasiswaError.php";
-                    break;
-                    case "kelasKosong":
-                        include "mahasiswa/kelasKosong.php";
-                    break;
-                    case "kelasKosongDipesan":
-                        include "mahasiswa/kelasKosongDipesan.php";
-                    break;
-                    default:
-                    echo("404 page not found");
-                    // include "mahasiswa/coba.php";
-                }
-            }
+      $module=$_GET["module"];
+      if($level=="mahasiswa"){
+          switch($module){
+              case "home":
+                  include "mahasiswa/home.php";
+              break;
+              case "kompenAbsen":
+                  include "mahasiswa/kompenAbsen.php";
+              break;
+              case "nilai":
+                  include "mahasiswa/nilai.php";
+              break;
+              case "coba":
+                  include "mahasiswa/coba.php";
+              break;
+              case "jadwal":
+                  include "mahasiswa/jadwal.php";
+              break;
+              case "nilaiMahasiswa":
+                  include "mahasiswa/nilaiMahasiswa.php";
+              break;
+              case "nilaiError":
+                  include "mahasiswa/nilaiMahasiswaError.php";
+              break;
+              case "kelasKosong":
+                  include "mahasiswa/kelasKosong.php";
+              break;
+              default:
+              echo("404 page not found");
+              // include "mahasiswa/coba.php";
+          }
+      }
             
-            if($level=="mahasiswa" || $level=="admin"){
-              ?>
-    <div class="circle">
-      <i class="fas fa-comments"></i>
-    </div>
-    <?php
-            }
-        ?>
+      if($level=="mahasiswa" || $level=="admin"){
+      ?>
+        <div class="circle">
+          <i class="fas fa-comments"></i>
+        </div>
+      <?php
+      }
+      ?>
   </div>
 
   <!-- jquery -->
