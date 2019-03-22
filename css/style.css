@@ -128,8 +128,8 @@ body {
 /* comment */
 .circle{
   position: fixed;
-  bottom : 5.5%;
-  left: 90.7%;
+  bottom : 3em;
+  right: 4em;
   background: #40407a;
   width: 4.4em;
   height: 4.4em;
