@@ -4,6 +4,7 @@ body {
 
 .fullscreen {
   height: 100vh;
+  padding-bottom: 4em;
 }
 
 #eye {

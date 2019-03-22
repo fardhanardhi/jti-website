@@ -119,10 +119,10 @@
             
       if($level=="mahasiswa" || $level=="admin"){
       ?>
-        <div class="circle">
-          <i class="fas fa-comments"></i>
-        </div>
-      <?php
+    <div class="circle">
+      <i class="fas fa-comments"></i>
+    </div>
+    <?php
       }
       ?>
   </div>
@@ -141,8 +141,8 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
 
-  <!-- JqueryUI -->
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- datepicker -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 
   <script src="../js/script.js"></script>
 </body>

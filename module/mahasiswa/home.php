@@ -4,9 +4,13 @@
       <div class="sticky-sidebar sticky-top">
         <div class="m-2 p-3 bg-white rounded shadow-sm">
           <h5><strong>Pencarian Berita</strong></h5>
-          <div id="datepicker" class="pb-3 border-bottom border-gray"></div>
+          <!-- datepicker -->
+          <div id="datepicker" class="pb-3 border-bottom border-gray">
+          </div>
+          <!-- datepicker hidden input -->
+          <input type="hidden" id="my_hidden_input">
           <div class="search-null text-center">
-            <img src="../attachment/img/search.jpg" alt="Search Not Found" class="p-3">
+            <img src="../img/magnifier.svg" alt="Search Not Found" class="p-3">
             <p>Tidak ada berita pada tanggal "22 Maret 2019"</p>
           </div>
         </div>
@@ -140,7 +144,7 @@
               diutamakan dari jurusan Teknik, Ekonomi, Psikologi, IT, dan Statistik yang berada di semester 2,4, atau 6.
             </p>
             <small class="d-block text-right mt-3 ">
-                <button class="check btn"><a href="#">Cek Link</a></button>
+              <button class="check btn"><a href="#">Cek Link</a></button>
             </small>
           </div>
           <div class="beasiswa pt-3 pb-3 mb-0 border-bottom border-dark">
@@ -148,7 +152,7 @@
             <p class="isi-beasiswa">PT Astra Internasional, Tbk memiliki 2 beasiswa kuliah S1 yang diberikan untuk kamu.
               Pertama adalah Beasiswa Astra 1st yang diberikan.</p>
             <small class="d-block text-right mt-3 ">
-                <button class="check btn"><a href="#">Cek Link</a></button>
+              <button class="check btn"><a href="#">Cek Link</a></button>
             </small>
           </div>
         </div>
