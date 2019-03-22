@@ -134,14 +134,14 @@
             <h5><strong>Beasiswa Astra</strong></h5>
             <p class="isi-beasiswa">PT Astra Internasional, Tbk memiliki 2 beasiswa kuliah S1 yang diberikan untuk kamu. Pertama adalah Beasiswa Astra 1st yang diberikan pada mahasiswa yang berkuliah di Pulau Jawa dan diutamakan dari jurusan Teknik, Ekonomi, Psikologi, IT, dan Statistik yang berada di semester 2,4, atau 6.</p>
             <small class="d-block text-right mt-3 ">
-                <button class="check btn"><a href="#">Check Link</a></button>
+                <button class="check btn"><a href="#">Cek Link</a></button>
             </small>
           </div>
           <div class="beasiswa pt-3 pb-3 mb-0 border-bottom border-dark">
             <h5><strong>Beasiswa Astra</strong></h5>
             <p class="isi-beasiswa">PT Astra Internasional, Tbk memiliki 2 beasiswa kuliah S1 yang diberikan untuk kamu. Pertama adalah Beasiswa Astra 1st yang diberikan.</p>
             <small class="d-block text-right mt-3 ">
-                <button class="check btn"><a href="#">Check Link</a></button>
+                <button class="check btn"><a href="#">Cek Link</a></button>
             </small>
           </div>
         </div>
