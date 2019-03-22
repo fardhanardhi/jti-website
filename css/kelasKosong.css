@@ -1,8 +1,17 @@
-#kelasKosong .btn-hari{
+#kelasKosong .btn-hari,.btn-cari{
     border-radius: 10px;
     width: 5.5em;
     height:1.8em;
     padding:0;
+}
+#kelasKosong .btn-hari:not(.active):hover{
+    border: 1px solid rgb(122, 188, 247);
+    background: rgb(122, 188, 247);
+}
+
+#kelasKosong .btn-hari:focus-within{
+    outline:none !important;
+    box-shadow: none !important;
 }
 
 #kelasKosong .optionJam{
@@ -39,4 +48,12 @@
     padding-bottom:2px;
     padding-top:0.5px;
     font-size:0.9em
+}
+
+#kelasKosong .dipesan{
+    background-color: rgba(189, 189, 189, 0.5);
+}
+
+#kelasKosong .dipesan .btn-pesan{
+    visibility: hidden;
 }

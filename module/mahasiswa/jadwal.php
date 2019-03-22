@@ -43,8 +43,8 @@
         </select>
         <button type="button" class="btn btn-success">Filter</button><br><br>
 
-        <table class="table table-striped table-primary">
-          <thead>
+        <table class="table table-striped">
+          <thead class="bg-primary text-white">
             <tr>
               <th scope="col">No</th>
               <th scope="col">Nama Mata Kuliah</th>
@@ -60,6 +60,22 @@
               <td>Matkul A</td>
               <td>Dosen A</td>
               <td>Senin</td>
+              <td>2 SKS / 4 JAM</td>
+              <td>KB 02 (Lt7)</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Matkul B</td>
+              <td>Dosen B</td>
+              <td>Selasa</td>
+              <td>2 SKS / 4 JAM</td>
+              <td>KB 02 (Lt7)</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Matkul C</td>
+              <td>Dosen C</td>
+              <td>Rabu</td>
               <td>2 SKS / 4 JAM</td>
               <td>KB 02 (Lt7)</td>
             </tr>

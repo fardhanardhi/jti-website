@@ -39,8 +39,8 @@
                     <p>Indeks Prestasi Semester: </p>
                     <p>Indeks Prestasi Kumulatif: </p>
 
-                    <table class="table table-striped table-primary">
-                        <thead>
+                    <table class="table table-striped">
+                        <thead class="bg-primary text-white">
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Mata Kuliah</th>
