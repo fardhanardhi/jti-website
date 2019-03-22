@@ -1,27 +1,26 @@
 .col-sm-8 p {
-    font-size: 11px;
+  font-size: 11px;
 }
 
 .isi-mhs {
-    color: black;
+  color: black;
 }
-.kategori {
-    padding: 7px;
-    background-color: #C4C4C4;
-    color: white;
-    border-radius: 25%;
+.kategori-label {
+  background-color: #c4c4c4;
+  color: white;
+  border-radius: 25px;
 }
-.isi-beasiswa{
-    font-size: 11px;
+.isi-beasiswa {
+  font-size: 11px;
 }
 .check {
-    background-color: #40407A;
-    color: white;
+  background-color: #40407a;
+  color: white;
 }
 .check a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 .search-null {
-    font-size: 12px;
+  font-size: 12px;
 }
