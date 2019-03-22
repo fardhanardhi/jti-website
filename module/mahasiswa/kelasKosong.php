@@ -24,11 +24,29 @@
                             <h4>Jumat</h4>
                         </div>
                     </div>
+
+                    <!-- Button trigger modal -->
                     <div class="row">
                         <div class="col-12 text-right">
-                            <button class="btn btn-danger btn-checkout text-white">Checkout</button>            
+                            <button class="btn btn-danger btn-checkout text-white" data-toggle="modal" data-target="#modalCheckout">Checkout</button>            
                         </div>
                     </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalCheckout" tabindex="-1" role="dialog" aria-labelledby="modalCheckoutTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-body pt-5 text-center">
+                            <strong>Apakah Anda yakin?</strong>
+                        </div>
+                        <div class="container-fluid pb-4 pt-4 d-flex justify-content-around">
+                            <button type="button" class="btn btn-danger btn-confirm" data-dismiss="modal">Tidak</button>
+                            <button type="button" class="btn btn-success btn-confirm">Ya</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
                 </div>
                 <div class="pesanan p-3 border-top border-dark">
                     <div class="row d-flex align-items-center">
