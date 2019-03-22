@@ -4,7 +4,8 @@
       <div class="sticky-sidebar sticky-top">
         <div class="m-2 p-3 bg-white rounded shadow-sm">
           <h5><strong>Pencarian Berita</strong></h5>
-          <div id="datepicker" class="pb-3 border-bottom border-gray"></div>
+          <div id="datepicker" class="pb-3 border-bottom border-gray">
+          </div>
           <div class="search-null text-center">
             <img src="../attachment/img/search.jpg" alt="Search Not Found" class="p-3">
             <p>Tidak ada berita pada tanggal "22 Maret 2019"</p>
