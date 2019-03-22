@@ -109,8 +109,8 @@
                   include "mahasiswa/kelasKosong.php";
               break;
               default:
-              echo("404 page not found");
-              // include "mahasiswa/coba.php";
+                include "404.php";
+              // echo("404 page not found");
           }
       }
             
