@@ -32,8 +32,7 @@
             <img src="../img/navigation/jadwalKuliah.svg">
             <p class="mt-3">JADWAL KULIAH</p>
           </div>
-          <div onclick="location.href='index.php?module=nilai';"
-            class="navigation-menu col-md-3 col-lg-2 my-1">
+          <div onclick="location.href='index.php?module=nilai';" class="navigation-menu col-md-3 col-lg-2 my-1">
             <img src="../img/navigation/nilaiMahasiswa.svg">
             <p class="mt-3">NILAI MAHASISWA</p>
           </div>
@@ -110,7 +109,6 @@
               break;
               default:
                 include "404.php";
-              // echo("404 page not found");
           }
       }
             
@@ -124,24 +122,10 @@
       ?>
   </div>
 
-  <!-- jquery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <?php
+      include "../config/scripts.php";
+    ?>
 
-  <!-- popper -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-  </script>
-
-  <!-- bootstrap -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
-
-  <!-- datepicker -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
-
-  <script src="../js/script.js"></script>
 </body>
 
 </html>
