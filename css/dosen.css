@@ -1,0 +1,39 @@
+/* profil dosen */
+.data-dosen{
+    padding: 2em;
+    color : black;
+}
+
+.detail-dosen.border-bottom.border-gray.pb-2.mb-0 {
+    margin-top: 1em;
+}
+
+/* jadwal dosen */
+.table{
+    margin-top: 2em;
+}
+
+.table-striped>thead>tr>th{
+    background-color:#40407A;
+    color: white;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td{
+	background-color:#CECEEF;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td{
+	background-color:#ECECFF;
+}
+.table-striped>tbody>tr>td{
+    font-size: 1em;
+    padding-bottom: 1.1em;
+    padding-top: 1.1em;
+}
+
+
+/* any */
+.judul{
+    font-size: 1.2em;
+}
+
