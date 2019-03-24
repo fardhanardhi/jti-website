@@ -1,0 +1,20 @@
+#nilaiError .warna-card {
+    background-color: #FCA5A5;
+}
+#nilaiError .gambar-profil{
+    border-radius: 50%;
+}
+#nilaiError .card-title{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: normal;
+}
+#nilaiError .card-text{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: normal;
+}    
