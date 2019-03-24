@@ -82,190 +82,181 @@
 
   <!-- The modal pengaturan -->
   <div class="modal fade" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-center">
-                    <h5 class="modal-title">Pengaturan</h5>
-                    <button type="button" class="close"                       data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body pb-0">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <center><img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" id="fotoPrev" height="150px" width="150px"class="rounded-circle" /></center>
-                            <br>
-                            <center>AVATAR</center>
-                            <br>
-                            <form>
-                                <div class="form-group row">
-                                    <label class="col-md-3" for="foto">Ganti Foto</label>
-                                    <input type="file" id="foto" name="foto"
-                                        onblur="reset_Blank(); reset_Size(); reset_Check();"
-                                        class="form-control col-md-6" onchange="preview_image(event);" accept="image/*">
-                                    <div class="col-md-3"></div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3" for="passwordLama">Password Lama</label>
-                                    <input type="password" id="passwordLama" placeholder="Password Lama"
-                                        name="passwordLama" onblur="reset_Blank();" class="form-control col-md-6">
-                                    <div class="col-md-3"></div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3" for="passwordBaru">Password Baru</label>
-                                    <input type="password" class="form-control col-md-6" id="passwordBaru"
-                                        placeholder="Password Baru" name="passwordBaru" onblur="reset_Blank();">
-                                    <div class=col-md-3></div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3" for="konfirmasiPassword">Konfirmasi Password</label>
-                                    <input type="password" class="form-control col-md-6" id="konfirmasiPassword"
-                                        placeholder="Konfirmasi Password" name="konfirmasiPassword"
-                                        onblur="reset_Blank();">
-                                    <div class=col-md-3></div>
-                                </div>
-                                <div>
-                                    <div id="Blank" class="text-danger"></div>
-                                    <div id="fotoSize" class="text-danger"></div>
-                                    <div id="fotoType" class="text-danger"></div>
-                                    <div id="konfirmasipasswordSalah" class="text-danger"></div>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="align-self-end p-3">
-                    <button type="button" name="kirim" class="btn btn-success" onclick="Coba(); showFilesSize(); checkFoto();">Simpan</button>
-                </div>
-            </div>
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-center">
+          <h5 class="modal-title">Pengaturan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body pb-0">
+          <div class="row">
+            <div class="col-md-12">
+              <center><img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" id="fotoPrev"
+                  height="150px" width="150px" class="rounded-circle" /></center>
+              <br>
+              <center>AVATAR</center>
+              <br>
+              <form class="px-3">
+                <div class="form-group row">
+                  <label class="col-md-3" for="foto">Ganti Foto</label>
+                  <div class="custom-file col-md-9">
+                    <input type="file" class="custom-file-input form-control" id="foto" name="foto"
+                      onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);"
+                      accept="image/*">
+                    <label class="custom-file-label" for="foto">Pilih File</label>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3" for="passwordLama">Password Lama</label>
+                  <input type="password" id="passwordLama" placeholder="Password Lama" name="passwordLama"
+                    onblur="reset_Blank();" class="form-control col-md-9">
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3" for="passwordBaru">Password Baru</label>
+                  <input type="password" class="form-control col-md-9" id="passwordBaru" placeholder="Password Baru"
+                    name="passwordBaru" onblur="reset_Blank();">
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3" for="konfirmasiPassword">Konfirmasi Password</label>
+                  <input type="password" class="form-control col-md-9" id="konfirmasiPassword"
+                    placeholder="Konfirmasi Password" name="konfirmasiPassword" onblur="reset_Blank();">
+                </div>
+                <div>
+                  <div id="Blank" class="text-danger"></div>
+                  <div id="fotoSize" class="text-danger"></div>
+                  <div id="fotoType" class="text-danger"></div>
+                  <div id="konfirmasipasswordSalah" class="text-danger"></div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="align-self-end p-3">
+          <button type="button" name="kirim" class="btn btn-success"
+            onclick="Coba(); showFilesSize(); checkFoto();">Simpan</button>
+        </div>
+      </div>
     </div>
+  </div>
 
   <!-- script modal pengaturan -->
   <script type='text/javascript'>
-    // Initialize tooltip component
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+  // Initialize tooltip component
+  $(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 
-    // Initialize popover component
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-    })
+  // Initialize popover component
+  $(function() {
+    $('[data-toggle="popover"]').popover()
+  })
 
-    function Coba() {
-        var foto = document.getElementById("foto").value;
-        var passwordLama = document.getElementById("passwordLama").value;
-        var passwordBaru = document.getElementById("passwordBaru").value;
-        var konfirmasiPassword = document.getElementById("konfirmasiPassword").value;
+  function Coba() {
+    var foto = document.getElementById("foto").value;
+    var passwordLama = document.getElementById("passwordLama").value;
+    var passwordBaru = document.getElementById("passwordBaru").value;
+    var konfirmasiPassword = document.getElementById("konfirmasiPassword").value;
 
-        if (foto == "" || passwordLama == "" || passwordBaru == "" || konfirmasiPassword == "") {
-            document.getElementById("Blank").innerHTML = "* Terdapat kolom yang belum diisi";
-        }
+    if (foto == "" || passwordLama == "" || passwordBaru == "" || konfirmasiPassword == "") {
+      document.getElementById("Blank").innerHTML = "* Terdapat kolom yang belum diisi";
+    } else if (foto != "" || passwordLama != "" || passwordBaru != "" || konfirmasiPassword != "") {
+      document.getElementById("Blank").innerHTML = "";
 
-        else if (foto != "" || passwordLama != "" || passwordBaru != "" || konfirmasiPassword != "") {
-            document.getElementById("Blank").innerHTML = "";
-
-            if (konfirmasiPassword != passwordBaru) {
-                document.getElementById("konfirmasipasswordSalah").innerHTML = "* Konfirmasi password tidak sesuai";
-            }
-
-            else if (konfirmasiPassword == passwordBaru) {
-                document.getElementById("konfirmasipasswordSalah").innerHTML = "";
-            }
-        }
-
-
+      if (konfirmasiPassword != passwordBaru) {
+        document.getElementById("konfirmasipasswordSalah").innerHTML = "* Konfirmasi password tidak sesuai";
+      } else if (konfirmasiPassword == passwordBaru) {
+        document.getElementById("konfirmasipasswordSalah").innerHTML = "";
+      }
     }
 
 
-    function reset_Blank() {
+  }
 
-        var foto = document.getElementById("foto").value;
-        var passwordLama = document.getElementById("passwordLama").value;
-        var passwordBaru = document.getElementById("passwordBaru").value;
-        var konfirmasiPassword = document.getElementById("konfirmasiPassword").value;
 
-        if (foto != "" && passwordLama != "" && passwordBaru != "" && konfirmasiPassword != "") {
-            document.getElementById("Blank").innerHTML = "";
-        }
+  function reset_Blank() {
 
+    var foto = document.getElementById("foto").value;
+    var passwordLama = document.getElementById("passwordLama").value;
+    var passwordBaru = document.getElementById("passwordBaru").value;
+    var konfirmasiPassword = document.getElementById("konfirmasiPassword").value;
+
+    if (foto != "" && passwordLama != "" && passwordBaru != "" && konfirmasiPassword != "") {
+      document.getElementById("Blank").innerHTML = "";
     }
 
-    function showFilesSize() {
+  }
 
-        var input, file
+  function showFilesSize() {
 
-        input = document.getElementById("foto");
+    var input, file
 
-        file = input.files[0];
+    input = document.getElementById("foto");
 
-        if (file.size > 8000000) {
-            document.getElementById("fotoSize").innerHTML = "* Ukuran melebihi 1 MB";
-        }
+    file = input.files[0];
 
-        else if (file.size < 8000000) {
-            document.getElementById("fotoSize").innerHTML = "";
-        }
-
+    if (file.size > 1000000) {
+      document.getElementById("fotoSize").innerHTML = "* Ukuran melebihi 1 MB";
+    } else if (file.size < 1000000) {
+      document.getElementById("fotoSize").innerHTML = "";
     }
 
-    function reset_Size() {
+  }
 
-        var input, file
+  function reset_Size() {
 
-        input = document.getElementById("foto");
+    var input, file
 
-        file = input.files[0];
+    input = document.getElementById("foto");
 
-        if (file.size < 8000000) {
-            document.getElementById("fotoSize").innerHTML = "";
-        }
+    file = input.files[0];
+
+    if (file.size < 8000000) {
+      document.getElementById("fotoSize").innerHTML = "";
+    }
+  }
+
+  function reset_Check() {
+    var input = document.getElementById("foto");
+
+    var filePath = input.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+    if (allowedExtensions.exec(filePath)) {
+      document.getElementById("fotoType").innerHTML = "";
+      fileInput.value = '';
+      return true;
+    }
+  }
+
+  function checkFoto() {
+    var input = document.getElementById("foto");
+
+    var filePath = input.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+    if (!allowedExtensions.exec(filePath)) {
+      document.getElementById("fotoType").innerHTML = "* Ekstensi file tidak sesuai";
+      fileInput.value = '';
+      return false;
+    } else {
+      document.getElementById("fotoType").innerHTML = "";
     }
 
-    function reset_Check() {
-        var input = document.getElementById("foto");
+  }
 
-        var filePath = input.value;
-        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-        if (allowedExtensions.exec(filePath)) {
-            document.getElementById("fotoType").innerHTML = "";
-            fileInput.value = '';
-            return true;
-        }
+  function preview_image(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var output = document.getElementById('fotoPrev');
+      output.src = reader.result;
     }
-
-    function checkFoto() {
-        var input = document.getElementById("foto");
-
-        var filePath = input.value;
-        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-        if (!allowedExtensions.exec(filePath)) {
-            document.getElementById("fotoType").innerHTML = "* Ekstensi file tidak sesuai";
-            fileInput.value = '';
-            return false;
-        }
-
-        else {
-            document.getElementById("fotoType").innerHTML = "";
-        }
-
-    }
-
-    function preview_image(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('fotoPrev');
-            output.src = reader.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
-
-</script>
+    reader.readAsDataURL(event.target.files[0]);
+  }
+  </script>
 
 
   <!-- konten -->
