@@ -1,5 +1,5 @@
 <?php
-    $level="dosen";
+    $level="mahasiswa";
 ?>
 
 <!DOCTYPE html>
@@ -300,11 +300,9 @@
           }
       }
             
-      if($level=="mahasiswa" || $level=="admin"){
+      if($level=="mahasiswa" || $level=="admin" || $level=="dosen"){
       ?>
-    <div class="circle">
-      <i class="fas fa-comments"></i>
-    </div>
+        <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
     <?php
       }
       ?>
