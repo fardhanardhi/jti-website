@@ -65,9 +65,8 @@
         <span class="notification-bubble-num">10</span>
       </i>
 
-      <div class="dropdown mr-5">
-        <img class="dropdown-toggle nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+      <div class="nav-button-group dropdown mr-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img class="nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg">
         <a href="#" class="dropdown-toggle ml-2 profile-link" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Avatar <b class="caret"></b></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
