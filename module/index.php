@@ -1,5 +1,5 @@
 <?php
-    $level="mahasiswa";
+    $level="dosen";
 ?>
 
 <!DOCTYPE html>
@@ -291,14 +291,14 @@
           }
       }
       else if ($level=="dosen") {
-        switch($module){
-            case "home":
-                include "dosen/home.php";
-            break;
-            default:
-            include "dosen/home.php";
-        }
-    }
+          switch($module){
+              case "home":
+                  include "dosen/home.php";
+              break;
+              default:
+              include "dosen/home.php";
+          }
+      }
             
       if($level=="mahasiswa" || $level=="admin"){
       ?>

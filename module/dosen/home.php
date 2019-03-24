@@ -131,10 +131,10 @@
                 <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">              
                     <div class="isi">
                         <div class="d-flex justify-content-center">
-                            <img src="../img/clipboard.svg" alt="clipBoard">
+                            <img src="../img/clipboard.svg" alt="clipBoard" class="clipBoard">
                         </div>
                         <div class="data-kompen text-center">
-                        
+                            <h6>Anda tidak mempunyai daftar pekerjaan</h6>
                         </div>
                     </div>
                 </div>
