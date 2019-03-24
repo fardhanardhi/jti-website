@@ -1,5 +1,5 @@
 <?php
-    $level="mahasiswa";
+    $level="dosen";
 ?>
 
 <!DOCTYPE html>
@@ -83,6 +83,15 @@
                     break;
                     default:
                     include "mahasiswa/coba.php";
+                }
+            }
+            else if ($level=="dosen") {
+                switch($module){
+                    case "home":
+                        include "dosen/home.php";
+                    break;
+                    default:
+                    include "dosen/home.php";
                 }
             }
             
