@@ -279,9 +279,6 @@
               case "nilai":
                   include "mahasiswa/nilai.php";
               break;
-              case "nilaiError":
-                  include "mahasiswa/nilaiError.php";
-              break;
               case "kelasKosong":
                   include "mahasiswa/kelasKosong.php";
               break;

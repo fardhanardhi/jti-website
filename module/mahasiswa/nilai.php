@@ -66,6 +66,17 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <center>
+                <div class="warna-card col-md-12 border border-danger mt-3">
+                    <div class="teks card-body" style="position: center">
+                        <!-- <p class="card-title">| <img src="../img/navigation/icon.svg"></a> Informasi|</p> -->
+                        <p class="card-title">| <i class="fas fa-info"></i>  Informasi |</p>
+                        <p class="card-text" style="color:#950101">*Tidak dapat menampilkan data*</p>
+                        <p class="card-text">- Anda belum menempuh semester ini</p>
+                    </div>
+                </center>
+                </div>
             </div>
         </div>
     </div>
