@@ -50,7 +50,7 @@
   <!-- navbar -->
   <nav class="app-navbar navbar navbar-expand-md navbar-dark bg-blue shadow-sm sticky-top mb-2">
     <a class="ml-5 mr-5" id="navigation-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
-    <a class="navbar-brand " href="index.php?module=home"><b>JTI Website</b></a>
+    <a class="navbar-brand " href="#"><b>JTI Website</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -65,8 +65,9 @@
         <span class="notification-bubble-num">10</span>
       </i>
 
-      <div class="nav-button-group dropdown mr-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class="nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg">
+      <div class="dropdown mr-5">
+        <img class="dropdown-toggle nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
         <a href="#" class="dropdown-toggle ml-2 profile-link" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Avatar <b class="caret"></b></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -144,118 +145,127 @@
 
   <!-- script modal pengaturan -->
   <script type='text/javascript'>
-  // Initialize tooltip component
-  $(function() {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+    // Initialize tooltip component
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
-  // Initialize popover component
-  $(function() {
-    $('[data-toggle="popover"]').popover()
-  })
+    // Initialize popover component
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
 
-  function Coba() {
-    var foto = document.getElementById("foto").value;
-    var passwordLama = document.getElementById("passwordLama").value;
-    var passwordBaru = document.getElementById("passwordBaru").value;
-    var konfirmasiPassword = document.getElementById("konfirmasiPassword").value;
+    function Coba() {
+        var foto = document.getElementById("foto").value;
+        var passwordLama = document.getElementById("passwordLama").value;
+        var passwordBaru = document.getElementById("passwordBaru").value;
+        var konfirmasiPassword = document.getElementById("konfirmasiPassword").value;
 
-    if (foto == "" || passwordLama == "" || passwordBaru == "" || konfirmasiPassword == "") {
-      document.getElementById("Blank").innerHTML = "* Terdapat kolom yang belum diisi";
-    } else if (foto != "" || passwordLama != "" || passwordBaru != "" || konfirmasiPassword != "") {
-      document.getElementById("Blank").innerHTML = "";
+        if (foto == "" || passwordLama == "" || passwordBaru == "" || konfirmasiPassword == "") {
+            document.getElementById("Blank").innerHTML = "* Terdapat kolom yang belum diisi";
+        }
 
-      if (konfirmasiPassword != passwordBaru) {
-        document.getElementById("konfirmasipasswordSalah").innerHTML = "* Konfirmasi password tidak sesuai";
-      } else if (konfirmasiPassword == passwordBaru) {
-        document.getElementById("konfirmasipasswordSalah").innerHTML = "";
-      }
+        else if (foto != "" || passwordLama != "" || passwordBaru != "" || konfirmasiPassword != "") {
+            document.getElementById("Blank").innerHTML = "";
+
+            if (konfirmasiPassword != passwordBaru) {
+                document.getElementById("konfirmasipasswordSalah").innerHTML = "* Konfirmasi password tidak sesuai";
+            }
+
+            else if (konfirmasiPassword == passwordBaru) {
+                document.getElementById("konfirmasipasswordSalah").innerHTML = "";
+            }
+        }
+
+
     }
 
 
-  }
+    function reset_Blank() {
 
+        var foto = document.getElementById("foto").value;
+        var passwordLama = document.getElementById("passwordLama").value;
+        var passwordBaru = document.getElementById("passwordBaru").value;
+        var konfirmasiPassword = document.getElementById("konfirmasiPassword").value;
 
-  function reset_Blank() {
+        if (foto != "" && passwordLama != "" && passwordBaru != "" && konfirmasiPassword != "") {
+            document.getElementById("Blank").innerHTML = "";
+        }
 
-    var foto = document.getElementById("foto").value;
-    var passwordLama = document.getElementById("passwordLama").value;
-    var passwordBaru = document.getElementById("passwordBaru").value;
-    var konfirmasiPassword = document.getElementById("konfirmasiPassword").value;
-
-    if (foto != "" && passwordLama != "" && passwordBaru != "" && konfirmasiPassword != "") {
-      document.getElementById("Blank").innerHTML = "";
     }
 
-  }
+    function showFilesSize() {
 
-  function showFilesSize() {
+        var input, file
 
-    var input, file
+        input = document.getElementById("foto");
 
-    input = document.getElementById("foto");
+        file = input.files[0];
 
-    file = input.files[0];
+        if (file.size > 1000000) {
+            document.getElementById("fotoSize").innerHTML = "* Ukuran melebihi 1 MB";
+        }
 
-    if (file.size > 1000000) {
-      document.getElementById("fotoSize").innerHTML = "* Ukuran melebihi 1 MB";
-    } else if (file.size < 1000000) {
-      document.getElementById("fotoSize").innerHTML = "";
+        else if (file.size < 1000000) {
+            document.getElementById("fotoSize").innerHTML = "";
+        }
+
     }
 
-  }
+    function reset_Size() {
 
-  function reset_Size() {
+        var input, file
 
-    var input, file
+        input = document.getElementById("foto");
 
-    input = document.getElementById("foto");
+        file = input.files[0];
 
-    file = input.files[0];
-
-    if (file.size < 8000000) {
-      document.getElementById("fotoSize").innerHTML = "";
-    }
-  }
-
-  function reset_Check() {
-    var input = document.getElementById("foto");
-
-    var filePath = input.value;
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-    if (allowedExtensions.exec(filePath)) {
-      document.getElementById("fotoType").innerHTML = "";
-      fileInput.value = '';
-      return true;
-    }
-  }
-
-  function checkFoto() {
-    var input = document.getElementById("foto");
-
-    var filePath = input.value;
-    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
-    if (!allowedExtensions.exec(filePath)) {
-      document.getElementById("fotoType").innerHTML = "* Ekstensi file tidak sesuai";
-      fileInput.value = '';
-      return false;
-    } else {
-      document.getElementById("fotoType").innerHTML = "";
+        if (file.size < 8000000) {
+            document.getElementById("fotoSize").innerHTML = "";
+        }
     }
 
-  }
+    function reset_Check() {
+        var input = document.getElementById("foto");
 
-  function preview_image(event) {
-    var reader = new FileReader();
-    reader.onload = function() {
-      var output = document.getElementById('fotoPrev');
-      output.src = reader.result;
+        var filePath = input.value;
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+        if (allowedExtensions.exec(filePath)) {
+            document.getElementById("fotoType").innerHTML = "";
+            fileInput.value = '';
+            return true;
+        }
     }
-    reader.readAsDataURL(event.target.files[0]);
-  }
-  </script>
+
+    function checkFoto() {
+        var input = document.getElementById("foto");
+
+        var filePath = input.value;
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+            document.getElementById("fotoType").innerHTML = "* Ekstensi file tidak sesuai";
+            fileInput.value = '';
+            return false;
+        }
+
+        else {
+            document.getElementById("fotoType").innerHTML = "";
+        }
+
+    }
+
+    function preview_image(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('fotoPrev');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
+</script>
 
 
   <!-- konten -->
@@ -279,6 +289,9 @@
               case "nilai":
                   include "mahasiswa/nilai.php";
               break;
+              case "nilaiError":
+                  include "mahasiswa/nilaiError.php";
+              break;
               case "kelasKosong":
                   include "mahasiswa/kelasKosong.php";
               break;
@@ -286,19 +299,12 @@
                 include "404.php";
           }
       }
-      else if ($level=="dosen") {
-          switch($module){
-              case "home":
-                  include "dosen/home.php";
-              break;
-              default:
-              include "dosen/home.php";
-          }
-      }
             
-      if($level=="mahasiswa" || $level=="admin" || $level=="dosen"){
+      if($level=="mahasiswa" || $level=="admin"){
       ?>
-    <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
+    <div class="circle">
+      <i class="fas fa-comments"></i>
+    </div>
     <?php
       }
       ?>
