@@ -1,5 +1,5 @@
 <?php
-    $level="dosen";
+    $level="mahasiswa";
 ?>
 
 <!DOCTYPE html>

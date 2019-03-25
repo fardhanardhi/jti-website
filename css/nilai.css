@@ -1,6 +1,20 @@
 #nilai .gambar-profil{
     border-radius: 50%;
 }
+#nilai .semester{
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+#nilai .tmbl-filter{
+    position: absolute;
+    width: 69px;
+    left: 260px;
+
+    background: #3AAC5F;
+    border-radius: 15px;
+    width: 80px;
+}
 
 /* nilai error */
 #nilai .warna-card {
@@ -22,4 +36,13 @@
     font-weight: 600;
     font-size: 12px;
     line-height: normal;
+}
+
+/* punya vian */
+#nilai .table-striped>tbody>tr:nth-child(odd)>td{
+	background-color:#CECEEF;
+}
+
+#nilai .table-striped>tbody>tr:nth-child(even)>td{
+	background-color:#ECECFF;
 }

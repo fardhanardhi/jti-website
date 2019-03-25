@@ -3,7 +3,7 @@
         <div class="col-md-12 p-0">
             <div class="m-2 bg-white shadow-sm rounded">
                 <nav class="nav nav-underline">
-                    <span class="nav-link">KARTU HASIL STUDI</span>
+                <h5><span class="nav-link">KARTU HASIL STUDI</span></h5>
                 </nav>
             </div>
         </div>
@@ -11,11 +11,11 @@
             <div class="m-2 p-3 bg-white rounded shadow-sm">
                 <div class="media text-muted pt-3">
                     <div class="media-body pb-3 mb-0 small lh-125">
-                        <center><img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="250" width="250"></center>
-                        <br>
-                        <h5 class="border-bottom border-gray" align="center">NAMA</h5>
-                        <h5 class="border-bottom border-gray" align="center">NIM MHS</h5>
-                        <h5 class="border-bottom border-gray" align="center">PRODI</h5>
+                        <center><img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="170" width="170"></center>
+                        <br><br>
+                        <h5 class="border-bottom border-gray pb-2 mb-0" align="center">NAMA</h6>
+                        <h5 class="border-bottom border-gray pb-2 mb-0" align="center">NIM</h6>
+                        <h5 class="border-bottom border-gray pb-2 mb-0" align="center">PRODI</h6>
                     </div>
                 </div>
             </div>
@@ -26,11 +26,11 @@
             <h6 class="border-bottom border-gray pb-2 mb-0">TRANSKIP NILAI</h6>
                 <div class="media text-muted pt-3">
                     <p class="media-body pb-3 mb-0 small lh-125">
-                    <strong class="d-block text-dark">Periode Semester</strong>
+                    <strong class="d-block text-dark">Nilai Akademik Per Semester</strong>
                     </p>
                 </div>
             
-                <select class="custom-select" style="width:250px">
+                <select class="semester custom-select" style="width:216px">
                     <option selected>-</option>
                     <option value="1">Semester 1</option>
                     <option value="2">Semester 2</option>
@@ -41,13 +41,13 @@
                     <option value="3">Semester 7</option>
                     <option value="3">Semester 8</option>
                 </select>
-                <button type="button" class="btn btn-success">Filter</button><br><br>
+                <button type="button" class="tmbl-filter btn btn-success">Filter</button><br><br>
 
                 <p>Indeks Prestasi Semester: </p>
                 <p>Indeks Prestasi Kumulatif: </p>
 
-                <table class="table table-striped">
-                    <thead class="bg-primary text-white">
+                <table class="table table-striped table-bordered">
+                    <thead class="text-white bg-blue">
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama Mata Kuliah</th>
@@ -58,7 +58,21 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
+                            <td>1</td>
+                            <td>Matkul A</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Matkul A</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
                             <td>Matkul A</td>
                             <td>2</td>
                             <td>4</td>
