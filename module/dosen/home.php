@@ -1,4 +1,4 @@
-<main role="main" class="container-fluid">
+<main role="main" class="container-fluid" id="dosenHomepage">
     <link rel="stylesheet" href="../css/dosen.css">
   <div class="row">
       <!-- Profil Dosen -->
@@ -125,16 +125,20 @@
     <!-- Kompen Mahasiswa -->
     <div class="col-md-3 p-0 ">
       <div class="sticky-sidebar sticky-top">
-          <div class="m-2 p-3 bg-white rounded shadow-sm">
+          <div class="kompen-bar m-2 p-3 bg-white rounded shadow-sm my-auto">
           <h6 class="border-bottom border-gray pb-2 mb-0 judul">KOMPEN MAHASISWA</h6>    
                 <div class="media text-muted pt-3">
                 <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">              
                     <div class="isi">
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center text-center">
                             <img src="../img/clipboard.svg" alt="clipBoard" class="clipBoard">
                         </div>
-                        <div class="data-kompen text-center">
+                        <div class="data-kompen d-flex justify-content-center text-center ">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
                             <h6>Anda tidak mempunyai daftar pekerjaan</h6>
+                            </div>
+                            <div class="col-md-2"></div>
                         </div>
                     </div>
                 </div>
