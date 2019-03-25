@@ -1,5 +1,5 @@
 <?php
-    $level="mahasiswa";
+    $level="dosen";
 ?>
 
 <!DOCTYPE html>
@@ -65,9 +65,8 @@
         <span class="notification-bubble-num">10</span>
       </i>
 
-      <div class="dropdown mr-5">
-        <img class="dropdown-toggle nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+      <div class="nav-button-group dropdown mr-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img class="nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg">
         <a href="#" class="dropdown-toggle ml-2 profile-link" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Avatar <b class="caret"></b></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -94,8 +93,8 @@
         <div class="modal-body pb-0">
           <div class="row">
             <div class="col-md-12">
-              <center><img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" id="fotoPrev"
-                  height="150px" width="150px" class="rounded-circle" /></center>
+              <center><img src="../attachment/img/avatar.jpeg" id="fotoPrev" height="150px" width="150px"
+                  class="rounded-circle" /></center>
               <br>
               <center>AVATAR</center>
               <br>
@@ -280,9 +279,6 @@
               case "nilai":
                   include "mahasiswa/nilai.php";
               break;
-              case "nilaiError":
-                  include "mahasiswa/nilaiError.php";
-              break;
               case "kelasKosong":
                   include "mahasiswa/kelasKosong.php";
               break;
@@ -290,12 +286,19 @@
                 include "404.php";
           }
       }
+      else if ($level=="dosen") {
+          switch($module){
+              case "home":
+                  include "dosen/home.php";
+              break;
+              default:
+              include "dosen/home.php";
+          }
+      }
             
-      if($level=="mahasiswa" || $level=="admin"){
+      if($level=="mahasiswa" || $level=="admin" || $level=="dosen"){
       ?>
-    <div class="circle">
-      <i class="fas fa-comments"></i>
-    </div>
+    <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
     <?php
       }
       ?>

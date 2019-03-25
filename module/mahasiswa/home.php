@@ -18,24 +18,25 @@
     </div>
 
     <div class="col-md-6 p-0 pb-3">
-      <div class="m-2 p-3 bg-white rounded shadow-sm">
+      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
         <h5 class="border-bottom border-gray pb-2 mb-3"><strong>Kuisioner</strong></h5>
         <div class="isi-mhs small lh-125 mb-2">
           note : Apabila tidak mengisi kuisioner maka akan mendapat sanksi berupa aplha 1(satu) jam setiap mata kuliah
         </div>
         <!-- Button trigger modal -->
         <button type="button" class="check-modal btn" data-toggle="modal" data-target="#modelId">Isi Kuisioner</button>
-        
+
         <!-- Modal -->
-        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+          aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Kuisioner</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
+              <div class="modal-header">
+                <h5 class="modal-title">Kuisioner</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
               <div class="modal-body">
                 <div class="container-fluid">
                   Add rows here
@@ -48,21 +49,21 @@
             </div>
           </div>
         </div>
-        
+
         <script>
-          $('#exampleModal').on('show.bs.modal', event => {
-            var button = $(event.relatedTarget);
-            var modal = $(this);
-            // Use above variables to manipulate the DOM
-            
-          });
+        $('#exampleModal').on('show.bs.modal', event => {
+          var button = $(event.relatedTarget);
+          var modal = $(this);
+          // Use above variables to manipulate the DOM
+
+        });
         </script>
       </div>
-      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm">
+      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
         <div class="border-bottom border-gray">
           <div class="row">
             <div class="col-sm-8">
-              <div class="judul pl-3">
+              <div class="judul">
                 <h5><strong>5 Dosen dikirim ke Jepang</strong></h5>
                 <p>6 Maret 2019</p>
               </div>
@@ -74,7 +75,7 @@
         </div>
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="isi-mhs pl-3">
+            <div class="isi-mhs">
               Dikarenakan dosen bernama : <br>
               - Pak Yan <br>
               - Pak Rosa <br>
@@ -89,18 +90,18 @@
           <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
         </div>
         <div class="media-body pb-3 mb-0 small lh-125">
-          <div class="isi-mhs pl-3">
-            <strong>Pak_Yan123</strong> <span class="komen pl-3">Mantappp minn ...</span> <br>
-            <strong>Veronica_imoet</strong> <span class="komen pl-3">Lanjutkan min!!!</span> <br>
-            <strong>Sabyan_Lovers</strong> <span class="komen pl-3">Terima Kasih</span> <br>
+          <div class="isi-mhs">
+            <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
+            <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
+            <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
           </div>
         </div>
       </div>
-      <div class="m-2 p-3 bg-white rounded shadow-sm">
+      <div class="m-2 p-3 bg-white rounded shadow-sm px-4">
         <div class="border-bottom border-gray">
           <div class="row">
             <div class="col-sm-8">
-              <div class="judul pl-3">
+              <div class="judul">
                 <h5><strong>5 Dosen dikirim ke Jepang</strong></h5>
                 <p>6 Maret 2019</p>
               </div>
@@ -112,7 +113,7 @@
         </div>
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="isi-mhs pl-3">
+            <div class="isi-mhs">
               Dikarenakan dosen bernama : <br>
               - Pak Yan <br>
               - Pak Rosa <br>
@@ -127,10 +128,10 @@
           <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
         </div>
         <div class="media-body pb-3 mb-0 small lh-125">
-          <div class="isi-mhs pl-3">
-            <strong>Pak_Yan123</strong> <span class="komen pl-3">Mantappp minn ...</span> <br>
-            <strong>Veronica_imoet</strong> <span class="komen pl-3">Lanjutkan min!!!</span> <br>
-            <strong>Sabyan_Lovers</strong> <span class="komen pl-3">Terima Kasih</span> <br>
+          <div class="isi-mhs">
+            <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
+            <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
+            <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
           </div>
         </div>
       </div>

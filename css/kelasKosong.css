@@ -1,65 +1,65 @@
-#kelasKosong .btn-hari,.btn-cari{
-    border-radius: 10px;
-    width: 5.5em;
-    height:1.8em;
-    padding:0;
+#kelasKosong .btn-hari,
+.btn-cari {
+  border-radius: 10px;
+  width: 5.5em;
+  height: 1.8em;
+  padding: 0;
 }
-#kelasKosong .btn-hari:not(.active):hover{
-    border: 1px solid rgb(122, 188, 247);
-    background: rgb(122, 188, 247);
-}
-
-#kelasKosong .btn-hari:focus-within{
-    outline:none !important;
-    box-shadow: none !important;
+#kelasKosong .btn-hari:not(.active):hover {
+  border: 1px solid rgb(122, 188, 247);
+  background: rgb(122, 188, 247);
 }
 
-#kelasKosong .optionJam{
-    border-radius: 10px;
-    width: 5.5em;
-    height:1.8em;
-    padding-left: 5px;
+#kelasKosong .btn-hari:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-#kelasKosong .active{
-    background-color: #0275d8;
-    border-color: #0275d8;
+#kelasKosong .optionJam {
+  border-radius: 10px;
+  width: 5.5em;
+  height: 1.8em;
+  padding-left: 5px;
 }
 
-#kelasKosong .ruang{
-    background-color: #F2F0F0;
-    width: 46%;
+#kelasKosong .active {
+  background-color: #0275d8;
+  border-color: #0275d8;
 }
 
-#kelasKosong .btn-pesan{
-    width: 5.5em;
+#kelasKosong .ruang {
+  background-color: #f2f0f0;
 }
 
-#kelasKosong .lantai{
-    font-size: 0.7em;
+#kelasKosong .btn-pesan {
+  width: 5.5em;
 }
 
-#kelasKosong .kelas{
-    font-size: 1.2em;
+#kelasKosong .lantai {
+  font-size: 0.7em;
 }
 
-#kelasKosong .btn-checkout{
-    width: 5.9em;
-    padding-bottom:2px;
-    padding-top:0.5px;
-    font-size:0.9em
+#kelasKosong .kelas {
+  font-size: 1.2em;
 }
 
-#kelasKosong .dipesan{
-    background-color: rgba(189, 189, 189, 0.5);
-    color: #6c757d;
+#kelasKosong .btn-checkout {
+  width: 5.9em;
+  padding-bottom: 2px;
+  padding-top: 0.5px;
+  font-size: 0.9em;
 }
 
-#kelasKosong .dipesan .btn-pesan{
-    visibility: hidden;
+#kelasKosong .dipesan {
+  background-color: rgba(189, 189, 189, 0.5);
+  color: #6c757d;
 }
 
-#kelasKosong .btn-confirm{
-    padding: 0.5px 2em 1px 2em;
-    border-radius: 10px;
+#kelasKosong .dipesan .btn-pesan {
+  visibility: hidden;
+}
+
+#kelasKosong .btn-confirm {
+  padding: 0.5px 2em 1px 2em;
+  border-radius: 10px;
 }
