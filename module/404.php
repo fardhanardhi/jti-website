@@ -7,9 +7,5 @@
         Halaman tidak ditemukan. Silakan periksa url yang ingin Anda tuju atau pergi ke <a href="./index.php?module=home"><strong>Beranda</strong></a>
       </p>
     </div>
-
-    <div class="circle">
-      <i class="fas fa-comment-alt"></i>
-    </div>
   </div>
 </main>
