@@ -18,5 +18,6 @@
 <link rel="stylesheet" href="../css/login.css">
 <link rel="stylesheet" href="../css/home.css">
 <link rel="stylesheet" href="../css/jadwal.css">
+<link rel="stylesheet" href="../css/krs.css">
 <link rel="stylesheet" href="../css/nilai.css">
 <link rel="stylesheet" href="../css/kelasKosong.css">
