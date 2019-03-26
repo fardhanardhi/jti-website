@@ -1,31 +1,31 @@
 .col-sm-8 p {
-    font-size: 0.7em;
+  font-size: 0.7em;
 }
 
 .isi-mhs {
   color: black;
 }
 .kategori-label {
-    padding: 2px 10px 4px 10px;
-    background-color: #C4C4C4;
-    color: white;
-    border-radius: 10px;
-    font-size: 0.9em;
+  padding: 2px 10px 4px 10px;
+  background-color: #c4c4c4;
+  color: white;
+  border-radius: 10px;
+  font-size: 0.9em;
 }
-.isi-beasiswa{
-    font-size: 0.7em;
+.isi-beasiswa {
+  font-size: 0.7em;
 }
 .check {
-    width: 7.5em;
-    padding-bottom:3.5px;
-    padding-top:2px;
-    font-size:0.9em;
-    background-color: #40407A;
-    color: white;
+  width: 7.5em;
+  padding-bottom: 3.5px;
+  padding-top: 2px;
+  font-size: 0.9em;
+  background-color: #40407a;
+  color: white;
 }
 
 .check:hover {
-    background-color: rgba(64, 64, 122, 0.548);
+  background-color: rgba(64, 64, 122, 0.548);
 }
 
 .check a {
@@ -50,11 +50,16 @@
 /* Button Modal */
 .check-modal {
   width: 100%;
-  background-color: #40407A;
+  background-color: #40407a;
   color: white;
 }
 
 .check-modal:hover {
   background-color: rgba(64, 64, 122, 0.548);
   color: white;
+}
+
+#photos img {
+  height: 150px;
+  width: auto;
 }
