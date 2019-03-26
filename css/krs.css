@@ -1,0 +1,24 @@
+#krs .gambar-profil {
+    border-radius: 50%;
+}
+
+/* nilai error */
+#krs .warna-card {
+    background-color: #FCA5A5;
+}
+
+#krs .card-title {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: normal;
+}
+
+#krs .card-text {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: normal;
+}
