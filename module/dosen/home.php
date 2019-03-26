@@ -124,14 +124,41 @@
           <h6 class="border-bottom border-gray pb-2 mb-0 judul">KOMPEN MAHASISWA</h6>
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small">
-              <div class="isi py-5 text-center">
+              <div class="isi-ada text center">
+                <form action="">
+                  <table class="table table-striped table-bordered text-center">
+                    <thead>
+                      <tr>
+                        <th>Pekerjaan</th>
+                        <th>Kuota</th>
+                        <th>Selesai</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Menata dokumen di ruang baca</td>
+                        <td>2 Mhs</td>
+                        <td> 
+                          <div class="kompen-check">
+                            <input type="checkbox" value=""></td>
+                          </div>
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+              </div>
+              <!-- --------------------- -->
+              <!-- Kompen Kosong -->
+              <!-- --------------------- -->
+
+              <!-- <div class="isi py-5 text-center">
                 <div class="text-center mb-2">
                   <img src="../img/clipboard.svg" alt="clipBoard" class="clipBoard">
                 </div>
                 <div class="data-kompen text-center w-50 mr-auto ml-auto">
                   <h6>Anda tidak mempunyai daftar pekerjaan</h6>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

@@ -34,6 +34,14 @@
 #dosenHomepage .kompen-bar {
   height: 100%;
 }
+#dosenHomepage .kompen-check{
+  border: #000000 solid;
+  height: 2em;
+  width: 2em;
+  border-radius: 2px;
+  background: #ceceef;
+}
+
 
 /* any */
 #dosenHomepage .judul {
