@@ -48,7 +48,7 @@
                     <option value="3">Semester 8</option>
                 </select>
                 <button type="button" class="btn btn-success">Filter</button>
-                <button type="button" class="btn btn-success float-right">Kirim ke DPA</button>
+                <button type="button" class="btn btn-success float-right">Kirim ke DPA &nbsp&nbsp<i class="fas fa-arrow-circle-up"></i></button>
                 <br><br>
                 <table class="table table-striped">
                     <thead class="bg-primary text-white">
