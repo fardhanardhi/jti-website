@@ -50,44 +50,8 @@
                 <button type="button" class="btn btn-success">Filter</button>
                 <button type="button" class="btn btn-success float-right">Kirim ke DPA &nbsp&nbsp<i class="fas fa-arrow-circle-up"></i></button>
                 <br><br>
-                <table class="table table-striped">
-                    <thead class="bg-primary text-white">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama Mata Kuliah</th>
-                            <th scope="col">Dosen</th>
-                            <th scope="col">Hari</th>
-                            <th scope="col">SKS/JAM</th>
-                            <th scope="col">Ruang</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Matkul A</td>
-                            <td>Dosen A</td>
-                            <td>Senin</td>
-                            <td>2 SKS / 4 JAM</td>
-                            <td>KB 02 (Lt7)</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Matkul B</td>
-                            <td>Dosen B</td>
-                            <td>Selasa</td>
-                            <td>2 SKS / 4 JAM</td>
-                            <td>KB 02 (Lt7)</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Matkul C</td>
-                            <td>Dosen C</td>
-                            <td>Rabu</td>
-                            <td>2 SKS / 4 JAM</td>
-                            <td>KB 02 (Lt7)</td>
-                        </tr>
-                    </tbody>
-                </table>
+                
+                <img src="../attachment/img/krs.png" width="100%" alt="">
 
                 <center>
                     <div class="warna-card col-md-12 border border-danger mt-3">
