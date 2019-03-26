@@ -1,4 +1,4 @@
-<main role="main" class="container-fluid">
+<main role="main" class="container-fluid" id="home">
   <div class="row">
     <div class="col-md-3 p-0 ">
       <div class="sticky-sidebar sticky-top">
@@ -29,17 +29,27 @@
         <!-- Modal -->
         <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
           aria-hidden="true">
-          <div class="modal-dialog" role="document">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Kuisioner</h5>
+                <h5 class="modal-title text-center">Kuisioner</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <div class="container-fluid">
-                  Add rows here
+                  <div class="row">
+                    <div class="col-sm-5">
+                    <label for="namaDosen">Dosen Pengajar dan Mata Kuliah :</label>
+                    </div>
+                    <div class="col-sm-7">
+                    <select name="dosen" id="namaDosen" class="form-control">
+                      <option value="ridwan">Ridwan Rismanto, SST., M.KOM. (Pemrograman Dasar) </option>
+                      <option value="rudy">Rudy Arianto, ST, M.Cs. (Proyek 2)</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="modal-footer">
