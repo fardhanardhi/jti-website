@@ -59,6 +59,14 @@
   color: white;
 }
 
+#home #nama-dosen {
+  font-size: 0.9em;
+  width: 67%;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
 #home #photos .image {
   position: relative;
   overflow: hidden;
@@ -69,3 +77,5 @@
   width: 100%;
   padding-bottom: 50% !important;
 }
+
+
