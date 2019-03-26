@@ -140,8 +140,10 @@
                         <td>2 Mhs</td>
                         <td> 
                           <div class="kompen-check">
-                            <input type="checkbox" value=""></td>
+                            <input type="checkbox" value="" id="check1">
+                            <label for="check1"><img src="" alt=""></label>
                           </div>
+                        </td>  
                       </tr>
                     </tbody>
                   </table>
