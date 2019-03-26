@@ -1,3 +1,29 @@
 #jadwal .gambar-profil {
     border-radius: 50%;
 }
+
+/* nilai error */
+#jadwal .warna-card {
+    background-color: #FCA5A5;
+}
+
+#jadwal .card-title {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: normal;
+}
+
+#jadwal .card-text {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: normal;
+}
+
+/* terverifikasi */
+#jadwal .warna-verifikasi {
+    background-color: #A5FBA5;
+}
