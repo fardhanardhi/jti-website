@@ -1,5 +1,5 @@
 <?php
-    $level="mahasiswa";
+    $level=$_GET["level"];;
 ?>
 
 <!DOCTYPE html>
