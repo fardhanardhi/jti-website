@@ -59,7 +59,13 @@
   color: white;
 }
 
-#home #photos img {
-  height: 150px;
-  width: auto;
+#home #photos .image {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+#home #photos .image img {
+  position: absolute;
+  width: 100%;
+  padding-bottom: 50% !important;
 }

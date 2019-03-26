@@ -41,12 +41,12 @@
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-sm-5">
-                    <label for="namaDosen">Dosen Pengajar dan Mata Kuliah :</label>
+                      <label for="namaDosen">Dosen Pengajar dan Mata Kuliah :</label>
                     </div>
                     <div class="col-sm-7">
-                    <select name="dosen" id="namaDosen" class="form-control">
-                      <option value="ridwan">Ridwan Rismanto, SST., M.KOM. (Pemrograman Dasar) </option>
-                      <option value="rudy">Rudy Arianto, ST, M.Cs. (Proyek 2)</option>
+                      <select name="dosen" id="namaDosen" class="form-control">
+                        <option value="ridwan">Ridwan Rismanto, SST., M.KOM. (Pemrograman Dasar) </option>
+                        <option value="rudy">Rudy Arianto, ST, M.Cs. (Proyek 2)</option>
                       </select>
                     </div>
                   </div>
@@ -171,11 +171,28 @@
               Terima Kasih...
             </div>
             <div id="photos">
-              <img src="../attachment/img/yuri.png" alt="foto">
-              <img src="../attachment/img/ariadi.png" alt="foto">
-              <img src="../attachment/img/atiqah.png" alt="foto">
-              <img src="../attachment/img/ridwan.png" alt="foto">
-              <img src="../attachment/img/yan.png" alt="foto">
+              <div class="row">
+                <div class="col-md-6 p-2">
+                  <div class="image">
+                    <img class="img img-responsive full-width" src="../attachment/img/yuri.png" alt="foto"></div>
+                </div>
+                <div class="col-md-6 p-2">
+                  <div class="image">
+                    <img class="img img-responsive full-width" src="../attachment/img/ariadi.png" alt="foto"></div>
+                </div>
+                <div class="col-md-6 p-2">
+                  <div class="image">
+                    <img class="img img-responsive full-width" src="../attachment/img/atiqah.png" alt="foto"></div>
+                </div>
+                <div class="col-md-6 p-2">
+                  <div class="image">
+                    <img class="img img-responsive full-width" src="../attachment/img/ridwan.png" alt="foto"></div>
+                </div>
+                <div class="col-md-6 p-2">
+                  <div class="image">
+                    <img class="img img-responsive full-width" src="../attachment/img/yan.png" alt="foto"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
