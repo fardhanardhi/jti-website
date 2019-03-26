@@ -35,7 +35,7 @@
             <strong class="d-block text-dark">Periode Semester</strong>
           </p>
         </div>
-        <select class="custom-select" style="width:250px">
+        <select class="semester custom-select" style="width:250px">
           <option selected>-</option>
           <option value="1">Semester 1</option>
           <option value="2">Semester 2</option>
@@ -46,11 +46,11 @@
           <option value="3">Semester 7</option>
           <option value="3">Semester 8</option>
         </select>
-        <button type="button" class="btn btn-success">Filter</button>
-        <button type="button" class="btn btn-info float-right">Ruangan</button>
+        <button type="button" class="tmbl-filter btn btn-success ml-2">Filter</button>
+        <button type="button" class="tmbl-ruangan btn btn-info float-right">Ruangan</button>
         <br><br>
-        <table class="table table-striped">
-          <thead class="bg-primary text-white">
+        <table class="table table-striped table-bordered">
+          <thead class="text-white bg-blue">
             <tr>
               <th scope="col">No</th>
               <th scope="col">Nama Mata Kuliah</th>
