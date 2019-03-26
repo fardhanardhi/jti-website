@@ -24,7 +24,12 @@
 
     <div class="col-md-9 p-0">
       <div class="m-2 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Jadwal Kuliah</h6>
+        <h6 class="border-bottom border-gray pb-2 mb-2">Jadwal Kuliah</h6>
+        <center>
+          <div class="warna-verifikasi col-md-12 mt-3 h-25 pt-2">
+            <p class="card-title">Sudah terverifikasi oleh DPA</p>
+          </div>
+        </center>
         <div class="media text-muted pt-3">
           <p class="media-body pb-3 mb-0 small lh-125">
             <strong class="d-block text-dark">Periode Semester</strong>
@@ -82,5 +87,15 @@
             </tr>
           </tbody>
         </table>
+
+        <center>
+          <div class="warna-card col-md-12 border border-danger mt-3">
+            <div class="teks card-body" style="position: center">
+              <!-- <p class="card-title">| <img src="../img/navigation/icon.svg"></a> Informasi|</p> -->
+              <p class="card-title">| <i class="fas fa-info"></i> Informasi |</p>
+              <p class="card-text" style="color:#950101">*Tidak dapat menampilkan data*</p>
+              <p class="card-text">- Anda belum menempuh semester ini</p>
+            </div>
+        </center>
       </div>
     </div>
