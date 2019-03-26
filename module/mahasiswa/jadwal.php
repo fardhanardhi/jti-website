@@ -11,12 +11,12 @@
       <div class="m-2 p-3 bg-white rounded shadow-sm">
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125">
-            <center><img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="250" width="250">
+            <center><img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="170" width="170">
             </center>
-            <br>
-            <h5 class="border-bottom border-gray" align="center">NAMA</h5>
-            <h5 class="border-bottom border-gray" align="center">NIM MHS</h5>
-            <h5 class="border-bottom border-gray" align="center">PRODI</h5>
+            <br><br>
+            <h5 class="border-bottom border-gray pb-2 mb-0" align="center">NAMA</h6>
+              <h5 class="border-bottom border-gray pb-2 mb-0" align="center">NIM</h6>
+                <h5 class="border-bottom border-gray pb-2 mb-0" align="center">PRODI</h6>
           </div>
         </div>
       </div>
