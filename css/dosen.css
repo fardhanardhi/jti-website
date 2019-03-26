@@ -31,17 +31,29 @@
   padding-top: 1.1em;
 }
 
+/* Kompen Bar */
+
 #dosenHomepage .kompen-bar {
   height: 100%;
 }
-#dosenHomepage .kompen-check{
-  border: #000000 solid;
-  height: 2em;
-  width: 2em;
-  border-radius: 2px;
-  background: #ceceef;
+
+#dosenHomepage .kompen-check > input[type="checkbox"] {
+  display: none;
 }
 
+#dosenHomepage .kompen-check > input[type="checkbox"] + label {
+  background-image: url(../img/Checkbox.svg);
+}
+
+#dosenHomepage .kompen-check > input[type="checkbox"]:checked + label  {
+  background-image: url(../img/Checkedbox.svg);
+}
+
+/* :checked+label img {
+  transform: scale(0.9);
+  box-shadow: 0 0 5px #333;
+  z-index: -1;
+} */
 
 /* any */
 #dosenHomepage .judul {

@@ -141,7 +141,7 @@
                         <td> 
                           <div class="kompen-check">
                             <input type="checkbox" value="" id="check1">
-                            <label for="check1"><img src="" alt=""></label>
+                            <label for="check1"><img src="../img/Checkbox.svg"></label>
                           </div>
                         </td>  
                       </tr>
