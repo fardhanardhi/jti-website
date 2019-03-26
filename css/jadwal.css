@@ -1,3 +1,21 @@
+#jadwal .semester {
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+#jadwal .tmbl-filter {
+    background: #3AAC5F;
+    border-radius: 15px;
+    width: 80px;
+}
+
+#jadwal .tmbl-ruangan {
+    background: #51A9EB;
+    border-radius: 15px;
+    width: 90px;
+}
+
 #jadwal .gambar-profil {
     border-radius: 50%;
 }
