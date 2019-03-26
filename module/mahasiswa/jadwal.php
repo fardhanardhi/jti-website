@@ -41,8 +41,9 @@
           <option value="3">Semester 7</option>
           <option value="3">Semester 8</option>
         </select>
-        <button type="button" class="btn btn-success">Filter</button><br><br>
-
+        <button type="button" class="btn btn-success">Filter</button>
+        <button type="button" class="btn btn-info float-right">Ruangan</button>
+        <br><br>
         <table class="table table-striped">
           <thead class="bg-primary text-white">
             <tr>
