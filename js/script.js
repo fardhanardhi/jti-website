@@ -158,3 +158,7 @@ $("#datepicker").on("changeDate", function() {
       reader.readAsDataURL(event.target.files[0]);
   }
 
+//   Popover
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+})

@@ -63,3 +63,8 @@
   padding: 0.5px 2em 1px 2em;
   border-radius: 10px;
 }
+
+.popover *{
+  color: red;
+  text-align: center;
+}

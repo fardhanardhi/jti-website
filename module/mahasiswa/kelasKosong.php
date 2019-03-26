@@ -127,6 +127,7 @@
                   </div>
                   <div class="col-4 text-right">
                     <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
+                    <a tabindex="0" class="btn btn-danger" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Popover</a>
                   </div>
                 </div>
               </div>
