@@ -1,13 +1,13 @@
-#jadwal .gambar-profil {
+#krs .gambar-profil {
     border-radius: 50%;
 }
 
 /* nilai error */
-#jadwal .warna-card {
+#krs .warna-card {
     background-color: #FCA5A5;
 }
 
-#jadwal .card-title {
+#krs .card-title {
     font-family: Lato;
     font-style: normal;
     font-weight: 600;
@@ -15,15 +15,10 @@
     line-height: normal;
 }
 
-#jadwal .card-text {
+#krs .card-text {
     font-family: Lato;
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
     line-height: normal;
-}
-
-/* terverifikasi */
-#jadwal .warna-verifikasi {
-    background-color: #A5FBA5;
 }

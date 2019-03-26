@@ -161,6 +161,9 @@
               case "coba":
                   include "mahasiswa/coba.php";
               break;
+              case "krs":
+                  include "mahasiswa/krs.php";
+              break;
               case "jadwal":
                   include "mahasiswa/jadwal.php";
               break;
