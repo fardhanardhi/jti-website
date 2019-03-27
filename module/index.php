@@ -1,5 +1,5 @@
 <?php
-    $level=$_GET["level"];;
+    $level="mahasiswa";
 ?>
 
 <!DOCTYPE html>
@@ -58,12 +58,14 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <!-- memberi space ditengah navbar -->
       <div class="mx-auto"></div>
+      <a href="?module=notifikasi">
       <i class="notification-icon text-white far fa-bell">
 
         <!-- bagian notification bubble -->
         <span class="fas fa-circle notification-bubble"></span>
         <span class="notification-bubble-num">10</span>
       </i>
+      </a>
 
       <div class="dropdown mr-5">
         <img class="dropdown-toggle nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg" data-toggle="dropdown"
@@ -175,6 +177,9 @@
               break;
               case "kelasKosong":
                   include "mahasiswa/kelasKosong.php";
+              break;
+              case "notifikasi":
+                  include "notifikasi.php";
               break;
               default:
                 include "404.php";
