@@ -1,7 +1,8 @@
 <?php 
-  $level="mahasiswa";
+  session_start();
+  $level=$_SESSION['level'];
   if($level=="mahasiswa" || $level=="dosen" || $level=="admin"){
-    header("location: module/index.php?level=$level&module=home");
+    header("location: module/index.php?module=home");
         exit();
   }else{
     header("location: module/login.php");

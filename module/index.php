@@ -1,5 +1,6 @@
 <?php
-    $level="mahasiswa";
+  session_start();
+  $level=$_SESSION['level'];
 ?>
 
 <!DOCTYPE html>
@@ -143,9 +144,6 @@
     </div>
   </div>
 
-
-
-
   <!-- konten -->
   <div class="container-fluid px-5">
     <?php
@@ -196,7 +194,7 @@
           
     if($level=="mahasiswa" || $level=="admin" || $level=="dosen"){
     ?>
-    <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
+      <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
     <?php
     }
     ?>

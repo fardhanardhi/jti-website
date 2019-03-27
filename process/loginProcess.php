@@ -1,9 +1,19 @@
 <?php
+session_start();
 
+  if(isset($_POST["dosen"])){
+    $_SESSION["level"]="dosen";
+    header("location: ../index.php");
+  }
+  else if(isset($_POST["mahasiswa"])){
+    $_SESSION["level"]="mahasiswa";
+    header("location: ../index.php");
+  }
+
+  if (isset($_POST["submit"])) {
   $username = $_POST["username"];
   $password = $_POST["password"];
 
-  if (isset($_POST["submit"])) {
     if ($username != "123") {
       $error = "*Username invalid";
       header("Location: ../module/login.php?error=$error");
