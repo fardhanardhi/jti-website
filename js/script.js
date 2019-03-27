@@ -158,6 +158,65 @@ $("#datepicker").on("changeDate", function() {
       reader.readAsDataURL(event.target.files[0]);
   }
 
+  function showPasswordLama() {
+    var password = document.getElementById("passwordLama");
+    if (password.type == "password") {
+      password.type = "text";
+    } else {
+      password.type = "password";
+    }
+  
+    var eye = document.getElementById("eyeA").classList;
+    if (eye.contains("fa-eye")) {
+      eye.remove("fa-eye");
+      eye.add("fa-eye-slash");
+    } else {
+      eye.remove("fa-eye-slash");
+      eye.add("fa-eye");
+    }
+  }
+
+  function showPasswordBaru() {
+    var password = document.getElementById("passwordBaru");
+    if (password.type == "password") {
+      password.type = "text";
+    } else {
+      password.type = "password";
+    }
+  
+    var eye = document.getElementById("eyeB").classList;
+    if (eye.contains("fa-eye")) {
+      eye.remove("fa-eye");
+      eye.add("fa-eye-slash");
+    } else {
+      eye.remove("fa-eye-slash");
+      eye.add("fa-eye");
+    }
+  }
+
+  function showPasswordKonfirmasi() {
+    var password = document.getElementById("konfirmasiPassword");
+    if (password.type == "password") {
+      password.type = "text";
+    } else {
+      password.type = "password";
+    }
+  
+    var eye = document.getElementById("eyeC").classList;
+    if (eye.contains("fa-eye")) {
+      eye.remove("fa-eye");
+      eye.add("fa-eye-slash");
+    } else {
+      eye.remove("fa-eye-slash");
+      eye.add("fa-eye");
+    }
+  }
+
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(nanana);
+  });
+
 //   Popover
   $(function () {
     $('[data-toggle="popover"]').popover()

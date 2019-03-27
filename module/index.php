@@ -100,30 +100,47 @@
               <br>
               <center>AVATAR</center>
               <br>
-              <form class="px-3">
+              <form class="px-2">
                 <div class="form-group row">
-                  <label class="col-md-3" for="foto">Ganti Foto</label>
-                  <div class="custom-file col-md-9">
+                  <label class="col-md-2" for="foto">Ganti Foto</label>
+                  <div class="input-group col-md-10">
                     <input type="file" class="custom-file-input form-control" id="foto" name="foto"
                       onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);"
                       accept="image/*">
-                    <label class="custom-file-label" for="foto">Pilih File</label>
+                      <div class="col-md-11">
+                          <label class="custom-file-label" for="foto">Pilih File</label>
+                      </div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-3" for="passwordLama">Password Lama</label>
-                  <input type="password" id="passwordLama" placeholder="Password Lama" name="passwordLama"
-                    onblur="reset_Blank();" class="form-control col-md-9">
+                  <div class="input-group col-md-9">
+                    <input type="password" id="passwordLama" placeholder="Password Lama" name="passwordLama"
+                      onblur="reset_Blank();" class="form-control border-right-0 shadow-none">
+                    <div class="input-group-append">
+                        <span class="far fa-eye form-control rounded-right" id="eyeA" onclick="showPasswordLama();"></span>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-3" for="passwordBaru">Password Baru</label>
-                  <input type="password" class="form-control col-md-9" id="passwordBaru" placeholder="Password Baru"
-                    name="passwordBaru" onblur="reset_Blank();">
+                  <div class="input-group col-md-9">
+                    <input type="password" class="form-control border-right-0 shadow-none" id="passwordBaru" placeholder="Password Baru"
+                      name="passwordBaru" onblur="reset_Blank();">
+                      <div class="input-group-append">
+                        <span class="far fa-eye form-control rounded-right" id="eyeB" onclick="showPasswordBaru();"></span>
+                      </div>
+                  </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-3" for="konfirmasiPassword">Konfirmasi Password</label>
-                  <input type="password" class="form-control col-md-9" id="konfirmasiPassword"
+                  <div class="input-group col-md-9">
+                    <input type="password" class="form-control border-right-0 shadow-none" id="konfirmasiPassword"
                     placeholder="Konfirmasi Password" name="konfirmasiPassword" onblur="reset_Blank();">
+                    <div class="input-group-append">
+                        <span class="far fa-eye form-control rounded-right" id="eyeC" onclick="showPasswordKonfirmasi();"></span>
+                    </div>
+                  </div>                                    
                 </div>
                 <div>
                   <div id="Blank" class="text-danger"></div>
@@ -136,7 +153,7 @@
             </div>
           </div>
         </div>
-        <div class="align-self-end p-3">
+        <div class="align-self-end p-4">
           <button type="button" name="kirim" class="btn btn-success"
             onclick="Coba(); showFilesSize(); checkFoto();">Simpan</button>
         </div>
