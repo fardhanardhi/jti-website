@@ -1,8 +1,8 @@
 <?php
-    $dbUrl="localhost";
-    $dbUser="root";
-    $dbPass="";
-    $dbName="jti-website";
+    $dbUrl  = ""; // MySql host Url
+    $dbUser = ""; // user Mysql
+    $dbPass = ""; // password Mysql
+    $dbName = ""; // nama database
 
     $con=mysqli_connect($dbUrl, $dbUser, $dbPass, $dbName);
     if(!$con){

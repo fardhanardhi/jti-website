@@ -52,9 +52,17 @@
               }
             ?>
             </small>
-            <input type="submit" name="submit" class="btn btn-success align-self-end shadow-none mr-3" value="Masuk"></button>
+            <input type="submit" name="submit" class="btn btn-success align-self-end shadow-none mr-3" value="Masuk">
           </form>
           <!-- end form -->
+
+          <!-- button hak akses -->
+          <form action="../process/loginProcess.php" method="post">
+            <input type="submit" name="dosen" class="btn btn-primary align-self-end shadow-none mr-3" value="Dosen">
+            <input type="submit" name="mahasiswa" class="btn btn-secondary align-self-end shadow-none mr-3" value="Mahasiswa">
+          </form>
+          <!-- end button -->
+          
         </div>
       </div>
       <div class="col-md-3"></div>

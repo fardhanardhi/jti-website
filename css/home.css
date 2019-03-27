@@ -67,6 +67,12 @@
   border-radius: 10px;
 }
 
+#home .kirim {
+  background-color: #3AAC5F;
+  color: white;  
+}
+
+/* CSS foto */
 #home #photos .image {
   position: relative;
   overflow: hidden;
@@ -78,4 +84,18 @@
   padding-bottom: 50% !important;
 }
 
+/* CSS Close */
+#home .close{
+  margin-top: -32px;
+  margin-right: -27px;
+  background: rgba(0, 0, 0, 0.452);
+  border-radius:45%;
+  padding: 5px 8px 5px 10px;
+  color: white;
+  opacity: 50;
+}
 
+#home .close:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+}

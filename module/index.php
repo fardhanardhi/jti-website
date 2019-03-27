@@ -1,5 +1,6 @@
 <?php
-    $level=$_GET["level"];;
+  session_start();
+  $level=$_SESSION['level'];
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +59,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <!-- memberi space ditengah navbar -->
       <div class="mx-auto"></div>
-      <i class="notification-icon text-white far fa-bell">
+      <i class="notification-icon text-white far fa-bell" onclick="location.href='index.php?module=notifikasi';">
 
         <!-- bagian notification bubble -->
         <span class="fas fa-circle notification-bubble"></span>
@@ -74,7 +75,7 @@
           <b class="caret d-none d-lg-block d-xl-block"></b>
           <a class="dropdown-item" href="#" data-target="#largeShoes" data-toggle="modal">Pengaturan</a>
           <hr class="hr-light m-0">
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a class="dropdown-item" href="../process/logout.php">Log Out</a>
         </div>
       </div>
     </div>
@@ -143,9 +144,6 @@
     </div>
   </div>
 
-
-
-
   <!-- konten -->
   <div class="container-fluid px-5">
     <?php
@@ -176,6 +174,9 @@
               case "kelasKosong":
                   include "mahasiswa/kelasKosong.php";
               break;
+              case "notifikasi":
+                  include "notifikasi.php";
+              break;
               default:
                 include "404.php";
           }
@@ -193,7 +194,7 @@
           
     if($level=="mahasiswa" || $level=="admin" || $level=="dosen"){
     ?>
-    <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
+      <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
     <?php
     }
     ?>
