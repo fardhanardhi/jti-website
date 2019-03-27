@@ -58,14 +58,12 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <!-- memberi space ditengah navbar -->
       <div class="mx-auto"></div>
-      <a href="?module=notifikasi">
-      <i class="notification-icon text-white far fa-bell">
+      <i class="notification-icon text-white far fa-bell" onclick="location.href='index.php?module=notifikasi';">
 
         <!-- bagian notification bubble -->
         <span class="fas fa-circle notification-bubble"></span>
         <span class="notification-bubble-num">10</span>
       </i>
-      </a>
 
       <div class="dropdown mr-5">
         <img class="dropdown-toggle nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg" data-toggle="dropdown"
