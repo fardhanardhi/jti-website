@@ -30,7 +30,7 @@ Contoh:
 $dbUrl  = "localhost"; // MySql host Url
 $dbUser = "root"; // user Mysql
 $dbPass = ""; // password Mysql
-$dbName = "jti-website"; // nama database
+$dbName = "jti_website"; // nama database
 ```
 
 Save & selesai!
