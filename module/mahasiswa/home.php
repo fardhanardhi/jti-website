@@ -33,15 +33,21 @@
             <div class="modal-content">
               <div class="modal-body">
                 <div class="icon">
-                  <button type="button" class="close text-right text-white active" data-dismiss="modal" aria-label="Close">
+                  <button type="button" class="close text-right text-white active" data-dismiss="modal"
+                    aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                  </button> 
+                  </button>
                 </div>
                 <div class="container-fluid">
-                  <strong><center><h5 class="p-2">Kuisioner</h5></center></strong>
+                  <strong>
+                    <center>
+                      <h5 class="p-2">Kuisioner</h5>
+                    </center>
+                  </strong>
                   <form action="">
                     <div class="pilihan-dosen">
-                      <strong><label for="nama-dosen" class="nama-dosen">Dosen Pengajar dan Mata Kuliah : </label></strong>
+                      <strong><label for="nama-dosen" class="nama-dosen">Dosen Pengajar dan Mata Kuliah :
+                        </label></strong>
                       <select name="nama-dosen" id="nama-dosen" class="p-1 ">
                         <option value="ridwan">Ridwan Rismanto, SST., M.KOM. (Pemrograman Dasar) </option>
                         <option value="rudy">Rudy Arianto, ST, M.Cs. (Proyek 2)</option>
@@ -50,7 +56,9 @@
                     <div class="kriteria-kuisioner p-2 border-bottom border-gray ">
                       <div class="row kriteria">
                         <div class="col-sm-7">
-                          <strong><center>Kriteria Kuisioner</center></strong>
+                          <strong>
+                            <center>Kriteria Kuisioner</center>
+                          </strong>
                         </div>
                         <div class="col-sm-5">
                           <div class="row pilihan">
@@ -70,11 +78,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -84,11 +92,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -98,11 +106,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -112,11 +120,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -126,11 +134,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -140,11 +148,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -154,11 +162,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -168,11 +176,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -182,11 +190,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -196,11 +204,11 @@
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai1"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai2"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai3"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai4"/></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai5"/></div>
+                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
@@ -331,23 +339,28 @@
               <div class="row">
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width" src="../attachment/img/yuri.png" alt="foto"></div>
+                    <img class="img img-responsive full-width cursor" src="../attachment/img/yuri.png" alt="foto"
+                      onclick="openModal();currentSlide(1)"></div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width" src="../attachment/img/ariadi.png" alt="foto"></div>
+                    <img class="img img-responsive full-width cursor" src="../attachment/img/ariadi.png" alt="foto"
+                      onclick="openModal();currentSlide(2)"></div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width" src="../attachment/img/atiqah.png" alt="foto"></div>
+                    <img class="img img-responsive full-width cursor" src="../attachment/img/atiqah.png" alt="foto"
+                      onclick="openModal();currentSlide(3)"></div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width" src="../attachment/img/ridwan.png" alt="foto"></div>
+                    <img class="img img-responsive full-width cursor" src="../attachment/img/ridwan.png" alt="foto"
+                      onclick="openModal();currentSlide(4)"></div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width" src="../attachment/img/yan.png" alt="foto"></div>
+                    <img class="img img-responsive full-width cursor" src="../attachment/img/yan.png" alt="foto"
+                      onclick="openModal();currentSlide(5)"></div>
                 </div>
               </div>
             </div>
