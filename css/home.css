@@ -99,3 +99,17 @@
   outline: none !important;
   box-shadow: none !important;
 }
+
+/* Download File */
+#home .download {
+  border-radius: 3%;
+  
+}
+#home .isi-download a {
+  text-decoration: none;
+  color: black;
+}
+#home .isi-download a:hover {
+  text-decoration: none;
+  color: blue;
+}

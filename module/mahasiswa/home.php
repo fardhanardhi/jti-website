@@ -390,7 +390,14 @@
               untuk meminta tugas. <br><br>
               Terima Kasih...
               <div class="download border border-dark mt-2 p-3">
-                <a href="">Dokumen Rahasia</a>
+                <div class="row isi-download">
+                  <div class="col-sm-7">
+                    <h5><a href="">Dokumen Rahasia</a></h5>
+                  </div>
+                  <div class="col-sm-5 text-right">
+                    <img src="../img/vector.svg" alt="Search Not Found" class="">
+                  </div>
+                </div> 
               </div>
             </div>
           </div>
