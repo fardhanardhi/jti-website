@@ -8,12 +8,6 @@
 
 ## Memulai
 
-**Clone repository**
-
-```sh
-git clone https://github.com/fardhanardhi/jti-website.git
-```
-
 **Import MySql database**
 
 Import file database `database/jti_website.sql` ke PhpMyAdmin atau mysql host anda
