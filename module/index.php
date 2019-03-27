@@ -75,7 +75,7 @@
           <b class="caret d-none d-lg-block d-xl-block"></b>
           <a class="dropdown-item" href="#" data-target="#largeShoes" data-toggle="modal">Pengaturan</a>
           <hr class="hr-light m-0">
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a class="dropdown-item" href="../process/logout.php">Log Out</a>
         </div>
       </div>
     </div>
