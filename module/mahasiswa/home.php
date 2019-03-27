@@ -395,7 +395,7 @@
                     <h5><a href="">Dokumen Rahasia</a></h5>
                   </div>
                   <div class="col-sm-5 text-right">
-                    <img src="../img/vector.svg" alt="Search Not Found" class="">
+                    <img src="../img/vector.svg" alt="Download button" class="">
                   </div>
                 </div> 
               </div>
@@ -417,7 +417,7 @@
 
     <div class="col-md-3 p-0">
       <div class="sticky-sidebar sticky-top">
-        <div class="m-2 p-3 bg-white rounded shadow-sm">
+        <!-- <div class="m-2 p-3 bg-white rounded shadow-sm">
           <div class="beasiswa pb-3 mb-0 border-bottom border-dark">
             <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
             <h6><strong>Beasiswa Astra</strong></h6>
@@ -436,6 +436,17 @@
             <small class="d-block text-right mt-3 ">
               <button class="check btn"><a href="#">Cek Link</a></button>
             </small>
+          </div>
+        </div> -->
+        <div class="m-2 p-3 bg-white rounded shadow-sm">
+          <div class="beasiswa pb-3 mb-0 ">
+            <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
+            <div class="scholarship text-center mt-5 mb-5">
+              <img src="../img/scholarship.svg" alt="Scholarship" class="">
+              <br>
+              <p>Mohon maaf, untuk saat ini beasiswa belum tersedia</p>
+            </div>
+            
           </div>
         </div>
       </div>
