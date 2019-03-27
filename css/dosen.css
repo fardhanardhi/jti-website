@@ -49,15 +49,16 @@
   background-image: url(../img/Checkedbox.svg);
 }
 
-/* #dosenHomepage .kompen-check > input[type="checkbox"]:checked + label  {
-  background-image: url(../img/Checkedbox.svg);
-} */
+#dosenHomepage .tambah-pekerjaan-kompen{
+  background-color: #40407a;
+  color: white;
+  margin-right: 2em;
+}
 
-/* :checked+label img {
-  transform: scale(0.9);
-  box-shadow: 0 0 5px #333;
-  z-index: -1;
-} */
+#dosenHomepage .submit-kompen-dosen{
+  background-color: #3AAC5F;
+  color: white;
+}
 
 /* any */
 #dosenHomepage .judul {

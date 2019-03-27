@@ -145,8 +145,32 @@
                           </div>
                         </td>  
                       </tr>
+                      <tr>
+                        <td>Menata dokumen di ruang mayat</td>
+                        <td>2 Stn</td>
+                        <td> 
+                          <div class="kompen-check">
+                            <input type="checkbox" value="" id="check2">
+                            <label for="check2" class="labelCheck far fa-square"></label>
+                          </div>
+                        </td>  
+                      </tr>
+                      <tr>
+                        <td>Menata baca di ruang dokumen</td>
+                        <td>2 Mhs</td>
+                        <td> 
+                          <div class="kompen-check">
+                            <input type="checkbox" value="" id="check3">
+                            <label for="check3" class="labelCheck far fa-square"></label>
+                          </div>
+                        </td>  
+                      </tr>
                     </tbody>
                   </table>
+                  <div class="d-flex justify-content-center"> 
+                    <button  class="btn tambah-pekerjaan-kompen">Tambah Pekerjaan</button>
+                    <button type="submit" class="btn submit-kompen-dosen">Submit</button>
+                  </div>
                 </form>
               </div>
               <!-- --------------------- -->
