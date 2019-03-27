@@ -262,6 +262,7 @@
           </div>
         </div>
       </div>
+
       <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
         <div class="border-bottom border-gray">
           <div class="row">
@@ -300,6 +301,7 @@
           </div>
         </div>
       </div>
+
       <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
         <div class="border-bottom border-gray">
           <div class="row">
@@ -347,6 +349,48 @@
                   <div class="image">
                     <img class="img img-responsive full-width" src="../attachment/img/yan.png" alt="foto"></div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group border-bottom border-gray">
+          <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
+        </div>
+        <div class="media-body pb-3 mb-0 small lh-125">
+          <div class="isi-mhs">
+            <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
+            <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
+            <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
+        <div class="border-bottom border-gray">
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="judul">
+                <h5><strong>5 Dosen dikirim ke Jepang</strong></h5>
+                <p>6 Maret 2019</p>
+              </div>
+            </div>
+            <div class="col-sm-4 mt-2 text-right">
+              <span class="kategori-label badge badge-secondary px-3 py-2">Berita</span>
+            </div>
+          </div>
+        </div>
+        <div class="media text-muted pt-3">
+          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <div class="isi-mhs">
+              Dikarenakan dosen bernama : <br>
+              - Pak Yan <br>
+              - Pak Rosa <br>
+              - Pak Vipkas <br>
+              sedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi
+              untuk meminta tugas. <br><br>
+              Terima Kasih...
+              <div class="download border border-dark mt-2 p-3">
+                <a href="">Dokumen Rahasia</a>
               </div>
             </div>
           </div>
