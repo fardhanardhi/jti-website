@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2019 at 01:28 PM
+-- Generation Time: Mar 27, 2019 at 04:39 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -31,20 +31,41 @@ SET time_zone = "+00:00";
 CREATE TABLE `tabel_absensi` (
   `id_absensi` int(30) NOT NULL,
   `id_mahasiswa` int(30) NOT NULL,
-  `s` int(30) NOT NULL,
-  `i` int(30) NOT NULL,
-  `a` int(30) NOT NULL,
-  `jumlah` int(30) NOT NULL
+  `sakit` int(30) NOT NULL,
+  `ijin` int(30) NOT NULL,
+  `alfa` int(30) NOT NULL,
+  `jumlah` int(30) NOT NULL,
+  `id_status_mahasiswa` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_absensi`
 --
 
-INSERT INTO `tabel_absensi` (`id_absensi`, `id_mahasiswa`, `s`, `i`, `a`, `jumlah`) VALUES
-(1, 1, 1, 2, 0, 3),
-(2, 2, 4, 1, 3, 8),
-(3, 3, 1, 0, 0, 1);
+INSERT INTO `tabel_absensi` (`id_absensi`, `id_mahasiswa`, `sakit`, `ijin`, `alfa`, `jumlah`, `id_status_mahasiswa`) VALUES
+(1, 1, 1, 2, 0, 3, 1),
+(2, 2, 4, 1, 3, 8, 1),
+(3, 3, 1, 0, 0, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_admin`
+--
+
+CREATE TABLE `tabel_admin` (
+  `id_admin` int(30) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level_user` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_admin`
+--
+
+INSERT INTO `tabel_admin` (`id_admin`, `username`, `password`, `level_user`) VALUES
+(1, 'admin', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -108,17 +129,19 @@ CREATE TABLE `tabel_dosen` (
   `jenis_kelamin` enum('Laki-laki','Perempuan') NOT NULL,
   `tempat_lahir` varchar(50) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `gambar` text NOT NULL
+  `gambar` text NOT NULL,
+  `waktu` datetime NOT NULL,
+  `level_user` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_dosen`
 --
 
-INSERT INTO `tabel_dosen` (`id_dosen`, `username`, `nip`, `password`, `nama_dosen`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `gambar`) VALUES
-(1, '198107052005011002', '198107052005011002', 'cobacoba', 'Ahmadi Yuli Ananta, ST', 'Malang', 'Laki-laki', 'Pasuruan', '2019-03-26', ''),
-(2, '198108102005012002', '198108102005012002', 'coba1coba1', 'Ariadi Retno Tri Hayati Ririd, S.Kom., M.Kom', 'Pandaan', 'Perempuan', 'Pasuruan', '2019-03-20', ''),
-(3, '197903132008121002', '197903132008121002', 'coba3coba3', 'Arief Prasetyo, S.Kom', 'Sawojajar', 'Laki-laki', 'Malang', '2019-03-19', '');
+INSERT INTO `tabel_dosen` (`id_dosen`, `username`, `nip`, `password`, `nama_dosen`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `gambar`, `waktu`, `level_user`) VALUES
+(1, '198107052005011002', '198107052005011002', 'cobacoba', 'Ahmadi Yuli Ananta, ST', 'Malang', 'Laki-laki', 'Pasuruan', '2019-03-26', '', '0000-00-00 00:00:00', 2),
+(2, '198108102005012002', '198108102005012002', 'coba1coba1', 'Ariadi Retno Tri Hayati Ririd, S.Kom., M.Kom', 'Pandaan', 'Perempuan', 'Pasuruan', '2019-03-20', '', '0000-00-00 00:00:00', 2),
+(3, '197903132008121002', '197903132008121002', 'coba3coba3', 'Arief Prasetyo, S.Kom', 'Sawojajar', 'Laki-laki', 'Malang', '2019-03-19', '', '0000-00-00 00:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -183,6 +206,7 @@ CREATE TABLE `tabel_info_kelas_kosong` (
   `status_dipinjam` enum('Kosong','Dipinjam') NOT NULL,
   `waktu_mulai` time NOT NULL,
   `waktu_selesai` time NOT NULL,
+  `waktu_pinjam` datetime NOT NULL,
   `level_peminjam` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -190,10 +214,10 @@ CREATE TABLE `tabel_info_kelas_kosong` (
 -- Dumping data for table `tabel_info_kelas_kosong`
 --
 
-INSERT INTO `tabel_info_kelas_kosong` (`id_info_kelas_kosong`, `id_ruang`, `peminjam`, `jumlah_jam`, `status_dipinjam`, `waktu_mulai`, `waktu_selesai`, `level_peminjam`) VALUES
-(1, 1, 1, 6, 'Dipinjam', '08:00:00', '16:00:00', 0),
-(2, 2, 2, 3, 'Dipinjam', '08:00:00', '11:00:00', 0),
-(3, 3, 3, 2, 'Dipinjam', '09:00:00', '11:00:00', 0);
+INSERT INTO `tabel_info_kelas_kosong` (`id_info_kelas_kosong`, `id_ruang`, `peminjam`, `jumlah_jam`, `status_dipinjam`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`, `level_peminjam`) VALUES
+(1, 1, 1, 6, 'Dipinjam', '08:00:00', '16:00:00', '0000-00-00 00:00:00', 0),
+(2, 2, 2, 3, 'Dipinjam', '08:00:00', '11:00:00', '0000-00-00 00:00:00', 0),
+(3, 3, 3, 2, 'Dipinjam', '09:00:00', '11:00:00', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -208,17 +232,20 @@ CREATE TABLE `tabel_jadwal` (
   `dosen` int(30) NOT NULL,
   `mata_kuliah` varchar(100) NOT NULL,
   `hari` varchar(30) NOT NULL,
-  `jam` varchar(30) NOT NULL
+  `jam` varchar(30) NOT NULL,
+  `sks` varchar(10) NOT NULL,
+  `kode_ruang` int(30) NOT NULL,
+  `waktu` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_jadwal`
 --
 
-INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_kelas`, `id_semester`, `dosen`, `mata_kuliah`, `hari`, `jam`) VALUES
-(1, 1, 3, 2, 'Desain dan Pemograman Web', 'Senin', '10.00 - 12.00'),
-(2, 1, 3, 1, 'Alogaritma dan Struktur Data', 'Selasa', '07.00 - 12.00'),
-(3, 1, 3, 3, 'Proyek 1', 'Rabu', '07.00 - 10.00');
+INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_kelas`, `id_semester`, `dosen`, `mata_kuliah`, `hari`, `jam`, `sks`, `kode_ruang`, `waktu`) VALUES
+(1, 1, 3, 2, 'Desain dan Pemograman Web', 'Senin', '10.00 - 12.00', '2', 1, '0000-00-00 00:00:00'),
+(2, 1, 3, 1, 'Alogaritma dan Struktur Data', 'Selasa', '07.00 - 12.00', '4', 1, '0000-00-00 00:00:00'),
+(3, 1, 3, 3, 'Proyek 1', 'Rabu', '07.00 - 10.00', '6', 3, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -252,17 +279,18 @@ CREATE TABLE `tabel_khs` (
   `id_kelas` int(30) NOT NULL,
   `semester` int(30) NOT NULL,
   `sks` int(10) NOT NULL,
-  `nama_matkul` varchar(100) NOT NULL
+  `nama_matkul` varchar(100) NOT NULL,
+  `waktu` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_khs`
 --
 
-INSERT INTO `tabel_khs` (`id_khs`, `id_mahasiswa`, `id_kelas`, `semester`, `sks`, `nama_matkul`) VALUES
-(1, 1, 1, 3, 2, 'Desain dan Pemograman Web'),
-(2, 1, 1, 3, 4, 'Alogaritma dan Struktur Data'),
-(3, 1, 1, 3, 6, 'Proyek 1');
+INSERT INTO `tabel_khs` (`id_khs`, `id_mahasiswa`, `id_kelas`, `semester`, `sks`, `nama_matkul`, `waktu`) VALUES
+(1, 1, 1, 3, 2, 'Desain dan Pemograman Web', '0000-00-00 00:00:00'),
+(2, 1, 1, 3, 4, 'Alogaritma dan Struktur Data', '0000-00-00 00:00:00'),
+(3, 1, 1, 3, 6, 'Proyek 1', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -273,17 +301,18 @@ INSERT INTO `tabel_khs` (`id_khs`, `id_mahasiswa`, `id_kelas`, `semester`, `sks`
 CREATE TABLE `tabel_komentar` (
   `id_komentar` int(30) NOT NULL,
   `komentar` text NOT NULL,
-  `reply` text NOT NULL
+  `reply` text NOT NULL,
+  `waktu` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_komentar`
 --
 
-INSERT INTO `tabel_komentar` (`id_komentar`, `komentar`, `reply`) VALUES
-(1, 'wkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkw', 'wkwkwkkwwk'),
-(2, 'wkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwk', 'wkwkwkkwwkwkwkwkkwwk'),
-(3, 'wkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwk', 'wkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwk');
+INSERT INTO `tabel_komentar` (`id_komentar`, `komentar`, `reply`, `waktu`) VALUES
+(1, 'wkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkw', 'wkwkwkkwwk', '0000-00-00 00:00:00'),
+(2, 'wkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwk', 'wkwkwkkwwkwkwkwkkwwk', '0000-00-00 00:00:00'),
+(3, 'wkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwk', 'wkwkwkkwwkwkwkwkkwwkwkwkwkkwwkwkwkwkkwwk', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -320,17 +349,18 @@ CREATE TABLE `tabel_krs` (
   `id_mahasiswa` int(30) NOT NULL,
   `jam` varchar(30) NOT NULL,
   `nilai` float NOT NULL,
-  `nama_matkul` varchar(100) NOT NULL
+  `nama_matkul` varchar(100) NOT NULL,
+  `waktu` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_krs`
 --
 
-INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `jam`, `nilai`, `nama_matkul`) VALUES
-(1, 1, '10.00 - 12.00', 4, 'Desain dan Pemograman Web'),
-(2, 1, '07.00 - 12.00', 3.9, 'Alogaritma dan Struktur Data'),
-(3, 1, '07.00 - 10.00', 3, 'Proyek 1');
+INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `jam`, `nilai`, `nama_matkul`, `waktu`) VALUES
+(1, 1, '10.00 - 12.00', 4, 'Desain dan Pemograman Web', '0000-00-00 00:00:00'),
+(2, 1, '07.00 - 12.00', 3.9, 'Alogaritma dan Struktur Data', '0000-00-00 00:00:00'),
+(3, 1, '07.00 - 10.00', 3, 'Proyek 1', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -343,17 +373,38 @@ CREATE TABLE `tabel_kuisioner` (
   `id_mahasiswa` int(30) NOT NULL,
   `id_dosen` int(30) NOT NULL,
   `kelas` varchar(30) NOT NULL,
-  `nilai` float NOT NULL
+  `nilai` float NOT NULL,
+  `waktu` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_kuisioner`
 --
 
-INSERT INTO `tabel_kuisioner` (`id_kuisoner`, `id_mahasiswa`, `id_dosen`, `kelas`, `nilai`) VALUES
-(1, 1, 1, 'TI-2F', 5),
-(2, 2, 1, 'TI-2F', 4),
-(3, 1, 2, 'TI-2F', 6);
+INSERT INTO `tabel_kuisioner` (`id_kuisoner`, `id_mahasiswa`, `id_dosen`, `kelas`, `nilai`, `waktu`) VALUES
+(1, 1, 1, 'TI-2F', 5, '0000-00-00 00:00:00'),
+(2, 2, 1, 'TI-2F', 4, '0000-00-00 00:00:00'),
+(3, 1, 2, 'TI-2F', 6, '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_level_user`
+--
+
+CREATE TABLE `tabel_level_user` (
+  `id_level_user` int(30) NOT NULL,
+  `level_user` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_level_user`
+--
+
+INSERT INTO `tabel_level_user` (`id_level_user`, `level_user`) VALUES
+(1, 'admin'),
+(2, 'dosen'),
+(3, 'mahasiswa');
 
 -- --------------------------------------------------------
 
@@ -373,17 +424,19 @@ CREATE TABLE `tabel_mahasiswa` (
   `jenis_kelamin` enum('Laki-laki','Perempuan') NOT NULL,
   `tempat_lahir` varchar(50) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `gambar` text NOT NULL
+  `gambar` text NOT NULL,
+  `waktu` datetime NOT NULL,
+  `level_user` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_mahasiswa`
 --
 
-INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `username`, `nim`, `password`, `nama_mahasiswa`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `gambar`) VALUES
-(1, 1, 1, '1741720054', '1741720054', 'coba4coba4', 'Ermi Pristiyaningrum', 'Tulungagung', 'Perempuan', 'Tulungagung', '2019-03-18', ''),
-(2, 1, 1, '1741720053', '1741720053', 'coba5coba5', 'Dimas Shella Charlinawati', 'Bojonegoro', 'Perempuan', 'Bojonegoro', '2019-03-26', ''),
-(3, 2, 2, '1741720058', '1741720058', 'coba6coba6', 'Greggy Gianini Firmansyah', 'Malang', 'Laki-laki', 'Malang', '2019-03-13', '');
+INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `username`, `nim`, `password`, `nama_mahasiswa`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `gambar`, `waktu`, `level_user`) VALUES
+(1, 1, 1, '1741720054', '1741720054', 'coba4coba4', 'Ermi Pristiyaningrum', 'Tulungagung', 'Perempuan', 'Tulungagung', '2019-03-18', '', '0000-00-00 00:00:00', 3),
+(2, 1, 1, '1741720053', '1741720053', 'coba5coba5', 'Dimas Shella Charlinawati', 'Bojonegoro', 'Perempuan', 'Bojonegoro', '2019-03-26', '', '0000-00-00 00:00:00', 3),
+(3, 2, 2, '1741720058', '1741720058', 'coba6coba6', 'Greggy Gianini Firmansyah', 'Malang', 'Laki-laki', 'Malang', '2019-03-13', '', '0000-00-00 00:00:00', 3);
 
 -- --------------------------------------------------------
 
@@ -395,17 +448,48 @@ CREATE TABLE `tabel_notifikasi` (
   `id_notifikasi` int(30) NOT NULL,
   `isi_notifikasi` text NOT NULL,
   `waktu` time NOT NULL,
-  `status` enum('Sudah dibaca','Belum dibaca') NOT NULL
+  `status` enum('Sudah dibaca','Belum dibaca') NOT NULL,
+  `id_mahasiswa` int(30) NOT NULL,
+  `id_komentar` int(30) NOT NULL,
+  `id_info_kelas_kosong` int(30) NOT NULL,
+  `id_info` int(30) NOT NULL,
+  `id_beasiswa` int(30) NOT NULL,
+  `id_chat` int(30) NOT NULL,
+  `id_kuisioner` int(30) NOT NULL,
+  `id_krs` int(30) NOT NULL,
+  `id_khs` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_notifikasi`
 --
 
-INSERT INTO `tabel_notifikasi` (`id_notifikasi`, `isi_notifikasi`, `waktu`, `status`) VALUES
-(1, 'IsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasi', '18:06:03', 'Belum dibaca'),
-(2, 'fewgIsinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2', '11:07:12', 'Sudah dibaca'),
-(3, 'Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1', '15:05:04', 'Belum dibaca');
+INSERT INTO `tabel_notifikasi` (`id_notifikasi`, `isi_notifikasi`, `waktu`, `status`, `id_mahasiswa`, `id_komentar`, `id_info_kelas_kosong`, `id_info`, `id_beasiswa`, `id_chat`, `id_kuisioner`, `id_krs`, `id_khs`) VALUES
+(1, 'IsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasiIsinotifikasi', '18:06:03', 'Belum dibaca', 1, 1, 1, 1, 1, 1, 1, 1, 1),
+(2, 'fewgIsinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2Isinotifikasi2', '11:07:12', 'Sudah dibaca', 2, 2, 2, 2, 2, 2, 2, 2, 2),
+(3, 'Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1Isinotifikasi1', '15:05:04', 'Belum dibaca', 3, 3, 3, 3, 3, 3, 3, 3, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_pekerjaan_kompen`
+--
+
+CREATE TABLE `tabel_pekerjaan_kompen` (
+  `id_pekerjaan_kompen` int(30) NOT NULL,
+  `id_dosen` int(30) NOT NULL,
+  `nama_pekerjaan_kompen` varchar(250) NOT NULL,
+  `jumlah_mahasiswa` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_pekerjaan_kompen`
+--
+
+INSERT INTO `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`, `id_dosen`, `nama_pekerjaan_kompen`, `jumlah_mahasiswa`) VALUES
+(1, 1, 'Membersihkan WC', 20),
+(2, 2, 'Fotocopy', 12),
+(3, 3, 'Menyapu lantai', 3);
 
 -- --------------------------------------------------------
 
@@ -466,6 +550,26 @@ INSERT INTO `tabel_semester` (`id_semester`, `semester`) VALUES
 (2, 'Semester 2'),
 (3, 'Semester 3');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_status_mahasiswa`
+--
+
+CREATE TABLE `tabel_status_mahasiswa` (
+  `id_status_mahasiswa` int(30) NOT NULL,
+  `status_mahasiswa` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_status_mahasiswa`
+--
+
+INSERT INTO `tabel_status_mahasiswa` (`id_status_mahasiswa`, `status_mahasiswa`) VALUES
+(1, 'SP1'),
+(2, 'SP2'),
+(3, 'SP3');
+
 --
 -- Indexes for dumped tables
 --
@@ -475,7 +579,15 @@ INSERT INTO `tabel_semester` (`id_semester`, `semester`) VALUES
 --
 ALTER TABLE `tabel_absensi`
   ADD PRIMARY KEY (`id_absensi`),
-  ADD KEY `id_mahasiswa` (`id_mahasiswa`);
+  ADD KEY `id_mahasiswa` (`id_mahasiswa`),
+  ADD KEY `id_status_mahasiswa` (`id_status_mahasiswa`);
+
+--
+-- Indexes for table `tabel_admin`
+--
+ALTER TABLE `tabel_admin`
+  ADD PRIMARY KEY (`id_admin`),
+  ADD KEY `level_user` (`level_user`);
 
 --
 -- Indexes for table `tabel_attachment`
@@ -495,7 +607,8 @@ ALTER TABLE `tabel_chat`
 -- Indexes for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
-  ADD PRIMARY KEY (`id_dosen`);
+  ADD PRIMARY KEY (`id_dosen`),
+  ADD KEY `level_user` (`level_user`);
 
 --
 -- Indexes for table `tabel_info`
@@ -526,7 +639,8 @@ ALTER TABLE `tabel_jadwal`
   ADD PRIMARY KEY (`id_jadwal`),
   ADD KEY `id_kelas` (`id_kelas`),
   ADD KEY `dosen` (`dosen`),
-  ADD KEY `id_semester` (`id_semester`);
+  ADD KEY `id_semester` (`id_semester`),
+  ADD KEY `kode_ruang` (`kode_ruang`);
 
 --
 -- Indexes for table `tabel_kelas`
@@ -572,18 +686,40 @@ ALTER TABLE `tabel_kuisioner`
   ADD KEY `id_mahasiswa` (`id_mahasiswa`);
 
 --
+-- Indexes for table `tabel_level_user`
+--
+ALTER TABLE `tabel_level_user`
+  ADD PRIMARY KEY (`id_level_user`);
+
+--
 -- Indexes for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   ADD PRIMARY KEY (`id_mahasiswa`),
   ADD KEY `id_prodi` (`id_prodi`),
-  ADD KEY `id_kelas` (`id_kelas`);
+  ADD KEY `id_kelas` (`id_kelas`),
+  ADD KEY `level_user` (`level_user`);
 
 --
 -- Indexes for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
-  ADD PRIMARY KEY (`id_notifikasi`);
+  ADD PRIMARY KEY (`id_notifikasi`),
+  ADD KEY `id_beasiswa` (`id_beasiswa`),
+  ADD KEY `id_chat` (`id_chat`),
+  ADD KEY `id_info` (`id_info`),
+  ADD KEY `id_info_kelas_kosong` (`id_info_kelas_kosong`),
+  ADD KEY `id_khs` (`id_khs`),
+  ADD KEY `id_komentar` (`id_komentar`),
+  ADD KEY `id_krs` (`id_krs`),
+  ADD KEY `id_mahasiswa` (`id_mahasiswa`);
+
+--
+-- Indexes for table `tabel_pekerjaan_kompen`
+--
+ALTER TABLE `tabel_pekerjaan_kompen`
+  ADD PRIMARY KEY (`id_pekerjaan_kompen`),
+  ADD KEY `id_dosen` (`id_dosen`);
 
 --
 -- Indexes for table `tabel_prodi`
@@ -604,6 +740,12 @@ ALTER TABLE `tabel_semester`
   ADD PRIMARY KEY (`id_semester`);
 
 --
+-- Indexes for table `tabel_status_mahasiswa`
+--
+ALTER TABLE `tabel_status_mahasiswa`
+  ADD PRIMARY KEY (`id_status_mahasiswa`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -612,6 +754,12 @@ ALTER TABLE `tabel_semester`
 --
 ALTER TABLE `tabel_absensi`
   MODIFY `id_absensi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tabel_admin`
+--
+ALTER TABLE `tabel_admin`
+  MODIFY `id_admin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tabel_attachment`
@@ -704,6 +852,12 @@ ALTER TABLE `tabel_notifikasi`
   MODIFY `id_notifikasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tabel_pekerjaan_kompen`
+--
+ALTER TABLE `tabel_pekerjaan_kompen`
+  MODIFY `id_pekerjaan_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
@@ -722,6 +876,12 @@ ALTER TABLE `tabel_semester`
   MODIFY `id_semester` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tabel_status_mahasiswa`
+--
+ALTER TABLE `tabel_status_mahasiswa`
+  MODIFY `id_status_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -729,7 +889,14 @@ ALTER TABLE `tabel_semester`
 -- Constraints for table `tabel_absensi`
 --
 ALTER TABLE `tabel_absensi`
-  ADD CONSTRAINT `tabel_absensi_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`);
+  ADD CONSTRAINT `tabel_absensi_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`),
+  ADD CONSTRAINT `tabel_absensi_ibfk_2` FOREIGN KEY (`id_status_mahasiswa`) REFERENCES `tabel_status_mahasiswa` (`id_status_mahasiswa`);
+
+--
+-- Constraints for table `tabel_admin`
+--
+ALTER TABLE `tabel_admin`
+  ADD CONSTRAINT `tabel_admin_ibfk_1` FOREIGN KEY (`level_user`) REFERENCES `tabel_level_user` (`id_level_user`);
 
 --
 -- Constraints for table `tabel_chat`
@@ -739,6 +906,12 @@ ALTER TABLE `tabel_chat`
   ADD CONSTRAINT `tabel_chat_ibfk_2` FOREIGN KEY (`penerima`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`),
   ADD CONSTRAINT `tabel_chat_ibfk_3` FOREIGN KEY (`pengirim`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`),
   ADD CONSTRAINT `tabel_chat_ibfk_4` FOREIGN KEY (`pengirim`) REFERENCES `tabel_dosen` (`id_dosen`);
+
+--
+-- Constraints for table `tabel_dosen`
+--
+ALTER TABLE `tabel_dosen`
+  ADD CONSTRAINT `tabel_dosen_ibfk_1` FOREIGN KEY (`level_user`) REFERENCES `tabel_level_user` (`id_level_user`);
 
 --
 -- Constraints for table `tabel_info`
@@ -766,7 +939,8 @@ ALTER TABLE `tabel_info_kelas_kosong`
 ALTER TABLE `tabel_jadwal`
   ADD CONSTRAINT `tabel_jadwal_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `tabel_kelas` (`id_kelas`),
   ADD CONSTRAINT `tabel_jadwal_ibfk_2` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`),
-  ADD CONSTRAINT `tabel_jadwal_ibfk_3` FOREIGN KEY (`dosen`) REFERENCES `tabel_dosen` (`id_dosen`);
+  ADD CONSTRAINT `tabel_jadwal_ibfk_3` FOREIGN KEY (`dosen`) REFERENCES `tabel_dosen` (`id_dosen`),
+  ADD CONSTRAINT `tabel_jadwal_ibfk_4` FOREIGN KEY (`kode_ruang`) REFERENCES `tabel_ruangan` (`id_ruang`);
 
 --
 -- Constraints for table `tabel_khs`
@@ -800,7 +974,27 @@ ALTER TABLE `tabel_kuisioner`
 --
 ALTER TABLE `tabel_mahasiswa`
   ADD CONSTRAINT `tabel_mahasiswa_ibfk_1` FOREIGN KEY (`id_prodi`) REFERENCES `tabel_prodi` (`id_prodi`),
-  ADD CONSTRAINT `tabel_mahasiswa_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `tabel_kelas` (`id_kelas`);
+  ADD CONSTRAINT `tabel_mahasiswa_ibfk_2` FOREIGN KEY (`id_kelas`) REFERENCES `tabel_kelas` (`id_kelas`),
+  ADD CONSTRAINT `tabel_mahasiswa_ibfk_3` FOREIGN KEY (`level_user`) REFERENCES `tabel_level_user` (`id_level_user`);
+
+--
+-- Constraints for table `tabel_notifikasi`
+--
+ALTER TABLE `tabel_notifikasi`
+  ADD CONSTRAINT `tabel_notifikasi_ibfk_1` FOREIGN KEY (`id_beasiswa`) REFERENCES `tabel_info_beasiswa` (`id_beasiswa`),
+  ADD CONSTRAINT `tabel_notifikasi_ibfk_2` FOREIGN KEY (`id_chat`) REFERENCES `tabel_chat` (`id_chat`),
+  ADD CONSTRAINT `tabel_notifikasi_ibfk_3` FOREIGN KEY (`id_info`) REFERENCES `tabel_info` (`id_info`),
+  ADD CONSTRAINT `tabel_notifikasi_ibfk_4` FOREIGN KEY (`id_info_kelas_kosong`) REFERENCES `tabel_info_kelas_kosong` (`id_info_kelas_kosong`),
+  ADD CONSTRAINT `tabel_notifikasi_ibfk_5` FOREIGN KEY (`id_khs`) REFERENCES `tabel_khs` (`id_khs`),
+  ADD CONSTRAINT `tabel_notifikasi_ibfk_6` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`),
+  ADD CONSTRAINT `tabel_notifikasi_ibfk_7` FOREIGN KEY (`id_krs`) REFERENCES `tabel_krs` (`id_krs`),
+  ADD CONSTRAINT `tabel_notifikasi_ibfk_8` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`);
+
+--
+-- Constraints for table `tabel_pekerjaan_kompen`
+--
+ALTER TABLE `tabel_pekerjaan_kompen`
+  ADD CONSTRAINT `tabel_pekerjaan_kompen_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
