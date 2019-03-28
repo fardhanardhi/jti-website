@@ -47,6 +47,73 @@
     </div>
   </div>
 
+  <!-- Enlarge Foto -->
+  <div id="myModal" class="container-fluid h-100">
+    <span class="close cursor fas fa-times text-white" onclick="closeModal()"></span>
+    <div class="row h-100">
+      <div class="col-md-12">
+        <div class="row text-center text-white font-weight-bold">
+          <div class="head col-md-auto mx-auto">
+
+            <div class="mySlides">
+              <!-- <div class="numbertext">1 / 5</div> -->
+              <img src="../attachment/img/yuri.png">
+            </div>
+
+            <div class="mySlides">
+              <!-- <div class="numbertext">2 / 5</div> -->
+              <img src="../attachment/img/ariadi.png">
+            </div>
+
+            <div class="mySlides">
+              <!-- <div class="numbertext">3 / 5</div> -->
+              <img src="../attachment/img/atiqah.png">
+            </div>
+
+            <div class="mySlides">
+              <!-- <div class="numbertext">4 / 5</div> -->
+              <img src="../attachment/img/ridwan.png">
+            </div>
+
+            <div class="mySlides">
+              <!-- <div class="numbertext">4 / 5</div> -->
+              <img src="../attachment/img/yan.png">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+        </div>
+
+        <div class="caption-container">
+          <p id="caption"></p>
+        </div>
+
+        <div class="row text-center text-white font-weight-bold">
+          <div class="col-md-auto mx-auto">
+            <div class="row">
+
+              <div class="col-md-auto">
+                <img class="demo cursor" src="../attachment/img/yuri.png" onclick="currentSlide(1)" alt="yuri">
+              </div>
+              <div class="col-md-auto">
+                <img class="demo cursor" src="../attachment/img/ariadi.png" onclick="currentSlide(2)" alt="ariadi">
+              </div>
+              <div class="col-md-auto">
+                <img class="demo cursor" src="../attachment/img/atiqah.png" onclick="currentSlide(3)" alt="atiqah">
+              </div>
+              <div class="col-md-auto">
+                <img class="demo cursor" src="../attachment/img/ridwan.png" onclick="currentSlide(4)" alt="ridwan">
+              </div>
+              <div class="col-md-auto">
+                <img class="demo cursor" src="../attachment/img/yan.png" onclick="currentSlide(5)" alt="yan">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- navbar -->
   <nav class="app-navbar navbar navbar-expand-md navbar-dark bg-blue shadow-sm sticky-top mb-2">
@@ -211,7 +278,7 @@
           
     if($level=="mahasiswa" || $level=="admin" || $level=="dosen"){
     ?>
-      <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
+    <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
     <?php
     }
     ?>
