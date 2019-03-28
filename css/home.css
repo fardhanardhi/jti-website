@@ -73,6 +73,9 @@
 }
 
 /* CSS foto */
+#home #photos {
+  cursor: pointer;
+}
 #home #photos .image {
   position: relative;
   overflow: hidden;
