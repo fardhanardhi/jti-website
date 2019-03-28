@@ -167,14 +167,57 @@
                       </tr>
                     </tbody>
                   </table>
+                  <!-- Tombol  -->
                   <div class="d-flex justify-content-center"> 
-                    <button  class="btn tambah-pekerjaan-kompen">Tambah Pekerjaan</button>
+                    <button type="button" class="btn tambah-pekerjaan-kompen" data-toggle="modal" data-target="#exampleModalCenter">Tambah Pekerjaan</button>
                     <button type="submit" class="btn submit-kompen-dosen">Submit</button>
                   </div>
                 </form>
               </div>
+              <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form action="" method="post">
+                        <div class="modal-body">
+                            <div class="form-group">
+                              <label for="pekerjaanKompensasi">Pekerjaan Kompensasi</label>
+                              <input id="pekerjaanKompensasi" class="form-control" type="text">
+                            </div>
+                            <div class="form-group">
+                              <label for="kuotaMahasiswa">Kuota Mahasiswa</label>
+                              <select class="form-control" id="kuotaMahasiswa">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>akar 9</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>tujuh</option>
+                                <option>2*4</option>
+                                <option>8+1</option>
+                                <option>10</option>
+                                <option>sebelas</option>
+                                <option>duabelas</option>
+                              </select>
+                            </div> 
+                          <div class="modal-footer">
+                            <button type="submit" class="btn tambahkan-modal">Tambahkan</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              
               <!-- --------------------- -->
-              <!-- Kompen Kosong -->
+              <!-- Jika Kompen Kosong    -->
               <!-- --------------------- -->
 
               <!-- <div class="isi py-5 text-center">

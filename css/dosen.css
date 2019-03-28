@@ -41,14 +41,6 @@
   display: none;
 }
 
-#dosenHomepage .uncheckedBackground{
-  background-image: url(../img/Checkbox.svg);
-}
-
-#dosenHomepage .checkedBackground{
-  background-image: url(../img/Checkedbox.svg);
-}
-
 #dosenHomepage .tambah-pekerjaan-kompen{
   background-color: #40407a;
   color: white;
