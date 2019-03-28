@@ -56,3 +56,12 @@
 #dosenHomepage .judul {
   font-size: 1.2em;
 }
+
+#dosenHomepage #exampleModalCenter {
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+#dosenHomepage .tambahkan-modal{
+  background-color: #3AAC5F;
+  color: white;
+}

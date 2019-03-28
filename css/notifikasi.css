@@ -1,0 +1,8 @@
+td {
+  border-top: 2px solid rgb(187, 187, 187);
+  border-bottom: 2px solid rgb(187, 187, 187);
+}
+
+td:hover {
+  cursor: pointer;
+}

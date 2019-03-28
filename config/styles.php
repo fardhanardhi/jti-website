@@ -21,3 +21,4 @@
 <link rel="stylesheet" href="../css/krs.css">
 <link rel="stylesheet" href="../css/nilai.css">
 <link rel="stylesheet" href="../css/kelasKosong.css">
+<link rel="stylesheet" href="../css/notifikasi.css">
