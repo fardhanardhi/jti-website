@@ -158,7 +158,6 @@ body {
 
 #myModal .caption-container {
   text-align: center;
-  /* background-color: black; */
   padding: 0
   margin: 0px;
   color: white;
@@ -177,8 +176,7 @@ body {
   padding: 0;
 }
 
-#myModal .prev,
-.next {
+#myModal .photo-prev, .photo-next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -194,17 +192,17 @@ body {
   -webkit-user-select: none;
 }
 
-#myModal .next {
+#myModal .photo-next {
   left: 100%;
   border-radius: 3px 0 0 3px;
 }
-#myModal .prev {
+#myModal .photo-prev {
   right: 100%;
   border-radius: 3px 0 0 3px;
 }
 
-#myModal .prev:hover,
-.next:hover {
+#myModal .photo-prev:hover,
+.photo-next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 

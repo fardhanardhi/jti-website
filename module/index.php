@@ -56,31 +56,26 @@
           <div class="head col-md-auto mx-auto">
 
             <div class="mySlides">
-              <!-- <div class="numbertext">1 / 5</div> -->
               <img src="../attachment/img/yuri.png">
             </div>
 
             <div class="mySlides">
-              <!-- <div class="numbertext">2 / 5</div> -->
               <img src="../attachment/img/ariadi.png">
             </div>
 
             <div class="mySlides">
-              <!-- <div class="numbertext">3 / 5</div> -->
               <img src="../attachment/img/atiqah.png">
             </div>
 
             <div class="mySlides">
-              <!-- <div class="numbertext">4 / 5</div> -->
               <img src="../attachment/img/ridwan.png">
             </div>
 
             <div class="mySlides">
-              <!-- <div class="numbertext">4 / 5</div> -->
               <img src="../attachment/img/yan.png">
             </div>
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <a class="photo-prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="photo-next" onclick="plusSlides(1)">&#10095;</a>
           </div>
         </div>
 
@@ -174,9 +169,9 @@
                     <input type="file" class="custom-file-input form-control" id="foto" name="foto"
                       onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);"
                       accept="image/*">
-                      <div class="col-md-11">
-                          <label class="custom-file-label" for="foto">Pilih File</label>
-                      </div>
+                    <div class="col-md-11">
+                      <label class="custom-file-label" for="foto">Pilih File</label>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -185,29 +180,32 @@
                     <input type="password" id="passwordLama" placeholder="Password Lama" name="passwordLama"
                       onblur="reset_Blank();" class="form-control border-right-0 shadow-none">
                     <div class="input-group-append">
-                        <span class="far fa-eye form-control rounded-right" id="eyeA" onclick="showPasswordLama();"></span>
+                      <span class="far fa-eye form-control rounded-right" id="eyeA"
+                        onclick="showPasswordLama();"></span>
                     </div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-3" for="passwordBaru">Password Baru</label>
                   <div class="input-group col-md-9">
-                    <input type="password" class="form-control border-right-0 shadow-none" id="passwordBaru" placeholder="Password Baru"
-                      name="passwordBaru" onblur="reset_Blank();">
-                      <div class="input-group-append">
-                        <span class="far fa-eye form-control rounded-right" id="eyeB" onclick="showPasswordBaru();"></span>
-                      </div>
+                    <input type="password" class="form-control border-right-0 shadow-none" id="passwordBaru"
+                      placeholder="Password Baru" name="passwordBaru" onblur="reset_Blank();">
+                    <div class="input-group-append">
+                      <span class="far fa-eye form-control rounded-right" id="eyeB"
+                        onclick="showPasswordBaru();"></span>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-md-3" for="konfirmasiPassword">Konfirmasi Password</label>
                   <div class="input-group col-md-9">
                     <input type="password" class="form-control border-right-0 shadow-none" id="konfirmasiPassword"
-                    placeholder="Konfirmasi Password" name="konfirmasiPassword" onblur="reset_Blank();">
+                      placeholder="Konfirmasi Password" name="konfirmasiPassword" onblur="reset_Blank();">
                     <div class="input-group-append">
-                        <span class="far fa-eye form-control rounded-right" id="eyeC" onclick="showPasswordKonfirmasi();"></span>
+                      <span class="far fa-eye form-control rounded-right" id="eyeC"
+                        onclick="showPasswordKonfirmasi();"></span>
                     </div>
-                  </div>                                    
+                  </div>
                 </div>
                 <div>
                   <div id="Blank" class="text-danger"></div>
