@@ -15,6 +15,30 @@ body {
   padding-top:0.3em;
 }
 
+#eyeA {
+  border-radius: 0;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top:0.3em;
+}
+
+#eyeB {
+  border-radius: 0;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top:0.3em;
+}
+
+#eyeC {
+  border-radius: 0;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top:0.3em;
+}
+
 #parent-error{
   height: 30px;
   width: 65%;
