@@ -61,7 +61,16 @@
   background-color: rgba(0, 0, 0, 0.5)
 }
 
+#dosenHomepage .close {
+  padding-right: 0.5em;
+}
+
 #dosenHomepage .tambahkan-modal{
   background-color: #3AAC5F;
   color: white;
+  border-radius: 40px;
+}
+
+#dosenHomepage .tambahkan-modal-parent{
+  padding-right: 4em;
 }
