@@ -15,5 +15,9 @@
   <!-- datepicker -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 
+  <!-- lightbox (preview gambar) -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
   <script src="../js/script.js"></script>
   <script src="../js/dosenScript.js"></script>
