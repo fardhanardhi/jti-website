@@ -48,7 +48,10 @@ jti-website/
 │   └── img/
 ├── config/
 │   ├── connection.php
-│   └── const.php
+|   ├── scripts.php
+│   └── styles.php
+├── database/
+│   └── jti_website.sql
 ├── module/
 |   ├── mahasiswa
 |   |   ├── home.php

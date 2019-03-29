@@ -271,6 +271,7 @@ function showPasswordKonfirmasi() {
   }
 }
 
+
 $(".custom-file-input").on("change", function() {
   var fileName = $(this)
     .val()
@@ -286,3 +287,33 @@ $(".custom-file-input").on("change", function() {
 $(function() {
   $('[data-toggle="popover"]').popover();
 });
+
+// Login form validation
+function validateUsername(input){
+  if (input.value == "") {
+    document.getElementById('error-handling').classList.remove('d-none');
+    document.getElementById('error-handling').classList.add('d-flex');
+    document.getElementById('error-handling').innerHTML = "*Username harus diisi";
+    // document.getElementById('error-handling2').classList.add('d-none');
+    // document.getElementById('error-handling2').classList.remove('d-flex');
+    return false;
+  }else if(!/^[0-9]+$/.test(input.value)) {
+    document.getElementById('error-handling').classList.remove('d-none');
+    document.getElementById('error-handling').classList.add('d-flex');
+    document.getElementById('error-handling').innerHTML = "*Username Invalid";
+    // document.getElementById('error-handling2').classList.add('d-none');
+    // document.getElementById('error-handling2').classList.remove('d-flex');
+    return false;
+  }
+  else {
+    document.getElementById('error-handling').classList.add('d-none');
+    document.getElementById('error-handling').classList.remove('d-flex');
+    document.getElementById('error-handling').innerHTML = "";
+    // document.getElementById('error-handling2').classList.add('d-none');
+    // document.getElementById('error-handling2').classList.remove('d-flex');
+    return true;
+  }
+}
+
+
+

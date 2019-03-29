@@ -24,35 +24,39 @@
             <img src="../img/logo-jti.png" alt="Logo JTI" style="width:100%">
           </div>
           <!-- form begin -->
-          <form action="../process/loginProcess.php" method="post" class="col-md-9 pt-5 pb-5 d-flex flex-column justify-content-center align-items-center">
+          <form action="../process/loginProcess.php" method="post" class="col-md-9 pt-5 pb-5 d-flex flex-column justify-content-center align-items-center" onsubmit="return validateUsername(document.getElementById('username'));">
             <div class="row w-100 mb-3">
               <label class="col-md-3" for="username">Username</label>
               <div class="input-group col-md-9">
-                <input type="text" class="form-control shadow-none" name="username" id="username" placeholder="Username">
+                <input type="text" class="form-control shadow-none" name="username" id="username" placeholder="Username" onkeyup="validateUsername(this)">
               </div>
             </div>
             <div class="row w-100 mb-3">
               <label class="col-md-3" for="password">Password</label>
               <div class="input-group col-md-9">
-                <input type="password" class="form-control border-right-0 shadow-none" name="password" id="password" placeholder="Password">
+                <input type="password" class="form-control border-right-0 shadow-none" name="password" id="password" placeholder="Password" required>
                 <div class="input-group-append">
-                  <span class="far fa-eye form-control rounded-right" id="eye" onclick="showPassword()"></span>
+                  <span class="far fa-eye form-control" id="eye" onclick="showPassword();"></span>
                 </div>
               </div>
             </div>
             <a href="" data-toggle="modal" data-target="#modelId" class="align-self-start px-3 text-dark">Lupa Password?</a>
             <!-- error handling -->
-            <?php
-              if(isset($_GET["error"])) {
-                $error = $_GET["error"];
-            ?>
-            <small class="rounded border border-danger text-danger align-self-start p-1 ml-3 mt-3" id="error-handling">
-            <?php
-                  echo $error;
-              }
-            ?>
-            </small>
-            <input type="submit" name="submit" class="btn btn-success align-self-end shadow-none mr-3" value="Masuk">
+            <div id="parent-error" class="align-self-start mt-4">
+              <small class="rounded border border-danger text-danger align-self-start p-1 ml-3 d-none" id="error-handling">
+              </small>
+              <?php
+                if(isset($_GET["error"])) {
+                  $error = $_GET["error"];
+              ?>
+              <small class="rounded border border-danger text-danger align-self-start p-1 ml-3 d-flex" id="errorhandling2">
+              <?php
+                    echo $error;
+                }
+              ?>
+              </small>
+            </div>
+            <input type="submit" name="submit" class="btn btn-success align-self-end shadow-none mr-3" id="masuk" value="Masuk">
           </form>
           <!-- end form -->
 
