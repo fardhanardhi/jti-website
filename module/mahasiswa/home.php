@@ -335,7 +335,7 @@
               untuk meminta tugas. <br><br>
               Terima Kasih...
             </div>
-            <div id="photos">
+            <div class="photos">
               <div class="row">
                 <div class="col-md-6 p-2">
                   <div class="image">
