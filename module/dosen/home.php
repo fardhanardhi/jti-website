@@ -176,39 +176,67 @@
               </div>
               <!-- Modal -->
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">                        
+                        <button type="button" class="close text-right active" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
+                        </button>                     
+                        <center>
+                          <h5 class=" modal-title text-center border-bottom border-gray pb-2 mb-0" id="exampleModalCenterTitle" style="margin: 0 auto;">Tambah Pekerjaan</h5>
+                        </center>
                       <form action="" method="post">
                         <div class="modal-body">
-                            <div class="form-group">
-                              <label for="pekerjaanKompensasi">Pekerjaan Kompensasi</label>
+                            <div class="form-group row">
+                              <div class="col-2"></div>
+                            <div class="col-3">
+                              <label for="pekerjaanKompensasi"><h6>Pekerjaan Kompensasi</h6></label>
+                            </div>
+                            <div class="col-6">
                               <input id="pekerjaanKompensasi" class="form-control" type="text">
                             </div>
-                            <div class="form-group">
-                              <label for="kuotaMahasiswa">Kuota Mahasiswa</label>
-                              <select class="form-control" id="kuotaMahasiswa">
+                            </div>
+                            <div class="form-group row">
+                              <div class="col-2"></div>
+                              <div class="col-3">                                
+                                <label for="kuotaMahasiswa"><h6>Kuota Mahasiswa</h6></label>
+                              </div>
+                              <div class="col-3">
+                                <select class="form-control kuota-mahasiswa" id="kuotaMahasiswa">
+                              </div>
                                 <option>1</option>
                                 <option>2</option>
-                                <option>akar 9</option>
+                                <option>3</option>
                                 <option>4</option>
                                 <option>5</option>
                                 <option>6</option>
-                                <option>tujuh</option>
-                                <option>2*4</option>
-                                <option>8+1</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
                                 <option>10</option>
-                                <option>sebelas</option>
-                                <option>duabelas</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                                <option>24</option>
+                                <option>25</option>
+                                <option>26</option>
+                                <option>27</option>
+                                <option>28</option>
+                                <option>29</option>
+                                <option>30</option>
                               </select>
                             </div> 
-                          <div class="modal-footer">
-                            <button type="submit" class="btn tambahkan-modal">Tambahkan</button>
+                          <div class="modal-footer col-12 tambahkan-modal-parent text-right">
+                            <button type="submit" class="btn tambahkan-modal ">Tambahkan</button>
                           </div>
                         </div>
                       </form>

@@ -48,66 +48,6 @@
   </div>
 
   <!-- Enlarge Foto -->
-  <div id="myModal" class="container-fluid h-100">
-    <span class="close cursor fas fa-times text-white" onclick="closeModal()"></span>
-    <div class="row h-100">
-      <div class="col-md-12">
-        <div class="row text-center text-white font-weight-bold">
-          <div class="head col-md-auto mx-auto">
-
-            <div class="mySlides">
-              <img src="../attachment/img/yuri.png">
-            </div>
-
-            <div class="mySlides">
-              <img src="../attachment/img/ariadi.png">
-            </div>
-
-            <div class="mySlides">
-              <img src="../attachment/img/atiqah.png">
-            </div>
-
-            <div class="mySlides">
-              <img src="../attachment/img/ridwan.png">
-            </div>
-
-            <div class="mySlides">
-              <img src="../attachment/img/yan.png">
-            </div>
-            <a class="photo-prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="photo-next" onclick="plusSlides(1)">&#10095;</a>
-          </div>
-        </div>
-
-        <div class="caption-container">
-          <p id="caption"></p>
-        </div>
-
-        <div class="row text-center text-white font-weight-bold">
-          <div class="col-md-auto mx-auto">
-            <div class="row">
-
-              <div class="col-md-auto">
-                <img class="demo cursor" src="../attachment/img/yuri.png" onclick="currentSlide(1)" alt="yuri">
-              </div>
-              <div class="col-md-auto">
-                <img class="demo cursor" src="../attachment/img/ariadi.png" onclick="currentSlide(2)" alt="ariadi">
-              </div>
-              <div class="col-md-auto">
-                <img class="demo cursor" src="../attachment/img/atiqah.png" onclick="currentSlide(3)" alt="atiqah">
-              </div>
-              <div class="col-md-auto">
-                <img class="demo cursor" src="../attachment/img/ridwan.png" onclick="currentSlide(4)" alt="ridwan">
-              </div>
-              <div class="col-md-auto">
-                <img class="demo cursor" src="../attachment/img/yan.png" onclick="currentSlide(5)" alt="yan">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
   <!-- navbar -->
@@ -164,14 +104,11 @@
               <br>
               <form class="px-2">
                 <div class="form-group row">
-                  <label class="col-md-2" for="foto">Ganti Foto</label>
-                  <div class="input-group col-md-10">
-                    <input type="file" class="custom-file-input form-control" id="foto" name="foto"
+                  <label class="col-md-3" for="foto">Ganti Foto</label>
+                  <div class="input-group col-md-9">
+                    <input type="file" class="form-control shadow-none custom-file-label" id="foto" name="foto"
                       onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);"
                       accept="image/*">
-                    <div class="col-md-11">
-                      <label class="custom-file-label" for="foto">Pilih File</label>
-                    </div>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -180,8 +117,7 @@
                     <input type="password" id="passwordLama" placeholder="Password Lama" name="passwordLama"
                       onblur="reset_Blank();" class="form-control border-right-0 shadow-none">
                     <div class="input-group-append">
-                      <span class="far fa-eye form-control rounded-right" id="eyeA"
-                        onclick="showPasswordLama();"></span>
+                      <span class="far fa-eye form-control" id="eyeA" onclick="showPasswordLama();"></span>
                     </div>
                   </div>
                 </div>
@@ -191,8 +127,7 @@
                     <input type="password" class="form-control border-right-0 shadow-none" id="passwordBaru"
                       placeholder="Password Baru" name="passwordBaru" onblur="reset_Blank();">
                     <div class="input-group-append">
-                      <span class="far fa-eye form-control rounded-right" id="eyeB"
-                        onclick="showPasswordBaru();"></span>
+                      <span class="far fa-eye form-control" id="eyeB" onclick="showPasswordBaru();"></span>
                     </div>
                   </div>
                 </div>
@@ -202,8 +137,7 @@
                     <input type="password" class="form-control border-right-0 shadow-none" id="konfirmasiPassword"
                       placeholder="Konfirmasi Password" name="konfirmasiPassword" onblur="reset_Blank();">
                     <div class="input-group-append">
-                      <span class="far fa-eye form-control rounded-right" id="eyeC"
-                        onclick="showPasswordKonfirmasi();"></span>
+                      <span class="far fa-eye form-control" id="eyeC" onclick="showPasswordKonfirmasi();"></span>
                     </div>
                   </div>
                 </div>
@@ -268,6 +202,9 @@
         switch($module){
             case "home":
                 include "dosen/home.php";
+            break;
+            case "dosenKompen":
+                include "dosen/dosenKompen.php";
             break;
             default:
             include "dosen/home.php";

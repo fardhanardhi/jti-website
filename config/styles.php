@@ -6,6 +6,9 @@
 <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker3.css">
 
+<!-- lightbox (preview gambar) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+
 <!-- fonts -->
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 
@@ -22,3 +25,4 @@
 <link rel="stylesheet" href="../css/nilai.css">
 <link rel="stylesheet" href="../css/kelasKosong.css">
 <link rel="stylesheet" href="../css/notifikasi.css">
+<link rel="stylesheet" href="../css/dosenKompen.css">
