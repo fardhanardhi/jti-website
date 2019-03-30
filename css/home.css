@@ -68,31 +68,36 @@
 }
 
 #home .kirim {
-  background-color: #3AAC5F;
-  color: white;  
+  background-color: #3aac5f;
+  color: white;
 }
 
 /* CSS foto */
-#home #photos {
+#home .photos .image {
   cursor: pointer;
-}
-#home #photos .image {
   position: relative;
   overflow: hidden;
   padding-bottom: 100%;
 }
-#home #photos .image img {
+#home .photos .image img {
   position: absolute;
   width: 100%;
   padding-bottom: 50% !important;
+  transition: all 0.2s ease-out;
+  filter: brightness(75%);
+}
+
+#home .photos .image img:hover {
+  transform: scale(1.03);
+  filter: brightness(100%);
 }
 
 /* CSS Close */
-#home .close{
+#home .close {
   margin-top: -32px;
   margin-right: -27px;
   background: rgba(0, 0, 0, 0.452);
-  border-radius:45%;
+  border-radius: 45%;
   padding: 5px 8px 5px 10px;
   color: white;
   opacity: 50;
@@ -106,7 +111,6 @@
 /* Download File */
 #home .download {
   border-radius: 3%;
-  
 }
 #home .isi-download a {
   text-decoration: none;

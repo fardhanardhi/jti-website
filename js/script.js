@@ -10,12 +10,6 @@ $("#navigation").click(function() {
     .fadeOut(300);
 });
 
-$("#myModal").click(function() {
-  $("#navigation")
-    .stop()
-    .fadeOut(300);
-});
-
 // show password
 function showPassword() {
   var password = document.getElementById("password");
@@ -41,6 +35,12 @@ $("#datepicker").datepicker();
 // set tanggal ke hidden input
 $("#datepicker").on("changeDate", function() {
   $("#my_hidden_input").val($("#datepicker").datepicker("getFormattedDate"));
+});
+
+// lightbox(preview gambar)
+$(document).on("click", '[data-toggle="lightbox"]', function(event) {
+  event.preventDefault();
+  $(this).ekkoLightbox();
 });
 
 // Initialize tooltip component
@@ -169,54 +169,6 @@ $(function() {
   $('[data-toggle="popover"]').popover();
 });
 
-// Photo
-
-function openModal() {
-  $("#myModal")
-    .stop()
-    .fadeIn(300);
-}
-
-function closeModal() {
-  $("#myModal")
-    .stop()
-    .fadeOut(300);
-}
-
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides((slideIndex += n));
-}
-
-function currentSlide(n) {
-  showSlides((slideIndex = n));
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
-
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-  captionText.innerHTML = dots[slideIndex - 1].alt;
-}
-
 function showPasswordLama() {
   var password = document.getElementById("passwordLama");
   if (password.type == "password") {
@@ -271,7 +223,6 @@ function showPasswordKonfirmasi() {
   }
 }
 
-
 $(".custom-file-input").on("change", function() {
   var fileName = $(this)
     .val()
@@ -289,31 +240,28 @@ $(function() {
 });
 
 // Login form validation
-function validateUsername(input){
+function validateUsername(input) {
   if (input.value == "") {
-    document.getElementById('error-handling').classList.remove('d-none');
-    document.getElementById('error-handling').classList.add('d-flex');
-    document.getElementById('error-handling').innerHTML = "*Username harus diisi";
+    document.getElementById("error-handling").classList.remove("d-none");
+    document.getElementById("error-handling").classList.add("d-flex");
+    document.getElementById("error-handling").innerHTML =
+      "*Username harus diisi";
     // document.getElementById('error-handling2').classList.add('d-none');
     // document.getElementById('error-handling2').classList.remove('d-flex');
     return false;
-  }else if(!/^[0-9]+$/.test(input.value)) {
-    document.getElementById('error-handling').classList.remove('d-none');
-    document.getElementById('error-handling').classList.add('d-flex');
-    document.getElementById('error-handling').innerHTML = "*Username Invalid";
+  } else if (!/^[0-9]+$/.test(input.value)) {
+    document.getElementById("error-handling").classList.remove("d-none");
+    document.getElementById("error-handling").classList.add("d-flex");
+    document.getElementById("error-handling").innerHTML = "*Username Invalid";
     // document.getElementById('error-handling2').classList.add('d-none');
     // document.getElementById('error-handling2').classList.remove('d-flex');
     return false;
-  }
-  else {
-    document.getElementById('error-handling').classList.add('d-none');
-    document.getElementById('error-handling').classList.remove('d-flex');
-    document.getElementById('error-handling').innerHTML = "";
+  } else {
+    document.getElementById("error-handling").classList.add("d-none");
+    document.getElementById("error-handling").classList.remove("d-flex");
+    document.getElementById("error-handling").innerHTML = "";
     // document.getElementById('error-handling2').classList.add('d-none');
     // document.getElementById('error-handling2').classList.remove('d-flex');
     return true;
   }
 }
-
-
-

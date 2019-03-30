@@ -335,32 +335,47 @@
               untuk meminta tugas. <br><br>
               Terima Kasih...
             </div>
-            <div id="photos">
+            <div class="photos">
               <div class="row">
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width cursor" src="../attachment/img/yuri.png" alt="foto"
-                      onclick="openModal();currentSlide(1)"></div>
+                    <a href="../attachment/img/yuri.png" data-toggle="lightbox" data-gallery="mixedgallery">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/yuri.png"
+                        alt="foto">
+                    </a>
+                  </div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width cursor" src="../attachment/img/ariadi.png" alt="foto"
-                      onclick="openModal();currentSlide(2)"></div>
+                    <a href="../attachment/img/ariadi.png" data-toggle="lightbox" data-gallery="mixedgallery">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/ariadi.png"
+                        alt="foto">
+                    </a>
+                  </div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width cursor" src="../attachment/img/atiqah.png" alt="foto"
-                      onclick="openModal();currentSlide(3)"></div>
+                    <a href="../attachment/img/atiqah.png" data-toggle="lightbox" data-gallery="mixedgallery">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/atiqah.png"
+                        alt="foto">
+                    </a>
+                  </div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width cursor" src="../attachment/img/ridwan.png" alt="foto"
-                      onclick="openModal();currentSlide(4)"></div>
+                    <a href="../attachment/img/ridwan.png" data-toggle="lightbox" data-gallery="mixedgallery">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/ridwan.png"
+                        alt="foto">
+                    </a>
+                  </div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
-                    <img class="img img-responsive full-width cursor" src="../attachment/img/yan.png" alt="foto"
-                      onclick="openModal();currentSlide(5)"></div>
+                    <a href="../attachment/img/yan.png" data-toggle="lightbox" data-gallery="mixedgallery">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/yan.png"
+                        alt="foto">
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -410,7 +425,7 @@
                   <div class="col-sm-5 text-right">
                     <img src="../img/vector.svg" alt="Download button" class="">
                   </div>
-                </div> 
+                </div>
               </div>
             </div>
           </div>
@@ -459,7 +474,7 @@
               <br>
               <p>Mohon maaf, untuk saat ini beasiswa belum tersedia</p>
             </div>
-            
+
           </div>
         </div>
       </div>
