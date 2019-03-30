@@ -88,13 +88,13 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header d-flex justify-content-center">
-          <h5 class="modal-title">Pengaturan</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="modal-body pb-0">
+          <button type="button" class="close close-setting" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>          
+          <h5 class="modal-title text-center">Pengaturan</h5>
+          <hr class="pl-4 pr-4 bg-dark">
+
           <div class="row">
             <div class="col-md-12">
               <center><img src="../attachment/img/avatar.jpeg" id="fotoPrev" height="150px" width="150px"
@@ -106,9 +106,12 @@
                 <div class="form-group row">
                   <label class="col-md-3" for="foto">Ganti Foto</label>
                   <div class="input-group col-md-9">
-                    <input type="file" class="form-control shadow-none custom-file-label" id="foto" name="foto"
-                      onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);"
-                      accept="image/*">
+                    <label for="foto" class="file form-control text-secondary">
+                      <input type="file" class="form-control shadow-none" id="foto" name="foto"
+                              onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);"
+                              accept="image/*">
+                        <span class="file-custom"></span>
+                    </label>
                   </div>
                 </div>
                 <div class="form-group row">
