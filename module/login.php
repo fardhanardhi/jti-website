@@ -24,7 +24,7 @@
             <img src="../img/logo-jti.png" alt="Logo JTI" style="width:100%">
           </div>
           <!-- form begin -->
-          <form action="../process/loginProcess.php" method="post" class="col-md-9 pt-5 pb-5 d-flex flex-column justify-content-center align-items-center" onsubmit="return validateUsername(document.getElementById('username'));">
+          <form action="../process/loginProcess.php" method="post" class="col-md-9 pt-5 pb-5 d-flex flex-column justify-content-center align-items-center" onsubmit="return validateOnSubmit();">
             <div class="row w-100 mb-3">
               <label class="col-md-3" for="username">Username</label>
               <div class="input-group col-md-9">
@@ -34,7 +34,7 @@
             <div class="row w-100 mb-3">
               <label class="col-md-3" for="password">Password</label>
               <div class="input-group col-md-9">
-                <input type="password" class="form-control border-right-0 shadow-none" name="password" id="password" placeholder="Password" required>
+                <input type="password" class="form-control border-right-0 shadow-none" name="password" id="password" placeholder="Password" onkeyup="validatePassword(this)">
                 <div class="input-group-append">
                   <span class="far fa-eye form-control" id="eye" onclick="showPassword();"></span>
                 </div>
@@ -49,7 +49,7 @@
                 if(isset($_GET["error"])) {
                   $error = $_GET["error"];
               ?>
-              <small class="rounded border border-danger text-danger align-self-start p-1 ml-3 d-flex" id="errorhandling2">
+              <small class="rounded border border-danger text-danger align-self-start p-1 ml-3 d-flex" id="error-handling2">
               <?php
                     echo $error;
                 }
