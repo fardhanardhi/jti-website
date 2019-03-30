@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="../css/jadwal.css">
 <link rel="stylesheet" href="../css/krs.css">
 <link rel="stylesheet" href="../css/nilai.css">
+<link rel="stylesheet" href="../css/kompenAbsen.css">
 <link rel="stylesheet" href="../css/kelasKosong.css">
 <link rel="stylesheet" href="../css/notifikasi.css">
 <link rel="stylesheet" href="../css/dosenKompen.css">
