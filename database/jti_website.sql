@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2019 at 04:39 PM
+-- Generation Time: Mar 31, 2019 at 03:09 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -227,6 +227,7 @@ INSERT INTO `tabel_info_kelas_kosong` (`id_info_kelas_kosong`, `id_ruang`, `pemi
 
 CREATE TABLE `tabel_jadwal` (
   `id_jadwal` int(30) NOT NULL,
+  `kode_ruang` int(30) NOT NULL,
   `id_kelas` int(30) NOT NULL,
   `id_semester` int(30) NOT NULL,
   `dosen` int(30) NOT NULL,
@@ -234,18 +235,18 @@ CREATE TABLE `tabel_jadwal` (
   `hari` varchar(30) NOT NULL,
   `jam` varchar(30) NOT NULL,
   `sks` varchar(10) NOT NULL,
-  `kode_ruang` int(30) NOT NULL,
-  `waktu` datetime NOT NULL
+  `waktu` datetime NOT NULL,
+  `tingkat` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_jadwal`
 --
 
-INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_kelas`, `id_semester`, `dosen`, `mata_kuliah`, `hari`, `jam`, `sks`, `kode_ruang`, `waktu`) VALUES
-(1, 1, 3, 2, 'Desain dan Pemograman Web', 'Senin', '10.00 - 12.00', '2', 1, '0000-00-00 00:00:00'),
-(2, 1, 3, 1, 'Alogaritma dan Struktur Data', 'Selasa', '07.00 - 12.00', '4', 1, '0000-00-00 00:00:00'),
-(3, 1, 3, 3, 'Proyek 1', 'Rabu', '07.00 - 10.00', '6', 3, '0000-00-00 00:00:00');
+INSERT INTO `tabel_jadwal` (`id_jadwal`, `kode_ruang`, `id_kelas`, `id_semester`, `dosen`, `mata_kuliah`, `hari`, `jam`, `sks`, `waktu`, `tingkat`) VALUES
+(1, 1, 1, 3, 2, 'Desain dan Pemograman Web', 'Senin', '10.00 - 12.00', '2', '0000-00-00 00:00:00', 'tingkat 1'),
+(2, 1, 1, 3, 1, 'Alogaritma dan Struktur Data', 'Selasa', '07.00 - 12.00', '4', '0000-00-00 00:00:00', 'tingkat 1'),
+(3, 3, 1, 3, 3, 'Proyek 1', 'Rabu', '07.00 - 10.00', '6', '0000-00-00 00:00:00', 'tingkat 1');
 
 -- --------------------------------------------------------
 
@@ -518,17 +519,18 @@ INSERT INTO `tabel_prodi` (`id_prodi`, `nama_prodi`) VALUES
 
 CREATE TABLE `tabel_ruangan` (
   `id_ruang` int(30) NOT NULL,
-  `kode_ruang` varchar(30) NOT NULL
+  `kode_ruang` varchar(30) NOT NULL,
+  `lantai` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_ruangan`
 --
 
-INSERT INTO `tabel_ruangan` (`id_ruang`, `kode_ruang`) VALUES
-(1, 'LKJ01'),
-(2, 'LPR02'),
-(3, 'LPR03');
+INSERT INTO `tabel_ruangan` (`id_ruang`, `kode_ruang`, `lantai`) VALUES
+(1, 'LKJ01', 'Lantai 7'),
+(2, 'LPR02', 'Lantai 7'),
+(3, 'LPR03', 'Lantai 7');
 
 -- --------------------------------------------------------
 
