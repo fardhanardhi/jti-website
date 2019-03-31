@@ -28,6 +28,7 @@ include "../config/connection.php";
         $error = "*Password salah";
         header("Location: ../module/login.php?error=$error");
       } else {
+        $_SESSION["id"]=$row["id_dosen"];
         $_SESSION["level"]="dosen";
         header("location: ../index.php");
       }
@@ -38,6 +39,7 @@ include "../config/connection.php";
         $error = "*Password salah";
         header("Location: ../module/login.php?error=$error");
       } else {
+        $_SESSION["id"]=$row["id_mahasiswa"];
         $_SESSION["level"]="mahasiswa";
         header("location: ../index.php");
       }

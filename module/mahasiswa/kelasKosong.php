@@ -1,3 +1,11 @@
+<?php
+  include "../config/connection.php";
+  if($_SESSION['level']=="mahasiswa"){
+    $login=mysqli_query($con, "select * from tabel_mahasiswa where id_mahasiswa='$_SESSION[id]'");
+    $resultLogin=mysqli_fetch_assoc($login);
+  }
+?>
+
 <main role="main" class="container-fluid" id="kelasKosong">
   <div class="row">
     <div class="col-md-3 p-0">
@@ -5,70 +13,65 @@
         <h5 class="text-white pl-3">Pemesanan</h5>
       </div>
       <div class="ml-2 mr-2 mb-2 mt-0 bg-white rounded-bottom shadow-sm">
+      <?php
+        $query="select a.*, b.kode_ruang from tabel_info_kelas_kosong a, tabel_ruangan b where a.id_ruang = b.id_ruang and status_dipinjam='Dipinjam' and a.peminjam='$_SESSION[id]'";
+        $result = mysqli_query($con, $query);
+        if (mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
+                ?>
+                <div class="pesanan p-3 container-fluid border-top">
+                  <div class="row d-flex align-items-center">
+                    <div class="col-7 text-left">
+                      <strong><span class="p-0 m-0 kelas"><?php echo $row["kode_ruang"]; ?></span></strong>
+                      <span class="text-secondary lantai pl-1 pt-3">(Lantai 9)</span>
+                      <br>
+                      <strong><?php echo date('H.i',strtotime($row["waktu_mulai"])). " - ".date('H.i',strtotime($row["waktu_selesai"])) ?></strong>
+                    </div>
+                    <div class="col-5 text-right">
+                      <h4>Jumat</h4>
+                    </div>
+                  </div>
 
-        <!-- Jika tidak ada kelas dipesan -->
-        <div class="text-center pt-5 pb-5 container-fluid">
-          <strong>Tidak ada ruang yang dipesan!</strong>
-        </div>
-
-        <!-- Jika ada kelas yang dipesan -->
-        <div class="pesanan p-3 container-fluid border-top">
-          <div class="row d-flex align-items-center">
-            <div class="col-7 text-left">
-              <strong><span class="p-0 m-0 kelas">LPR1</span></strong>
-              <span class="text-secondary lantai pl-1 pt-3">(Lantai 9)</span>
-              <br>
-              <strong>09.00 - 12.00</strong>
-            </div>
-            <div class="col-5 text-right">
-              <h4>Jumat</h4>
-            </div>
-          </div>
-
-          <!-- Button trigger modal -->
-          <div class="row">
-            <div class="col-12 text-right">
-              <button class="btn btn-danger btn-checkout text-white" data-toggle="modal"
-                data-target="#modalCheckout">Checkout</button>
-            </div>
-          </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="modalCheckout" tabindex="-1" role="dialog" aria-labelledby="modalCheckoutTitle"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-body pt-5 text-center">
-                  <strong>Apakah Anda yakin?</strong>
+                  <!-- Button trigger modal -->
+                  <div class="row">
+                    <div class="col-12 text-right">
+                      <button class="btn btn-danger btn-checkout text-white" data-toggle="modal"
+                        data-target="#modalCheckout">Checkout</button>
+                    </div>
+                  </div>
                 </div>
-                <div class="container-fluid pb-4 pt-4 d-flex justify-content-around">
-                  <button type="button" class="btn btn-danger btn-confirm" data-dismiss="modal">Tidak</button>
-                  <button type="button" class="btn btn-success btn-confirm">Ya</button>
+                
+                <!-- Modal -->
+                <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
+                <div class="modal fade" id="modalCheckout" tabindex="-1" role="dialog" aria-labelledby="modalCheckoutTitle"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body pt-5 text-center">
+                        <strong>Apakah Anda yakin?</strong>
+                      </div>
+                      <div class="container-fluid pb-4 pt-4 d-flex justify-content-around">
+                        <button type="button" class="btn btn-danger btn-confirm" data-dismiss="modal">Tidak</button>
+                        <button type="submit" name="checkout" class="btn btn-success btn-confirm">Ya</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+                </form>
+                <!-- End Modal -->
+                <?php
+            }
+        }else{
+            ?>
+            <div class="text-center pt-5 pb-5 container-fluid">
+              <strong>Tidak ada ruang yang dipesan!</strong>
             </div>
-          </div>
+          <?php
+        }
 
-        </div>
-        <div class="pesanan p-3 border-top border-dark">
-          <div class="row d-flex align-items-center">
-            <div class="col-7 text-left">
-              <strong><span class="p-0 m-0 kelas">LPR1</span></strong>
-              <span class="text-secondary lantai pl-1 pt-3">(Lantai 9)</span>
-              <br>
-              <strong>09.00 - 12.00</strong>
-            </div>
-            <div class="col-5 text-right">
-              <h4>Jumat</h4>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 text-right">
-              <button class="btn btn-danger btn-checkout text-white">Checkout</button>
-            </div>
-          </div>
-        </div>
-        <!-- Jika ada kelas dipesan -->
+        ?>
+
       </div>
     </div>
 
@@ -77,12 +80,14 @@
         <h5 class="text-white pl-3">Daftar Ruangan</h5>
       </div>
       <div class="ml-2 mr-2 mb-2 mt-0 pt-4 pb-3 bg-white rounded-bottom shadow-sm">
+      <form action="?module=kelasKosong" method="post">
         <div class="container-fluid">
           <div class="row">
             <div class="col-1 text-center">
               <strong>Hari</strong>
             </div>
-            <div class="col-7 m-0 p-0">
+          
+           <div class="col-7 m-0 p-0">
               <div class="btn-group-toggle d-flex justify-content-around" data-toggle="buttons">
                 <label class="btn btn-outline-dark btn-hari active">
                   <input type="radio" name="senin" class="hari" id="senin" autocomplete="off" checked> Senin
@@ -103,88 +108,104 @@
             </div>
             <div class="col-2 pl-0 pr-0 m-0 text-right">
               <strong class="pr-3">Jam</strong>
-              <select class="optionJam">
-                <option>08.00</option>
-                <option selected="selected">09.00</option>
-                <option>10.00</option>
+              <select class="optionJam" name="jam">
+                <option value="07:00:00">07.00</option>
+                <?php
+                  $jam=mysqli_query($con, "select distinct waktu_mulai from tabel_info_kelas_kosong");
+                  while($data=mysqli_fetch_array($jam)){
+                    ?>
+                    <option value=<?php echo date('H:i:s',strtotime($data["waktu_mulai"]))?>><?php echo date('H.i',strtotime($data["waktu_mulai"]))?></option>
+                    <?php
+                  }
+                  ?>
               </select>
             </div>
             <div class="col-2 p-0 m-0 text-right">
-              <input type="submit" class="btn btn-success btn-cari mr-4" value="Cari">
+              <input type="submit" name="cari" class="btn btn-success btn-cari mr-4" value="Cari">
             </div>
           </div>
+          </form>
 
           <div class="row p-3">
-            <div class="col-md-6 col-sm-12 p-2">
-              <div class="rounded ruang p-3">
-                <div class="row d-flex align-items-center">
-                  <div class="col-3 text-center">
-                    <h4 class="p-0 m-0">LPR1</h4>
-                    <span class="text-secondary">(Lantai 9)</span>
-                  </div>
-                  <div class="col-5">
-                    <h5>09.00 - 12.00</h5>
-                  </div>
-                  <div class="col-4 text-right">
-                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                    <a tabindex="0" class="btn btn-danger" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Popover</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <?php
+            if(isset($_POST["cari"])){
+              $kelasKosong="select a.*, b.kode_ruang from tabel_info_kelas_kosong a, tabel_ruangan b where a.id_ruang = b.id_ruang and a.waktu_mulai='$_POST[jam]'";
+            }
+            else{
+              $kelasKosong="select a.*, b.kode_ruang from tabel_info_kelas_kosong a, tabel_ruangan b where a.id_ruang = b.id_ruang and a.waktu_mulai='07:00:00'";
+            }
+              $result = mysqli_query($con, $kelasKosong);
+              if (mysqli_num_rows($result) > 0){
+                  while($row = mysqli_fetch_assoc($result)){
+                      $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
+                      if($row["status_dipinjam"]=="Kosong"){
+                        ?>
+                        <div class="col-md-6 col-sm-12 p-2">
+                          <div class="rounded ruang p-3">
+                            <div class="row d-flex align-items-center">
+                              <div class="col-3 text-center">
+                                <h4 class="p-0 m-0"><?php echo $row["kode_ruang"]; ?></h4>
+                                <span class="text-secondary">(Lantai 9)</span>
+                              </div>
+                              <div class="col-5">
+                                <h5><?php echo date('H.i',strtotime($row["waktu_mulai"])). " - ".date('H.i',strtotime($row["waktu_selesai"])) ?></h5>
+                              </div>
+                              <div class="col-4 text-right">
+                                <?php
+                                  $queryPeminjam=mysqli_query($con, "select a.*,b.id_kelas from tabel_info_kelas_kosong a, tabel_mahasiswa b where a.status_dipinjam='Dipinjam' and a.id_peminjam=b.id_mahasiswa and b.id_kelas='$resultLogin[id_kelas]'");
+                                  if (mysqli_num_rows($result) > 0){
+                                    ?>
+                                    <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
+                                    <?php
+                                  }else{
+                                    ?>
+                                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
+                                    <?php
+                                  }
+                                ?>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <?php
+                      }else if($row["status_dipinjam"]=="Dipinjam"){
+                        ?>
+                        <div class="col-md-6 col-sm-12 p-2">
+                          <div class="rounded ruang p-3 dipesan">
+                            <div class="row d-flex align-items-center">
+                              <div class="col-3 text-center">
+                                <h4 class="p-0 m-0"><?php echo $row["kode_ruang"]; ?></h4>
+                                <span class="text-secondary">(Lantai 9)</span>
+                              </div>
+                              <div class="col-5">
+                                <h5><?php echo date('H.i',strtotime($row["waktu_mulai"])). " - ".date('H.i',strtotime($row["waktu_selesai"])) ?></h5>
+                              </div>
+                              <div class="col-4 text-right">
+                              <?php
+                                  $queryPeminjam=mysqli_query($con, "select a.*,b.id_kelas from tabel_info_kelas_kosong a, tabel_mahasiswa b where a.status_dipinjam='Dipinjam' and a.id_peminjam=b.id_mahasiswa and b.id_kelas='$resultLogin[id_kelas]'");
+                                  if (mysqli_num_rows($result) > 0){
+                                    ?>
+                                    <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
+                                    <?php
+                                  }else{
+                                    ?>
+                                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
+                                    <?php
+                                  }
+                                ?>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <?php
+                      }
+                  }
+              }else{
+                  ?><div class="col-12 text-center mt-3"><strong>Tidak ada ruang yang kosong</strong></div><?php
+              }
+              mysqli_close($con);
 
-            <!-- Ruangan yang dipesan, button Pesan akan hidden -->
-            <div class="col-md-6 col-sm-12 p-2">
-              <div class="rounded ruang p-3 dipesan">
-                <div class="row d-flex align-items-center">
-                  <div class="col-3 text-center">
-                    <h4 class="p-0 m-0">LPR1</h4>
-                    <span class="text-secondary">(Lantai 9)</span>
-                  </div>
-                  <div class="col-5">
-                    <h5>09.00 - 12.00</h5>
-                  </div>
-                  <div class="col-4 text-right">
-                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- end -->
-
-            <div class="col-md-6 col-sm-12 p-2">
-              <div class="rounded ruang p-3">
-                <div class="row d-flex align-items-center">
-                  <div class="col-3 text-center">
-                    <h4 class="p-0 m-0">LPR1</h4>
-                    <span class="text-secondary">(Lantai 9)</span>
-                  </div>
-                  <div class="col-5">
-                    <h5>09.00 - 12.00</h5>
-                  </div>
-                  <div class="col-4 text-right">
-                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-12 p-2">
-              <div class="rounded ruang p-3">
-                <div class="row d-flex align-items-center">
-                  <div class="col-3 text-center">
-                    <h4 class="p-0 m-0">LPR1</h4>
-                    <span class="text-secondary">(Lantai 9)</span>
-                  </div>
-                  <div class="col-5">
-                    <h5>09.00 - 12.00</h5>
-                  </div>
-                  <div class="col-4 text-right">
-                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+              ?>
           </div>
         </div>
       </div>
