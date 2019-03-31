@@ -124,53 +124,38 @@
           <h6 class="border-bottom border-gray pb-2 mb-0 judul">KOMPEN MAHASISWA</h6>
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small">
-              <div class="isi-ada text center">
+              <div class="isi-ada container-fluid">
+              
                 <form action="">
-                  <table class="table table-striped table-bordered text-center">
-                    <thead>
-                      <tr>
-                        <th>Pekerjaan</th>
-                        <th>Kuota</th>
-                        <th>Selesai</th>
-                      </tr>
-                    </thead>
+                  <table class="table">
                     <tbody>
                       <tr>
-                        <td>Menata dokumen di ruang baca</td>
-                        <td>2 Mhs</td>
-                        <td> 
-                          <div class="kompen-check">
-                            <input type="checkbox" value="" id="check1">
-                            <label for="check1" class="labelCheck far fa-square"></label>
+                        <td class="nomor-kompen">3</td>
+                        <td class="deskripsi-kompen">
+                          <p class="tugas-kompen">Menata dokumen di ruang baca</p>
+                          <p class="kuota-kompen">Kuota : 2 Mahasiswa</p> 
+                        </td>
+                        <td class="action-kompen"> 
+                          <div class="kompen-submit">
+                            <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
                           </div>
-                        </td>  
-                      </tr>
-                      <tr>
-                        <td>Menata dokumen di ruang mayat</td>
-                        <td>2 Stn</td>
-                        <td> 
-                          <div class="kompen-check">
-                            <input type="checkbox" value="" id="check2">
-                            <label for="check2" class="labelCheck far fa-square"></label>
-                          </div>
-                        </td>  
-                      </tr>
-                      <tr>
-                        <td>Menata baca di ruang dokumen</td>
-                        <td>2 Mhs</td>
-                        <td> 
-                          <div class="kompen-check">
-                            <input type="checkbox" value="" id="check3">
-                            <label for="check3" class="labelCheck far fa-square"></label>
-                          </div>
-                        </td>  
+                          
+                        </td>
+                           <td class="pilihan-kompen">
+                            <div class="dropdown">
+                              <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
+                              </div>
+                              </div>
+                           </td>
                       </tr>
                     </tbody>
                   </table>
                   <!-- Tombol  -->
                   <div class="d-flex justify-content-center"> 
                     <button type="button" class="btn tambah-pekerjaan-kompen" data-toggle="modal" data-target="#exampleModalCenter">Tambah Pekerjaan</button>
-                    <button type="submit" class="btn submit-kompen-dosen">Submit</button>
                   </div>
                 </form>
               </div>
