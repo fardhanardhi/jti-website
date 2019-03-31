@@ -206,8 +206,11 @@
             case "home":
                 include "dosen/home.php";
             break;
-            case "dosenKompen":
+            case "kompenAbsen":
                 include "dosen/dosenKompen.php";
+            break;
+            case "notifikasi":
+              include "notifikasi.php";
             break;
             default:
             include "dosen/home.php";
