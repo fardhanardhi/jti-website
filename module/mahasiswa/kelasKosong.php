@@ -26,7 +26,7 @@
                       <strong><?php echo tampilWaktu($row["waktu_mulai"]). " - ".tampilWaktu($row["waktu_selesai"]) ?></strong>
                     </div>
                     <div class="col-5 text-right">
-                      <h4>Jumat</h4>
+                      <h4><?php echo ucfirst($row["hari"]); ?></h4>
                     </div>
                   </div>
 
@@ -87,19 +87,19 @@
            <div class="col-7 m-0 p-0">
               <div class="btn-group-toggle d-flex justify-content-around" data-toggle="buttons">
                 <label class="btn btn-outline-dark btn-hari active">
-                  <input type="radio" name="senin" class="hari" id="senin" autocomplete="off" checked> Senin
+                  <input type="radio" name="hari" value="senin" class="hari" id="senin" autocomplete="off" checked> Senin
                 </label>
                 <label class="btn btn-outline-dark btn-hari">
-                  <input type="radio" name="selasa" id="selasa" autocomplete="off">Selasa
+                  <input type="radio" name="hari" value="selasa" id="selasa" autocomplete="off">Selasa
                 </label>
                 <label class="btn btn-outline-dark btn-hari">
-                  <input type="radio" name="rabu" id="rabu" autocomplete="off"> Rabu
+                  <input type="radio" name="hari" value="rabu" id="rabu" autocomplete="off"> Rabu
                 </label>
                 <label class="btn btn-outline-dark btn-hari">
-                  <input type="radio" name="kamis" id="kamis" autocomplete="off"> Kamis
+                  <input type="radio" name="hari" value="kamis" id="kamis" autocomplete="off"> Kamis
                 </label>
                 <label class="btn btn-outline-dark btn-hari">
-                  <input type="radio" name="jumat" id="jumat" autocomplete="off"> Jumat
+                  <input type="radio" name="hari" value="jumat" id="jumat" autocomplete="off"> Jumat
                 </label>
               </div>
             </div>
@@ -111,7 +111,7 @@
                   $jam=tampilJam($con);
                   while($row=mysqli_fetch_array($jam)){
                     ?>
-                    <option value=<?php echo tampilWaktu($row["waktu_mulai"])?>><?php echo tampilWaktu($row["waktu_mulai"])?></option>
+                    <option value=<?php echo tampilWaktuDefault($row["waktu_mulai"])?>><?php echo tampilWaktu($row["waktu_mulai"])?></option>
                     <?php
                   }
                   ?>
@@ -126,10 +126,10 @@
           <div class="row p-3">
           <?php
             if(isset($_POST["cari"])){
-              $resultKelasKosong=kelasKosong($con,$_POST["jam"]);
+              $resultKelasKosong=kelasKosong($con,$_POST["jam"],$_POST["hari"]);
             }
             else{
-              $resultKelasKosong=kelasKosong($con,'07:00:00');
+              $resultKelasKosong=kelasKosong($con,'07:00:00','senin');
             }
               if (mysqli_num_rows($resultKelasKosong) > 0){
                   while($row = mysqli_fetch_assoc($resultKelasKosong)){
@@ -138,6 +138,8 @@
                         ?>
                         <div class="col-md-6 col-sm-12 p-2">
                           <div class="rounded ruang p-3">
+
+                            <form action="../process/proses_kelasKosong.php?act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
                             <div class="row d-flex align-items-center">
                               <div class="col-3 text-center">
                                 <h4 class="p-0 m-0"><?php echo $row["kode_ruang"]; ?></h4>
@@ -148,17 +150,18 @@
                               </div>
                               <div class="col-4 text-right">
                                 <?php
-                                  if (cekPeminjamSekelas($con, $row["waktu_mulai"])==true){
+                                  if (cekPeminjamSekelas($con, $row["waktu_mulai"], $row["hari"])==true){
                                     ?>
                                     <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
                                     <?php
                                   }else{
                                     ?>
-                                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
+                                    <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
                                     <?php
                                   }
                                 ?>
                               </div>
+                              </form>
                             </div>
                           </div>
                         </div>
@@ -174,19 +177,6 @@
                               </div>
                               <div class="col-5">
                                 <h5><?php echo tampilWaktu($row["waktu_mulai"]). " - ".tampilWaktu($row["waktu_selesai"]) ?></h5>
-                              </div>
-                              <div class="col-4 text-right">
-                              <?php
-                                  if (cekPeminjamSekelas($con, $row["waktu_mulai"])==true){
-                                    ?>
-                                    <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                                    <?php
-                                  }else{
-                                    ?>
-                                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                                    <?php
-                                  }
-                                ?>
                               </div>
                             </div>
                           </div>
