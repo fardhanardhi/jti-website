@@ -1,0 +1,8 @@
+<?php 
+
+$dbUrl  = ""; // MySql host Url
+$dbUser = ""; // user Mysql
+$dbPass = ""; // password Mysql
+$dbName = ""; // nama database
+
+?>

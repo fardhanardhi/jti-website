@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2019 at 03:09 PM
+-- Generation Time: Apr 01, 2019 at 02:13 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -202,6 +202,7 @@ CREATE TABLE `tabel_info_kelas_kosong` (
   `id_info_kelas_kosong` int(30) NOT NULL,
   `id_ruang` int(30) NOT NULL,
   `peminjam` int(30) NOT NULL,
+  `hari` varchar(30) NOT NULL,
   `jumlah_jam` int(30) NOT NULL,
   `status_dipinjam` enum('Kosong','Dipinjam') NOT NULL,
   `waktu_mulai` time NOT NULL,
@@ -214,10 +215,10 @@ CREATE TABLE `tabel_info_kelas_kosong` (
 -- Dumping data for table `tabel_info_kelas_kosong`
 --
 
-INSERT INTO `tabel_info_kelas_kosong` (`id_info_kelas_kosong`, `id_ruang`, `peminjam`, `jumlah_jam`, `status_dipinjam`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`, `level_peminjam`) VALUES
-(1, 1, 1, 6, 'Dipinjam', '08:00:00', '16:00:00', '0000-00-00 00:00:00', 0),
-(2, 2, 2, 3, 'Dipinjam', '08:00:00', '11:00:00', '0000-00-00 00:00:00', 0),
-(3, 3, 3, 2, 'Dipinjam', '09:00:00', '11:00:00', '0000-00-00 00:00:00', 0);
+INSERT INTO `tabel_info_kelas_kosong` (`id_info_kelas_kosong`, `id_ruang`, `peminjam`, `hari`, `jumlah_jam`, `status_dipinjam`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`, `level_peminjam`) VALUES
+(1, 1, 1, 'senin', 6, 'Dipinjam', '08:00:00', '16:00:00', '0000-00-00 00:00:00', 0),
+(2, 2, 2, 'senin', 3, 'Dipinjam', '08:00:00', '11:00:00', '0000-00-00 00:00:00', 0),
+(3, 3, 3, 'selasa', 2, 'Dipinjam', '09:00:00', '11:00:00', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -375,17 +376,18 @@ CREATE TABLE `tabel_kuisioner` (
   `id_dosen` int(30) NOT NULL,
   `kelas` varchar(30) NOT NULL,
   `nilai` float NOT NULL,
-  `waktu` datetime NOT NULL
+  `waktu` datetime NOT NULL,
+  `pengerjaan_selesai` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_kuisioner`
 --
 
-INSERT INTO `tabel_kuisioner` (`id_kuisoner`, `id_mahasiswa`, `id_dosen`, `kelas`, `nilai`, `waktu`) VALUES
-(1, 1, 1, 'TI-2F', 5, '0000-00-00 00:00:00'),
-(2, 2, 1, 'TI-2F', 4, '0000-00-00 00:00:00'),
-(3, 1, 2, 'TI-2F', 6, '0000-00-00 00:00:00');
+INSERT INTO `tabel_kuisioner` (`id_kuisoner`, `id_mahasiswa`, `id_dosen`, `kelas`, `nilai`, `waktu`, `pengerjaan_selesai`) VALUES
+(1, 1, 1, 'TI-2F', 5, '0000-00-00 00:00:00', 0),
+(2, 2, 1, 'TI-2F', 4, '0000-00-00 00:00:00', 0),
+(3, 1, 2, 'TI-2F', 6, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -520,7 +522,7 @@ INSERT INTO `tabel_prodi` (`id_prodi`, `nama_prodi`) VALUES
 CREATE TABLE `tabel_ruangan` (
   `id_ruang` int(30) NOT NULL,
   `kode_ruang` varchar(30) NOT NULL,
-  `lantai` varchar(30) NOT NULL
+  `lantai` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -528,9 +530,9 @@ CREATE TABLE `tabel_ruangan` (
 --
 
 INSERT INTO `tabel_ruangan` (`id_ruang`, `kode_ruang`, `lantai`) VALUES
-(1, 'LKJ01', 'Lantai 7'),
-(2, 'LPR02', 'Lantai 7'),
-(3, 'LPR03', 'Lantai 7');
+(1, 'LKJ01', 7),
+(2, 'LPR02', 7),
+(3, 'LPR03', 7);
 
 -- --------------------------------------------------------
 
