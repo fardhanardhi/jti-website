@@ -14,9 +14,9 @@ Import file database `database/jti_website.sql` ke PhpMyAdmin atau mysql host an
 
 **Setting koneksi database**
 
-1. Copy file `config/connection.php.example` dan paste di dalam folder yang sama
-2. Rename file baru hasil copy/paste tersebut menjadi `connection.php` <br> \*\* **jangan pernah menghapus, rename atau mengedit file connection.php.example**
-3. Edit file `connection.php` tersebut, sesuaikan dengan koneksi database anda!
+1. Copy file `config/constant.php.example` dan paste di dalam folder yang sama
+2. Rename file baru hasil copy/paste tersebut menjadi `constant.php` <br> \*\* **jangan pernah menghapus, rename atau mengedit file constant.php.example**
+3. Edit file `constant.php` tersebut, sesuaikan dengan koneksi database anda!
 
 Contoh:
 

@@ -31,12 +31,16 @@
   padding-top: 1.1em;
 }
 
+#dosenHomepage .jadwal-dosen-kosong {
+  padding-top: 10.5em;
+  padding-bottom: 10.5em;
+}
+
 /* Kompen Bar */
 
 #dosenHomepage .tambah-pekerjaan-kompen{
   background-color: #40407a;
   color: white;
-  margin-right: 2em;
 }
 
 #dosenHomepage .submit-kompen-dosen{
@@ -44,7 +48,6 @@
   color: white;
 }
 
-/* any */
 #dosenHomepage .judul {
   font-size: 1.2em;
 }
@@ -85,3 +88,23 @@
 #dosenHomepage .isi-ada > table {
   white-space: nowrap;
 }
+
+#dosenHomepage .dropdown-kompen {
+  margin-top: 0.7em;
+  left: -5em;
+}
+
+#dosenHomepage .dropdown-kompen::before{
+  position: absolute;
+  border-width: 0px 8px 10px 8px;
+  border-style: solid;
+  right: 4.7em;
+  border-color: rgb(216, 208, 208) transparent;
+}
+/* tahap pengembangan */
+
+/* #dosenHomepage .data-kompen-ada{
+  height: 20em;
+  overflow-y: auto;
+  overflow-x: hidden;
+} */
