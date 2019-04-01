@@ -33,6 +33,22 @@
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125">
             <div class="isi">
+
+            <!-- ------------------------ -->
+            <!-- Jika Jadwal Dosen Kosong -->
+            <!-- ------------------------ -->
+
+              <!-- <div class="jadwal-dosen-kosong text-center">
+                  <img src="../img/jadwalKosong.svg" alt="jadwal kosong">
+                  <p>Maaf, jadwal masih belum tersedia. <br> Jadwal baru bisa dilihat pada bulan Juni 2019</p>
+              </div> -->
+
+            <!-- ---------------------------- -->
+            <!-- END Jika Jadwal Dosen Kosong -->
+            <!-- ---------------------------- -->
+
+
+
               <table class="table table-striped table-bordered text-center">
                 <thead>
                   <tr>
@@ -124,16 +140,14 @@
           <h6 class="border-bottom border-gray pb-2 mb-0 judul">KOMPEN MAHASISWA</h6>
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small">
-              <div class="isi-ada container-fluid">
-              
-                <form action="">
-                  <table class="table">
-                    <tbody>
+              <div class="col-12 p-0">
+                <table class="table d-flex">
+                  <tbody class="data-kompen-ada">
+                    <form action="">
                       <tr>
                         <td class="nomor-kompen">3</td>
                         <td class="deskripsi-kompen">
-                          <p class="tugas-kompen">Menata dokumen di ruang baca</p>
-                          <p class="kuota-kompen">Kuota : 2 Mahasiswa</p> 
+                          <p class="tugas-kompen">Menata dokumen di ruang baca <br> Kuota : 2 Mahasiswa</p> 
                         </td>
                         <td class="action-kompen"> 
                           <div class="kompen-submit">
@@ -144,20 +158,66 @@
                            <td class="pilihan-kompen">
                             <div class="dropdown">
                               <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
-                              <div class="dropdown-menu">
+                              <div class="dropdown-kompen dropdown-menu">
                                 <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
                                 <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
                               </div>
                               </div>
                            </td>
                       </tr>
-                    </tbody>
-                  </table>
-                  <!-- Tombol  -->
-                  <div class="d-flex justify-content-center"> 
-                    <button type="button" class="btn tambah-pekerjaan-kompen" data-toggle="modal" data-target="#exampleModalCenter">Tambah Pekerjaan</button>
-                  </div>
-                </form>
+                    </form>
+                    <form action="">
+                      <tr>
+                        <td class="nomor-kompen">3</td>
+                        <td class="deskripsi-kompen">
+                          <p class="tugas-kompen">Menata dokumen di ruang baca <br> Kuota : 2 Mahasiswa</p> 
+                        </td>
+                        <td class="action-kompen"> 
+                          <div class="kompen-submit">
+                            <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                          </div>
+                          
+                        </td>
+                           <td class="pilihan-kompen">
+                            <div class="dropdown">
+                              <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                              <div class="dropdown-kompen dropdown-menu">
+                                <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
+                              </div>
+                              </div>
+                           </td>
+                      </tr>
+                    </form>
+                    <form action="">
+                      <tr>
+                        <td class="nomor-kompen">3</td>
+                        <td class="deskripsi-kompen">
+                          <p class="tugas-kompen">Menata dokumen di ruang baca <br> Kuota : 2 Mahasiswa</p> 
+                        </td>
+                        <td class="action-kompen"> 
+                          <div class="kompen-submit">
+                            <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                          </div>
+                          
+                        </td>
+                           <td class="pilihan-kompen">
+                            <div class="dropdown">
+                              <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                              <div class="dropdown-kompen dropdown-menu">
+                                <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
+                              </div>
+                              </div>
+                           </td>
+                      </tr>
+                    </form>
+                  </tbody>
+                </table>
+              </div>
+              <!-- Tombol  -->
+              <div class="d-flex justify-content-center"> 
+                <button type="button" class="btn tambah-pekerjaan-kompen" data-toggle="modal" data-target="#exampleModalCenter">Tambah Pekerjaan</button>
               </div>
               <!-- Modal -->
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
@@ -229,9 +289,9 @@
                   </div>
                 </div>
               
-              <!-- --------------------- -->
-              <!-- Jika Kompen Kosong    -->
-              <!-- --------------------- -->
+              <!-- ------------------ -->
+              <!-- Jika Kompen Kosong -->
+              <!-- ------------------ -->
 
               <!-- <div class="isi py-5 text-center">
                 <div class="text-center mb-2">
@@ -241,6 +301,10 @@
                   <h6>Anda tidak mempunyai daftar pekerjaan</h6>
                 </div>
               </div> -->
+
+              <!-- ---------------------- -->
+              <!-- END Jika Kompen Kosong -->
+              <!-- ---------------------- -->
             </div>
           </div>
         </div>
