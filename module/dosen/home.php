@@ -140,7 +140,12 @@
           <h6 class="border-bottom border-gray pb-2 mb-0 judul">KOMPEN MAHASISWA</h6>
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small">
-              <div class="col-12 p-0">
+
+            <!-- ------------ -->
+            <!-- Kompen Tabel -->
+            <!-- ------------ -->
+
+              <!-- <div class="col-12 p-0">
                 <table class="table d-flex">
                   <tbody class="data-kompen-ada">
                     <form action="">
@@ -214,7 +219,12 @@
                     </form>
                   </tbody>
                 </table>
-              </div>
+              </div> -->
+
+            <!-- ---------------- -->
+            <!-- END Kompen Tabel -->
+            <!-- ---------------- -->
+
               <!-- Tombol  -->
               <div class="d-flex justify-content-center"> 
                 <button type="button" class="btn tambah-pekerjaan-kompen" data-toggle="modal" data-target="#exampleModalCenter">Tambah Pekerjaan</button>
