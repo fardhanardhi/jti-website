@@ -1,15 +1,14 @@
 <main role="main" class="container-fluid">
   <div id="kompenAbsen" class="row">
-    <div class="col-md-12 p-0">
-      <div class="m-2 bg-white shadow-sm rounded">
+    <div class="col-md-12 p-0 ">
+      <div class="m-2 bg-white shadow-sm rounded p-3">
         <nav class="nav nav-underline">
-            <div class="col-md-1"></div>
             <div class="col-md-2 pt-3 pb-3 pr-0">
             <img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="150" width="150">
-            
             </div>
             <div class="col-md pt-3 pb-3 pl-0">
-              <h1>Avatar</h1>
+              <h2>Avatar</h2>
+              <br>
               <div class="container-fluid">
                 <div class="row text-center">
                   <div class="col-md-4"><h1>A</h1></div>
@@ -28,11 +27,10 @@
                 </div>
               </div>
               </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-7"></div>
         </nav>
         <nav class="nav nav-underline">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-md-12">
         <div class="col-md p-0">
         <div class="container-fluid p-0 m-0">
           <div class="row">
