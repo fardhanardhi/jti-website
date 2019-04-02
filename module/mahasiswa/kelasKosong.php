@@ -1,9 +1,7 @@
 <?php
   include "../config/connection.php";
-  if($_SESSION['level']=="mahasiswa"){
-    $login=mysqli_query($con, "select * from tabel_mahasiswa where id_mahasiswa='$_SESSION[id]'");
-    $resultLogin=mysqli_fetch_assoc($login);
-  }
+  include "../process/proses_kelasKosong.php";
+  
 ?>
 
 <main role="main" class="container-fluid" id="kelasKosong">
@@ -14,22 +12,21 @@
       </div>
       <div class="ml-2 mr-2 mb-2 mt-0 bg-white rounded-bottom shadow-sm">
       <?php
-        $query="select a.*, b.kode_ruang from tabel_info_kelas_kosong a, tabel_ruangan b where a.id_ruang = b.id_ruang and status_dipinjam='Dipinjam' and a.peminjam='$_SESSION[id]'";
-        $result = mysqli_query($con, $query);
-        if (mysqli_num_rows($result) > 0){
-            while($row = mysqli_fetch_assoc($result)){
+        $resultKelasDipesan=kelasDipesan($con);
+        if (mysqli_num_rows($resultKelasDipesan) > 0){
+            while($row = mysqli_fetch_assoc($resultKelasDipesan)){
                 $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
                 ?>
                 <div class="pesanan p-3 container-fluid border-top">
                   <div class="row d-flex align-items-center">
                     <div class="col-7 text-left">
                       <strong><span class="p-0 m-0 kelas"><?php echo $row["kode_ruang"]; ?></span></strong>
-                      <span class="text-secondary lantai pl-1 pt-3">(Lantai 9)</span>
+                      <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai ".$row["lantai"].")"; ?></span>
                       <br>
-                      <strong><?php echo date('H.i',strtotime($row["waktu_mulai"])). " - ".date('H.i',strtotime($row["waktu_selesai"])) ?></strong>
+                      <strong><?php echo tampilWaktu($row["waktu_mulai"]). " - ".tampilWaktu($row["waktu_selesai"]) ?></strong>
                     </div>
                     <div class="col-5 text-right">
-                      <h4>Jumat</h4>
+                      <h4><?php echo ucfirst($row["hari"]); ?></h4>
                     </div>
                   </div>
 
@@ -90,19 +87,19 @@
            <div class="col-7 m-0 p-0">
               <div class="btn-group-toggle d-flex justify-content-around" data-toggle="buttons">
                 <label class="btn btn-outline-dark btn-hari active">
-                  <input type="radio" name="senin" class="hari" id="senin" autocomplete="off" checked> Senin
+                  <input type="radio" name="hari" value="senin" class="hari" id="senin" autocomplete="off" checked> Senin
                 </label>
                 <label class="btn btn-outline-dark btn-hari">
-                  <input type="radio" name="selasa" id="selasa" autocomplete="off">Selasa
+                  <input type="radio" name="hari" value="selasa" id="selasa" autocomplete="off">Selasa
                 </label>
                 <label class="btn btn-outline-dark btn-hari">
-                  <input type="radio" name="rabu" id="rabu" autocomplete="off"> Rabu
+                  <input type="radio" name="hari" value="rabu" id="rabu" autocomplete="off"> Rabu
                 </label>
                 <label class="btn btn-outline-dark btn-hari">
-                  <input type="radio" name="kamis" id="kamis" autocomplete="off"> Kamis
+                  <input type="radio" name="hari" value="kamis" id="kamis" autocomplete="off"> Kamis
                 </label>
                 <label class="btn btn-outline-dark btn-hari">
-                  <input type="radio" name="jumat" id="jumat" autocomplete="off"> Jumat
+                  <input type="radio" name="hari" value="jumat" id="jumat" autocomplete="off"> Jumat
                 </label>
               </div>
             </div>
@@ -111,10 +108,10 @@
               <select class="optionJam" name="jam">
                 <option value="07:00:00">07.00</option>
                 <?php
-                  $jam=mysqli_query($con, "select distinct waktu_mulai from tabel_info_kelas_kosong");
-                  while($data=mysqli_fetch_array($jam)){
+                  $jam=tampilJam($con);
+                  while($row=mysqli_fetch_array($jam)){
                     ?>
-                    <option value=<?php echo date('H:i:s',strtotime($data["waktu_mulai"]))?>><?php echo date('H.i',strtotime($data["waktu_mulai"]))?></option>
+                    <option value=<?php echo tampilWaktuDefault($row["waktu_mulai"])?>><?php echo tampilWaktu($row["waktu_mulai"])?></option>
                     <?php
                   }
                   ?>
@@ -129,41 +126,42 @@
           <div class="row p-3">
           <?php
             if(isset($_POST["cari"])){
-              $kelasKosong="select a.*, b.kode_ruang from tabel_info_kelas_kosong a, tabel_ruangan b where a.id_ruang = b.id_ruang and a.waktu_mulai='$_POST[jam]'";
+              $resultKelasKosong=kelasKosong($con,$_POST["jam"],$_POST["hari"]);
             }
             else{
-              $kelasKosong="select a.*, b.kode_ruang from tabel_info_kelas_kosong a, tabel_ruangan b where a.id_ruang = b.id_ruang and a.waktu_mulai='07:00:00'";
+              $resultKelasKosong=kelasKosong($con,'07:00:00','senin');
             }
-              $result = mysqli_query($con, $kelasKosong);
-              if (mysqli_num_rows($result) > 0){
-                  while($row = mysqli_fetch_assoc($result)){
+              if (mysqli_num_rows($resultKelasKosong) > 0){
+                  while($row = mysqli_fetch_assoc($resultKelasKosong)){
                       $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
                       if($row["status_dipinjam"]=="Kosong"){
                         ?>
                         <div class="col-md-6 col-sm-12 p-2">
                           <div class="rounded ruang p-3">
+
+                            <form action="../process/proses_kelasKosong.php?act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
                             <div class="row d-flex align-items-center">
                               <div class="col-3 text-center">
                                 <h4 class="p-0 m-0"><?php echo $row["kode_ruang"]; ?></h4>
-                                <span class="text-secondary">(Lantai 9)</span>
+                                <span class="text-secondary"><?php echo "(Lantai ".$row["lantai"].")"; ?></span>
                               </div>
                               <div class="col-5">
-                                <h5><?php echo date('H.i',strtotime($row["waktu_mulai"])). " - ".date('H.i',strtotime($row["waktu_selesai"])) ?></h5>
+                                <h5><?php echo tampilWaktu($row["waktu_mulai"]). " - ".tampilWaktu($row["waktu_selesai"]) ?></h5>
                               </div>
                               <div class="col-4 text-right">
                                 <?php
-                                  $queryPeminjam=mysqli_query($con, "select a.*,b.id_kelas from tabel_info_kelas_kosong a, tabel_mahasiswa b where a.status_dipinjam='Dipinjam' and a.id_peminjam=b.id_mahasiswa and b.id_kelas='$resultLogin[id_kelas]'");
-                                  if (mysqli_num_rows($result) > 0){
+                                  if (cekPeminjamSekelas($con, $row["waktu_mulai"], $row["hari"])==true){
                                     ?>
                                     <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
                                     <?php
                                   }else{
                                     ?>
-                                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
+                                    <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
                                     <?php
                                   }
                                 ?>
                               </div>
+                              </form>
                             </div>
                           </div>
                         </div>
@@ -175,24 +173,10 @@
                             <div class="row d-flex align-items-center">
                               <div class="col-3 text-center">
                                 <h4 class="p-0 m-0"><?php echo $row["kode_ruang"]; ?></h4>
-                                <span class="text-secondary">(Lantai 9)</span>
+                                <span class="text-secondary"><?php echo "(Lantai ".$row["lantai"].")"; ?></span>
                               </div>
                               <div class="col-5">
-                                <h5><?php echo date('H.i',strtotime($row["waktu_mulai"])). " - ".date('H.i',strtotime($row["waktu_selesai"])) ?></h5>
-                              </div>
-                              <div class="col-4 text-right">
-                              <?php
-                                  $queryPeminjam=mysqli_query($con, "select a.*,b.id_kelas from tabel_info_kelas_kosong a, tabel_mahasiswa b where a.status_dipinjam='Dipinjam' and a.id_peminjam=b.id_mahasiswa and b.id_kelas='$resultLogin[id_kelas]'");
-                                  if (mysqli_num_rows($result) > 0){
-                                    ?>
-                                    <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                                    <?php
-                                  }else{
-                                    ?>
-                                    <button class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                                    <?php
-                                  }
-                                ?>
+                                <h5><?php echo tampilWaktu($row["waktu_mulai"]). " - ".tampilWaktu($row["waktu_selesai"]) ?></h5>
                               </div>
                             </div>
                           </div>
