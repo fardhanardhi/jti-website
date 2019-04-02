@@ -36,7 +36,7 @@
           <div class="row">
             <div class="col">
               <button type="button" class="btn btn-primary tmbh-kmpn">Tambah Kompen</button>
-              <button type="button" class="btn btn-success float-right tbl-info">Informasi</button>  
+              <button type="button" class="btn btn-success float-right tbl-info" data-target="#informasiKompen" data-toggle="modal">Informasi</button>  
               <br>
               <br>
             </div>
@@ -85,3 +85,28 @@
             </tbody>
           </table>
     </div>
+
+<!-- The modal pengaturan -->
+<div class="modal fade" id="informasiKompen" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body pb-0">
+          <h5 class="modal-title text-center">Informasi</h5>
+          <hr class="pl-4 pr-4 bg-dark">
+
+          <div class="row">
+            <div class="col-md-12">
+            <h6>1. Kompen = Alpha x 2</h6>
+            <br>
+            <h6>2. Jika mahasiswa ingin membayar kompen sebagai pengganti pekerjaan maka membayar Rp.10.000/Jam</h6>
+            <br>
+            <h6>3. Kompen akan dikalikan 2(dua) jika kompen pada semester sebelumnya belum diselesaikan</h6>
+          </div>
+        </div>
+        <div class="align-self-end p-2">
+          <button type="button" name="" class="btn btn-danger float-right" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
