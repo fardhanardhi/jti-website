@@ -1,50 +1,99 @@
 /* profil dosenKompen-amin */
 #dosenKompen .data-dosen {
-    padding: 2em;
-    color: black;
-  }
-  
-  #dosenKompen .detail-dosen.border-bottom.border-gray.pb-2.mb-0 {
-    margin-top: 1em;
-  }
-  /* kompensasi mahasiswa */
-  #dosenKompen .table {
-    margin-top: 2em;
-  }
-  
-  #dosenKompen .table-striped > thead > tr > th {
-    background-color: #40407a;
-    color: white;
-  }
-  
-  #dosenKompen .table-striped > tbody > tr > td {
-    background-color: #FCA5A5;
-  }
-  #dosenHomepage .table-striped > tbody > tr > td {
-    font-size: 1em;
-    padding-bottom: 1.1em;
-    padding-top: 1.1em;
-  }
-  
-  /* list kompen */
-  #dosenKompen .judul {
-    font-size: 1.2em;
-  }
-  #dosenKompen .pratinjau {
-    background: #40407A;
-    border-radius: 5px;
-  
-    font-family: Lato;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: normal;
-    color: #FFFFFF;
-  }
-  #dosenKompen .tambah-pekerjaan-kompen{
-    background-color: #40407a;
-    color: white;
-    font-size: 12px;
-    font-family: lato;
-    width: 190px;
-  }
+  padding: 2em;
+  color: black;
+}
+
+#dosenKompen .detail-dosen.border-bottom.border-gray.pb-2.mb-0 {
+  margin-top: 1em;
+}
+/* kompensasi mahasiswa */
+#dosenKompen .table {
+  margin-top: 2em;
+}
+
+#dosenKompen .table-striped > thead > tr > th {
+  background-color: #40407a;
+  color: white;
+}
+
+#dosenKompen .table-striped > tbody > tr > td {
+  background-color: #FCA5A5;
+}
+#dosenKompen .keterangan > ul > li .sudah{
+  background-color: green;
+}
+
+/* list kompen */
+#dosenKompen .judul {
+  font-size: 1.2em;
+}
+#dosenKompen .pratinjau {
+  background: #40407A;
+  border-radius: 5px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: normal;
+  color: #FFFFFF;
+}
+#dosenKompen .tambah-pekerjaan-kompen{
+  background-color: #40407a;
+  color: white;
+  font-size: 12px;
+  font-family: lato;
+  width: 190px;
+}
+#dosenKompen ul.keterangan{
+  list-style-type: square;
+}
+#dosenKompen td.nomor-kompen{
+  width: 0.3em;
+}
+#dosenKompen td.deskripsi-kompen{
+  width: 15em;
+}
+#dosenKompen td.pilihan-kompen{
+  width: 0.3em;
+}
+#dosenKompen .isi-ada > table {
+  white-space: nowrap;
+}
+
+#dosenKompen .dropdown-kompen {
+  margin-top: 0.7em;
+  left: -5em;
+}
+
+#dosenKompen .dropdown-kompen::before{
+  position: absolute;
+  border-width: 0px 8px 10px 8px;
+  border-style: solid;
+  right: 4.7em;
+  border-color: rgb(216, 208, 208) transparent;
+}
+
+
+/* modal */
+#dosenKompen #exampleModalCenter {
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+#dosenKompen .close {
+  padding-right: 0.5em;
+}
+
+#dosenKompen .tambahkan-modal{
+  background-color: #3AAC5F;
+  color: white;
+  border-radius: 10px;
+}
+
+#dosenKompen .tambahkan-modal-parent{
+  padding-right: 4em;
+}
+#dosenKompen .titikdua {
+  padding-left: 120px;
+}

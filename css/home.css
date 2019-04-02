@@ -110,7 +110,8 @@
 
 /* Download File */
 #home .download {
-  border-radius: 3%;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 #home .isi-download a {
   text-decoration: none;
@@ -119,4 +120,24 @@
 #home .isi-download a:hover {
   text-decoration: none;
   color: blue;
+}
+
+/* CSS Komen */
+#home .komen2 {
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+/* CSS Button Back */
+#home .back {
+  width: 50%;
+  background-color: #40407a;
+}
+#home .back a {
+  text-decoration: none;
+  color: white;
+}
+#home .back:hover {
+  background-color: rgba(64, 64, 122, 0.548);
+  color: white;
 }

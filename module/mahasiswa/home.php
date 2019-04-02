@@ -267,6 +267,22 @@
             <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
             <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
             <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
+            <div class="row komens">
+              <div class="col-sm-1">
+
+              </div>
+              <div class="col-sm-8 border-left border-dark">
+                <strong>Admin</strong> <span class="komen">Dosen pergi ke jepang dalam rangka sebagai perwakilan indonesia di pertemuan KTT 2019 </span> <br>
+                <strong>Sabyan_Lovers</strong> <span class="komen">Okeke min</span> <br>
+                <div class="form-group border border-dark komen2 " >
+                  <textarea class="form-control border-0" name="" id="" rows="1" placeholder="Tulis Komentar..."></textarea>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <strong>Reply</strong>
+              </div>
+            </div>          
+            
           </div>
         </div>
       </div>
@@ -417,16 +433,18 @@
               sedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi
               untuk meminta tugas. <br><br>
               Terima Kasih...
-              <div class="download border border-dark mt-2 p-3">
-                <div class="row isi-download">
-                  <div class="col-sm-7">
-                    <h5><a href="">Dokumen Rahasia</a></h5>
-                  </div>
-                  <div class="col-sm-5 text-right">
-                    <img src="../img/vector.svg" alt="Download button" class="">
+              <a href="">
+                <div class="download border border-dark mt-2 p-3">
+                  <div class="row isi-download">
+                    <div class="col-sm-7">
+                      <h5><a href="">Dokumen Rahasia</a></h5>
+                    </div>
+                    <div class="col-sm-5 text-right">
+                      <img src="../img/vector.svg" alt="Download button" class="">
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a> 
             </div>
           </div>
         </div>
@@ -441,11 +459,22 @@
           </div>
         </div>
       </div>
+
+      <div class="button-back container-fluid m-0">
+        <div class="row btn-back">
+          <div class="col-sm-6 text-left">
+            <button class="back btn pl-1"><a href="#">&xlarr; &#124; Berita Lama</a></button>
+          </div>
+          <div class="col-sm-6 d-block text-right">
+            <button class="back btn pl-1"><a href="#">Berita Baru  &#124; &rarr; </a></button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="col-md-3 p-0">
       <div class="sticky-sidebar sticky-top">
-        <!-- <div class="m-2 p-3 bg-white rounded shadow-sm">
+        <div class="m-2 p-3 bg-white rounded shadow-sm">
           <div class="beasiswa pb-3 mb-0 border-bottom border-dark">
             <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
             <h6><strong>Beasiswa Astra</strong></h6>
@@ -465,8 +494,8 @@
               <button class="check btn"><a href="#">Cek Link</a></button>
             </small>
           </div>
-        </div> -->
-        <div class="m-2 p-3 bg-white rounded shadow-sm">
+        </div>
+        <!-- <div class="m-2 p-3 bg-white rounded shadow-sm">
           <div class="beasiswa pb-3 mb-0 ">
             <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
             <div class="scholarship text-center mt-5 mb-5">
@@ -474,9 +503,8 @@
               <br>
               <p>Mohon maaf, untuk saat ini beasiswa belum tersedia</p>
             </div>
-
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

@@ -15,6 +15,7 @@ body {
   padding-top:0.3em;
 }
 
+/* Popup Pengaturan */
 #eyeA {
   border-radius: 0;
   cursor: pointer;
@@ -38,6 +39,49 @@ body {
   border-bottom-right-radius: 10px;
   padding-top:0.3em;
 }
+
+.file {
+  cursor: pointer;
+}
+.file input {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.file-custom {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: .1rem;
+  padding-left: 0.8rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.file-custom:after {
+  content: "Pilih file";
+}
+.file-custom:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 5.5em;
+  content: "Browse";
+  color: black;
+  text-align: center;
+  padding: .1rem;
+  background-color: #CBCBCB;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.close-setting{
+  margin-right: -0.3em;
+  margin-top: -0.5em;
+}
+/* end popup pengaturan */
 
 #parent-error{
   height: 30px;

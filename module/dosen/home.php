@@ -33,6 +33,22 @@
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125">
             <div class="isi">
+
+              <!-- ------------------------ -->
+              <!-- Jika Jadwal Dosen Kosong -->
+              <!-- ------------------------ -->
+
+              <!-- <div class="jadwal-dosen-kosong text-center">
+                  <img src="../img/jadwalKosong.svg" alt="jadwal kosong">
+                  <p>Maaf, jadwal masih belum tersedia. <br> Jadwal baru bisa dilihat pada bulan Juni 2019</p>
+              </div> -->
+
+              <!-- ---------------------------- -->
+              <!-- END Jika Jadwal Dosen Kosong -->
+              <!-- ---------------------------- -->
+
+
+
               <table class="table table-striped table-bordered text-center">
                 <thead>
                   <tr>
@@ -124,129 +140,338 @@
           <h6 class="border-bottom border-gray pb-2 mb-0 judul">KOMPEN MAHASISWA</h6>
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small">
-              <div class="isi-ada text center">
+
+              <!-- ------------ -->
+              <!-- Kompen Tabel -->
+              <!-- ------------ -->
+
+              <div class="col-12 p-0">
+
                 <form action="">
-                  <table class="table table-striped table-bordered text-center">
-                    <thead>
-                      <tr>
-                        <th>Pekerjaan</th>
-                        <th>Kuota</th>
-                        <th>Selesai</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Menata dokumen di ruang baca</td>
-                        <td>2 Mhs</td>
-                        <td> 
-                          <div class="kompen-check">
-                            <input type="checkbox" value="" id="check1">
-                            <label for="check1" class="labelCheck far fa-square"></label>
-                          </div>
-                        </td>  
-                      </tr>
-                      <tr>
-                        <td>Menata dokumen di ruang mayat</td>
-                        <td>2 Stn</td>
-                        <td> 
-                          <div class="kompen-check">
-                            <input type="checkbox" value="" id="check2">
-                            <label for="check2" class="labelCheck far fa-square"></label>
-                          </div>
-                        </td>  
-                      </tr>
-                      <tr>
-                        <td>Menata baca di ruang dokumen</td>
-                        <td>2 Mhs</td>
-                        <td> 
-                          <div class="kompen-check">
-                            <input type="checkbox" value="" id="check3">
-                            <label for="check3" class="labelCheck far fa-square"></label>
-                          </div>
-                        </td>  
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- Tombol  -->
-                  <div class="d-flex justify-content-center"> 
-                    <button type="button" class="btn tambah-pekerjaan-kompen" data-toggle="modal" data-target="#exampleModalCenter">Tambah Pekerjaan</button>
-                    <button type="submit" class="btn submit-kompen-dosen">Submit</button>
-                  </div>
-                </form>
-              </div>
-              <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">                        
-                        <button type="button" class="close text-right active" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>                     
-                        <center>
-                          <h5 class=" modal-title text-center border-bottom border-gray pb-2 mb-0" id="exampleModalCenterTitle" style="margin: 0 auto;">Tambah Pekerjaan</h5>
-                        </center>
-                      <form action="" method="post">
-                        <div class="modal-body">
-                            <div class="form-group row">
-                              <div class="col-2"></div>
-                            <div class="col-3">
-                              <label for="pekerjaanKompensasi"><h6>Pekerjaan Kompensasi</h6></label>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col-md-12">
+                              Menata dokumen di ruang baca
                             </div>
-                            <div class="col-6">
-                              <input id="pekerjaanKompensasi" class="form-control" type="text">
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              kuota: 2 mahasiswa
                             </div>
-                            </div>
-                            <div class="form-group row">
-                              <div class="col-2"></div>
-                              <div class="col-3">                                
-                                <label for="kuotaMahasiswa"><h6>Kuota Mahasiswa</h6></label>
-                              </div>
-                              <div class="col-3">
-                                <select class="form-control kuota-mahasiswa" id="kuotaMahasiswa">
-                              </div>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                                <option>13</option>
-                                <option>14</option>
-                                <option>15</option>
-                                <option>16</option>
-                                <option>17</option>
-                                <option>18</option>
-                                <option>19</option>
-                                <option>20</option>
-                                <option>21</option>
-                                <option>22</option>
-                                <option>23</option>
-                                <option>24</option>
-                                <option>25</option>
-                                <option>26</option>
-                                <option>27</option>
-                                <option>28</option>
-                                <option>29</option>
-                                <option>30</option>
-                              </select>
-                            </div> 
-                          <div class="modal-footer col-12 tambahkan-modal-parent text-right">
-                            <button type="submit" class="btn tambahkan-modal ">Tambahkan</button>
                           </div>
                         </div>
-                      </form>
+                        <div class="col-md-auto my-auto">
+                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                            <div class="dropdown-kompen dropdown-menu">
+                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                </form>
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col-md-12">
+                              Menata dokumen di ruang baca
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              kuota: 2 mahasiswa
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                            <div class="dropdown-kompen dropdown-menu">
+                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col-md-12">
+                              Menata dokumen di ruang baca
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              kuota: 2 mahasiswa
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                            <div class="dropdown-kompen dropdown-menu">
+                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col-md-12">
+                              Menata dokumen di ruang baca
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              kuota: 2 mahasiswa
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                            <div class="dropdown-kompen dropdown-menu">
+                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col-md-12">
+                              Menata dokumen di ruang baca
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              kuota: 2 mahasiswa
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                            <div class="dropdown-kompen dropdown-menu">
+                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- <table class="table d-flex">
+                  <tbody class="data-kompen-ada">
+                    <form action="">
+                      <tr>
+                        <td class="nomor-kompen">3</td>
+                        <td class="deskripsi-kompen">
+                          <p class="tugas-kompen">Menata dokumen di ruang baca <br> Kuota : 2 Mahasiswa</p> 
+                        </td>
+                        <td class="action-kompen"> 
+                          <div class="kompen-submit">
+                            <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                          </div>
+                          
+                        </td>
+                          <td class="pilihan-kompen">
+                            <div class="dropdown">
+                              <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                              <div class="dropdown-kompen dropdown-menu">
+                                <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
+                              </div>
+                              </div>
+                          </td>
+                      </tr>
+                    </form>
+                    <form action="">
+                      <tr>
+                        <td class="nomor-kompen">3</td>
+                        <td class="deskripsi-kompen">
+                          <p class="tugas-kompen">Menata dokumen di ruang baca <br> Kuota : 2 Mahasiswa</p> 
+                        </td>
+                        <td class="action-kompen"> 
+                          <div class="kompen-submit">
+                            <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                          </div>
+                          
+                        </td>
+                          <td class="pilihan-kompen">
+                            <div class="dropdown">
+                              <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                              <div class="dropdown-kompen dropdown-menu">
+                                <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
+                              </div>
+                              </div>
+                          </td>
+                      </tr>
+                    </form>
+                    <form action="">
+                      <tr>
+                        <td class="nomor-kompen">3</td>
+                        <td class="deskripsi-kompen">
+                          <p class="tugas-kompen">Menata dokumen di ruang baca <br> Kuota : 2 Mahasiswa</p> 
+                        </td>
+                        <td class="action-kompen"> 
+                          <div class="kompen-submit">
+                            <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                          </div>
+                          
+                        </td>
+                          <td class="pilihan-kompen">
+                            <div class="dropdown">
+                              <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                              <div class="dropdown-kompen dropdown-menu">
+                                <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                                <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
+                              </div>
+                              </div>
+                          </td>
+                      </tr>
+                    </form>
+                  </tbody>
+                </table> -->
+
+              </div>
+
+              <!-- ---------------- -->
+              <!-- END Kompen Tabel -->
+              <!-- ---------------- -->
+
+              <!-- Tombol  -->
+              <div class="d-flex justify-content-center">
+                <button type="button" class="btn tambah-pekerjaan-kompen" data-toggle="modal"
+                  data-target="#exampleModalCenter">Tambah Pekerjaan</button>
+              </div>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content">
+                    <button type="button" class="close text-right active" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <center>
+                      <h5 class=" modal-title text-center border-bottom border-gray pb-2 mb-0"
+                        id="exampleModalCenterTitle" style="margin: 0 auto;">Tambah Pekerjaan</h5>
+                    </center>
+                    <form action="" method="post">
+                      <div class="modal-body">
+                        <div class="form-group row">
+                          <div class="col-2"></div>
+                          <div class="col-3">
+                            <label for="pekerjaanKompensasi">
+                              <h6>Pekerjaan Kompensasi</h6>
+                            </label>
+                          </div>
+                          <div class="col-6">
+                            <input id="pekerjaanKompensasi" class="form-control" type="text">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="col-2"></div>
+                          <div class="col-3">
+                            <label for="kuotaMahasiswa">
+                              <h6>Kuota Mahasiswa</h6>
+                            </label>
+                          </div>
+                          <div class="col-3">
+                            <select class="form-control kuota-mahasiswa" id="kuotaMahasiswa">
+                          </div>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                          <option>11</option>
+                          <option>12</option>
+                          <option>13</option>
+                          <option>14</option>
+                          <option>15</option>
+                          <option>16</option>
+                          <option>17</option>
+                          <option>18</option>
+                          <option>19</option>
+                          <option>20</option>
+                          <option>21</option>
+                          <option>22</option>
+                          <option>23</option>
+                          <option>24</option>
+                          <option>25</option>
+                          <option>26</option>
+                          <option>27</option>
+                          <option>28</option>
+                          <option>29</option>
+                          <option>30</option>
+                          </select>
+                        </div>
+                        <div class="modal-footer col-12 tambahkan-modal-parent text-right">
+                          <button type="submit" class="btn tambahkan-modal ">Tambahkan</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              
-              <!-- --------------------- -->
-              <!-- Jika Kompen Kosong    -->
-              <!-- --------------------- -->
+              </div>
+
+              <!-- ------------------ -->
+              <!-- Jika Kompen Kosong -->
+              <!-- ------------------ -->
 
               <!-- <div class="isi py-5 text-center">
                 <div class="text-center mb-2">
@@ -256,6 +481,10 @@
                   <h6>Anda tidak mempunyai daftar pekerjaan</h6>
                 </div>
               </div> -->
+
+              <!-- ---------------------- -->
+              <!-- END Jika Kompen Kosong -->
+              <!-- ---------------------- -->
             </div>
           </div>
         </div>
