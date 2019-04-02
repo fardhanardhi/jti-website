@@ -4,10 +4,12 @@ include "../config/connection.php";
 
   if(isset($_POST["dosen"])){
     $_SESSION["level"]="dosen";
+    $_SESSION["id"]=3;
     header("location: ../index.php");
   }
   else if(isset($_POST["mahasiswa"])){
     $_SESSION["level"]="mahasiswa";
+    $_SESSION["id"]=4;
     header("location: ../index.php");
   }
 
