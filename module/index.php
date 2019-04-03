@@ -209,6 +209,9 @@
             case "kompenAbsen":
                 include "dosen/dosenKompen.php";
             break;
+            case "dataDosen":
+                include "dosen/dataDosen.php";
+            break;
             case "notifikasi":
               include "notifikasi.php";
             break;
