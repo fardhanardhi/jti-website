@@ -91,20 +91,20 @@
 
 #dosenHomepage .dropdown-kompen {
   margin-top: 0.7em;
-  left: -5em;
 }
 
 #dosenHomepage .dropdown-kompen::before{
-  position: absolute;
+  /* position: relative;
   border-width: 0px 8px 10px 8px;
   border-style: solid;
-  right: 4.7em;
+   */
+  right: 0em;
   border-color: rgb(216, 208, 208) transparent;
 }
-/* tahap pengembangan */
 
-/* #dosenHomepage .data-kompen-ada{
+#dosenHomepage .data-kompen-ada{
+  
   height: 20em;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
-} */
+}
