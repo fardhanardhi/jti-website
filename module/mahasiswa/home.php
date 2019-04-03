@@ -460,12 +460,12 @@
         </div>
       </div>
 
-      <div class="button-back">
+      <div class="button-back container-fluid m-0">
         <div class="row btn-back">
-          <div class="col-sm-6 text-left ml-2">
+          <div class="col-sm-6 text-left">
             <button class="back btn pl-1"><a href="#">&xlarr; &#124; Berita Lama</a></button>
           </div>
-          <div class="col-sm-6 d-block text-right ml-2">
+          <div class="col-sm-6 d-block text-right">
             <button class="back btn pl-1"><a href="#">Berita Baru  &#124; &rarr; </a></button>
           </div>
         </div>

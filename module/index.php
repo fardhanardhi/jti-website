@@ -1,6 +1,35 @@
 <?php
   session_start();
-  $level=$_SESSION['level'];
+  include "../config/connection.php";
+
+  $level = $_SESSION['level'];
+  $idUser = $_SESSION['id'];
+
+  switch ($level) {
+    case 'admin':
+      $queryUser = "SELECT * FROM tabel_admin WHERE id_admin=$idUser";
+      $resultUser = mysqli_query($con, $queryUser);
+      $rowUser = mysqli_fetch_assoc($resultUser);
+      $namaUser = "Admin";
+      break;
+    case 'dosen':
+      $queryUser = "SELECT * FROM tabel_dosen WHERE id_dosen=$idUser";
+      $resultUser = mysqli_query($con, $queryUser);
+      $rowUser = mysqli_fetch_assoc($resultUser);
+      $namaUser = $rowUser["nama_dosen"];
+      break;
+    case 'mahasiswa':
+      $queryUser = "SELECT * FROM tabel_mahasiswa WHERE id_mahasiswa=$idUser";
+      $resultUser = mysqli_query($con, $queryUser);
+      $rowUser = mysqli_fetch_assoc($resultUser);
+      $namaUser = $rowUser["nama_mahasiswa"];
+      break;
+    default:
+      $namaUser = "User tidak ditemukan";
+      break;
+  }
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +101,7 @@
         <img class="dropdown-toggle nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
         <a href="#" class="dropdown-toggle ml-2 profile-link" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">Avatar <b class="caret"></b></a>
+          aria-haspopup="true" aria-expanded="false"><?php echo($namaUser); ?>&nbsp;<b class="caret"></b></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
           <b class="caret d-none d-lg-block d-xl-block"></b>
           <a class="dropdown-item" href="#" data-target="#largeShoes" data-toggle="modal">Pengaturan</a>
@@ -91,7 +120,7 @@
         <div class="modal-body pb-0">
           <button type="button" class="close close-setting" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>          
+          </button>
           <h5 class="modal-title text-center">Pengaturan</h5>
           <hr class="pl-4 pr-4 bg-dark">
 
@@ -100,7 +129,7 @@
               <center><img src="../attachment/img/avatar.jpeg" id="fotoPrev" height="150px" width="150px"
                   class="rounded-circle" /></center>
               <br>
-              <center>AVATAR</center>
+              <center><?php echo($namaUser); ?></center>
               <br>
               <form class="px-2">
                 <div class="form-group row">
@@ -108,9 +137,9 @@
                   <div class="input-group col-md-9">
                     <label for="foto" class="file form-control text-secondary">
                       <input type="file" class="form-control shadow-none" id="foto" name="foto"
-                              onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);"
-                              accept="image/*">
-                        <span class="file-custom"></span>
+                        onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);"
+                        accept="image/*">
+                      <span class="file-custom"></span>
                     </label>
                   </div>
                 </div>

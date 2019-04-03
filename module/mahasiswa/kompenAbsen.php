@@ -1,15 +1,14 @@
 <main role="main" class="container-fluid">
   <div id="kompenAbsen" class="row">
-    <div class="col-md-12 p-0">
-      <div class="m-2 bg-white shadow-sm rounded">
+    <div class="col-md-12 p-0 ">
+      <div class="m-2 bg-white shadow-sm rounded p-3">
         <nav class="nav nav-underline">
-            <div class="col-md-1"></div>
             <div class="col-md-2 pt-3 pb-3 pr-0">
             <img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="150" width="150">
-            
             </div>
             <div class="col-md pt-3 pb-3 pl-0">
-              <h1>Avatar</h1>
+              <h2>Avatar</h2>
+              <br>
               <div class="container-fluid">
                 <div class="row text-center">
                   <div class="col-md-4"><h1>A</h1></div>
@@ -28,17 +27,16 @@
                 </div>
               </div>
               </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-7"></div>
         </nav>
         <nav class="nav nav-underline">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-md-12">
         <div class="col-md p-0">
         <div class="container-fluid p-0 m-0">
           <div class="row">
             <div class="col">
               <button type="button" class="btn btn-primary tmbh-kmpn">Tambah Kompen</button>
-              <button type="button" class="btn btn-success float-right tbl-info">Informasi</button>  
+              <button type="button" class="btn btn-success float-right tbl-info" data-target="#informasiKompen" data-toggle="modal">Informasi</button>  
               <br>
               <br>
             </div>
@@ -87,3 +85,28 @@
             </tbody>
           </table>
     </div>
+
+<!-- The modal pengaturan -->
+<div class="modal fade" id="informasiKompen" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body pb-0">
+          <h5 class="modal-title text-center">Informasi</h5>
+          <hr class="pl-4 pr-4 bg-dark">
+
+          <div class="row">
+            <div class="col-md-12">
+            <h6>1. Kompen = Alpha x 2</h6>
+            <br>
+            <h6>2. Jika mahasiswa ingin membayar kompen sebagai pengganti pekerjaan maka membayar Rp.10.000/Jam</h6>
+            <br>
+            <h6>3. Kompen akan dikalikan 2(dua) jika kompen pada semester sebelumnya belum diselesaikan</h6>
+          </div>
+        </div>
+        <div class="align-self-end p-2">
+          <button type="button" name="" class="btn btn-danger float-right" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>

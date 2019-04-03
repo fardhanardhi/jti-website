@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 01, 2019 at 02:13 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Host: localhost:3306
+-- Generation Time: Apr 02, 2019 at 10:34 AM
+-- Server version: 5.7.25-0ubuntu0.18.04.2
+-- PHP Version: 7.2.15-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -43,9 +41,9 @@ CREATE TABLE `tabel_absensi` (
 --
 
 INSERT INTO `tabel_absensi` (`id_absensi`, `id_mahasiswa`, `sakit`, `ijin`, `alfa`, `jumlah`, `id_status_mahasiswa`) VALUES
-(1, 1, 1, 2, 0, 3, 1),
-(2, 2, 4, 1, 3, 8, 1),
-(3, 3, 1, 0, 0, 1, 2);
+(1, 4, 1, 2, 0, 3, 1),
+(2, 10, 4, 1, 3, 8, 1),
+(3, 13, 1, 0, 0, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -75,7 +73,7 @@ INSERT INTO `tabel_admin` (`id_admin`, `username`, `password`, `level_user`) VAL
 
 CREATE TABLE `tabel_attachment` (
   `id_attachment` int(30) NOT NULL,
-  `tipe` text NOT NULL,
+  `tipe` enum('gambar','file') NOT NULL,
   `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -84,9 +82,11 @@ CREATE TABLE `tabel_attachment` (
 --
 
 INSERT INTO `tabel_attachment` (`id_attachment`, `tipe`, `file`) VALUES
-(1, 'GAMBAR1', 'GAMBAR1'),
-(2, 'GAMBAR2', 'GAMBAR2'),
-(3, 'GAMBAR3', 'GAMBAR3');
+(1, 'gambar', 'yan.png'),
+(2, 'gambar', 'yuri.png'),
+(3, 'gambar', 'ariadi.png'),
+(4, 'gambar', 'atiqah.png'),
+(5, 'gambar', 'ridwan.png');
 
 -- --------------------------------------------------------
 
@@ -216,7 +216,7 @@ CREATE TABLE `tabel_info_kelas_kosong` (
 --
 
 INSERT INTO `tabel_info_kelas_kosong` (`id_info_kelas_kosong`, `id_ruang`, `peminjam`, `hari`, `jumlah_jam`, `status_dipinjam`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`, `level_peminjam`) VALUES
-(1, 1, 1, 'senin', 6, 'Dipinjam', '08:00:00', '16:00:00', '0000-00-00 00:00:00', 0),
+(1, 1, 1, 'senin', 6, 'Kosong', '08:00:00', '16:00:00', '0000-00-00 00:00:00', 0),
 (2, 2, 2, 'senin', 3, 'Dipinjam', '08:00:00', '11:00:00', '0000-00-00 00:00:00', 0),
 (3, 3, 3, 'selasa', 2, 'Dipinjam', '09:00:00', '11:00:00', '0000-00-00 00:00:00', 0);
 
@@ -423,12 +423,12 @@ CREATE TABLE `tabel_mahasiswa` (
   `nim` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `nama_mahasiswa` varchar(100) NOT NULL,
-  `alamat` varchar(250) NOT NULL,
+  `alamat` varchar(250) DEFAULT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan') NOT NULL,
-  `tempat_lahir` varchar(50) NOT NULL,
-  `tanggal_lahir` date NOT NULL,
-  `gambar` text NOT NULL,
-  `waktu` datetime NOT NULL,
+  `tempat_lahir` varchar(50) DEFAULT NULL,
+  `tanggal_lahir` date DEFAULT NULL,
+  `gambar` text,
+  `waktu` datetime DEFAULT NULL,
   `level_user` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -437,9 +437,35 @@ CREATE TABLE `tabel_mahasiswa` (
 --
 
 INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `username`, `nim`, `password`, `nama_mahasiswa`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `gambar`, `waktu`, `level_user`) VALUES
-(1, 1, 1, '1741720054', '1741720054', 'coba4coba4', 'Ermi Pristiyaningrum', 'Tulungagung', 'Perempuan', 'Tulungagung', '2019-03-18', '', '0000-00-00 00:00:00', 3),
-(2, 1, 1, '1741720053', '1741720053', 'coba5coba5', 'Dimas Shella Charlinawati', 'Bojonegoro', 'Perempuan', 'Bojonegoro', '2019-03-26', '', '0000-00-00 00:00:00', 3),
-(3, 2, 2, '1741720058', '1741720058', 'coba6coba6', 'Greggy Gianini Firmansyah', 'Malang', 'Laki-laki', 'Malang', '2019-03-13', '', '0000-00-00 00:00:00', 3);
+(4, 1, 1, '1741720144', '1741720144', '1741720144', 'Abdallah Darussalam Candra', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(5, 1, 1, '1741720008', '1741720008', '1741720008', 'Adn Maulidya Handah Putri', NULL, 'Perempuan', NULL, NULL, NULL, NULL, 3),
+(6, 1, 1, '1741720040', '1741720040', '1741720040', 'Aldihamda Sulthon Fuad Prajakusuma', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(7, 1, 1, '1741720043', '1741720043', '1741720043', 'Amin Anis Kuddah', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(8, 1, 1, '1741720086', '1741720086', '1741720086', 'Chintya Puspa Dewi', NULL, 'Perempuan', NULL, NULL, NULL, NULL, 3),
+(9, 1, 1, '1741720053', '1741720053', '1741720053', 'Dimas Shella Charlinawati', NULL, 'Perempuan', NULL, NULL, NULL, NULL, 3),
+(10, 1, 1, '1741720054', '1741720054', '1741720054', 'Ermi Pristiyaningrum', NULL, 'Perempuan', NULL, NULL, NULL, NULL, 3),
+(11, 1, 1, '1741720045', '1741720045', '1741720045', 'Fardhan Ardhi Ramadhan', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(12, 1, 1, '1741720026', '1741720026', '1741720026', 'Galang Yudha Pratama', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(13, 1, 1, '1741720088', '1741720088', '1741720088', 'Greggy Gianini Firmansyah', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(14, 1, 1, '1741720192', '1741720192', '1741720192', 'Hafizh Dias Ramadhan', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(15, 1, 1, '1741720058', '1741720058', '1741720058', 'Haryo Bagus Setyawan', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(16, 1, 1, '1741720032', '1741720032', '1741720032', 'Hesti Anisa Reski', NULL, 'Perempuan', NULL, NULL, NULL, NULL, 3),
+(17, 1, 1, '1741720018', '1741720018', '1741720018', 'Ika Puspa Fairuz Wiwanata', NULL, 'Perempuan', NULL, NULL, NULL, NULL, 3),
+(18, 1, 1, '1741720011', '1741720011', '1741720011', 'Ilham Nuswantoro Aji', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(19, 1, 1, '1741720027', '1741720027', '1741720027', 'Leni Saputri', NULL, 'Perempuan', NULL, NULL, NULL, NULL, 3),
+(20, 1, 1, '1741720031', '1741720031', '1741720031', 'Muhammad Aliyul Murtadlo', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(21, 1, 1, '1741720114', '1741720114', '1741720114', 'Okta Chandika Salsabila', NULL, 'Perempuan', NULL, NULL, NULL, NULL, 3),
+(22, 1, 1, '1741720049', '1741720049', '1741720049', 'Panji Awwaludi Dzikriawan', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(23, 1, 1, '1741720061', '1741720061', '1741720061', 'Rahardhiyan Wahyu Putra', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(24, 1, 1, '1741720112', '1741720112', '1741720112', 'Reffan Pandu Amirulloh', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(25, 1, 1, '1741720160', '1741720160', '1741720160', 'Reza Ariestya Putra', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(26, 1, 1, '1741720111', '1741720111', '1741720111', 'Septa Kusumaningtyas', NULL, 'Perempuan', NULL, NULL, NULL, NULL, 3),
+(27, 1, 1, '1741720196', '1741720196', '1741720196', 'Septian Caesar Floresko', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(28, 1, 1, '1741720158', '1741720158', '1741720158', 'Sulthan Rafif', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(29, 1, 1, '1741720081', '1741720081', '1741720081', 'Syahdanny Alhamda', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(30, 1, 1, '1741720203', '1741720203', '1741720203', 'Vian Satria Maulana Navalino', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(31, 1, 1, '1741720076', '1741720076', '1741720076', 'Vicko Handika Nanda Firdiansyah', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3),
+(32, 1, 1, '1741720036', '1741720036', '1741720036', 'Wiji Prabowo', NULL, 'Laki-laki', NULL, NULL, NULL, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -605,7 +631,9 @@ ALTER TABLE `tabel_attachment`
 ALTER TABLE `tabel_chat`
   ADD PRIMARY KEY (`id_chat`),
   ADD KEY `penerima` (`penerima`),
-  ADD KEY `pengirim` (`pengirim`);
+  ADD KEY `pengirim` (`pengirim`),
+  ADD KEY `level_pengirim` (`level_pengirim`),
+  ADD KEY `level_penerima` (`level_penerima`);
 
 --
 -- Indexes for table `tabel_dosen`
@@ -758,133 +786,111 @@ ALTER TABLE `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_absensi`
   MODIFY `id_absensi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   MODIFY `id_admin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
-  MODIFY `id_attachment` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id_attachment` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
   MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   MODIFY `id_dosen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
   MODIFY `id_info` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   MODIFY `id_beasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_info_kelas_kosong`
 --
 ALTER TABLE `tabel_info_kelas_kosong`
   MODIFY `id_info_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
   MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   MODIFY `id_kelas` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
   MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   MODIFY `id_komentar` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   MODIFY `id_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
   MODIFY `id_kuisoner` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
-  MODIFY `id_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   MODIFY `id_notifikasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   MODIFY `id_pekerjaan_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
   MODIFY `id_prodi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `tabel_ruangan`
 --
 ALTER TABLE `tabel_ruangan`
   MODIFY `id_ruang` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_semester`
 --
 ALTER TABLE `tabel_semester`
   MODIFY `id_semester` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   MODIFY `id_status_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- Constraints for dumped tables
 --
@@ -999,7 +1005,6 @@ ALTER TABLE `tabel_notifikasi`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   ADD CONSTRAINT `tabel_pekerjaan_kompen_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
