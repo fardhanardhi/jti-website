@@ -462,7 +462,7 @@
         </div>
       </div>
 
-      <div class="button-back m-2 p-1 mb-3">
+      <div class="button-back m-2 p-0 mb-3">
         <div class="row btn-back">
           <div class="col-sm-6 text-left ">
             <button class="shadow-sm back btn pl-1"><a href="#">&xlarr; &#124; Berita Lama</a></button>

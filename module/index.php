@@ -54,21 +54,57 @@
       <div class="col-md-12 my-auto">
         <div class="row text-center text-white font-weight-bold">
           <div class="col-md-0 col-lg"></div>
-          <div onclick="location.href='index.php?module=home';" class="navigation-menu col-md-3 col-lg-2 my-1">
+          <div onclick="location.href='index.php?module=home';" class="navigation-menu col-md-3 col-lg-2 my-1">      
             <img src="../img/navigation/home.svg">
             <p class="mt-3">HOME</p>
           </div>
           <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
-            <img src="../img/navigation/jadwalKuliah.svg">
-            <p class="mt-3">JADWAL KULIAH</p>
+            <?php
+                if ($level =="mahasiswa") {
+                ?>
+                  <img src="../img/navigation/jadwalKuliah.svg">
+                  <p class="mt-3">JADWAL KULIAH</p>
+                <?php
+                }
+                elseif ($level=="dosen") {
+                ?>
+                  <img src="../img/navigation/pesanKelas.svg">
+                  <p class="mt-3">PESAN KELAS</p>
+                <?php
+                }
+              ?>  
           </div>
           <div onclick="location.href='index.php?module=nilai';" class="navigation-menu col-md-3 col-lg-2 my-1">
-            <img src="../img/navigation/nilaiMahasiswa.svg">
-            <p class="mt-3">NILAI MAHASISWA</p>
+            <?php
+              if ($level =="mahasiswa") {
+              ?>
+                <img src="../img/navigation/nilaiMahasiswa.svg">
+                <p class="mt-3">NILAI MAHASISWA</p>
+              <?php
+              }
+              elseif ($level=="dosen") {
+              ?>
+                <img src="../img/navigation/pengajuanKRS.svg">
+                <p class="mt-3">PENGAJUAN KRS MAHASISWA</p>
+              <?php
+              }
+            ?>    
           </div>
           <div onclick="location.href='index.php?module=kompenAbsen';" class="navigation-menu col-md-3 col-lg-2 my-1">
-            <img src="../img/navigation/absensi.svg">
-            <p class="mt-3">ABSENSI & KOMPEN</p>
+            <?php
+              if ($level =="mahasiswa") {
+                ?>
+                <img src="../img/navigation/absensi.svg">
+                <p class="mt-3">ABSENSI & KOMPEN</p>
+              <?php
+              }
+              elseif ($level=="dosen") {
+                ?>
+                <img src="../img/navigation/absensi.svg">
+                <p class="mt-3">KOMPENSASI MAHASISWA</p>
+              <?php
+              }
+            ?> 
           </div>
           <div class="col-md-0 col-lg"></div>
         </div>

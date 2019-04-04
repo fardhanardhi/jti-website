@@ -5,3 +5,11 @@
 #kompenAbsen .tbl-info {
     border-radius: 15px;
 }
+
+#kompenAbsen .gambar-profil {
+    border-radius: 50%;
+}
+
+#kompenAbsen h2 {
+    color: #40407a;
+}

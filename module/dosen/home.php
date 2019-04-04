@@ -145,25 +145,33 @@
               <!-- Kompen Tabel -->
               <!-- ------------ -->
 
-              <div class="col-12 p-0">
+              <div class="col-12 p-0 data-kompen-ada">
+                <div class="border-bottom border-gray pb-2 mb-0"> </div>
 
                 <form action="">
                   <div class="row">
                     <div class="col-md-12">
                       <div class="row">
-                        <div class="col">
+                        <div class="col-md-7">
                           <div class="row">
-                            <div class="col-md-12">
-                              Menata dokumen di ruang baca
+                            <div class="col-md-1 my-auto">
+                            1.
                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              kuota: 2 mahasiswa
+                            <div class="col-md-9">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  Menata dokumen di ruang baca
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  kuota: 2 mahasiswa
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-auto my-auto">
+                        <div class="col-md-3 my-auto">
                           <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
                         </div>
                         <div class="col-md-auto my-auto">
@@ -171,219 +179,114 @@
                             <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
                             <div class="dropdown-kompen dropdown-menu">
                               <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
+                              <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen"><i class="far fa-trash-alt"></i> Hapus</a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </form>
-                <form action="">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="row">
-                        <div class="col">
-                          <div class="row">
-                            <div class="col-md-12">
-                              Menata dokumen di ruang baca
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              kuota: 2 mahasiswa
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-auto my-auto">
-                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
-                        </div>
-                        <div class="col-md-auto my-auto">
-                          <div class="dropdown">
-                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
-                            <div class="dropdown-kompen dropdown-menu">
-                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-                <form action="">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="row">
-                        <div class="col">
-                          <div class="row">
-                            <div class="col-md-12">
-                              Menata dokumen di ruang baca
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              kuota: 2 mahasiswa
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-auto my-auto">
-                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
-                        </div>
-                        <div class="col-md-auto my-auto">
-                          <div class="dropdown">
-                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
-                            <div class="dropdown-kompen dropdown-menu">
-                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-                <form action="">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="row">
-                        <div class="col">
-                          <div class="row">
-                            <div class="col-md-12">
-                              Menata dokumen di ruang baca
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              kuota: 2 mahasiswa
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-auto my-auto">
-                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
-                        </div>
-                        <div class="col-md-auto my-auto">
-                          <div class="dropdown">
-                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
-                            <div class="dropdown-kompen dropdown-menu">
-                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-                <form action="">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="row">
-                        <div class="col">
-                          <div class="row">
-                            <div class="col-md-12">
-                              Menata dokumen di ruang baca
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12">
-                              kuota: 2 mahasiswa
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-auto my-auto">
-                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
-                        </div>
-                        <div class="col-md-auto my-auto">
-                          <div class="dropdown">
-                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
-                            <div class="dropdown-kompen dropdown-menu">
-                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
-                              <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <div class="border-bottom border-gray pb-2 mb-0"> </div>
                 </form>
 
-                <!-- <table class="table d-flex">
-                  <tbody class="data-kompen-ada">
-                    <form action="">
-                      <tr>
-                        <td class="nomor-kompen">3</td>
-                        <td class="deskripsi-kompen">
-                          <p class="tugas-kompen">Menata dokumen di ruang baca <br> Kuota : 2 Mahasiswa</p> 
-                        </td>
-                        <td class="action-kompen"> 
-                          <div class="kompen-submit">
-                            <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="row">
+                            <div class="col-md-1 my-auto">
+                            1.
+                            </div>
+                            <div class="col-md-9">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  Menata dokumen di ruang baca
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  kuota: 2 mahasiswa
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          
-                        </td>
-                          <td class="pilihan-kompen">
-                            <div class="dropdown">
-                              <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
-                              <div class="dropdown-kompen dropdown-menu">
-                                <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
-                              </div>
-                              </div>
-                          </td>
-                      </tr>
-                    </form>
-                    <form action="">
-                      <tr>
-                        <td class="nomor-kompen">3</td>
-                        <td class="deskripsi-kompen">
-                          <p class="tugas-kompen">Menata dokumen di ruang baca <br> Kuota : 2 Mahasiswa</p> 
-                        </td>
-                        <td class="action-kompen"> 
-                          <div class="kompen-submit">
-                            <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-3 my-auto">
+                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                            <div class="dropdown-kompen dropdown-menu">
+                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                              <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen"><i class="far fa-trash-alt"></i> Hapus</a>
+                            </div>
                           </div>
-                          
-                        </td>
-                          <td class="pilihan-kompen">
-                            <div class="dropdown">
-                              <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
-                              <div class="dropdown-kompen dropdown-menu">
-                                <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-bottom border-gray pb-2 mb-0"> </div>
+                </form>
+                
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="row">
+                            <div class="col-md-1 my-auto">
+                            1.
+                            </div>
+                            <div class="col-md-9">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  Menata dokumen di ruang baca
+                                </div>
                               </div>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  kuota: 2 mahasiswa
+                                </div>
                               </div>
-                          </td>
-                      </tr>
-                    </form>
-                    <form action="">
-                      <tr>
-                        <td class="nomor-kompen">3</td>
-                        <td class="deskripsi-kompen">
-                          <p class="tugas-kompen">Menata dokumen di ruang baca <br> Kuota : 2 Mahasiswa</p> 
-                        </td>
-                        <td class="action-kompen"> 
-                          <div class="kompen-submit">
-                            <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                            </div>
                           </div>
-                          
-                        </td>
-                          <td class="pilihan-kompen">
-                            <div class="dropdown">
-                              <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
-                              <div class="dropdown-kompen dropdown-menu">
-                                <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
-                                <a class="dropdown-item" href="#"><i class="far fa-trash-alt"></i> Hapus</a>                              
-                              </div>
-                              </div>
-                          </td>
-                      </tr>
-                    </form>
-                  </tbody>
-                </table> -->
+                        </div>
+                        <div class="col-md-3 my-auto">
+                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                            <div class="dropdown-kompen dropdown-menu">
+                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                              <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen"><i class="far fa-trash-alt"></i> Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-bottom border-gray pb-2 mb-0"> </div>
+                </form>
 
               </div>
-
+              <!-- Modal -->
+              <div class="modal fade hapusKompen-modal" id="hapusKompen" tabindex="-1" role="dialog" 
+              aria-labelledby="hapusKompenTitle" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content konten-modal">
+                    <div class="modal-body ">
+                      <h5 class="isiHapusKompen text-center">Apakah Anda Yakin?</h5>
+                      <div class="tombolAksiHapusKompen text-center">
+                        <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
+                        <button type="button" class="btn btn-iya">Ya</button>
+                      </div>
+                    </div>                 
+                  </div>
+                </div>
+              </div>
               <!-- ---------------- -->
               <!-- END Kompen Tabel -->
               <!-- ---------------- -->
