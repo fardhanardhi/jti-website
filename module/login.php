@@ -77,6 +77,8 @@ include "../config/connection.php";
             <input type="submit" name="dosen" class="btn btn-primary align-self-end shadow-none mr-3" value="Dosen">
             <input type="submit" name="mahasiswa" class="btn btn-secondary align-self-end shadow-none mr-3"
               value="Mahasiswa">
+            <input type="submit" name="admin" class="btn btn-warning align-self-end shadow-none mr-3"
+              value="Admin">
           </form>
           <!-- end button -->
 

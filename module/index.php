@@ -280,7 +280,20 @@
             default:
             include "dosen/home.php";
         }
-    }
+      }
+
+      else if ($level=="admin") {
+        switch($module){
+            case "home":
+                include "admin/home.php";
+            break;
+            case "ruang":
+                include "admin/ruang/ruangan.php";
+            break;
+            default:
+            include "admin/home.php";
+        }
+      }
           
     if($level=="mahasiswa" || $level=="admin" || $level=="dosen"){
     ?>

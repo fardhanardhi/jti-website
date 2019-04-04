@@ -12,6 +12,11 @@ include "../config/connection.php";
     $_SESSION["id"]=4;
     header("location: ../index.php");
   }
+  else if(isset($_POST["admin"])){
+    $_SESSION["level"]="admin";
+    $_SESSION["id"]=1;
+    header("location: ../index.php");
+  }
 
   if (isset($_POST["submit"])==true) {
     $username = $_POST["username"];
@@ -22,6 +27,9 @@ include "../config/connection.php";
 
     $queryMhs = "SELECT * FROM tabel_mahasiswa WHERE username='$username'";
     $resultMhs = mysqli_query($con, $queryMhs);
+
+    $queryAdmin = "SELECT * FROM tabel_admin WHERE username='$username'";
+    $resultAdmin = mysqli_query($con, $queryAdmin);
 
     if(mysqli_num_rows($resultDosen) == 1) {
       $row = mysqli_fetch_assoc($resultDosen);
@@ -43,6 +51,17 @@ include "../config/connection.php";
       } else {
         $_SESSION["id"]=$row["id_mahasiswa"];
         $_SESSION["level"]="mahasiswa";
+        header("location: ../index.php");
+      }
+    }else if(mysqli_num_rows($resultAdmin) == 1) {
+      $row = mysqli_fetch_assoc($resultAdmin);
+
+      if ($password != $row["password"]) {
+        $error = "*Password salah";
+        header("Location: ../module/login.php?error=$error");
+      } else {
+        $_SESSION["id"]=$row["id_admin"];
+        $_SESSION["level"]="admin";
         header("location: ../index.php");
       }
     }else{
