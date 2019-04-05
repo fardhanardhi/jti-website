@@ -28,3 +28,4 @@
 <link rel="stylesheet" href="../css/notifikasi.css">
 <link rel="stylesheet" href="../css/dosenKompen.css">
 <link rel="stylesheet" href="../css/adminRuang.css">
+<link rel="stylesheet" href="../css/admin.css">
