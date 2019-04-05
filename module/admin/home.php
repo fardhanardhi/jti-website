@@ -1,179 +1,58 @@
-<main role="main" class="container-fluid">
+<main role="main" class="container-fluid" id="homeAdmin">
   <div class="row">
 
     <div class="col-md-12 p-0">
-      <div class="m-2 bg-white shadow-sm rounded">
+      <div class="m-2 bg-white shadow-sm">
         <nav class="nav nav-underline">
-          <span class="nav-link">KARTU HASIL STUDI</span>
+          <span class="nav-link">Dashboard</span>
         </nav>
       </div>
     </div>
 
     <div class="col-md-3 p-0">
-      <div class="m-2 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <strong class="text-gray-dark">Full Name</strong>
-              <a href="#">Follow</a>
-            </div>
-            <span class="d-block">@username</span>
-          </div>
+      <div class="m-2 row shadow">
+        <div class="col-md-9 p-3 rounded-left bg-white">
+          <h4 class="m-0">1000</h4>
+          <span class="small">Mahasiswa</span>
         </div>
-        <small class="d-block text-right mt-3">
-          <a href="#">All suggestions</a>
-        </small>
-      </div>
-    </div>
-
-    <div class="col-md-9 p-0">
-      <div class="m-2 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <strong class="text-gray-dark">Full Name</strong>
-              <a href="#">Follow</a>
-            </div>
-            <span class="d-block">@username</span>
-          </div>
+        <div class="col-md-3 p-2 rounded-right bg-ungu d-flex justify-content-center align-items-center">
+          <img src="../img/mahasiswa.svg" alt="">
         </div>
-        <small class="d-block text-right mt-3">
-          <a href="#">All suggestions</a>
-        </small>
-      </div>
-    </div>
-
-    <div class="col-md-3 p-0 ">
-      <div class="sticky-sidebar sticky-top">
-        <div class="m-2 p-3 bg-white rounded shadow-sm">
-          <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-          <div class="media text-muted pt-3">
-            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-              <div class="d-flex justify-content-between align-items-center w-100">
-                <strong class="text-gray-dark">Full Name</strong>
-                <a href="#">Follow</a>
-              </div>
-              <span class="d-block">@username</span>
-            </div>
-          </div>
-          <small class="d-block text-right mt-3">
-            <a href="#">All suggestions</a>
-          </small>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 p-0">
-      <div class="m-2 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <strong class="text-gray-dark">Full Name</strong>
-              <a href="#">Follow</a>
-
-            </div>
-            <span class="d-block">@username</span>
-            <div class="isi">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
-              reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
-              consectetur eum recusandae sapiente quam omnis.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
-              totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
-              assumenda?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
-              sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
-              fugiat facere!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
-              impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
-              debitis error omnis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
-              dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
-              est quia culpa placeat minus laborum!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
-              minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
-              tempora possimus earum dicta officia.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
-              Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
-              consectetur, doloremque non sed, quisquam molestias.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
-              molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
-              adipisci?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
-              reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
-              consectetur eum recusandae sapiente quam omnis.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
-              totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
-              assumenda?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
-              sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
-              fugiat facere!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
-              impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
-              debitis error omnis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
-              dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
-              est quia culpa placeat minus laborum!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
-              minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
-              tempora possimus earum dicta officia.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
-              Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
-              consectetur, doloremque non sed, quisquam molestias.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
-              molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
-              adipisci?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
-              reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
-              consectetur eum recusandae sapiente quam omnis.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
-              totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
-              assumenda?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
-              sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
-              fugiat facere!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
-              impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
-              debitis error omnis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
-              dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
-              est quia culpa placeat minus laborum!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
-              minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
-              tempora possimus earum dicta officia.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
-              Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
-              consectetur, doloremque non sed, quisquam molestias.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
-              molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
-              adipisci?
-            </div>
-          </div>
-        </div>
-        <small class="d-block text-right mt-3">
-          <a href="#">All suggestions</a>
-        </small>
       </div>
     </div>
 
     <div class="col-md-3 p-0">
-      <div class="sticky-sidebar sticky-top">
-        <div class="m-2 p-3 bg-white rounded shadow-sm">
-          <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-          <div class="media text-muted pt-3">
-            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-              <div class="d-flex justify-content-between align-items-center w-100">
-                <strong class="text-gray-dark">Full Name</strong>
-                <a href="#">Follow</a>
-              </div>
-              <span class="d-block">@username</span>
-            </div>
-          </div>
-          <small class="d-block text-right mt-3">
-            <a href="#">All suggestions</a>
-          </small>
+      <div class="m-2 row shadow">
+        <div class="col-md-9 p-3 rounded-left bg-white">
+          <h4 class="m-0">500</h4>
+          <span class="small">Dosen</span>
+        </div>
+        <div class="col-md-3 p-2 rounded-right bg-biru d-flex justify-content-center align-items-center">
+          <img src="../img/presentation.svg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 p-0">
+      <div class="m-2 row shadow">
+        <div class="col-md-9 p-3 rounded-left bg-white">
+          <h4 class="m-0">56</h4>
+          <span class="small">Kelas</span>
+        </div>
+        <div class="col-md-3 p-2 rounded-right bg-hijau d-flex justify-content-center align-items-center">
+          <img src="../img/users.svg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 p-0">
+      <div class="m-2 row shadow">
+        <div class="col-md-9 p-3 rounded-left bg-white">
+          <h4 class="m-0">47</h4>
+          <span class="small">Ruangan</span>
+        </div>
+        <div class="col-md-3 p-2 rounded-right bg-pink d-flex justify-content-center align-items-center">
+          <img src="../img/chair.svg" alt="">
         </div>
       </div>
     </div>
