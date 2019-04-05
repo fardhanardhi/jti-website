@@ -110,8 +110,7 @@
 
 /* Download File */
 #home .download {
-  box-sizing: border-box;
-  border-radius: 10px;
+  width: 100% !important;
 }
 #home .isi-download a {
   text-decoration: none;
