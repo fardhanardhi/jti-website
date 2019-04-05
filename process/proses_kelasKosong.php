@@ -51,7 +51,7 @@
             $dateNow=date('Y-m-d H:i:s');
             mysqli_query($con, "update tabel_info_kelas_kosong set status_dipinjam='Dipinjam', 
             peminjam='$_SESSION[id]', waktu_pinjam='$dateNow' where id_info_kelas_kosong='$_GET[id]'");
-            header("location: ../module/index.php?module=kelasKosong");
+            header("location: ../module/index.php?module='".$_GET["module"]."'");
         }
     }
 
@@ -59,7 +59,7 @@
     if(isset($_POST["checkout"])){
         if($_GET["module"]=="kelasKosong" && $_GET["act"]=="checkout"){
             mysqli_query($con, "update tabel_info_kelas_kosong set status_dipinjam='Kosong' where id_info_kelas_kosong='$_GET[id]'");
-            header("location: ../module/index.php?module=kelasKosong");
+            header("location: ../module/index.php?module='".$_GET["module"]."'");
         }
     }
 ?>

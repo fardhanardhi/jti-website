@@ -27,3 +27,4 @@
 <link rel="stylesheet" href="../css/kelasKosong.css">
 <link rel="stylesheet" href="../css/notifikasi.css">
 <link rel="stylesheet" href="../css/dosenKompen.css">
+<link rel="stylesheet" href="../css/adminRuang.css">
