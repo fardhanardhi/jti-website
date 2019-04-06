@@ -1,0 +1,114 @@
+#ruang .breadcrumb a{
+    text-decoration: none;
+    color: black;
+}
+
+#ruang .breadcrumb{
+    background: white;
+}
+
+#ruang .title{
+    font-size: 1.09em;
+}
+
+#ruang .breadcrumb a:hover{
+    color: #000000a9;
+}
+
+#ruang .btn-hari,
+.btn-cari {
+  border-radius: 10px;
+  width: 5.5em;
+  height: 1.8em;
+  padding: 0;
+}
+#ruang .btn-hari:not(.active):hover {
+  border: 1px solid rgb(122, 188, 247);
+  background: rgb(122, 188, 247);
+}
+
+#ruang .btn-hari:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#ruang .optionJam {
+  border-radius: 10px;
+  width: 5.5em;
+  height: 1.8em;
+  padding-left: 5px;
+}
+
+#ruang .btn.active {
+  background-color: #0275d8;
+  border-color: #0275d8;
+}
+
+#ruang .ruang {
+    background-color: #f2f0f0;
+}
+#ruang .btn-pesan {
+    width: 5.5em;
+}
+
+#ruang .lantai {
+    font-size: 0.7em;
+}
+
+#ruang .kelas {
+    font-size: 1.2em;
+}
+
+#ruang .btn-checkout {
+    width: 5.9em;
+    padding-bottom: 2px;
+    padding-top: 0.5px;
+    font-size: 0.9em;
+}
+
+#ruang .dipesan {
+    background-color: rgba(189, 189, 189, 0.5);
+    color: #6c757d;
+}
+
+#ruang .dipesan .btn-pesan {
+    visibility: hidden;
+}
+
+.popover *{
+    color: red;
+    text-align: center;
+}
+
+#ruang #daftar-ruangan{
+    height: 50vh !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#ruang #cari{
+    width: 93% !important;
+}
+
+#ruang #icon-search{
+    width: 1.5em;
+    color: gray;
+    margin-right: 1em;
+}
+
+#ruang .scrollbar::-webkit-scrollbar-track
+{
+	background-color: #F5F5F5;
+}
+
+#ruang .scrollbar::-webkit-scrollbar
+{
+    width: 7px;
+	background-color: #F5F5F5;
+}
+
+#ruang .scrollbar::-webkit-scrollbar-thumb
+{
+	background-color: #40407a;
+	border: 2px solid #555555;
+}

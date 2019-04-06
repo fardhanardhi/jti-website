@@ -53,7 +53,7 @@
 }
 
 #dosenHomepage #exampleModalCenter {
-  background-color: rgba(0, 0, 0, 0.5)
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 #dosenHomepage .close {
@@ -91,20 +91,48 @@
 
 #dosenHomepage .dropdown-kompen {
   margin-top: 0.7em;
-  left: -5em;
 }
 
 #dosenHomepage .dropdown-kompen::before{
-  position: absolute;
+  /* position: relative;
   border-width: 0px 8px 10px 8px;
   border-style: solid;
-  right: 4.7em;
+   */
+  right: 0em;
   border-color: rgb(216, 208, 208) transparent;
 }
-/* tahap pengembangan */
 
-/* #dosenHomepage .data-kompen-ada{
+#dosenHomepage .data-kompen-ada{
+  
   height: 20em;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
-} */
+}
+
+#dosenHomepage #hapusKompen {
+  background-color: rgba(32, 32, 32, 0.86);
+}
+
+#dosenHomepage .isiHapusKompen {
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
+
+#dosenHomepage .btn-tidak {
+  padding: 0em 1.5em 0em 1.5em;
+  margin-right: 5em;
+  background-color: #CF212A;
+  color: white;
+}
+
+#dosenHomepage .btn-iya {
+  padding: 0em 1.5em 0em 1.5em;
+  margin-left: 5em;
+  background-color: #3AAC5F;
+  color: white;
+}
+
+#dosenHomepage .tombolAksiHapusKompen{
+  padding-bottom: 2em;
+}
+

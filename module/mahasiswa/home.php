@@ -268,21 +268,23 @@
             <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
             <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
             <div class="row komens">
-              <div class="col-sm-1">
-
-              </div>
-              <div class="col-sm-8 border-left border-dark">
-                <strong>Admin</strong> <span class="komen">Dosen pergi ke jepang dalam rangka sebagai perwakilan indonesia di pertemuan KTT 2019 </span> <br>
-                <strong>Sabyan_Lovers</strong> <span class="komen">Okeke min</span> <br>
-                <div class="form-group border border-dark komen2 " >
-                  <textarea class="form-control border-0" name="" id="" rows="1" placeholder="Tulis Komentar..."></textarea>
+              
+              <div class="col-sm-8 ml-5 ">
+                <div class="balas-komen p-2 border-left border-dark">
+                  <strong>Admin</strong> <span class="komen">Dosen pergi ke jepang dalam rangka sebagai perwakilan
+                      indonesia di pertemuan KTT 2019</span> <br>
+                  <strong>Sabyan_Lovers</strong> <span class="komen">Okeke min</span>
+                </div> <br>
+                <div class="form-group komen2 ">
+                  <textarea class="form-control" name="" id="" rows="1"
+                    placeholder="Tulis Komentar..."></textarea>
                 </div>
               </div>
               <div class="col-sm-2">
                 <strong>Reply</strong>
               </div>
-            </div>          
-            
+            </div>
+
           </div>
         </div>
       </div>
@@ -432,8 +434,17 @@
               - Pak Vipkas <br>
               sedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi
               untuk meminta tugas. <br><br>
-              Terima Kasih...
-              <a href="">
+              Terima Kasih... <br>
+                <div class="row isi-download">
+                  <div class="col-md-12">
+                    <button class="btn btn-outline-dark download d-flex justify-content-around">
+                      <h5><a href="" class="pl-0">Dokumen Rahasia</a></h5>
+                      <img src="../img/vector.svg" alt="Download button" class="pl-0">
+                    </button>
+                </div>
+                </div>
+              
+              <!-- <a href="">
                 <div class="download border border-dark mt-2 p-3">
                   <div class="row isi-download">
                     <div class="col-sm-7">
@@ -444,7 +455,7 @@
                     </div>
                   </div>
                 </div>
-              </a> 
+              </a> -->
             </div>
           </div>
         </div>
@@ -460,13 +471,13 @@
         </div>
       </div>
 
-      <div class="button-back container-fluid m-0">
+      <div class="button-back m-2 p-0 mb-3">
         <div class="row btn-back">
-          <div class="col-sm-6 text-left">
-            <button class="back btn pl-1"><a href="#">&xlarr; &#124; Berita Lama</a></button>
+          <div class="col-sm-6 text-left ">
+            <button class="shadow-sm back btn pl-1"><a href="#">&xlarr; &#124; Berita Lama</a></button>
           </div>
-          <div class="col-sm-6 d-block text-right">
-            <button class="back btn pl-1"><a href="#">Berita Baru  &#124; &rarr; </a></button>
+          <div class="col-sm-6 d-block text-right ">
+            <button class="shadow-sm back btn pl-1"><a href="#">Berita Baru &#124; &rarr; </a></button>
           </div>
         </div>
       </div>
