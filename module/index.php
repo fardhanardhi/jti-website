@@ -274,9 +274,6 @@
             case "kompenAbsen":
                 include "dosen/dosenKompen.php";
             break;
-            case "dataDosen":
-                include "dosen/dataDosen.php";
-            break;
             case "notifikasi":
               include "notifikasi.php";
             break;
@@ -292,6 +289,9 @@
             break;
             case "ruang":
                 include "admin/ruang/ruangan.php";
+            break;
+            case "dataDosen":
+                include "admin/dosen/dataDosen.php";
             break;
             default:
             include "admin/home.php";
