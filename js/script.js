@@ -53,6 +53,9 @@ $(function() {
   $('[data-toggle="popover"]').popover();
 });
 
+
+/** punya nya modal pengaturan */ 
+
 function Coba() {
   var foto = document.getElementById("foto").value;
   var passwordLama = document.getElementById("passwordLama").value;
@@ -223,7 +226,7 @@ function showPasswordKonfirmasi() {
   }
 }
 
-$(".custom-file-input").on("change", function() {
+/* $(".custom-file-input").on("change", function() {
   var fileName = $(this)
     .val()
     .split("\\")
@@ -232,7 +235,9 @@ $(".custom-file-input").on("change", function() {
     .siblings(".custom-file-label")
     .addClass("selected")
     .html(nanana);
-});
+}); */
+
+/**  akhir dari punya nya modal pengaturan **/
 
 //   Popover
 $(function() {
