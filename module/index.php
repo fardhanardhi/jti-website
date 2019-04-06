@@ -290,6 +290,12 @@
             case "ruang":
                 include "admin/ruang/ruangan.php";
             break;
+            case "dataDosen":
+                include "admin/dosen/dataDosen.php";
+            break;
+            case "dataMahasiswa":
+                include "admin/dosen/dataMahasiswa.php";
+            break;
             default:
             include "admin/home.php";
         }
