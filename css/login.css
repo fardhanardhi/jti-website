@@ -88,14 +88,14 @@ body {
   width: 65%;
 }
 
-.form-control{
+.fullscreen .form-control, .modal .form-control{
   height: 1.9em;
   border: 1px solid black;
   border-radius: 10px;
   padding-top:1px;
 }
 
-.form-control:focus {
+.fullscreen .form-control:focus, .modal .form-control:focus {
   border: 1px solid black; 
 }
 

@@ -110,8 +110,7 @@
 
 /* Download File */
 #home .download {
-  box-sizing: border-box;
-  border-radius: 10px;
+  width: 100% !important;
 }
 #home .isi-download a {
   text-decoration: none;
@@ -124,8 +123,9 @@
 
 /* CSS Komen */
 #home .komen2 {
-    box-sizing: border-box;
-    border-radius: 10px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 /* CSS Button Back */
