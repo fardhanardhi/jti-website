@@ -294,7 +294,7 @@
                 include "admin/dosen/dataDosen.php";
             break;
             case "dataMahasiswa":
-                include "admin/dosen/dataMahasiswa.php";
+                include "admin/mahasiswa/dataMahasiswa.php";
             break;
             default:
             include "admin/home.php";
