@@ -3,6 +3,8 @@ function Coba(){
 
     var passwordMahasiswaAdmin = document.getElementById("passwordMahasiswaAdmin").value;
 
+    var fileid = document.getElementById("fileid").value;
+
     var nimMahasiswaAdmin = document.getElementById("nimMahasiswaAdmin").value;
 
     var namaMahasiswaAdmin = document.getElementById("namaMahasiswaAdmin").value;
@@ -30,6 +32,13 @@ function Coba(){
         document.getElementById("passwordMahasiswaAdminBlank").innerHTML="";
     }
 
+    if(fileid==""){
+        document.getElementById("fileidMahasiswaAdminBlank").innerHTML="*Upload File Gambar";
+    }
+
+    else if(fileid!=""){
+        document.getElementById("fileidMahasiswaAdminBlank").innerHTML="";
+    }
 
     if(nimMahasiswaAdmin==""){
         document.getElementById("nimMahasiswaAdminBlank").innerHTML="*Masukkan NIM";
@@ -97,3 +106,16 @@ function preview_image(event) {
     reader.readAsDataURL(event.target.files[0]);
   }
 
+  function showFilesSize() {
+    var input, file;
+  
+    input = document.getElementById("fileid");
+  
+    file = input.files[0];
+  
+    if (file.size > 1000000) {
+      document.getElementById("fileidMahasiswaAdminBlank").innerHTML = "* Ukuran melebihi 1 MB";
+    } else if (file.size < 1000000) {
+      document.getElementById("fileidMahasiswaAdminBlank").innerHTML = "";
+    }
+  }

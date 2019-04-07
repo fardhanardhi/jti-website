@@ -30,3 +30,4 @@
 <link rel="stylesheet" href="../css/adminRuang.css">
 <link rel="stylesheet" href="../css/admin.css">
 <link rel="stylesheet" href="../css/dataDosen.css">
+<link rel="stylesheet" href="../css/dataMahasiswa.css">

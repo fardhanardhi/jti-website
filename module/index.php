@@ -313,6 +313,9 @@
     include "../config/scripts.php";
   ?>
 
+
+  <script src="../js/modalPengaturan.js"></script>
+
 </body>
 
 </html>

@@ -6,7 +6,7 @@
 
 <body onload="setup();">
     <main role="main" class="container-fluid">
-        <div id="mahasiswa" class="row">
+        <div id="dataMahasiswa" class="row">
             <div class="col-md-12 p-0">
                 <div class="m-2 bg-white shadow-sm rounded">
                     <nav class="nav nav-underline">
@@ -69,6 +69,11 @@
                                                                     onchange="preview_image(event);" hidden required />
                                                                 <input id='buttonid' type='button' value='Load Gambar'
                                                                     class="btn btn-primary" />
+                                                            </div>
+                                                            <div class="col-sm-3"></div>
+                                                            <div class="col-sm-9">
+                                                                <div id="fileidMahasiswaAdminBlank" class="text-danger">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -208,7 +213,7 @@
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
                                                                 <button type="submit" class="btn btn-success"
-                                                                onclick="Coba();">Tambahkan</button>
+                                                                onclick="Coba(); showFilesSize();">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -238,7 +243,7 @@
                                             <th>Alamat</th>        
                                             <th>Prodi</th>   
                                             <th>Kelas</th>
-                                            <th>Proses</th>
+                                            <th colspan="2">Proses</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -250,8 +255,10 @@
 
                                             tabel_mahasiswa.nim, 
                                             tabel_mahasiswa.nama, 
-                                            tabel_mahasiswa.alamat, tabel_mahasiswa.jenis_kelamin, 
-                                            tabel_mahasiswa.tempat_lahir, tabel_mahasiswa.tanggal_lahir, 
+                                            tabel_mahasiswa.alamat, 
+                                            tabel_mahasiswa.jenis_kelamin, 
+                                            tabel_mahasiswa.tempat_lahir, 
+                                            tabel_mahasiswa.tanggal_lahir, 
                                             tabel_mahasiswa.foto, 
 
                                             tabel_prodi.nama,
@@ -289,13 +296,22 @@
                                                         <td>". $row["tanggal_lahir"] ."</td>
                                                         <td>". $row["jenis_kelamin"] ."</td>
                                                         <td>". $row["alamat"] ."</td>
-                                                        <td>". $row["tabel_prodi.nama"]."</td>
+                                                        <td>". $row["nama"]."</td>
                                                         <td>". $row["kode_kelas"]."</td>
+
+                                                        <td>
+                                                        <a href='' class='btn btn-primary' data-toggle='modal' data-target='#modalEditAdminMahasiswa'>Edit</a>
+                                                                            
+                                                        </td>
+                                                        <td>
+                                                        <a href='' class='btn btn-danger' data-toggle='modal' data-target='#modalHapusAdminMahasiswa'>Hapus</a>
+                                                             
+                                                        </td>    
                                                     </tr>
                                                     ";
                                                 }
                                             }
-                                            
+
                                         ?>
                                     </tbody>
                                 </table>
