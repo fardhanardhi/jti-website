@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JTI Website</title>
-    <?php
-        include "../config/styles.php";
-    ?>
+<head>   
 </head>
 
-<body>
+<body onload="setup();">
     <main role="main" class="container-fluid">
         <div id="mahasiswa" class="row">
             <div class="col-md-12 p-0">
@@ -224,6 +217,88 @@
                                         </form>
                                     </div>
                                 </div>
+                            </div>
+                            <br>
+                            <input type="text" style="width:9%;">
+                            <button type="button" class="btn btn-success">Cari</button>
+                            <br>
+                            <div class="scrolltable">
+                                <table class="table table-striped table-bordered text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Gambar</th>         
+                                            <th>NIM</th>           
+                                            <th>Nama Lengkap</th>
+                                            <th>Tempat Lahir</th>
+                                            <th>Tanggal Lahir</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Alamat</th>        
+                                            <th>Prodi</th>   
+                                            <th>Kelas</th>
+                                            <th>Proses</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            $query = "SELECT 
+                                            
+                                            tabel_user.username, 
+                                            tabel_user.password, 
+
+                                            tabel_mahasiswa.nim, 
+                                            tabel_mahasiswa.nama, 
+                                            tabel_mahasiswa.alamat, tabel_mahasiswa.jenis_kelamin, 
+                                            tabel_mahasiswa.tempat_lahir, tabel_mahasiswa.tanggal_lahir, 
+                                            tabel_mahasiswa.foto, 
+
+                                            tabel_prodi.nama,
+                                            tabel_kelas.kode_kelas 
+                                            
+                                            FROM tabel_user INNER JOIN
+
+                                            tabel_mahasiswa ON 
+                                            tabel_user.username = tabel_mahasiswa.nim
+
+                                            INNER JOIN tabel_prodi ON
+                                            tabel_mahasiswa.id_prodi = tabel_prodi.id_prodi
+
+                                            INNER JOIN tabel_kelas ON
+                                            tabel_mahasiswa.id_kelas = tabel_kelas.id_kelas
+
+
+                                            ";
+                                            $result = mysqli_query($con, $query);
+
+                                            if(mysqli_num_rows($result) > 0){
+                                                $index = 1;
+                                                
+                                                while($row = mysqli_fetch_assoc($result)){
+                                                    $id_user = $row["id_user"];
+                                                    echo"
+                                                    <tr>
+                                                        <td>". $index++ ."</td>
+                                                        <td>". $row["username"] ."</td>
+                                                        <td>". $row["password"] ."</td>
+                                                        <td>". $row["foto"] ."</td>
+                                                        <td>". $row["nim"] ."</td>
+                                                        <td>". $row["tabel_mahasiswa.nama"] ."</td>
+                                                        <td>". $row["tempat_lahir"] ."</td>
+                                                        <td>". $row["tanggal_lahir"] ."</td>
+                                                        <td>". $row["jenis_kelamin"] ."</td>
+                                                        <td>". $row["alamat"] ."</td>
+                                                        <td>". $row["tabel_prodi.nama"]."</td>
+                                                        <td>". $row["kode_kelas"]."</td>
+                                                    </tr>
+                                                    ";
+                                                }
+                                            }
+                                            
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
