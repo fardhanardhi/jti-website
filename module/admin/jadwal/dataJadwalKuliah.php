@@ -187,16 +187,26 @@
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <button type="button"
+                                                                    class="btn btn-success float-right">Tambahkan</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <br>
-                            <input type="text" style="width:9%;">
-                            <button>Cari</button>
+                            <form class="form-inline ml-4">
+                                <i class="fas fa-search mr-2"></i>
+                                <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+                                <button class="btn btn-success" type="submit">Cari</button>
+                            </form>
                             <div class="scrolltable">
                                 <table class="table table-striped table-bordered text-center">
                                     <thead>
