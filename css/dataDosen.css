@@ -2,6 +2,10 @@
   margin-top: 2em;
   width: 130%;
 }
+/* #dataDosen .judul-card {
+  margin-top: 2em;
+  width: 130%;
+} */
 
 #dataDosen .table-striped > thead > tr > th {
   background-color: #40407a;
@@ -34,10 +38,55 @@
 }
 
 /* modal */
-#dataDosen #exampleModalCenter {
+#dataDosen #hapus {
   background-color: rgba(0, 0, 0, 0.5)
 }
 
 #dataDosen .close {
   padding-right: 0.5em;
+}
+
+/* #dataDosen #hapusKompen {
+  background-color: rgba(32, 32, 32, 0.86);
+} */
+
+#dataDosen .isiHapusKompen {
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
+
+#dataDosen .btn-tidak {
+  padding: 0em 1.5em 0em 1.5em;
+  margin-right: 5em;
+  background-color: #CF212A;
+  color: white;
+}
+
+#dataDosen .btn-iya {
+  padding: 0em 1.5em 0em 1.5em;
+  margin-left: 5em;
+  background-color: #3AAC5F;
+  color: white;
+}
+
+#dataDosen .tombolAksiHapusKompen{
+  padding-bottom: 2em;
+}
+
+#dataDosen #edit {
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+#dataDosen .close {
+  padding-right: 0.5em;
+}
+
+#dataDosen .tambahkan-modal{
+  background-color: #3AAC5F;
+  color: white;
+  border-radius: 10px;
+}
+
+#dataDosen .tambahkan-modal-parent{
+  padding-right: 4em;
 }
