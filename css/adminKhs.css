@@ -56,4 +56,12 @@
   
 #khs .table-striped > tbody > tr:nth-child(even) > td {
     background-color: #ececff;
-  }
+}
+
+#khsModal .table-bordered td{
+    border: 0px solid #dee2e6;
+}
+
+#khsModal .table-bordered th{
+    border: 0px solid #dee2e6;
+}
