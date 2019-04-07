@@ -22,46 +22,18 @@ include "../config/connection.php";
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    $queryDosen = "SELECT * FROM tabel_dosen WHERE username='$username'";
-    $resultDosen = mysqli_query($con, $queryDosen);
+    $queryUser = "SELECT * FROM tabel_user WHERE username='$username'";
+    $resultUser = mysqli_query($con, $queryUser);
 
-    $queryMhs = "SELECT * FROM tabel_mahasiswa WHERE username='$username'";
-    $resultMhs = mysqli_query($con, $queryMhs);
-
-    $queryAdmin = "SELECT * FROM tabel_admin WHERE username='$username'";
-    $resultAdmin = mysqli_query($con, $queryAdmin);
-
-    if(mysqli_num_rows($resultDosen) == 1) {
-      $row = mysqli_fetch_assoc($resultDosen);
+    if(mysqli_num_rows($resultUser) == 1) {
+      $row = mysqli_fetch_assoc($resultUser);
 
       if ($password != $row["password"]) {
         $error = "*Password salah";
         header("Location: ../module/login.php?error=$error");
       } else {
-        $_SESSION["id"]=$row["id_dosen"];
-        $_SESSION["level"]="dosen";
-        header("location: ../index.php");
-      }
-    }else if(mysqli_num_rows($resultMhs) == 1) {
-      $row = mysqli_fetch_assoc($resultMhs);
-
-      if ($password != $row["password"]) {
-        $error = "*Password salah";
-        header("Location: ../module/login.php?error=$error");
-      } else {
-        $_SESSION["id"]=$row["id_mahasiswa"];
-        $_SESSION["level"]="mahasiswa";
-        header("location: ../index.php");
-      }
-    }else if(mysqli_num_rows($resultAdmin) == 1) {
-      $row = mysqli_fetch_assoc($resultAdmin);
-
-      if ($password != $row["password"]) {
-        $error = "*Password salah";
-        header("Location: ../module/login.php?error=$error");
-      } else {
-        $_SESSION["id"]=$row["id_admin"];
-        $_SESSION["level"]="admin";
+        $_SESSION["id"]=$row["id_user"];
+        $_SESSION["level"]=$row["level"];
         header("location: ../index.php");
       }
     }else{
