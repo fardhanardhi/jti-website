@@ -167,14 +167,14 @@
               <br>
               <center><?php echo($namaUser); ?></center>
               <br>
-              <form class="px-2">
+              <form class="px-2" action="" id="formModalPengaturan2" method="POST">
                 <div class="form-group row">
                   <label class="col-md-3" for="foto">Ganti Foto</label>
                   <div class="input-group col-md-9">
                     <label for="foto" class="file form-control text-secondary">
                       <input type="file" class="form-control shadow-none" id="foto" name="foto"
                         onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);"
-                        accept="image/*">
+                        accept="image/*" required>
                       <span class="file-custom"></span>
                     </label>
                   </div>
@@ -183,7 +183,7 @@
                   <label class="col-md-3" for="passwordLama">Password Lama</label>
                   <div class="input-group col-md-9">
                     <input type="password" id="passwordLama" placeholder="Password Lama" name="passwordLama"
-                      onblur="reset_Blank();" class="form-control border-right-0 shadow-none">
+                      onblur="reset_Blank();" class="form-control border-right-0 shadow-none" required>
                     <div class="input-group-append">
                       <span class="far fa-eye form-control" id="eyeA" onclick="showPasswordLama();"></span>
                     </div>
@@ -193,7 +193,7 @@
                   <label class="col-md-3" for="passwordBaru">Password Baru</label>
                   <div class="input-group col-md-9">
                     <input type="password" class="form-control border-right-0 shadow-none" id="passwordBaru"
-                      placeholder="Password Baru" name="passwordBaru" onblur="reset_Blank();">
+                      placeholder="Password Baru" name="passwordBaru" onblur="reset_Blank();" required>
                     <div class="input-group-append">
                       <span class="far fa-eye form-control" id="eyeB" onclick="showPasswordBaru();"></span>
                     </div>
@@ -203,7 +203,7 @@
                   <label class="col-md-3" for="konfirmasiPassword">Konfirmasi Password</label>
                   <div class="input-group col-md-9">
                     <input type="password" class="form-control border-right-0 shadow-none" id="konfirmasiPassword"
-                      placeholder="Konfirmasi Password" name="konfirmasiPassword" onblur="reset_Blank();">
+                      placeholder="Konfirmasi Password" name="konfirmasiPassword" onblur="reset_Blank();" required>
                     <div class="input-group-append">
                       <span class="far fa-eye form-control" id="eyeC" onclick="showPasswordKonfirmasi();"></span>
                     </div>
@@ -215,13 +215,12 @@
                   <div id="fotoType" class="text-danger"></div>
                   <div id="konfirmasipasswordSalah" class="text-danger"></div>
                 </div>
-
               </form>
             </div>
           </div>
         </div>
         <div class="align-self-end p-4">
-          <button type="button" name="kirim" class="btn btn-success"
+          <button type="submit" class="btn btn-success"
             onclick="Coba(); showFilesSize(); checkFoto();">Simpan</button>
         </div>
       </div>
@@ -290,8 +289,24 @@
             case "ruang":
                 include "admin/ruang/ruangan.php";
             break;
-            default:
-            include "admin/home.php";
+            case "khs":
+                include "admin/khs/khs.php";
+            break;
+            case "dataDosen":
+                include "admin/dosen/dataDosen.php";
+            break;
+            case "dataMahasiswa":
+                include "admin/mahasiswa/dataMahasiswa.php";
+            break;
+            
+            case "krsAdmin":
+                include "admin/krs/krsAdmin.php";
+            break;
+            case "krsPerKelas":
+                include "admin/krs/krsPerKelas.php";
+            break;
+            case "dataJadwalKuliah":
+                include "admin/jadwal/dataJadwalKuliah.php";
         }
       }
           
