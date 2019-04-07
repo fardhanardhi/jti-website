@@ -15,3 +15,29 @@
 #homeAdmin .bg-pink {
   background-color: #F75D81;
 }
+
+#homeAdmin .kuisioner-sp {
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#homeAdmin .grey {
+  color: #979797;
+}
+
+#homeAdmin .sp {
+  color: #fff;
+}
+
+#homeAdmin .sp-1 {
+  background-color: #3aac5f;
+}
+
+#homeAdmin .sp-2 {
+  background-color: #f79646;
+}
+
+#homeAdmin .sp-3 {
+  background-color: #cf212a;
+}
