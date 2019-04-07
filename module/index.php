@@ -289,6 +289,9 @@
             case "ruang":
                 include "admin/ruang/ruangan.php";
             break;
+            case "khs":
+                include "admin/khs/khs.php";
+            break;
             case "dataDosen":
                 include "admin/dosen/dataDosen.php";
             break;
@@ -297,8 +300,6 @@
             break;
             case "dataJadwalKuliah":
                 include "admin/jadwal/dataJadwalKuliah.php";
-            default:
-            include "admin/home.php";
         }
       }
           
