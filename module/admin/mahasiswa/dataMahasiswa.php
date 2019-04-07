@@ -66,7 +66,7 @@
                                                             <div class="col-md-10">
                                                                 <br>
                                                                 <input id='fileid' type='file' name='filename'
-                                                                    onchange="preview_image(event);" hidden required />
+                                                                    onchange="preview_images(event);" hidden required />
                                                                 <input id='buttonid' type='button' value='Load Gambar'
                                                                     class="btn btn-primary" />
                                                             </div>
@@ -213,7 +213,7 @@
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
                                                                 <button type="submit" class="btn btn-success"
-                                                                onclick="Coba(); showFilesSize();">Tambahkan</button>
+                                                                onclick="Cobacoba(); showFilesSizes();">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>

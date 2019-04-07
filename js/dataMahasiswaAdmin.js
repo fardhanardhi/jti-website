@@ -1,4 +1,4 @@
-function Coba(){
+function Cobacoba(){
     var usernameMahasiswaAdmin = document.getElementById("usernameMahasiswaAdmin").value;
 
     var passwordMahasiswaAdmin = document.getElementById("passwordMahasiswaAdmin").value;
@@ -97,7 +97,7 @@ function setup() {
     }*/
 }
 
-function preview_image(event) {
+function preview_images(event) {
     var reader = new FileReader();
     reader.onload = function() {
       var output = document.getElementById("fotoPrevMahasiswaAdmin");
@@ -106,7 +106,7 @@ function preview_image(event) {
     reader.readAsDataURL(event.target.files[0]);
   }
 
-  function showFilesSize() {
+  function showFilesSizes() {
     var input, file;
   
     input = document.getElementById("fileid");
