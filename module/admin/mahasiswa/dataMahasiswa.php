@@ -31,7 +31,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Username</label>
-                                                            <div class="input-group col-sm-10">
+                                                            <div class="col-sm-10">
                                                                 <input type="text" class="form-control"
                                                                     placeholder="Username" id="usernameMahasiswaAdmin"
                                                                     name="usernameMahasiswaAdmin" required />
@@ -44,7 +44,7 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Password</label>
-                                                            <div class="input-group col-sm-10">
+                                                            <div class="col-sm-10">
                                                                 <input type="password" class="form-control"
                                                                     placeholder="**********" id="passwordMahasiswaAdmin"
                                                                     name="passwordMahasiswaAdmin" required />
