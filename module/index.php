@@ -292,6 +292,9 @@
             case "khs":
                 include "admin/khs/khs.php";
             break;
+            case "khsLihat":
+                include "admin/khs/khsLihat.php";
+            break;
             case "dataDosen":
                 include "admin/dosen/dataDosen.php";
             break;

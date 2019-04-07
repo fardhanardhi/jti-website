@@ -41,6 +41,10 @@
     font-size: 12px;
 }
 
+#khs .lihat{
+    background: #51A9EB;
+}
+
 #khs .table-striped > thead > tr > th {
     background-color: #40407a;
     color: white;
