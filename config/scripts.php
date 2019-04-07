@@ -24,3 +24,4 @@
 
   <script src="../js/script.js"></script>
   <script src="../js/dosenScript.js"></script>
+  <script src="../js/dataMahasiswaAdmin.js"></script>
