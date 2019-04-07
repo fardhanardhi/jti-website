@@ -296,6 +296,8 @@
             case "dataMahasiswa":
                 include "admin/mahasiswa/dataMahasiswa.php";
             break;
+            case "dataJadwalKuliah":
+                include "admin/jadwal/dataJadwalKuliah.php";
             default:
             include "admin/home.php";
         }
