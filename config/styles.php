@@ -32,3 +32,4 @@
 <link rel="stylesheet" href="../css/dataDosen.css">
 <link rel="stylesheet" href="../css/dataMahasiswa.css">
 <link rel="stylesheet" href="../css/adminKhs.css">
+<link rel="stylesheet" href="../css/krsAdmin.css">

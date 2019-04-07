@@ -298,6 +298,13 @@
             case "dataMahasiswa":
                 include "admin/mahasiswa/dataMahasiswa.php";
             break;
+            
+            case "krsAdmin":
+                include "admin/krs/krsAdmin.php";
+            break;
+            case "krsPerKelas":
+                include "admin/krs/krsPerKelas.php";
+            break;
             case "dataJadwalKuliah":
                 include "admin/jadwal/dataJadwalKuliah.php";
         }
