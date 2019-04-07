@@ -67,7 +67,7 @@
                                                             <label class="col-sm-2 col-form-label">Jam</label>
                                                             <div class="col-sm-5">
                                                                 <select class="semester custom-select">
-                                                                    <option selected>Tgl</option>
+                                                                    <option selected>Mulai</option>
                                                                     <option>1</option>
                                                                     <option>2</option>
                                                                     <option>3</option>
@@ -108,7 +108,7 @@
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <select class="semester custom-select">
-                                                                    <option selected>Bulan</option>
+                                                                    <option selected>Berakhir</option>
                                                                     <option>Januari</option>
                                                                     <option>Februari</option>
                                                                     <option>Maret</option>

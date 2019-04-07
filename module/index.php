@@ -301,8 +301,6 @@
             break;
             case "dataJadwalKuliah":
                 include "admin/jadwal/dataJadwalKuliah.php";
-            default:
-            include "admin/home.php";
         }
       }
           
