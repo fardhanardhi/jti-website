@@ -12,6 +12,9 @@
                 </nav>
             </div>
         </div>
+        <?php 
+            include('khsModalLihat.php');
+        ?>
         <div class="col-md-12 p-0">
             <div class="m-2 p-3 bg-white rounded shadow-sm">
                 <h4>Daftar Kartu Hasil Studi</h4>
@@ -46,8 +49,7 @@
                                     <td>Matkul A</td>
                                     <td>lalalalallalalalaal</td>
                                     <td>A</td>
-                                    <td><button class=" tmbl-table lihat btn btn-info" type="button" class="pratinjau btn" data-toggle="modal"
-                                            data-target="#edit" class="edit">Edit</button>
+                                    <td><button class="tmbl-table lihat btn btn-info" type="button" class="pratinjau btn" data-toggle="modal" data-target="#myModal" class="edit">Lihat</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -55,8 +57,7 @@
                                     <td>Matkul A</td>
                                     <td>lllalalallalallalala</td>
                                     <td>A</td>
-                                    <td><button class=" tmbl-table lihat btn btn-info" type="button" class="pratinjau btn" data-toggle="modal"
-                                            data-target="#edit" class="edit">Edit</button>
+                                    <td><button class="tmbl-table lihat btn btn-info" type="button" class="pratinjau btn" data-toggle="modal" data-target="#modelId" class="edit">Lihat</button>
                                     </td>
                                 </tr>
                             </tbody>
