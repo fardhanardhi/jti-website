@@ -1,0 +1,45 @@
+#khs .breadcrumb a{
+    text-decoration: none;
+    color: black;
+}
+
+#khs .breadcrumb{
+    background: white;
+}
+
+#khs .title{
+    font-size: 1.09em;
+}
+
+#khs .breadcrumb a:hover{
+    color: #000000a9;
+}
+
+#khs .kelas {
+    box-sizing: border-box;
+    border-radius: 10px; 
+    font-weight: bold;
+}
+
+#khs .tmbl-filter {
+    background: #3AAC5F;
+    border-radius: 15px;
+    width: 80px;
+}
+
+#khs .tmbl-ruangan {
+    background: #51A9EB;
+    border-radius: 15px;
+}
+
+#khs .txt{
+    text-align: center;
+}
+
+#khs .table-striped>tbody>tr:nth-child(odd)>td{
+	background-color:#CECEEF;
+}
+
+#khs .table-striped>tbody>tr:nth-child(even)>td{
+	background-color:#ECECFF;
+}
