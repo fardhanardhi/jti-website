@@ -290,6 +290,9 @@
             case "ruang":
                 include "admin/ruang/ruangan.php";
             break;
+            case "khs":
+                include "admin/khs/khs.php";
+            break;
             case "dataDosen":
                 include "admin/dosen/dataDosen.php";
             break;
