@@ -57,7 +57,7 @@
                                     <td>Matkul A</td>
                                     <td>lllalalallalallalala</td>
                                     <td>A</td>
-                                    <td><button class="tmbl-table lihat btn btn-info" type="button" class="pratinjau btn" data-toggle="modal" data-target="#modelId" class="edit">Lihat</button>
+                                    <td><button class="tmbl-table lihat btn btn-info" type="button" class="pratinjau btn" data-toggle="modal" data-target="#myModal" class="edit">Lihat</button>
                                     </td>
                                 </tr>
                             </tbody>
