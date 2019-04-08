@@ -10,14 +10,13 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-          <div class = "isi-modaLihat">
-              <p>Tahun Akademik : </p>
-              <p>Nama : </p>
-              <p>NIM : </p>
-              <p>Kelas : </p>
-              <p>Prodi : </p>
+          <div class ="isi-modaLihat border-bottom1 border-gray">
+              <p>Tahun Akademik : 2017/2018 Ganjil</p>
+              <p>Nama : Mahasiswa A</p>
+              <p>NIM : 1741720065</p>
+              <p>Kelas : TI-2F</p>
+              <p>Prodi : Teknik Informatika</p>
           </div>
-          <hr>
           <div id = "khsModal">
           <div class="media text-muted pt-8">
               <div class="media-body pb-8 mb-0 small lh-125">
