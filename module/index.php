@@ -304,7 +304,6 @@
             case "dataMahasiswa":
                 include "admin/mahasiswa/dataMahasiswa.php";
             break;
-            
             case "krsAdmin":
                 include "admin/krs/krsAdmin.php";
             break;
@@ -313,7 +312,11 @@
             break;
             case "dataJadwalKuliah":
                 include "admin/jadwal/dataJadwalKuliah.php";
-        }
+            break;
+            case "beasiswa":
+                include "admin/mahasiswa/beasiswa.php";
+            break;
+        } 
       }
           
     if($level=="mahasiswa" || $level=="admin" || $level=="dosen"){
