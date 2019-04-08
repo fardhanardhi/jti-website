@@ -249,25 +249,19 @@
                     <div class="row">
                       <div class="col-sm-8">
                         <div class="judul">
-                          <h5><strong><?php $row["judul"]; ?></strong></h5>
-                          <p><?php tampilTanggal($row["waktu"]); ?></p>
+                          <h5><strong><?php echo $row["judul"]; ?></strong></h5>
+                          <p><?php echo tampilTanggal($row["waktu"]); ?></p>
                         </div>
                       </div>
                       <div class="col-sm-4 mt-2 text-right">
-                        <span class="kategori-label badge badge-secondary px-3 py-2"><?php $row["tipe"]; ?></span>
+                        <span class="kategori-label badge badge-secondary px-3 py-2"><?php echo ucfirst($row["tipe"]); ?></span>
                       </div>
                     </div>
                   </div>
                   <div class="media text-muted pt-3">
                     <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                       <div class="isi-mhs">
-                        Dikarenakan dosen bernama : <br>
-                        - Pak Yan <br>
-                        - Pak Rosa <br>
-                        - Pak Vipkas <br>
-                        sedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi
-                        untuk meminta tugas. <br><br>
-                        Terima Kasih...
+                        <?php echo $row["isi"]; ?>
                       </div>
                     </div>
                   </div>
@@ -276,6 +270,43 @@
                   </div>
                   <div class="media-body pb-3 mb-0 small lh-125">
                     <div class="isi-mhs">
+                    <?php 
+                      $resultKomentar=komentar($con, $row["id_info"]);
+                      if (mysqli_num_rows($resultKomentar) > 0){
+                        while($row = mysqli_fetch_assoc($resultKomentar)){
+                          ?>
+                          <strong><?php echo tampilUser($con, $row["id_user"]);?></strong>
+                          <span class="komen"><?php echo $row["isi"]; ?></span> <br>
+
+                          <div class="row komens">
+                            <div class="col-sm-8 ml-5 ">
+                              <div class="balas-komen p-2 border-left border-dark">
+                                <?php
+                                  $resultReplyKomentar=replyKomentar($con, $row["id_komentar"]);
+                                  if (mysqli_num_rows($resultKomentar) > 0){
+                                    while($row = mysqli_fetch_assoc($resultKomentar)){
+                                    ?>
+                                      <strong>Admin</strong>
+                                      <span class="komen">Dosen pergi ke jepang dalam rangka sebagai perwakilan
+                                      indonesia di pertemuan KTT 2019</span> <br>
+                                    <?php
+                                    }
+                                  }
+                                ?>
+                                
+                              <div class="form-group border-bottom border-top border-gray">
+                                <textarea class="form-control border-0" name="" id="" rows="1"
+                                  placeholder="Tulis Komentar..."></textarea>
+                              </div>
+                            </div>
+                            <div class="col-sm-2">
+                              <strong>Reply</strong>
+                            </div>
+                          </div>
+                          <?php
+                        }
+                      }
+                    ?>
                       <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
                       <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
                       <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
@@ -287,8 +318,8 @@
                                 indonesia di pertemuan KTT 2019</span> <br>
                             <strong>Sabyan_Lovers</strong> <span class="komen">Okeke min</span>
                           </div> <br>
-                          <div class="form-group komen2 ">
-                            <textarea class="form-control" name="" id="" rows="1"
+                          <div class="form-group border-bottom border-top border-gray">
+                            <textarea class="form-control border-0" name="" id="" rows="1"
                               placeholder="Tulis Komentar..."></textarea>
                           </div>
                         </div>

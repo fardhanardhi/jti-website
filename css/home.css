@@ -121,13 +121,6 @@
   color: blue;
 }
 
-/* CSS Komen */
-#home .komen2 {
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 10px;
-}
-
 /* CSS Button Back */
 #home .back {
   width: 50%;

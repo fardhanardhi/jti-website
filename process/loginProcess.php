@@ -9,7 +9,7 @@ include "../config/connection.php";
   }
   else if(isset($_POST["mahasiswa"])){
     $_SESSION["level"]="mahasiswa";
-    $_SESSION["id"]=4;
+    $_SESSION["id"]=2;
     header("location: ../index.php");
   }
   else if(isset($_POST["admin"])){

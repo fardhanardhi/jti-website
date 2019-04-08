@@ -7,22 +7,22 @@
 
   switch ($level) {
     case 'admin':
-      $queryUser = "SELECT * FROM tabel_admin WHERE id_admin=$idUser";
+      $queryUser = "SELECT a.*, b.* FROM tabel_user a, tabel_admin b WHERE a.id_user=$idUser and a.id_user=b.id_user";
       $resultUser = mysqli_query($con, $queryUser);
       $rowUser = mysqli_fetch_assoc($resultUser);
       $namaUser = "Admin";
       break;
     case 'dosen':
-      $queryUser = "SELECT * FROM tabel_dosen WHERE id_dosen=$idUser";
+      $queryUser = "SELECT a.*, b.* FROM tabel_user a, tabel_dosen b WHERE a.id_user=$idUser and a.id_user=b.id_user";
       $resultUser = mysqli_query($con, $queryUser);
       $rowUser = mysqli_fetch_assoc($resultUser);
-      $namaUser = $rowUser["nama_dosen"];
+      $namaUser = $rowUser["nama"];
       break;
     case 'mahasiswa':
-      $queryUser = "SELECT * FROM tabel_mahasiswa WHERE id_mahasiswa=$idUser";
+      $queryUser = "SELECT a.*, b.* FROM tabel_user a, tabel_mahasiswa b WHERE a.id_user=$idUser and a.id_user=b.id_user";
       $resultUser = mysqli_query($con, $queryUser);
       $rowUser = mysqli_fetch_assoc($resultUser);
-      $namaUser = $rowUser["nama_mahasiswa"];
+      $namaUser = $rowUser["nama"];
       break;
     default:
       $namaUser = "User tidak ditemukan";
