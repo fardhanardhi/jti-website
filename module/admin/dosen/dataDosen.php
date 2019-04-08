@@ -230,7 +230,10 @@
                                             <td>1 Januari 1945</td>
                                             <td>Laki-laki</td>
                                             <td>Jl.soekarno hatta</td>
-                                            <td><button class=" tmbl-table btn btn-primary" type="button" class="pratinjau btn" data-toggle="modal" data-target="#edit" class="edit">Edit</button></td>
+                                            
+                                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+
+                                            </td>
                                             <td><button class=" tmbl-table btn btn-danger"  type="button" class="pratinjau btn" data-toggle="modal" data-target="#hapus" class="hapus">Hapus</button></td>
                                         </tr>
                                         <tr>
@@ -244,7 +247,9 @@
                                             <td>1 Januari 1945</td>
                                             <td>Laki-laki</td>
                                             <td>Jl.soekarno hatta</td>
-                                            <td><button class=" tmbl-table btn btn-primary" type="button" class="pratinjau btn" data-toggle="modal" data-target="#exampleModalCenter">Edit</button></td>
+                                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+
+                                            </td>
                                             <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal" data-target="#hapus">Hapus</button></td>
                                         </tr>
                                     </tbody>
@@ -269,132 +274,134 @@
                 </div>
             </div>
         </div>
-        <!-- modal edit -->
-        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editTitle" aria-hidden="true" data-backdrop="false">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">                        
-                    <button type="button" class="close text-right active" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h5 class=" modal-title border-bottom border-gray pb-2 mb-0" id="exampleModalCenterTitle">Edit Data Dosen</h5>
+    </div>
+</main>
 
-                    <!-- isi -->
-                    <div class="card-body">
-                        <div class="col-md-12 p-0">
-                            <form action="" method="post">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Username</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Username" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Password</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Password" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-md-2 col-form-label">Gambar</label>
-                                                <div class="col-md-10">
-                                                    <img src="../attachment/img/avatar.jpeg" alt="dosen" style="width:150px;height:150px;"><br>
-                                                    <br>
-                                                    <input id='buttonid' type='button' value='Load Gambar' class="btn btn-primary">
-                                                </div>
-                                            </div>
+<!-- Modal edit -->
+<div class="modal fade" id="editModal">
+<div class="modal-dialog modal-xl">
+    <div class="modal-content p-3">
+        <div class="modal-header">
+            <h5 class="modal-title">Edit Data Dosen</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <!-- isi -->
+        <div class="card-body">
+            <div class="col-md-12 p-0">
+                <form action="" method="post">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Username</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Username" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Password</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Password" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">Gambar</label>
+                                    <div class="col-md-8">
+                                        <img src="../attachment/img/avatar.jpeg" alt="dosen" style="width:150px;height:150px;"><br>
+                                        <br>
+                                        <input id='buttonid' type='button' value='Load Gambar' class="btn btn-primary">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">NIP</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="NIP Dosen" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Nama Dosen" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Tempat Lahir</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Tempat Lahir Dosen" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
+                                    <div class="col-sm-2">
+                                        <!-- <input type="number" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="" required> -->
+                                        <select class="semester custom-select">
+                                            <option selected>Tgl</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!-- <input type="number" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="" required> -->
+                                        <select class="semester custom-select">
+                                            <option selected>Bulan</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!-- <input type="number" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="" required> -->
+                                        <select class="semester custom-select">
+                                            <option selected>Tahun</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                                    <!-- <div class="col-sm-10"> -->
+                                        <!-- <input class="mt-2" type="radio" name="gender" value="male"> Laki-Laki
+                                        <input class="mt-2" type="radio" name="gender" value="female"> Perempuan -->
+                                    <!-- </div> -->
+                                    <div class="col-sm-8">
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label"
+                                                for="genderMahasiswaAdmin1">
+                                                <input class="mt-2" type="radio"
+                                                    name="genderMahasiswaAdmin"
+                                                    id="genderMahasiswaAdmin1" value="Laki-laki">
+                                                Laki-laki
+                                            </label>
                                         </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">NIP</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="NIP Dosen" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Nama Lengkap</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Nama Dosen" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Tempat Lahir</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Tempat Lahir Dosen" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                                                <div class="col-sm-2">
-                                                    <!-- <input type="number" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="" required> -->
-                                                    <select class="semester custom-select">
-                                                        <option selected>Tgl</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <!-- <input type="number" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="" required> -->
-                                                    <select class="semester custom-select">
-                                                        <option selected>Bulan</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <!-- <input type="number" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="" required> -->
-                                                    <select class="semester custom-select">
-                                                        <option selected>Tahun</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                                                <!-- <div class="col-sm-10"> -->
-                                                    <!-- <input class="mt-2" type="radio" name="gender" value="male"> Laki-Laki
-                                                    <input class="mt-2" type="radio" name="gender" value="female"> Perempuan -->
-                                                <!-- </div> -->
-                                                <div class="col-sm-10">
-                                                    <div class="form-check form-check-inline">
-                                                        <label class="form-check-label"
-                                                            for="genderMahasiswaAdmin1">
-                                                            <input class="mt-2" type="radio"
-                                                                name="genderMahasiswaAdmin"
-                                                                id="genderMahasiswaAdmin1" value="Laki-laki">
-                                                            Laki-laki
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <label class="form-check-label"
-                                                            for="genderMahasiswaAdmin2">
-                                                            <input class="mt-2" type="radio"
-                                                                name="genderMahasiswaAdmin"
-                                                                id="genderMahasiswaAdmin2"
-                                                                value="Perempuan">
-                                                            Perempuan
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Alamat</label>
-                                                <div class="col-sm-10">
-                                                    <textarea class="form-control" id="alamatMahasiswaAdmin"
-                                                        name="alamatMahasiswaAdmin" rows="3"
-                                                        placeholder="Alamat Dosen" required></textarea>
-                                                </div>
-                                                <!-- <div class="col-sm-3"></div>
-                                                <div class="col-sm-9">
-                                                    <div id="alamatMahasiswaAdminBlank" class="text-danger">
-                                                    </div>
-                                                </div> -->
-                                            </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label"
+                                                for="genderMahasiswaAdmin2">
+                                                <input class="mt-2" type="radio"
+                                                    name="genderMahasiswaAdmin"
+                                                    id="genderMahasiswaAdmin2"
+                                                    value="Perempuan">
+                                                Perempuan
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Alamat</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" id="alamatMahasiswaAdmin"
+                                            name="alamatMahasiswaAdmin" rows="5"
+                                            placeholder="Alamat Dosen" required></textarea>
+                                    </div>
+                                    <!-- <div class="col-sm-3"></div>
+                                    <div class="col-sm-9">
+                                        <div id="alamatMahasiswaAdminBlank" class="text-danger">
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-</main>
+</div>
+</div>

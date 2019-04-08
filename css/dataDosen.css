@@ -69,24 +69,6 @@
   color: white;
 }
 
-#dataDosen .tombolAksiHapusKompen{
-  padding-bottom: 2em;
-}
-
-#dataDosen #edit {
+#dataDosen #edit{
   background-color: rgba(0, 0, 0, 0.5)
-}
-
-#dataDosen .close {
-  padding-right: 0.5em;
-}
-
-#dataDosen .tambahkan-modal{
-  background-color: #3AAC5F;
-  color: white;
-  border-radius: 10px;
-}
-
-#dataDosen .tambahkan-modal-parent{
-  padding-right: 4em;
 }
