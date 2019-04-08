@@ -38,7 +38,14 @@
 #khs .tmbl-table{
     width: 130px;
     font-family: Lato;
-    font-size: 12px;
+    font-size: 13px;
+}
+
+#khs .tmbl-kirim{
+    width: 130px;
+    font-family: Lato;
+    font-size: 13px;
+    background: #3AAC5F;
 }
 
 #khs .lihat{
@@ -64,4 +71,41 @@
 
 #khsModal .table-bordered th{
     border: 0px solid #dee2e6;
+}
+
+#khs .isi-modaLihat p{
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#khs input[type="radio"]{
+    width: 18px;
+    height: 18px;
+}
+#khs input[type="radio"] :checked:before {
+    color: rgb(218, 33, 33); 
+}
+  
+#khs input[type="radio"] :checked:after {
+    color: #fff; 
+}
+
+#khs .border-bottom {
+    border-bottom: 2px solid #000000!important;
+    margin-bottom: 10px;
+    margin-top: -25px;
+}
+
+#khs .border-bottom1 {
+    border-bottom: 2px solid #000000!important;
+    margin-bottom: 20px;
+}
+
+#khs .modal-header{
+    border-bottom: 1px solid rgba(90, 90, 90, 0.52) !important;
+}
+
+#khs .modal-footer{
+    border-top: 0px;
 }
