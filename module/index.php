@@ -304,7 +304,7 @@
             case "dataMahasiswa":
                 include "admin/mahasiswa/dataMahasiswa.php";
             break;
-            case "krsAdmin":
+            case "krs":
                 include "admin/krs/krsAdmin.php";
             break;
             case "krsPerKelas":

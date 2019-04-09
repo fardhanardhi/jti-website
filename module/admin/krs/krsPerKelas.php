@@ -6,10 +6,10 @@
       <div class="m-2 bg-white shadow-sm rounded">
       <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="pr-4 title"><a href="#"><strong>Kartu Rencana Studi</strong></a></li>
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Kartu Rencana Studi (KRS)</li>
-                <li class="breadcrumb-item active" aria-current="page">Lihat KRS per Kelas</li>
+                <li class="pr-4 title"><a href="index.php?module=krs"><strong>Kartu Rencana Studi</strong></a></li>
+                <li class="breadcrumb-item"><a href="index.php?module=krs">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=krs">Kartu Rencana Studi</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=krsPerKelas">Lihat KRS per Kelas</a></li>
             </ol>
         </nav>
       </div>
@@ -94,7 +94,7 @@
           
           <div class="modal fade" id="modalGambar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content" style="padding:10px">
                         <center>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="false">&times;</span></button>
