@@ -304,7 +304,7 @@
                                                                             
                                                         </td>
                                                         <td>
-                                                        <a href='' class='btn btn-danger' data-toggle='modal' data-target='#modalHapusAdminMahasiswa'>Hapus</a>
+                                                        <a href='' class='btn btn-danger' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
                                                              
                                                         </td>    
                                                     </tr>
@@ -519,6 +519,22 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- modal hapus -->
+
+    <div class="modal fade hapusMahasiswa-modal" id="modalHapusDataMahasiswa" tabindex="-1" role="dialog" aria-labelledby="hapusDataMahasiswaTitle" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content kontent-modal">
+                <div clas="modal-body">
+                    <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
+                    <div class="tombolAksiHapusDataMahasiswa text-center">
+                        <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
+                        <button type="button" class="btn btn-iya">Ya</button>
                     </div>
                 </div>
             </div>
