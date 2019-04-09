@@ -81,9 +81,16 @@
 }
 
 #ruang #daftar-ruangan{
-    height: 50vh !important;
+    max-height: 49vh !important;
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+#ruang #pemesanan-ruang{
+    max-height: 88vh !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+
 }
 
 #ruang #cari{
@@ -98,17 +105,29 @@
 
 #ruang .scrollbar::-webkit-scrollbar-track
 {
-	background-color: #F5F5F5;
+    border-radius: 10px;
+	background-color: #e7e4e4;
 }
 
 #ruang .scrollbar::-webkit-scrollbar
 {
-    width: 7px;
-	background-color: #F5F5F5;
+    width: 3px;
+	background-color: #e7e4e4;
 }
 
 #ruang .scrollbar::-webkit-scrollbar-thumb
 {
-	background-color: #40407a;
-	border: 2px solid #555555;
+    border-radius: 10px;
+	border: 2px solid #40407a;
+}
+
+#ruang .label{
+    top:0;
+    position: absolute;
+    right:0;
+}
+
+#ruang .caption-label{
+    width: 3.7em;
+    height: 1.5em;
 }

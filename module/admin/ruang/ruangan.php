@@ -5,7 +5,7 @@
       <div class="m-2 bg-white shadow-sm rounded">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="pr-4 title"><a href="#"><strong>Ruang Kosong</strong></a></li>
+                <li class="pr-4 title "><a href="#"><strong>Ruang Kosong</strong></a></li>
                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Ruang Kosong</li>
             </ol>

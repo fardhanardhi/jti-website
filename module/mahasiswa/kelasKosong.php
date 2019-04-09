@@ -168,7 +168,7 @@
                         <?php
                       }else if($row["status_dipinjam"]=="Dipinjam"){
                         ?>
-                        <div class="col-md-6 col-sm-12 p-2">
+                        <div class="col-md-6 p-2">
                           <div class="rounded ruang p-3 dipesan">
                             <div class="row d-flex align-items-center">
                               <div class="col-3 text-center">
