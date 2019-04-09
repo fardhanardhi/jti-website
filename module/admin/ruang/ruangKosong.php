@@ -381,7 +381,7 @@
         <h6 class="border-bottom border-gray pb-2 mb-0">Daftar Ruangan</h6>
         <div class="pt-3">
           <form action="?module=ruang" method="post">
-            <div class="container-fluid">
+            <div class="container-fluid pl-2">
               <div class="row">
                 <div class="col-1 p-0 text-center">
                   <strong>Hari</strong>
