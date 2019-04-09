@@ -12,7 +12,7 @@
             <ol class="breadcrumb">
                 <li class="pr-4 title"><a href="index.php?module=krs"><strong>Kartu Rencana Studi</strong></a></li>
                 <li class="breadcrumb-item"><a href="index.php?module=krs">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=krs">Kartu Rencana Studi</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=krs">Kartu Rencana Studi (KRS)</a></li>
             </ol>
         </nav>
       </div>
