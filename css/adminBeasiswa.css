@@ -1,0 +1,28 @@
+#beasiswa .table {
+  margin-top: 2em;
+}
+
+#beasiswa .table-striped > thead > tr > th {
+  background-color: #40407a;
+  color: white;
+}
+
+#beasiswa .table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #ceceef;
+}
+
+#beasiswa .table-striped > tbody > tr:nth-child(even) > td {
+  background-color: #ececff;
+}
+#beasiswa .table-striped > tbody > tr > td {
+  font-size: 1em;
+}
+#beasiswa .beasiswa-edit-btn{
+    background-color: #59ACE7;
+}
+#beasiswa .beasiswa-hapus-btn{
+    background-color: #CF212A;
+}
+#beasiswa .submitBeasiswa{
+    background-color: #3AAC5F;
+}
