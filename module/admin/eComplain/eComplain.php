@@ -21,24 +21,91 @@
     </div>
 
     <div class="col-md-12 p-0">
-      <div class="m-2 p-3 bg-white rounded shadow-sm chat">
-        <div class="row bg-dark h-100">
-          <div class="col-md-3 border-right border-gray bg-danger h-100">
-            <div class="row border-bottom border-gray">
-              aaaaaaa
+      <div class="m-2 py-0 px-3 bg-white rounded shadow-sm chat">
+        <div class="row h-100">
+          <div class="col-md-12">
+            <div class="row chat-head border-bottom border-gray">
+              <div class="col-md-4 border-right border-gray">
+                <div class="row align-items-center justify-content-center h-100">
+                  <div class="col-md-auto ">
+                    <img class="btn-search" src="../img/search.svg" alt="search">
+                  </div>
+                  <div class="col pl-0">
+                    <form>
+                      <div class="form-row">
+                        <div class="col">
+                          <input type="text" class="form-control" placeholder="Pencarian...">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="row align-items-center h-100 px-3">
+                  <img class="chat-profile-photo" src="../attachment/img/avatar.png">
+                  <h5 class="m-0 ml-3">Veronica Imoet</h5>
+                </div>
+              </div>
             </div>
-            <div class="row border-bottom border-gray bg-warning h-100">
-              aaaaaaa
-            </div>
-          </div>
-          <div class="col-md-9">
-            <div class="row border-bottom border-gray">
-              aaaaaaa
-            </div>
-            <div class="row border-bottom border-gray bg-info h-100">
-              aaaaaaa
-            </div>
+            <div class="row chat-body">
+              <div class="recent-chat col-md-4 border-right border-gray scrollbar">
 
+                <div class="row recent-chat-item border-bottom border-gray p-3 active">
+                  <div class="col-md-auto p-0">
+                    <img class="chat-profile-photo" src="../attachment/img/avatar.png">
+                  </div>
+                  <div class="col">
+                    <div class="row chat-info">
+                      <div class="col">
+                        Veronica Imoet
+                      </div>
+                      <div class="col-md-auto pr-0">
+                        30 Jan 2019
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col pr-0">
+                        Assalamualaiku wr. wb.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <?php
+                for ($i = 0; $i < 20; $i++) {
+                  ?>
+                  <div class="row recent-chat-item border-bottom border-gray p-3">
+                    <div class="col-md-auto p-0">
+                      <img class="chat-profile-photo" src="../attachment/img/avatar.png">
+                    </div>
+                    <div class="col">
+                      <div class="row chat-info">
+                        <div class="col">
+                          Veronica Imoet
+                        </div>
+                        <div class="col-md-auto pr-0">
+                          30 Jan 2019
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col pr-0">
+                          Assalamualaiku wr. wb.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <?php
+              }
+              ?>
+
+              </div>
+              <div class="col-md-8">
+                <div class="row border-bottom border-gray">
+                  Isi Chat
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <!-- <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
