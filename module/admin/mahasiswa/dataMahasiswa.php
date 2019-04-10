@@ -253,6 +253,7 @@
                                             tabel_user.username, 
                                             tabel_user.password, 
 
+                                            tabel_mahasiswa.id_mahasiswa,
                                             tabel_mahasiswa.nim, 
                                             tabel_mahasiswa.nama, 
                                             tabel_mahasiswa.alamat, 
@@ -291,7 +292,7 @@
                                                         <td>". $row["password"] ."</td>
                                                         <td>". $row["foto"] ."</td>
                                                         <td>". $row["nim"] ."</td>
-                                                        <td>". $row["tabel_mahasiswa.nama"] ."</td>
+                                                        <td>". $row["nama"] ."</td>
                                                         <td>". $row["tempat_lahir"] ."</td>
                                                         <td>". $row["tanggal_lahir"] ."</td>
                                                         <td>". $row["jenis_kelamin"] ."</td>
