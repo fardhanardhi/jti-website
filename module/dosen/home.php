@@ -145,7 +145,7 @@
               <!-- Kompen Tabel -->
               <!-- ------------ -->
 
-              <div class="col-12 p-0 data-kompen-ada">
+              <div class="col-12 p-0 data-kompen-ada scrollbar">
                 <div class="border-bottom border-gray pb-2 mb-0"> </div>
 
                 <form action="">
@@ -230,6 +230,88 @@
                   <div class="border-bottom border-gray pb-2 mb-0"> </div>
                 </form>
                 
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="row">
+                            <div class="col-md-1 my-auto">
+                            1.
+                            </div>
+                            <div class="col-md-9">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  Menata dokumen di ruang baca
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  kuota: 2 mahasiswa
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 my-auto">
+                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                            <div class="dropdown-kompen dropdown-menu">
+                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                              <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen"><i class="far fa-trash-alt"></i> Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-bottom border-gray pb-2 mb-0"> </div>
+                </form>
+
+                <form action="">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="row">
+                            <div class="col-md-1 my-auto">
+                            1.
+                            </div>
+                            <div class="col-md-9">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  Menata dokumen di ruang baca
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  kuota: 2 mahasiswa
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 my-auto">
+                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                        </div>
+                        <div class="col-md-auto my-auto">
+                          <div class="dropdown">
+                            <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+                            <div class="dropdown-kompen dropdown-menu">
+                              <a class="dropdown-item" href="#"><i class="far fa-edit"></i> Edit</a>
+                              <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen"><i class="far fa-trash-alt"></i> Hapus</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="border-bottom border-gray pb-2 mb-0"> </div>
+                </form>
+
                 <form action="">
                   <div class="row">
                     <div class="col-md-12">
