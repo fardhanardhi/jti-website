@@ -2,6 +2,12 @@
   font-family: "Lato";
 }
 
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   /* min-height: 75rem; */
   /* padding-top: 4.5rem; */
@@ -164,19 +170,20 @@ body {
 }
 
 #myModal .demo {
-  width:auto; 
-  height:auto; 
-  max-height:15vh;
-  max-width:15vh;
+  width: auto;
+  height: auto;
+  max-height: 15vh;
+  max-width: 15vh;
 }
 
 #myModal .head {
   position: relative;
-    margin: auto;
+  margin: auto;
   padding: 0;
 }
 
-#myModal .photo-prev, .photo-next {
+#myModal .photo-prev,
+.photo-next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -205,7 +212,6 @@ body {
 .photo-next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-
 
 /* sidebar */
 .sticky-sidebar {
