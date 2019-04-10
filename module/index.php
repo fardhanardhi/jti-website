@@ -256,7 +256,7 @@ switch ($level) {
           include "notifikasi.php";
           break;
         default:
-          include "dosen/home.php";
+          include "404.php";
       }
     } else if ($level == "admin") {
       switch ($module) {
@@ -293,6 +293,11 @@ switch ($level) {
         case "beasiswa":
           include "admin/mahasiswa/beasiswa.php";
           break;
+        case "eComplain":
+          include "admin/eComplain/eComplain.php";
+          break;
+        default:
+          include "404.php";
       }
     }
 
