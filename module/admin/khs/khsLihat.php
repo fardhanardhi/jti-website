@@ -6,7 +6,7 @@
                     <ol class="breadcrumb">
                         <li class="pr-4 title"><a href="#"><strong>Lihat KHS</strong></a></li>
                         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Kartu Hasil Studi(KHS)</li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=khs">Kartu Hasil Studi(KHS)</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Lihat KHS</li>
                     </ol>
                 </nav>
