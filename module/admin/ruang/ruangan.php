@@ -19,189 +19,458 @@
 
     <div class="col-md-9 p-0">
       <div class="m-2 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <strong class="text-gray-dark">Full Name</strong>
-              <a href="#">Follow</a>
-
+        <h6 class="border-bottom border-gray pb-2 mb-0">Daftar Ruangan</h6>
+        <div class="pt-3">
+          <div class="container-fluid">
+            <div class="row">
+              <form class="col-md-3 p-0 m-0 d-flex">
+                <small class="my-auto"><img src="../img/search.svg" alt="" id="icon-search"></small>
+                <input type="search" class="pencarian form-control" name="cari" id="cari">
+              </form>
+              
+              <div class="col-md-2">
+                <button class="btn btn-success btn-checkout text-white">Cari</button>
+              </div>
             </div>
-            <span class="d-block">@username</span>
-            <div class="isi">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
-              reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
-              consectetur eum recusandae sapiente quam omnis.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
-              totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
-              assumenda?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
-              sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
-              fugiat facere!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
-              impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
-              debitis error omnis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
-              dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
-              est quia culpa placeat minus laborum!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
-              minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
-              tempora possimus earum dicta officia.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
-              Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
-              consectetur, doloremque non sed, quisquam molestias.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
-              molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
-              adipisci?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
-              reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
-              consectetur eum recusandae sapiente quam omnis.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
-              totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
-              assumenda?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
-              sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
-              fugiat facere!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
-              impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
-              debitis error omnis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
-              dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
-              est quia culpa placeat minus laborum!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
-              minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
-              tempora possimus earum dicta officia.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
-              Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
-              consectetur, doloremque non sed, quisquam molestias.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
-              molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
-              adipisci?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
-              reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
-              consectetur eum recusandae sapiente quam omnis.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
-              totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
-              assumenda?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
-              sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
-              fugiat facere!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
-              impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
-              debitis error omnis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
-              dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
-              est quia culpa placeat minus laborum!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
-              minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
-              tempora possimus earum dicta officia.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
-              Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
-              consectetur, doloremque non sed, quisquam molestias.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
-              molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
-              adipisci?
+
+            <div class="row pr-1 mt-2 pl-0 scrollbar" id="ruangan2">
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 m-0 pl-0">
+                <div class="row p-3">
+                  <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-6 text-center">
+                        <h4 class="my-auto">KB 03</h4> 
+                      </div>
+                      <div class="col-md-6">
+                        <span>Lantai 7</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 p-0 d-flex">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
             </div>
           </div>
         </div>
-        <small class="d-block text-right mt-3">
-          <a href="#">All suggestions</a>
-        </small>
       </div>
     </div>
     
     <div class="col-md-3 p-0">
-      <div class="m-2 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Suggestions</h6>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <strong class="text-gray-dark">Full Name</strong>
-              <a href="#">Follow</a>
-
-            </div>
-            <span class="d-block">@username</span>
-            <div class="isi">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
-              reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
-              consectetur eum recusandae sapiente quam omnis.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
-              totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
-              assumenda?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
-              sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
-              fugiat facere!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
-              impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
-              debitis error omnis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
-              dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
-              est quia culpa placeat minus laborum!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
-              minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
-              tempora possimus earum dicta officia.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
-              Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
-              consectetur, doloremque non sed, quisquam molestias.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
-              molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
-              adipisci?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
-              reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
-              consectetur eum recusandae sapiente quam omnis.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
-              totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
-              assumenda?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
-              sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
-              fugiat facere!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
-              impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
-              debitis error omnis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
-              dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
-              est quia culpa placeat minus laborum!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
-              minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
-              tempora possimus earum dicta officia.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
-              Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
-              consectetur, doloremque non sed, quisquam molestias.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
-              molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
-              adipisci?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, rerum. Animi nihil eveniet
-              reprehenderit obcaecati, perferendis, numquam dicta itaque accusantium fugit labore ullam pariatur
-              consectetur eum recusandae sapiente quam omnis.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum temporibus tempora vel. Dolore veniam
-              totam possimus quam. Voluptates pariatur alias ea laborum libero, aperiam rerum nisi amet, soluta sunt
-              assumenda?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam asperiores atque perferendis porro
-              sint maiores maxime sapiente optio totam sunt eveniet distinctio, odit rem quam, qui ratione aliquid
-              fugiat facere!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, animi asperiores, fugiat molestias
-              impedit ipsa laborum obcaecati fugit delectus odio ad provident at officiis quam recusandae quis
-              debitis error omnis.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae inventore sint distinctio
-              dignissimos nesciunt alias earum pariatur aliquam odit, eveniet corrupti doloremque exercitationem qui
-              est quia culpa placeat minus laborum!
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim eaque odit quas officiis repudiandae,
-              minima aperiam maxime, facere, aut facilis reprehenderit dignissimos voluptates aspernatur nihil
-              tempora possimus earum dicta officia.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci id recusandae consequuntur!
-              Voluptatem cupiditate distinctio itaque laboriosam iure nemo aspernatur earum sit sequi amet
-              consectetur, doloremque non sed, quisquam molestias.
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse amet error vitae ratione quas dolores
-              molestiae laborum sapiente necessitatibus, rerum incidunt sit officiis odio ea omnis qui porro quam
-              adipisci?
-            </div>
+      <div class="container-fluid m-0 p-0">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="m-2 p-3 bg-white rounded shadow-sm">
+            <h6 class="border-bottom border-gray pb-2 mb-0">Tambah Ruangan</h6>
           </div>
         </div>
-        <small class="d-block text-right mt-3">
-          <a href="#">All suggestions</a>
-        </small>
-        </div>
+      </div>
     </div>
-
-    </div>
+    
+  </div>
 </main>
