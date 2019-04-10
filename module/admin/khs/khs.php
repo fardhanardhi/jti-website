@@ -6,7 +6,7 @@
                     <ol class="breadcrumb">
                         <li class="pr-4 title"><a href="#"><strong>Kartu Hasil Studi</strong></a></li>
                         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Kartu Hasil Studi(KHS)</li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=khs">Kartu Hasil Studi(KHS)</a></li>
                     </ol>
                 </nav>
             </div>
@@ -21,7 +21,7 @@
                     <option value="2">TI-2C</option>
                 </select>
                 <button type="button" class="tmbl-filter btn btn-success ml-3">Search</button>
-                <button type="button" class="tmbl-ruangan btn btn-info float-right">Lihat KHS</button>
+                <button type="button" class="tmbl-ruangan btn btn-info float-right"><a href ="index.php?module=khsLihat">Lihat KHS</a></button>
                 <br><br>
                 <div class="media text-muted pt-8">
                     <div class="media-body pb-8 mb-0 small lh-125">

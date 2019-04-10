@@ -134,7 +134,7 @@
               if (mysqli_num_rows($resultKelasKosong) > 0){
                   while($row = mysqli_fetch_assoc($resultKelasKosong)){
                       $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
-                      if($row["status_dipinjam"]=="Kosong"){
+                      if($row["status_dipinjam"]=="kosong"){
                         ?>
                         <div class="col-md-6 p-2">
                           <div class="rounded ruang p-3">
@@ -142,7 +142,7 @@
                             <form action="../process/proses_kelasKosong.php?act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
                             <div class="row d-flex align-items-center">
                               <div class="col-3 text-center">
-                                <h4 class="p-0 m-0"><?php echo $row["kode_ruang"]; ?></h4>
+                                <h4 class="p-0 m-0"><?php echo $row["kode"]; ?></h4>
                                 <span class="text-secondary"><?php echo "(Lantai ".$row["lantai"].")"; ?></span>
                               </div>
                               <div class="col-5">
@@ -166,13 +166,13 @@
                           </div>
                         </div>
                         <?php
-                      }else if($row["status_dipinjam"]=="Dipinjam"){
+                      }else if($row["status_dipinjam"]=="dipinjam"){
                         ?>
                         <div class="col-md-6 p-2">
                           <div class="rounded ruang p-3 dipesan">
                             <div class="row d-flex align-items-center">
                               <div class="col-3 text-center">
-                                <h4 class="p-0 m-0"><?php echo $row["kode_ruang"]; ?></h4>
+                                <h4 class="p-0 m-0"><?php echo $row["kode"]; ?></h4>
                                 <span class="text-secondary"><?php echo "(Lantai ".$row["lantai"].")"; ?></span>
                               </div>
                               <div class="col-5">

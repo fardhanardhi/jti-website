@@ -80,23 +80,28 @@
     text-align: center;
 }
 
-#ruang #daftar-ruangan{
-    max-height: 49vh !important;
+#ruang #pemesanan-ruang{
+    max-height: 85vh !important;
     overflow-y: auto;
     overflow-x: hidden;
+
+}
+
+#ruang #daftar-ruangan{
+    max-height: 46vh !important;
+    overflow-y: auto;
 }
 
 #ruang #ruangan2{
-    max-height: 70vh !important;
+    max-height: 60vh !important;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-#ruang #pemesanan-ruang{
-    max-height: 88vh !important;
+#ruang #lantai{
+    max-height: 33vh !important;
     overflow-y: auto;
     overflow-x: hidden;
-
 }
 
 #ruang #cari{

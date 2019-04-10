@@ -3,7 +3,7 @@ include "../config/connection.php";
 
 function kelasDipesan($con)
 {
-  $kelasDipesan = "select a.*, b.* from tabel_info_kelas_kosong a, tabel_ruang b where a.id_ruang = b.id_ruang and status_dipinjam='dipinjam' and a.peminjam='$_SESSION[id]'";
+  $kelasDipesan = "select a.*, b.* from tabel_info_kelas_kosong a, tabel_ruang b where a.id_ruang = b.id_ruang and a.status_dipinjam='dipinjam' and a.peminjam='$_SESSION[id]'";
   $resultKelasDipesan = mysqli_query($con, $kelasDipesan);
   return $resultKelasDipesan;
 }

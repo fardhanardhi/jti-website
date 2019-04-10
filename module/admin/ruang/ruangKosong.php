@@ -411,7 +411,7 @@
                 <div class="col-1 p-0 text-center">
                   <strong>Jam</strong>
                 </div>
-                <div class="col-11 p-0 pl-2">
+                <div class="col-2 text-center p-0 pl-2">
                   <select class="optionJam" name="jam">
                     <option value="07:00:00">07.00</option>
                     <?php
@@ -498,7 +498,7 @@
                             <br>
                             <strong><?php echo "08.00". " - "."10.000" ?></strong>
                           </div>
-                          <div class="col-5">
+                          <div class="col-5 text-right">
                             <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
                           </div>
                         </div>
@@ -676,7 +676,7 @@
               </div>
             </div>
 
-            <div class="col-md-6 p-2">
+            <div class="col-md-6 p-2" id="ruang-dipesan">
               <div class="p-3 ruang rounded">
                 <div class="row d-flex align-items-center">
                   <div class="col-7 text-left">
