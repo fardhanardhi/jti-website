@@ -5,7 +5,7 @@
         <div class="m-2 bg-white shadow-sm rounded">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="pr-4 title"><a href="#"><strong>Beasiswa</strong></a></li>
+                    <li class="pr-4 title"><strong>Beasiswa</strong></li>
                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Beasiswa</li>
                 </ol>
@@ -36,9 +36,9 @@
                                 <div class="col-md-1"></div>
                                 <div class="col-md-10">
                                     <div class="form-group row">
-                                        <label for="linkBeasiswa">Link</label>
+                                        <label for="linkBeasiswa" style="color:gray">Link</label>
                                         <div class="col-md-11">
-                                            <input id="linkBeasiswa" name="linkBeasiswa" class="form-control" type="text">
+                                            <input id="linkBeasiswa" style="border:none" name="linkBeasiswa" class="form-control border-bottom border-gray pb-2 mb-0" type="text">
                                         </div>
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                 </div>
                 
                 <div>
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered">
                         <thead class="text-center">
                             <tr>
                                 <th>No</th>

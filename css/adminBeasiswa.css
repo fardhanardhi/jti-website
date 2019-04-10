@@ -2,6 +2,10 @@
   margin-top: 2em;
 }
 
+#beasiswa .table tr {
+  height: 0.3em !important;
+}
+
 #beasiswa .table-striped > thead > tr > th {
   background-color: #40407a;
   color: white;
@@ -18,11 +22,16 @@
   font-size: 1em;
 }
 #beasiswa .beasiswa-edit-btn{
+    padding-right: 2em;
+    padding-left: 2em;
     background-color: #59ACE7;
+    border-radius: 10px;
 }
 #beasiswa .beasiswa-hapus-btn{
     background-color: #CF212A;
+    border-radius: 10px;
 }
 #beasiswa .submitBeasiswa{
     background-color: #3AAC5F;
+    border-radius: 10px;
 }
