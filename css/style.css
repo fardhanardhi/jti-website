@@ -232,3 +232,22 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* Scrollbar */
+.scrollbar::-webkit-scrollbar-track
+{
+    border-radius: 10px;
+	background-color: #e7e4e4;
+}
+
+.scrollbar::-webkit-scrollbar
+{
+    width: 3px;
+	background-color: #e7e4e4;
+}
+
+.scrollbar::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+	border: 2px solid #40407a;
+}

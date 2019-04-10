@@ -86,6 +86,12 @@
     overflow-x: hidden;
 }
 
+#ruang #ruangan2{
+    max-height: 70vh !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 #ruang #pemesanan-ruang{
     max-height: 88vh !important;
     overflow-y: auto;
@@ -103,24 +109,6 @@
     margin-right: 1em;
 }
 
-#ruang .scrollbar::-webkit-scrollbar-track
-{
-    border-radius: 10px;
-	background-color: #e7e4e4;
-}
-
-#ruang .scrollbar::-webkit-scrollbar
-{
-    width: 3px;
-	background-color: #e7e4e4;
-}
-
-#ruang .scrollbar::-webkit-scrollbar-thumb
-{
-    border-radius: 10px;
-	border: 2px solid #40407a;
-}
-
 #ruang .label{
     top:0;
     position: absolute;
@@ -130,4 +118,13 @@
 #ruang .caption-label{
     width: 3.7em;
     height: 1.5em;
+}
+
+#ruang .pencarian{
+    height: 1.6em !important;
+}
+
+#ruang .hapus{
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
 }
