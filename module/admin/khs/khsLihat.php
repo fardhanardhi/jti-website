@@ -44,22 +44,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php
+                            $query = "SELECT tabel_mahasiswa.nim, tabel_mahasiswa.nama , SUM(tabel_matkul.sks) AS sks
+                            FROM tabel_khs INNER JOIN tabel_mahasiswa ON tabel_khs.id_mahasiswa = tabel_mahasiswa.id_mahasiswa
+                            INNER JOIN tabel_matkul ON tabel_khs.id_matkul = tabel_matkul.id_matkul GROUP BY tabel_mahasiswa.id_mahasiswa";
+                            $result = mysqli_query($con, $query);
+
+                            if(mysqli_num_rows($result) > 0){
+                            $index = 1;
+                                                
+                            while($row = mysqli_fetch_assoc($result)){
+
+                            echo"
                                 <tr>
-                                    <td>1</td>
-                                    <td>Matkul A</td>
-                                    <td>lalalalallalalalaal</td>
-                                    <td>A</td>
-                                    <td><button class="tmbl-table lihat btn btn-info" type="button" class="pratinjau btn" data-toggle="modal" data-target="#myModal" class="edit">Lihat</button>
+                                    <td>". $index++ ."</td>
+                                    <td>". $row["nim"] ."</td>
+                                    <td>". $row["nama"] ."</td>
+                                    <td>". $row["sks"] ."</td>
+                                    <td><button class='tmbl-table lihat btn btn-info' type='button' class='pratinjau btn' data-toggle='modal' data-target='#myModal' class='edit'>Lihat</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Matkul A</td>
-                                    <td>lllalalallalallalala</td>
-                                    <td>A</td>
-                                    <td><button class="tmbl-table lihat btn btn-info" type="button" class="pratinjau btn" data-toggle="modal" data-target="#myModal" class="edit">Lihat</button>
-                                    </td>
-                                </tr>
+                                ";
+                                }
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
