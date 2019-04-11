@@ -36,6 +36,14 @@
   font-size: 12px;
 }
 
+#home .temu-berita a{
+  color: black;
+}
+
+#home .search-back a{
+  color: black;
+}
+
 /* datepicker */
 #home .datepicker-days,
 .datepicker-inline {
@@ -118,7 +126,11 @@
 }
 #home .isi-download a:hover {
   text-decoration: none;
-  color: blue;
+  color: black;
+}
+
+#home .isi-download button:hover{
+  background-color: white;
 }
 
 /* CSS Button Back */

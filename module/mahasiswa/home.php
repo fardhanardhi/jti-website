@@ -14,10 +14,22 @@
           </div>
           <!-- datepicker hidden input -->
           <input type="hidden" id="my_hidden_input">
-          <div class="search-null text-center">
-            <img src="../img/magnifier.svg" alt="Search Not Found" class="p-3">
-            <p>Tidak ada berita pada tanggal "22 Maret 2019"</p>
-          </div>
+            <!-- <div class="search-null text-center">
+              <img src="../img/magnifier.svg" alt="Search Not Found" class="p-3">
+              <p>Tidak ada berita pada tanggal "22 Maret 2019"</p>
+            </div> -->
+            <div class="search-know mt-2 pb-2 border-bottom border-gray">
+              <h5><strong>Hasil Pencarian</strong></h5>
+              <div class="temu-berita ml-2">
+                <a href="" class="">5 Dosen dikirim ke Jepang</a><br>
+                <a href="" class="">Ruang KB.03 ada acara pertemuan dewan direksi</a><br>
+                <a href="" class="">Acara pelantikan ketum baru HMTI di Auper</a><br>
+                <a href="" class="">Bu Annisa lahiran. Alhamdulillah</a><br>
+              </div>
+            </div>
+            <div class="search-back text-center mt-1">
+              <a href="">Kembali</a>
+            </div>
         </div>
       </div>
     </div>
@@ -484,25 +496,16 @@
               Terima Kasih... <br>
                 <div class="row isi-download">
                   <div class="col-md-12">
-                    <button class="btn btn-outline-dark download d-flex justify-content-around">
-                      <h5><a href="" class="pl-0">Dokumen Rahasia</a></h5>
-                      <img src="../img/vector.svg" alt="Download button" class="pl-0">
-                    </button>
-                </div>
-                </div>
-              
-              <!-- <a href="">
-                <div class="download border border-dark mt-2 p-3">
-                  <div class="row isi-download">
+                    <button class="btn btn-outline-dark download d-flex">
                     <div class="col-sm-7">
-                      <h5><a href="">Dokumen Rahasia</a></h5>
+                    <a href=""><h5>Dokumen Rahasia</h5></a>
                     </div>
                     <div class="col-sm-5 text-right">
                       <img src="../img/vector.svg" alt="Download button" class="">
                     </div>
-                  </div>
+                    </button>
                 </div>
-              </a> -->
+              </div>
             </div>
           </div>
         </div>
