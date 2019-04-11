@@ -1,3 +1,21 @@
+#dataDosen .breadcrumb a{
+  text-decoration: none;
+  color: black;
+}
+
+#dataDosen .breadcrumb{
+  background: white;
+}
+
+#dataDosen .title{
+  font-size: 1.09em;
+}
+
+#dataDosen .breadcrumb a:hover{
+  color: #000000a9;
+}
+#dataDosen .card-body
+
 #dataDosen .table {
   margin-top: 2em;
   width: 130%;
@@ -37,38 +55,45 @@
   /* padding: 20px,20px,20px,20px; */
 }
 
+
 /* modal */
-#dataDosen #hapus {
+#hapus {
   background-color: rgba(0, 0, 0, 0.5)
 }
 
-#dataDosen .close {
+.close {
   padding-right: 0.5em;
 }
 
-/* #dataDosen #hapusKompen {
+#hapusKompen {
   background-color: rgba(32, 32, 32, 0.86);
-} */
+  padding-bottom: 5em;
+}
 
-#dataDosen .isiHapusKompen {
+.isiHapusKompen {
   padding-top: 3em;
   padding-bottom: 2em;
 }
 
-#dataDosen .btn-tidak {
+.btn-tidak {
   padding: 0em 1.5em 0em 1.5em;
   margin-right: 5em;
   background-color: #CF212A;
   color: white;
 }
 
-#dataDosen .btn-iya {
+.btn-iya {
   padding: 0em 1.5em 0em 1.5em;
   margin-left: 5em;
   background-color: #3AAC5F;
   color: white;
 }
+.tombolAksiHapusKompen{
+  padding-bottom: 2em;
+}
 
-#dataDosen #edit{
+
+
+#editModal #edit{
   background-color: rgba(0, 0, 0, 0.5)
 }
