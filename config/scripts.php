@@ -27,3 +27,4 @@
   <script src="../js/dosenScript.js"></script>
   <script src="../js/dataMahasiswaAdmin.js"></script>
   <script src="../js/adminScript.js"></script>
+  <script src="../js/adminBeasiswa.js"></script>
