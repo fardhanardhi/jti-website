@@ -281,6 +281,9 @@ switch ($level) {
         case "dataMahasiswa":
           include "admin/mahasiswa/dataMahasiswa.php";
           break;
+        case "mataKuliah":
+          include "admin/matakuliah/mataKuliah.php";
+          break;
         case "krs":
           include "admin/krs/krsAdmin.php";
           break;
