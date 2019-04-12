@@ -38,7 +38,7 @@
       <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
         <h5 class="border-bottom border-gray pb-2 mb-3"><strong>Kuisioner</strong></h5>
         <div class="isi-mhs small lh-125 mb-2">
-          note : Apabila tidak mengisi kuisioner maka akan mendapat sanksi berupa aplha 1(satu) jam setiap mata kuliah
+          note : Apabila tidak mengisi kuisioner maka akan mendapat sanksi berupa alpha 1(satu) jam setiap mata kuliah
         </div>
         <!-- Button trigger modal -->
         <button type="button" class="check-modal btn" data-toggle="modal" data-target="#modelId">Isi Kuisioner</button>
