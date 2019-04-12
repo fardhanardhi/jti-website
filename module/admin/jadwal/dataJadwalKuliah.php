@@ -28,18 +28,34 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Pilih Kelas</option>
-                                                                    <option>Januari</option>
-                                                                    <option>Februari</option>
-                                                                    <option>Maret</option>
-                                                                    <option>April</option>
-                                                                    <option>Mei</option>
-                                                                    <option>Juni</option>
-                                                                    <option>Juli</option>
-                                                                    <option>Agustus</option>
-                                                                    <option>September</option>
-                                                                    <option>Oktober</option>
-                                                                    <option>November</option>
-                                                                    <option>Desember</option>
+                                                                    <option>TI-1A</option>
+                                                                    <option>TI-1B</option>
+                                                                    <option>TI-1C</option>
+                                                                    <option>TI-1D</option>
+                                                                    <option>TI-1E</option>
+                                                                    <option>TI-1F</option>
+                                                                    <option>TI-1G</option>
+                                                                    <option>TI-2A</option>
+                                                                    <option>TI-2B</option>
+                                                                    <option>TI-2C</option>
+                                                                    <option>TI-2D</option>
+                                                                    <option>TI-2E</option>
+                                                                    <option>TI-2F</option>
+                                                                    <option>TI-2G</option>
+                                                                    <option>TI-3A</option>
+                                                                    <option>TI-3B</option>
+                                                                    <option>TI-3C</option>
+                                                                    <option>TI-3D</option>
+                                                                    <option>TI-3E</option>
+                                                                    <option>TI-3F</option>
+                                                                    <option>TI-3G</option>
+                                                                    <option>TI-4A</option>
+                                                                    <option>TI-4B</option>
+                                                                    <option>TI-4C</option>
+                                                                    <option>TI-4D</option>
+                                                                    <option>TI-4E</option>
+                                                                    <option>TI-4F</option>
+                                                                    <option>TI-4G</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -48,18 +64,11 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Pilih Hari</option>
-                                                                    <option>Januari</option>
-                                                                    <option>Februari</option>
-                                                                    <option>Maret</option>
-                                                                    <option>April</option>
-                                                                    <option>Mei</option>
-                                                                    <option>Juni</option>
-                                                                    <option>Juli</option>
-                                                                    <option>Agustus</option>
-                                                                    <option>September</option>
-                                                                    <option>Oktober</option>
-                                                                    <option>November</option>
-                                                                    <option>Desember</option>
+                                                                    <option>Senin</option>
+                                                                    <option>Selasa</option>
+                                                                    <option>Rabu</option>
+                                                                    <option>Kamis</option>
+                                                                    <option>Jum'at</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -68,37 +77,30 @@
                                                             <div class="col-sm-5">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Mulai</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
-                                                                    <option>7</option>
-                                                                    <option>8</option>
-                                                                    <option>9</option>
-                                                                    <option>10</option>
-                                                                    <option>11</option>
-                                                                    <option>12</option>
-                                                                    <option>13</option>
-                                                                    <option>14</option>
-                                                                    <option>15</option>
-                                                                    <option>16</option>
-                                                                    <option>17</option>
-                                                                    <option>18</option>
-                                                                    <option>19</option>
-                                                                    <option>20</option>
-                                                                    <option>21</option>
-                                                                    <option>22</option>
-                                                                    <option>23</option>
-                                                                    <option>24</option>
-                                                                    <option>25</option>
-                                                                    <option>26</option>
-                                                                    <option>27</option>
-                                                                    <option>28</option>
-                                                                    <option>29</option>
-                                                                    <option>30</option>
-                                                                    <option>31</option>
+                                                                    <option>07.00</option>
+                                                                    <option>07.45</option>
+                                                                    <option>08.30</option>
+                                                                    <option>08.40</option>
+                                                                    <option>09.15</option>
+                                                                    <option>09.30</option>
+                                                                    <option>09.45</option>
+                                                                    <option>10.00</option>
+                                                                    <option>10.35</option>
+                                                                    <option>10.45</option>
+                                                                    <option>11.00</option>
+                                                                    <option>12.30</option>
+                                                                    <option>12.45</option>
+                                                                    <option>13.15</option>
+                                                                    <option>13.35</option>
+                                                                    <option>13.45</option>
+                                                                    <option>14.25</option>
+                                                                    <option>14.30</option>
+                                                                    <option>15.15</option>
+                                                                    <option>15.30</option>
+                                                                    <option>16.15</option>
+                                                                    <option>16.20</option>
+                                                                    <option>16.40</option>
+                                                                    <option>17.10</option>
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-1">
@@ -109,18 +111,31 @@
                                                             <div class="col-sm-4">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Berakhir</option>
-                                                                    <option>Januari</option>
-                                                                    <option>Februari</option>
-                                                                    <option>Maret</option>
-                                                                    <option>April</option>
-                                                                    <option>Mei</option>
-                                                                    <option>Juni</option>
-                                                                    <option>Juli</option>
-                                                                    <option>Agustus</option>
-                                                                    <option>September</option>
-                                                                    <option>Oktober</option>
-                                                                    <option>November</option>
-                                                                    <option>Desember</option>
+                                                                    <option>07.45</option>
+                                                                    <option>07.50</option>
+                                                                    <option>08.30</option>
+                                                                    <option>08.40</option>
+                                                                    <option>09.15</option>
+                                                                    <option>09.30</option>
+                                                                    <option>09.45</option>
+                                                                    <option>10.00</option>
+                                                                    <option>10.35</option>
+                                                                    <option>10.45</option>
+                                                                    <option>11.00</option>
+                                                                    <option>12.30</option>
+                                                                    <option>12.45</option>
+                                                                    <option>13.15</option>
+                                                                    <option>13.35</option>
+                                                                    <option>13.45</option>
+                                                                    <option>14.25</option>
+                                                                    <option>14.30</option>
+                                                                    <option>15.15</option>
+                                                                    <option>15.30</option>
+                                                                    <option>16.15</option>
+                                                                    <option>16.20</option>
+                                                                    <option>16.40</option>
+                                                                    <option>17.10</option>
+                                                                    <option>18.00</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -131,18 +146,7 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Pilih Mata Kuliah</option>
-                                                                    <option>Januari</option>
-                                                                    <option>Februari</option>
-                                                                    <option>Maret</option>
-                                                                    <option>April</option>
-                                                                    <option>Mei</option>
-                                                                    <option>Juni</option>
-                                                                    <option>Juli</option>
-                                                                    <option>Agustus</option>
-                                                                    <option>September</option>
-                                                                    <option>Oktober</option>
-                                                                    <option>November</option>
-                                                                    <option>Desember</option>
+                                                                    <option>Proyek 1</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -151,18 +155,7 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Pilih Ruangan</option>
-                                                                    <option>Januari</option>
-                                                                    <option>Februari</option>
-                                                                    <option>Maret</option>
-                                                                    <option>April</option>
-                                                                    <option>Mei</option>
-                                                                    <option>Juni</option>
-                                                                    <option>Juli</option>
-                                                                    <option>Agustus</option>
-                                                                    <option>September</option>
-                                                                    <option>Oktober</option>
-                                                                    <option>November</option>
-                                                                    <option>Desember</option>
+                                                                    <option>Ruangan</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -172,18 +165,7 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Pilih Dosen Pengajar</option>
-                                                                    <option>Januari</option>
-                                                                    <option>Februari</option>
-                                                                    <option>Maret</option>
-                                                                    <option>April</option>
-                                                                    <option>Mei</option>
-                                                                    <option>Juni</option>
-                                                                    <option>Juli</option>
-                                                                    <option>Agustus</option>
-                                                                    <option>September</option>
-                                                                    <option>Oktober</option>
-                                                                    <option>November</option>
-                                                                    <option>Desember</option>
+                                                                    <option>Bapak/Ibu</option>
                                                                 </select>
                                                             </div>
                                                         </div>
