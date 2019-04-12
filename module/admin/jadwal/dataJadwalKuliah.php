@@ -2,10 +2,19 @@
     <div id="dataDosen" class="row">
         <div class="col-md-12 p-0">
             <div class="m-2 bg-white shadow-sm rounded">
-                <nav class="nav nav-underline">
-                    <h5><span class="nav-link">Jadwal Kuliah</span></h5>
-                    <a class="nav-link" href="#">Dashboard / Jadwal Kuliah</a>
-                </nav>
+                <div class="row">
+                    <div class="col-md-auto pr-0">
+                        <span class="nav-link">Jadwal Kuliah</span>
+                    </div>
+                    <div class="col pl-0">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb p-2 m-0 bg-white">
+                                <li class="breadcrumb-item"><a href="index.php?module=home">Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Beasiswa</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-12 p-0">
