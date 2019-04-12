@@ -201,7 +201,7 @@
                                 <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
                                 <button class="btn btn-success" type="submit">Cari</button>
                             </form>
-                            <div class="scrolltable">
+                            <div class="scrolltable scrollbar-x">
                                 <table class="table table-striped table-bordered text-center">
                                     <thead>
                                         <tr>

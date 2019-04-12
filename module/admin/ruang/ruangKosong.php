@@ -658,45 +658,95 @@
           <h6 class="border-bottom border-gray pb-2 mb-0">Ruangan Dipesan</h6>
           <div class="row p-2">
 
-            <div class="col-md-6 p-2">
-              <div class="p-3 ruang rounded">
-                <div class="row d-flex align-items-center">
-                  <div class="col-7 text-left">
-                    <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                    <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai "."1".")"; ?></span>
-                    <br>
-                    <strong><?php echo "08.00". " - "."10.000" ?></strong>
+          <div id="carouselExampleControls" class="carousel slide col-md-12 m-0 p-0" data-ride="carousel">
+            <div class="carousel-inner">
+              
+              <div class="carousel-item active d-flex m-0 pl-2 pr-2">
+                <div class="col-md-6 p-2" id="ruang-dipesan">
+                  <div class="p-3 ruang rounded">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-7 text-left">
+                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
+                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai "."1".")"; ?></span>
+                        <br>
+                        <strong><?php echo "08.00". " - "."10.000" ?></strong>
+                      </div>
+                      <div class="col-5 text-right">
+                        <h5><?php echo "Jumat"; ?></h5>
+                          <button class="btn btn-danger btn-checkout text-white" data-toggle="modal"
+                          data-target="#modalCheckout">Checkout</button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-5 text-right">
-                    <h5><?php echo "Jumat"; ?></h5>
-                      <button class="btn btn-danger btn-checkout text-white" data-toggle="modal"
-                      data-target="#modalCheckout">Checkout</button>
+                </div>
+                <div class="col-md-6 p-2" id="ruang-dipesan">
+                  <div class="p-3 ruang rounded">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-7 text-left">
+                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
+                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai "."1".")"; ?></span>
+                        <br>
+                        <strong><?php echo "08.00". " - "."10.000" ?></strong>
+                      </div>
+                      <div class="col-5 text-right">
+                        <h5><?php echo "Jumat"; ?></h5>
+                        <button class="btn btn-danger btn-checkout text-white" data-toggle="modal"
+                          data-target="#modalCheckout">Checkout</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <div class="carousel-item d-flex m-0 pl-2 pr-2">
+                <div class="col-md-6 p-2" id="ruang-dipesan">
+                  <div class="p-3 ruang rounded">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-7 text-left">
+                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
+                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai "."1".")"; ?></span>
+                        <br>
+                        <strong><?php echo "08.00". " - "."10.000" ?></strong>
+                      </div>
+                      <div class="col-5 text-right">
+                        <h5><?php echo "Jumat"; ?></h5>
+                          <button class="btn btn-danger btn-checkout text-white" data-toggle="modal"
+                          data-target="#modalCheckout">Checkout</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 p-2" id="ruang-dipesan">
+                  <div class="p-3 ruang rounded">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-7 text-left">
+                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
+                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai "."1".")"; ?></span>
+                        <br>
+                        <strong><?php echo "08.00". " - "."10.000" ?></strong>
+                      </div>
+                      <div class="col-5 text-right">
+                        <h5><?php echo "Jumat"; ?></h5>
+                        <button class="btn btn-danger btn-checkout text-white" data-toggle="modal"
+                          data-target="#modalCheckout">Checkout</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
             </div>
-
-            <div class="col-md-6 p-2" id="ruang-dipesan">
-              <div class="p-3 ruang rounded">
-                <div class="row d-flex align-items-center">
-                  <div class="col-7 text-left">
-                    <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                    <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai "."1".")"; ?></span>
-                    <br>
-                    <strong><?php echo "08.00". " - "."10.000" ?></strong>
-                  </div>
-                  <div class="col-5 text-right">
-                    <h5><?php echo "Jumat"; ?></h5>
-                      <button class="btn btn-danger btn-checkout text-white" data-toggle="modal"
-                      data-target="#modalCheckout">Checkout</button>
-                  </div>
-                </div>
-
-              <!-- End Loop -->
-
-              </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <small><span class="carousel-control-prev-icon" aria-hidden="true"></span></small>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <small><span class="carousel-control-next-icon" aria-hidden="true"></span></small>
+              <span class="sr-only">Next</span>
+            </a>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -720,4 +770,5 @@
   </div>
 </div>
 </form>
-                <!-- End Modal -->
+<!-- End Modal -->
+

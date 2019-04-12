@@ -251,3 +251,21 @@ body {
     border-radius: 10px;
 	border: 2px solid #40407a;
 }
+
+.scrollbar-x::-webkit-scrollbar-track
+{
+  border-radius: 10px;
+	background-color: #e7e4e4;
+}
+
+.scrollbar-x::-webkit-scrollbar
+{
+  height: 3px;
+	background-color: #e7e4e4;
+}
+
+.scrollbar-x::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+	border: 2px solid #40407a;
+}
