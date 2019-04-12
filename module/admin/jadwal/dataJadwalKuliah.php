@@ -208,7 +208,7 @@
                                 <button class="btn btn-success" type="submit">Cari</button>
                             </form>
                             <div class="scrolltable">
-                                <table class="table table-striped table-bordered text-center">
+                                <table class="table table-striped table-bordered text-center mt-3">
                                     <thead>
                                         <tr>
                                             <th>No</th>
