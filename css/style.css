@@ -272,7 +272,9 @@ body {
 
 /* Table */
 .table-striped > thead > tr > th{
-  padding: 0.3em;
+  padding: 0.4em;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
 }
 
 .table-striped > thead > tr > th {
@@ -289,7 +291,7 @@ body {
 }
 .table-striped > tbody > tr > td {
   font-size: 1em;
-  padding: 0.5em;
+  padding: 0.3em;
 }
 
 .table-striped .btn{
