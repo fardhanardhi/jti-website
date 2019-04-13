@@ -38,11 +38,28 @@
                                         <hr>
                                         <div class="container m-0">
                                             <div class="row">
-                                                <div class="col-sm-8">
+                                                <div class="col-sm-7 mt-1">
                                                     0/500
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    oke
+                                                <div class="col-sm-5 text-right">
+                                                    <div class="row">
+                                                        <div class="col-sm-2 mt-1">
+                                                            <img src="../img/imgUpload.svg" alt="Image Upload" class="">
+                                                        </div>
+                                                        <div class="col-sm-2 mt-1">
+                                                            <img src="../img/fileUpload.svg" alt="File Upload" class=""></div>
+                                                        <div class="col-sm-5 mt-1">
+                                                            <strong><label for="kategori-AdBer" class="labelBerita">Kategori :
+                                                            </label></strong> 
+                                                            <select name="" id="">       
+                                                                <option value="ridwan">Berita</option>
+                                                                <option value="rudy">Pengumuman</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                        <button type="submit" class="btn btn-success btn-kirim">Kirim</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -58,7 +75,7 @@
                             <div class="scrolltable">
                                 <table class="table table-striped table-bordered text-center mt-3">
                                     <thead>
-                                        <tr>
+                                        <tr class="p-2">
                                             <th>No</th>
                                             <th>Berita</th>
                                             <th>Tanggal Pembuatan</th>
