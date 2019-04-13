@@ -158,9 +158,9 @@ switch ($level) {
                 <div class="form-group row">
                   <label class="col-md-3" for="foto">Ganti Foto</label>
                   <div class="input-group col-md-9">
-                    <label for="foto" class="file form-control text-secondary">
+                    <label for="foto" class="file form-control text-secondary" id="label-file">
                       <input type="file" class="form-control shadow-none" id="foto" name="foto" onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);" accept="image/*" required>
-                      <span class="file-custom"></span>
+                      <span class="file-custom" id="browse"></span>
                     </label>
                   </div>
                 </div>
@@ -301,6 +301,9 @@ switch ($level) {
           break;
         case "kuisioner":
           include "admin/kuisioner/kuisioner.php";
+          break;
+        case "kriteriaKuisioner":
+          include "admin/kuisioner/kriteriaKuisioner.php";
           break;
         default:
           include "404.php";
