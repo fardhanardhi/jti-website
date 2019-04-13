@@ -1,0 +1,25 @@
+#adminBerita .table-striped > thead > tr > th {
+    background-color: #40407a;
+    color: white;
+}
+#adminBerita .table-striped > tbody > tr:nth-child(odd) > td {
+    background-color: #ceceef;
+}
+  
+#adminBerita .table-striped > tbody > tr:nth-child(even) > td {
+    background-color: #ececff;
+}
+
+#adminBerita .btn-tidak {
+    padding: 0em 1.5em 0em 1.5em;
+    margin-right: 5em;
+    background-color: #CF212A;
+    color: white;
+  }
+  
+#adminBerita .btn-iya {
+    padding: 0em 1.5em 0em 1.5em;
+    margin-left: 5em;
+    background-color: #3AAC5F;
+    color: white;
+  }
