@@ -287,8 +287,9 @@
                       if (mysqli_num_rows($resultKomentar) > 0){
                         while($row = mysqli_fetch_assoc($resultKomentar)){
                           ?>
-                          <strong><?php echo tampilUser($con, $row["id_user"]);?></strong>
-                          <span class="komen"><?php echo $row["isi"]; ?></span> <br>
+                          <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
+                          <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
+                          <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
 
                           <div class="row komens">
                             <div class="col-sm-8 ml-5 ">
@@ -305,7 +306,7 @@
                                     }
                                   }
                                 ?>
-                                
+                              </div><br>
                               <div class="form-group border-bottom border-top border-gray">
                                 <textarea class="form-control border-0" name="" id="" rows="1"
                                   placeholder="Tulis Komentar..."></textarea>
@@ -319,27 +320,7 @@
                         }
                       }
                     ?>
-                      <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
-                      <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
-                      <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
-                      <div class="row komens">
-                        
-                        <div class="col-sm-8 ml-5 ">
-                          <div class="balas-komen p-2 border-left border-dark">
-                            <strong>Admin</strong> <span class="komen">Dosen pergi ke jepang dalam rangka sebagai perwakilan
-                                indonesia di pertemuan KTT 2019</span> <br>
-                            <strong>Sabyan_Lovers</strong> <span class="komen">Okeke min</span>
-                          </div> <br>
-                          <div class="form-group border-bottom border-top border-gray">
-                            <textarea class="form-control border-0" name="" id="" rows="1"
-                              placeholder="Tulis Komentar..."></textarea>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <strong>Reply</strong>
-                        </div>
-                      </div>
-          
+                              
                     </div>
                   </div>
                 </div>
