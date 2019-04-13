@@ -136,5 +136,47 @@ function getUrl(variable)
 }
 // End login form validation
 
+// Validasi Kriteria Kuisioner
+function validasiTambahKriteria(input){
+  if (input.value == "") {
+    document.getElementById('peringatanTambah').classList.remove('d-none');
+    document.getElementById('tambahIsiKriteria').classList.add('border-danger');
+    return false;
+  }
+  else {
+    document.getElementById('peringatanTambah').classList.add('d-none');
+    document.getElementById('tambahIsiKriteria').classList.remove('border-danger');
+    return true;
+  }
+}
+
+function validasiEditKriteria(input){
+  if (input.value == "") {
+    document.getElementById('peringatanEdit').classList.remove('d-none');
+    document.getElementById('editIsiKriteria').classList.add('border-danger');
+    return false;
+  }
+  else {
+    document.getElementById('peringatanEdit').classList.add('d-none');
+    document.getElementById('editIsiKriteria').classList.remove('border-danger');
+    return true;
+  }
+}
+
+function validasiSubmitTambahKriteria(){
+  if(validasiTambahKriteria(document.getElementById('tambahIsiKriteria'))==false){
+    return false;
+  }
+  return true;
+}
+
+function validasiSubmitEditKriteria(){
+  if(validasiEditKriteria(document.getElementById('editIsiKriteria'))==false){
+    return false;
+  }
+  return true;
+}
+// End Validasi Kriteria Kuisioner
+
 
 
