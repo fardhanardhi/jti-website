@@ -43,11 +43,14 @@
                                                 </div>
                                                 <div class="col-sm-5 text-right">
                                                     <div class="row">
-                                                        <div class="col-sm-2 mt-1">
-                                                            <img src="../img/imgUpload.svg" alt="Image Upload" class="">
+                                                        <div class="col-sm-2 mt-1 lampir-gambar">
+                                                            <img src="../img/imgUpload.svg" alt="Image Upload" class="" data-toogle="tooltip" data-placement="top" title="Lampirkan Gambar">
+                                                            
                                                         </div>
-                                                        <div class="col-sm-2 mt-1">
-                                                            <img src="../img/fileUpload.svg" alt="File Upload" class=""></div>
+                                                        <div class="col-sm-2 mt-1 lampir-file">
+                                                            <img src="../img/fileUpload.svg" alt="File Upload" class="" data-toogle="tooltip" data-placement="top" title="Lampirkan File">
+                                                        </div>
+                                                            
                                                         <div class="col-sm-5 mt-1">
                                                             <strong><label for="kategori-AdBer" class="labelBerita">Kategori :
                                                             </label></strong> 
@@ -199,4 +202,5 @@
             </div>
         </div>
     </div>
+    
 </main>

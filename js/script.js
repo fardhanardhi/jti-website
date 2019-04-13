@@ -136,5 +136,9 @@ function getUrl(variable)
 }
 // End login form validation
 
+//Tooltip Berita
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
 
 

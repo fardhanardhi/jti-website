@@ -38,3 +38,14 @@
     padding-bottom: 0;
     padding-top: 0;
 }
+
+#adminBerita .lampir-gambar{
+    cursor: pointer;
+}
+
+#adminBerita .lampir-file{
+    cursor: pointer;
+}
+
+
+  
