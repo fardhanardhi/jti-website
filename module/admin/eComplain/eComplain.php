@@ -1,3 +1,9 @@
+<?php
+include "../../config/connection.php";
+include "../../process/proses_eComplain.php";
+
+?>
+
 <main id="eComplain" role="main" class="container-fluid">
   <div class="row">
     <div class="col-md-12 p-0">
@@ -101,141 +107,85 @@
 
               </div>
               <div class="chat-window col-md-8 scrollbar pt-3">
-                <?php
-                for ($i = 0; $i < 3; $i++) {
-                  ?>
-                  <div class="row chat-kiri px-3 py-1 <?php echo (($i == 3 - 1) ? 'pb-3' : ''); ?>">
-                    <div class="photo-container p-0">
-                      <?php
-                      if ($i == 0) {
-                        ?>
-                        <img class="chat-window-profile-photo" src="../attachment/img/avatar.png">
-                      <?php
-                    }
-                    ?>
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <div class="col-md-auto chat-window-item py-1 px-2">
-                          <div class="row">
-                            <div class="col">
-                              P
-                            </div>
-                          </div>
-                          <div class="row chat-window-item-info">
-                            <div class="col text-right">
-                              30 Jan 2019
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                <?php
-              }
-              ?>
 
                 <?php
-                for ($i = 0; $i < 3; $i++) {
-                  ?>
-                  <div class="row chat-kanan px-3 py-1 <?php echo (($i == 3 - 1) ? 'pb-3' : ''); ?>">
-                    <div class="col">
-                      <div class="row">
-                        <div class="col-md-auto chat-window-item py-1 px-2 ml-auto">
-                          <div class="row">
-                            <div class="col">
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            </div>
-                          </div>
-                          <div class="row chat-window-item-info">
-                            <div class="col text-right">
-                              30 Jan 2019
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="photo-container p-0 text-right">
-                      <?php
-                      if ($i == 0) {
-                        ?>
-                        <img class="chat-window-profile-photo" src="../attachment/img/avatar.jpeg">
-                      <?php
-                    }
-                    ?>
-                    </div>
-                  </div>
-                <?php
-              }
-              ?>
+                $chat = "SELECT * FROM tabel_chat WHERE pengirim = $idUser or penerima = $idUser ORDER BY waktu";
 
-                <?php
-                for ($i = 0; $i < 3; $i++) {
-                  ?>
-                  <div class="row chat-kiri px-3 py-1 <?php echo (($i == 3 - 1) ? 'pb-3' : ''); ?>">
-                    <div class="photo-container p-0">
-                      <?php
-                      if ($i == 0) {
-                        ?>
-                        <img class="chat-window-profile-photo" src="../attachment/img/avatar.png">
-                      <?php
-                    }
-                    ?>
-                    </div>
-                    <div class="col">
-                      <div class="row">
-                        <div class="col-md-auto chat-window-item py-1 px-2">
-                          <div class="row">
-                            <div class="col">
-                              P
-                            </div>
-                          </div>
-                          <div class="row chat-window-item-info">
-                            <div class="col text-right">
-                              30 Jan 2019
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                <?php
-              }
-              ?>
+                $resultChat = mysqli_query($con, $chat);
 
-                <?php
-                for ($i = 0; $i < 3; $i++) {
-                  ?>
-                  <div class="row chat-kanan px-3 py-1 <?php echo (($i == 3 - 1) ? 'pb-3' : ''); ?>">
-                    <div class="col">
-                      <div class="row">
-                        <div class="col-md-auto chat-window-item py-1 px-2 ml-auto">
+                // $resultChat = tampilChat($con);
+                if (mysqli_num_rows($resultChat) > 0) {
+                  $prev = '';
+                  while ($rowChat = mysqli_fetch_assoc($resultChat)) {
+                    if ($rowChat["penerima"] == $idUser) {
+                      ?>
+                      <div class="row chat-kiri px-3 py-1 <?php echo (($prev != 'kiri') ? 'pt-3' : ''); ?>">
+                        <div class="photo-container p-0">
+                          <?php
+                          if ($prev != 'kiri') {
+                            ?>
+                            <img class="chat-window-profile-photo" src="../attachment/img/avatar.png">
+                          <?php
+                        }
+                        ?>
+                        </div>
+                        <div class="col">
                           <div class="row">
-                            <div class="col">
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            </div>
-                          </div>
-                          <div class="row chat-window-item-info">
-                            <div class="col text-right">
-                              30 Jan 2019
+                            <div class="col-md-auto chat-window-item py-1 px-2">
+                              <div class="row">
+                                <div class="col">
+                                  <?php echo $rowChat["isi"]; ?>
+                                </div>
+                              </div>
+                              <div class="row chat-window-item-info">
+                                <div class="col text-right">
+                                  <?php echo date("d M Y", strtotime($rowChat["waktu"])); ?>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="photo-container p-0 text-right">
+
                       <?php
-                      if ($i == 0) {
+                      $prev = 'kiri';
+                    } elseif ($rowChat["pengirim"] == $idUser) {
+                      ?>
+                      <div class="row chat-kanan px-3 py-1 <?php echo (($prev != 'kanan')  ? 'pt-3' : ''); ?>">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col-md-auto chat-window-item py-1 px-2 ml-auto">
+                              <div class="row">
+                                <div class="col">
+                                  <?php echo $rowChat["isi"]; ?>
+                                </div>
+                              </div>
+                              <div class="row chat-window-item-info">
+                                <div class="col text-right">
+                                  <?php echo date("d M Y", strtotime($rowChat["waktu"])); ?>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="photo-container p-0 text-right">
+                          <?php
+                          if ($prev != 'kanan') {
+                            ?>
+                            <img class="chat-window-profile-photo" src="../attachment/img/avatar.jpeg">
+                          <?php
+                        }
                         ?>
-                        <img class="chat-window-profile-photo" src="../attachment/img/avatar.jpeg">
+                        </div>
+                      </div>
                       <?php
+                      $prev = 'kanan';
                     }
-                    ?>
-                    </div>
-                  </div>
-                <?php
-              }
-              ?>
+                  }
+                } else {
+                  echo "gagal";
+                }
+                ?>
 
               </div>
             </div>

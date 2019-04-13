@@ -10,7 +10,7 @@ switch ($level) {
     $queryUser = "SELECT a.*, b.* FROM tabel_user a, tabel_admin b WHERE a.id_user=$idUser and a.id_user=b.id_user";
     $resultUser = mysqli_query($con, $queryUser);
     $rowUser = mysqli_fetch_assoc($resultUser);
-    $namaUser = "Admin";
+    $namaUser = $rowUser["nama"];
     break;
   case 'dosen':
     $queryUser = "SELECT a.*, b.* FROM tabel_user a, tabel_dosen b WHERE a.id_user=$idUser and a.id_user=b.id_user";
