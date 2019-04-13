@@ -10,11 +10,29 @@
 #dataDosen .title{
   font-size: 1.09em;
 }
+#dataDosen .loadgambar{
+  margin-left: 17px;
+  width: 22%;
+  height: 28px;
+  border-radius: 5px;
+  padding-top:1px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: normal;
+  text-align: center;
+}
 
 #dataDosen .breadcrumb a:hover{
   color: #000000a9;
 }
-#dataDosen .card-body
+#dataDosen #icon-search{
+  width: 1.5em;
+  color: gray;
+  margin-right: 1em;
+}
 
 #dataDosen .table {
   margin-top: 2em;
@@ -96,4 +114,18 @@
 
 #editModal #edit{
   background-color: rgba(0, 0, 0, 0.5)
+}
+#editModal .loadgambar{
+  margin-left: 17px;
+  width: 36%;
+  height: 28px;
+  border-radius: 5px;
+  padding-top:1px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: normal;
+  text-align: center;
 }
