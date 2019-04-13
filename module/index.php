@@ -299,6 +299,9 @@ switch ($level) {
         case "eComplain":
           include "admin/eComplain/eComplain.php";
           break;
+        case "kuisioner":
+          include "admin/kuisioner/kuisioner.php";
+          break;
         default:
           include "404.php";
       }
