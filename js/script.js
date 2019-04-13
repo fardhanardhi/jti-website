@@ -178,5 +178,9 @@ function validasiSubmitEditKriteria(){
 }
 // End Validasi Kriteria Kuisioner
 
+//Tooltip Berita
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
 
 

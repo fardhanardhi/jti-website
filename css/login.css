@@ -88,7 +88,7 @@ body {
   width: 65%;
 }
 
-.fullscreen .form-control{
+.fullscreen .form-control, .hahaha .form-control{
   height: 1.9em;
   border: 1px solid black;
   border-radius: 10px;
@@ -110,13 +110,5 @@ body {
   height: 1.9em;
   border: 1px solid black;
   border-radius: 10px;
-  padding-top:1px;
-}
-
-#foto, #passwordLama, #passwordBaru, #konfirmasiPassword, #eyeA, #eyeB, #eyeC{
-  height: 1.9em;
-  border: 1px solid black;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
   padding-top:1px;
 }
