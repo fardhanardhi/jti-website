@@ -75,6 +75,11 @@
     visibility: hidden;
 }
 
+#ruang .btn-confirm {
+    padding: 0.5px 2em 1px 2em;
+    border-radius: 10px;
+}
+
 .popover *{
     color: red;
     text-align: center;
@@ -132,4 +137,19 @@
 #ruang .hapus{
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
+}
+
+#ruang .carousel-control-prev,
+.carousel-control-next {
+    filter: invert(100%);
+    margin:-0.2em !important;
+    width: 1em !important;
+}
+
+#ruang .carousel-control-prev-icon{
+    margin-left:0 !important;
+}
+
+#ruang .carousel-control-next-icon{
+    margin-right: 0 !important;
 }
