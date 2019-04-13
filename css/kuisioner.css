@@ -52,9 +52,9 @@
   color: white;
 }
 
-#btn-tambahIsi, #btn-batal{
+#kuisioner .btn-ok, #kuisioner .btn-batal{
   padding: 0.5px 2em 1px 2em;
-  border-radius: 10px 
+  border-radius: 10px;
 }
 
 
