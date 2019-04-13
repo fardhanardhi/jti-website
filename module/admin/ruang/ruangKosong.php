@@ -762,7 +762,7 @@
       <div class="modal-body pt-5 text-center">
         <strong>Apakah Anda yakin?</strong>
       </div>
-      <div class="container-fluid pb-4 pt-4 d-flex justify-content-around">
+      <div class="pb-4 pt-4 d-flex justify-content-around">
         <button type="button" class="btn btn-danger btn-confirm" data-dismiss="modal">Tidak</button>
         <button type="submit" name="checkout" class="btn btn-success btn-confirm">Ya</button>
       </div>
