@@ -80,6 +80,14 @@
   color: white;
 }
 
+#home .isi-kuisioner{
+  font-size: 18px;
+}
+#home input[type="radio"]{
+  width: 18px;
+  height: 18px;
+  margin-top: 7px;
+}
 /* CSS foto */
 #home .photos .image {
   cursor: pointer;
