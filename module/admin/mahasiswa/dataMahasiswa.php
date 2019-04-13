@@ -59,14 +59,14 @@
                                                             <label class="col-md-2 col-form-label">Gambar</label>
                                                             <div class="input-group col-md-10">
                                                                 <img src="../attachment/img/avatar.jpeg"
-                                                                    id="fotoPrevMahasiswaAdmin" height="150px"
+                                                                    id="fotoPrevCoba" height="150px"
                                                                     width="150px">
                                                             </div>
                                                             <div class="col-md-2"></div>
                                                             <div class="col-md-10">
                                                                 <br>
                                                                 <input id='fileid' type='file' name='filename'
-                                                                    onchange="preview_images(event);" hidden required />
+                                                                    onchange="preview_images2(event);" hidden required />
                                                                 <input id='buttonid' type='button' value='Load Gambar'
                                                                     class="btn btn-primary" />
                                                             </div>
@@ -213,7 +213,9 @@
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
                                                                 <button type="submit" class="btn btn-success"
-                                                                    onclick="Cobacoba(); showFilesSizes();">Tambahkan</button>
+                                                                    onclick="Cobacoba(); 
+                                                                    
+                                                                    showFilesSizes2();">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -224,9 +226,12 @@
                                 </div>
                             </div>
                             <br>
-                            <input type="text" style="width:9%;">
-                            <button type="button" class="btn btn-success">Cari</button>
-                            <br>
+                           <form class="form-inline ml-4">
+                                <i class="fas fa-search mr-2"></i>
+                                <input class="form-control mr-sm-2" type="search"
+                                placeholder="" aria-label="Search">
+                                <button class="btn btn-success" type="submit">Cari</button>
+                           </form>
                             <div class="scrolltable">
                                 <table class="table table-striped table-bordered text-center">
                                     <thead>
@@ -338,7 +343,7 @@
                     </div>
                     <div class="card-body">
                         <div class="col-md-12 p-0">
-                            <form action="" id="formAdminMahasiswa" method="POST">
+                            <form action="" id="formEditAdminMahasiswa" method="POST">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -346,43 +351,43 @@
                                                 <label class="col-sm-3 col-form-label">Username</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" placeholder="Username"
-                                                        id="usernameMahasiswaAdmin" name="usernameMahasiswaAdmin"
+                                                        id="usernameMahasiswaAdmin2" name="usernameMahasiswaAdmin2"
                                                         required />
                                                 </div>
                                                 <div class="col-sm-3 col-form-label"></div>
                                                 <div class="col-sm-9">
-                                                    <div id="usernameMahasiswaAdminBlank" class="text-danger"></div>
+                                                    <div id="usernameMahasiswaAdminBlank2" class="text-danger"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Password</label>
                                                 <div class="col-sm-9">
                                                     <input type="password" class="form-control" placeholder="**********"
-                                                        id="passwordMahasiswaAdmin" name="passwordMahasiswaAdmin"
+                                                        id="passwordMahasiswaAdmin2" name="passwordMahasiswaAdmin2"
                                                         required />
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
-                                                    <div id="passwordMahasiswaAdminBlank" class="text-danger"></div>
+                                                    <div id="passwordMahasiswaAdminBlank2" class="text-danger"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-md-3 col-form-label">Gambar</label>
                                                 <div class="input-group col-md-9">
-                                                    <img src="../attachment/img/avatar.jpeg" id="fotoPrevMahasiswaAdmin"
+                                                    <img src="../attachment/img/avatar.jpeg" id="fotoPrevMahasiswaAdmin2"
                                                         height="150px" width="150px">
                                                 </div>
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-9">
                                                     <br>
-                                                    <input id='fileid' type='file' name='filename'
-                                                        onchange="preview_images(event);" hidden required />
+                                                    <input id='fileid2' type='file' name='filename'
+                                                        onchange="" hidden required />
                                                     <input id='buttonid' type='button' value='Load Gambar'
                                                         class="btn btn-primary" />
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
-                                                    <div id="fileidMahasiswaAdminBlank" class="text-danger">
+                                                    <div id="fileidMahasiswaAdminBlank2" class="text-danger">
                                                     </div>
                                                 </div>
                                             </div>
@@ -392,11 +397,11 @@
                                                 <label class="col-sm-3 col-form-label">NIM</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" placeholder="NIM Mahasiswa"
-                                                        id="nimMahasiswaAdmin" name="nimMahasiswaAdmin" required />
+                                                        id="nimMahasiswaAdmin2" name="nimMahasiswaAdmin2" required />
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
-                                                    <div id="nimMahasiswaAdminBlank" class="text-danger">
+                                                    <div id="nimMahasiswaAdminBlank2" class="text-danger">
                                                     </div>
                                                 </div>
                                             </div>
@@ -404,11 +409,11 @@
                                                 <label class="col-sm-3 col-form-label">Nama Lengkap</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" placeholder="Nama Mahasiswa"
-                                                        id="namaMahasiswaAdmin" name="namaMahasiswaAdmin" required />
+                                                        id="namaMahasiswaAdmin2" name="namaMahasiswaAdmin2" required />
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
-                                                    <div id="namaMahasiswaAdminBlank" class="text-danger">
+                                                    <div id="namaMahasiswaAdminBlank2" class="text-danger">
                                                     </div>
                                                 </div>
                                             </div>
@@ -417,12 +422,12 @@
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control"
                                                         placeholder="Tempat Lahir Mahasiswa"
-                                                        id="tempatlahirMahasiswaAdmin" name="tempatlahirMahasiswaAdmin"
+                                                        id="tempatlahirMahasiswaAdmin2" name="tempatlahirMahasiswaAdmin2"
                                                         required />
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
-                                                    <div id="tempatlahirMahasiswaAdminBlank" class="text-danger"></div>
+                                                    <div id="tempatlahirMahasiswaAdminBlank2" class="text-danger"></div>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -473,13 +478,13 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Alamat</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" id="alamatMahasiswaAdmin"
-                                                        name="alamatMahasiswaAdmin" rows="3"
+                                                    <textarea class="form-control" id="alamatMahasiswaAdmin2"
+                                                        name="alamatMahasiswaAdmin2" rows="3"
                                                         placeholder="Alamat Mahasiswa" required></textarea>
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
-                                                    <div id="alamatMahasiswaAdminBlank" class="text-danger">
+                                                    <div id="alamatMahasiswaAdminBlank2" class="text-danger">
                                                     </div>
                                                 </div>
                                             </div>
@@ -499,12 +504,12 @@
                                                 <label class="col-sm-3">Kelas</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" placeholder="Kelas"
-                                                        style="width:160px;" id="kelasMahasiswaAdmin"
-                                                        name="kelasMahasiswaAdmin" required />
+                                                        style="width:160px;" id="kelasMahasiswaAdmin2"
+                                                        name="kelasMahasiswaAdmin2" required />
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
-                                                    <div id="kelasMahasiswaAdminBlank" class="text-danger">
+                                                    <div id="kelasMahasiswaAdminBlank2" class="text-danger">
                                                     </div>
                                                 </div>
                                             </div>
@@ -512,7 +517,7 @@
                                                 <div class="col-sm-9"></div>
                                                 <div class="col-sm-3">
                                                     <button type="submit" class="btn btn-success"
-                                                        onclick="Cobacoba(); showFilesSizes();">Tambahkan</button>
+                                                        onclick="Testing(); ">Tambahkan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -525,9 +530,7 @@
             </div>
         </div>
     </div>
-    
     <!-- modal hapus -->
-
     <div class="modal fade hapusMahasiswa-modal" id="modalHapusDataMahasiswa" tabindex="-1" role="dialog" aria-labelledby="hapusDataMahasiswaTitle" aria-hidden="true" data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content kontent-modal">

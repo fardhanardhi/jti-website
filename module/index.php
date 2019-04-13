@@ -138,7 +138,7 @@ switch ($level) {
   </nav>
 
   <!-- The modal pengaturan -->
-  <div class="modal fade" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
+  <div class="modal fade hahaha" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body pb-0">
