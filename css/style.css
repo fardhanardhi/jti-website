@@ -269,3 +269,43 @@ body {
   border-radius: 10px;
 	border: 2px solid #40407a;
 }
+
+/* Table */
+.table-striped > thead > tr > th{
+  padding: 0.3em;
+}
+
+.table-striped > thead > tr > th {
+  background-color: #40407a;
+  color: white;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #ceceef;
+}
+
+.table-striped > tbody > tr:nth-child(even) > td {
+  background-color: #ececff;
+}
+.table-striped > tbody > tr > td {
+  font-size: 1em;
+  padding: 0.5em;
+}
+
+.table-striped .btn{
+  height: 1.6em;
+  padding-bottom: 0;
+  padding-top: 0;
+  padding-left: 1.3em;
+  padding-right: 1.3em;
+}
+
+/* Breadcrumb */
+.breadcrumb a{
+  text-decoration: none;
+  color: black;
+}
+
+.breadcrumb{
+  background: white;
+}
