@@ -305,7 +305,7 @@
                                     }
                                   }
                                 ?>
-                                
+                              </div>
                               <div class="form-group border-bottom border-top border-gray">
                                 <textarea class="form-control border-0" name="" id="" rows="1"
                                   placeholder="Tulis Komentar..."></textarea>
