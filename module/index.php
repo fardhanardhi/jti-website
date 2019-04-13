@@ -301,6 +301,8 @@ switch ($level) {
           break;
         case "beritaPengumuman":
           include "admin/berita/beritaPengumuman.php";
+        case "kuisioner":
+          include "admin/kuisioner/kuisioner.php";
           break;
         default:
           include "404.php";

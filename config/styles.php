@@ -33,3 +33,4 @@
 <link rel="stylesheet" href="../css/krsAdmin.css">
 <link rel="stylesheet" href="../css/eComplain.css">
 <link rel="stylesheet" href="../css/adminBerita.css">
+<link rel="stylesheet" href="../css/kuisioner.css">
