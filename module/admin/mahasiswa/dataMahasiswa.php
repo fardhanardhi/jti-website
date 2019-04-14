@@ -548,7 +548,7 @@
                     <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
                     <div class="tombolAksiHapusDataMahasiswa text-center">
                         <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>
-                        <button type="button" class="btn btn-primary btn-iyaya">Ya</button>
+                        <button type="button" class="btn btn-success btn-iyaya">Ya</button>
                     </div>
                 </div>
             </div>
