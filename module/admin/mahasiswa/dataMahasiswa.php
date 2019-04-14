@@ -4,7 +4,7 @@
 <head>
 </head>
 
-<body onload="setup();">
+<body onload="setup(); setup2();">
     <main role="main" class="container-fluid">
         <div id="dataMahasiswa" class="row">
             <div class="col-md-12 p-0">
@@ -390,8 +390,8 @@
                                                     <br>
                                                     <input id='fileid2' type='file' name='filename' onchange="" hidden
                                                         required />
-                                                    <input id='buttonid' type='button' value='Load Gambar'
-                                                        class="btn btn-primary" />
+                                                    <input id='buttonid2' type='button' value='Load Gambar'
+                                                        class="btn btn-loading btn-primary tmbl-loading ml-2"  />
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
@@ -524,8 +524,8 @@
                                             <div class="row">
                                                 <div class="col-sm-9"></div>
                                                 <div class="col-sm-3">
-                                                    <button type="submit" class="btn btn-success"
-                                                        onclick="Testing(); ">Tambahkan</button>
+                                                    <button type="submit" class="btn btn-tambahkan btn-success tmbl-tambahkan" 
+                                                        onclick="Testing(); ">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>

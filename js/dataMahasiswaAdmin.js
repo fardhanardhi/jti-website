@@ -97,6 +97,18 @@ function setup() {
     }*/
 }
 
+function setup2() {
+    document.getElementById('buttonid2').addEventListener('click', openDialog);
+    function openDialog() {
+        document.getElementById('fileid2').click();
+    }
+
+    /*document.getElementById('fileid').addEventListener('change', submitForm);
+    function submitForm() {
+        document.getElementById('formAdminMahasiswa').submit();
+    }*/
+}
+
 function preview_images2(event) {
     var reader = new FileReader();
     reader.onload = function() {
