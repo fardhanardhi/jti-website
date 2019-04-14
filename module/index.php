@@ -116,7 +116,7 @@ switch ($level) {
   <div id="navigation-admin" class="container-fluid h-100">
     <div class="row h-100">
       <div class="col-md-3 h-100 bg-sidebar px-0">
-        <div class="app-navbar navbar navbar-expand-md navbar-dark bg-blue border-bottom border-white sticky-top">
+        <div class="app-navbar navbar navbar-expand-md navbar-dark bg-blue border-bottom border-white">
           <a class="ml-5 mr-5 pointer" id="navigation-admin-close"> <i class="fas fa-bars text-white burger-icon"></i></a>
           <a class="navbar-brand " href="index.php?module=home"><b>JTI Website</b></a>
         </div>
@@ -133,7 +133,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=eComplain">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -145,7 +145,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=beritaPengumuman">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -157,7 +157,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=beasiswa">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -181,7 +181,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=ruang">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -193,7 +193,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=dataMahasiswa">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -205,7 +205,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=dataDosen">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -217,7 +217,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=kuisioner">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -229,7 +229,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=khs">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -241,7 +241,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=krs">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -265,7 +265,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=dataJadwalKuliah">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -277,7 +277,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=mataKuliah">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -509,6 +509,9 @@ switch ($level) {
           break;
         case "kriteriaKuisioner":
           include "admin/kuisioner/kriteriaKuisioner.php";
+          break;
+        case "notifikasi":
+          include "notifikasi.php";
           break;
         default:
           include "404.php";
