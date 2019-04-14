@@ -38,14 +38,15 @@
                                         <textarea style="border:none" name="isiBeasiswa" 
                                             id="isiBeasiswa" cols="30" 
                                             rows="4" placeholder="Ketik Beasiswa..." 
-                                            class="form-control border-bottom border-gray pb-2 mb-0" onkeyup="charcountupdate(this.value)"></textarea>
+                                            maxlength="300"
+                                            class="form-control border-bottom border-gray pb-2 mb-0" oninput="charcountupdate(this.value)"></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-1"> <span style="color:grey" id=charcount></span></div>
+                                    <div class="col-md-1 border-right border-gray pb-2 mb-0 m-auto text-center"> <span style="color:grey" id=charcount></span></div>
                                     <div class="col-md-10">
-                                        <div class="form-group row">
-                                            <label for="linkBeasiswa" style="color:gray">Link</label>
+                                        <div class="form-group row ">
+                                            <label for="linkBeasiswa" class="m-auto" style="color:gray">Link</label>
                                             <div class="col-md-11">
                                                 <input id="linkBeasiswa" style="border:none" name="linkBeasiswa" class="form-control border-bottom border-gray pb-2 mb-0" type="text">
                                             </div>
@@ -64,10 +65,19 @@
                     </div>
                     
                     <div class="cari mt-2">
-                        <form class="form-inline ml-4">
-                                <i class="fas fa-search mr-2"></i>
-                                <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-                                <button class="btn btn-success" type="submit">Cari</button>
+                        <form class="form-inline">
+                            <i class="fas fa-search mr-2"></i>
+                            <div class="col-2">
+                                <div class="input-group date " id="datepicker">
+                                    <input type="text" class="form-control" value="12-02-2012">
+                                    <div class="input-group-addon">
+                                        <span>
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                                <button class="btn btn-success cari-btn" type="submit">Cari</button>
                         </form>
                     </div>
 
