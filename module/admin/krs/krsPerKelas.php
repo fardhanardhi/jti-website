@@ -46,35 +46,80 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="ukt-lunas-belum-upload">
-                <th scope="row">1</th>
-                <td>
-                  <div class="col-md-12 p-0">NIM mahasiswa</div>
-                </td>
-                <td>
-                  <div class="col-md-12 p-0">Nama mahasiswa</div>
-                </td>
-                <td>
-                <input id='fileid' type='file' name='filename' hidden required />
-                <input id='buttonid' type='button' value='Upload' class="btn  btn-upload btn-success ml-2" /></td>
-              </tr>
-              <tr class="ukt-lunas-sudah-upload">
-                <th scope="row">2</th>
-                <td>NIM mahasiswa</td>
-                <td>Nama mahasiswa</td>
-                <td><button type="button" class="btn btn-lihat btn-primary tmbl-lihat ml-2" data-toggle="modal"
-                                        data-target="#modalGambar">Lihat</button>
+            <?php
+                            $query = "SELECT DISTINCT tabel_mahasiswa.nim, tabel_mahasiswa.nama
+                            FROM tabel_krs INNER JOIN tabel_mahasiswa ON tabel_krs.id_mahasiswa = tabel_mahasiswa.id_mahasiswa";
+                            $result = mysqli_query($con, $query);
 
-                <button type="button" class="btn btn-hapus btn-danger ml-2" data-toggle="modal"
-                    data-target="#modalCheckout">Hapus</button>
-                    
-              </tr>
-              <tr class="ukt-belum-lunas">
-                <th scope="row">3</th>
-                <td>NIM mahasiswa</td>
-                <td>Nama mahasiswa</td>
-                <td></td>
-              </tr>
+                            if(mysqli_num_rows($result) > 0){
+                            $index = 1;
+                                                
+                            while($row = mysqli_fetch_assoc($result)){
+
+                            echo"
+                                <tr class='ukt-lunas-belum-upload'>
+                                    <td>". $index++ ."</td>
+                                    <td>". $row["nim"] ."</td>
+                                    <td>". $row["nama"] ."</td>
+                                    <td>
+                                    <input id='fileid' type='file' name='filename' hidden required />
+                                    <input id='buttonid' type='button' value='Upload' class='btn  btn-upload btn-success ml-2' />
+                                    </td>
+                                </tr>
+                                ";
+                                }
+                            }
+                            ?>
+                            
+            <?php
+                            $query = "SELECT DISTINCT tabel_mahasiswa.nim, tabel_mahasiswa.nama
+                            FROM tabel_krs INNER JOIN tabel_mahasiswa ON tabel_krs.id_mahasiswa = tabel_mahasiswa.id_mahasiswa";
+                            $result = mysqli_query($con, $query);
+
+                            if(mysqli_num_rows($result) > 0){
+                            $index = 5;
+                                                
+                            while($row = mysqli_fetch_assoc($result)){
+
+                            echo"
+                                <tr class='ukt-lunas-sudah-upload'>
+                                    <td>". $index++ ."</td>
+                                    <td>". $row["nim"] ."</td>
+                                    <td>". $row["nama"] ."</td>
+                                    <td><button type='button' class='btn btn-lihat btn-primary tmbl-lihat ml-2' data-toggle='modal'
+                                    data-target='#modalGambar'>Lihat</button>
+
+            <button type='button' class='btn btn-hapus btn-danger ml-2' data-toggle='modal'
+                data-target='#modalCheckout'>Hapus</button>
+                                    </td>
+                                </tr>
+                                ";
+                                }
+                            }
+                            ?>
+               
+            <?php
+                            $query = "SELECT DISTINCT tabel_mahasiswa.nim, tabel_mahasiswa.nama
+                            FROM tabel_krs INNER JOIN tabel_mahasiswa ON tabel_krs.id_mahasiswa = tabel_mahasiswa.id_mahasiswa";
+                            $result = mysqli_query($con, $query);
+
+                            if(mysqli_num_rows($result) > 0){
+                            $index = 9;
+                                                
+                            while($row = mysqli_fetch_assoc($result)){
+
+                            echo"
+                                <tr class='ukt-belum-lunas'>
+                                    <td>". $index++ ."</td>
+                                    <td>". $row["nim"] ."</td>
+                                    <td>". $row["nama"] ."</td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                ";
+                                }
+                            }
+                            ?>
             </tbody>
           </table>
           <div class="modal fade" id="modalCheckout" tabindex="-1" role="dialog" aria-labelledby="modalCheckoutTitle"
@@ -85,8 +130,8 @@
                   <strong>Apakah Anda yakin?</strong>
                 </div>
                 <div class="container-fluid pb-4 pt-4 d-flex justify-content-around">
-                  <button type="button" class="btn btn-ya btn-danger btn-confirm" data-dismiss="modal">Tidak</button>
-                  <button type="submit" name="checkout" class="btn btn-tidak btn-success btn-confirm">Ya</button>
+                  <button type="button" class="btn btn-tidak btn-danger btn-confirm" data-dismiss="modal">Tidak</button>
+                  <button type="submit" name="checkout" class="btn btn-ya btn-success btn-confirm">Ya</button>
                 </div>
               </div>
             </div>
