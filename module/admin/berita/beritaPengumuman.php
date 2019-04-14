@@ -38,7 +38,7 @@
                                     <div class="row">
                                         <div class="col-md-1"> <span style="color:grey" id=hitungChar></span>
                                         </div>
-                                        <div class="col-md-10 text-right m-0">
+                                        <div class="col-md-11 text-right ">
                                             <div class="row">
                                                 <div class="col-sm-7 mt-1">
                                                     
@@ -46,9 +46,9 @@
                                                 <div class="col-sm-5 mt-1 lampir text-right">
                                                     <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-toogle="tooltip" data-placement="top" title="Lampirkan Gambar">
                                                     <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-toogle="tooltip" data-placement="top" title="Lampirkan File">
-                                                    <strong><label for="kategori-AdBer" class="labelBerita">Kategori :
+                                                    <strong><label for="kategori-AdBer" class="labelBerita mt-1">Kategori :
                                                     </label></strong> 
-                                                    <select name="" id="" class="mr-3">       
+                                                    <select name="" id="" class="mr-3 mt-2">       
                                                         <option value="ridwan">Berita</option>
                                                         <option value="rudy">Pengumuman</option>
                                                     </select>
