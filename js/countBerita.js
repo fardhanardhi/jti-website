@@ -1,4 +1,4 @@
 function charcountupdate(str) {
 	var lng = str.length;
-	document.getElementById("hitungChar").innerHTML = lng + '/300';
+	document.getElementById("hitungChar").innerHTML = lng + '/500';
 }

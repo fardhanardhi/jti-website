@@ -39,13 +39,16 @@
     padding-top: 0;
 }
 
-#adminBerita .lampir-gambar{
+#adminBerita .lampir{
     cursor: pointer;
 }
 
-#adminBerita .lampir-file{
-    cursor: pointer;
+#adminBerita .btn-tutup{
+    background-color: #CF212A;
+    border-radius: 10px;
+    font-size: 12px;
+    color: white;
+    padding-left: 1em;
+    padding-right: 1em;
 }
-
-
   
