@@ -29,3 +29,4 @@
   <script src="../js/dataDosenAdmin.js"></script>
   <script src="../js/adminScript.js"></script>
   <script src="../js/adminBeasiswa.js"></script>
+  <script src="../js/adminBerita.js"></script>

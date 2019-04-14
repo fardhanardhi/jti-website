@@ -57,18 +57,28 @@
     padding-bottom: 2em;
   }
 
-  .btn-tidak {
-    padding: 0em 1.5em 0em 1.5em;
+  .btn-tidakdak {
+    /*padding: 0em 1.5em 0em 1.5em;*/
     margin-right: 5em;
     background-color: #CF212A;
     color: white;
+
+    border-radius: 10px;
+    width: 7em;
+    height: 1.8em;
+    padding: 0;
   }
 
-  .btn-iya {
-    padding: 0em 1.5em 0em 1.5em;
+  .btn-iyaya {
+    /*padding: 0em 1.5em 0em 1.5em;*/
     margin-left: 5em;
     background-color: #3AAC5F;
     color: white;
+
+    border-radius: 10px;
+    width: 7em;
+    height: 1.8em;
+    padding: 0;
   }
 
   .tombolAksiHapusDataMahasiswa{
@@ -77,14 +87,14 @@
 
   /* Tombol */
 
-  #dataMahasiswa .btn-load, .btn-mencari, .btn-loading, .btn-edit, .btn-hapus, .btn-tambahkan {
+  #dataMahasiswa .btn-load, .btn-loading, .btn-edit, .btn-hapus, .btn-tambahkan {
     border-radius: 10px;
     width: 7em;
     height: 1.8em;
     padding: 0;
   }
 
-  .btn-kumpulkan {
+  .btn-kumpulkan , .btn-mencari{
     border-radius: 10px;
     width: 8em;
     height: 2em;

@@ -21,7 +21,7 @@
                     <option value="2">TI-2C</option>
                 </select>
                 <button type="button" class="tmbl-filter btn btn-success ml-3">Search</button>
-                <button type="button" class="tmbl-ruangan btn btn-info float-right">Lihat KHS</button>
+                <a href ="index.php?module=khsLihat" class="tmbl-ruangan btn btn-info float-right">Lihat KHS</a>
                 <br><br>
                 <div class="media text-muted pt-8">
                     <div class="media-body pb-8 mb-0 small lh-125">

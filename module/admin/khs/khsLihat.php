@@ -6,7 +6,7 @@
                     <ol class="breadcrumb">
                         <li class="pr-4 title"><a href="#"><strong>Lihat KHS</strong></a></li>
                         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=khs">Kartu Hasil Studi(KHS)</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=khsUpload">Kartu Hasil Studi(KHS)</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Lihat KHS</li>
                     </ol>
                 </nav>
@@ -20,14 +20,24 @@
                 <h4>Daftar Kartu Hasil Studi</h4>
                 <hr>
                 <select class="kelas custom-select" style="width:150px">
-                    <option selected>-</option>
-                    <option value="1">TI-2F</option>
-                    <option value="2">TI-2C</option>
+                    <option selected>Pilih Kelas</option>
+                    <?php
+                    include('../koneksi/connection.php');
+					$tampil=mysqli_query($con, "SELECT tabel_prodi.kode as kode, tingkat, kode_kelas FROM tabel_kelas INNER JOIN tabel_prodi ON tabel_kelas.id_prodi = tabel_prodi.id_prodi GROUP BY id_kelas;");
+					while($r=mysqli_fetch_array($tampil)){
+					echo"<option value=$r[id_kelas]>$r[kode] - $r[tingkat] $r[kode_kelas]</option>";
+					}
+                    ?>
                 </select>
                 <select class="kelas custom-select ml-3" style="width:150px">
-                    <option selected>-</option>
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
+                    <option selected>Pilih Semester</option>
+                    <?php
+                    include('../koneksi/connection.php');
+					$tampil=mysqli_query($con, "SELECT * FROM tabel_semester ;");
+					while($r=mysqli_fetch_array($tampil)){
+					echo"<option value=$r[id_semester]>Semester $r[semester]</option>";
+					}
+                    ?>
                 </select>
                 <button type="button" class="tmbl-filter btn btn-success ml-3">Cari</button>
                 <br><br>

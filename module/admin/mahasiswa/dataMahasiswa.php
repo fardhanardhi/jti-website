@@ -237,7 +237,7 @@
                             <form class="form-inline ml-4">
                                 <i class="fas fa-search mr-2"></i>
                                 <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-                                <button class="btn btn-mencari btn-success tmbl-mencari ml-2"type="submit">Cari</button>
+                                <button class="btn btn-mencari btn-success tmbl-mencari"type="submit">Cari</button>
                             </form>
                             <div class="scrolltable">
                                 <table class="table table-striped table-bordered text-center">
@@ -388,7 +388,7 @@
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-9">
                                                     <br>
-                                                    <input id='fileid2' type='file' name='filename' onchange="" hidden
+                                                    <input id='fileid2' type='file' name='filename' onchange="preview_images22(event);"  hidden
                                                         required />
                                                     <input id='buttonid2' type='button' value='Load Gambar'
                                                         class="btn btn-loading btn-primary tmbl-loading ml-2"  />
@@ -525,7 +525,8 @@
                                                 <div class="col-sm-9"></div>
                                                 <div class="col-sm-3">
                                                     <button type="submit" class="btn btn-tambahkan btn-success tmbl-tambahkan" 
-                                                        onclick="Testing(); ">Simpan</button>
+                                                        onclick="Testing(); 
+                                                                    showFilesSizes22();">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -546,8 +547,8 @@
                 <div clas="modal-body">
                     <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
                     <div class="tombolAksiHapusDataMahasiswa text-center">
-                        <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                        <button type="button" class="btn btn-iya">Ya</button>
+                        <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>
+                        <button type="button" class="btn btn-success btn-iyaya">Ya</button>
                     </div>
                 </div>
             </div>

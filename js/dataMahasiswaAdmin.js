@@ -117,6 +117,15 @@ function preview_images2(event) {
     };
     reader.readAsDataURL(event.target.files[0]);
   }
+
+  function preview_images22(event) {
+    var reader = new FileReader();
+    reader.onload = function() {
+      var output = document.getElementById("fotoPrevMahasiswaAdmin2");
+      output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
   
 
   function showFilesSizes2() {
@@ -132,6 +141,22 @@ function preview_images2(event) {
       document.getElementById("fileidMahasiswaAdminBlank").innerHTML = "";
     }
   }
+
+  function showFilesSizes22() {
+    var input, file;
+  
+    input = document.getElementById("fileid2");
+  
+    file = input.files[0];
+  
+    if (file.size > 1000000) {
+      document.getElementById("fileidMahasiswaAdminBlank2").innerHTML = "* Ukuran melebihi 1 MB";
+    } else if (file.size < 1000000) {
+      document.getElementById("fileidMahasiswaAdminBlank2").innerHTML = "";
+    }
+  }
+
+
 
   function Testing(){
     var usernameMahasiswaAdmin2 = document.getElementById("usernameMahasiswaAdmin2").value;

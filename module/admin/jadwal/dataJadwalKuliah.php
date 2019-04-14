@@ -181,7 +181,7 @@
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
                                                                 <button type="button"
-                                                                    class="btn btn-success float-right">Tambahkan</button>
+                                                                    class="btn btn-success btn-tambahkan float-right">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -196,9 +196,9 @@
                             <form class="form-inline ml-4">
                                 <i class="fas fa-search mr-2"></i>
                                 <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-                                <button class="btn btn-success" type="submit">Cari</button>
+                                <button class="btn btn-success btn-mencari" type="submit">Cari</button>
                             </form>
-                            <div class="scrolltable">
+                            <div class="scrolltable scrollbar-x">
                                 <table class="table table-striped table-bordered text-center mt-3">
                                     <thead>
                                         <tr>
@@ -313,6 +313,11 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            <div class="col-12 mt-5 text-center">
+                                <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
+                                <p>Nama, kelas atau prodi tidak dapat ditemukan</h>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -354,57 +359,8 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Kelas</label>
-                                        <div class="col-sm-10">
-                                            <select class="semester custom-select">
-                                                <option selected>Pilih Kelas</option>
-                                                <option>TI-1A</option>
-                                                <option>TI-1B</option>
-                                                <option>TI-1C</option>
-                                                <option>TI-1D</option>
-                                                <option>TI-1E</option>
-                                                <option>TI-1F</option>
-                                                <option>TI-1G</option>
-                                                <option>TI-2A</option>
-                                                <option>TI-2B</option>
-                                                <option>TI-2C</option>
-                                                <option>TI-2D</option>
-                                                <option>TI-2E</option>
-                                                <option>TI-2F</option>
-                                                <option>TI-2G</option>
-                                                <option>TI-3A</option>
-                                                <option>TI-3B</option>
-                                                <option>TI-3C</option>
-                                                <option>TI-3D</option>
-                                                <option>TI-3E</option>
-                                                <option>TI-3F</option>
-                                                <option>TI-3G</option>
-                                                <option>TI-4A</option>
-                                                <option>TI-4B</option>
-                                                <option>TI-4C</option>
-                                                <option>TI-4D</option>
-                                                <option>TI-4E</option>
-                                                <option>TI-4F</option>
-                                                <option>TI-4G</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Hari</label>
-                                        <div class="col-sm-10">
-                                            <select class="semester custom-select">
-                                                <option selected>Pilih Hari</option>
-                                                <option>Senin</option>
-                                                <option>Selasa</option>
-                                                <option>Rabu</option>
-                                                <option>Kamis</option>
-                                                <option>Jum'at</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Jam</label>
-                                        <div class="col-sm-5">
+                                        <label class="col-sm-3 col-form-label">Jam</label>
+                                        <div class="col-sm-4">
                                             <select class="semester custom-select">
                                                 <option selected>Mulai</option>
                                                 <option>07.00</option>
@@ -469,20 +425,33 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Mata Kuliah</label>
-                                        <div class="col-sm-10">
+                                        <label class="col-sm-3 col-form-label">Hari</label>
+                                        <div class="col-sm-9">
                                             <select class="semester custom-select">
-                                                <option selected>Pilih Mata Kuliah</option>
-                                                <option>Proyek 1</option>
+                                                <option selected>Pilih Hari</option>
+                                                <option>Senin</option>
+                                                <option>Selasa</option>
+                                                <option>Rabu</option>
+                                                <option>Kamis</option>
+                                                <option>Jum'at</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Ruangan</label>
-                                        <div class="col-sm-10">
+                                        <label class="col-sm-3 col-form-label">Dosen Pengajar</label>
+                                        <div class="col-sm-9">
+                                            <select class="semester custom-select">
+                                                <option selected>Pilih Dosen Pengajar</option>
+                                                <option>Bapak/Ibu</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Ruangan</label>
+                                        <div class="col-sm-9">
                                             <select class="semester custom-select">
                                                 <option selected>Pilih Ruangan</option>
                                                 <option>Ruangan</option>
@@ -490,18 +459,24 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label">Dosen
-                                            Pengajar</label>
-                                        <div class="col-sm-10">
+                                        <label class="col-sm-3 col-form-label">SKS</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="sks" id="sks" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Mata Kuliah</label>
+                                        <div class="col-sm-9">
                                             <select class="semester custom-select">
-                                                <option selected>Pilih Dosen Pengajar</option>
-                                                <option>Bapak/Ibu</option>
+                                                <option selected>Pilih Mata Kuliah</option>
+                                                <option>Proyek 1</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-12">
-                                            <button type="button" class="btn btn-success float-right">Edit</button>
+                                            <button type="button"
+                                                class="btn btn-success float-right btn-edit">Edit</button>
                                         </div>
                                     </div>
                                 </div>
