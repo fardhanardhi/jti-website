@@ -31,12 +31,12 @@
                                 </div>
                                 <hr>
                                 <div class="form-group ketik-berita">
-                                    <textarea name="ketik-berita" id="" cols="30" rows="6" placeholder="Ketik Berita ..." class="form-control border-0" onkeyup="charcountupdate(this.value)"></textarea>
+                                    <textarea name="ketik-berita" id="" cols="30" rows="6" placeholder="Ketik Berita ..." maxlength="500" class="form-control border-0" oninput="Beritacharcountupdate(this.value)"></textarea>
                                 </div>
                                 <hr>
                                 <div class="container m-0">
                                     <div class="row">
-                                        <div class="col-md-1"> <span style="color:grey" id=hitungChar></span>
+                                        <div class="col-md-1"> <span style="color:grey" id=Bercharcount></span>
                                         </div>
                                         <div class="col-md-11 text-right ">
                                             <div class="row">
@@ -44,8 +44,14 @@
                                                     
                                                 </div>
                                                 <div class="col-sm-5 mt-1 lampir text-right">
+                                                    <label for="file-input">
                                                     <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-toogle="tooltip" data-placement="top" title="Lampirkan Gambar">
+                                                    </label>
+                                                    <input id="file-input" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none"/>
+                                                    <label for="file-input1">
                                                     <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-toogle="tooltip" data-placement="top" title="Lampirkan File">
+                                                    </label>
+                                                    <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none"/>
                                                     <strong><label for="kategori-AdBer" class="labelBerita mt-1">Kategori :
                                                     </label></strong> 
                                                     <select name="" id="" class="mr-3 mt-2">       
