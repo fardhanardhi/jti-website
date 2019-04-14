@@ -1,11 +1,10 @@
-function charcountupdate(str) {
-	var lng = str.length;
+function Beasiswacharcountupdate(beasiswacount){
+	var lng = beasiswacount.length;
 	document.getElementById("charcount").innerHTML = lng + '/300';
 }
 
-
 function pageRefresh() {
-	charcountupdate("");
+	Beasiswacharcountupdate("");
   }
 
 window.onload = function() {

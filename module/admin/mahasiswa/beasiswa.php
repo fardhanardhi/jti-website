@@ -39,7 +39,7 @@
                                             id="isiBeasiswa" cols="30" 
                                             rows="4" placeholder="Ketik Beasiswa..." 
                                             maxlength="300"
-                                            class="form-control border-bottom border-gray pb-2 mb-0" oninput="charcountupdate(this.value)"></textarea>
+                                            class="form-control border-bottom border-gray pb-2 mb-0" oninput="Beasiswacharcountupdate(this.value)"></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
