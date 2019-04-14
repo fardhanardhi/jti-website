@@ -313,6 +313,11 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            <div class="col-12 mt-5 text-center">
+                                <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
+                                <p>Nama, kelas atau prodi tidak dapat ditemukan</h>
+                            </div>
                         </div>
                     </div>
                 </div>
