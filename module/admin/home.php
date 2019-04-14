@@ -83,7 +83,7 @@
     <div class="col-md-6 p-0">
       <div class="m-2 p-3 bg-white shadow rounded">
         <h6 class="border-bottom border-gray pb-2 mb-0">Peringkat Hasil Kuisioner</h6>
-        <div class="kuisioner-sp">
+        <div class="kuisioner-sp scrollbar">
           <div class="row d-flex justify-content-center align-items-center border-bottom border-gray py-2">
             <div class="col-md-1 text-center">1</div>
             <div class="col-md-2">
@@ -191,7 +191,7 @@
     <div class="col-md-6 p-0">
       <div class="m-2 p-3 bg-white shadow rounded">
         <h6 class="border-bottom border-gray pb-2 mb-0">Mahasiswa SP (Surat Peringatan) per Semester</h6>
-        <div class="kuisioner-sp">
+        <div class="kuisioner-sp scrollbar px-2">
           <div class="row d-flex justify-content-center align-items-center border-bottom border-gray py-2">
             <div class="col-md-2">
               <img src="../img/logo-jti.png" alt="foto dosen" style="width: 60px;" class="rounded-circle">
