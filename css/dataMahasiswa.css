@@ -75,6 +75,20 @@
     padding-bottom: 2em;
   }
 
+  /* Tombol */
 
+  #dataMahasiswa .btn-load, .btn-mencari, .btn-edit, .btn-hapus {
+    border-radius: 10px;
+    width: 7em;
+    height: 1.8em;
+    padding: 0;
+  }
+
+  .btn-kumpulkan{
+    border-radius: 10px;
+    width: 8em;
+    height: 2em;
+    padding: 0;
+  }
 
 
