@@ -77,7 +77,7 @@
                             $result = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($result) > 0){
-                            $index = 5;
+                            $index = 2;
                                                 
                             while($row = mysqli_fetch_assoc($result)){
 
@@ -104,7 +104,7 @@
                             $result = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($result) > 0){
-                            $index = 9;
+                            $index = 3;
                                                 
                             while($row = mysqli_fetch_assoc($result)){
 
