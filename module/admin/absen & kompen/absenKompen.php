@@ -209,12 +209,12 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1</td>
-                    <td>1741720086</td>
-                    <td class="text-left">Chintya Puspa Dewi</td>
-                    <td>D3 - MI</td>
-                    <td>12 Desember 2019</td>
-                    <td class="text-left">Ridwan Rismanto, SST., M.KOM</td>
+                    <td data-toggle="modal" data-target="#modalPreview">1</td>
+                    <td data-toggle="modal" data-target="#modalPreview">1741720086</td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Chintya Puspa Dewi</td>
+                    <td data-toggle="modal" data-target="#modalPreview">D3 - MI</td>
+                    <td data-toggle="modal" data-target="#modalPreview">12 Desember 2019</td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Ridwan Rismanto, SST., M.KOM</td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapusKompen">Hapus</button></td>
 
@@ -237,37 +237,276 @@
                       </div>
                       <!-- End Modal Hapus Kompen -->
 
+                      <!-- Modal preview -->
+                      <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
+                              <div class="row px-5">
+                                <div class="col-md-3">NIM</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">1741720086</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Nama</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Chintya Puspa Dewi</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Tanggal</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">12 Desember 2019</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Jenis Kompensasi</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Menyiram tanaman bunga</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Total Jam</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">20 Jam</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Dosen</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Ridwan Rismanto, SST., M.KOM</div>
+                              </div>
+                              <div class="row px-5 mt-3 d-flex justify-content-end">
+                                <button type="button" class="btn btn-danger btn-batal" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End modal preview -->
+
                   </tr>
-                  
                   <tr>
-                    <td>1</td>
-                    <td>1741720086</td>
-                    <td class="text-left">Chintya Puspa Dewi</td>
-                    <td>D3 - MI</td>
-                    <td>12 Desember 2019</td>
-                    <td class="text-left">Ridwan Rismanto, SST., M.KOM</td>
+                    <td data-toggle="modal" data-target="#modalPreview">1</td>
+                    <td data-toggle="modal" data-target="#modalPreview">1741720086</td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Chintya Puspa Dewi</td>
+                    <td data-toggle="modal" data-target="#modalPreview">D3 - MI</td>
+                    <td data-toggle="modal" data-target="#modalPreview">12 Desember 2019</td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Ridwan Rismanto, SST., M.KOM</td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapusKompen">Hapus</button></td>
+
+                    <!-- Modal Hapus Kompen-->
+                    <div class="modal fade" id="modalHapusKompen" tabindex="-1" role="dialog" aria-labelledby="modalHapusKompen"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
+                              <div class="modal-body pt-5 text-center">
+                                <strong>Apakah Anda yakin?</strong>
+                              </div>
+                              <div class="pb-4 pt-4 d-flex justify-content-around">
+                                <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Tidak</button>
+                                <button type="submit" name="hapus" class="btn btn-success btn-ok">Ya</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End Modal Hapus Kompen -->
+
+                      <!-- Modal preview -->
+                      <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
+                              <div class="row px-5">
+                                <div class="col-md-3">NIM</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">1741720086</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Nama</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Chintya Puspa Dewi</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Tanggal</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">12 Desember 2019</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Jenis Kompensasi</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Menyiram tanaman bunga</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Total Jam</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">20 Jam</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Dosen</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Ridwan Rismanto, SST., M.KOM</div>
+                              </div>
+                              <div class="row px-5 mt-3 d-flex justify-content-end">
+                                <button type="button" class="btn btn-danger btn-batal" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End modal preview -->
+
                   </tr>
                   <tr>
-                    <td>1</td>
-                    <td>1741720086</td>
-                    <td class="text-left">Chintya Puspa Dewi</td>
-                    <td>D3 - MI</td>
-                    <td>12 Desember 2019</td>
-                    <td class="text-left">Ridwan Rismanto, SST., M.KOM</td>
+                    <td data-toggle="modal" data-target="#modalPreview">1</td>
+                    <td data-toggle="modal" data-target="#modalPreview">1741720086</td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Chintya Puspa Dewi</td>
+                    <td data-toggle="modal" data-target="#modalPreview">D3 - MI</td>
+                    <td data-toggle="modal" data-target="#modalPreview">12 Desember 2019</td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Ridwan Rismanto, SST., M.KOM</td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapusKompen">Hapus</button></td>
+
+                    <!-- Modal Hapus Kompen-->
+                    <div class="modal fade" id="modalHapusKompen" tabindex="-1" role="dialog" aria-labelledby="modalHapusKompen"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
+                              <div class="modal-body pt-5 text-center">
+                                <strong>Apakah Anda yakin?</strong>
+                              </div>
+                              <div class="pb-4 pt-4 d-flex justify-content-around">
+                                <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Tidak</button>
+                                <button type="submit" name="hapus" class="btn btn-success btn-ok">Ya</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End Modal Hapus Kompen -->
+
+                      <!-- Modal preview -->
+                      <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
+                              <div class="row px-5">
+                                <div class="col-md-3">NIM</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">1741720086</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Nama</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Chintya Puspa Dewi</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Tanggal</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">12 Desember 2019</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Jenis Kompensasi</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Menyiram tanaman bunga</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Total Jam</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">20 Jam</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Dosen</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Ridwan Rismanto, SST., M.KOM</div>
+                              </div>
+                              <div class="row px-5 mt-3 d-flex justify-content-end">
+                                <button type="button" class="btn btn-danger btn-batal" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End modal preview -->
+
                   </tr>
                   <tr>
-                    <td>1</td>
-                    <td>1741720086</td>
-                    <td class="text-left">Chintya Puspa Dewi</td>
-                    <td>D3 - MI</td>
-                    <td>12 Desember 2019</td>
-                    <td class="text-left">Ridwan Rismanto, SST., M.KOM</td>
+                    <td data-toggle="modal" data-target="#modalPreview">1</td>
+                    <td data-toggle="modal" data-target="#modalPreview">1741720086</td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Chintya Puspa Dewi</td>
+                    <td data-toggle="modal" data-target="#modalPreview">D3 - MI</td>
+                    <td data-toggle="modal" data-target="#modalPreview">12 Desember 2019</td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Ridwan Rismanto, SST., M.KOM</td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapusKompen">Hapus</button></td>
+
+                    <!-- Modal Hapus Kompen-->
+                    <div class="modal fade" id="modalHapusKompen" tabindex="-1" role="dialog" aria-labelledby="modalHapusKompen"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
+                              <div class="modal-body pt-5 text-center">
+                                <strong>Apakah Anda yakin?</strong>
+                              </div>
+                              <div class="pb-4 pt-4 d-flex justify-content-around">
+                                <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Tidak</button>
+                                <button type="submit" name="hapus" class="btn btn-success btn-ok">Ya</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End Modal Hapus Kompen -->
+
+                      <!-- Modal preview -->
+                      <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
+                              <div class="row px-5">
+                                <div class="col-md-3">NIM</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">1741720086</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Nama</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Chintya Puspa Dewi</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Tanggal</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">12 Desember 2019</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Jenis Kompensasi</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Menyiram tanaman bunga</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Total Jam</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">20 Jam</div>
+                              </div>
+                              <div class="row px-5">
+                                <div class="col-md-3">Dosen</div>
+                                <div class="col-md-1 text-right pr-0">:</div>
+                                <div class="col-md-8">Ridwan Rismanto, SST., M.KOM</div>
+                              </div>
+                              <div class="row px-5 mt-3 d-flex justify-content-end">
+                                <button type="button" class="btn btn-danger btn-batal" data-dismiss="modal">Tutup</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End modal preview -->
+
                   </tr>
                 </tbody>
               </table>
