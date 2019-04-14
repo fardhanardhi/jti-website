@@ -87,14 +87,14 @@
 
   /* Tombol */
 
-  #dataMahasiswa .btn-load, .btn-mencari, .btn-loading, .btn-edit, .btn-hapus, .btn-tambahkan {
+  #dataMahasiswa .btn-load, .btn-loading, .btn-edit, .btn-hapus, .btn-tambahkan {
     border-radius: 10px;
     width: 7em;
     height: 1.8em;
     padding: 0;
   }
 
-  .btn-kumpulkan {
+  .btn-kumpulkan , .btn-mencari{
     border-radius: 10px;
     width: 8em;
     height: 2em;

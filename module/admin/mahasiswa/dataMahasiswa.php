@@ -237,7 +237,7 @@
                             <form class="form-inline ml-4">
                                 <i class="fas fa-search mr-2"></i>
                                 <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-                                <button class="btn btn-mencari btn-success tmbl-mencari ml-2"type="submit">Cari</button>
+                                <button class="btn btn-mencari btn-success tmbl-mencari"type="submit">Cari</button>
                             </form>
                             <div class="scrolltable">
                                 <table class="table table-striped table-bordered text-center">
