@@ -27,7 +27,11 @@
 <link rel="stylesheet" href="../css/adminRuang.css">
 <link rel="stylesheet" href="../css/admin.css">
 <link rel="stylesheet" href="../css/dataDosen.css">
+<link rel="stylesheet" href="../css/adminDataJadwalKuliah.css">
 <link rel="stylesheet" href="../css/dataMahasiswa.css">
 <link rel="stylesheet" href="../css/adminKhs.css">
 <link rel="stylesheet" href="../css/krsAdmin.css">
 <link rel="stylesheet" href="../css/eComplain.css">
+<link rel="stylesheet" href="../css/adminBerita.css">
+<link rel="stylesheet" href="../css/kuisioner.css">
+<link rel="stylesheet" href="../css/absenKompen.css">

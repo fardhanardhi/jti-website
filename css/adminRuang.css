@@ -16,7 +16,7 @@
 }
 
 #ruang .btn-hari,
-.btn-cari {
+#ruang .btn-cari {
   border-radius: 10px;
   width: 5.5em;
   height: 1.8em;
@@ -73,6 +73,11 @@
 
 #ruang .dipesan .btn-pesan {
     visibility: hidden;
+}
+
+#ruang .btn-confirm {
+    padding: 0.5px 2em 1px 2em;
+    border-radius: 10px;
 }
 
 .popover *{
@@ -132,4 +137,19 @@
 #ruang .hapus{
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
+}
+
+#ruang .carousel-control-prev,
+.carousel-control-next {
+    filter: invert(100%);
+    margin:-0.2em !important;
+    width: 1em !important;
+}
+
+#ruang .carousel-control-prev-icon{
+    margin-left:0 !important;
+}
+
+#ruang .carousel-control-next-icon{
+    margin-right: 0 !important;
 }

@@ -10,7 +10,7 @@ switch ($level) {
     $queryUser = "SELECT a.*, b.* FROM tabel_user a, tabel_admin b WHERE a.id_user=$idUser and a.id_user=b.id_user";
     $resultUser = mysqli_query($con, $queryUser);
     $rowUser = mysqli_fetch_assoc($resultUser);
-    $namaUser = "Admin";
+    $namaUser = $rowUser["nama"];
     break;
   case 'dosen':
     $queryUser = "SELECT a.*, b.* FROM tabel_user a, tabel_dosen b WHERE a.id_user=$idUser and a.id_user=b.id_user";
@@ -46,7 +46,10 @@ switch ($level) {
 </head>
 
 <body>
-  <!-- navigation -->
+  <!-- navigation mahasiswa & dosen -->
+  <?php
+    if ($level != "admin") {
+  ?>
   <div id="navigation" class="container-fluid h-100">
     <div class="row h-100">
       <div class="col-md-12 my-auto">
@@ -106,10 +109,209 @@ switch ($level) {
       </div>
     </div>
   </div>
+  <?php
+    } else {
+  ?>
+
+  <div id="navigation-admin" class="container-fluid h-100">
+    <div class="row h-100">
+      <div class="col-md-3 h-100 bg-sidebar px-0">
+        <div class="app-navbar navbar navbar-expand-md navbar-dark bg-blue border-bottom border-white">
+          <a class="ml-5 mr-5 pointer" id="navigation-admin-close"> <i class="fas fa-bars text-white burger-icon"></i></a>
+          <a class="navbar-brand " href="index.php?module=home"><b>JTI Website</b></a>
+        </div>
+        <ul class="text-white pl-0">
+          <a href="index.php?module=home">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-dashboard.svg">
+                </div>
+                <div class="col-md-10">
+                  Dashboard
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=eComplain">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-eComplain.svg">
+                </div>
+                <div class="col-md-10">
+                  E - Complain
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=beritaPengumuman">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-news.svg">
+                </div>
+                <div class="col-md-10">
+                  Berita dan Pengumuman
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=beasiswa">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-beasiswa.svg">
+                </div>
+                <div class="col-md-10">
+                  Beasiswa
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=absenKompen">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-absen.svg">
+                </div>
+                <div class="col-md-10">
+                  Absen dan Kompen
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=ruang">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-ruangan.svg">
+                </div>
+                <div class="col-md-10">
+                  Ruangan
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=dataMahasiswa">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-mahasiswa.svg">
+                </div>
+                <div class="col-md-10">
+                  Data Mahasiswa
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=dataDosen">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-dosen.svg">
+                </div>
+                <div class="col-md-10">
+                  Data Dosen
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=kuisioner">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-kuisioner.svg">
+                </div>
+                <div class="col-md-10">
+                  Kuisioner
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=khs">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-khs.svg">
+                </div>
+                <div class="col-md-10">
+                  KHS ( Kartu Hasil Studi )
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=krs">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-krs.svg">
+                </div>
+                <div class="col-md-10">
+                  KRS ( Kartu Rencana Studi )
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=home">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-kelas.svg">
+                </div>
+                <div class="col-md-10">
+                  Kelas
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=dataJadwalKuliah">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-jadwal.svg">
+                </div>
+                <div class="col-md-10">
+                  Jadwal Kuliah
+                </div>
+              </div>
+            </li>
+          </a>
+          <a href="index.php?module=mataKuliah">
+            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+              <div class="row">
+                <div class="col-md-1">
+                  <img src="../img/sidebar-matkul.svg">
+                </div>
+                <div class="col-md-10">
+                  Mata Kuliah
+                </div>
+              </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+      <div class="col-md-9 h-100" id="navigation-admin-close2"></div>
+    </div>
+  </div>
+
+  <?php
+    }
+  ?>
 
   <!-- navbar -->
   <nav class="app-navbar navbar navbar-expand-md navbar-dark bg-blue shadow-sm sticky-top mb-2">
+    <?php
+      if ($level == "admin") {
+    ?>
+    <a class="ml-5 mr-5" id="navigation-admin-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
+    <?php
+      } else {      
+    ?>
     <a class="ml-5 mr-5" id="navigation-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
+    <?php
+      }
+    ?>
     <a class="navbar-brand " href="index.php?module=home"><b>JTI Website</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -138,7 +340,7 @@ switch ($level) {
   </nav>
 
   <!-- The modal pengaturan -->
-  <div class="modal fade" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
+  <div class="modal fade hahaha" id="largeShoes" tabindex="-1" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body pb-0">
@@ -158,9 +360,9 @@ switch ($level) {
                 <div class="form-group row">
                   <label class="col-md-3" for="foto">Ganti Foto</label>
                   <div class="input-group col-md-9">
-                    <label for="foto" class="file form-control text-secondary">
+                    <label for="foto" class="file form-control text-secondary" id="label-file">
                       <input type="file" class="form-control shadow-none" id="foto" name="foto" onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);" accept="image/*" required>
-                      <span class="file-custom"></span>
+                      <span class="file-custom" id="browse"></span>
                     </label>
                   </div>
                 </div>
@@ -298,6 +500,21 @@ switch ($level) {
           break;
         case "eComplain":
           include "admin/eComplain/eComplain.php";
+          break;
+        case "beritaPengumuman":
+          include "admin/berita/beritaPengumuman.php";
+          break;
+        case "kuisioner":
+          include "admin/kuisioner/kuisioner.php";
+          break;
+        case "kriteriaKuisioner":
+          include "admin/kuisioner/kriteriaKuisioner.php";
+          break;
+        case "absenKompen":
+            include "admin/absen & kompen/absenKompen.php";
+            break;
+        case "notifikasi":
+          include "notifikasi.php";
           break;
         default:
           include "404.php";

@@ -25,10 +25,26 @@
   border-radius: 50%;
 }
 
+#eComplain .chat-window-profile-photo {
+  max-width: 2.5em;
+  max-height: 2.5em;
+  border-radius: 50%;
+}
+
 #eComplain .recent-chat {
   height: calc(100vh - 12em - 13vh + 1.53em);
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+#eComplain .chat-window {
+  height: calc(100vh - 12em - 13vh + 1.53em);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#eComplain .border-scroll {
+  border-right: 3.5px solid #e7e4e4;
 }
 
 #eComplain .chat-info {
@@ -44,6 +60,13 @@
 #eComplain .recent-chat-item {
   transition: 0.3s ease;
   cursor: pointer;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 /* selected recent chat item */
@@ -58,23 +81,30 @@
 }
 
 #eComplain .recent-chat-item.active::before {
-  -ms-transform: translate(0.3em, 1.5em); /* IE 9 */
-  -webkit-transform: translate(0.3em, 1.5em); /* Safari */
-  transform: translate(0.3em, 1.5em);
-
-  border-width: 1.25em;
-  border-right-color: #e7e4e4;
-  border-bottom-color: #e7e4e4;
-}
-
-#eComplain .recent-chat-item.active::after {
-  -ms-transform: translate(1em, 1.5em); /* IE 9 */
-  -webkit-transform: translate(1em, 1.5em); /* Safari */
-  transform: translate(1em, 1.5em);
-
-  /* border-radius: 0.9em; */
-  border-width: 1.25em;
+  margin-top: 2.7em;
+  border-width: 0.7em;
   border-right-color: #40407a;
   border-bottom-color: #40407a;
-  /* border-top-color: #40407a; */
+}
+
+#eComplain .chat-window .photo-container {
+  width: 3.2em;
+}
+
+#eComplain .chat-window-item {
+  background-color: #f6f6f6 !important;
+  border-radius: 0.4em;
+}
+
+#eComplain .chat-window-item-info {
+  font-size: 0.65em;
+  color: gray;
+}
+
+#eComplain .chat-kiri {
+  padding-right: 7em !important;
+}
+
+#eComplain .chat-kanan {
+  padding-left: 7em !important;
 }

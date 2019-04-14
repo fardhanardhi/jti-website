@@ -17,12 +17,15 @@
   color: white;
 }
 
-#dosenKompen .table-striped > tbody > tr > td {
+#dosenKompen .sudah-konfirmasi{
+  background-color: #A7FCA5;
+}
+#dosenKompen .belum-konfirmasi{
   background-color: #FCA5A5;
 }
-#dosenKompen .keterangan > ul > li .sudah{
-  background-color: green;
-}
+/* #dosenKompen .table-striped > tbody > tr > td {
+  background-color: #FCA5A5;
+} */
 
 /* list kompen */
 #dosenKompen .judul {
@@ -93,7 +96,4 @@
 
 #dosenKompen .tambahkan-modal-parent{
   padding-right: 4em;
-}
-#dosenKompen .titikdua {
-  padding-left: 120px;
 }

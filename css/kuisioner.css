@@ -1,0 +1,61 @@
+#kuisioner .breadcrumb a{
+  text-decoration: none;
+  color: black;
+}
+
+#kuisioner .breadcrumb{
+  background: white;
+}
+
+#kuisioner .button{
+  border-radius: 7px;
+  width: auto;
+  height: 1.8em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+#kuisioner #icon-search{
+  width: 1.5em;
+  color: gray;
+  margin-right: 1em;
+}
+
+#kuisioner .pencarian{
+  height: 1.6em !important;
+  width: 10em;
+}
+
+#kuisioner .btn-cariDosen{
+  height: 1.6em;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+#kuisioner .cariKuisioner{
+  height: 1.6em;
+  padding-bottom: 0;
+  padding-top: 0;
+  padding-left: 2em;
+  padding-right: 2em;
+  border-radius: 5px;
+}
+
+#kuisioner .btn-tambah{
+  border-color: #9ca5ad !important;
+  color: black;
+}
+
+#kuisioner .btn-tambah:hover{
+  color: white;
+}
+
+#kuisioner .btn-ok, #kuisioner .btn-batal{
+  padding: 0.5px 2em 1px 2em;
+  border-radius: 10px;
+}
+
+
+
