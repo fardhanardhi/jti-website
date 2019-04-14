@@ -106,6 +106,7 @@ body {
 .dropdown-menu {
   top: 2.5em;
 }
+
 .dropdown-menu::before {
   content: "";
   border-width: 0px 8px 10px 8px;
@@ -117,7 +118,9 @@ body {
 }
 
 /* navigation */
-#navigation-btn {
+#navigation-btn,
+#navigation-admin-btn,
+.pointer {
   cursor: pointer;
 }
 
@@ -134,6 +137,26 @@ body {
 
 #navigation .navigation-menu:hover {
   filter: brightness(150%);
+}
+
+#navigation-admin {
+  z-index: 2;
+  position: fixed;
+  background-color: rgba(32, 32, 32, 0.86);
+  display: none;
+}
+
+#navigation-admin .bg-sidebar {
+  background-color: #40407A;
+}
+
+#navigation-admin a {
+  text-decoration: none;
+}
+
+#navigation-admin .sidebar-nav:hover {
+  cursor: pointer;
+  background-color: rgba(217, 217, 217, 0.4);
 }
 
 /* photo */
@@ -203,6 +226,7 @@ body {
   left: 100%;
   border-radius: 3px 0 0 3px;
 }
+
 #myModal .photo-prev {
   right: 100%;
   border-radius: 3px 0 0 3px;
@@ -234,67 +258,62 @@ body {
 }
 
 /* Scrollbar */
-.scrollbar::-webkit-scrollbar-track
-{
-    border-radius: 10px;
-	background-color: #e7e4e4;
-}
-
-.scrollbar::-webkit-scrollbar
-{
-    width: 3px;
-	background-color: #e7e4e4;
-}
-
-.scrollbar::-webkit-scrollbar-thumb
-{
-    border-radius: 10px;
-	border: 2px solid #40407a;
-}
-
-.scrollbar-x::-webkit-scrollbar-track
-{
+.scrollbar::-webkit-scrollbar-track {
   border-radius: 10px;
-	background-color: #e7e4e4;
+  background-color: #e7e4e4;
 }
 
-.scrollbar-x::-webkit-scrollbar
-{
+.scrollbar::-webkit-scrollbar {
+  width: 3px;
+  background-color: #e7e4e4;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 2px solid #40407a;
+}
+
+.scrollbar-x::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #e7e4e4;
+}
+
+.scrollbar-x::-webkit-scrollbar {
   height: 3px;
-	background-color: #e7e4e4;
+  background-color: #e7e4e4;
 }
 
-.scrollbar-x::-webkit-scrollbar-thumb
-{
+.scrollbar-x::-webkit-scrollbar-thumb {
   border-radius: 10px;
-	border: 2px solid #40407a;
+  border: 2px solid #40407a;
 }
 
 /* Table */
-.table-striped > thead > tr > th{
+.table-striped>thead>tr>th {
   padding: 0.4em;
   padding-left: 0.7em;
   padding-right: 0.7em;
 }
 
-.table-striped > thead > tr > th {
+.table-striped>thead>tr>th {
   background-color: #40407a;
   color: white;
 }
 
-.table-striped > tbody > tr:nth-child(odd) > td {
+.table-striped>tbody>tr:nth-child(odd)>td {
   background-color: #ceceef;
 }
 
-.table-striped > tbody > tr:nth-child(even) > td {
+.table-striped>tbody>tr:nth-child(even)>td {
   background-color: #ececff;
 }
-.table-striped > tbody > tr > td {
+
+.table-striped>tbody>tr>td {
   font-size: 1em;
   padding: 0.3em;
 }
 
-.table-striped .btn{
+.table-striped .btn {
   height: 1.6em;
   padding-bottom: 0;
   padding-top: 0;
@@ -303,11 +322,11 @@ body {
 }
 
 /* Breadcrumb */
-.breadcrumb a{
+.breadcrumb a {
   text-decoration: none;
   color: black;
 }
 
-.breadcrumb{
+.breadcrumb {
   background: white;
 }
