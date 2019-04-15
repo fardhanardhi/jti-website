@@ -10,7 +10,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb p-2 m-0 bg-white">
                                 <li class="breadcrumb-item"><a href="index.php?module=home">Dashboard</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Beasiswa</li>
+                                <li class="breadcrumb-item active" aria-current="page">Jadwal Kuliah</li>
                             </ol>
                         </nav>
                     </div>
