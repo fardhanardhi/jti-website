@@ -38,12 +38,7 @@
                                     <div class="row">
                                         <div class="col-md-1"> <span style="color:grey" id=Bercharcount></span>
                                         </div>
-                                        <div class="col-md-11 text-right ">
-                                            <div class="row">
-                                                <div class="col-sm-7 mt-1">
-                                                    
-                                                </div>
-                                                <div class="col-sm-5 mt-1 lampir text-right">
+                                        <div class="col-md-11 text-right d-flex justify-content-end lampir">
                                                     <label for="file-input">
                                                     <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-toogle="tooltip" data-placement="top" title="Lampirkan Gambar">
                                                     </label>
@@ -54,15 +49,11 @@
                                                     <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none"/>
                                                     <strong><label for="kategori-AdBer" class="labelBerita mt-1">Kategori :
                                                     </label></strong> 
-                                                    <select name="" id="" class="mr-3 mt-2">       
+                                                    <select name="" id="" class="mr-3">       
                                                         <option value="ridwan">Berita</option>
                                                         <option value="rudy">Pengumuman</option>
                                                     </select>
                                                     <button type="submit" class="btn btn-success btn-kirim">Kirim</button>
-                                                </div>
-                                                 
-                                                
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +71,7 @@
                             <thead>
                                 <tr class="p-2">
                                     <th>No</th>
-                                    <th>Berita</th>
+                                    <th id="beritaBerita">Berita</th>
                                     <th>Tanggal Pembuatan</th>
                                     <th>Tanggal Perubahan</th>
                                     <th>Komentar</th>
@@ -90,7 +81,7 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -103,7 +94,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -116,7 +107,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -129,7 +120,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -142,7 +133,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -155,7 +146,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -168,7 +159,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -202,7 +193,7 @@
     </div>
 
     <!-- Modal Preview -->
-    <div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="previewTitle" aria-hidden="true">
+    <div class="modal fade prevBer" id="preview" tabindex="-1" role="dialog" aria-labelledby="previewTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">

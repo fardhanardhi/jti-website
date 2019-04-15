@@ -39,7 +39,7 @@
     padding-top: 0;
 }
 
-#adminBerita .lampir{
+#adminBerita .lampir img{
     cursor: pointer;
 }
 
@@ -50,4 +50,8 @@
     color: white;
     padding-left: 1em;
     padding-right: 1em;
+}
+
+#adminBerita #beritaBerita{
+    width: 28em;
 }
