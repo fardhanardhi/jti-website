@@ -104,7 +104,7 @@
             <h6>3. Kompen akan dikalikan 2(dua) jika kompen pada semester sebelumnya belum diselesaikan</h6>
           </div>
         </div>
-        <div class="align-self-end p-2">
+        <div class="align-self-end p-2 ">
           <button type="button" name="" class="btn btn-danger float-right" data-dismiss="modal">Tutup</button>
         </div>
       </div>

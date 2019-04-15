@@ -169,7 +169,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=absenKompen">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">
@@ -510,6 +510,9 @@ switch ($level) {
         case "kriteriaKuisioner":
           include "admin/kuisioner/kriteriaKuisioner.php";
           break;
+        case "absenKompen":
+            include "admin/absen & kompen/absenKompen.php";
+            break;
         case "notifikasi":
           include "notifikasi.php";
           break;

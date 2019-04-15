@@ -24,15 +24,14 @@
         <h5 class="border-bottom border-gray pb-2 mb-2">SEMESTER 4 (2019/2020)</h5>
         <div class="col-md-12 p-0">
           <select class="optionKelas" name="kelas">
-            <option>-</option>
-            <option value="1">TI-2A</option>
-            <option value="2">TI-2B</option>
-            <option value="3">TI-2C</option>
-            <option value="4">TI-2D</option>
-            <option value="5">TI-2E</option>
-            <option value="6" selected>TI-2F</option>
-            <option value="7">TI-2G</option>
-            <option value="8">TI-2H</option>
+          <option selected>-</option>
+                    <?php
+                    include('../koneksi/connection.php');
+					$tampil=mysqli_query($con, "SELECT tabel_prodi.kode as kode, tingkat, kode_kelas FROM tabel_kelas INNER JOIN tabel_prodi ON tabel_kelas.id_prodi = tabel_prodi.id_prodi GROUP BY id_kelas;");
+					while($r=mysqli_fetch_array($tampil)){
+					echo"<option value=$r[id_kelas]>$r[kode] - $r[tingkat] $r[kode_kelas]</option>";
+					}
+                    ?>
           </select>
           <button type="button" class="btn btn-cari btn-success ml-2">Search</button>
           <a href="index.php?module=krsPerKelas" class="btn btn-lihat btn-primary float-right">Lihat KRS</a>

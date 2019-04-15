@@ -31,411 +31,276 @@
 
             <div class="row pt-2 mt-2 pl-0 scrollbar" id="ruangan2">
 
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div>  
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div> 
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div>  
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div>  
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div>  
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div>  
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-              
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div>  
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div>  
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div>  
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
+              </div>  
+              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
+                      <div class="col-md">
+                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
                       </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
+                    </div>
+                    <div class="row d-flex align-items-center">
+                      <div class="col-md-4">
+                        <small class="">Semester : 3</small>
+                      </div>
+                      <div class="col-md-4">
+                        <small class="">SKS : 4</small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                     </a>
                   </div>
                 </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
-                      </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
-                      </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
-                      </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
-                      </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
-                      </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
-                      </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
-                      </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
-                      </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-6 text-center">
-                        <h5 class="my-auto">KB 03</h5> 
-                      </div>
-                      <div class="col-md-6">
-                        <span>Lantai 7</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
+              </div>  
             </div>
           </div>
         </div>
       </div>
     </div>
+    
     
     <div class="col-md-3 p-0">
       <div class="container-fluid m-0 p-0">
@@ -445,23 +310,30 @@
             <h6 class="border-bottom border-gray pb-2 mb-0">Tambah Mata Kuliah</h6>
             <form class="pt-3" id="tambah-data">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Mata Kuliah</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control form-control-sm" placeholder="Kode Ruang..."></small>
+                <label class="col-sm-4 col-form-label">MataKuliah</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control form-control-sm" placeholder="Mata Kuliah..."></small>
                 </div>
               </div>
               <div class="form-group row mt-0">
-                <label class="col-sm-3 col-form-label">Lantai</label>
-                <div class="col-sm-9">
+                <label class="col-sm-4 col-form-label">SKS</label>
+                <div class="col-sm-4">
                 <select class="form-control form-control-sm" name="lantai">
                     <option value="">Pilih</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row mt-0">
+                <label class="col-sm-4 col-form-label">Semester</label>
+                <div class="col-sm-4">
+                <select class="form-control form-control-sm" name="lantai">
+                    <option value="">Pilih</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                   </select>
                 </div>
               </div>
