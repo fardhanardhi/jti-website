@@ -2,17 +2,22 @@
 session_start();
 include "../config/connection.php";
 
-if (isset($_POST["dosen"])) {
-  $_SESSION["level"] = "dosen";
-  $_SESSION["id"] = 3;
-  header("location: ../index.php");
-} else if (isset($_POST["mahasiswa"])) {
-  $_SESSION["level"] = "mahasiswa";
-  $_SESSION["id"] = 2;
-  header("location: ../index.php");
-} else if (isset($_POST["admin"])) {
-  $_SESSION["level"] = "admin";
-  $_SESSION["id"] = 1;
+
+if (isset($_POST["dosen"]) || isset($_POST["admin"]) || isset($_POST["mahasiswa"])) {
+  $level = "";
+  if (isset($_POST["dosen"])) {
+    $level = "dosen";
+  } else if (isset($_POST["mahasiswa"])) {
+    $level = "mahasiswa";
+  } else if (isset($_POST["admin"])) {
+    $level = "admin";
+  }
+
+  $query = "SELECT id_user FROM tabel_user WHERE level = '$level' LIMIT 1";
+  $result = mysqli_query($con, $query);
+  $row   = mysqli_fetch_assoc($result);
+  $_SESSION["id"] = $row["id_user"];
+  $_SESSION["level"] = $level;
   header("location: ../index.php");
 }
 
