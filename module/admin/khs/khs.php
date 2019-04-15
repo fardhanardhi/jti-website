@@ -29,7 +29,7 @@
                 <a href ="index.php?module=khsLihat" class="tmbl-ruangan btn btn-info float-right">Lihat KHS</a>
                 <br><br>
                 <div class="media text-muted pt-8">
-                    <div class="media-body pb-8 mb-0 small lh-125">
+                    <div class="media-body pb-8 mb-0">
                         <table class="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>

@@ -1,6 +1,5 @@
 <?php
-include "../../config/connection.php";
-include "../../process/proses_eComplain.php";
+include "../process/proses_eComplain.php";
 
 ?>
 
@@ -109,11 +108,7 @@ include "../../process/proses_eComplain.php";
               <div class="chat-window col-md-8 scrollbar pt-3">
 
                 <?php
-                $chat = "SELECT * FROM tabel_chat WHERE pengirim = $idUser or penerima = $idUser ORDER BY waktu";
-
-                $resultChat = mysqli_query($con, $chat);
-
-                // $resultChat = tampilChat($con);
+                $resultChat = tampilChat($con, $idUser);
                 if (mysqli_num_rows($resultChat) > 0) {
                   $prev = '';
                   while ($rowChat = mysqli_fetch_assoc($resultChat)) {
