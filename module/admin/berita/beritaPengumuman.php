@@ -47,9 +47,9 @@
                                                     <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-toogle="tooltip" data-placement="top" title="Lampirkan File">
                                                     </label>
                                                     <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none"/>
-                                                    <strong><label for="kategori-AdBer" class="labelBerita mt-1">Kategori :
+                                                    <strong><label for="kategori-AdBer" class="labelBerita mt-1 mr-2">Kategori :
                                                     </label></strong> 
-                                                    <select name="" id="" class="mr-3">       
+                                                    <select name="" id="" class="mr-3 pilihKategoriBerita">
                                                         <option value="ridwan">Berita</option>
                                                         <option value="rudy">Pengumuman</option>
                                                     </select>
@@ -63,7 +63,16 @@
                     <br>
                     <form class="form-inline ml-4">
                         <i class="fas fa-search mr-2"></i>
-                        <input type="date" name="waktu" id="" class="form-control">
+                        <div class="col-2">
+                                <div class="input-group date " id="datepicker">
+                                    <input type="text" class="form-control" value="12/02/2012">
+                                    <div class="input-group-addon tgl">
+                                        <span>
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         <button class="btn btn-success" type="submit">Cari</button>
                     </form>
                     <div class="scrolltable">
@@ -81,7 +90,7 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview1">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -94,7 +103,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview2">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -107,7 +116,7 @@
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td class="text-left" data-toggle="modal" data-target="#preview">5 Dosen Dikirim ke Jepang</td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview3">5 Dosen Dikirim ke Jepang</td>
                                     <td>20 Februari 2019</td>
                                     <td>25 Februari 2019</td>
                                     <td>10</td>
@@ -193,7 +202,7 @@
     </div>
 
     <!-- Modal Preview -->
-    <div class="modal fade prevBer" id="preview" tabindex="-1" role="dialog" aria-labelledby="previewTitle" aria-hidden="true">
+    <div class="modal fade prevBer1" id="preview1" tabindex="-1" role="dialog" aria-labelledby="previewTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -209,7 +218,69 @@
                         untuk meminta tugas. <br><br>
                         Terima Kasih...
                     </p>
-                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-tutup" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Preview+Gambar -->
+    <div class="modal fade prevBer2" id="preview2" tabindex="-1" role="dialog" aria-labelledby="previewTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <strong><h5 class="modal-title">5 Dosen Dikirim Ke Jepang</h5></strong>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Dikarenakan dosen bernama : <br>
+                        - Pak Yan <br>
+                        - Pak Rosa <br>
+                        - Pak Vipkas <br>
+                        sedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi
+                        untuk meminta tugas. <br><br>
+                        Terima Kasih...
+                    </p>
+                    <img class="img img-fluid img-responsive" width="20%" src="../attachment/img/yuri.png" alt="foto">
+                    <img class="img img-fluid img-responsive" width="20%" src="../attachment/img/yuri.png" alt="foto">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-tutup" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Preview + File -->
+    <div class="modal fade prevBer3" id="preview3" tabindex="-1" role="dialog" aria-labelledby="previewTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <strong><h5 class="modal-title">5 Dosen Dikirim Ke Jepang</h5></strong>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Dikarenakan dosen bernama : <br>
+                        - Pak Yan <br>
+                        - Pak Rosa <br>
+                        - Pak Vipkas <br>
+                        sedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi
+                        untuk meminta tugas. <br><br>
+                        Terima Kasih...
+                    </p>
+                    <div class="row isi-download">
+                    <div class="col-md-12">
+                        <button class="btn btn-outline-dark download d-flex">
+                            <div class="col-sm-7">
+                                <a href=""><h6 class="mt-1">Dokumen Rahasia</h6></a>
+                            </div>
+                            <div class="col-sm-5 text-right">
+                                <img src="../img/vector.svg" alt="Download button" class="">
+                            </div>
+                        </button>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-tutup" data-dismiss="modal">Tutup</button>

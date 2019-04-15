@@ -55,3 +55,35 @@
 #adminBerita #beritaBerita{
     width: 28em;
 }
+
+#adminBerita .pilihKategoriBerita{
+    border-radius: 10px;
+	width: 10%;
+    height: 1.8em;
+	padding-left: 5px;
+}
+
+#adminBerita .download {
+    width: 40% !important;
+}
+#adminBerita .isi-download a {
+    text-decoration: none;
+    color: black;
+}
+#adminBerita .isi-download a:hover {
+    text-decoration: none;
+    color: black;
+}
+#adminBerita .isi-download button:hover{
+    background-color: white;
+}
+
+#adminBerita .tgl{
+    border: 0.45em solid gray;
+    background-color: gray;
+    border-radius: 0px 5px 5px 0px;
+}
+
+#adminBerita .fa-calendar-alt{
+    color: white;
+}
