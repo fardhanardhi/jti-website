@@ -19,7 +19,7 @@
           </div>
           <div id = "khsModal">
           <div class="media text-muted pt-8">
-              <div class="media-body pb-8 mb-0 small lh-125">
+              <div class="media-body pb-8 mb-0">
                   <table class="table table-striped table-bordered text-center">
                       <thead>
                           <tr>
