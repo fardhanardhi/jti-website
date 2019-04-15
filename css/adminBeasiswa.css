@@ -2,38 +2,6 @@
   margin-top: 2em;
 }
 
-#beasiswa .table tr {
-  height: 0.3em !important;
-}
-
-#beasiswa .table-striped > thead > tr > th {
-  background-color: #40407a;
-  color: white;
-}
-
-#beasiswa .table-striped > tbody > tr:nth-child(odd) > td {
-  background-color: #ceceef;
-}
-
-#beasiswa .table-striped > tbody > tr:nth-child(even) > td {
-  background-color: #ececff;
-}
-#beasiswa .table-striped > tbody > tr > td {
-  font-size: 12px;
-}
-#beasiswa .beasiswa-edit-btn{
-    padding-right: 2em;
-    padding-left: 2em;
-    background-color: #59ACE7;
-    border-radius: 10px;
-    font-size: 12px;
-}
-#beasiswa .beasiswa-hapus-btn{
-    background-color: #CF212A;
-    border-radius: 10px;
-    font-size: 12px;
-}
-
 #beasiswa .btn-tutup{
   background-color: #CF212A;
   border-radius: 10px;
@@ -47,17 +15,6 @@
     border-radius: 10px;
     font-size: 12px;
 }
-
-#beasiswa .scrolltable{
-  /* overflow-x: scroll; */
-  width: 100%;
-  font-size: 12px;
-}
-
-/* #beasiswa .hapusKompen-modal {
-  padding-top: 3em;
-  padding-bottom: 2em;
-} */
 
 #beasiswa .fa-calendar-alt{
   font-size: 20px;
