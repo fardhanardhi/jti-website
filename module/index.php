@@ -515,7 +515,7 @@ switch ($level) {
             break;
         case "kelas":
             include "admin/kelas/kelas.php";
-            break;
+            break; 
         case "notifikasi":
           include "notifikasi.php";
           break;
