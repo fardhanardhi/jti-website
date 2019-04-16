@@ -180,105 +180,12 @@
                             ?>
                         </td>
                         <td>
-                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLihatHasil">Lihat Hasil</button>
-
-                          <!-- Modal Lihat Hasil-->
-                          <div class="modal fade" id="modalLihatHasil" tabindex="-1" role="dialog" aria-labelledby="modalLihatHasil"
-                              aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                              <div class="modal-content">
-                                <div class="modal-body">
-                                  <button type="button" class="close close-setting" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                  <h5 class="modal-title text-center"><?php echo $row["namaDosen"];?></h5>
-                                  <hr class="mt-2 text-muted mr-4 ml-4">
-
-                                  <div class="container-fluid">
-                                    <div class="row mt-2">
-                                      <form class="col-md-12 p-0 pl-3 d-flex" id="kuisionerDosen" method="POST">
-                                        <select class="form-control form-control-sm w-auto mr-2" name="kelas">
-                                            <option>TI - 2F</option>
-                                        </select>
-                                        <select class="form-control form-control-sm w-auto mr-2" name="tahun">
-                                            <option>Pilih Tahun Ajaran</option>
-                                        </select>
-                                        <select class="form-control form-control-sm w-auto mr-2" name="semester">
-                                            <option>Pilih Semester</option>
-                                        </select>
-                                        <input type="submit" value="Cari" name="cariKuisionerDosen" class="btn btn-success button">
-                                      </form>
-                                    </div>
-
-                                    <div class="row mt-2">
-                                      <div class="col-md-12 p-0 d-flex">
-                                        <table class="table table-striped table-bordered text-center">
-                                          <thead>
-                                            <tr>
-                                              <th>No</th>
-                                              <th>NIM</th>
-                                              <th>Nama</th>
-                                              <th>Kelas</th>
-                                              <th>Nilai Kuisioner</th>
-                                            </tr>
-                                          </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td>1</td>
-                                              <td>1741720086</td>
-                                              <td>Chintya Puspa Dewi</td>
-                                              <td>TI - 2F</td>
-                                              <td>4</td>
-                                            </tr>
-                                            <tr>
-                                              <td>1</td>
-                                              <td>1741720086</td>
-                                              <td>Chintya Puspa Dewi</td>
-                                              <td>TI - 2F</td>
-                                              <td>4</td>
-                                            </tr>
-                                            <tr>
-                                              <td>1</td>
-                                              <td>1741720086</td>
-                                              <td>Chintya Puspa Dewi</td>
-                                              <td>TI - 2F</td>
-                                              <td>4</td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </div>
-                                    </div>
-
-                                  </div>
-
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- End Modal Lihat Hasil -->
-
+                          <button type="button" id="<?php echo $row["id_dosen"];?>" class="btn btn-primary lihat-detail" data-toggle="modal" data-target="#modalLihatHasil">Lihat Hasil</button>
                         </td>
                       </tr>
                     <?php
                     }
                     ?>
-                  <tr>
-                    <td>1</td>
-                    <td>192197292832883</td>
-                    <td>Ridwan Rismanto, SST., M.KOM</td>
-                    <td>TI - 2F, MI - 2F, TI - 1F, MI - 3F</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLihatHasil">Lihat Hasil</button></td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>192197292832883</td>
-                    <td>Ridwan Rismanto, SST., M.KOM</td>
-                    <td>TI - 2F, MI - 2F, TI - 1F, MI - 3F</td>
-                    <td>
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLihatHasil">Lihat Hasil</button>
-
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             <?php 
@@ -296,6 +203,53 @@
         </div>
       </div>
     </div>
+
+    
+    <!-- Modal Lihat Hasil-->
+    <div class="modal fade" id="modalLihatHasil" tabindex="-1" role="dialog" aria-labelledby="modalLihatHasil"
+        aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close close-setting" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="judul"></div>
+            <hr class="mt-2 text-muted mr-4 ml-4">
+
+            <div class="container-fluid">
+              <div class="row mt-2">
+                  <select class="form-control form-control-sm w-auto mr-2" name="kelas" id="kelas">
+                      <option value="0">Pilih Kelas</option>
+                      <option value="4">TI-2F</option>
+                  </select>
+                  <select class="form-control form-control-sm w-auto mr-2" name="tahun" id="tahun">
+                      <option value="0">Pilih Tahun Ajaran</option>
+                      <option value="2019">2019</option>
+                  </select>
+                  <select class="form-control form-control-sm w-auto mr-2" name="semester" id="semester">
+                      <option value="0">Pilih Semester</option>
+                      <option value="7">4</option>
+                  </select>
+                  <input type="button" value="Cari" name="cariKuisionerDosen" 
+                  id="cariKuisionerDosen" class="btn btn-success button">
+              </div>
+
+              <div class="row mt-2">
+                <div class="col-md-12 p-0 d-flex justify-content-center" id="tableData">
+                  <div>
+                    <img src='../img/magnifier.svg' alt='pencarian' class='p-3'><p class='text-muted'>Data Tidak Ditemukan</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal Lihat Hasil -->
     
   </div>
 </main>
