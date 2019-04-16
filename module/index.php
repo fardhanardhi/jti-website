@@ -253,7 +253,7 @@ switch ($level) {
               </div>
             </li>
           </a>
-          <a href="index.php?module=home">
+          <a href="index.php?module=kelas">
             <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
               <div class="row">
                 <div class="col-md-1">

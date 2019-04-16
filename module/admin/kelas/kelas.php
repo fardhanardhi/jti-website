@@ -1,4 +1,4 @@
-<main role="main" class="container-fluid" id="ruang">
+<main role="main" class="container-fluid" id="kelas">
   <div class="row">
     <div class="col-md-12 p-0">
         <div class="m-2 bg-white shadow-sm rounded">
@@ -11,8 +11,6 @@
             </nav>
         </div>
     </div>  
-
-
     <div class="col-md-9 p-0">
       <div class="m-2 p-3 bg-white mb-3 rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Daftar Kelas Mahasiswa</h6>
@@ -63,7 +61,7 @@
                             <td>Malang</td>
                             <td>Laki - Laki</td>
                             <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#edit" class="edit">Hapus</button>
+                                    data-target="#hapusMahasiswa" class="edit">Hapus</button>
                             </td>
                         </tr>
                         <tr>
@@ -73,7 +71,7 @@
                             <td>Kediri</td>
                             <td>Perempuan</td>
                             <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#edit" class="edit">Hapus</button>
+                                    data-target="#hapusMahasiswa" class="edit">Hapus</button>
                             </td>
                         </tr>
                         <tr>
@@ -83,7 +81,7 @@
                             <td>Jakarta</td>
                             <td>Perempuan</td>
                             <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#edit" class="edit">Hapus</button>
+                                    data-target="#hapusMahasiswa" class="edit">Hapus</button>
                             </td>
                         </tr>
                         <tr>
@@ -93,7 +91,7 @@
                             <td>Malang</td>
                             <td>Laki -Laki</td>
                             <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#edit" class="edit">Hapus</button>
+                                    data-target="#hapusMahasiswa" class="edit">Hapus</button>
                             </td>
                         </tr>
                         <tr>
@@ -103,7 +101,7 @@
                             <td>Malang</td>
                             <td>Laki -Laki</td>
                             <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#edit" class="edit">Hapus</button>
+                                    data-target="#hapusMahasiswa" class="edit">Hapus</button>
                             </td>
                         </tr>
                         <tr>
@@ -113,7 +111,7 @@
                             <td>Malang</td>
                             <td>Laki -Laki</td>
                             <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#edit" class="edit">Hapus</button>
+                                    data-target="#hapusMahasiswa" class="edit">Hapus</button>
                             </td>
                         </tr>
                         <tr>
@@ -123,7 +121,7 @@
                             <td>Malang</td>
                             <td>Laki -Laki</td>
                             <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#edit" class="edit">Hapus</button>
+                                    data-target="#hapusMahasiswa" class="edit">Hapus</button>
                             </td>
                         </tr>
                         <tr>
@@ -133,7 +131,7 @@
                             <td>Malang</td>
                             <td>Laki -Laki</td>
                             <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#edit" class="edit">Hapus</button>
+                                    data-target="#hapusMahasiswa" class="edit">Hapus</button>
                             </td>
                         </tr>
                     </tbody>
@@ -188,7 +186,6 @@
                     <input type="text" class="form-control form-control-sm" placeholder="NIM"></small>
                     </div>
                 </div>
-
               <div class="form-group mb-0 row">
                 <div class="col-sm-12 text-right">
                   <input type="submit" value="Tambah" class="btn btn-primary btn-checkout">
@@ -198,9 +195,26 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
-    
   </div>
+  <div class="modal fade" id="hapusMahasiswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </main>
