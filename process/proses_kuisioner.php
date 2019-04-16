@@ -34,3 +34,63 @@ function tampilKelas($con, $id_kelas){
   $hasil= $row["kode"]." - ".$row["tingkat"].$row["kode_kelas"];
   return $hasil;
 }
+
+if(isset($_POST["namaDosen"])){
+  $output='';
+  $query="select * from tabel_dosen where id_dosen='$_POST[namaDosen]' ";
+  $result=mysqli_query($con, $query);
+
+  if(mysqli_num_rows($result)>0){
+    $row=mysqli_fetch_assoc($result);
+    echo "<h5 class='modal-title text-center'>".$row["nama"]."</h5>
+          <input type='hidden' name='id_dosen' id='id_dosen' value='".$row["id_dosen"]."'>";
+  }else{
+    echo "-";
+  }
+
+}
+
+if(isset($_POST["id_dosen"])){
+  $output='';
+  $query="select * from tabel_hasil_kuisioner where id_dosen='$_POST[id_dosen]'";
+  $result=mysqli_query($con, $query);
+
+  if(mysqli_num_rows($result)>0){
+    $output.="
+      <table class='table table-striped table-bordered text-center'>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>NIM</th>
+          <th>Nama</th>
+          <th>Kelas</th>
+          <th>Nilai Kuisioner</th>
+        </tr>
+      </thead>
+      <tbody>";
+
+      while($row=mysqli_fetch_assoc($result)){
+        $output.='
+        <tr>
+          <td>1</td>
+          <td>'.$row["id_mahasiswa"].'</td>
+          <td>'.$row["id_dosen"].'</td>
+          <td>'.$_POST["kelas"].'</td>
+          <td>'.$row["nilai"].'</td>
+        </tr>';
+      }
+      $output .="
+      </tbody>
+    </table>";
+
+    echo $output;
+
+  }else{
+    echo $output.="
+      <div>
+        <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
+        <p class='text-muted'>Data Tidak Ditemukan</p>
+      </div>";
+  }
+
+}
