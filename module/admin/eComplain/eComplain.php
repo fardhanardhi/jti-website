@@ -39,7 +39,7 @@ include "../process/proses_eComplain.php";
                     <form>
                       <div class="form-row">
                         <div class="col">
-                          <input type="text" class="form-control" placeholder="Pencarian...">
+                          <input type="text" class="form-control" id="myInput" onkeyup="myFunction();" placeholder="Pencarian...">
                         </div>
                       </div>
                     </form>
@@ -54,54 +54,42 @@ include "../process/proses_eComplain.php";
               </div>
             </div>
             <div class="row chat-body">
-              <div class="recent-chat col-md-4 border-right border-gray scrollbar">
+              <div id="recentChat" class="recent-chat col-md-4 border-right border-gray scrollbar">
 
-                <div class="row recent-chat-item border-bottom border-gray p-3 active">
-                  <div class="col-md-auto p-0">
-                    <img class="chat-profile-photo" src="../attachment/img/avatar.png">
-                  </div>
-                  <div class="col">
-                    <div class="row chat-info">
+                <?php
+                $resultRecentChat = tampilRecentChat($con, $idUser);
+                $firstRowRecentChat = mysqli_fetch_assoc(tampilRecentChat($con, $idUser));
+                if (mysqli_num_rows($resultRecentChat) > 0) {
+                  while ($rowRecentChat = mysqli_fetch_assoc($resultRecentChat)) {
+                    ?>
+                    <div class="row recent-chat-item border-bottom border-gray p-3 <?php echo ($firstRowRecentChat["id_chat"] == $rowRecentChat["id_chat"]) ? 'active' : ''; ?>">
+                      <div class="col-md-auto p-0">
+                        <img class="chat-profile-photo" src="../attachment/img/avatar.png">
+                      </div>
                       <div class="col">
-                        Veronica Imoet
-                      </div>
-                      <div class="col-md-auto pr-0">
-                        30 Jan 2019
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col pr-0">
-                        Assalamualaiku wr. wb.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <?php
-                for ($i = 0; $i < 20; $i++) {
-                  ?>
-                  <div class="row recent-chat-item border-bottom border-gray p-3">
-                    <div class="col-md-auto p-0">
-                      <img class="chat-profile-photo" src="../attachment/img/avatar.png">
-                    </div>
-                    <div class="col">
-                      <div class="row chat-info">
-                        <div class="col">
-                          Veronica Imoet
+                        <div class="row chat-info">
+                          <div class="col recentName">
+                            <?php
+                            echo tampilMahasiswa($con, $rowRecentChat["recent_user"]);
+                            ?>
+                          </div>
+                          <div class="col-md-auto pr-0">
+                            <?php echo date("d M Y", strtotime($rowRecentChat["waktu"])) ?>
+                          </div>
                         </div>
-                        <div class="col-md-auto pr-0">
-                          30 Jan 2019
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col pr-0">
-                          Assalamualaiku wr. wb.
+                        <div class="row">
+                          <div class="col pr-0 recentIsi">
+                            <?php echo $rowRecentChat["isi"] ?>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                <?php
+                  <?php
+                }
+              } else {
+                echo "gagal";
               }
+
               ?>
 
               </div>

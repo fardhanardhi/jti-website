@@ -9,7 +9,13 @@ function tampilChat($con, $idUser)
     FROM
       tabel_chat
     WHERE
-      pengirim = $idUser AND penerima = 2 OR pengirim = 2 AND penerima = $idUser
+      pengirim = $idUser 
+    AND 
+      penerima = 2 
+    OR 
+      pengirim = 2 
+    AND 
+      penerima = $idUser
     ORDER BY
       waktu
     ";
@@ -18,9 +24,26 @@ function tampilChat($con, $idUser)
   return $resultChat;
 }
 
+function tampilMahasiswa($con, $idUser)
+{
+  $hasil =
+    "SELECT
+      nama
+    FROM
+      tabel_mahasiswa
+    WHERE
+      id_user = $idUser
+    ";
+
+  $resultHasil = mysqli_query($con, $hasil);
+
+  $rowNama = mysqli_fetch_assoc($resultHasil);
+  return $rowNama["nama"];
+}
+
 function tampilRecentChat($con, $idUser)
 {
-  $chat =
+  $recentChat =
     "SELECT
       id_chat,
       isi,
@@ -33,7 +56,7 @@ function tampilRecentChat($con, $idUser)
         pengirim,
         penerima,
         IF (
-          pengirim = 32,
+          pengirim = $idUser,
           penerima,
           pengirim
         ) 
@@ -50,7 +73,7 @@ function tampilRecentChat($con, $idUser)
           tabel_chat
         GROUP BY
           IF (
-          pengirim = 32,
+          pengirim = $idUser,
           penerima,
           pengirim
         )
@@ -61,47 +84,6 @@ function tampilRecentChat($con, $idUser)
     DESC
     ";
 
-  /* 
-SELECT
-      id_chat,
-      isi,
-      b.recent_user,
-      waktu
-    FROM (
-      SELECT
-        id_chat,
-        isi,
-        pengirim,
-        penerima,
-        IF (
-          pengirim = 32,
-          penerima,
-          pengirim
-        ) 
-        AS 
-        recent_user,
-        waktu
-      FROM
-        tabel_chat
-      WHERE
-        waktu IN (
-        SELECT
-          MAX(waktu)
-        FROM
-          tabel_chat
-        GROUP BY
-          IF (
-          pengirim = 32,
-          penerima,
-          pengirim
-        )
-      ) 
-    ) AS b
-    ORDER BY
-      waktu
-    DESC
-*/
-
-  $resultChat = mysqli_query($con, $chat);
-  return $resultChat;
+  $resultRecentChat = mysqli_query($con, $recentChat);
+  return $resultRecentChat;
 }
