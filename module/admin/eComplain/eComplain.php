@@ -39,7 +39,7 @@ include "../process/proses_eComplain.php";
                     <form>
                       <div class="form-row">
                         <div class="col">
-                          <input type="text" class="form-control" id="myInput" onkeyup="myFunction();" placeholder="Pencarian...">
+                          <input type="text" class="form-control" id="recentChatInput" onkeyup="recentChatSearch()" placeholder="Pencarian...">
                         </div>
                       </div>
                     </form>
@@ -93,83 +93,108 @@ include "../process/proses_eComplain.php";
               ?>
 
               </div>
-              <div class="chat-window col-md-8 scrollbar pt-3">
+              <div class="conversation-window col-md-8">
+                <div class="row">
+                  <div class="chat-window col scrollbar pt-3">
 
-                <?php
-                $resultChat = tampilChat($con, $idUser);
-                if (mysqli_num_rows($resultChat) > 0) {
-                  $prev = '';
-                  while ($rowChat = mysqli_fetch_assoc($resultChat)) {
-                    if ($rowChat["penerima"] == $idUser) {
-                      ?>
-                      <div class="row chat-kiri px-3 py-1 <?php echo (($prev != 'kiri') ? 'pt-3' : ''); ?>">
-                        <div class="photo-container p-0">
-                          <?php
-                          if ($prev != 'kiri') {
+
+                    <?php
+                    $firstRowRecentUser = mysqli_fetch_assoc(tampilRecentChat($con, $idUser));
+                    $idUserTujuan = $firstRowRecentUser["recent_user"];
+                    $resultChat = tampilChat($con, $idUser, $idUserTujuan);
+                    if (mysqli_num_rows($resultChat) > 0) {
+                      $prev = '';
+                      while ($rowChat = mysqli_fetch_assoc($resultChat)) {
+                        if ($rowChat["penerima"] == $idUser) {
+                          ?>
+                          <div class="row chat-kiri px-3 py-1 <?php echo (($prev != 'kiri') ? 'pt-3' : ''); ?>">
+                            <div class="photo-container p-0">
+                              <?php
+                              if ($prev != 'kiri') {
+                                ?>
+                                <img class="chat-window-profile-photo" src="../attachment/img/avatar.png">
+                              <?php
+                            }
                             ?>
-                            <img class="chat-window-profile-photo" src="../attachment/img/avatar.png">
-                          <?php
-                        }
-                        ?>
-                        </div>
-                        <div class="col">
-                          <div class="row">
-                            <div class="col-md-auto chat-window-item py-1 px-2">
+                            </div>
+                            <div class="col">
                               <div class="row">
-                                <div class="col">
-                                  <?php echo $rowChat["isi"]; ?>
-                                </div>
-                              </div>
-                              <div class="row chat-window-item-info">
-                                <div class="col text-right">
-                                  <?php echo date("d M Y", strtotime($rowChat["waktu"])); ?>
+                                <div class="col-md-auto chat-window-item py-1 px-2">
+                                  <div class="row">
+                                    <div class="col">
+                                      <?php echo $rowChat["isi"]; ?>
+                                    </div>
+                                  </div>
+                                  <div class="row chat-window-item-info">
+                                    <div class="col text-right">
+                                      <?php echo date("d M Y", strtotime($rowChat["waktu"])); ?>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
 
-                      <?php
-                      $prev = 'kiri';
-                    } elseif ($rowChat["pengirim"] == $idUser) {
-                      ?>
-                      <div class="row chat-kanan px-3 py-1 <?php echo (($prev != 'kanan')  ? 'pt-3' : ''); ?>">
-                        <div class="col">
-                          <div class="row">
-                            <div class="col-md-auto chat-window-item py-1 px-2 ml-auto">
+                          <?php
+                          $prev = 'kiri';
+                        } elseif ($rowChat["pengirim"] == $idUser) {
+                          ?>
+                          <div class="row chat-kanan px-3 py-1 <?php echo (($prev != 'kanan')  ? 'pt-3' : ''); ?>">
+                            <div class="col">
                               <div class="row">
-                                <div class="col">
-                                  <?php echo $rowChat["isi"]; ?>
-                                </div>
-                              </div>
-                              <div class="row chat-window-item-info">
-                                <div class="col text-right">
-                                  <?php echo date("d M Y", strtotime($rowChat["waktu"])); ?>
+                                <div class="col-md-auto chat-window-item py-1 px-2 ml-auto">
+                                  <div class="row">
+                                    <div class="col">
+                                      <?php echo $rowChat["isi"]; ?>
+                                    </div>
+                                  </div>
+                                  <div class="row chat-window-item-info">
+                                    <div class="col text-right">
+                                      <?php echo date("d M Y", strtotime($rowChat["waktu"])); ?>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                        <div class="photo-container p-0 text-right">
-                          <?php
-                          if ($prev != 'kanan') {
+                            <div class="photo-container p-0 text-right">
+                              <?php
+                              if ($prev != 'kanan') {
+                                ?>
+                                <img class="chat-window-profile-photo" src="../attachment/img/avatar.jpeg">
+                              <?php
+                            }
                             ?>
-                            <img class="chat-window-profile-photo" src="../attachment/img/avatar.jpeg">
+                            </div>
+                          </div>
                           <?php
+                          $prev = 'kanan';
                         }
-                        ?>
-                        </div>
-                      </div>
-                      <?php
-                      $prev = 'kanan';
+                      }
+                    } else {
+                      echo "gagal";
                     }
-                  }
-                } else {
-                  echo "gagal";
-                }
-                ?>
+                    ?>
 
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col chat-input">
+                    <div class="row align-items-center justify-content-center h-100">
+                      <div class="col pr-0 pl-2">
+                        <form>
+                          <div class="form-row">
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="Ketik Pesan">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-md-auto pr-3 pl-1">
+                        <img class="btn-send" src="../img/send.svg" alt="search">
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

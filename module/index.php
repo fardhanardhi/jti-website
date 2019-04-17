@@ -48,270 +48,271 @@ switch ($level) {
 <body>
   <!-- navigation mahasiswa & dosen -->
   <?php
-    if ($level != "admin") {
-  ?>
-  <div id="navigation" class="container-fluid h-100">
-    <div class="row h-100">
-      <div class="col-md-12 my-auto">
-        <div class="row text-center text-white font-weight-bold">
-          <div class="col-md-0 col-lg"></div>
-          <div onclick="location.href='index.php?module=home';" class="navigation-menu col-md-3 col-lg-2 my-1">
-            <img src="../img/navigation/home.svg">
-            <p class="mt-3">HOME</p>
-          </div>
-          <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
-            <?php
-            if ($level == "mahasiswa") {
+  if ($level != "admin") {
+    ?>
+    <div id="navigation" class="container-fluid h-100">
+      <div class="row h-100">
+        <div class="col-md-12 my-auto">
+          <div class="row text-center text-white font-weight-bold">
+            <div class="col-md-0 col-lg"></div>
+            <div onclick="location.href='index.php?module=home';" class="navigation-menu col-md-3 col-lg-2 my-1">
+              <img src="../img/navigation/home.svg">
+              <p class="mt-3">HOME</p>
+            </div>
+            <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
+              <?php
+              if ($level == "mahasiswa") {
+                ?>
+                <img src="../img/navigation/jadwalKuliah.svg">
+                <p class="mt-3">JADWAL KULIAH</p>
+              <?php
+            } elseif ($level == "dosen") {
               ?>
-              <img src="../img/navigation/jadwalKuliah.svg">
-              <p class="mt-3">JADWAL KULIAH</p>
-            <?php
-          } elseif ($level == "dosen") {
+                <img src="../img/navigation/pesanKelas.svg">
+                <p class="mt-3">PESAN KELAS</p>
+              <?php
+            }
             ?>
-              <img src="../img/navigation/pesanKelas.svg">
-              <p class="mt-3">PESAN KELAS</p>
-            <?php
-          }
-          ?>
-          </div>
-          <div onclick="location.href='index.php?module=nilai';" class="navigation-menu col-md-3 col-lg-2 my-1">
-            <?php
-            if ($level == "mahasiswa") {
+            </div>
+            <div onclick="location.href='index.php?module=nilai';" class="navigation-menu col-md-3 col-lg-2 my-1">
+              <?php
+              if ($level == "mahasiswa") {
+                ?>
+                <img src="../img/navigation/nilaiMahasiswa.svg">
+                <p class="mt-3">NILAI MAHASISWA</p>
+              <?php
+            } elseif ($level == "dosen") {
               ?>
-              <img src="../img/navigation/nilaiMahasiswa.svg">
-              <p class="mt-3">NILAI MAHASISWA</p>
-            <?php
-          } elseif ($level == "dosen") {
+                <img src="../img/navigation/pengajuanKRS.svg">
+                <p class="mt-3">PENGAJUAN KRS MAHASISWA</p>
+              <?php
+            }
             ?>
-              <img src="../img/navigation/pengajuanKRS.svg">
-              <p class="mt-3">PENGAJUAN KRS MAHASISWA</p>
-            <?php
-          }
-          ?>
-          </div>
-          <div onclick="location.href='index.php?module=kompenAbsen';" class="navigation-menu col-md-3 col-lg-2 my-1">
-            <?php
-            if ($level == "mahasiswa") {
+            </div>
+            <div onclick="location.href='index.php?module=kompenAbsen';" class="navigation-menu col-md-3 col-lg-2 my-1">
+              <?php
+              if ($level == "mahasiswa") {
+                ?>
+                <img src="../img/navigation/absensi.svg">
+                <p class="mt-3">ABSENSI & KOMPEN</p>
+              <?php
+            } elseif ($level == "dosen") {
               ?>
-              <img src="../img/navigation/absensi.svg">
-              <p class="mt-3">ABSENSI & KOMPEN</p>
-            <?php
-          } elseif ($level == "dosen") {
+                <img src="../img/navigation/absensi.svg">
+                <p class="mt-3">KOMPENSASI MAHASISWA</p>
+              <?php
+            }
             ?>
-              <img src="../img/navigation/absensi.svg">
-              <p class="mt-3">KOMPENSASI MAHASISWA</p>
-            <?php
-          }
-          ?>
+            </div>
+            <div class="col-md-0 col-lg"></div>
           </div>
-          <div class="col-md-0 col-lg"></div>
         </div>
       </div>
     </div>
-  </div>
   <?php
-    } else {
+} else {
   ?>
 
-  <div id="navigation-admin" class="container-fluid h-100">
-    <div class="row h-100">
-      <div class="col-md-3 h-100 bg-sidebar px-0">
-        <div class="app-navbar navbar navbar-expand-md navbar-dark bg-blue border-bottom border-white">
-          <a class="ml-5 mr-5 pointer" id="navigation-admin-close"> <i class="fas fa-bars text-white burger-icon"></i></a>
-          <a class="navbar-brand " href="index.php?module=home"><b>JTI Website</b></a>
+    <!-- navbar -->
+    <div id="navigation-admin" class="container-fluid h-100">
+      <div class="row h-100">
+        <div class="col-md-3 h-100 bg-sidebar px-0">
+          <div class="app-navbar navbar navbar-expand-md navbar-dark bg-blue border-bottom border-white">
+            <a class="ml-5 mr-5 pointer" id="navigation-admin-close"> <i class="fas fa-bars text-white burger-icon"></i></a>
+            <a class="navbar-brand " href="index.php?module=home"><b>JTI Website</b></a>
+          </div>
+          <ul class="text-white pl-0">
+            <a href="index.php?module=home">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-dashboard.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Dashboard
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=eComplain">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-eComplain.svg">
+                  </div>
+                  <div class="col-md-10">
+                    E - Complain
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=beritaPengumuman">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-news.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Berita dan Pengumuman
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=beasiswa">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-beasiswa.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Beasiswa
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=absenKompen">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-absen.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Absen dan Kompen
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=ruang">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-ruangan.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Ruangan
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=dataMahasiswa">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-mahasiswa.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Data Mahasiswa
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=dataDosen">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-dosen.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Data Dosen
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=kuisioner">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-kuisioner.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Kuisioner
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=khs">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-khs.svg">
+                  </div>
+                  <div class="col-md-10">
+                    KHS ( Kartu Hasil Studi )
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=krs">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-krs.svg">
+                  </div>
+                  <div class="col-md-10">
+                    KRS ( Kartu Rencana Studi )
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=kelas">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-kelas.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Kelas
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=dataJadwalKuliah">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-jadwal.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Jadwal Kuliah
+                  </div>
+                </div>
+              </li>
+            </a>
+            <a href="index.php?module=mataKuliah">
+              <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
+                <div class="row">
+                  <div class="col-md-1">
+                    <img src="../img/sidebar-matkul.svg">
+                  </div>
+                  <div class="col-md-10">
+                    Mata Kuliah
+                  </div>
+                </div>
+              </li>
+            </a>
+          </ul>
         </div>
-        <ul class="text-white pl-0">
-          <a href="index.php?module=home">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-dashboard.svg">
-                </div>
-                <div class="col-md-10">
-                  Dashboard
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=eComplain">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-eComplain.svg">
-                </div>
-                <div class="col-md-10">
-                  E - Complain
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=beritaPengumuman">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-news.svg">
-                </div>
-                <div class="col-md-10">
-                  Berita dan Pengumuman
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=beasiswa">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-beasiswa.svg">
-                </div>
-                <div class="col-md-10">
-                  Beasiswa
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=absenKompen">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-absen.svg">
-                </div>
-                <div class="col-md-10">
-                  Absen dan Kompen
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=ruang">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-ruangan.svg">
-                </div>
-                <div class="col-md-10">
-                  Ruangan
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=dataMahasiswa">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-mahasiswa.svg">
-                </div>
-                <div class="col-md-10">
-                  Data Mahasiswa
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=dataDosen">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-dosen.svg">
-                </div>
-                <div class="col-md-10">
-                  Data Dosen
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=kuisioner">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-kuisioner.svg">
-                </div>
-                <div class="col-md-10">
-                  Kuisioner
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=khs">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-khs.svg">
-                </div>
-                <div class="col-md-10">
-                  KHS ( Kartu Hasil Studi )
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=krs">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-krs.svg">
-                </div>
-                <div class="col-md-10">
-                  KRS ( Kartu Rencana Studi )
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=kelas">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-kelas.svg">
-                </div>
-                <div class="col-md-10">
-                  Kelas
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=dataJadwalKuliah">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-jadwal.svg">
-                </div>
-                <div class="col-md-10">
-                  Jadwal Kuliah
-                </div>
-              </div>
-            </li>
-          </a>
-          <a href="index.php?module=mataKuliah">
-            <li class="border-bottom border-white px-4 py-2 sidebar-nav text-white">
-              <div class="row">
-                <div class="col-md-1">
-                  <img src="../img/sidebar-matkul.svg">
-                </div>
-                <div class="col-md-10">
-                  Mata Kuliah
-                </div>
-              </div>
-            </li>
-          </a>
-        </ul>
+        <div class="col-md-9 h-100" id="navigation-admin-close2"></div>
       </div>
-      <div class="col-md-9 h-100" id="navigation-admin-close2"></div>
     </div>
-  </div>
 
   <?php
-    }
-  ?>
+}
+?>
 
   <!-- navbar -->
   <nav class="app-navbar navbar navbar-expand-md navbar-dark bg-blue shadow-sm sticky-top mb-2">
     <?php
-      if ($level == "admin") {
-    ?>
-    <a class="ml-5 mr-5" id="navigation-admin-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
+    if ($level == "admin") {
+      ?>
+      <a class="ml-5 mr-5" id="navigation-admin-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
     <?php
-      } else {      
+  } else {
     ?>
-    <a class="ml-5 mr-5" id="navigation-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
+      <a class="ml-5 mr-5" id="navigation-btn"> <i class="fas fa-bars text-white burger-icon"></i></a>
     <?php
-      }
-    ?>
+  }
+  ?>
     <a class="navbar-brand " href="index.php?module=home"><b>JTI Website</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -511,11 +512,11 @@ switch ($level) {
           include "admin/kuisioner/kriteriaKuisioner.php";
           break;
         case "absenKompen":
-            include "admin/absen & kompen/absenKompen.php";
-            break;
+          include "admin/absen & kompen/absenKompen.php";
+          break;
         case "kelas":
-            include "admin/kelas/kelas.php";
-            break; 
+          include "admin/kelas/kelas.php";
+          break;
         case "notifikasi":
           include "notifikasi.php";
           break;
@@ -525,9 +526,11 @@ switch ($level) {
     }
 
     if ($level == "mahasiswa" || $level == "admin" || $level == "dosen") {
-      ?>
-      <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
-    <?php
+      if ($module != 'eComplain') {
+        ?>
+        <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
+      <?php
+    }
   }
   ?>
   </div>

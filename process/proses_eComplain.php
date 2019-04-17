@@ -1,7 +1,7 @@
 <?php
 include "../config/connection.php";
 
-function tampilChat($con, $idUser)
+function tampilChat($con, $idUser, $idUserTujuan)
 {
   $chat =
     "SELECT
@@ -11,9 +11,9 @@ function tampilChat($con, $idUser)
     WHERE
       pengirim = $idUser 
     AND 
-      penerima = 2 
+      penerima = $idUserTujuan
     OR 
-      pengirim = 2 
+      pengirim = $idUserTujuan
     AND 
       penerima = $idUser
     ORDER BY

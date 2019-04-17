@@ -12,6 +12,11 @@
   width: auto;
 }
 
+#eComplain .btn-send {
+  height: 2.5em;
+  width: auto;
+}
+
 #eComplain .chat-head {
   height: 13%;
 }
@@ -37,10 +42,19 @@
   overflow-y: auto;
 }
 
+#eComplain .chat-input {
+  height: 3.5em;
+  background-color: #dbdbdb;
+}
+
 #eComplain .chat-window {
-  height: calc(100vh - 12em - 13vh + 1.53em);
+  height: calc(100vh - 12em - 13vh + 1.53em - 3.5em);
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+#eComplain .conversation-window {
+  height: calc(100vh - 12em - 13vh + 1.53em);
 }
 
 #eComplain .border-scroll {

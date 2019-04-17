@@ -1,4 +1,4 @@
-function myFunction() {
+function recentChatSearch() {
   var input,
     filter,
     recentChat,
@@ -8,7 +8,7 @@ function myFunction() {
     i,
     txtValueName,
     txtValueIsi;
-  input = $("#myInput");
+  input = $("#recentChatInput");
   filter = $(input)
     .val()
     .toUpperCase();
