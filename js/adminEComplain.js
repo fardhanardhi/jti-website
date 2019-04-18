@@ -38,8 +38,7 @@ function recentChatSearch() {
 }
 
 $(document).ready(function() {
-  recentChat(idUserTujuan);
-  chat(idUserTujuan);
+  reload();
 
   refresh();
 
@@ -47,13 +46,10 @@ $(document).ready(function() {
     idUserTujuan = $(this).data("id");
     // $(".recent-chat-item").removeClass("active");
     // $(this).addClass("active");
-    recentChat(idUserTujuan);
-    chat(idUserTujuan);
+    reload();
   });
 
   $(document).on("click", ".btn-send", function() {
-    recentChat(idUserTujuan);
-    chat(idUserTujuan);
     var isiChat = $("#inputChat").val();
     var idUser = $("#idUser").val();
     $.ajax({
@@ -68,10 +64,16 @@ $(document).ready(function() {
       success: function(response) {
         $("#inputChat").val("");
         // $("#display_area").append(response);
-        console.log("response", response);
+        reload();
       }
     });
   });
+
+  function reload() {
+    $("#chatWindow").animate({ scrollTop: 20000000 }, "slow");
+    recentChat(idUserTujuan);
+    chat(idUserTujuan);
+  }
 
   function refresh() {
     clearInterval();

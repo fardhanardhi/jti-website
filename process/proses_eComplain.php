@@ -65,9 +65,9 @@ function queryTampilRecentChat($idUser)
       FROM
         tabel_chat
       WHERE
-        waktu IN (
+        id_chat IN (
         SELECT
-          MAX(waktu)
+          MAX(id_chat)
         FROM
           tabel_chat
         GROUP BY
@@ -78,6 +78,10 @@ function queryTampilRecentChat($idUser)
         )
       ) 
     ) AS b
+    WHERE
+      pengirim = $idUser 
+      OR 
+      penerima = $idUser
     ORDER BY
       waktu
     DESC
@@ -238,3 +242,47 @@ if (isset($_POST['sendChat'])) {
   }
   exit();
 }
+
+
+
+
+  /* 
+SELECT
+      id_chat,
+      isi,
+      b.recent_user,
+      waktu
+    FROM (
+      SELECT
+        id_chat,
+        isi,
+        pengirim,
+        penerima,
+        IF (
+          pengirim = 32,
+          penerima,
+          pengirim
+        ) 
+        AS 
+        recent_user,
+        waktu
+      FROM
+        tabel_chat
+      WHERE
+        waktu IN (
+        SELECT
+          MAX(waktu)
+        FROM
+          tabel_chat
+        GROUP BY
+          IF (
+          pengirim = 32,
+          penerima,
+          pengirim
+        )
+      ) 
+    ) AS b
+    ORDER BY
+      waktu
+    DESC
+*/
