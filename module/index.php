@@ -4,6 +4,9 @@ include "../config/connection.php";
 
 $level = $_SESSION['level'];
 $idUser = $_SESSION['id'];
+?>
+<input id="idUser" type="hidden" name="idUser" value="<?php echo $idUser ?>">
+<?php
 
 switch ($level) {
   case 'admin':
