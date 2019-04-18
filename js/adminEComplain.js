@@ -1,26 +1,44 @@
+var idUserTujuan = null;
+
 $(document).ready(function() {
   // save comment to database
-  recentChat();
-  chat();
+
+  recentChat(idUserTujuan);
+  chat(idUserTujuan);
 
   refresh();
+
+  $(document).on("click", ".recent-chat-item", function() {
+    idUserTujuan = $(this).data("id");
+    // $(".recent-chat-item").removeClass("active");
+    // $(this).addClass("active");
+    recentChat(idUserTujuan);
+    chat(idUserTujuan);
+  });
 
   function refresh() {
     clearInterval();
     setInterval(function() {
-      recentChat();
-      chat();
+      // cek apakah search kosong
+      if ($.trim($("input[type=text]").val()) == "") {
+        recentChat(idUserTujuan);
+      } else {
+        // jika tidak kosong refresh
+        recentChatSearch();
+      }
+      chat(idUserTujuan);
     }, 2000);
   }
 
-  function recentChat() {
+  function recentChat(userTujuanId) {
     var idUser = $("#idUser").val();
     $.ajax({
       url: "../process/proses_eComplain.php",
       type: "GET",
       data: {
         tampilRecentChat: 1,
-        idUser: idUser
+        idUser: idUser,
+        idUserTujuan: userTujuanId
       },
       success: function(response) {
         // remove the deleted comment
@@ -32,14 +50,15 @@ $(document).ready(function() {
     });
   }
 
-  function chat() {
+  function chat(userTujuanId) {
     var idUser = $("#idUser").val();
     $.ajax({
       url: "../process/proses_eComplain.php",
       type: "GET",
       data: {
         tampilChat: 1,
-        idUser: idUser
+        idUser: idUser,
+        idUserTujuan: userTujuanId
       },
       success: function(response) {
         // remove the deleted comment
@@ -50,87 +69,6 @@ $(document).ready(function() {
       }
     });
   }
-
-  // $(document).on("click", "#submit_btn", function () {
-  //   refresh();
-  //   var name = $("#name").val();
-  //   var comment = $("#comment").val();
-  //   $.ajax({
-  //     url: "server.php",
-  //     type: "POST",
-  //     data: {
-  //       save: 1,
-  //       name: name,
-  //       comment: comment
-  //     },
-  //     success: function (response) {
-  //       $("#name").val("");
-  //       $("#comment").val("");
-  //       $("#display_area").append(response);
-  //     }
-  //   });
-  // });
-  // // delete from database
-  // $(document).on("click", ".delete", function () {
-  //   refresh();
-  //   var id = $(this).data("id");
-  //   $clicked_btn = $(this);
-  //   $.ajax({
-  //     url: "server.php",
-  //     type: "GET",
-  //     data: {
-  //       delete: 1,
-  //       id: id
-  //     },
-  //     success: function (response) {
-  //       // remove the deleted comment
-  //       $clicked_btn.parent().remove();
-  //       $("#name").val("");
-  //       $("#comment").val("");
-  //     }
-  //   });
-  // });
-  // var edit_id;
-  // var $edit_comment;
-  // $(document).on("click", ".edit", function () {
-  //   edit_id = $(this).data("id");
-  //   $edit_comment = $(this).parent();
-  //   // grab the comment to be editted
-  //   var name = $(this)
-  //     .siblings(".display_name")
-  //     .text();
-  //   var comment = $(this)
-  //     .siblings(".comment_text")
-  //     .text();
-  //   // place comment in form
-  //   $("#name").val(name);
-  //   $("#comment").val(comment);
-  //   $("#submit_btn").hide();
-  //   $("#update_btn").show();
-  // });
-  // $(document).on("click", "#update_btn", function () {
-  //   refresh();
-  //   var id = edit_id;
-  //   var name = $("#name").val();
-  //   var comment = $("#comment").val();
-  //   $.ajax({
-  //     url: "server.php",
-  //     type: "POST",
-  //     data: {
-  //       update: 1,
-  //       id: id,
-  //       name: name,
-  //       comment: comment
-  //     },
-  //     success: function (response) {
-  //       $("#name").val("");
-  //       $("#comment").val("");
-  //       $("#submit_btn").show();
-  //       $("#update_btn").hide();
-  //       $edit_comment.replaceWith(response);
-  //     }
-  //   });
-  // });
 });
 
 function recentChatSearch() {

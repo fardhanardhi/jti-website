@@ -20,8 +20,6 @@ include "../process/proses_eComplain.php";
             </nav>
           </div>
         </div>
-
-
       </div>
     </div>
 
@@ -36,13 +34,7 @@ include "../process/proses_eComplain.php";
                     <img class="btn-search" src="../img/search.svg" alt="search">
                   </div>
                   <div class="col pl-0 pr-4">
-                    <form>
-                      <div class="form-row">
-                        <div class="col">
-                          <input type="text" class="form-control" id="recentChatInput" onkeyup="recentChatSearch()" placeholder="Pencarian...">
-                        </div>
-                      </div>
-                    </form>
+                    <input type="text" class="form-control" id="recentChatInput" onkeyup="recentChatSearch()" placeholder="Pencarian...">
                   </div>
                 </div>
               </div>
@@ -55,28 +47,19 @@ include "../process/proses_eComplain.php";
             </div>
             <div class="row chat-body">
               <div id="recentChat" class="recent-chat col-md-4 border-right border-gray scrollbar">
-
                 ...
               </div>
               <div class="conversation-window col-md-8">
                 <div class="row">
                   <div id="chatWindow" class="chat-window col scrollbar pt-3">
-
-
-
+                  ...
                   </div>
                 </div>
                 <div class="row">
                   <div class="col chat-input">
                     <div class="row align-items-center justify-content-center h-100">
                       <div class="col pr-0 pl-2">
-                        <form>
-                          <div class="form-row">
-                            <div class="col">
-                              <input type="text" class="form-control" placeholder="Ketik Pesan">
-                            </div>
-                          </div>
-                        </form>
+                        <input type="text" class="form-control" placeholder="Ketik Pesan">
                       </div>
                       <div class="col-md-auto pr-3 pl-1">
                         <img class="btn-send" src="../img/send.svg" alt="search">
@@ -88,17 +71,6 @@ include "../process/proses_eComplain.php";
             </div>
           </div>
         </div>
-        <!-- <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
-          <div class="media text-muted pt-3">
-            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-              <strong class="d-block text-gray-dark">@username</strong>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus.
-            </p>
-          </div>
-          <small class="d-block text-right mt-3">
-            <a href="#">All updates</a>
-          </small> -->
       </div>
     </div>
   </div>

@@ -3,14 +3,15 @@ include "../config/connection.php";
 
 if (isset($_GET["tampilRecentChat"])) {
   $idUser = $_GET['idUser'];
+  $idUserTujuan = $_GET['idUserTujuan'];
 
   $resultRecentChat = mysqli_query($con, queryTampilRecentChat($idUser));
-  $firstRowRecentChat = mysqli_fetch_assoc(mysqli_query($con, queryTampilRecentChat($idUser)));
+  // $firstRowRecentChat = mysqli_fetch_assoc(mysqli_query($con, queryTampilRecentChat($idUser)));
 
   if (mysqli_num_rows($resultRecentChat) > 0) {
     while ($rowRecentChat = mysqli_fetch_assoc($resultRecentChat)) {
       ?>
-      <div class="row recent-chat-item border-bottom border-gray p-3 <?php echo ($firstRowRecentChat["id_chat"] == $rowRecentChat["id_chat"]) ? 'active' : ''; ?>">
+      <div data-id="<?php echo $rowRecentChat['recent_user'] ?>" class="row recent-chat-item border-bottom border-gray p-3 <?php echo ($idUserTujuan == $rowRecentChat["recent_user"]) ? 'active' : ''; ?>">
         <div class="col-md-auto p-0">
           <img class="chat-profile-photo" src="../attachment/img/avatar.png">
         </div>
@@ -41,9 +42,10 @@ if (isset($_GET["tampilRecentChat"])) {
 
 if (isset($_GET["tampilChat"])) {
   $idUser = $_GET['idUser'];
+  $idUserTujuan = $_GET['idUserTujuan'];
 
-  $firstRowRecentUser = mysqli_fetch_assoc(mysqli_query($con, queryTampilRecentChat($idUser)));
-  $idUserTujuan = $firstRowRecentUser["recent_user"];
+  // $firstRowRecentUser = mysqli_fetch_assoc(mysqli_query($con, queryTampilRecentChat($idUser)));
+  // $idUserTujuan = $firstRowRecentUser["recent_user"];
   $resultChat = mysqli_query($con, queryTampilChat($idUser, $idUserTujuan));
 
   if (mysqli_num_rows($resultChat) > 0) {
