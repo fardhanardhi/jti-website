@@ -59,7 +59,7 @@ include "../process/proses_eComplain.php";
                   <div class="col chat-input">
                     <div class="row align-items-center justify-content-center h-100">
                       <div class="col pr-0 pl-2">
-                        <input type="text" class="form-control" placeholder="Ketik Pesan">
+                        <input id="inputChat" type="text" class="form-control" placeholder="Ketik Pesan">
                       </div>
                       <div class="col-md-auto pr-3 pl-1">
                         <img class="btn-send" src="../img/send.svg" alt="search">

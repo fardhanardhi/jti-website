@@ -1,6 +1,92 @@
 <?php
 include "../config/connection.php";
 
+function queryTampilChat($idUser, $idUserTujuan)
+{
+  $chat =
+    "SELECT
+      *
+    FROM
+      tabel_chat
+    WHERE
+      pengirim = $idUser 
+    AND 
+      penerima = $idUserTujuan
+    OR 
+      pengirim = $idUserTujuan
+    AND 
+      penerima = $idUser
+    ORDER BY
+      waktu
+    ";
+
+  return $chat;
+}
+
+function tampilMahasiswa($con, $idUser)
+{
+  $hasil =
+    "SELECT
+      nama
+    FROM
+      tabel_mahasiswa
+    WHERE
+      id_user = $idUser
+    ";
+
+  $resultHasil = mysqli_query($con, $hasil);
+
+  $rowNama = mysqli_fetch_assoc($resultHasil);
+  return $rowNama["nama"];
+}
+
+function queryTampilRecentChat($idUser)
+{
+  $recentChat =
+    "SELECT
+      id_chat,
+      isi,
+      b.recent_user,
+      waktu
+    FROM (
+      SELECT
+        id_chat,
+        isi,
+        pengirim,
+        penerima,
+        IF (
+          pengirim = $idUser,
+          penerima,
+          pengirim
+        ) 
+        AS 
+        recent_user,
+        waktu
+      FROM
+        tabel_chat
+      WHERE
+        waktu IN (
+        SELECT
+          MAX(waktu)
+        FROM
+          tabel_chat
+        GROUP BY
+          IF (
+          pengirim = $idUser,
+          penerima,
+          pengirim
+        )
+      ) 
+    ) AS b
+    ORDER BY
+      waktu
+    DESC
+    ";
+
+  return $recentChat;
+}
+
+
 if (isset($_GET["tampilRecentChat"])) {
   $idUser = $_GET['idUser'];
   $idUserTujuan = $_GET['idUserTujuan'];
@@ -121,89 +207,34 @@ if (isset($_GET["tampilChat"])) {
   }
 }
 
+if (isset($_POST['sendChat'])) {
+  $isiChat = $_POST['isiChat'];
+  $idUser = $_POST['idUser'];
+  $idUserTujuan = $_POST['idUserTujuan'];
+  $date = date("m/d/Y h:i A");
+  $final = strtotime($date);
+  $datetimeNow = date("Y-m-d H:i:s", $final);
 
 
-function queryTampilChat($idUser, $idUserTujuan)
-{
-  $chat =
-    "SELECT
-      *
-    FROM
-      tabel_chat
-    WHERE
-      pengirim = $idUser 
-    AND 
-      penerima = $idUserTujuan
-    OR 
-      pengirim = $idUserTujuan
-    AND 
-      penerima = $idUser
-    ORDER BY
-      waktu
-    ";
-
-  return $chat;
-}
-
-function tampilMahasiswa($con, $idUser)
-{
-  $hasil =
-    "SELECT
-      nama
-    FROM
-      tabel_mahasiswa
-    WHERE
-      id_user = $idUser
-    ";
-
-  $resultHasil = mysqli_query($con, $hasil);
-
-  $rowNama = mysqli_fetch_assoc($resultHasil);
-  return $rowNama["nama"];
-}
-
-function queryTampilRecentChat($idUser)
-{
-  $recentChat =
-    "SELECT
-      id_chat,
+  $sql =
+    "INSERT INTO 
+    tabel_chat(
       isi,
-      b.recent_user,
+      pengirim,
+      penerima,
       waktu
-    FROM (
-      SELECT
-        id_chat,
-        isi,
-        pengirim,
-        penerima,
-        IF (
-          pengirim = $idUser,
-          penerima,
-          pengirim
-        ) 
-        AS 
-        recent_user,
-        waktu
-      FROM
-        tabel_chat
-      WHERE
-        waktu IN (
-        SELECT
-          MAX(waktu)
-        FROM
-          tabel_chat
-        GROUP BY
-          IF (
-          pengirim = $idUser,
-          penerima,
-          pengirim
-        )
-      ) 
-    ) AS b
-    ORDER BY
-      waktu
-    DESC
-    ";
+    )
+    VALUES(
+      '$isiChat',
+      $idUser,
+      $idUserTujuan,
+      '$datetimeNow'
+    )";
 
-  return $recentChat;
+  if (mysqli_query($con, $sql)) {
+    $id = mysqli_insert_id($con);
+  } else {
+    echo "Error: " . mysqli_error($con);
+  }
+  exit();
 }
