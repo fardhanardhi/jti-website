@@ -1,3 +1,8 @@
+<?php
+  include "../config/connection.php";
+  include "../process/proses_kuisioner.php";
+?>
+
 <main role="main" class="container-fluid" id="kuisioner">
   <div class="row">
 
@@ -23,15 +28,26 @@
           </div>
 
           <div class="row mt-4">
-            <form class="col-md-10 offset-1 d-flex">
+            <form class="col-md-10 offset-1 d-flex" action="?module=kriteriaKuisioner" method="POST">
               <small class="my-auto"><img src="../img/search.svg" alt="" id="icon-search"></small>
-              <input type="search" class="pencarian form-control mr-4" name="cari" id="cari">
-              <input type="submit" value="Cari" name="cari" class="btn btn-success cariKuisioner">
+              <input type="search" class="pencarian form-control mr-4" name="txtCariKriteria">
+              <input type="submit" value="Cari" name="cariKriteria" class="btn btn-success cariKuisioner">
             </form>
           </div>
 
           <div class="row mt-3">
-            <div class="col-md-10 offset-1 p-0 d-flex">
+            <div class="col-md-10 offset-1 p-0 pr-3 d-flex justify-content-center scrollbar" id="dataKriteria">
+            <?php
+              if(isset($_POST["cariKriteria"])){
+                $resultKriteria=cariKriteria($con, $_POST["txtCariKriteria"]);
+              }
+              else{
+                $resultKriteria=kriteria($con);
+              }
+              
+              if (mysqli_num_rows($resultKriteria) > 0){
+              ?>
+
               <table class="table table-striped table-bordered text-center">
                 <thead>
                   <tr>
@@ -41,31 +57,31 @@
                   </tr>
                 </thead>
                 <tbody>
+
+                <?php 
+                $no=1;
+                while($row=mysqli_fetch_assoc($resultKriteria)){
+                  ?>
                   <tr>
-                    <td>1</td>
-                    <td class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, laborum, excepturi repellendus tempore dolorum quidem officiis nobis fugit voluptas maiores blanditiis magni porro labore! Aut veritatis dolor sapiente nam in.</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditKriteria">Edit</button></td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapusKriteria">Hapus</button></td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, laborum, excepturi repellendus tempore dolorum quidem officiis nobis fugit voluptas maiores blanditiis magni porro labore! Aut veritatis dolor sapiente nam in.</td>
+                    <td><?php echo $no; ?></td>
+                    <td class="text-left"><?php echo $row["kriteria"]; ?></td>
                     <td>
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditKriteria">Edit</button>
-                    
+                      <button type="button" id="<?php echo $row["id_kuisioner"];?>" class="btn btn-primary edit-kriteria" data-toggle="modal" data-target="#modalEditKriteria">Edit</button>
+                      
                       <!-- Modal Edit Kriteria-->
-                      <div class="modal fade" id="modalEditKriteria" tabindex="-1" role="dialog" aria-labelledby="modalEditKriteria"
+                      <div class="modal modalEditKriteria fade" id="modalEditKriteria" tabindex="-1" role="dialog" aria-labelledby="modalEditKriteria"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                           <div class="modal-content pl-4 pr-4 text-left">
                             <div class="modal-header d-flex justify-content-center pb-1">
                               <h5 class="modal-title" id="judulModalEditKriteria">Edit Kriteria</h5>
                             </div>
-                            <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout&id=<?php echo $id_info_kelas_kosong; ?>" method="post" onsubmit="return validasiSubmitEditKriteria();">
+                            <form action="../process/proses_kuisioner.php?module=kriteriaKuisioner&act=edit" method="post" onsubmit="return validasiSubmitEditKriteria();" id="formEditKriteria">
                               <div class="modal-body">
                                   <div class="form-group">
                                   <label for="editIsiKriteria"><h5>Isi Kriteria</h5></label>
-                                  <small class="text-danger ml-3 d-none" id="peringatanEdit">*Masukkan Isi Kriteria</small>
+                                  <input type="hidden" name="id_kuisioner" id="id_kuisionerEdit">
+                                  <small class="text-danger ml-3 d-none peringatanEdit" id="peringatanEdit">*Masukkan Isi Kriteria</small>
                                   <textarea class="form-control w-100" name="isiKriteria" id="editIsiKriteria" rows="3" oninput="validasiEditKriteria(this)"></textarea>
                               </div>
                               <div class="pb-2 pt-4 d-flex justify-content-end">
@@ -80,15 +96,16 @@
 
                     </td>
                     <td>
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapusKriteria">Hapus</button>
+                      <button type="button" id="<?php echo $row["id_kuisioner"];?>" class="btn btn-danger hapus-kriteria" data-toggle="modal" data-target="#modalHapusKriteria">Hapus</button>
                       
                       <!-- Modal Hapus Kriteria-->
                       <div class="modal fade" id="modalHapusKriteria" tabindex="-1" role="dialog" aria-labelledby="modalHapusKriteria"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content">
-                            <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
+                            <form action="../process/proses_kuisioner.php?module=kriteriaKuisioner&act=hapus" method="post">
                               <div class="modal-body pt-5 text-center">
+                                <input type="hidden" name="id_kuisioner" id="id_kuisionerHapus">
                                 <strong>Apakah Anda yakin?</strong>
                               </div>
                               <div class="pb-4 pt-4 d-flex justify-content-around">
@@ -102,14 +119,28 @@
                       <!-- End Modal Hapus Kriteria -->
                     </td>
                   </tr>
-
+                  <?php 
+                    $no++;
+                  }
+                ?>
                 </tbody>
               </table>
+              <?php
+              } else{
+                ?>
+                <div class="text-center">
+                  <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                  <p class="text-muted">Kriteria Tidak Ditemukan</p>
+                </div>
+              <?php
+              }
+              ?>
+
             </div>
           </div>
 
           <div class="row">
-            <div class="col-md-10 offset-1 text-center">
+            <div class="col-md-10 offset-1 mt-3 text-center">
               <button type="button" class="btn btn-outline-secondary btn-tambah" data-toggle="modal" data-target="#modalTambahKriteria">Tambah Kriteria</button>
             </div>
           </div>
@@ -129,7 +160,7 @@
           <h5 class="modal-title" id="judulModalTambahKriteria">Tambah Kriteria</h5>
         </div>
 
-        <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout&id=<?php echo $id_info_kelas_kosong; ?>" method="post" onsubmit="return validasiSubmitTambahKriteria();">
+        <form action="../process/proses_kuisioner.php?module=kriteriaKuisioner&act=tambah" method="post" onsubmit="return validasiSubmitTambahKriteria();">
           <div class="modal-body">
             <div class="form-group">
             <label for="tambahIsiKriteria"><h5>Isi Kriteria</h5></label>

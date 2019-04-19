@@ -57,5 +57,13 @@
   border-radius: 10px;
 }
 
+#kuisioner #dataKriteria{
+  overflow-y: auto;
+  max-height: 80vh;
+}
 
+#kuisioner #tableData{
+  max-height:60vh; 
+  overflow-y:auto;
+}
 

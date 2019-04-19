@@ -44,58 +44,30 @@
 
                         <div class="container-fluid">
                           <div class="row mt-2">
-                            <form action="" class="col-md-12 p-0 pl-3 d-flex">
+                            <div class="col-md-12 p-0 pl-3 d-flex">
                               <small class="my-auto"><img src="../img/search.svg" alt="" id="icon-search"></small>
-                              <select class="form-control form-control-sm w-auto mr-2" name="kelas">
-                                  <option>TI - 2F</option>
+                              <select class="form-control form-control-sm w-auto mr-2" name="kelas" id="id_kelas">
+                                <option value="0">Pilih Kelas</option>
+                                <?php
+                                $resultKelas=kelas($con);
+                                if(mysqli_num_rows($resultKelas)){
+                                  while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                                    ?>
+                                    <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
+                                    <?php
+                                  }
+                                }
+                                ?>
                               </select>
-                              <input type="submit" value="Cari" name="cari" class="btn btn-success button">
-                            </form>
+                              <input type="button" value="Cari" name="cariKuisionerPerKelas" id="cariKuisionerPerKelas" class="btn btn-success button">
+                            </div>
                           </div>
 
                           <div class="row mt-2">
-                            <div class="col-md-12 p-0 d-flex">
-                              <table class="table table-striped table-bordered text-center">
-                                <thead>
-                                  <tr>
-                                    <th>No</th>
-                                    <th>NIM</th>
-                                    <th>Nama</th>
-                                    <th>Telah Mengisi Kuisioner</th>
-                                    <th>Belum Mengisi Kuisioner</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>1741720086</td>
-                                    <td>Chintya Puspa Dewi</td>
-                                    <td>7</td>
-                                    <td>3</td>
-                                  </tr>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>1741720086</td>
-                                    <td>Chintya Puspa Dewi</td>
-                                    <td>7</td>
-                                    <td>3</td>
-                                  </tr>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>1741720086</td>
-                                    <td>Chintya Puspa Dewi</td>
-                                    <td>7</td>
-                                    <td>3</td>
-                                  </tr>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>1741720086</td>
-                                    <td>Chintya Puspa Dewi</td>
-                                    <td>7</td>
-                                    <td>3</td>
-                                  </tr>
-                                </tbody>
-                              </table>
+                            <div class="col-md-12 p-0 d-flex justify-content-center scrollbar pr-1" id="tableData">
+                              <div class="text-center">
+                                <img src='../img/magnifier.svg' alt='pencarian' class='p-3'><p class='text-muted'>Data Tidak Ditemukan</p>
+                              </div>
                             </div>
                           </div>
 
@@ -107,20 +79,48 @@
                 </div>
                 <!-- End Modal Lihat per Kelas -->
 
-              <button type="button" class="btn btn-success button mr-2" data-toggle="modal" data-target="#modalAktifkanKuisioner">
-              Aktifkan Kuisioner
-              </button>
+              <?php
+              if(cekStatusAktif($con)){ ?>
+                <button type="button" class="btn btn-danger button mr-2" id="hentikanKuisioner">
+                Hentikan Kuisioner
+                </button>
+              <?php } 
+              else if(!cekStatusAktif($con)){ ?>
+                <button type="button" class="btn btn-success button mr-2" id="aktifkanKuisioner">
+                Aktifkan Kuisioner
+                </button>
+              <?php } ?>
             </div>
 
             <div class="col-md-6">
-              <form action="" class="p-0 m-0 d-flex justify-content-end">
+              <form action="?module=kuisioner" class="p-0 m-0 d-flex justify-content-end" method="post">
                 <select class="form-control form-control-sm w-auto mr-2" name="tahun">
-                    <option>Pilih Tahun Ajaran</option>
+                  <option value="0">Pilih Tahun Ajaran</option>
+                  <?php
+                    $resultTahun=tampilTahun($con);
+                    if(mysqli_num_rows($resultTahun)){
+                      while($rowTahun=mysqli_fetch_assoc($resultTahun)){
+                        ?>
+                        <option value="<?php echo $rowTahun["tahun"];?>"><?php echo $rowTahun["tahun"];?></option>
+                        <?php
+                      }
+                    }
+                   ?>
                 </select>
                 <select class="form-control form-control-sm w-auto mr-2" name="semester">
-                    <option>Pilih Semester</option>
+                  <option value="0">Pilih Semester</option>
+                   <?php
+                    $resultSemester=tampilSemester($con);
+                    if(mysqli_num_rows($resultSemester)){
+                      while($rowSemester=mysqli_fetch_assoc($resultSemester)){
+                        ?>
+                        <option value="<?php echo $rowSemester["id_semester"];?>"><?php echo $rowSemester["semester"];?></option>
+                        <?php
+                      }
+                    }
+                   ?>
                 </select>
-                <input type="submit" value="Cari" name="cari" class="btn btn-success button">
+                <input type="submit" value="Cari" name="cariKuisioner" class="btn btn-success button">
               </form>
             </div>
           </div>
@@ -136,7 +136,7 @@
           <div class="row mt-3">
             <div class="col-md-12 d-flex text-center justify-content-center">
             <?php
-              if(isset($_POST["cari"])){
+              if(isset($_POST["cariKuisioner"])){
                 $resultKuisioner=kuisioner($con, $_POST["tahun"], $_POST["semester"]);
               }
               else if(isset($_POST["cariDosen"])){
@@ -160,10 +160,11 @@
                 </thead>
                 <tbody>
                 <?php
+                    $no=1;
                     while($row = mysqli_fetch_assoc($resultKuisioner)){
                       ?>
                       <tr>
-                        <td>1</td>
+                        <td><?php echo $no;?></td>
                         <td><?php echo $row["nip"]; ?></td>
                         <td><?php echo $row["namaDosen"]; ?></td>
                         <td>
@@ -184,6 +185,7 @@
                         </td>
                       </tr>
                     <?php
+                     $no++;
                     }
                     ?>
                 </tbody>
@@ -206,7 +208,7 @@
 
     
     <!-- Modal Lihat Hasil-->
-    <div class="modal fade" id="modalLihatHasil" tabindex="-1" role="dialog" aria-labelledby="modalLihatHasil"
+    <div class="modal modalLihatHasil fade" id="modalLihatHasil" tabindex="-1" role="dialog" aria-labelledby="modalLihatHasil"
         aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -215,29 +217,55 @@
               <span aria-hidden="true">&times;</span>
             </button>
             <div id="judul"></div>
-            <hr class="mt-2 text-muted mr-4 ml-4">
-
+            <hr class="mt-2 text-muted mr-4 ml-4">            
             <div class="container-fluid">
-              <div class="row mt-2">
-                  <select class="form-control form-control-sm w-auto mr-2" name="kelas" id="kelas">
-                      <option value="0">Pilih Kelas</option>
-                      <option value="4">TI-2F</option>
-                  </select>
-                  <select class="form-control form-control-sm w-auto mr-2" name="tahun" id="tahun">
-                      <option value="0">Pilih Tahun Ajaran</option>
-                      <option value="2019">2019</option>
-                  </select>
-                  <select class="form-control form-control-sm w-auto mr-2" name="semester" id="semester">
-                      <option value="0">Pilih Semester</option>
-                      <option value="7">4</option>
-                  </select>
-                  <input type="button" value="Cari" name="cariKuisionerDosen" 
-                  id="cariKuisionerDosen" class="btn btn-success button">
+              <div class="row mt-2">              
+                <select class="form-control form-control-sm w-auto mr-2" name="kelas" id="kelas">
+                  <option value="0">Pilih Kelas</option>
+                  <?php
+                  $resultKelas=kelas($con);
+                  if(mysqli_num_rows($resultKelas)){
+                    while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                      ?>
+                      <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
+                      <?php
+                    }
+                  }
+                  ?>
+                </select>
+                <select class="form-control form-control-sm w-auto mr-2" name="tahun" id="tahun">
+                  <option value="0">Pilih Tahun Ajaran</option>
+                  <?php
+                  $resultTahun=tampilTahun($con);
+                  if(mysqli_num_rows($resultTahun)){
+                    while($rowTahun=mysqli_fetch_assoc($resultTahun)){
+                      ?>
+                      <option value="<?php echo $rowTahun["tahun"];?>"><?php echo $rowTahun["tahun"];?></option>
+                      <?php
+                    }
+                  }
+                  ?>
+                </select>
+                <select class="form-control form-control-sm w-auto mr-2" name="semester" id="semester">
+                    <option value="0">Pilih Semester</option>
+                    <?php
+                      $resultSemester=tampilSemester($con);
+                      if(mysqli_num_rows($resultSemester)){
+                        while($rowSemester=mysqli_fetch_assoc($resultSemester)){
+                          ?>
+                          <option value="<?php echo $rowSemester["id_semester"];?>"><?php echo $rowSemester["semester"];?></option>
+                          <?php
+                        }
+                      }
+                    ?>
+                </select>
+                <input type="button" value="Cari" name="cariKuisionerDosen" 
+                id="cariKuisionerDosen" class="btn btn-success button">
               </div>
 
               <div class="row mt-2">
-                <div class="col-md-12 p-0 d-flex justify-content-center" id="tableData">
-                  <div>
+                <div class="col-md-12 p-0 d-flex justify-content-center scrollbar pr-1" id="tableData">
+                  <div class="text-center">
                     <img src='../img/magnifier.svg' alt='pencarian' class='p-3'><p class='text-muted'>Data Tidak Ditemukan</p>
                   </div>
                 </div>

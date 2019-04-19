@@ -13,6 +13,25 @@ function kuisionerCariDosen($con, $txtCariDosen){
   $resultKuisionerCariDosen = mysqli_query($con, $kuisionerCariDosen);
   return $resultKuisionerCariDosen;
 }
+
+function tampilTahun($con){
+  $tahun="select distinct(YEAR(waktu_edit)) as tahun from tabel_hasil_kuisioner order by waktu_edit desc limit 5";
+  $resultTahun = mysqli_query($con, $tahun);
+  return $resultTahun;
+}
+
+function kelas($con){
+  $kelas="select * from tabel_kelas";
+  $resultKelas = mysqli_query($con, $kelas);
+  return $resultKelas;
+}
+
+function tampilSemester($con){
+  $semester="select * from tabel_semester";
+  $resultSemester = mysqli_query($con, $semester);
+  return $resultSemester;
+}
+
 function minIdSemester($con){
   $minIdSemester="select min(id_semester) as minIdSemester from tabel_semester";
   $resultIdSemester=mysqli_query($con, $minIdSemester);
@@ -35,6 +54,26 @@ function tampilKelas($con, $id_kelas){
   return $hasil;
 }
 
+function cekStatusAktif($con){
+  $status="select distinct(status_aktif) as status_aktif from tabel_kuisioner";
+  $resultStatus = mysqli_query($con, $status);  
+  $rowStatus=mysqli_fetch_assoc($resultStatus);
+  if($rowStatus["status_aktif"]=='ya'){
+    return true;
+  }
+  else if($rowStatus["status_aktif"]=='tidak'){
+    return false;
+  }
+}
+
+if(isset($_POST["hentikan"])){
+  mysqli_query($con, "update tabel_kuisioner set status_aktif='tidak'");
+}
+
+if(isset($_POST["aktifkan"])){
+  mysqli_query($con, "update tabel_kuisioner set status_aktif='ya'");
+}
+
 if(isset($_POST["namaDosen"])){
   $output='';
   $query="select * from tabel_dosen where id_dosen='$_POST[namaDosen]' ";
@@ -47,12 +86,11 @@ if(isset($_POST["namaDosen"])){
   }else{
     echo "-";
   }
-
 }
 
 if(isset($_POST["id_dosen"])){
   $output='';
-  $query="select * from tabel_hasil_kuisioner where id_dosen='$_POST[id_dosen]'";
+  $query="select distinct(a.id_mahasiswa),sum(nilai) as totalNilai, c.*, d.* from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c, tabel_semester d where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and c.id_semester=d.id_semester and c.id_kelas=$_POST[kelas] and YEAR(a.waktu_edit)=$_POST[tahun] and c.id_semester=$_POST[semester] and a.id_dosen=$_POST[id_dosen]";
   $result=mysqli_query($con, $query);
 
   if(mysqli_num_rows($result)>0){
@@ -68,16 +106,17 @@ if(isset($_POST["id_dosen"])){
         </tr>
       </thead>
       <tbody>";
-
+      $no=1;
       while($row=mysqli_fetch_assoc($result)){
         $output.='
         <tr>
-          <td>1</td>
-          <td>'.$row["id_mahasiswa"].'</td>
-          <td>'.$row["id_dosen"].'</td>
-          <td>'.$_POST["kelas"].'</td>
-          <td>'.$row["nilai"].'</td>
+          <td>'.$no.'</td>
+          <td>'.$row["nim"].'</td>
+          <td>'.$row["nama"].'</td>
+          <td>'.tampilkelas($con,$row["id_kelas"]).'</td>
+          <td>'.$row["totalNilai"].'</td>
         </tr>';
+        $no++;
       }
       $output .="
       </tbody>
@@ -87,10 +126,112 @@ if(isset($_POST["id_dosen"])){
 
   }else{
     echo $output.="
-      <div>
+      <div class='text-center'>
         <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
         <p class='text-muted'>Data Tidak Ditemukan</p>
       </div>";
   }
+}
 
+if(isset($_POST["lihatPerKelas"])){
+  $output='';
+  $query="select distinct(a.id_mahasiswa),b.nim, b.nama, count(distinct a.id_kuisioner) as 'telahMengisi' from tabel_hasil_kuisioner a, tabel_mahasiswa b, tabel_kelas c where a.id_mahasiswa=b.id_mahasiswa and b.id_kelas=b.id_kelas and b.id_kelas=$_POST[lihatPerKelas] group by a.id_mahasiswa";
+  $result=mysqli_query($con, $query);
+
+  $querySemuaKuisioner="select count(id_kuisioner) as 'semuaKuisioner' from tabel_kuisioner";
+  $resultSemuaKuisioner=mysqli_query($con, $querySemuaKuisioner);
+  $rowSemuaKuisioner=mysqli_fetch_assoc($resultSemuaKuisioner);
+  
+  if(mysqli_num_rows($result)>0){
+    $output.="
+      <table class='table table-striped table-bordered text-center'>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>NIM</th>
+          <th>Nama</th>
+          <th>Telah Mengisi Kuisioner</th>
+          <th>Belum Mengisi Kuisioner</th>
+        </tr>
+      </thead>
+      <tbody>";
+      $no=1;
+      while($row=mysqli_fetch_assoc($result)){
+        $belumMengisi=$rowSemuaKuisioner["semuaKuisioner"]-$row["telahMengisi"];
+        $output.='
+        <tr>
+          <td>'.$no.'</td>
+          <td>'.$row["nim"].'</td>
+          <td>'.$row["nama"].'</td>
+          <td>'.$row["telahMengisi"].'</td>
+          <td>'.$belumMengisi.'</td>
+        </tr>';
+        $no++;
+      }
+      $output .="
+      </tbody>
+    </table>";
+
+    echo $output;
+
+  }else{
+    echo $output.="
+      <div class='text-center'>
+        <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
+        <p class='text-muted'>Data Tidak Ditemukan</p>
+      </div>";
+  }
+}
+
+// Kriteria
+function kriteria($con){
+  $kriteria="select * from tabel_kuisioner";
+  $resultKriteria = mysqli_query($con, $kriteria);
+  return $resultKriteria;
+}
+
+function cariKriteria($con, $txtCariKriteria){
+  $kriteria="select * from tabel_kuisioner where kriteria like '%$txtCariKriteria%'";
+  $resultKriteria = mysqli_query($con, $kriteria);
+  return $resultKriteria;
+}
+
+// CUD Kriteria
+if(isset($_POST["edit_kuisioner"])){
+  $output='';
+  $query="select * from tabel_kuisioner where id_kuisioner='$_POST[edit_kuisioner]'";
+  $result=mysqli_query($con, $query);
+
+  if(mysqli_num_rows($result)>0){
+    $row=mysqli_fetch_assoc($result);
+    echo $row["kriteria"];
+  }
+}
+
+if(isset($_POST["hapus_kuisioner"])){
+  $output='';
+  $query="select * from tabel_kuisioner where id_kuisioner='$_POST[hapus_kuisioner]'";
+  $result=mysqli_query($con, $query);
+
+  if(mysqli_num_rows($result)>0){
+    $row=mysqli_fetch_assoc($result);
+    echo $row["id_kuisioner"];
+  }
+}
+
+if(isset($_POST["tambahIsi"]) || isset($_POST["editIsi"]) || isset($_POST["hapus"])){
+  if($_GET["module"]=="kriteriaKuisioner" && $_GET["act"]=="tambah"){
+    mysqli_query($con, "insert into tabel_kuisioner values('','$_POST[isiKriteria]')");
+    header('location:../module/index.php?module=' . $_GET["module"]);
+  }
+
+  else if($_GET["module"]=="kriteriaKuisioner" && $_GET["act"]=="edit"){
+    mysqli_query($con, "update tabel_kuisioner set kriteria='$_POST[isiKriteria]' where id_kuisioner='$_POST[id_kuisioner]'");
+    header('location:../module/index.php?module=' . $_GET["module"]);
+  }
+  
+  else if($_GET["module"]=="kriteriaKuisioner" && $_GET["act"]=="hapus"){
+    mysqli_query($con, "delete from tabel_kuisioner where id_kuisioner='$_POST[id_kuisioner]'");
+    header('location:../module/index.php?module=' . $_GET["module"]);
+  }
 }
