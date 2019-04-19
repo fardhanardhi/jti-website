@@ -286,8 +286,8 @@
                       <div class="modal fade" id="modalEditKompen" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                           <div class="modal-content">
-                            <form action="" method="post">
-                              <div class="modal-body">
+                            <form action="" method="post" onsubmit="return validasiSubmitEditKompen();">
+                              <div class="modal-body pt-0">
                                 <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
                                 <div class="row px-5">
                                   <div class="col-md-3">NIM</div>
@@ -300,40 +300,45 @@
                                   <div class="col-md-8">Chintya Puspa Dewi</div>
                                 </div>
                                 <div class="row px-5">
-                                  <div class="col-md-3 pt-1">Jenis Kelamin</div>
+                                  <div class="col-md-3 pt-1">Tanggal</div>
                                   <div class="col-md-1 text-right pt-1 pr-0">:</div>
                                   <div class="col-md-8">
-                                    <div class="form-group row">
+                                    <div class="form-group form-sm row">
                                       <div class="col-sm-3">
-                                        <select class="custom-select" style="width:110px;">
-                                          <option value="" disabled>Tanggal</option>
+                                        <select class="form-control w-auto tanggal" onblur="validasiTanggal(this)" id="tanggal">
+                                          <option value="" disabled selected>Tanggal</option>
                                           <option value="2">2</option>
-                                          <option value="3" selected>3</option>
+                                          <option value="3">3</option>
                                         </select>
                                       </div>
                                       <div class="col-sm-3">
-                                        <select class="custom-select" style="width:110px;">
-                                          <option value="" disabled>Bulan</option>
-                                          <option value="Januari" selected>Januari</option>
+                                        <select class="form-control w-auto tanggal" style="width:6.6em;" onblur="validasiTanggal(this)" id="bulan">
+                                          <option value="" disabled selected>Bulan</option>
+                                          <option value="Januari">Januari</option>
                                           <option value="Februari">Februari</option>
                                         </select>
                                       </div>
                                       <div class="col-sm-3">
-                                        <select class="custom-select" style="width:110px;">
-                                          <option value="" disabled>Tahun</option>
+                                        <select class="form-control tanggal w-auto" onblur="validasiTanggal(this)" id="tahun">
+                                          <option value="" disabled selected>Tahun</option>
                                           <option value="2013">2013</option>
-                                          <option value="2018" selected>2018</option>
+                                          <option value="2018">2018</option>
                                         </select>
+                                      </div>
+                                      <div class="col-sm-3">
+                                        <small class="text-danger d-none peringatanTanggal" id="peringatanTanggal">*Masukkan Detail Tanggal</small>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="row px-5">
-                                  <div class="col-md-12">Jenis Kompensasi</div>
+                                  <div class="col-md-6">Jenis Kompensasi
+                                    <small class="text-danger d-none ml-3 peringatanJenis" id="peringatanJenis">*Masukkan Detail Kompensasi</small>
+                                  </div>
                                 </div>
                                 <div class="row px-5">
                                   <div class="form-group col-md-12">
-                                    <textarea class="form-control" name="jenisKompensasi" id="jenisKompensasi" rows="4"></textarea>
+                                    <textarea class="form-control" oninput="validasiJenis(this)" name="jenisKompensasi" id="jenisKompensasi" rows="4"></textarea>
                                   </div>
                                 </div>
                                 <div class="row px-5">
@@ -342,25 +347,32 @@
                                   <div class="col-md-2">
                                     <div class="form-group">
                                       <input type="number"
-                                        class="form-control border" name="totalJam" id="totalJam" aria-describedby="helpId">
+                                        class="form-control border" oninput="validasiJam(this)" onblur="validasiJam(this)"  name="totalJam" min=0 id="totalJam" >
                                     </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <small class="text-danger d-none peringatanJam" id="peringatanJam">*Masukkan Total Jam Kompensasi</small>
                                   </div>
                                 </div>
                                 <div class="row px-5">
                                   <div class="col-md-3 pt-1">Dosen</div>
                                   <div class="col-md-1 text-right pt-1 pr-0">:</div>
-                                  <div class="col-md-8">
+                                  <div class="col-md-6">
                                     <div class="form-group">
-                                      <select class="form-control" name="dosen" id="dosen">
+                                      <select class="form-control" name="dosen" id="dosen" onblur="validasiDosen(this)">
+                                        <option value="" disabled selected>Pilih Dosen</option>
                                         <option>Ridwan Rismanto, SST., M.KOM</option>
                                         <option>Ridwan Rismanto, SST., M.KOM</option>
                                         <option>Ridwan Rismanto, SST., M.KOM</option>
                                       </select>
                                     </div>
                                   </div>
+                                  <div class="col-md-2">
+                                    <small class="text-danger d-none peringatanDosen" id="peringatanDosen">*Masukkan Nama Dosen</small>
+                                  </div>
                                 </div>
                                 <div class="row px-5 mt-3 d-flex justify-content-end">
-                                  <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Delete</button>
+                                  <button type="reset" class="btn btn-danger mr-4 btn-batal">Delete</button>
                                   <button type="submit" name="submit" class="btn btn-success btn-ok">Submit</button>
                                 </div>
                               </div>

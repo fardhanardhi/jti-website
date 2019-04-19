@@ -29,3 +29,4 @@
   <script src="../js/adminBerita.js"></script>
   <script src="../js/adminKuisioner.js"></script>
   <script src="../js/adminEComplain.js"></script>
+  <script src="../js/adminAbsenKompen.js"></script>
