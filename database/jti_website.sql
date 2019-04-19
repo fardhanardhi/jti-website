@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2019 at 07:46 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Generation Time: Apr 19, 2019 at 01:01 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -167,10 +167,10 @@ INSERT INTO `tabel_dosen` (`id_dosen`, `nip`, `nama`, `alamat`, `jenis_kelamin`,
 --
 
 CREATE TABLE `tabel_hasil_kuisioner` (
-  `id_hasil_kuisoner` int(30) NOT NULL,
+  `id_hasil_kuisioner` int(30) NOT NULL,
   `id_mahasiswa` int(30) NOT NULL,
   `id_dosen` int(30) NOT NULL,
-  `id_kuisoner` int(11) NOT NULL,
+  `id_kuisioner` int(11) NOT NULL,
   `nilai` int(11) NOT NULL,
   `waktu_edit` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -179,13 +179,14 @@ CREATE TABLE `tabel_hasil_kuisioner` (
 -- Dumping data for table `tabel_hasil_kuisioner`
 --
 
-INSERT INTO `tabel_hasil_kuisioner` (`id_hasil_kuisoner`, `id_mahasiswa`, `id_dosen`, `id_kuisoner`, `nilai`, `waktu_edit`) VALUES
+INSERT INTO `tabel_hasil_kuisioner` (`id_hasil_kuisioner`, `id_mahasiswa`, `id_dosen`, `id_kuisioner`, `nilai`, `waktu_edit`) VALUES
 (1, 33, 8, 1, 3, '2019-04-09 00:00:00'),
 (2, 33, 8, 2, 4, '2019-04-09 00:00:00'),
 (3, 33, 8, 3, 4, '2019-04-09 00:00:00'),
 (4, 33, 8, 4, 2, '2019-04-09 00:00:00'),
 (5, 33, 8, 5, 3, '2019-04-09 00:00:00'),
-(6, 33, 8, 6, 3, '2019-04-09 00:00:00');
+(6, 33, 8, 6, 3, '2019-04-09 00:00:00'),
+(7, 34, 7, 5, 3, '2019-04-16 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -429,35 +430,36 @@ INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `id_matkul`, `waktu_edit`) VA
 
 CREATE TABLE `tabel_kuisioner` (
   `id_kuisioner` int(11) NOT NULL,
-  `kriteria` text NOT NULL
+  `kriteria` text NOT NULL,
+  `status_aktif` enum('ya','tidak') NOT NULL DEFAULT 'ya'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tabel_kuisioner`
 --
 
-INSERT INTO `tabel_kuisioner` (`id_kuisioner`, `kriteria`) VALUES
-(1, 'Dosen menjelaskan rencana pengajaran di awal perkuliahan'),
-(2, 'Dosen menyerahkan kontrak perkuliahan di awal semester'),
-(3, 'Dosen menjelaskan tujuan dan manfaat kuliah / praktikum	\r\n'),
-(4, 'Dosen memberikan buku ajar / jobsheet / modul praktikum	\r\n'),
-(5, 'Buku ajar / jobsheet /modul praktikum yang diberikan sangat membantu dalam memahami perkuliahan'),
-(6, 'Dosen mengajarkan kuliah / praktikum yang bersangkutan sesuai rencana pengajaran	\r\n'),
-(7, 'Dosen selalu menggunakan media pembelajaran seperti LCD / alat peraga / software / lainnya	\r\n'),
-(8, 'Dosen menggunakan buku rujukan atau penunjang (textbook) untuk mata kuliah / praktikum	\r\n'),
-(9, 'Dosen memberikan materi mata kuliah sesuai dengan kurikulum dan silabus yang berlaku'),
-(10, 'Dosen dapat membangkitkan minat mahasiswa pada pokok materi mata kuliah / praktikum	\r\n'),
-(11, 'Pada saat mengajar dosen memberi kuliah dengan jelas dan mudah dimengerti	\r\n'),
-(12, 'Dosen memberi kesempatan bagi mahasiswa untuk bertanya	\r\n'),
-(13, 'Dosen memberikan tanggapan yang memuaskan terhadap pertanyaan yang diajukan mahasiswa	\r\n'),
-(14, 'Dosen yang bersangkutan memberi kesempatan untuk berkonsultasi di luar jam mengajar'),
-(15, 'Dosen menjelaskan sistem evaluasi untuk mata kuliah / praktikum pada awal perkuliahan	\r\n'),
-(16, 'Dosen memberi penilaian secara obyektif terhadap evaluasi yang dilakukan	\r\n'),
-(17, 'Dosen menjelaskan hasil ujian yang telah dilakukan mahasiswa	\r\n'),
-(18, 'Dosen memberi kesempatan untuk memperbaiki nilai ujian	\r\n'),
-(19, 'Dosen selalu hadir dan menyampaikan materi dalam setiap perkuliahan	\r\n'),
-(20, 'Dosen selalu memulai dan mengakhiri perkuliahan secara tepat waktu'),
-(21, 'Perkuliahan sesuai dengan kontrak kuliah yang sudah disepakai sebelumnya');
+INSERT INTO `tabel_kuisioner` (`id_kuisioner`, `kriteria`, `status_aktif`) VALUES
+(1, 'Dosen menjelaskan rencana pengajaran di awal perkuliahan', 'ya'),
+(2, 'Dosen menyerahkan kontrak perkuliahan di awal semester', 'ya'),
+(3, 'Dosen menjelaskan tujuan dan manfaat kuliah / praktikum	\r\n', 'ya'),
+(4, 'Dosen memberikan buku ajar / jobsheet / modul praktikum	\r\n', 'ya'),
+(5, 'Buku ajar / jobsheet /modul praktikum yang diberikan sangat membantu dalam memahami perkuliahan', 'ya'),
+(6, 'Dosen mengajarkan kuliah / praktikum yang bersangkutan sesuai rencana pengajaran	\r\n', 'ya'),
+(7, 'Dosen selalu menggunakan media pembelajaran seperti LCD / alat peraga / software / lainnya	\r\n', 'ya'),
+(8, 'Dosen menggunakan buku rujukan atau penunjang (textbook) untuk mata kuliah / praktikum\r\n', 'ya'),
+(9, 'Dosen memberikan materi mata kuliah sesuai dengan kurikulum dan silabus yang berlaku', 'ya'),
+(10, 'Dosen dapat membangkitkan minat mahasiswa pada pokok materi mata kuliah / praktikum	\r\n', 'ya'),
+(11, 'Pada saat mengajar dosen memberi kuliah dengan jelas dan mudah dimengerti	\r\n', 'ya'),
+(12, 'Dosen memberi kesempatan bagi mahasiswa untuk bertanya	\r\n', 'ya'),
+(13, 'Dosen memberikan tanggapan yang memuaskan terhadap pertanyaan yang diajukan mahasiswa	\r\n', 'ya'),
+(14, 'Dosen yang bersangkutan memberi kesempatan untuk berkonsultasi di luar jam mengajar', 'ya'),
+(15, 'Dosen menjelaskan sistem evaluasi untuk mata kuliah / praktikum pada awal perkuliahan	\r\n', 'ya'),
+(16, 'Dosen memberi penilaian secara obyektif terhadap evaluasi yang dilakukan	\r\n', 'ya'),
+(17, 'Dosen menjelaskan hasil ujian yang telah dilakukan mahasiswa	\r\n', 'ya'),
+(18, 'Dosen memberi kesempatan untuk memperbaiki nilai ujian	\r\n', 'ya'),
+(19, 'Dosen selalu hadir dan menyampaikan materi dalam setiap perkuliahan	\r\n', 'ya'),
+(20, 'Dosen selalu memulai dan mengakhiri perkuliahan secara tepat waktu', 'ya'),
+(21, 'Perkuliahan sesuai dengan kontrak kuliah yang sudah disepakai sebelumnya', 'ya');
 
 -- --------------------------------------------------------
 
@@ -810,10 +812,10 @@ ALTER TABLE `tabel_dosen`
 -- Indexes for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
-  ADD PRIMARY KEY (`id_hasil_kuisoner`),
+  ADD PRIMARY KEY (`id_hasil_kuisioner`),
   ADD KEY `id_dosen` (`id_dosen`),
   ADD KEY `id_mahasiswa` (`id_mahasiswa`),
-  ADD KEY `id_kuisoner` (`id_kuisoner`);
+  ADD KEY `id_kuisoner` (`id_kuisioner`);
 
 --
 -- Indexes for table `tabel_info`
@@ -1003,7 +1005,7 @@ ALTER TABLE `tabel_dosen`
 -- AUTO_INCREMENT for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
-  MODIFY `id_hasil_kuisoner` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_hasil_kuisioner` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tabel_info`
@@ -1161,7 +1163,7 @@ ALTER TABLE `tabel_dosen`
 ALTER TABLE `tabel_hasil_kuisioner`
   ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_2` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_3` FOREIGN KEY (`id_kuisoner`) REFERENCES `tabel_kuisioner` (`id_kuisioner`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_3` FOREIGN KEY (`id_kuisioner`) REFERENCES `tabel_kuisioner` (`id_kuisioner`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_info`
