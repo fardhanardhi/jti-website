@@ -1,3 +1,9 @@
+<?php
+include "../config/connection.php";
+include "../process/proses_absenKompen.php";
+
+?>
+
 <main role="main" class="container-fluid" id="absenKompen">
   <div class="row">
 
@@ -16,9 +22,42 @@
     <div class="col-md-9 p-0">
       <div class="m-2 p-3 bg-white mb-3 rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Absensi Mahasiswa</h6>
-          <div class="container-fluid mt-3 p-0 m-0 d-flex">
+          <div class="container-fluid mt-3 p-0 m-0">
+            <form class="row mb-3 mt-3" action="?module=absenKompen" method="post">
+              <div class="col-md-3 d-flex">
+                <select class="absenKelas mr-3 w-auto" name="kelas">
+                  <?php
+                  $resultKelas=kelas($con);
+                  if(mysqli_num_rows($resultKelas)){
+                    while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                      ?>
+                      <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
+                      <?php
+                    }
+                  }else{
+                    ?>
+                    <option value="0">Kelas Kosong</option>
+                    <?php
+                  }
+                  ?>
+                </select>
+
+                <input type="submit" name="cariAbsen" class="btn btn-success absenCari" value="Cari">
+              </div>
+            </form>
+            
             <div class="row scrollbar mr-0" id="absen">
               <div class="col-md-12 pr-1 d-flex">
+                <?php
+                if(isset($_POST["cariAbsen"])){
+                  $resultAbsensi=absensi($con, $_POST["kelas"]);
+                }
+                else{
+                  $resultAbsensi=absensi($con, minKelas($con));
+                }
+                
+                if (mysqli_num_rows($resultAbsensi) > 0){
+                ?>
                 <table class="table table-striped table-bordered text-center">
                   <thead>
                     <tr>
@@ -31,56 +70,33 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td class="text-left">Chintya Puspa Dewi</td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="sakit"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="ijin"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="alpha"></td>
-                      <td><input type="submit" value="Simpan" class="btn btn-success"></td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td class="text-left">Chintya Puspa Dewi</td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="sakit"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="ijin"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="alpha"></td>
-                      <td><input type="submit" value="Simpan" class="btn btn-success"></td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td class="text-left">Chintya Puspa Dewi</td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="sakit"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="ijin"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="alpha"></td>
-                      <td><input type="submit" value="Simpan" class="btn btn-success"></td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td class="text-left">Chintya Puspa Dewi</td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="sakit"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="ijin"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="alpha"></td>
-                      <td><input type="submit" value="Simpan" class="btn btn-success"></td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td class="text-left">Chintya Puspa Dewi</td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="sakit"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="ijin"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="alpha"></td>
-                      <td><input type="submit" value="Simpan" class="btn btn-success"></td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td class="text-left">Chintya Puspa Dewi</td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="sakit"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="ijin"></td>
-                      <td><input type="number" class="form-control bg-transparent" min="0" value="0" name="alpha"></td>
-                      <td><input type="submit" value="Simpan" class="btn btn-success"></td>
-                    </tr>
+                    <?php
+                    $no=1;
+                    while($rowAbsensi = mysqli_fetch_assoc($resultAbsensi)){
+                    ?>
+                      <tr>
+                        <td><?php echo $no; ?></td>
+                        <td class="text-left"><?php echo $rowAbsensi["nama"]; ?></td>
+                        <td><input type="number" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["sakit"]; ?>" name="sakit"></td>
+                        <td><input type="number" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["ijin"]; ?>" name="ijin"></td>
+                        <td><input type="number" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["alpa"]; ?>" name="alpha"></td>
+                        <td><input type="button" value="Simpan" id="<?php echo $rowAbsensi["id_absensi"]; ?>" class="btn btn-success"></td>
+                      </tr>
+                    <?php
+                    $no++;
+                    }
+                    ?>
                   </tbody>
                 </table>
+                <?php
+                } else{
+                  ?>
+                  <div class="text-center">
+                    <p class="text-muted">Data Kosong</p>
+                  </div>
+                <?php
+                }
+                ?>
               </div>
             </div>
           </div>
@@ -92,89 +108,88 @@
         <h6 class="border-bottom border-gray pb-2 mb-0">Total Absensi Mahasiswa</h6>
 
         <div class="container-fluid">
-          <form class="row mb-3 mt-3">
+          <form class="row mb-3 mt-3" action="?module=absenKompen" method="post">
             <div class="col-md-8 pr-3 p-0">
-              <select class="absenOptionJam" name="jam">
-                <option value="07:00:00">07.00</option>
+              <select class="absenKelas" name="kelas">
+                <?php
+                $resultKelas=kelas($con);
+                if(mysqli_num_rows($resultKelas)){
+                  while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                    ?>
+                    <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
+                    <?php
+                  }
+                }else{
+                  ?>
+                  <option value="0">Kelas Kosong</option>
+                  <?php
+                }
+                ?>
               </select>
             </div>
 
             <div class="col-md-4 pl-3 p-0">
-              <input type="submit" name="cari" class="btn btn-success absenCari" value="Cari">
+              <input type="submit" name="cariTotal" class="btn btn-success absenCari" value="Cari">
             </div>
           </form>
         </div>
           
         <div class="container-fluid scrollbar m-0 pr-0" id="totalAbsen">
-          <!-- Loop data -->
-          <div class="row border-bottom border-top pt-1 pb-1 mr-1">
-            <div class="col-md-1 align-self-center p-0">
-              <span>1</span>
+          <?php
+          if(isset($_POST["cariTotal"])){
+            $resultTotal=absensi($con, $_POST["kelas"]);
+          }
+          else{
+            $resultTotal=absensi($con, minKelas($con));
+          }
+          
+          if (mysqli_num_rows($resultTotal) > 0){
+            $no=1;
+            while($rowTotal = mysqli_fetch_assoc($resultTotal)){
+              ?>
+              <!-- Loop data -->
+              <div class="row border-bottom border-top pt-1 pb-1 mr-1">
+                <div class="col-md-1 align-self-center p-0">
+                  <span><?php echo $no;?></span>
+                </div>
+                <div class="col-md-8 p-0 align-self-center">
+                  <span><?php echo $rowTotal["nama"];?></span> <br>
+                  <small class="text-muted">
+                    <span class="mr-3">A: <?php echo $rowTotal["alpa"];?></span>
+                    <span class="mr-3">I: <?php echo $rowTotal["ijin"];?></span>
+                    <span class="mr-3">S: <?php echo $rowTotal["sakit"];?></span>
+                  </small>
+                </div>
+                <div class="col-md-3 text-right align-self-center p-0">
+                  <?php
+                  if($rowTotal["keterangan"]=="SP1"){
+                    ?>
+                    <small><span class="bg-success text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 1</span></small>
+                    <?php
+                  } else if($rowTotal["keterangan"]=="SP2"){
+                    ?>
+                    <small><span class="bg-orange text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 2</span></small>
+                    <?php
+                  } else if($rowTotal["keterangan"]=="SP3"){
+                    ?>
+                    <small><span class="bg-danger text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 3</span></small>
+                    <?php
+                  }
+                  ?>
+                </div>
+              </div>
+              <!-- End Loop Data -->
+          <?php
+            $no++;
+            }
+          } else{
+            ?>
+            <div class="text-center">
+              <p class="text-muted">Data Kosong</p>
             </div>
-            <div class="col-md-8 p-0 align-self-center">
-              <span>Veronica Dewi Ayu</span> <br>
-              <small class="text-muted">
-                <span class="mr-3">A: 10</span>
-                <span class="mr-3">I: 10</span>
-                <span class="mr-3">S: 10</span>
-              </small>
-            </div>
-            <div class="col-md-3 text-right align-self-center p-0">
-              <small><span class="bg-danger text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 3</span></small>
-            </div>
-          </div>
-
-          <div class="row border-bottom border-top pt-1 pb-1 mr-1">
-            <div class="col-md-1 align-self-center p-0">
-              <span>1</span>
-            </div>
-            <div class="col-md-8 p-0 align-self-center">
-              <span>Veronica Dewi Ayu</span> <br>
-              <small class="text-muted">
-                <span class="mr-3">A: 10</span>
-                <span class="mr-3">I: 10</span>
-                <span class="mr-3">S: 10</span>
-              </small>
-            </div>
-            <div class="col-md-3 text-right align-self-center p-0">
-              <small><span class="bg-success text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 1</span></small>
-            </div>
-          </div>
-
-          <div class="row border-bottom border-top pt-1 pb-1 mr-1">
-            <div class="col-md-1 align-self-center p-0">
-              <span>1</span>
-            </div>
-            <div class="col-md-8 p-0 align-self-center">
-              <span>Veronica Dewi Ayu</span> <br>
-              <small class="text-muted">
-                <span class="mr-3">A: 10</span>
-                <span class="mr-3">I: 10</span>
-                <span class="mr-3">S: 10</span>
-              </small>
-            </div>
-            <div class="col-md-3 text-right align-self-center p-0">
-              <small><span class="bg-orange text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 2</span></small>
-            </div>
-          </div>
-
-          <div class="row border-bottom border-top pt-1 pb-1 mr-1">
-            <div class="col-md-1 align-self-center p-0">
-              <span>1</span>
-            </div>
-            <div class="col-md-8 p-0 align-self-center">
-              <span>Veronica Dewi Ayu</span> <br>
-              <small class="text-muted">
-                <span class="mr-3">A: 10</span>
-                <span class="mr-3">I: 10</span>
-                <span class="mr-3">S: 10</span>
-              </small>
-            </div>
-            <div class="col-md-3 text-right align-self-center p-0">
-              <small><span class="bg-danger text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 1</span></small>
-            </div>
-          </div>
-          <!-- End Loop Data -->
+          <?php
+          }
+          ?>
         </div>
       </div>
     </div>
@@ -185,16 +200,26 @@
         <div class="container-fluid mt-3 p-0">
           <div class="row">
             <div class="col-md-12">
-              <form class="form-inline">
+              <form class="form-inline" action="?module=absenKompen" method="post">
                 <img src="../img/search.svg" alt="" id="icon-search">
-                <input type="search" class="form-control txtCariKompen mr-3" name="cari" placeholder="Pencarian">
-                <input type="submit" value="Cari" class="btn btn-success cariKompen">
+                <input type="search" class="form-control mr-3" name="txtCariKompen" placeholder="Pencarian">
+                <input type="submit" value="Cari" name="cariKompen" class="btn btn-success cariKompen">
               </form>
             </div>
           </div>
 
           <div class="row mt-3 mr-0 pr-0 scrollbar" id="dataKompen">
             <div class="col-md-12 pr-1">
+              <?php
+              if(isset($_POST["cariKompen"])){
+                $resultKompen=cariKompen($con, $_POST["txtCariKompen"]);
+              }
+              else{
+                $resultKompen=kompen($con);
+              }
+              
+              if (mysqli_num_rows($resultKompen) > 0){
+              ?>
               <table class="table table-striped table-bordered text-center">
                 <thead>
                   <tr>
@@ -208,13 +233,17 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php
+                  $no=1;
+                  while($rowKompen = mysqli_fetch_assoc($resultKompen)){
+                    ?>
                   <tr>
-                    <td data-toggle="modal" data-target="#modalPreview">1</td>
-                    <td data-toggle="modal" data-target="#modalPreview">1741720086</td>
-                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Chintya Puspa Dewi</td>
-                    <td data-toggle="modal" data-target="#modalPreview">D3 - MI</td>
-                    <td data-toggle="modal" data-target="#modalPreview">12 Desember 2019</td>
-                    <td class="text-left" data-toggle="modal" data-target="#modalPreview">Ridwan Rismanto, SST., M.KOM</td>
+                    <td data-toggle="modal" data-target="#modalPreview"><?php echo $no;?></td>
+                    <td data-toggle="modal" data-target="#modalPreview"><?php echo $rowKompen["nim"];?></td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview"><?php echo $rowKompen["namaMhs"];?></td>
+                    <td data-toggle="modal" data-target="#modalPreview"><?php echo $rowKompen["kode"];?></td>
+                    <td data-toggle="modal" data-target="#modalPreview"><?php echo tampilTanggal($rowKompen["waktu"]);?></td>
+                    <td class="text-left" data-toggle="modal" data-target="#modalPreview"><?php echo $rowKompen["namaDosen"];?></td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
                     <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapusKompen">Hapus</button></td>
 
@@ -383,8 +412,14 @@
                       <!-- End modal edit -->
 
                   </tr>
+                  <?php
+                  }
+                  ?>
                 </tbody>
               </table>
+              <?php
+              }
+              ?>
             </div>
           </div>
         </div>
