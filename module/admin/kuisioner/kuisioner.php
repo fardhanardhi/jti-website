@@ -193,7 +193,7 @@
             <?php 
             }else{
               ?>
-              <div>
+              <div class="text-center">
                 <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
                 <p class="text-muted">Dosen Tidak Ditemukan</p>
               </div>

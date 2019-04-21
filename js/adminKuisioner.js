@@ -72,7 +72,7 @@ $(document).ready(function(){
     );
 
     $('#formEditKriteria').html(
-      "<div class='modal-body'><div class='form-group'><label for='editIsiKriteria'><h5>Isi Kriteria</h5></label><input type='text' name='id_kuisioner' id='id_kuisionerEdit'><small class='text-danger ml-3 d-none peringatanEdit' id='peringatanEdit'>*Masukkan Isi Kriteria</small><textarea class='form-control w-100' name='isiKriteria' id='editIsiKriteria' rows='3' oninput='validasiEditKriteria(this)'></textarea></div><div class='pb-2 pt-4 d-flex justify-content-end'><button type='button' class='btn btn-danger mr-4 btn-batal' data-dismiss='modal'>Batal</button><button type='submit' name='editIsi' class='btn btn-success btn-ok'>Update</button></div>"
+      "<div class='modal-body'><div class='form-group'><label for='editIsiKriteria'><h5>Isi Kriteria</h5></label><input type='hidden' name='id_kuisioner' id='id_kuisionerEdit'><small class='text-danger ml-3 d-none peringatanEdit' id='peringatanEdit'>*Masukkan Isi Kriteria</small><textarea class='form-control w-100' name='isiKriteria' id='editIsiKriteria' rows='3' oninput='validasiEditKriteria(this)'></textarea></div><div class='pb-2 pt-4 d-flex justify-content-end'><button type='button' class='btn btn-danger mr-4 btn-batal' data-dismiss='modal'>Batal</button><button type='submit' name='editIsi' class='btn btn-success btn-ok'>Update</button></div>"
     )
     
   })
@@ -93,17 +93,9 @@ $(document).ready(function(){
   })
 
   $('.hapus-kriteria').click(function(){
-    var hapus_kuisioner=$(this).attr("id");
-
-    $.ajax({
-      url:"../process/proses_kuisioner.php",
-      method:"post",
-      data:{hapus_kuisioner:hapus_kuisioner},
-      success:function(data){
-        $('#id_kuisionerHapus').val(hapus_kuisioner);
-        $('#modalHapusKriteria').modal("show");
-      }
-    })
+    var id_kuisioner=$(this).attr("id");
+    $('#id_kuisionerHapus').val(id_kuisioner);
+    $('#modalHapusKriteria').modal("show");
   })
 
 })

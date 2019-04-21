@@ -67,56 +67,9 @@
                     <td class="text-left"><?php echo $row["kriteria"]; ?></td>
                     <td>
                       <button type="button" id="<?php echo $row["id_kuisioner"];?>" class="btn btn-primary edit-kriteria" data-toggle="modal" data-target="#modalEditKriteria">Edit</button>
-                      
-                      <!-- Modal Edit Kriteria-->
-                      <div class="modal modalEditKriteria fade" id="modalEditKriteria" tabindex="-1" role="dialog" aria-labelledby="modalEditKriteria"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                          <div class="modal-content pl-4 pr-4 text-left">
-                            <div class="modal-header d-flex justify-content-center pb-1">
-                              <h5 class="modal-title" id="judulModalEditKriteria">Edit Kriteria</h5>
-                            </div>
-                            <form action="../process/proses_kuisioner.php?module=kriteriaKuisioner&act=edit" method="post" onsubmit="return validasiSubmitEditKriteria();" id="formEditKriteria">
-                              <div class="modal-body">
-                                  <div class="form-group">
-                                  <label for="editIsiKriteria"><h5>Isi Kriteria</h5></label>
-                                  <input type="hidden" name="id_kuisioner" id="id_kuisionerEdit">
-                                  <small class="text-danger ml-3 d-none peringatanEdit" id="peringatanEdit">*Masukkan Isi Kriteria</small>
-                                  <textarea class="form-control w-100" name="isiKriteria" id="editIsiKriteria" rows="3" oninput="validasiEditKriteria(this)"></textarea>
-                              </div>
-                              <div class="pb-2 pt-4 d-flex justify-content-end">
-                                <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Batal</button>
-                                <button type="submit" name="editIsi" class="btn btn-success btn-ok">Update</button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Modal Edit Kriteria -->
-
                     </td>
                     <td>
                       <button type="button" id="<?php echo $row["id_kuisioner"];?>" class="btn btn-danger hapus-kriteria" data-toggle="modal" data-target="#modalHapusKriteria">Hapus</button>
-                      
-                      <!-- Modal Hapus Kriteria-->
-                      <div class="modal fade" id="modalHapusKriteria" tabindex="-1" role="dialog" aria-labelledby="modalHapusKriteria"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <form action="../process/proses_kuisioner.php?module=kriteriaKuisioner&act=hapus" method="post">
-                              <div class="modal-body pt-5 text-center">
-                                <input type="hidden" name="id_kuisioner" id="id_kuisionerHapus">
-                                <strong>Apakah Anda yakin?</strong>
-                              </div>
-                              <div class="pb-4 pt-4 d-flex justify-content-around">
-                                <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Tidak</button>
-                                <button type="submit" name="hapus" class="btn btn-success btn-ok">Ya</button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Modal Hapus Kriteria -->
                     </td>
                   </tr>
                   <?php 
@@ -138,16 +91,62 @@
 
             </div>
           </div>
-
+          
           <div class="row">
             <div class="col-md-10 offset-1 mt-3 text-center">
               <button type="button" class="btn btn-outline-secondary btn-tambah" data-toggle="modal" data-target="#modalTambahKriteria">Tambah Kriteria</button>
             </div>
           </div>
+          
+          <!-- Modal Edit Kriteria-->
+          <div class="modal modalEditKriteria fade" id="modalEditKriteria" tabindex="-1" role="dialog" aria-labelledby="modalEditKriteria"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content pl-4 pr-4 text-left">
+                <div class="modal-header d-flex justify-content-center pb-1">
+                  <h5 class="modal-title" id="judulModalEditKriteria">Edit Kriteria</h5>
+                </div>
+                <form action="../process/proses_kuisioner.php?module=kriteriaKuisioner&act=edit" method="post" onsubmit="return validasiSubmitEditKriteria();" id="formEditKriteria">
+                  <div class="modal-body">
+                      <input type="hidden" name="id_kuisioner" id="id_kuisionerEdit">
+                      <div class="form-group">
+                      <label for="editIsiKriteria"><h5>Isi Kriteria</h5></label>
+                      <small class="text-danger ml-3 d-none peringatanEdit" id="peringatanEdit">*Masukkan Isi Kriteria</small>
+                      <textarea class="form-control w-100" name="isiKriteria" id="editIsiKriteria" rows="3" oninput="validasiEditKriteria(this)"></textarea>
+                  </div>
+                  <div class="pb-2 pt-4 d-flex justify-content-end">
+                    <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Batal</button>
+                    <button type="submit" name="editIsi" class="btn btn-success btn-ok">Update</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- End Modal Edit Kriteria -->
 
         </div>
       </div>
     </div>
+        
+    <!-- Modal Hapus Kriteria-->
+    <div class="modal fade" id="modalHapusKriteria" tabindex="-1" role="dialog" aria-labelledby="modalHapusKriteria"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <form action="../process/proses_kuisioner.php?module=kriteriaKuisioner&act=hapus" method="post">
+            <div class="modal-body pt-5 text-center">
+              <input type="hidden" name="id_kuisioner" id="id_kuisionerHapus">
+              <strong>Apakah Anda yakin?</strong>
+            </div>
+            <div class="pb-4 pt-4 d-flex justify-content-around">
+              <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Tidak</button>
+              <button type="submit" name="hapus" class="btn btn-success btn-ok">Ya</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal Hapus Kriteria -->
 
   </div>
 
