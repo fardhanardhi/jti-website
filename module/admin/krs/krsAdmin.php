@@ -23,7 +23,7 @@
 
         <h5 class="border-bottom border-gray pb-2 mb-2">SEMESTER 4 (2019/2020)</h5>
         <div class="col-md-12 p-0">
-          <select class="optionKelas custom-select ml-3" name="kelas" style="width:150px">
+          <select class="optionKelas custom-select" name="kelas" style="width:150px">
           <option selected>Pilih Kelas</option>
                     <?php
                     include('../koneksi/connection.php');
