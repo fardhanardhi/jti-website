@@ -1,13 +1,13 @@
 #krsAdmin .optionSemester {
-    border-radius: 10px;
-    width: 9em;
-    height: 1.7em;
+  box-sizing: border-box;
+  border-radius: 10px; 
+  font-weight: bold;
   }
   
   #krsAdmin .optionKelas {
-    border-radius: 10px;
-    width: 7em;
-    height: 1.7em;
+    box-sizing: border-box;
+    border-radius: 10px; 
+    font-weight: bold;
   }
   
   #krsAdmin .breadcrumb a{

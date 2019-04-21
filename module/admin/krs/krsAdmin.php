@@ -23,8 +23,8 @@
 
         <h5 class="border-bottom border-gray pb-2 mb-2">SEMESTER 4 (2019/2020)</h5>
         <div class="col-md-12 p-0">
-          <select class="optionKelas" name="kelas">
-          <option selected>-</option>
+          <select class="optionKelas custom-select ml-3" name="kelas" style="width:150px">
+          <option selected>Pilih Kelas</option>
                     <?php
                     include('../koneksi/connection.php');
 					$tampil=mysqli_query($con, "SELECT tabel_prodi.kode as kode, tingkat, kode_kelas FROM tabel_kelas INNER JOIN tabel_prodi ON tabel_kelas.id_prodi = tabel_prodi.id_prodi GROUP BY id_kelas;");

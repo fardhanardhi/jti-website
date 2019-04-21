@@ -18,8 +18,8 @@
     <div class="col-md-12 p-0">
       <div class="m-2 p-3 bg-white rounded shadow-sm">
         <div class="col-md-12 p-0">
-          <select class="optionKelas" name="kelas">
-          <option selected>-</option>
+          <select class="optionKelas custom-select" name="kelas" style="width:150px">
+          <option selected>Pilih Kelas</option>
                     <?php
                     include('../koneksi/connection.php');
 					$tampil=mysqli_query($con, "SELECT tabel_prodi.kode as kode, tingkat, kode_kelas FROM tabel_kelas INNER JOIN tabel_prodi ON tabel_kelas.id_prodi = tabel_prodi.id_prodi GROUP BY id_kelas;");
@@ -28,8 +28,8 @@
 					}
                     ?>
           </select>
-          <select class="optionSemester" name="semester">
-          <option selected>-</option>
+          <select class="optionSemester custom-select" name="semester" style="width:150px">
+          <option selected>Pilih Semester</option>
                     <?php
                     include('../koneksi/connection.php');
 					$tampil=mysqli_query($con, "SELECT * FROM tabel_semester ;");
