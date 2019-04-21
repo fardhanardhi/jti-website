@@ -208,17 +208,6 @@ if(isset($_POST["edit_kuisioner"])){
   }
 }
 
-if(isset($_POST["hapus_kuisioner"])){
-  $output='';
-  $query="select * from tabel_kuisioner where id_kuisioner='$_POST[hapus_kuisioner]'";
-  $result=mysqli_query($con, $query);
-
-  if(mysqli_num_rows($result)>0){
-    $row=mysqli_fetch_assoc($result);
-    echo $row["id_kuisioner"];
-  }
-}
-
 if(isset($_POST["tambahIsi"]) || isset($_POST["editIsi"]) || isset($_POST["hapus"])){
   if($_GET["module"]=="kriteriaKuisioner" && $_GET["act"]=="tambah"){
     mysqli_query($con, "insert into tabel_kuisioner values('','$_POST[isiKriteria]')");
