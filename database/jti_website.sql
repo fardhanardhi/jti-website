@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2019 at 01:01 PM
+-- Generation Time: Apr 21, 2019 at 04:45 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -35,20 +35,21 @@ CREATE TABLE `tabel_absensi` (
   `ijin` int(30) NOT NULL DEFAULT '0',
   `alpa` int(30) NOT NULL DEFAULT '0',
   `jumlah` int(30) NOT NULL DEFAULT '0',
-  `id_status_mahasiswa` int(30) DEFAULT NULL
+  `id_status_mahasiswa` int(30) DEFAULT NULL,
+  `id_semester` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_absensi`
 --
 
-INSERT INTO `tabel_absensi` (`id_absensi`, `id_mahasiswa`, `sakit`, `ijin`, `alpa`, `jumlah`, `id_status_mahasiswa`) VALUES
-(1, 33, 0, 0, 0, 0, 7),
-(2, 54, 0, 6, 0, 6, 7),
-(3, 38, 4, 2, 0, 6, 7),
-(4, 41, 0, 0, 22, 22, 1),
-(5, 48, 0, 0, 0, 0, 7),
-(6, 46, 0, 0, 0, 0, 7);
+INSERT INTO `tabel_absensi` (`id_absensi`, `id_mahasiswa`, `sakit`, `ijin`, `alpa`, `jumlah`, `id_status_mahasiswa`, `id_semester`) VALUES
+(1, 33, 0, 0, 0, 0, 7, 7),
+(2, 54, 0, 6, 0, 6, 7, 7),
+(3, 38, 4, 2, 0, 6, 7, 7),
+(4, 41, 0, 0, 22, 22, 1, 7),
+(5, 48, 0, 0, 0, 0, 7, 7),
+(6, 46, 0, 0, 0, 0, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -120,7 +121,8 @@ INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VAL
 (2, 'Waalaikumsalam Wr.Wb', 32, 2, '2019-04-12 05:00:00'),
 (3, 'min, kemarin kan kelas saya ada di LBD.01, waktu kelas saya disana stopkontaknya kok belum ada listriknya ya ', 2, 32, '2019-04-12 11:00:00'),
 (4, 'Untuk masalah listrik yang ada di ruangan memang belum kami pasangi listrik semua mbak. soalnya OB nya lagi males untuk mengerjakannya', 32, 2, '2019-04-13 14:00:00'),
-(5, 'Baik Min terimakasih :)', 2, 32, '2019-04-13 16:00:00');
+(5, 'Baik Min terimakasih :)', 2, 32, '2019-04-13 16:00:00'),
+(6, 'Sama sama', 32, 2, '2019-04-21 09:42:00');
 
 -- --------------------------------------------------------
 
@@ -180,7 +182,6 @@ CREATE TABLE `tabel_hasil_kuisioner` (
 --
 
 INSERT INTO `tabel_hasil_kuisioner` (`id_hasil_kuisioner`, `id_mahasiswa`, `id_dosen`, `id_kuisioner`, `nilai`, `waktu_edit`) VALUES
-(1, 33, 8, 1, 3, '2019-04-09 00:00:00'),
 (2, 33, 8, 2, 4, '2019-04-09 00:00:00'),
 (3, 33, 8, 3, 4, '2019-04-09 00:00:00'),
 (4, 33, 8, 4, 2, '2019-04-09 00:00:00'),
@@ -389,7 +390,7 @@ CREATE TABLE `tabel_kompen` (
   `waktu` datetime NOT NULL,
   `id_pekerjaan_kompen` int(11) DEFAULT NULL,
   `waktu_verifikasi` datetime NOT NULL,
-  `status_verifikasi` enum('sudah terverifikasi','belum terverifikasi') NOT NULL
+  `status_verifikasi` enum('sudah terverifikasi','belum terverifikasi') NOT NULL DEFAULT 'belum terverifikasi'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -439,7 +440,7 @@ CREATE TABLE `tabel_kuisioner` (
 --
 
 INSERT INTO `tabel_kuisioner` (`id_kuisioner`, `kriteria`, `status_aktif`) VALUES
-(1, 'Dosen menjelaskan rencana pengajaran di awal perkuliahan', 'ya'),
+(1, 'Dosen menjelaskan rencana perkuliahan', 'ya'),
 (2, 'Dosen menyerahkan kontrak perkuliahan di awal semester', 'ya'),
 (3, 'Dosen menjelaskan tujuan dan manfaat kuliah / praktikum	\r\n', 'ya'),
 (4, 'Dosen memberikan buku ajar / jobsheet / modul praktikum	\r\n', 'ya'),
@@ -578,19 +579,21 @@ INSERT INTO `tabel_notifikasi` (`id_notifikasi`, `isi`, `waktu`, `status_dibaca`
 CREATE TABLE `tabel_pekerjaan_kompen` (
   `id_pekerjaan_kompen` int(30) NOT NULL,
   `id_dosen` int(30) NOT NULL,
-  `nama` text NOT NULL
+  `nama` text NOT NULL,
+  `kuota` int(11) NOT NULL,
+  `id_semester` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_pekerjaan_kompen`
 --
 
-INSERT INTO `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`, `id_dosen`, `nama`) VALUES
-(1, 8, 'Menata mouse dan keyboard di lab'),
-(2, 8, 'Membeli kertas A4 1 pack'),
-(3, 8, 'Membeli DDR 2 buah'),
-(4, 8, 'Menata absensi jurusan'),
-(5, 8, 'Menstampel kertas Portofolio untuk ujian');
+INSERT INTO `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`, `id_dosen`, `nama`, `kuota`, `id_semester`) VALUES
+(1, 8, 'Menata mouse dan keyboard di lab', 5, 7),
+(2, 8, 'Membeli kertas A4 1 pack', 5, 7),
+(3, 8, 'Membeli DDR 2 buah', 5, 7),
+(4, 8, 'Menata absensi jurusan', 5, 7),
+(5, 8, 'Menstampel kertas Portofolio untuk ujian', 5, 7);
 
 -- --------------------------------------------------------
 
@@ -777,7 +780,8 @@ INSERT INTO `tabel_user` (`id_user`, `username`, `password`, `level`) VALUES
 ALTER TABLE `tabel_absensi`
   ADD PRIMARY KEY (`id_absensi`),
   ADD KEY `id_mahasiswa` (`id_mahasiswa`),
-  ADD KEY `id_status_mahasiswa` (`id_status_mahasiswa`);
+  ADD KEY `id_status_mahasiswa` (`id_status_mahasiswa`),
+  ADD KEY `id_semester` (`id_semester`);
 
 --
 -- Indexes for table `tabel_admin`
@@ -928,7 +932,8 @@ ALTER TABLE `tabel_notifikasi`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   ADD PRIMARY KEY (`id_pekerjaan_kompen`),
-  ADD KEY `id_dosen` (`id_dosen`);
+  ADD KEY `id_dosen` (`id_dosen`),
+  ADD KEY `id_semester` (`id_semester`);
 
 --
 -- Indexes for table `tabel_prodi`
@@ -993,7 +998,7 @@ ALTER TABLE `tabel_attachment`
 -- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
-  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
@@ -1065,7 +1070,7 @@ ALTER TABLE `tabel_krs`
 -- AUTO_INCREMENT for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
-  MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `tabel_mahasiswa`
@@ -1136,7 +1141,8 @@ ALTER TABLE `tabel_user`
 --
 ALTER TABLE `tabel_absensi`
   ADD CONSTRAINT `tabel_absensi_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tabel_absensi_ibfk_2` FOREIGN KEY (`id_status_mahasiswa`) REFERENCES `tabel_status_mahasiswa` (`id_status_mahasiswa`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `tabel_absensi_ibfk_2` FOREIGN KEY (`id_status_mahasiswa`) REFERENCES `tabel_status_mahasiswa` (`id_status_mahasiswa`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `tabel_absensi_ibfk_3` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_admin`
@@ -1252,7 +1258,8 @@ ALTER TABLE `tabel_notifikasi`
 -- Constraints for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
-  ADD CONSTRAINT `tabel_pekerjaan_kompen_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tabel_pekerjaan_kompen_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tabel_pekerjaan_kompen_ibfk_2` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_reply_komentar`
