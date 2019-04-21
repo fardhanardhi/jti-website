@@ -73,3 +73,37 @@ function validasiSubmitEditKompen() {
 	}
 	return true;
 }
+
+$('.tampil-detail').click(function(){
+	var id_kompen=$(this).attr("data-id");
+	
+		$.ajax({
+		  url:"../process/proses_absenKompen.php",
+		  method:"post",
+			data:{tampilDetail:id_kompen},
+			success:function(data){
+				$('#detail-kompen').html(data);
+        $('#modalPreview').modal("show");
+      }
+		})
+})
+
+$('.edit-kompen').click(function(){
+	var id_kompen=$(this).attr("id");
+
+	$.ajax({
+		url:"../process/proses_absenKompen.php",
+		method:"post",
+		data:{edit_kompen:id_kompen},
+		success:function(data){
+			$('#id_kompenEdit').val(id_kompen);
+			$('#edit-kompen').html(data);
+		}
+	})
+})
+
+$('.hapus-kompen').click(function(){
+	var id_kompen=$(this).attr("id");
+	$('#id_kompenHapus').val(id_kompen);
+	$('#modalHapusKompen').modal("show");
+})

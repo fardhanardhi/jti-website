@@ -47,7 +47,7 @@ include "../process/proses_absenKompen.php";
             </form>
             
             <div class="row scrollbar mr-0" id="absen">
-              <div class="col-md-12 pr-1 d-flex">
+              <div class="col-md-12 pr-1 d-flex justify-content-center">
                 <?php
                 if(isset($_POST["cariAbsen"])){
                   $resultAbsensi=absensi($con, $_POST["kelas"]);
@@ -209,7 +209,7 @@ include "../process/proses_absenKompen.php";
           </div>
 
           <div class="row mt-3 mr-0 pr-0 scrollbar" id="dataKompen">
-            <div class="col-md-12 pr-1">
+            <div class="col-md-12 pr-1 d-flex justify-content-center">
               <?php
               if(isset($_POST["cariKompen"])){
                 $resultKompen=cariKompen($con, $_POST["txtCariKompen"]);
@@ -238,179 +238,14 @@ include "../process/proses_absenKompen.php";
                   while($rowKompen = mysqli_fetch_assoc($resultKompen)){
                     ?>
                   <tr>
-                    <td data-toggle="modal" data-target="#modalPreview"><?php echo $no;?></td>
-                    <td data-toggle="modal" data-target="#modalPreview"><?php echo $rowKompen["nim"];?></td>
-                    <td class="text-left" data-toggle="modal" data-target="#modalPreview"><?php echo $rowKompen["namaMhs"];?></td>
-                    <td data-toggle="modal" data-target="#modalPreview"><?php echo $rowKompen["kode"];?></td>
-                    <td data-toggle="modal" data-target="#modalPreview"><?php echo tampilTanggal($rowKompen["waktu"]);?></td>
-                    <td class="text-left" data-toggle="modal" data-target="#modalPreview"><?php echo $rowKompen["namaDosen"];?></td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalHapusKompen">Hapus</button></td>
-
-                    <!-- Modal Hapus Kompen-->
-                    <div class="modal fade" id="modalHapusKompen" tabindex="-1" role="dialog" aria-labelledby="modalHapusKompen"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
-                              <div class="modal-body pt-5 text-center">
-                                <strong>Apakah Anda yakin?</strong>
-                              </div>
-                              <div class="pb-4 pt-4 d-flex justify-content-around">
-                                <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Tidak</button>
-                                <button type="submit" name="hapus" class="btn btn-success btn-ok">Ya</button>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Modal Hapus Kompen -->
-
-                      <!-- Modal preview -->
-                      <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <div class="modal-body">
-                              <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
-                              <div class="row px-5">
-                                <div class="col-md-3">NIM</div>
-                                <div class="col-md-1 text-right pr-0">:</div>
-                                <div class="col-md-8">1741720086</div>
-                              </div>
-                              <div class="row px-5">
-                                <div class="col-md-3">Nama</div>
-                                <div class="col-md-1 text-right pr-0">:</div>
-                                <div class="col-md-8">Chintya Puspa Dewi</div>
-                              </div>
-                              <div class="row px-5">
-                                <div class="col-md-3">Tanggal</div>
-                                <div class="col-md-1 text-right pr-0">:</div>
-                                <div class="col-md-8">12 Desember 2019</div>
-                              </div>
-                              <div class="row px-5">
-                                <div class="col-md-3">Jenis Kompensasi</div>
-                                <div class="col-md-1 text-right pr-0">:</div>
-                                <div class="col-md-8">Menyiram tanaman bunga</div>
-                              </div>
-                              <div class="row px-5">
-                                <div class="col-md-3">Total Jam</div>
-                                <div class="col-md-1 text-right pr-0">:</div>
-                                <div class="col-md-8">20 Jam</div>
-                              </div>
-                              <div class="row px-5">
-                                <div class="col-md-3">Dosen</div>
-                                <div class="col-md-1 text-right pr-0">:</div>
-                                <div class="col-md-8">Ridwan Rismanto, SST., M.KOM</div>
-                              </div>
-                              <div class="row px-5 mt-3 d-flex justify-content-end">
-                                <button type="button" class="btn btn-danger btn-batal" data-dismiss="modal">Tutup</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End modal preview -->
-
-                      <!-- Modal edit -->
-                      <div class="modal fade" id="modalEditKompen" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <form action="" method="post" onsubmit="return validasiSubmitEditKompen();">
-                              <div class="modal-body pt-0">
-                                <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
-                                <div class="row px-5">
-                                  <div class="col-md-3">NIM</div>
-                                  <div class="col-md-1 text-right pr-0">:</div>
-                                  <div class="col-md-8">1741720086</div>
-                                </div>
-                                <div class="row px-5">
-                                  <div class="col-md-3">Nama</div>
-                                  <div class="col-md-1 text-right pr-0">:</div>
-                                  <div class="col-md-8">Chintya Puspa Dewi</div>
-                                </div>
-                                <div class="row px-5">
-                                  <div class="col-md-3 pt-1">Tanggal</div>
-                                  <div class="col-md-1 text-right pt-1 pr-0">:</div>
-                                  <div class="col-md-8">
-                                    <div class="form-group form-sm row">
-                                      <div class="col-sm-3">
-                                        <select class="form-control w-auto tanggal" onblur="validasiTanggal(this)" id="tanggal">
-                                          <option value="" disabled selected>Tanggal</option>
-                                          <option value="2">2</option>
-                                          <option value="3">3</option>
-                                        </select>
-                                      </div>
-                                      <div class="col-sm-3">
-                                        <select class="form-control w-auto tanggal" style="width:6.6em;" onblur="validasiTanggal(this)" id="bulan">
-                                          <option value="" disabled selected>Bulan</option>
-                                          <option value="Januari">Januari</option>
-                                          <option value="Februari">Februari</option>
-                                        </select>
-                                      </div>
-                                      <div class="col-sm-3">
-                                        <select class="form-control tanggal w-auto" onblur="validasiTanggal(this)" id="tahun">
-                                          <option value="" disabled selected>Tahun</option>
-                                          <option value="2013">2013</option>
-                                          <option value="2018">2018</option>
-                                        </select>
-                                      </div>
-                                      <div class="col-sm-3">
-                                        <small class="text-danger d-none peringatanTanggal" id="peringatanTanggal">*Masukkan Detail Tanggal</small>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row px-5">
-                                  <div class="col-md-6">Jenis Kompensasi
-                                    <small class="text-danger d-none ml-3 peringatanJenis" id="peringatanJenis">*Masukkan Detail Kompensasi</small>
-                                  </div>
-                                </div>
-                                <div class="row px-5">
-                                  <div class="form-group col-md-12">
-                                    <textarea class="form-control" oninput="validasiJenis(this)" name="jenisKompensasi" id="jenisKompensasi" rows="4"></textarea>
-                                  </div>
-                                </div>
-                                <div class="row px-5">
-                                  <div class="col-md-3 pt-1">Total Jam</div>
-                                  <div class="col-md-1 text-right pt-1 pr-0">:</div>
-                                  <div class="col-md-2">
-                                    <div class="form-group">
-                                      <input type="number"
-                                        class="form-control border" oninput="validasiJam(this)" onblur="validasiJam(this)"  name="totalJam" min=0 id="totalJam" >
-                                    </div>
-                                  </div>
-                                  <div class="col-md-3">
-                                    <small class="text-danger d-none peringatanJam" id="peringatanJam">*Masukkan Total Jam Kompensasi</small>
-                                  </div>
-                                </div>
-                                <div class="row px-5">
-                                  <div class="col-md-3 pt-1">Dosen</div>
-                                  <div class="col-md-1 text-right pt-1 pr-0">:</div>
-                                  <div class="col-md-6">
-                                    <div class="form-group">
-                                      <select class="form-control" name="dosen" id="dosen" onblur="validasiDosen(this)">
-                                        <option value="" disabled selected>Pilih Dosen</option>
-                                        <option>Ridwan Rismanto, SST., M.KOM</option>
-                                        <option>Ridwan Rismanto, SST., M.KOM</option>
-                                        <option>Ridwan Rismanto, SST., M.KOM</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-2">
-                                    <small class="text-danger d-none peringatanDosen" id="peringatanDosen">*Masukkan Nama Dosen</small>
-                                  </div>
-                                </div>
-                                <div class="row px-5 mt-3 d-flex justify-content-end">
-                                  <button type="reset" class="btn btn-danger mr-4 btn-batal">Delete</button>
-                                  <button type="submit" name="submit" class="btn btn-success btn-ok">Submit</button>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End modal edit -->
-
+                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $no;?></td>
+                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["nim"];?></td>
+                    <td class="text-left tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaMhs"];?></td>
+                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["kode"];?></td>
+                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo tampilTanggal($rowKompen["waktu"]);?></td>
+                    <td class="text-left tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaDosen"];?></td>
+                    <td><button type="button" id="<?php echo $rowKompen["id_kompen"];?>" class="btn btn-primary edit-kompen" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
+                    <td><button type="button" id="<?php echo $rowKompen["id_kompen"];?>"  class="btn btn-danger hapus-kompen" data-toggle="modal" data-target="#modalHapusKompen">Hapus</button></td>
                   </tr>
                   <?php
                   }
@@ -418,12 +253,76 @@ include "../process/proses_absenKompen.php";
                 </tbody>
               </table>
               <?php
+              }else{
+                ?>
+                <div class="text-center">
+                  <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                  <p class="text-muted">Data Tidak Ditemukan</p>
+                </div>
+                <?php
               }
               ?>
             </div>
           </div>
         </div>
       </div>
+      
+      <!-- Modal preview -->
+      <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modalPreview" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
+              <div class="container-fluid p-0" id="detail-kompen">
+                
+              </div>
+              <div class="row px-5 mt-3 d-flex justify-content-end">
+                <button type="button" class="btn btn-danger btn-batal" data-dismiss="modal">Tutup</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End modal preview -->
+
+      <!-- Modal edit -->
+      <div class="modal fade" id="modalEditKompen" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"       aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <form action="" method="post" onsubmit="return validasiSubmitEditKompen();">
+              <div class="modal-body">
+                <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
+                <input type="text" name="id_kompen" id="id_kompenEdit">
+                <div class="container-fluid p-0" id="edit-kompen">
+              
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- End modal edit -->
+
+      <!-- Modal Hapus Kompen-->
+      <div class="modal fade" id="modalHapusKompen" tabindex="-1" role="dialog" aria-labelledby="modalHapusKompen"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <form action="../process/proses_absenKompen.php?module=absenKompen&act=hapus" method="post">
+                <div class="modal-body pt-5 text-center">
+                  <input type="hidden" name="id_kompen" id="id_kompenHapus">
+                  <strong>Apakah Anda yakin?</strong>
+                </div>
+                <div class="pb-4 pt-4 d-flex justify-content-around">
+                  <button type="button" class="btn btn-danger mr-4 btn-batal" data-dismiss="modal">Tidak</button>
+                  <button type="submit" name="hapusKompen" class="btn btn-success btn-ok">Ya</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- End Modal Hapus Kompen -->
+
     </div>
 
     <div class="col-md-12 p-0">
@@ -432,16 +331,26 @@ include "../process/proses_absenKompen.php";
         <div class="container-fluid mt-3 p-0">
           <div class="row">
             <div class="col-md-12">
-              <form class="form-inline">
+              <form class="form-inline" action="?module=absenKompen" method="post">
                 <img src="../img/search.svg" alt="" id="icon-search">
-                <input type="search" class="form-control txtCariPekerjaan mr-3" name="cari" placeholder="Pencarian">
-                <input type="submit" value="Cari" class="btn btn-success cariKompen">
+                <input type="search" class="form-control mr-3" name="txtCariPekerjaan" placeholder="Pencarian">
+                <input type="submit" value="Cari" name="cariPekerjaan" class="btn btn-success cariKompen">
               </form>
             </div>
           </div>
 
           <div class="row mt-3 mr-0 pr-0 scrollbar" id="dataPekerjaan">
-            <div class="col-md-12 pr-1">
+            <div class="col-md-12 pr-1 d-flex justify-content-center">
+            <?php
+              if(isset($_POST["cariPekerjaan"])){
+                $resultPekerjaan=cariPekerjaan($con, $_POST["txtCariPekerjaan"]);
+              }
+              else{
+                $resultPekerjaan=pekerjaan($con);
+              }
+              
+              if (mysqli_num_rows($resultPekerjaan) > 0){
+              ?>
               <table class="table table-striped table-bordered text-center">
                 <thead>
                   <tr>
@@ -454,48 +363,34 @@ include "../process/proses_absenKompen.php";
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>19663636356125</td>
-                    <td class="text-left">Ridwan Rismanto, SST., M.KOM</td>
-                    <td class="text-left">Menyapu semua lorong di gedung sipil dan mengepelnya juga wkwk</td>
-                    <td>5</td>
-                    <td>4</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>19663636356125</td>
-                    <td class="text-left">Ridwan Rismanto, SST., M.KOM</td>
-                    <td class="text-left">Menyapu semua lorong di gedung sipil dan mengepelnya juga wkwk lorem</td>
-                    <td>5</td>
-                    <td>4</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>19663636356125</td>
-                    <td class="text-left">Ridwan Rismanto, SST., M.KOM</td>
-                    <td class="text-left">Menyapu semua lorong di gedung sipil dan mengepelnya juga wkwk</td>
-                    <td>5</td>
-                    <td>4</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>19663636356125</td>
-                    <td class="text-left">Ridwan Rismanto, SST., M.KOM</td>
-                    <td class="text-left">Menyapu semua lorong di gedung sipil dan mengepelnya juga wkwk</td>
-                    <td>5</td>
-                    <td>4</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>19663636356125</td>
-                    <td class="text-left">Ridwan Rismanto, SST., M.KOM</td>
-                    <td class="text-left">Menyapu semua lorong di gedung sipil dan mengepelnya juga wkwk</td>
-                    <td>5</td>
-                    <td>4</td>
-                  </tr>
+                <?php
+                  $no=1;
+                  while($rowPekerjaan = mysqli_fetch_assoc($resultPekerjaan)){
+                  ?>
+                    <tr>
+                      <td><?php echo $no; ?></td>
+                      <td><?php echo $rowPekerjaan["nip"]; ?></td>
+                      <td class="text-left"><?php echo $rowPekerjaan["namaDosen"]; ?></td>
+                      <td class="text-left"><?php echo $rowPekerjaan["nama"]; ?></td>
+                      <td><?php echo $rowPekerjaan["kuota"]; ?></td>
+                      <td><?php echo $rowPekerjaan["semester"]; ?></td>
+                    </tr>
+                  <?php
+                  $no++;
+                  }
+                  ?>
                 </tbody>
               </table>
+              <?php
+              }else{
+                ?>
+                <div class="text-center">
+                  <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                  <p class="text-muted">Pekerjaan Tidak Ditemukan</p>
+                </div>
+                <?php
+              }
+              ?>
             </div>
           </div>
         </div>
@@ -508,16 +403,26 @@ include "../process/proses_absenKompen.php";
         <div class="container-fluid mt-3 p-0">
           <div class="row">
             <div class="col-md-12">
-              <form class="form-inline">
+              <form class="form-inline" action="?module=absenKompen" method="post">
                 <img src="../img/search.svg" alt="" id="icon-search">
-                <input type="search" class="form-control txtCariRekap mr-3" name="cari" placeholder="Pencarian">
-                <input type="submit" value="Cari" class="btn btn-success cariKompen">
+                <input type="search" class="form-control mr-3" name="txtCariRekap" placeholder="Pencarian">
+                <input type="submit" value="Cari" name="cariRekap" class="btn btn-success cariKompen">
               </form>
             </div>
           </div>
 
           <div class="row mt-3 mr-0 pr-0 scrollbar" id="rekapKompen">
             <div class="col-md-12 pr-1">
+            <?php
+              if(isset($_POST["cariRekap"])){
+                $resultRekap=cariRekap($con, $_POST["txtCariRekap"]);
+              }
+              else{
+                $resultRekap=rekap($con);
+              }
+              
+              if (mysqli_num_rows($resultRekap) > 0){
+              ?>
               <table class="table table-striped table-bordered text-center">
                 <thead>
                   <tr>
@@ -531,53 +436,35 @@ include "../process/proses_absenKompen.php";
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>1741720086</td>
-                    <td>D3 - MI</td>
-                    <td>10</td>
-                    <td>30</td>
-                    <td>25</td>
-                    <td>5</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>1741720086</td>
-                    <td>D3 - MI</td>
-                    <td>10</td>
-                    <td>30</td>
-                    <td>25</td>
-                    <td>5</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>1741720086</td>
-                    <td>D3 - MI</td>
-                    <td>10</td>
-                    <td>30</td>
-                    <td>25</td>
-                    <td>5</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>1741720086</td>
-                    <td>D3 - MI</td>
-                    <td>10</td>
-                    <td>30</td>
-                    <td>25</td>
-                    <td>5</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>1741720086</td>
-                    <td>D3 - MI</td>
-                    <td>10</td>
-                    <td>30</td>
-                    <td>25</td>
-                    <td>5</td>
-                  </tr>
+                <?php
+                  $no=1;
+                  while($rowRekap = mysqli_fetch_assoc($resultRekap)){
+                  ?>
+                    <tr>
+                      <td><?php echo $no; ?></td>
+                      <td><?php echo $rowRekap["nim"] ?></td>
+                      <td><?php echo tampilKelas($con, $rowRekap["id_kelas"]) ?></td>
+                      <td><?php echo kompenSemester($con, $rowRekap["id_mahasiswa"], $rowRekap["id_semester"]) ?></td>
+                      <td><?php echo totalKompen($con, $rowRekap["id_mahasiswa"]) ?></td>
+                      <td><?php echo kompenSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
+                      <td><?php echo totalKompen($con, $rowRekap["id_mahasiswa"])-kompenSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
+                    </tr>
+                  <?php
+                  $no++;
+                  }
+                  ?>
                 </tbody>
               </table>
+              <?php
+              }else{
+                ?>
+                <div class="text-center">
+                  <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                  <p class="text-muted">Data Tidak Ditemukan</p>
+                </div>
+                <?php
+              }
+              ?>
             </div>
           </div>
         </div>
