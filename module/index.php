@@ -544,7 +544,24 @@ $statusPembayaran = $rowStatus["status_daftar_ulang"];
       if ($level == "mahasiswa" || $level == "admin" || $level == "dosen") {
         if ($module != 'eComplain') {
           ?>
-          <img src="../img/Chat.svg" alt="chat" class="chat-bubble">
+          <img id="toggleChat" src="../img/Chat.svg" alt="chat" class="chat-bubble">
+
+          <div class="chat-popup row shadow-lg" id="chatPopup">
+            <div class="col">
+              <div class="chat-head row px-1 py-1 text-white bg-dark">
+                <div class="col">
+                  <h6>E - Complain</h6>
+                </div>
+                <div id="closeChatPopup" class="col-auto">
+                  X
+                </div>
+              </div>
+              <form action="/action_page.php" class="form-container row">
+                <label for="msg"><b>Message</b></label>
+                <textarea placeholder="Type message.." name="msg" required></textarea>
+              </form>
+            </div>
+          </div>
         <?php
       }
     }
