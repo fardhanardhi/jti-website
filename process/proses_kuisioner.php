@@ -210,7 +210,11 @@ if(isset($_POST["edit_kuisioner"])){
 
 if(isset($_POST["tambahIsi"]) || isset($_POST["editIsi"]) || isset($_POST["hapus"])){
   if($_GET["module"]=="kriteriaKuisioner" && $_GET["act"]=="tambah"){
-    mysqli_query($con, "insert into tabel_kuisioner values('','$_POST[isiKriteria]')");
+    $status_aktif='tidak';
+    if(cekStatusAktif($con)){
+      $status_aktif='ya';
+    }
+    mysqli_query($con, "insert into tabel_kuisioner values('','$_POST[isiKriteria]','$status_aktif')");
     header('location:../module/index.php?module=' . $_GET["module"]);
   }
 
