@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 21, 2019 at 04:45 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Host: localhost:3306
+-- Generation Time: Apr 23, 2019 at 10:02 AM
+-- Server version: 5.7.25-0ubuntu0.18.04.2
+-- PHP Version: 7.2.15-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -73,7 +71,8 @@ CREATE TABLE `tabel_admin` (
 --
 
 INSERT INTO `tabel_admin` (`id_admin`, `nama`, `nip`, `alamat`, `tempat_lahir`, `tangal_lahir`, `id_user`, `waktu_edit`) VALUES
-(3, 'Vipkas', 12345, NULL, NULL, NULL, 32, '2019-04-01 00:00:00');
+(3, 'Vipkas', 12345, NULL, NULL, NULL, 32, '2019-04-01 00:00:00'),
+(4, 'Adan', 123, NULL, NULL, NULL, 45, '2019-04-23 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -122,7 +121,15 @@ INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VAL
 (3, 'min, kemarin kan kelas saya ada di LBD.01, waktu kelas saya disana stopkontaknya kok belum ada listriknya ya ', 2, 32, '2019-04-12 11:00:00'),
 (4, 'Untuk masalah listrik yang ada di ruangan memang belum kami pasangi listrik semua mbak. soalnya OB nya lagi males untuk mengerjakannya', 32, 2, '2019-04-13 14:00:00'),
 (5, 'Baik Min terimakasih :)', 2, 32, '2019-04-13 16:00:00'),
-(6, 'Sama sama', 32, 2, '2019-04-21 09:42:00');
+(6, 'Sama sama', 32, 2, '2019-04-21 09:42:00'),
+(7, 'P', 32, 45, '2019-04-21 00:00:00'),
+(8, 'He!', 32, 45, '2019-04-22 00:00:00'),
+(9, 'Opo?', 45, 32, '2019-04-23 00:00:00'),
+(10, 'Ngapain?', 32, 45, '2019-04-23 09:56:00'),
+(11, 'Nganggur', 45, 32, '2019-04-23 09:57:00'),
+(12, 'Bagi dulur-dulur di jawatimur yang mau masuk ke Malang atau mau keluar Malang, disarankan untuk tidak berangkat di hari jumat. Dikarenakan hari jumat tanggal 12 April 2019 Malang raya punya agenda besar  1. Final piala presiden 2019 Arema vs Persebaya 2. Final piala presiden di hadiri RI 1 Joko Widodo 3. Kampanye terbuka Capres 02 Prabowo-Sandi 4. Konvoi Besar Aremania se-Malang Raya  Dan di sarankan untuk dulur-dulur yang memiliki kendaraan dengan Plat Nomor L (surabaya) dan W (sidoarjo) untuk tidak nekat masuk wilayah Malang raya di hari tersebut (atas saran dari POLRI) demi keselamatan dulur semua. Terimakasih dan monggo di bantu share untuk kenyamanan masyarakat jawatimur bersama.', 32, 45, '2019-04-23 09:59:00'),
+(13, 'Ikut bro', 32, 45, '2019-04-23 09:59:00'),
+(14, 'Makasih', 45, 32, '2019-04-23 09:59:00');
 
 -- --------------------------------------------------------
 
@@ -768,7 +775,8 @@ INSERT INTO `tabel_user` (`id_user`, `username`, `password`, `level`) VALUES
 (41, '198101052005011005', '198101052005011005', 'dosen'),
 (42, '197305102008011010', '197305102008011010', 'dosen'),
 (43, '197903132008121002', '197903132008121002', 'dosen'),
-(44, '198108092010121002', '198108092010121002', 'dosen');
+(44, '198108092010121002', '198108092010121002', 'dosen'),
+(45, '123', '123', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -981,157 +989,131 @@ ALTER TABLE `tabel_user`
 --
 ALTER TABLE `tabel_absensi`
   MODIFY `id_absensi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
-  MODIFY `id_admin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id_admin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   MODIFY `id_attachment` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
-  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   MODIFY `id_dosen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
 --
 -- AUTO_INCREMENT for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
   MODIFY `id_hasil_kuisioner` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
   MODIFY `id_info` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   MODIFY `id_beasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `tabel_info_kelas_kosong`
 --
 ALTER TABLE `tabel_info_kelas_kosong`
   MODIFY `id_info_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
   MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   MODIFY `id_kelas` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
   MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   MODIFY `id_komentar` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   MODIFY `id_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
   MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
 --
 -- AUTO_INCREMENT for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   MODIFY `id_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
-
 --
 -- AUTO_INCREMENT for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
   MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   MODIFY `id_notifikasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   MODIFY `id_pekerjaan_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
   MODIFY `id_prodi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   MODIFY `id_reply_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   MODIFY `id_ruang` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `tabel_semester`
 --
 ALTER TABLE `tabel_semester`
   MODIFY `id_semester` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   MODIFY `id_status_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- Constraints for dumped tables
 --
@@ -1266,7 +1248,6 @@ ALTER TABLE `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_reply_komentar`
   ADD CONSTRAINT `tabel_reply_komentar_ibfk_1` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
