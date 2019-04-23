@@ -1,3 +1,8 @@
+<?php
+include "../config/connection.php";
+include "../process/proses_adminKompen.php";
+?>
+
 <main role="main" class="container-fluid" id="beasiswa">
 <link rel="stylesheet" href="../css/adminBeasiswa.css">
     <div class="row">
@@ -81,6 +86,7 @@
                         </form>
                     </div>
 
+               
                     <div class="scrolltable">
                         <table class="table table-striped table-bordered">
                             <thead class="text-center">
@@ -94,16 +100,26 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center m-auto">
+                                <?php
+                                $resultTampilBeasiswa=tampilBeasiswa($con);
+                                $index=1;
+                            if (mysqli_num_rows($resultTampilBeasiswa) > 0){
+                              while ($row = mysqli_fetch_assoc($resultTampilBeasiswa)) {
+                                  ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview">Dosen dikirim ke Jepang</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
+                                    <td><?= $index?></td>
+                                    <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview<?= $index?>"><?= $row["judul"]?></td>
+                                    <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_publish"]))?></td>
                                     <td style="width:15em;">25 Februari 2019</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
+                                    <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_berakhir"]));?></td>
                                     <td><button class="btn btn-primary beasiswa-edit-btn">Edit</button></td>
                                     <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus">Hapus</button></td>
                                 </tr>
-
+                                  <?php
+                              $index++;
+                              }
+                            }
+                                  ?>
                                 <tr>
                                     <td>1</td>
                                     <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview">Dosen dikirim ke Jepang</td>
@@ -148,34 +164,45 @@
                         </table>
                     </div>
 
-                
                 </div>
             </div>
         </div>
 
     </div>
+
+		<!-- Modal -->
+
+    <?php
+				$resultTampilBeasiswa=tampilBeasiswa($con);
+				$index=1;
+		if (mysqli_num_rows($resultTampilBeasiswa) > 0){
+			while ($row = mysqli_fetch_assoc($resultTampilBeasiswa)) {
+					?>
+				<div class="modal fade" id="preview<?= $index?>" tabindex="-1" role="dialog" aria-labelledby="preview<?= $index?>Title" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+								<div class="modal-content">
+										<div class="modal-header">
+												<h5 class="modal-title"> <?= $row["judul"]?></h5>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+														</button>
+										</div>
+										<div class="modal-body">
+												<?= $row["isi"]?>
+										</div>
+										<div class="modal-footer">
+												<button type="button" class="btn btn-tutup" data-dismiss="modal">Tutup</button>
+										</div>
+								</div>
+						</div>
+				</div>
+					<?php
+			$index++;
+			}
+		}
+    	?>
     
-    <!-- Modal -->
-    <div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="previewTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"> Beasiswa Astra</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                </div>
-                <div class="modal-body">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Ipsum rem delectus hic minima voluptate, eaque repellendus animi dolore cum modi aspernatur dolorum ut iste temporibus unde soluta, quas recusandae porro!
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-tutup" data-dismiss="modal">Tutup</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- modal hapus -->
     <div class="modal fade hapusKompen-modal" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle" aria-hidden="true" data-backdrop="false">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
