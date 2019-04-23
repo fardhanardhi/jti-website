@@ -40,11 +40,11 @@
                                         </div>
                                         <div class="col-md-11 text-right d-flex justify-content-end lampir">
                                                     <label for="file-input">
-                                                    <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-toogle="tooltip" data-placement="top" title="Lampirkan Gambar">
+                                                    <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-placement="top" title="Lampirkan Gambar">
                                                     </label>
                                                     <input id="file-input" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none"/>
                                                     <label for="file-input1">
-                                                    <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-toogle="tooltip" data-placement="top" title="Lampirkan File">
+                                                    <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-placement="top" title="Lampirkan File">
                                                     </label>
                                                     <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none"/>
                                                     <strong><label for="kategori-AdBer" class="labelBerita mt-1 mr-2">Kategori :
@@ -183,6 +183,10 @@
                         </table>
                     </div>   
                 </div>
+                <div class='text-center'>
+                        <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
+                        <p class='text-muted'>Tidak ada berita pada "03 juni 2019"</p>
+                    </div>
             </div>
         </div>
     </div>
