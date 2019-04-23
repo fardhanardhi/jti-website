@@ -1,6 +1,6 @@
 <?php
 include "../config/connection.php";
-include "../process/proses_adminKompen.php";
+include "../process/proses_adminBeasiswa.php";
 ?>
 
 <main role="main" class="container-fluid" id="beasiswa">
