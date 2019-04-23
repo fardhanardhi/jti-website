@@ -241,7 +241,7 @@ include "../process/proses_absenKompen.php";
                     <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $no;?></td>
                     <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["nim"];?></td>
                     <td class="text-left tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaMhs"];?></td>
-                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["kode"];?></td>
+                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo prodi($con, $rowKompen["kode"]);?></td>
                     <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo tampilTanggal($rowKompen["waktu"]);?></td>
                     <td class="text-left tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaDosen"];?></td>
                     <td><button type="button" id="<?php echo $rowKompen["id_kompen"];?>" class="btn btn-primary edit-kompen" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
@@ -292,9 +292,9 @@ include "../process/proses_absenKompen.php";
             <form action="" method="post" onsubmit="return validasiSubmitEditKompen();">
               <div class="modal-body">
                 <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
-                <input type="text" name="id_kompen" id="id_kompenEdit">
+                <input type="hidden" name="id_kompen" id="id_kompenEdit">
                 <div class="container-fluid p-0" id="edit-kompen">
-              
+                    
                 </div>
               </div>
             </form>
