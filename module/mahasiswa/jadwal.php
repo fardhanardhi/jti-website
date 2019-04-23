@@ -1,3 +1,19 @@
+<?php
+
+include "../config/connection.php";
+
+$idUser = $_SESSION['id'];
+
+$queryUser = "SELECT a.*, b.*, c.nama as prodi FROM tabel_user a, tabel_mahasiswa b, tabel_prodi c WHERE a.id_user=$idUser and a.id_user=b.id_user and b.id_prodi = c.id_prodi";
+$resultUser = mysqli_query($con, $queryUser);
+$rowUser = mysqli_fetch_assoc($resultUser);
+
+$namaUser = $rowUser["nama"];
+$nimUser = $rowUser["nim"];
+$prodiUser = $rowUser["prodi"];
+
+?>
+
 <main role="main" class="container-fluid">
   <div id="jadwal" class="row">
     <div class="col-md-12 p-0">
@@ -14,9 +30,9 @@
             <center><img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="170" width="170">
             </center>
             <br><br>
-            <h5 class="border-bottom border-gray pb-2 mb-0" align="center">NAMA</h6>
-              <h5 class="border-bottom border-gray pb-2 mb-0" align="center">NIM</h6>
-                <h5 class="border-bottom border-gray pb-2 mb-0" align="center">PRODI</h6>
+            <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaUser; ?></h6>
+              <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $nimUser; ?></h6>
+                <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $prodiUser; ?></h6>
           </div>
         </div>
       </div>
