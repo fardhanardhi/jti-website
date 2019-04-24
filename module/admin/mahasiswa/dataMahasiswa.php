@@ -198,14 +198,27 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-2">Prodi</label>
-                                                            <br>
+                                                            <br>                    
                                                             <div class="col-sm-10">
+
+                                                            <?php
+                                                                $resultnyaProdi = tampilProdi($con); 
+                                                            ?>
                                                                 <select name="prodi" class="custom-select" id="prodiMahasiswa"
                                                                     style="width:220px;">
-                                                                    <option value="Teknik Informatika">Teknik
-                                                                        Informatika</option>
-                                                                    <option value="Manajemen Informatika">Manajemen
-                                                                        Informatika</option>
+
+                                                                    <?php 
+                                                                    
+                                                                    if(mysqli_num_rows($resultnyaProdi) > 0){
+
+                                                                        while($row = mysqli_fetch_assoc($resultnyaProdi)){
+                                                                            echo "<option value='".$row['id_prodi']."'>".$row['nama']."</option>";
+                                                                        }
+
+                                                                    }
+                                                                    
+                                                                    ?>
+                                                                 
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -213,35 +226,20 @@
                                                             <label class="col-sm-2">Kelas</label>
                                                             <div class="col-sm-10">
                                                             <select class="semester custom-select kelas" style="width:120px;" id="kelasMahasiswa" name="kelasMahasiswa">
-                                                                    <option disabled selected>Pilih Kelas</option>
-                                                                    <option value ="TI-1A">TI-1A</option>
-                                                                    <option value ="TI-1B">TI-1B</option>
-                                                                    <option value ="TI-1C">TI-1C</option>
-                                                                    <option value ="TI-1D">TI-1D</option>
-                                                                    <option value ="TI-1E">TI-1E</option>
-                                                                    <option value ="TI-1F">TI-1F</option>
-                                                                    <option value ="TI-1G">TI-1G</option>
-                                                                    <option value ="TI-2A">TI-2A</option>
-                                                                    <option value ="TI-2B">TI-2B</option>
-                                                                    <option value ="TI-2C">TI-2C</option>
-                                                                    <option value ="TI-2D">TI-2D</option>
-                                                                    <option value ="TI-2E">TI-2E</option>
-                                                                    <option value ="TI-2F">TI-2F</option>
-                                                                    <option value ="TI-2G">TI-2G</option>
-                                                                    <option value ="TI-3A">TI-3A</option>
-                                                                    <option value ="TI-3B">TI-3B</option>
-                                                                    <option value ="TI-3C">TI-3C</option>
-                                                                    <option value ="TI-3D">TI-3D</option>
-                                                                    <option value ="TI-3E">TI-3E</option>
-                                                                    <option value ="TI-3F">TI-3F</option>
-                                                                    <option value ="TI-3G">TI-3G</option>
-                                                                    <option value ="TI-4A">TI-4A</option>
-                                                                    <option value ="TI-4B">TI-4B</option>
-                                                                    <option value ="TI-4C">TI-4C</option>
-                                                                    <option value ="TI-4D">TI-4D</option>
-                                                                    <option value ="TI-4E">TI-4E</option>
-                                                                    <option value ="TI-4F">TI-4F</option>
-                                                                    <option value ="TI-4G">TI-4G</option>
+                                                                
+                                                                <?php
+                                                                $resultKelas=kelas($con);
+
+                                                                if(mysqli_num_rows($resultKelas)){
+                                                                    while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                                                                        ?>
+                                                                        <option value="<?php echo $rowKelas["id_kelas"];
+                                                                        ?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);
+                                                                        ?></option>
+                                                                        <?php
+                                                                    }
+                                                                }        
+                                                                ?>
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-3"></div>
