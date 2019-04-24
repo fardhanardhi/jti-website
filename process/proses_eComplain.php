@@ -293,31 +293,42 @@ if (isset($_GET["tampilChat"])) {
       }
     }
   } else {
-    echo "gagal";
-  }
+    ?>
+    <div class="row align-items-center justify-content-center h-100 pb-5">
+      <div class="col mb-5 text-center">
+        <span class="text-center" style="font-size: 10em; color: #dbdbdb;">
+          <i class="fas fa-comment-dots "></i>
+        </span>
+      </div>
+    </div>
+  <?php
+}
 }
 
 if (isset($_GET["tampilNamaUserTujuan"])) {
   $idUser = $_GET['idUser'];
   $idUserTujuan = $_GET['idUserTujuan'];
 
-  ?>
-  <img class="chat-profile-photo" src="../attachment/img/avatar.png">
-  <h5 class="m-0 ml-3">
-    <?php
-    if (tampilLevelUser($con, $idUserTujuan) == "mahasiswa") {
-      echo tampilMahasiswa($con, $idUserTujuan);
-    } elseif (tampilLevelUser($con, $idUserTujuan) == "dosen") {
-      echo tampilDosen($con, $idUserTujuan);
-    } elseif (tampilLevelUser($con, $idUserTujuan) == "admin") {
-      echo tampilAdmin($con, $idUserTujuan);
-    }
+  if ($idUserTujuan != null) {
+    # code...
     ?>
-  </h5>
+    <img class="chat-profile-photo" src="../attachment/img/avatar.png">
+    <h5 class="m-0 ml-3">
+      <?php
+      if (tampilLevelUser($con, $idUserTujuan) == "mahasiswa") {
+        echo tampilMahasiswa($con, $idUserTujuan);
+      } elseif (tampilLevelUser($con, $idUserTujuan) == "dosen") {
+        echo tampilDosen($con, $idUserTujuan);
+      } elseif (tampilLevelUser($con, $idUserTujuan) == "admin") {
+        echo tampilAdmin($con, $idUserTujuan);
+      }
+      ?>
+    </h5>
 
 
 
-<?php
+  <?php
+}
 }
 
 
