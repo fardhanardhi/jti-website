@@ -13,4 +13,12 @@ function jadwalKuliah($con,$prodi,$kelas)
     $resultJadwalKuliah = mysqli_query($con,$jadwalKuliah);
     return $resultJadwalKuliah;
 }
+
+function semester($con)
+{
+    $semester = "select * from tabel_semester";
+
+    $resultSemester = mysqli_query($con,$semester);
+    return $resultSemester;
+}
 ?>
