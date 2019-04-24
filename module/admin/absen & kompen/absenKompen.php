@@ -78,13 +78,13 @@ include "../process/proses_absenKompen.php";
                         <td><?php echo $no; ?></td>
                         <td class="text-left"><?php echo $rowAbsensi["nama"]; ?></td>
                         <td>
-                          <input type="number" id="sakit[<?php echo $rowAbsensi["id_absensi"]; ?>]" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["sakit"]; ?>" name="sakit">
+                          <input type="number" id="sakit<?php echo $rowAbsensi["id_absensi"]; ?>" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["sakit"]; ?>" name="sakit">
+                        </td> 
+                        <td>
+                          <input type="number" id="ijin<?php echo $rowAbsensi["id_absensi"]; ?>" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["ijin"]; ?>" name="ijin">
                         </td>
                         <td>
-                          <input type="number" id="ijin[<?php echo $rowAbsensi["id_absensi"]; ?>]" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["ijin"]; ?>" name="ijin">
-                        </td>
-                        <td>
-                          <input type="number" id="alpa[<?php echo $rowAbsensi["id_absensi"]; ?>]" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["alpa"]; ?>" name="alpha">
+                          <input type="number" id="alpa<?php echo $rowAbsensi["id_absensi"]; ?>" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["alpa"]; ?>" name="alpha">
                         </td>
                         <td><input type="button" value="Simpan" id="<?php echo $rowAbsensi["id_absensi"]; ?>" class="btn btn-success submit-absen"></td>
                       </tr>

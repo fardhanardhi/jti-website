@@ -89,17 +89,17 @@ $('.tampil-detail').click(function(){
 })
 
 $('.submit-absen').click(function(){
-  var id_absen=$(this).attr("id");  
+	var id_absen=$(this).attr("id");
 
 	$.ajax({
 		url:"../process/proses_absenKompen.php",
 		method:"post",
     data:{
-      submitAbsen:id_absen, sakit: $('#sakit['+id_absen+']').val(), ijin: $('#ijin['+id_absen+']').val(), alpa: $('#alpa['+id_absen+']').val() 
+      submitAbsen:id_absen, sakit: $("input[id='sakit"+id_absen+"']").val(), ijin: $("input[id='ijin"+id_absen+"']").val(), alpa: $("input[id='alpa"+id_absen+"']").val() 
       },
     success:function(data){
-      console.log(data);
-      
+			alert("Absensi berhasil disimpan");
+			location.reload();
     }
 	})
 })
