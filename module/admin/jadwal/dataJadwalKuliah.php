@@ -1,3 +1,8 @@
+<?php
+    include "../config/connection.php";
+    include "../process/proses_adminJadwalKuliah.php";
+?>
+
 <main role="main" class="container-fluid">
     <div id="dataDosen" class="row">
         <div class="col-md-12 p-0">
@@ -37,34 +42,18 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Pilih Kelas</option>
-                                                                    <option>TI-1A</option>
-                                                                    <option>TI-1B</option>
-                                                                    <option>TI-1C</option>
-                                                                    <option>TI-1D</option>
-                                                                    <option>TI-1E</option>
-                                                                    <option>TI-1F</option>
-                                                                    <option>TI-1G</option>
-                                                                    <option>TI-2A</option>
-                                                                    <option>TI-2B</option>
-                                                                    <option>TI-2C</option>
-                                                                    <option>TI-2D</option>
-                                                                    <option>TI-2E</option>
-                                                                    <option>TI-2F</option>
-                                                                    <option>TI-2G</option>
-                                                                    <option>TI-3A</option>
-                                                                    <option>TI-3B</option>
-                                                                    <option>TI-3C</option>
-                                                                    <option>TI-3D</option>
-                                                                    <option>TI-3E</option>
-                                                                    <option>TI-3F</option>
-                                                                    <option>TI-3G</option>
-                                                                    <option>TI-4A</option>
-                                                                    <option>TI-4B</option>
-                                                                    <option>TI-4C</option>
-                                                                    <option>TI-4D</option>
-                                                                    <option>TI-4E</option>
-                                                                    <option>TI-4F</option>
-                                                                    <option>TI-4G</option>
+                                                                    <?php 
+                                                                    $resultKelas=kelas($con); 
+                                                                    if(mysqli_num_rows($resultKelas))
+                                                                    {
+                                                                        while($rowKelas=mysqli_fetch_assoc($resultKelas))
+                                                                        {
+                                                                        ?>
+                                                                            <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo $rowKelas["kode"];?>-<?php echo $rowKelas["tingkat"]; echo $rowKelas["kode_kelas"];?></option>
+                                                                        <?php
+                                                                        }
+                                                                    }
+                                                                ?>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -155,7 +144,18 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Pilih Mata Kuliah</option>
-                                                                    <option>Proyek 1</option>
+                                                                    <?php 
+                                                                    $resultMatkul=matkul($con); 
+                                                                    if(mysqli_num_rows($resultMatkul))
+                                                                    {
+                                                                        while($rowMatkul=mysqli_fetch_assoc($resultMatkul))
+                                                                        {
+                                                                        ?>
+                                                                            <option value="<?php echo $rowMatkul["id_matkul"];?>"><?php echo $rowMatkul["nama"];?></option>
+                                                                        <?php
+                                                                        }
+                                                                    }
+                                                                ?>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -164,7 +164,18 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Pilih Ruangan</option>
-                                                                    <option>Ruangan</option>
+                                                                    <?php 
+                                                                    $resultRuang=ruang($con); 
+                                                                    if(mysqli_num_rows($resultRuang))
+                                                                    {
+                                                                        while($rowRuang=mysqli_fetch_assoc($resultRuang))
+                                                                        {
+                                                                        ?>
+                                                                            <option value="<?php echo $rowRuang["id_ruang"];?>"><?php echo $rowRuang["kode"];?></option>
+                                                                        <?php
+                                                                        }
+                                                                    }
+                                                                ?>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -174,7 +185,18 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select">
                                                                     <option selected>Pilih Dosen Pengajar</option>
-                                                                    <option>Bapak/Ibu</option>
+                                                                    <?php 
+                                                                    $resultDosen=dosen($con); 
+                                                                    if(mysqli_num_rows($resultDosen))
+                                                                    {
+                                                                        while($rowDosen=mysqli_fetch_assoc($resultDosen))
+                                                                        {
+                                                                        ?>
+                                                                            <option value="<?php echo $rowDosen["id_dosen"];?>"><?php echo $rowDosen["nama"];?></option>
+                                                                        <?php
+                                                                        }
+                                                                    }
+                                                                ?>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -199,6 +221,13 @@
                                 <button class="btn btn-success btn-mencari" type="submit">Cari</button>
                             </form>
                             <div class="scrolltable scrollbar-x">
+                                <?php
+
+                                    $resultJadwalKuliah=jadwalKuliah($con);
+                                
+
+                                if (mysqli_num_rows($resultJadwalKuliah) > 0){
+                                ?>
                                 <table class="table table-striped table-bordered text-center mt-3">
                                     <thead>
                                         <tr>
@@ -212,13 +241,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $no=1;
+                                        while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
+                                        ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>TI-2F</td>
-                                            <td>D4 - Teknik Informatika</td>
-                                            <td>1 ( Satu )</td>
-                                            <td>10</td>
-                                            <td>10</td>
+                                            <td><?php echo $no;?></td>
+                                            <td><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?></td>
+                                            <td><?php echo $row["nama"]; ?></td>
+                                            <td><?php echo $row["semester"]; ?></td>
+                                            <td><?php echo $row["jumlah_matkul"]; ?></td>
+                                            <td><?php echo $row["jumlah_sks"]; ?></td>
                                             <td><button class=" tmbl-table btn btn-primary" type="button"
                                                     class="pratinjau btn" data-toggle="modal" data-target="#editModal"
                                                     class="edit">Edit</button></td>
@@ -226,98 +259,19 @@
                                                     class="pratinjau btn" data-toggle="modal" data-target="#hapus"
                                                     class="hapus">Hapus</button></td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>TI-2F</td>
-                                            <td>D4 - Teknik Informatika</td>
-                                            <td>1 ( Satu )</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td><button class=" tmbl-table btn btn-primary" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#editModal"
-                                                    class="edit">Edit</button></td>
-                                            <td><button class=" tmbl-table btn btn-danger" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#hapus"
-                                                    class="hapus">Hapus</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>TI-2F</td>
-                                            <td>D4 - Teknik Informatika</td>
-                                            <td>1 ( Satu )</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td><button class=" tmbl-table btn btn-primary" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#editModal"
-                                                    class="edit">Edit</button></td>
-                                            <td><button class=" tmbl-table btn btn-danger" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#hapus"
-                                                    class="hapus">Hapus</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>TI-2F</td>
-                                            <td>D4 - Teknik Informatika</td>
-                                            <td>1 ( Satu )</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td><button class=" tmbl-table btn btn-primary" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#editModal"
-                                                    class="edit">Edit</button></td>
-                                            <td><button class=" tmbl-table btn btn-danger" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#hapus"
-                                                    class="hapus">Hapus</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>MI-2F</td>
-                                            <td>D3 - Manajemen Informatika</td>
-                                            <td>1 ( Satu )</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td><button class=" tmbl-table btn btn-primary" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#editModal"
-                                                    class="edit">Edit</button></td>
-                                            <td><button class=" tmbl-table btn btn-danger" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#hapus"
-                                                    class="hapus">Hapus</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>MI-2F</td>
-                                            <td>D3 - Manajemen Informatika</td>
-                                            <td>1 ( Satu )</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td><button class=" tmbl-table btn btn-primary" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#editModal"
-                                                    class="edit">Edit</button></td>
-                                            <td><button class=" tmbl-table btn btn-danger" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#hapus"
-                                                    class="hapus">Hapus</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>MI-2F</td>
-                                            <td>D3 - Manajemen Informatika</td>
-                                            <td>1 ( Satu )</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td><button class=" tmbl-table btn btn-primary" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#editModal"
-                                                    class="edit">Edit</button></td>
-                                            <td><button class=" tmbl-table btn btn-danger" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#hapus"
-                                                    class="hapus">Hapus</button></td>
-                                        </tr>
+                                        <?php
+                                        $no++;
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
-
+                            <?php } else { ?>
                             <div class="col-12 mt-5 text-center">
                                 <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
                                 <p>Nama, kelas atau prodi tidak dapat ditemukan</h>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
