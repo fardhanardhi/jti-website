@@ -1,6 +1,7 @@
 <?php
 
 include "../config/connection.php";
+include "../process/proses_jadwalKuliah.php";
 
 $idUser = $_SESSION['id'];
 
@@ -10,7 +11,9 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 
 $namaUser = $rowUser["nama"];
 $nimUser = $rowUser["nim"];
-$prodiUser = $rowUser["prodi"];
+$namaProdiUser = $rowUser["prodi"];
+$prodiUser = $rowUser["id_prodi"];
+$kelasUser = $rowUser["id_kelas"];
 
 ?>
 
@@ -30,9 +33,9 @@ $prodiUser = $rowUser["prodi"];
             <center><img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="170" width="170">
             </center>
             <br><br>
-            <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaUser; ?></h6>
-              <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $nimUser; ?></h6>
-                <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $prodiUser; ?></h6>
+            <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaUser; ?></h5>
+            <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $nimUser; ?></h5>
+            <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaProdiUser; ?></h5>
           </div>
         </div>
       </div>
@@ -42,7 +45,7 @@ $prodiUser = $rowUser["prodi"];
       <div class="m-2 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-2">Jadwal Kuliah</h6>
         <center>
-          <div class="warna-verifikasi col-md-12 mt-3 h-25 pt-2">
+          <div class="warna-verifikasi col-md-12 mt-3 p-2">
             <p class="card-title">Sudah terverifikasi oleh DPA</p>
           </div>
         </center>
@@ -51,20 +54,46 @@ $prodiUser = $rowUser["prodi"];
             <strong class="d-block text-dark">Periode Semester</strong>
           </p>
         </div>
-        <select class="semester custom-select" style="width:250px">
-          <option selected>-</option>
-          <option value="1">Semester 1</option>
-          <option value="2">Semester 2</option>
-          <option value="3">Semester 3</option>
-          <option value="3">Semester 4</option>
-          <option value="3">Semester 5</option>
-          <option value="3">Semester 6</option>
-          <option value="3">Semester 7</option>
-          <option value="3">Semester 8</option>
-        </select>
-        <button type="button" class="tmbl-filter btn btn-success ml-2">Filter</button>
-        <button type="button" class="tmbl-ruangan btn btn-info float-right">Ruangan</button>
-        <br><br>
+        <form action="?module=jadwal" class="p-0 m-0" method="post">
+          <select class="semester custom-select" style="width:250px" name="semester">
+            <option selected disabled>-</option>
+            <?php 
+            $resultSemester=semester($con); 
+            if(mysqli_num_rows($resultSemester))
+            {
+                while($rowSemester=mysqli_fetch_assoc($resultSemester))
+                {
+                  if($rowSemester["id_semester"] == $_POST["semester"])
+                  {
+                    $selected = "selected";
+                  }
+                  else
+                  {
+                    $selected = "";
+                  }
+                ?>
+                <option <?php echo $selected; ?> value="<?php echo $rowSemester["id_semester"];?>">
+                  Semester <?php echo $rowSemester["semester"];?>
+                </option>
+                <?php
+                }
+            }
+          ?>
+          </select>
+          <button type="submit" name="cariJadwal" class="tmbl-filter btn btn-success ml-2">Filter</button>
+          <button type="button" class="tmbl-ruangan btn btn-info float-right">Ruangan</button>
+        </form>
+        <br>
+        <?php
+        if(isset($_POST["cariJadwal"])){
+          $resultJadwalKuliah = jadwalKuliahCariSemester($con,$prodiUser,$kelasUser,$_POST["semester"]);
+        }
+        else{
+          $resultJadwalKuliah = jadwalKuliah($con,$prodiUser,$kelasUser);
+        }
+        if (mysqli_num_rows($resultJadwalKuliah) > 0)
+        {
+        ?>
         <table class="table table-striped table-bordered">
           <thead class="text-white bg-blue">
             <tr>
@@ -77,41 +106,34 @@ $prodiUser = $rowUser["prodi"];
             </tr>
           </thead>
           <tbody>
+            <?php
+              $no=1;
+              while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
+              ?>
             <tr>
-              <th scope="row">1</th>
-              <td>Matkul A</td>
-              <td>Dosen A</td>
-              <td>Senin</td>
-              <td>2 SKS / 4 JAM</td>
-              <td>KB 02 (Lt7)</td>
+              <td><?php echo $no;?></td>
+              <td><?php echo $row["nm_matkul"]; ?></td>
+              <td><?php echo $row["nama"]; ?></td>
+              <td><?php echo $row["hari"]; ?></td>
+              <td><?php echo $row["sks"]; ?> SKS / <?php echo $row["jam"]; ?> JAM</td>
+              <td><?php echo $row["kode"]; ?> (Lt<?php echo $row["lantai"]; ?>)</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Matkul B</td>
-              <td>Dosen B</td>
-              <td>Selasa</td>
-              <td>2 SKS / 4 JAM</td>
-              <td>KB 02 (Lt7)</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Matkul C</td>
-              <td>Dosen C</td>
-              <td>Rabu</td>
-              <td>2 SKS / 4 JAM</td>
-              <td>KB 02 (Lt7)</td>
-            </tr>
+            <?php
+              $no++;
+            }
+            ?>
           </tbody>
         </table>
-
-        <center>
-          <div class="warna-card col-md-12 border border-danger mt-3">
-            <div class="teks card-body" style="position: center">
-              <!-- <p class="card-title">| <img src="../img/navigation/icon.svg"></a> Informasi|</p> -->
-              <p class="card-title">| <i class="fas fa-info"></i> Informasi |</p>
-              <p class="card-text" style="color:#950101">*Tidak dapat menampilkan data*</p>
-              <p class="card-text">- Anda belum menempuh semester ini</p>
-            </div>
-        </center>
       </div>
+      <?php } else { ?>
+      <center>
+        <div class="warna-card col-md-12 border border-danger mt-3">
+          <div class="teks card-body" style="position: center">
+            <!-- <p class="card-title">| <img src="../img/navigation/icon.svg"></a> Informasi|</p> -->
+            <p class="card-title">| <i class="fas fa-info"></i> Informasi |</p>
+
+            <p class="card-text">- Anda belum menempuh semester ini</p>
+          </div>
+      </center>
+      <?php } ?>
     </div>
