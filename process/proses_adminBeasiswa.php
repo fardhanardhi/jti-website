@@ -8,14 +8,13 @@ function tampilBeasiswa($con)
     return $resultTampilBeasiswa;
 }
 
-// function tanggalPublishBeasiswa($tampilBeasiswa)
-// {
-//     return date('d F Y', strtotime($tampilBeasiswa));
-// }
-
 if(isset($_POST["submitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_POST["hapus"])){
     if($_GET["module"]=="beasiswa" && $_GET["act"]=="tambah"){
-      mysqli_query($con, "insert into tabel_info_beasiswa values('$_POST[judulBeasiswa]','$_POST[isiBeasiswa]')");
+      $dateNow = date("Y-m-d H:i:s");
+      $batasTanggal = date('Y-m-d', strtotime($_POST[batasTanggal]));
+      $BeasiswaQuery= "INSERT INTO tabel_info_beasiswa (judul, isi, link, waktu_publish, waktu_berakhir)  
+                      VALUES ('$_POST[judulBeasiswa]','$_POST[isiBeasiswa]','$_POST[linkBeasiswa]','$dateNow','$batasTanggal')";
+      mysqli_query($con, $BeasiswaQuery);
       header('location:../module/index.php?module=' . $_GET["module"]);
     }
   
@@ -31,3 +30,5 @@ if(isset($_POST["submitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_POST["
   }
 
 ?>
+
+

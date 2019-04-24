@@ -33,11 +33,21 @@ include "../process/proses_adminBeasiswa.php";
                             Buat Postingan Beasiswa
                         </div>
                         <div class="card-body">
-                            <form action="../process/proses_adminBeasiswa.php?module=beasiswa&act=tambah">
+                            <form action="../process/proses_adminBeasiswa.php?module=beasiswa&act=tambah" method="post">
                             
                                 <div class="form-group row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-10">
                                         <input type="text" style="border:none" name="judulBeasiswa" id="judulBeasiswa" placeholder="Judul..." class="form-control border-bottom border-gray pb-2 mb-0">
+                                    </div>
+                                    <div class="col-md-2">
+                                      <div class="input-group date " id="datepickerBatasTanggal">
+                                          <input type="text" class="form-control" value="Batas Tanggal" name="batasTanggal">
+                                          <div class="input-group-addon">
+                                              <span>
+                                                  <i class="far fa-calendar-alt"></i>
+                                              </span>
+                                          </div>
+                                      </div>
                                     </div>
                                     <div class="col-md-12">
                                         <textarea style="border:none" name="isiBeasiswa" 
