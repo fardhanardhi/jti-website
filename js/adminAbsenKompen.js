@@ -88,6 +88,22 @@ $('.tampil-detail').click(function(){
 		})
 })
 
+$('.submit-absen').click(function(){
+  var id_absen=$(this).attr("id");  
+
+	$.ajax({
+		url:"../process/proses_absenKompen.php",
+		method:"post",
+    data:{
+      submitAbsen:id_absen, sakit: $('#sakit['+id_absen+']').val(), ijin: $('#ijin['+id_absen+']').val(), alpa: $('#alpa['+id_absen+']').val() 
+      },
+    success:function(data){
+      console.log(data);
+      
+    }
+	})
+})
+
 $('.edit-kompen').click(function(){
 	var id_kompen=$(this).attr("id");
 
@@ -107,3 +123,18 @@ $('.hapus-kompen').click(function(){
 	$('#id_kompenHapus').val(id_kompen);
 	$('#modalHapusKompen').modal("show");
 })
+
+$('#modalEditKompen').on('change', 'select[name="dosen"]', function() {
+  var id_dosen = $(this).val();
+
+  $.ajax({
+    type: "POST",
+    url: "../process/proses_absenKompen.php",
+    data: {pilihDosen : id_dosen, id_semester:$('#id_semesterPekerjaan').val() },
+    success: function (data) {
+      $('select[name="jenisKompensasi"]').prop("disabled", false);
+      $('select[name="jenisKompensasi"]').html(data);      
+    }
+  });
+});
+
