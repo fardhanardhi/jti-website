@@ -1,3 +1,22 @@
+<?php
+
+include "../config/connection.php";
+// include "../process/proses_jadwalKuliah.php";
+
+$idUser = $_SESSION['id'];
+
+$queryUser = "SELECT a.*, b.*, c.nama as prodi FROM tabel_user a, tabel_mahasiswa b, tabel_prodi c WHERE a.id_user=$idUser and a.id_user=b.id_user and b.id_prodi = c.id_prodi";
+$resultUser = mysqli_query($con, $queryUser);
+$rowUser = mysqli_fetch_assoc($resultUser);
+
+$namaUser = $rowUser["nama"];
+$nimUser = $rowUser["nim"];
+$namaProdiUser = $rowUser["prodi"];
+// $prodiUser = $rowUser["id_prodi"];
+// $kelasUser = $rowUser["id_kelas"];
+
+?>
+
 <main role="main" class="container-fluid">
     <div id="krs" class="row">
         <div class="col-md-12 p-0">
@@ -15,9 +34,10 @@
                                 width="170">
                         </center>
                         <br><br>
-                        <h5 class="border-bottom border-gray pb-2 mb-0" align="center">NAMA</h6>
-                            <h5 class="border-bottom border-gray pb-2 mb-0" align="center">NIM</h6>
-                                <h5 class="border-bottom border-gray pb-2 mb-0" align="center">PRODI</h6>
+                        <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaUser; ?></h5>
+                        <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $nimUser; ?></h5>
+                        <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaProdiUser; ?>
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -27,7 +47,7 @@
             <div class="m-2 p-3 bg-white rounded shadow-sm">
                 <h6 class="border-bottom border-gray pb-2 mb-2">SEMESTER 4 (2019/2020) | Prodi - Kelas</h6>
                 <center>
-                    <div class="warna-card col-md-12 mt-3 h-25 pt-2">
+                    <div class="warna-card col-md-12 mt-3 p-2">
                         <p class="card-title">Belum terverifikasi oleh DPA</p>
                     </div>
                 </center>
@@ -48,9 +68,10 @@
                     <option value="3">Semester 8</option>
                 </select>
                 <button type="button" class="btn btn-success">Filter</button>
-                <button type="button" class="btn btn-success float-right">Kirim ke DPA &nbsp&nbsp<i class="fas fa-arrow-circle-up"></i></button>
+                <button type="button" class="btn btn-success float-right">Kirim ke DPA &nbsp&nbsp<i
+                        class="fas fa-arrow-circle-up"></i></button>
                 <br><br>
-                
+
                 <img src="../attachment/img/krs.png" width="100%" alt="">
 
                 <center>
