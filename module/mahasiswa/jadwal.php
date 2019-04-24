@@ -54,29 +54,45 @@ $kelasUser = $rowUser["id_kelas"];
             <strong class="d-block text-dark">Periode Semester</strong>
           </p>
         </div>
-        <select class="semester custom-select" style="width:250px">
-          <option selected>-</option>
-          <?php 
+        <form action="?module=jadwal" class="p-0 m-0" method="post">
+          <select class="semester custom-select" style="width:250px" name="semester">
+            <option selected disabled>-</option>
+            <?php 
             $resultSemester=semester($con); 
             if(mysqli_num_rows($resultSemester))
             {
                 while($rowSemester=mysqli_fetch_assoc($resultSemester))
                 {
+                  if($rowSemester["id_semester"] == $_POST["semester"])
+                  {
+                    $selected = "selected";
+                  }
+                  else
+                  {
+                    $selected = "";
+                  }
                 ?>
-            <option value="<?php echo $rowSemester["id_semester"];?>">
-              Semester <?php echo $rowSemester["semester"];?>
-            </option>
-            <?php
+                <option <?php echo $selected; ?> value="<?php echo $rowSemester["id_semester"];?>">
+                  Semester <?php echo $rowSemester["semester"];?>
+                </option>
+                <?php
                 }
             }
-        ?>
-        </select>
-        <button type="button" class="tmbl-filter btn btn-success ml-2">Filter</button>
-        <button type="button" class="tmbl-ruangan btn btn-info float-right">Ruangan</button>
-        <br><br>
+          ?>
+          </select>
+          <button type="submit" name="cariJadwal" class="tmbl-filter btn btn-success ml-2">Filter</button>
+          <button type="button" class="tmbl-ruangan btn btn-info float-right">Ruangan</button>
+        </form>
+        <br>
         <?php
-        $resultJadwalKuliah = jadwalKuliah($con,$prodiUser,$kelasUser);
-        if (mysqli_num_rows($resultJadwalKuliah) > 0){
+        if(isset($_POST["cariJadwal"])){
+          $resultJadwalKuliah = jadwalKuliahCariSemester($con,$prodiUser,$kelasUser,$_POST["semester"]);
+        }
+        else{
+          $resultJadwalKuliah = jadwalKuliah($con,$prodiUser,$kelasUser);
+        }
+        if (mysqli_num_rows($resultJadwalKuliah) > 0)
+        {
         ?>
         <table class="table table-striped table-bordered">
           <thead class="text-white bg-blue">
@@ -91,9 +107,9 @@ $kelasUser = $rowUser["id_kelas"];
           </thead>
           <tbody>
             <?php
-            $no=1;
-            while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
-            ?>
+              $no=1;
+              while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
+              ?>
             <tr>
               <td><?php echo $no;?></td>
               <td><?php echo $row["nm_matkul"]; ?></td>
@@ -103,26 +119,21 @@ $kelasUser = $rowUser["id_kelas"];
               <td><?php echo $row["kode"]; ?> (Lt<?php echo $row["lantai"]; ?>)</td>
             </tr>
             <?php
-            $no++;
+              $no++;
             }
             ?>
           </tbody>
         </table>
-
-        <center>
-          <div class="warna-card col-md-12 border border-danger mt-3">
-            <div class="teks card-body" style="position: center">
-              <!-- <p class="card-title">| <img src="../img/navigation/icon.svg"></a> Informasi|</p> -->
-              <p class="card-title">| <i class="fas fa-info"></i> Informasi |</p>
-              <p class="card-text" style="color:#950101">*Tidak dapat menampilkan data*</p>
-              <p class="card-text">- Anda belum menempuh semester ini</p>
-            </div>
-        </center>
       </div>
       <?php } else { ?>
-      <div class="col-12 mt-5 text-center">
-        <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
-        <p>Nama, kelas atau prodi tidak dapat ditemukan</h6>
-      </div>
+      <center>
+        <div class="warna-card col-md-12 border border-danger mt-3">
+          <div class="teks card-body" style="position: center">
+            <!-- <p class="card-title">| <img src="../img/navigation/icon.svg"></a> Informasi|</p> -->
+            <p class="card-title">| <i class="fas fa-info"></i> Informasi |</p>
+
+            <p class="card-text">- Anda belum menempuh semester ini</p>
+          </div>
+      </center>
       <?php } ?>
     </div>
