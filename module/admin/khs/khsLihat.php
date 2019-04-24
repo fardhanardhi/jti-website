@@ -1,3 +1,7 @@
+<?php
+  include "../config/connection.php";
+  include "../process/proses_khs.php";
+?>
 <main role="main" class="container-fluid">
     <div id="khs" class="row">
         <div class="col-md-12 p-0">
@@ -12,37 +16,45 @@
                 </nav>
             </div>
         </div>
-        <?php 
-            include('khsModalLihat.php');
-        ?>
         <div class="col-md-12 p-0">
             <div class="m-2 p-3 bg-white rounded shadow-sm">
                 <h4>Daftar Kartu Hasil Studi</h4>
                 <hr>
-                <select class="kelas custom-select" style="width:150px">
-                    <option selected>Pilih Kelas</option>
+                <form action="?module=khsLihat" method="post">
+                <select class="kelas custom-select" style="width:150px" name="kelas">
+                    <option value="0">Pilih Kelas</option>
                     <?php
-                    include('../koneksi/connection.php');
-					$tampil=mysqli_query($con, "SELECT tabel_prodi.kode as kode, tingkat, kode_kelas FROM tabel_kelas INNER JOIN tabel_prodi ON tabel_kelas.id_prodi = tabel_prodi.id_prodi GROUP BY id_kelas;");
-					while($r=mysqli_fetch_array($tampil)){
-					echo"<option value=$r[id_kelas]>$r[kode] - $r[tingkat] $r[kode_kelas]</option>";
-					}
-                    ?>
+                  $resultKelas=kelas($con);
+                  if(mysqli_num_rows($resultKelas)){
+                    while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                      ?>
+                      <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
+                      <?php
+                    }
+                  }
+                  ?>
                 </select>
-                <select class="kelas custom-select ml-3" style="width:150px">
-                    <option selected>Pilih Semester</option>
+                <select class="kelas custom-select ml-3" style="width:150px" name="semester">
+                    <option value="0">Pilih Semester</option>
                     <?php
-                    include('../koneksi/connection.php');
-					$tampil=mysqli_query($con, "SELECT * FROM tabel_semester ;");
-					while($r=mysqli_fetch_array($tampil)){
-					echo"<option value=$r[id_semester]>Semester $r[semester]</option>";
-					}
-                    ?>
+                    $resultSemester=tampilSemester($con);
+                    if(mysqli_num_rows($resultSemester)){
+                      while($rowSemester=mysqli_fetch_assoc($resultSemester)){
+                        ?>
+                        <option value="<?php echo $rowSemester["id_semester"];?>"><?php echo $rowSemester["semester"];?></option>
+                        <?php
+                      }
+                    }
+                   ?>
                 </select>
-                <button type="button" class="tmbl-filter btn btn-success ml-3">Cari</button>
-                <br><br>
+                <input type="submit" value="Cari" class="tmbl-filter btn btn-success ml-3" name="cariKhs">
+                </form>
                 <div class="media text-muted pt-8">
                     <div class="media-body pb-8 mb-0">
+                    <?php
+                        $resultTampilKhsLihat=khsLihat($con);
+                        if(mysqli_num_rows($resultTampilKhsLihat) > 0){
+                        ?>
                         <table class="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>
@@ -54,35 +66,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            $query = "SELECT tabel_mahasiswa.nim, tabel_mahasiswa.nama , SUM(tabel_matkul.sks) AS sks
-                            FROM tabel_khs INNER JOIN tabel_mahasiswa ON tabel_khs.id_mahasiswa = tabel_mahasiswa.id_mahasiswa
-                            INNER JOIN tabel_matkul ON tabel_khs.id_matkul = tabel_matkul.id_matkul GROUP BY tabel_mahasiswa.id_mahasiswa";
-                            $result = mysqli_query($con, $query);
-
-                            if(mysqli_num_rows($result) > 0){
-                            $index = 1;
-                                                
-                            while($row = mysqli_fetch_assoc($result)){
-
-                            echo"
+                            <?php 
+                                $no=1;
+                                while($row = mysqli_fetch_assoc($resultTampilKhsLihat)){
+                                    ?>
                                 <tr>
-                                    <td>". $index++ ."</td>
-                                    <td>". $row["nim"] ."</td>
-                                    <td>". $row["nama"] ."</td>
-                                    <td>". $row["sks"] ."</td>
-                                    <td><button class='tmbl-table lihat btn btn-info' type='button' class='pratinjau btn' data-toggle='modal' data-target='#myModal' class='edit'>Lihat</button>
+                                    <td><?php echo $no;?></td>
+                                    <td><?php echo $row["nim"];?></td>
+                                    <td><?php echo $row["nm_mahasiswa"];?></td>
+                                    <td><?php echo $row["sks"];?></td>
+                                    <td><?php echo "<button class='tmbl-table lihat btn btn-info' type='button' class='pratinjau btn' 
+                                    data-toggle='modal' data-target='#myModal".$no."' class='edit'>Lihat</button>"?>
                                     </td>
                                 </tr>
-                                ";
-                                }
+                            <?php
+                            $no++;
                             }
                             ?>
                             </tbody>
                         </table>
+                        <?php 
+                        }else{
+                            ?>
+                            <div class="text-center">
+                            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                            <p class="text-muted">Mahasiswa Tidak Ditemukan</p>
+                            </div>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
+        <?php 
+            include('khsModalLihat.php');
+        ?>
     </div>
 </main>
