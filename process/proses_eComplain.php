@@ -23,6 +23,23 @@ function queryTampilChat($idUser, $idUserTujuan)
   return $chat;
 }
 
+function tampilLevelUser($con, $idUser)
+{
+  $hasil =
+    "SELECT
+      level
+    FROM
+      tabel_user
+    WHERE
+      id_user = $idUser
+    ";
+
+  $resultHasil = mysqli_query($con, $hasil);
+
+  $rowLevel = mysqli_fetch_assoc($resultHasil);
+  return $rowLevel["level"];
+}
+
 function tampilMahasiswa($con, $idUser)
 {
   $hasil =
@@ -30,6 +47,40 @@ function tampilMahasiswa($con, $idUser)
       nama
     FROM
       tabel_mahasiswa
+    WHERE
+      id_user = $idUser
+    ";
+
+  $resultHasil = mysqli_query($con, $hasil);
+
+  $rowNama = mysqli_fetch_assoc($resultHasil);
+  return $rowNama["nama"];
+}
+
+function tampilDosen($con, $idUser)
+{
+  $hasil =
+    "SELECT
+      nama
+    FROM
+      tabel_dosen
+    WHERE
+      id_user = $idUser
+    ";
+
+  $resultHasil = mysqli_query($con, $hasil);
+
+  $rowNama = mysqli_fetch_assoc($resultHasil);
+  return $rowNama["nama"];
+}
+
+function tampilAdmin($con, $idUser)
+{
+  $hasil =
+    "SELECT
+      nama
+    FROM
+      tabel_admin
     WHERE
       id_user = $idUser
     ";
@@ -109,7 +160,13 @@ if (isset($_GET["tampilRecentChat"])) {
           <div class="row chat-info">
             <div class="col recentName">
               <?php
+              if (tampilLevelUser($con, $rowRecentChat["recent_user"]) == "mahasiswa") {
               echo tampilMahasiswa($con, $rowRecentChat["recent_user"]);
+              } elseif (tampilLevelUser($con, $rowRecentChat["recent_user"]) == "dosen") {
+                echo tampilDosen($con, $rowRecentChat["recent_user"]);
+              } elseif (tampilLevelUser($con, $rowRecentChat["recent_user"]) == "admin") {
+                echo tampilAdmin($con, $rowRecentChat["recent_user"]);
+              }
               ?>
             </div>
             <div class="col-md-auto pr-0">
