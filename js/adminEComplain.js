@@ -44,8 +44,6 @@ $(document).ready(function() {
 
   $(document).on("click", ".recent-chat-item", function() {
     idUserTujuan = $(this).data("id");
-    // $(".recent-chat-item").removeClass("active");
-    // $(this).addClass("active");
     reload();
   });
 
@@ -63,7 +61,6 @@ $(document).ready(function() {
       },
       success: function(response) {
         $("#inputChat").val("");
-        // $("#display_area").append(response);
         reload();
       }
     });
@@ -101,8 +98,6 @@ $(document).ready(function() {
         idUserTujuan: userTujuanId
       },
       success: function(response) {
-        // remove the deleted comment
-
         $("#recentChat")
           .empty()
           .append(response);
@@ -141,8 +136,6 @@ $(document).ready(function() {
         idUserTujuan: userTujuanId
       },
       success: function(response) {
-        // remove the deleted comment
-
         $("#namaUserTujuan")
           .empty()
           .append(response);

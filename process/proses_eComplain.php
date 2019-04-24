@@ -197,31 +197,10 @@ if (isset($_GET["tampilRecentChat"])) {
 }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if (isset($_GET["tampilChat"])) {
   $idUser = $_GET['idUser'];
   $idUserTujuan = $_GET['idUserTujuan'];
 
-  // $firstRowRecentUser = mysqli_fetch_assoc(mysqli_query($con, queryTampilRecentChat($idUser)));
-  // $idUserTujuan = $firstRowRecentUser["recent_user"];
   $resultChat = mysqli_query($con, queryTampilChat($idUser, $idUserTujuan));
 
   if (mysqli_num_rows($resultChat) > 0) {
@@ -310,7 +289,6 @@ if (isset($_GET["tampilNamaUserTujuan"])) {
   $idUserTujuan = $_GET['idUserTujuan'];
 
   if ($idUserTujuan != null) {
-    # code...
     ?>
     <img class="chat-profile-photo" src="../attachment/img/avatar.png">
     <h5 class="m-0 ml-3">
@@ -324,14 +302,9 @@ if (isset($_GET["tampilNamaUserTujuan"])) {
       }
       ?>
     </h5>
-
-
-
   <?php
 }
 }
-
-
 
 if (isset($_POST['sendChat'])) {
   $isiChat = $_POST['isiChat'];
@@ -340,7 +313,6 @@ if (isset($_POST['sendChat'])) {
   $date = date("m/d/Y h:i A");
   $final = strtotime($date);
   $datetimeNow = date("Y-m-d H:i:s", $final);
-
 
   $sql =
     "INSERT INTO 
