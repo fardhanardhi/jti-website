@@ -49,6 +49,17 @@ $(document).ready(function() {
   });
 
   $(document).on("click", ".btn-send", function() {
+    kirimChat();
+  });
+
+  // detect enter
+  $("#inputChat").keydown(function(e) {
+    if (e.keyCode == 13) {
+      kirimChat();
+    }
+  });
+
+  function kirimChat() {
     var isiChat = $("#inputChat").val();
     var idUser = $("#idUser").val();
     if ($.trim(isiChat) != "") {
@@ -67,9 +78,10 @@ $(document).ready(function() {
         }
       });
     } else {
+      alert("Pesan tidak boleh kosong");
       $("#inputChat").val("");
     }
-  });
+  }
 
   function reload() {
     $("#chatWindow").animate({ scrollTop: 20000000 }, "slow");
