@@ -110,26 +110,26 @@ include "../process/proses_adminBeasiswa.php";
                                 </tr>
                             </thead>
                             <tbody class="text-center m-auto">
-                                <?php
-                                $resultTampilBeasiswa=tampilBeasiswa($con);
-                                $index=1;
-                            if (mysqli_num_rows($resultTampilBeasiswa) > 0){
-                              while ($row = mysqli_fetch_assoc($resultTampilBeasiswa)) {
-                                  ?>
-                                <tr>
-                                    <td><?= $index?></td>
-                                    <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview<?= $index?>"><?= $row["judul"]?></td>
-                                    <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_publish"]))?></td>
-                                    <td style="width:15em;">25 Februari 2019</td>
-                                    <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_berakhir"]));?></td>
-                                    <td><button class="btn btn-primary beasiswa-edit-btn">Edit</button></td>
-                                    <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus">Hapus</button></td>
-                                </tr>
                                   <?php
-                              $index++;
+                                  $resultTampilBeasiswa=tampilBeasiswa($con);
+                                  $index=1;
+                              if (mysqli_num_rows($resultTampilBeasiswa) > 0){
+                                while ($row = mysqli_fetch_assoc($resultTampilBeasiswa)) {
+                                    ?>
+                                  <tr>
+                                      <td><?= $index?></td>
+                                      <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview<?= $index?>"><?= $row["judul"]?></td>
+                                      <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_publish"]))?></td>
+                                      <td style="width:15em;">25 Februari 2019</td>
+                                      <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_berakhir"]));?></td>
+                                      <td><button class="btn btn-primary beasiswa-edit-btn">Edit</button></td>
+                                      <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus<?= $index?>">Hapus</button></td>
+                                  </tr>
+                                    <?php
+                                $index++;
+                                }
                               }
-                            }
-                                  ?>
+                                    ?>
 																	                                
                             </tbody>
                         </table>
@@ -175,18 +175,35 @@ include "../process/proses_adminBeasiswa.php";
     
     
     <!-- modal hapus -->
-    <div class="modal fade hapusKompen-modal" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle" aria-hidden="true" data-backdrop="false">
+    <?php
+				$resultTampilBeasiswa=tampilBeasiswa($con);
+				$index=1;
+		if (mysqli_num_rows($resultTampilBeasiswa) > 0){
+			while ($row = mysqli_fetch_assoc($resultTampilBeasiswa)) {
+        $idBeasiswa = $row["id_beasiswa"];
+					?>
+
+          <div class="modal fade hapusKompen-modal" id="hapus<?= $index?>" tabindex="-1" role="dialog" aria-labelledby="hapus<?= $index?>Title" aria-hidden="true" data-backdrop="false">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content konten-modal">
-                    <div class="modal-body ">
-                        <h5 class="isiHapusKompen text-center">Apakah Anda Yakin?</h5>
-                        <div class="tombolAksiHapusKompen text-center">
-                            <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                            <button type="button" class="btn btn-iya">Ya</button>
-                        </div>
-                    </div>                 
-                </div>
+              <div class="modal-content konten-modal">
+                <div class="modal-body ">
+                  <h5 class="isiHapusKompen text-center">Apakah Anda Yakin?</h5>
+                  <div class="tombolAksiHapusKompen text-center">
+                    <form action="../process/proses_adminBeasiswa.php?module=beasiswa&act=hapus" method="post">
+                      <input type="hidden" value="<?=$idBeasiswa?>" name="idBeasiswa">
+                    <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-iya" name="hapusBeasiswa" id="hapusBeasiswa">Ya</button>
+                    </form>
+                  </div>
+                </div>                 
+              </div>
             </div>
-        </div>
+          </div>
+
+					<?php
+			$index++;
+			}
+		}
+    	?>
 </main>
 
