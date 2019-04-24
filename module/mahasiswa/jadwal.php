@@ -1,6 +1,7 @@
 <?php
 
 include "../config/connection.php";
+include "../process/proses_jadwalKuliah.php";
 
 $idUser = $_SESSION['id'];
 
@@ -10,7 +11,9 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 
 $namaUser = $rowUser["nama"];
 $nimUser = $rowUser["nim"];
-$prodiUser = $rowUser["prodi"];
+$namaProdiUser = $rowUser["prodi"];
+$prodiUser = $rowUser["id_prodi"];
+$kelasUser = $rowUser["id_kelas"];
 
 ?>
 
@@ -32,7 +35,7 @@ $prodiUser = $rowUser["prodi"];
             <br><br>
             <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaUser; ?></h6>
               <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $nimUser; ?></h6>
-                <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $prodiUser; ?></h6>
+                <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaProdiUser; ?></h6>
           </div>
         </div>
       </div>
@@ -42,7 +45,7 @@ $prodiUser = $rowUser["prodi"];
       <div class="m-2 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-2">Jadwal Kuliah</h6>
         <center>
-          <div class="warna-verifikasi col-md-12 mt-3 h-25 pt-2">
+          <div class="warna-verifikasi col-md-12 mt-3 p-2">
             <p class="card-title">Sudah terverifikasi oleh DPA</p>
           </div>
         </center>
@@ -65,6 +68,10 @@ $prodiUser = $rowUser["prodi"];
         <button type="button" class="tmbl-filter btn btn-success ml-2">Filter</button>
         <button type="button" class="tmbl-ruangan btn btn-info float-right">Ruangan</button>
         <br><br>
+        <?php
+        $resultJadwalKuliah = jadwalKuliah($con,$prodiUser,$kelasUser);
+        if (mysqli_num_rows($resultJadwalKuliah) > 0){
+        ?>
         <table class="table table-striped table-bordered">
           <thead class="text-white bg-blue">
             <tr>
@@ -77,30 +84,22 @@ $prodiUser = $rowUser["prodi"];
             </tr>
           </thead>
           <tbody>
+          <?php
+            $no=1;
+            while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
+            ?>
             <tr>
-              <th scope="row">1</th>
-              <td>Matkul A</td>
-              <td>Dosen A</td>
-              <td>Senin</td>
-              <td>2 SKS / 4 JAM</td>
-              <td>KB 02 (Lt7)</td>
+                <td><?php echo $no;?></td>
+                <td><?php echo $row["nm_matkul"]; ?></td>
+                <td><?php echo $row["nama"]; ?></td>
+                <td><?php echo $row["hari"]; ?></td>
+                <td><?php echo $row["sks"]; ?> SKS / <?php echo $row["jam"]; ?> JAM</td>
+                <td><?php echo $row["kode"]; ?> (Lt<?php echo $row["lantai"]; ?>)</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Matkul B</td>
-              <td>Dosen B</td>
-              <td>Selasa</td>
-              <td>2 SKS / 4 JAM</td>
-              <td>KB 02 (Lt7)</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Matkul C</td>
-              <td>Dosen C</td>
-              <td>Rabu</td>
-              <td>2 SKS / 4 JAM</td>
-              <td>KB 02 (Lt7)</td>
-            </tr>
+            <?php
+            $no++;
+            }
+            ?>
           </tbody>
         </table>
 
@@ -114,4 +113,10 @@ $prodiUser = $rowUser["prodi"];
             </div>
         </center>
       </div>
+      <?php } else { ?>
+      <div class="col-12 mt-5 text-center">
+          <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
+          <p>Nama, kelas atau prodi tidak dapat ditemukan</h>
+      </div>
+      <?php } ?>
     </div>
