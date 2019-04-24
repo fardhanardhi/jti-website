@@ -13,4 +13,38 @@ function jadwalKuliah($con)
     $resultJadwalKuliah = mysqli_query($con,$jadwalKuliah);
     return $resultJadwalKuliah;
 }
+
+function dosen($con)
+{
+    $dosen = "select * from tabel_dosen";
+
+    $resultDosen = mysqli_query($con,$dosen);
+    return $resultDosen;
+}
+
+function ruang($con)
+{
+    $ruang = "select * from tabel_ruang";
+
+    $resultRuang = mysqli_query($con,$ruang);
+    return $resultRuang;
+}
+
+function matkul($con)
+{
+    $matkul = "select * from tabel_matkul";
+
+    $resultMatkul = mysqli_query($con,$matkul);
+    return $resultMatkul;
+}
+
+function kelas($con)
+{
+    $kelas = "select * from tabel_kelas tk,tabel_prodi tp
+    where tk.id_prodi = tp.id_prodi
+    order by kode,kode_kelas,tingkat";
+
+    $resultKelas = mysqli_query($con,$kelas);
+    return $resultKelas;
+}
 ?>
