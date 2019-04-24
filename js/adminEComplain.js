@@ -73,6 +73,7 @@ $(document).ready(function() {
     $("#chatWindow").animate({ scrollTop: 20000000 }, "slow");
     recentChat(idUserTujuan);
     chat(idUserTujuan);
+    namaUserTujuan(idUserTujuan);
   }
 
   function refresh() {
@@ -123,6 +124,26 @@ $(document).ready(function() {
         // remove the deleted comment
 
         $("#chatWindow")
+          .empty()
+          .append(response);
+      }
+    });
+  }
+
+  function namaUserTujuan(userTujuanId) {
+    var idUser = $("#idUser").val();
+    $.ajax({
+      url: "../process/proses_eComplain.php",
+      type: "GET",
+      data: {
+        tampilNamaUserTujuan: 1,
+        idUser: idUser,
+        idUserTujuan: userTujuanId
+      },
+      success: function(response) {
+        // remove the deleted comment
+
+        $("#namaUserTujuan")
           .empty()
           .append(response);
       }

@@ -197,6 +197,25 @@ if (isset($_GET["tampilRecentChat"])) {
 }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if (isset($_GET["tampilChat"])) {
   $idUser = $_GET['idUser'];
   $idUserTujuan = $_GET['idUserTujuan'];
@@ -277,6 +296,31 @@ if (isset($_GET["tampilChat"])) {
     echo "gagal";
   }
 }
+
+if (isset($_GET["tampilNamaUserTujuan"])) {
+  $idUser = $_GET['idUser'];
+  $idUserTujuan = $_GET['idUserTujuan'];
+
+  ?>
+  <img class="chat-profile-photo" src="../attachment/img/avatar.png">
+  <h5 class="m-0 ml-3">
+    <?php
+    if (tampilLevelUser($con, $idUserTujuan) == "mahasiswa") {
+      echo tampilMahasiswa($con, $idUserTujuan);
+    } elseif (tampilLevelUser($con, $idUserTujuan) == "dosen") {
+      echo tampilDosen($con, $idUserTujuan);
+    } elseif (tampilLevelUser($con, $idUserTujuan) == "admin") {
+      echo tampilAdmin($con, $idUserTujuan);
+    }
+    ?>
+  </h5>
+
+
+
+<?php
+}
+
+
 
 if (isset($_POST['sendChat'])) {
   $isiChat = $_POST['isiChat'];

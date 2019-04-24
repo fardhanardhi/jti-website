@@ -39,9 +39,8 @@ include "../process/proses_eComplain.php";
                 </div>
               </div>
               <div class="col-md-8">
-                <div class="row align-items-center h-100 px-3">
-                  <img class="chat-profile-photo" src="../attachment/img/avatar.png">
-                  <h5 class="m-0 ml-3">Veronica Imoet</h5>
+                <div id="namaUserTujuan" class="row align-items-center h-100 px-3">
+                  ...
                 </div>
               </div>
             </div>
@@ -52,7 +51,7 @@ include "../process/proses_eComplain.php";
               <div class="conversation-window col-md-8">
                 <div class="row">
                   <div id="chatWindow" class="chat-window col scrollbar pt-3">
-                  ...
+                    ...
                   </div>
                 </div>
                 <div class="row">
