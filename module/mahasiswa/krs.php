@@ -5,13 +5,18 @@ include "../config/connection.php";
 
 $idUser = $_SESSION['id'];
 
-$queryUser = "SELECT a.*, b.*, c.nama as prodi FROM tabel_user a, tabel_mahasiswa b, tabel_prodi c WHERE a.id_user=$idUser and a.id_user=b.id_user and b.id_prodi = c.id_prodi";
+$queryUser = "SELECT a.*, b.*, c.nama as prodi, c.kode, d.tingkat, d.kode_kelas FROM tabel_user a, tabel_mahasiswa b, tabel_prodi c,tabel_kelas d WHERE a.id_user=b.id_user and b.id_prodi = c.id_prodi 
+and b.id_kelas = d.id_kelas and a.id_user=$idUser";
 $resultUser = mysqli_query($con, $queryUser);
 $rowUser = mysqli_fetch_assoc($resultUser);
 
 $namaUser = $rowUser["nama"];
 $nimUser = $rowUser["nim"];
 $namaProdiUser = $rowUser["prodi"];
+$kodeProdiUser = $rowUser["kode"];
+$tingkatUser = $rowUser["tingkat"];
+$kodeKelasUser = $rowUser["kode_kelas"];
+
 // $prodiUser = $rowUser["id_prodi"];
 // $kelasUser = $rowUser["id_kelas"];
 
@@ -45,7 +50,7 @@ $namaProdiUser = $rowUser["prodi"];
 
         <div class="col-md-9 p-0">
             <div class="m-2 p-3 bg-white rounded shadow-sm">
-                <h6 class="border-bottom border-gray pb-2 mb-2">SEMESTER 4 (2019/2020) | Prodi - Kelas</h6>
+                <h6 class="border-bottom border-gray pb-2 mb-2">SEMESTER 4 (2019/2020) | <?php echo $namaProdiUser; ?> - <?php echo $kodeProdiUser; ?>-<?php echo $tingkatUser; echo $kodeKelasUser; ?></h6>
                 <center>
                     <div class="warna-card col-md-12 mt-3 p-2">
                         <p class="card-title">Belum terverifikasi oleh DPA</p>
