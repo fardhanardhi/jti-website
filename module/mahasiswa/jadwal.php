@@ -33,9 +33,9 @@ $kelasUser = $rowUser["id_kelas"];
             <center><img src="../attachment/img/avatar.jpeg" class="gambar-profil img-circle" height="170" width="170">
             </center>
             <br><br>
-            <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaUser; ?></h6>
-              <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $nimUser; ?></h6>
-                <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaProdiUser; ?></h6>
+            <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaUser; ?></h5>
+              <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $nimUser; ?></h5>
+                <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaProdiUser; ?></h5>
           </div>
         </div>
       </div>
@@ -116,7 +116,7 @@ $kelasUser = $rowUser["id_kelas"];
       <?php } else { ?>
       <div class="col-12 mt-5 text-center">
           <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
-          <p>Nama, kelas atau prodi tidak dapat ditemukan</h>
+          <p>Nama, kelas atau prodi tidak dapat ditemukan</h6>
       </div>
       <?php } ?>
     </div>
