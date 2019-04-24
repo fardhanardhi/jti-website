@@ -1,6 +1,16 @@
 <?php
 include "../config/connection.php";
 
+function limitEcho($x, $length)
+{
+  if (strlen($x) <= $length) {
+    echo $x;
+  } else {
+    $y = substr($x, 0, $length) . '...';
+    echo $y;
+  }
+}
+
 function queryTampilChat($idUser, $idUserTujuan)
 {
   $chat =
@@ -161,7 +171,7 @@ if (isset($_GET["tampilRecentChat"])) {
             <div class="col recentName">
               <?php
               if (tampilLevelUser($con, $rowRecentChat["recent_user"]) == "mahasiswa") {
-              echo tampilMahasiswa($con, $rowRecentChat["recent_user"]);
+                echo tampilMahasiswa($con, $rowRecentChat["recent_user"]);
               } elseif (tampilLevelUser($con, $rowRecentChat["recent_user"]) == "dosen") {
                 echo tampilDosen($con, $rowRecentChat["recent_user"]);
               } elseif (tampilLevelUser($con, $rowRecentChat["recent_user"]) == "admin") {
@@ -175,7 +185,7 @@ if (isset($_GET["tampilRecentChat"])) {
           </div>
           <div class="row">
             <div class="col pr-0 recentIsi">
-              <?php echo $rowRecentChat["isi"] ?>
+              <?php limitEcho($rowRecentChat["isi"], 30) ?>
             </div>
           </div>
         </div>
