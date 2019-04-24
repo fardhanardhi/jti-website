@@ -33,7 +33,7 @@ include "../process/proses_adminBeasiswa.php";
                             Buat Postingan Beasiswa
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="../process/proses_adminBeasiswa.php?module=beasiswa&act=tambah">
                             
                                 <div class="form-group row">
                                     <div class="col-md-12">
@@ -59,7 +59,7 @@ include "../process/proses_adminBeasiswa.php";
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                            <input id="submitBeasiswa" class="submitBeasiswa form-control btn btn-success" type="submit" value="Kirim">
+                                            <input id="submitBeasiswa" class="submitBeasiswa form-control btn btn-success" type="submit" value="Kirim" name="submitBeasiswa">
                                         </div>
                                     </div>
 
@@ -120,46 +120,7 @@ include "../process/proses_adminBeasiswa.php";
                               }
                             }
                                   ?>
-                                <tr>
-                                    <td>1</td>
-                                    <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview">Dosen dikirim ke Jepang</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
-                                    <td style="width:15em;">25 Februari 2019</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
-                                    <td><button class="btn btn-primary beasiswa-edit-btn">Edit</button></td>
-                                    <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus">Hapus</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>1</td>
-                                    <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview">Dosen dikirim ke Jepang</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
-                                    <td style="width:15em;">25 Februari 2019</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
-                                    <td><button class="btn btn-primary beasiswa-edit-btn">Edit</button></td>
-                                    <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus">Hapus</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>1</td>
-                                    <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview">Dosen dikirim ke Jepang</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
-                                    <td style="width:15em;">25 Februari 2019</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
-                                    <td><button class="btn btn-primary beasiswa-edit-btn">Edit</button></td>
-                                    <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus">Hapus</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>1</td>
-                                    <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview">Dosen dikirim ke Jepang</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
-                                    <td style="width:15em;">25 Februari 2019</td>
-                                    <td style="width:15em;">20 Februari 2019</td>
-                                    <td><button class="btn btn-primary beasiswa-edit-btn">Edit</button></td>
-                                    <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus">Hapus</button></td>
-                                </tr>
-                                
+																	                                
                             </tbody>
                         </table>
                     </div>

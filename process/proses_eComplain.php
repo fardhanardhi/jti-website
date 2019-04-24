@@ -1,6 +1,16 @@
 <?php
 include "../config/connection.php";
 
+function limitEcho($x, $length)
+{
+  if (strlen($x) <= $length) {
+    echo $x;
+  } else {
+    $y = substr($x, 0, $length) . '...';
+    echo $y;
+  }
+}
+
 function queryTampilChat($idUser, $idUserTujuan)
 {
   $chat =
@@ -23,6 +33,23 @@ function queryTampilChat($idUser, $idUserTujuan)
   return $chat;
 }
 
+function tampilLevelUser($con, $idUser)
+{
+  $hasil =
+    "SELECT
+      level
+    FROM
+      tabel_user
+    WHERE
+      id_user = $idUser
+    ";
+
+  $resultHasil = mysqli_query($con, $hasil);
+
+  $rowLevel = mysqli_fetch_assoc($resultHasil);
+  return $rowLevel["level"];
+}
+
 function tampilMahasiswa($con, $idUser)
 {
   $hasil =
@@ -30,6 +57,40 @@ function tampilMahasiswa($con, $idUser)
       nama
     FROM
       tabel_mahasiswa
+    WHERE
+      id_user = $idUser
+    ";
+
+  $resultHasil = mysqli_query($con, $hasil);
+
+  $rowNama = mysqli_fetch_assoc($resultHasil);
+  return $rowNama["nama"];
+}
+
+function tampilDosen($con, $idUser)
+{
+  $hasil =
+    "SELECT
+      nama
+    FROM
+      tabel_dosen
+    WHERE
+      id_user = $idUser
+    ";
+
+  $resultHasil = mysqli_query($con, $hasil);
+
+  $rowNama = mysqli_fetch_assoc($resultHasil);
+  return $rowNama["nama"];
+}
+
+function tampilAdmin($con, $idUser)
+{
+  $hasil =
+    "SELECT
+      nama
+    FROM
+      tabel_admin
     WHERE
       id_user = $idUser
     ";
@@ -109,7 +170,13 @@ if (isset($_GET["tampilRecentChat"])) {
           <div class="row chat-info">
             <div class="col recentName">
               <?php
-              echo tampilMahasiswa($con, $rowRecentChat["recent_user"]);
+              if (tampilLevelUser($con, $rowRecentChat["recent_user"]) == "mahasiswa") {
+                echo tampilMahasiswa($con, $rowRecentChat["recent_user"]);
+              } elseif (tampilLevelUser($con, $rowRecentChat["recent_user"]) == "dosen") {
+                echo tampilDosen($con, $rowRecentChat["recent_user"]);
+              } elseif (tampilLevelUser($con, $rowRecentChat["recent_user"]) == "admin") {
+                echo tampilAdmin($con, $rowRecentChat["recent_user"]);
+              }
               ?>
             </div>
             <div class="col-md-auto pr-0">
@@ -118,7 +185,7 @@ if (isset($_GET["tampilRecentChat"])) {
           </div>
           <div class="row">
             <div class="col pr-0 recentIsi">
-              <?php echo $rowRecentChat["isi"] ?>
+              <?php limitEcho($rowRecentChat["isi"], 30) ?>
             </div>
           </div>
         </div>
@@ -242,47 +309,3 @@ if (isset($_POST['sendChat'])) {
   }
   exit();
 }
-
-
-
-
-  /* 
-SELECT
-      id_chat,
-      isi,
-      b.recent_user,
-      waktu
-    FROM (
-      SELECT
-        id_chat,
-        isi,
-        pengirim,
-        penerima,
-        IF (
-          pengirim = 32,
-          penerima,
-          pengirim
-        ) 
-        AS 
-        recent_user,
-        waktu
-      FROM
-        tabel_chat
-      WHERE
-        waktu IN (
-        SELECT
-          MAX(waktu)
-        FROM
-          tabel_chat
-        GROUP BY
-          IF (
-          pengirim = 32,
-          penerima,
-          pengirim
-        )
-      ) 
-    ) AS b
-    ORDER BY
-      waktu
-    DESC
-*/

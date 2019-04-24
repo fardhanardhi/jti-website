@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 23, 2019 at 10:02 AM
+-- Generation Time: Apr 24, 2019 at 08:57 AM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
--- PHP Version: 7.2.15-0ubuntu0.18.04.2
+-- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -232,7 +232,7 @@ CREATE TABLE `tabel_info_beasiswa` (
   `id_beasiswa` int(30) NOT NULL,
   `judul` varchar(250) NOT NULL,
   `isi` text NOT NULL,
-  `id_attachment` int(30) DEFAULT NULL,
+  `link` text,
   `waktu_publish` datetime NOT NULL,
   `waktu_berakhir` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -241,7 +241,7 @@ CREATE TABLE `tabel_info_beasiswa` (
 -- Dumping data for table `tabel_info_beasiswa`
 --
 
-INSERT INTO `tabel_info_beasiswa` (`id_beasiswa`, `judul`, `isi`, `id_attachment`, `waktu_publish`, `waktu_berakhir`) VALUES
+INSERT INTO `tabel_info_beasiswa` (`id_beasiswa`, `judul`, `isi`, `link`, `waktu_publish`, `waktu_berakhir`) VALUES
 (1, 'Pendaftaran Beasiswa 2019', 'Kepada Seluruh mahasiswa Politenik Negeri Malang untuk Jenjang D# maupun D4, diberitahukan dibuka pendaftaran beasiswa : \r\n1. Beasiswa PPA \r\n2. Beasiswa BBP ( BBM) \r\n3. Beasiswa Supersemar Pendaftaran mulai \r\n\r\ntanggal : 17 Maret s.d 4 April 2019 pendaftaran lewat ONLINE ( download di : http:// beasiswa.polinema.ac.id) untuk keterangan lebih lanjut dapat dilihat spanduk yang ada sekitar politeknik atau di poster pada tiap-tiap jurusan . Terima kasih atas perhatiannya', NULL, '2019-03-17 02:00:00', '2019-04-04');
 
 -- --------------------------------------------------------
@@ -840,8 +840,7 @@ ALTER TABLE `tabel_info`
 -- Indexes for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
-  ADD PRIMARY KEY (`id_beasiswa`),
-  ADD KEY `id_attachment` (`id_attachment`);
+  ADD PRIMARY KEY (`id_beasiswa`);
 
 --
 -- Indexes for table `tabel_info_kelas_kosong`
@@ -1063,7 +1062,7 @@ ALTER TABLE `tabel_krs`
 -- AUTO_INCREMENT for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
-  MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `tabel_mahasiswa`
 --
@@ -1158,12 +1157,6 @@ ALTER TABLE `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_info`
   ADD CONSTRAINT `tabel_info_ibfk_1` FOREIGN KEY (`id_attachment`) REFERENCES `tabel_attachment` (`id_attachment`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Constraints for table `tabel_info_beasiswa`
---
-ALTER TABLE `tabel_info_beasiswa`
-  ADD CONSTRAINT `tabel_info_beasiswa_ibfk_1` FOREIGN KEY (`id_attachment`) REFERENCES `tabel_attachment` (`id_attachment`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_info_kelas_kosong`
