@@ -30,6 +30,11 @@ function minKelas($con){
 	return $rowMinKelas["minKelas"];
 }
 
+// Edit Absensi
+if(isset($_POST["submitAbsen"])){
+  mysqli_query($con, "update tabel_absensi set sakit='$_POST[sakit]', ijin='$_POST[ijin]', alpa='$_POST[alpa]' where id_absensi=$_POST[submitAbsen]");
+}
+
 // Kompen
 function kompen($con)
 {
@@ -116,6 +121,17 @@ function kompenSelesai($con, $id_mahasiswa){
   }
 }
 
+function prodi($con, $kode){
+  if($kode=="TI"){
+    $prodi="D4 - TI";
+    return $prodi;
+  }
+  else if($kode=="MI"){
+    $prodi="D3 - MI";
+    return $prodi;
+  }
+}
+
 // Modal Preview
 if(isset($_POST["tampilDetail"])){
   $detailKompen = "select a.*, b.nim, b.nama as namaMhs, c.nama as namaDosen, d.nama as pekerjaan from tabel_kompen a, tabel_mahasiswa b, tabel_dosen c, tabel_pekerjaan_kompen d where a.id_mahasiswa=b.id_mahasiswa and a.id_dosen=c.id_dosen and a.id_pekerjaan_kompen=d.id_pekerjaan_kompen and a.id_kompen=$_POST[tampilDetail]";
@@ -164,6 +180,97 @@ if(isset($_POST["tampilDetail"])){
   
 }
 
+// Dropdoen Tanggal
+function optionTanggal($tanggalEdit){
+  $output="";
+  $tanggal= date('d', strtotime($tanggalEdit));
+  for($i=1;$i<=31;$i++){
+    if($tanggal == $i){
+      $output.="<option value='$i' selected='selected'>$i</option>";
+    }else{
+      $output.="<option value='$i'>$i</option>";
+    }
+  }
+  return $output;
+}
+
+function optionBulan($tanggalEdit){
+  $output="";
+  $arrBulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
+  $bulan= date('m', strtotime($tanggalEdit));
+  for($i=1;$i<=12;$i++){
+    $tampilBulan=$arrBulan[$i-1];
+    if($bulan == $i){
+      $output.="<option value='$i' selected='selected'>$tampilBulan</option>";
+    }else{
+      $output.="<option value='$i'>$tampilBulan</option>";
+    }
+  }
+  return $output;
+}
+
+function optionTahun($tanggalEdit){
+  $output="";
+  $tahun= date('Y', strtotime($tanggalEdit));
+  for($i=$tahun-4;$i<=$tahun;$i++){
+    if($tahun == $i){
+      $output.="<option value='$i' selected='selected'>$i</option>";
+    }else{
+      $output.="<option value='$i'>$i</option>";
+    }
+  }
+  return $output;
+}
+// End Dropdown Tanggal
+
+function tampilPekerjaan($con, $id_pekerjaanEdit, $id_dosen, $id_semester){
+  $pekerjaan = "select * from tabel_pekerjaan_kompen where id_dosen='$id_dosen' and id_semester='$id_semester'";
+  $resultPekerjaan = mysqli_query($con, $pekerjaan);
+
+  $output="";
+  if(mysqli_num_rows($resultPekerjaan)>0){
+    while($rowPekerjaan=mysqli_fetch_assoc($resultPekerjaan)){
+      if($rowPekerjaan["id_pekerjaan_kompen"]==$id_pekerjaanEdit){
+        $output.="<option value='$rowPekerjaan[id_pekerjaan_kompen]' selected>".$rowPekerjaan["nama"]."</option>";
+      }else{
+        $output.="<option value='$rowPekerjaan[id_pekerjaan_kompen]'>$rowPekerjaan[nama]</option>";
+      }
+    }
+  }
+  return $output;
+}
+
+function tampilDosen($con, $id_dosenEdit){
+  $dosenPekerjaan = "select distinct(a.id_dosen), b.nama from tabel_pekerjaan_kompen a, tabel_dosen b where a.id_dosen=b.id_dosen";
+  $resultDosenPekerjaan = mysqli_query($con, $dosenPekerjaan);
+
+  $output="";
+  if(mysqli_num_rows($resultDosenPekerjaan)>0){
+    while($rowDosenPekerjaan=mysqli_fetch_assoc($resultDosenPekerjaan)){
+      if($rowDosenPekerjaan["id_dosen"]==$id_dosenEdit){
+        $output.="<option value='$rowDosenPekerjaan[id_dosen]' selected>".$rowDosenPekerjaan["nama"]."</option>";
+      }else{
+        $output.="<option value='$rowDosenPekerjaan[id_dosen]'>$rowDosenPekerjaan[nama]</option>";
+      }
+    }
+  }
+  return $output;
+}
+
+if(isset($_POST["pilihDosen"])){
+  $pekerjaan = "select * from tabel_pekerjaan_kompen where id_dosen='$_POST[pilihDosen]' and id_semester='$_POST[id_semester]'";
+  $resultPekerjaan = mysqli_query($con, $pekerjaan);
+
+  $output="";
+  if(mysqli_num_rows($resultPekerjaan)>0){
+    while($rowPekerjaan=mysqli_fetch_assoc($resultPekerjaan)){
+      $output.="<option value='$rowPekerjaan[id_pekerjaan_kompen]'>$rowPekerjaan[nama]</option>";
+    }
+  }
+
+  echo $output;
+}
+
 // Modal Edit Kompen
 if(isset($_POST["edit_kompen"])){
   $editKompen = "select a.*, b.nim, b.nama as namaMhs, c.nama as namaDosen, d.nama as pekerjaan from tabel_kompen a, tabel_mahasiswa b, tabel_dosen c, tabel_pekerjaan_kompen d where a.id_mahasiswa=b.id_mahasiswa and a.id_dosen=c.id_dosen and a.id_pekerjaan_kompen=d.id_pekerjaan_kompen and a.id_kompen=$_POST[edit_kompen]";
@@ -171,8 +278,10 @@ if(isset($_POST["edit_kompen"])){
 
   if(mysqli_num_rows($resultEditKompen)>0){
     $rowEditKompen=mysqli_fetch_assoc($resultEditKompen);
+      
       $output="";
       $output.="
+      <input type='hidden' name='id_semester' id='id_semesterPekerjaan' value='$rowEditKompen[id_semester]'>
       <div class='row px-5'>
         <div class='col-md-3'>NIM</div>
         <div class='col-md-1 text-right pr-0'>:</div>
@@ -188,31 +297,39 @@ if(isset($_POST["edit_kompen"])){
         <div class='col-md-1 text-right pt-1 pr-0'>:</div>
         <div class='col-md-8'>
           <div class='form-group form-sm row'>
-            <div class='col-sm-3'>
-              <select class='form-control w-auto tanggal' onblur='validasiTanggal(this)' id='tanggal'>
-                <option value='' disabled selected>Tanggal</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
+            <div class='col-sm-auto'>
+              <select class='form-control w-auto tanggal' name='tanggal' onblur='validasiTanggal(this)' id='tanggal'>".
+                optionTanggal($rowEditKompen["waktu"])."
               </select>
             </div>
-            <div class='col-sm-3'>
-              <select class='form-control w-auto tanggal' style='width:6.6em;' onblur='validasiTanggal(this)' id='bulan'>
-                <option value='' disabled selected>Bulan</option>
-                <option value='Januari'>Januari</option>
-                <option value='Februari'>Februari</option>
+            <div class='col-sm-auto'>
+              <select class='form-control w-auto tanggal' style='width:6.6em;' name='bulan' onblur='validasiTanggal(this)' id='bulan'>".
+                optionBulan($rowEditKompen["waktu"])."
               </select>
             </div>
-            <div class='col-sm-3'>
-              <select class='form-control tanggal w-auto' onblur='validasiTanggal(this)' id='tahun'>
-                <option value='' disabled selected>Tahun</option>
-                <option value='2013'>2013</option>
-                <option value='2018'>2018</option>
+            <div class='col-sm-auto'>
+              <select class='form-control tanggal w-auto' name='tahun' onblur='validasiTanggal(this)' id='tahun'>".
+              optionTahun($rowEditKompen["waktu"])."
               </select>
             </div>
-            <div class='col-sm-3'>
+            <div class='col-sm-auto'>
               <small class='text-danger d-none peringatanTanggal' id='peringatanTanggal'>*Masukkan Detail Tanggal</small>
             </div>
           </div>
+        </div>
+      </div>
+      <div class='row px-5'>
+        <div class='col-md-3 pt-1'>Dosen</div>
+        <div class='col-md-1 text-right pt-1 pr-0'>:</div>
+        <div class='col-md-6'>
+          <div class='form-group'>
+            <select class='form-control' name='dosen' id='dosen' onblur='validasiDosen(this)'>".
+              tampilDosen($con, $rowEditKompen["id_dosen"])."
+            </select>
+          </div>
+        </div>
+        <div class='col-md-2'>
+          <small class='text-danger d-none peringatanDosen' id='peringatanDosen'>*Masukkan Nama Dosen</small>
         </div>
       </div>
       <div class='row px-5'>
@@ -222,7 +339,9 @@ if(isset($_POST["edit_kompen"])){
       </div>
       <div class='row px-5'>
         <div class='form-group col-md-12'>
-          <textarea class='form-control' oninput='validasiJenis(this)' name='jenisKompensasi' id='jenisKompensasi' rows='4'></textarea>
+          <select class='form-control' name='jenisKompensasi' id='jenisKompensasi' onblur='validasiJenis(this)'>".
+          tampilPekerjaan($con, $rowEditKompen["id_pekerjaan_kompen"], $rowEditKompen["id_dosen"], $rowEditKompen["id_semester"])."
+          </select>
         </div>
       </div>
       <div class='row px-5'>
@@ -238,26 +357,9 @@ if(isset($_POST["edit_kompen"])){
           <small class='text-danger d-none peringatanJam' id='peringatanJam'>*Masukkan Total Jam Kompensasi</small>
         </div>
       </div>
-      <div class='row px-5'>
-        <div class='col-md-3 pt-1'>Dosen</div>
-        <div class='col-md-1 text-right pt-1 pr-0'>:</div>
-        <div class='col-md-6'>
-          <div class='form-group'>
-            <select class='form-control' name='dosen' id='dosen' onblur='validasiDosen(this)'>
-              <option value='$rowEditKompen[id_dosen]' selected>".$rowEditKompen["namaDosen"]."</option>
-              <option>Ridwan Rismanto, SST., M.KOM</option>
-              <option>Ridwan Rismanto, SST., M.KOM</option>
-              <option>Ridwan Rismanto, SST., M.KOM</option>
-            </select>
-          </div>
-        </div>
-        <div class='col-md-2'>
-          <small class='text-danger d-none peringatanDosen' id='peringatanDosen'>*Masukkan Nama Dosen</small>
-        </div>
-      </div>
       <div class='row px-5 mt-3 d-flex justify-content-end'>
         <button type='reset' class='btn btn-danger mr-4 btn-batal'>Delete</button>
-        <button type='submit' name='submit' class='btn btn-success btn-ok'>Submit</button>
+        <button type='submit' name='editKompen' class='btn btn-success btn-ok'>Submit</button>
       </div>";
 
     echo $output;
@@ -270,7 +372,7 @@ if(isset($_POST["edit_kompen"])){
 // UD Kompen
 if(isset($_POST["editKompen"]) || isset($_POST["hapusKompen"])){
   if($_GET["module"]=="absenKompen" && $_GET["act"]=="edit"){
-    mysqli_query($con, "update tabel_kompen set kriteria='$_POST[isiKriteria]' where id_kuisioner='$_POST[id_kuisioner]'");
+    mysqli_query($con, "update tabel_kompen set waktu='$_POST[tahun]-$_POST[bulan]-$_POST[tanggal]', id_dosen='$_POST[dosen]', id_pekerjaan_kompen='$_POST[jenisKompensasi]', jumlah_jam=$_POST[totalJam] where id_kompen='$_POST[id_kompen]'");
     header('location:../module/index.php?module=' . $_GET["module"]);
   }
   

@@ -77,10 +77,16 @@ include "../process/proses_absenKompen.php";
                       <tr>
                         <td><?php echo $no; ?></td>
                         <td class="text-left"><?php echo $rowAbsensi["nama"]; ?></td>
-                        <td><input type="number" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["sakit"]; ?>" name="sakit"></td>
-                        <td><input type="number" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["ijin"]; ?>" name="ijin"></td>
-                        <td><input type="number" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["alpa"]; ?>" name="alpha"></td>
-                        <td><input type="button" value="Simpan" id="<?php echo $rowAbsensi["id_absensi"]; ?>" class="btn btn-success"></td>
+                        <td>
+                          <input type="number" id="sakit[<?php echo $rowAbsensi["id_absensi"]; ?>]" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["sakit"]; ?>" name="sakit">
+                        </td>
+                        <td>
+                          <input type="number" id="ijin[<?php echo $rowAbsensi["id_absensi"]; ?>]" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["ijin"]; ?>" name="ijin">
+                        </td>
+                        <td>
+                          <input type="number" id="alpa[<?php echo $rowAbsensi["id_absensi"]; ?>]" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["alpa"]; ?>" name="alpha">
+                        </td>
+                        <td><input type="button" value="Simpan" id="<?php echo $rowAbsensi["id_absensi"]; ?>" class="btn btn-success submit-absen"></td>
                       </tr>
                     <?php
                     $no++;
@@ -241,7 +247,7 @@ include "../process/proses_absenKompen.php";
                     <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $no;?></td>
                     <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["nim"];?></td>
                     <td class="text-left tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaMhs"];?></td>
-                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["kode"];?></td>
+                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo prodi($con, $rowKompen["kode"]);?></td>
                     <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo tampilTanggal($rowKompen["waktu"]);?></td>
                     <td class="text-left tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaDosen"];?></td>
                     <td><button type="button" id="<?php echo $rowKompen["id_kompen"];?>" class="btn btn-primary edit-kompen" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
@@ -289,12 +295,12 @@ include "../process/proses_absenKompen.php";
       <div class="modal fade" id="modalEditKompen" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"       aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
           <div class="modal-content">
-            <form action="" method="post" onsubmit="return validasiSubmitEditKompen();">
+            <form action="../process/proses_absenKompen.php?module=absenKompen&act=edit" method="post" onsubmit="return validasiSubmitEditKompen();">
               <div class="modal-body">
                 <h5 class="border-bottom border-dark text-center pb-2 mb-3">Form Kompensasi</h5>
-                <input type="text" name="id_kompen" id="id_kompenEdit">
+                <input type="hidden" name="id_kompen" id="id_kompenEdit">
                 <div class="container-fluid p-0" id="edit-kompen">
-              
+                    
                 </div>
               </div>
             </form>

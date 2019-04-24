@@ -2,6 +2,11 @@
 <html>
 
 <head>
+    <?php 
+        include "../config/connection.php";
+        include "../process/proses_adminMahasiswa.php";
+    
+    ?>
 </head>
 
 <body onload="setup(); setup2();">
@@ -34,7 +39,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-12 p-0">
-                                        <form action="" id="formAdminMahasiswa" method="POST">
+                                        <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=tambah" id="formAdminMahasiswa" method="POST">
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -131,21 +136,21 @@
                                                             <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
                                                             <br>
                                                             <div class="col-sm-2">
-                                                                <select class="custom-select" style="width:110px;">
+                                                                <select class="custom-select" style="width:110px;" id="tanggalLahirMahasiswa" name="tanggalLahirMahasiswa">
                                                                     <option value="" disabled selected>Tanggal</option>
                                                                     <option value="2">2</option>
                                                                     <option value="3">3</option>
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <select class="custom-select" style="width:110px;">
+                                                                <select class="custom-select" style="width:110px;" id="bulanLahirMahasiswa" name="bulanLahirMahasiswa">
                                                                     <option value="" disabled selected>Bulan</option>
                                                                     <option value="Januari">Januari</option>
                                                                     <option value="Februari">Februari</option>
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <select class="custom-select" style="width:110px;">
+                                                                <select class="custom-select" style="width:110px;" id="tahunLahirMahasiswa" name="tahunLahirMahasiswa">
                                                                     <option value="" disabled selected>Tahun</option>
                                                                     <option value="2013">2013</option>
                                                                     <option value="2018">2018</option>
@@ -195,7 +200,7 @@
                                                             <label class="col-sm-2">Prodi</label>
                                                             <br>
                                                             <div class="col-sm-10">
-                                                                <select name="prodi" class="custom-select"
+                                                                <select name="prodi" class="custom-select" id="prodiMahasiswa"
                                                                     style="width:220px;">
                                                                     <option value="Teknik Informatika">Teknik
                                                                         Informatika</option>
@@ -207,10 +212,37 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2">Kelas</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Kelas" style="width:160px;"
-                                                                    id="kelasMahasiswaAdmin" name="kelasMahasiswaAdmin"
-                                                                    required />
+                                                            <select class="semester custom-select kelas" style="width:120px;" id="kelasMahasiswa" name="kelasMahasiswa">
+                                                                    <option disabled selected>Pilih Kelas</option>
+                                                                    <option value ="TI-1A">TI-1A</option>
+                                                                    <option value ="TI-1B">TI-1B</option>
+                                                                    <option value ="TI-1C">TI-1C</option>
+                                                                    <option value ="TI-1D">TI-1D</option>
+                                                                    <option value ="TI-1E">TI-1E</option>
+                                                                    <option value ="TI-1F">TI-1F</option>
+                                                                    <option value ="TI-1G">TI-1G</option>
+                                                                    <option value ="TI-2A">TI-2A</option>
+                                                                    <option value ="TI-2B">TI-2B</option>
+                                                                    <option value ="TI-2C">TI-2C</option>
+                                                                    <option value ="TI-2D">TI-2D</option>
+                                                                    <option value ="TI-2E">TI-2E</option>
+                                                                    <option value ="TI-2F">TI-2F</option>
+                                                                    <option value ="TI-2G">TI-2G</option>
+                                                                    <option value ="TI-3A">TI-3A</option>
+                                                                    <option value ="TI-3B">TI-3B</option>
+                                                                    <option value ="TI-3C">TI-3C</option>
+                                                                    <option value ="TI-3D">TI-3D</option>
+                                                                    <option value ="TI-3E">TI-3E</option>
+                                                                    <option value ="TI-3F">TI-3F</option>
+                                                                    <option value ="TI-3G">TI-3G</option>
+                                                                    <option value ="TI-4A">TI-4A</option>
+                                                                    <option value ="TI-4B">TI-4B</option>
+                                                                    <option value ="TI-4C">TI-4C</option>
+                                                                    <option value ="TI-4D">TI-4D</option>
+                                                                    <option value ="TI-4E">TI-4E</option>
+                                                                    <option value ="TI-4F">TI-4F</option>
+                                                                    <option value ="TI-4G">TI-4G</option>
+                                                                </select>
                                                             </div>
                                                             <div class="col-sm-3"></div>
                                                             <div class="col-sm-9">
@@ -221,7 +253,7 @@
                                                         <div class="row">
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
-                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" onclick="Cobacoba(); 
+                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="Cobacoba(); 
                                                                     
                                                                     showFilesSizes2();">Tambahkan</button>
                                                             </div>
@@ -240,7 +272,7 @@
                                 <button class="btn btn-mencari btn-success tmbl-mencari"type="submit">Cari</button>
                             </form>
                             <div class="scrolltable">
-                                <table class="table table-striped table-bordered text-center">
+                                <table class="table table-striped table-bordered text-center mt-3">
                                     <thead>
                                         <tr>
                                             <th>No</th>
