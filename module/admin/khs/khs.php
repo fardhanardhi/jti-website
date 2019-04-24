@@ -1,3 +1,7 @@
+<?php
+  include "../config/connection.php";
+  include "../process/proses_khs.php";
+?>
 <main role="main" class="container-fluid">
     <div id="khs" class="row">
         <div class="col-md-12 p-0">
@@ -15,21 +19,29 @@
             <div class="m-2 p-3 bg-white rounded shadow-sm">
                 <h4>SEMESTER 4 (2019/2020)</h4>
                 <hr>
+                <form action="?module=khs" method="post">
                 <select class="kelas custom-select" style="width:150px">
                     <option selected>Pilih Kelas</option>
                     <?php
-                    include('../koneksi/connection.php');
-					$tampil=mysqli_query($con, "SELECT tabel_prodi.kode as kode, tingkat, kode_kelas FROM tabel_kelas INNER JOIN tabel_prodi ON tabel_kelas.id_prodi = tabel_prodi.id_prodi GROUP BY id_kelas;");
-					while($r=mysqli_fetch_array($tampil)){
-					echo"<option value=$r[id_kelas]>$r[kode] - $r[tingkat] $r[kode_kelas]</option>";
-					}
-                    ?>
+                  $resultKelas=kelas($con);
+                  if(mysqli_num_rows($resultKelas)){
+                    while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                      ?>
+                      <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
+                      <?php
+                    }
+                  }
+                  ?>
                 </select>
-                <button type="button" class="tmbl-filter btn btn-success ml-3">Search</button>
+                <input type="submit" class="tmbl-filter btn btn-success ml-3" value="Cari">
                 <a href ="index.php?module=khsLihat" class="tmbl-ruangan btn btn-info float-right">Lihat KHS</a>
-                <br><br>
+                </form>
                 <div class="media text-muted pt-8">
                     <div class="media-body pb-8 mb-0">
+                    <?php
+                        $resultTampilKhsLihat=khsLihat($con);
+                        if(mysqli_num_rows($resultTampilKhsLihat) > 0){
+                        ?>
                         <table class="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>
@@ -42,31 +54,42 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php 
+                                $no=1;
+                                while($row = mysqli_fetch_assoc($resultTampilKhsLihat)){
+                                    ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Matkul A</td>
-                                    <td>lalalalallalalalaal</td>
-                                    <td>4</td>
-                                    <td>A</td>
-                                    <td><button class=" tmbl-table btn btn-success" type="button" class="pratinjau btn" data-toggle="modal"
-                                            data-target="#edit" class="edit">Edit</button>
+                                    <td><?php echo $no;?></td>
+                                    <td><?php echo $row["nim"];?></td>
+                                    <td><?php echo $row["nm_mahasiswa"];?></td>
+                                    <td><?php echo $row["sks"];?></td>
+                                    <td><?php echo $row["ip"];?></td>
+                                    <td><button class="lihat tmbl-table btn btn-info" type="button" class="pratinjau btn" data-toggle="modal"
+                                            data-target="#myModal" class="edit">Edit</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Matkul A</td>
-                                    <td>lllalalallalallalala</td>
-                                    <td>4</td>
-                                    <td>A</td>
-                                    <td><button class=" tmbl-table btn btn-success" type="button" class="pratinjau btn" data-toggle="modal"
-                                            data-target="#edit" class="edit">Edit</button>
-                                    </td>
-                                </tr>
+                                <?php
+                                    $no++;
+                                    }
+                                ?>
                             </tbody>
                         </table>
+                        <?php 
+                        }else{
+                            ?>
+                            <div class="text-center">
+                            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                            <p class="text-muted">Mahasiswa Tidak Ditemukan</p>
+                            </div>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
+            <?php 
+            include('khsUploadModal.php');
+        ?>
         </div>
     </div>
 </main>
