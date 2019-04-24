@@ -201,8 +201,6 @@ if (isset($_GET["tampilChat"])) {
   $idUser = $_GET['idUser'];
   $idUserTujuan = $_GET['idUserTujuan'];
 
-  // $firstRowRecentUser = mysqli_fetch_assoc(mysqli_query($con, queryTampilRecentChat($idUser)));
-  // $idUserTujuan = $firstRowRecentUser["recent_user"];
   $resultChat = mysqli_query($con, queryTampilChat($idUser, $idUserTujuan));
 
   if (mysqli_num_rows($resultChat) > 0) {
@@ -274,8 +272,38 @@ if (isset($_GET["tampilChat"])) {
       }
     }
   } else {
-    echo "gagal";
-  }
+    ?>
+    <div class="row align-items-center justify-content-center h-100 pb-5">
+      <div class="col mb-5 text-center">
+        <span class="text-center" style="font-size: 10em; color: #dbdbdb;">
+          <i class="fas fa-comment-dots "></i>
+        </span>
+      </div>
+    </div>
+  <?php
+}
+}
+
+if (isset($_GET["tampilNamaUserTujuan"])) {
+  $idUser = $_GET['idUser'];
+  $idUserTujuan = $_GET['idUserTujuan'];
+
+  if ($idUserTujuan != null) {
+    ?>
+    <img class="chat-profile-photo" src="../attachment/img/avatar.png">
+    <h5 class="m-0 ml-3">
+      <?php
+      if (tampilLevelUser($con, $idUserTujuan) == "mahasiswa") {
+        echo tampilMahasiswa($con, $idUserTujuan);
+      } elseif (tampilLevelUser($con, $idUserTujuan) == "dosen") {
+        echo tampilDosen($con, $idUserTujuan);
+      } elseif (tampilLevelUser($con, $idUserTujuan) == "admin") {
+        echo tampilAdmin($con, $idUserTujuan);
+      }
+      ?>
+    </h5>
+  <?php
+}
 }
 
 if (isset($_POST['sendChat'])) {
@@ -285,7 +313,6 @@ if (isset($_POST['sendChat'])) {
   $date = date("m/d/Y h:i A");
   $final = strtotime($date);
   $datetimeNow = date("Y-m-d H:i:s", $final);
-
 
   $sql =
     "INSERT INTO 
