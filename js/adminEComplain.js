@@ -45,26 +45,43 @@ $(document).ready(function() {
   $(document).on("click", ".recent-chat-item", function() {
     idUserTujuan = $(this).data("id");
     reload();
+    $("#inputChat").prop("disabled", false);
   });
 
   $(document).on("click", ".btn-send", function() {
+    kirimChat();
+  });
+
+  // detect enter
+  $("#inputChat").keydown(function(e) {
+    if (e.keyCode == 13) {
+      kirimChat();
+    }
+  });
+
+  function kirimChat() {
     var isiChat = $("#inputChat").val();
     var idUser = $("#idUser").val();
-    $.ajax({
-      url: "../process/proses_eComplain.php",
-      type: "POST",
-      data: {
-        sendChat: 1,
-        isiChat: isiChat,
-        idUser: idUser,
-        idUserTujuan: idUserTujuan
-      },
-      success: function(response) {
-        $("#inputChat").val("");
-        reload();
-      }
-    });
-  });
+    if ($.trim(isiChat) != "") {
+      $.ajax({
+        url: "../process/proses_eComplain.php",
+        type: "POST",
+        data: {
+          sendChat: 1,
+          isiChat: isiChat,
+          idUser: idUser,
+          idUserTujuan: idUserTujuan
+        },
+        success: function(response) {
+          $("#inputChat").val("");
+          reload();
+        }
+      });
+    } else {
+      alert("Pesan tidak boleh kosong");
+      $("#inputChat").val("");
+    }
+  }
 
   function reload() {
     $("#chatWindow").animate({ scrollTop: 20000000 }, "slow");
