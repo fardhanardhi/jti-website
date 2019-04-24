@@ -34,8 +34,8 @@ $kelasUser = $rowUser["id_kelas"];
             </center>
             <br><br>
             <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaUser; ?></h5>
-              <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $nimUser; ?></h5>
-                <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaProdiUser; ?></h5>
+            <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $nimUser; ?></h5>
+            <h5 class="border-bottom border-gray pb-2 mb-0" align="center"><?php echo $namaProdiUser; ?></h5>
           </div>
         </div>
       </div>
@@ -56,14 +56,20 @@ $kelasUser = $rowUser["id_kelas"];
         </div>
         <select class="semester custom-select" style="width:250px">
           <option selected>-</option>
-          <option value="1">Semester 1</option>
-          <option value="2">Semester 2</option>
-          <option value="3">Semester 3</option>
-          <option value="3">Semester 4</option>
-          <option value="3">Semester 5</option>
-          <option value="3">Semester 6</option>
-          <option value="3">Semester 7</option>
-          <option value="3">Semester 8</option>
+          <?php 
+            $resultSemester=semester($con); 
+            if(mysqli_num_rows($resultSemester))
+            {
+                while($rowSemester=mysqli_fetch_assoc($resultSemester))
+                {
+                ?>
+            <option value="<?php echo $rowSemester["id_semester"];?>">
+              Semester <?php echo $rowSemester["semester"];?>
+            </option>
+            <?php
+                }
+            }
+        ?>
         </select>
         <button type="button" class="tmbl-filter btn btn-success ml-2">Filter</button>
         <button type="button" class="tmbl-ruangan btn btn-info float-right">Ruangan</button>
@@ -84,17 +90,17 @@ $kelasUser = $rowUser["id_kelas"];
             </tr>
           </thead>
           <tbody>
-          <?php
+            <?php
             $no=1;
             while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
             ?>
             <tr>
-                <td><?php echo $no;?></td>
-                <td><?php echo $row["nm_matkul"]; ?></td>
-                <td><?php echo $row["nama"]; ?></td>
-                <td><?php echo $row["hari"]; ?></td>
-                <td><?php echo $row["sks"]; ?> SKS / <?php echo $row["jam"]; ?> JAM</td>
-                <td><?php echo $row["kode"]; ?> (Lt<?php echo $row["lantai"]; ?>)</td>
+              <td><?php echo $no;?></td>
+              <td><?php echo $row["nm_matkul"]; ?></td>
+              <td><?php echo $row["nama"]; ?></td>
+              <td><?php echo $row["hari"]; ?></td>
+              <td><?php echo $row["sks"]; ?> SKS / <?php echo $row["jam"]; ?> JAM</td>
+              <td><?php echo $row["kode"]; ?> (Lt<?php echo $row["lantai"]; ?>)</td>
             </tr>
             <?php
             $no++;
@@ -115,8 +121,8 @@ $kelasUser = $rowUser["id_kelas"];
       </div>
       <?php } else { ?>
       <div class="col-12 mt-5 text-center">
-          <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
-          <p>Nama, kelas atau prodi tidak dapat ditemukan</h6>
+        <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
+        <p>Nama, kelas atau prodi tidak dapat ditemukan</h6>
       </div>
       <?php } ?>
     </div>
