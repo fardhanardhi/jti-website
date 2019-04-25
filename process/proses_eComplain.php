@@ -193,7 +193,27 @@ if (isset($_GET["tampilRecentChat"])) {
     <?php
   }
 } else {
-  echo "gagal";
+  ?>
+    <div class="row align-items-center justify-content-center h-100 pb-5">
+      <div class="col mb-5 text-center">
+        <div class="row">
+          <div class="col">
+            <span class="text-center" style="font-size: 10em; color: #dbdbdb;">
+              <i class="fas fa-smile"></i>
+            </span>
+
+          </div>
+        </div>
+        <div class="row pt-4">
+          <div class="col">
+            <h4 class="text-muted">Belum ada chat</h4>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  <?php
 }
 }
 

@@ -9,12 +9,14 @@ function recentChatSearch() {
     recentIsi,
     i,
     txtValueName,
-    txtValueIsi;
+    txtValueIsi,
+    totalInactive;
   input = $("#recentChatInput");
   filter = $(input)
     .val()
     .toUpperCase();
   recentChatItem = $("#recentChat .recent-chat-item");
+  totalInactive = $("#recentChat .recent-chat-item:hidden");
   for (i = 0; i < recentChatItem.length; i++) {
     recentName = $(recentChatItem[i]).find(".recentName");
     recentIsi = $(recentChatItem[i]).find(".recentIsi");
@@ -33,6 +35,16 @@ function recentChatSearch() {
       } else {
         recentChatItem[i].style.display = "none";
       }
+    }
+  }
+  $("#infoTidakDitemukan").hide();
+  $("#infoTidakDitemukan").remove();
+
+  if (recentChatItem.length == totalInactive.length) {
+    if (!$("#infoTidakDitemukan").length) {
+      $("#recentChat").append(
+        "<div id='infoTidakDitemukan' class='row pt-5'><div  class='infoTidakDitemukan col text-center text-muted'>Pencarian tidak dapat ditemukan</div></div>"
+      );
     }
   }
 }
