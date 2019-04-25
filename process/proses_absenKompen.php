@@ -78,13 +78,6 @@ function rekap($con)
   return $resultRekap;
 }
 
-function cariRekap($con, $txtCariRekap)
-{
-  $rekap = "select a.*, b.* from tabel_mahasiswa a, tabel_absensi b where a.id_mahasiswa=b.id_mahasiswa and b.alpa>0 and (a.nim like '%$txtCariRekap%' or a.nama like '%$txtCariRekap%') order by a.nama asc";
-  $resultRekap = mysqli_query($con, $rekap);
-  return $resultRekap;
-}
-
 function kompenSemester($con, $id_mahasiswa, $id_semester){
   $kompenSemester="select sum(a.alpa) as kompenSemester from tabel_absensi a, tabel_mahasiswa b where a.id_mahasiswa=b.id_mahasiswa and a.id_mahasiswa=$id_mahasiswa and a.id_semester=$id_semester";
   $resultKompenSemester = mysqli_query($con, $kompenSemester);

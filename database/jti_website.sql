@@ -430,7 +430,33 @@ INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `id_matkul`, `waktu_edit`) VA
 (3, 33, 4, '2019-04-09 00:00:00'),
 (4, 33, 6, '2019-04-09 00:00:00');
 
--- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_krs_admin`
+--
+
+CREATE TABLE `tabel_krs_admin` (
+  `id_krs` int(30) NOT NULL,
+  `id_mahasiswa` int(30) NOT NULL,
+  `status_daftar_ulang` varchar(50) DEFAULT NULL,
+  `gambar_krs` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_krs_admin`
+--
+
+INSERT INTO `tabel_krs_admin` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`) VALUES
+(1, 33, 'Sudah', NULL),
+(2, 34, 'Belum', NULL),
+(3, 35, 'Sudah', NULL),
+(4, 36, 'Belum', NULL),
+(5, 37, 'Sudah', NULL),
+(6, 38, 'Belum', NULL),
+(7, 39, 'Sudah', NULL),
+(8, 40, 'Belum', NULL),
+(9, 41, 'Sudah', NULL),
+(10, 42, 'Belum', NULL);
 
 --
 -- Table structure for table `tabel_kuisioner`
@@ -904,6 +930,12 @@ ALTER TABLE `tabel_krs`
   ADD PRIMARY KEY (`id_krs`),
   ADD KEY `id_mahasiswa` (`id_mahasiswa`),
   ADD KEY `id_matkul` (`id_matkul`);
+
+--
+-- Indexes for table `tabel_krs_admin`
+--
+ALTER TABLE `tabel_krs_admin`
+  ADD PRIMARY KEY (`id_krs`);
 
 --
 -- Indexes for table `tabel_kuisioner`
