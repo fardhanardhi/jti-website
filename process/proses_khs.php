@@ -17,6 +17,23 @@ function khs($con, $kelas, $semester)
     return $resultTampilKhs;
 }
 
+function khsKelas($con, $kelas)
+{
+    $khsKelas = "select distinct(a.id_mahasiswa), b.*, b.nim, 
+    b.nama as nm_mahasiswa, c.*, SUM(c.sks) as sks , d.*, d.id_kelas, e.*, e.semester , f.*, f.nama as nm_prodi,
+    SUM(c.sks * a.nilai)/SUM(c.sks) as ip from 
+    tabel_khs a, tabel_mahasiswa b, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_prodi f
+    where a.id_mahasiswa = b.id_mahasiswa
+    and a.id_matkul = c.id_matkul
+    and a.id_kelas = d.id_kelas
+    and d.id_prodi = f.id_prodi
+    and a.id_semester = e.id_semester 
+    and a.id_kelas = $kelas group by a.id_mahasiswa";
+
+    $resultTampilKhsKelas = mysqli_query($con, $khsKelas);
+    return $resultTampilKhsKelas;
+}
+
 function khsLihat($con)
 {
     $khsLihat = "select distinct(a.id_mahasiswa), b.*, b.nim, 
