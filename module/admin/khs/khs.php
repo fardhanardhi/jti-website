@@ -20,8 +20,8 @@
                 <h4>SEMESTER 4 (2019/2020)</h4>
                 <hr>
                 <form action="?module=khs" method="post">
-                <select class="kelas custom-select" style="width:150px">
-                    <option selected>Pilih Kelas</option>
+                <select class="kelas custom-select" style="width:150px" name="kelas">
+                    <option value="0">Pilih Kelas</option>
                     <?php
                   $resultKelas=kelas($con);
                   if(mysqli_num_rows($resultKelas)){
@@ -33,15 +33,20 @@
                   }
                   ?>
                 </select>
-                <input type="submit" class="tmbl-filter btn btn-success ml-3" value="Cari">
+                <input type="submit" class="tmbl-filter btn btn-success ml-3" value="Cari" name="cariKhsKelas">
                 <a href ="index.php?module=khsLihat" class="tmbl-ruangan btn btn-info float-right">Lihat KHS</a>
                 </form>
                 <div class="media text-muted pt-8">
                     <div class="media-body pb-8 mb-0">
                     <?php
-                        $resultTampilKhsLihat=khsLihat($con);
-                        if(mysqli_num_rows($resultTampilKhsLihat) > 0){
+                        if(isset($_POST["cariKhsKelas"])){
+                            $result=khsKelas($con, $_POST["kelas"]);
+                            }else{
+                            $result = khsLihat($con);
+                            }
+                            if(mysqli_num_rows($result) > 0){
                         ?>
+                        
                         <table class="table table-striped table-bordered text-center">
                             <thead>
                                 <tr>
@@ -56,7 +61,7 @@
                             <tbody>
                             <?php 
                                 $no=1;
-                                while($row = mysqli_fetch_assoc($resultTampilKhsLihat)){
+                                while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                 <tr>
                                     <td><?php echo $no;?></td>
