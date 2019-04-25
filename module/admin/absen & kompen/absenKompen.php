@@ -205,24 +205,16 @@ include "../process/proses_absenKompen.php";
         <h6 class="border-bottom border-gray pb-2 mb-0">Kompensasi Mahasiswa</h6>
         <div class="container-fluid mt-3 p-0">
           <div class="row">
-            <div class="col-md-12">
-              <form class="form-inline" action="?module=absenKompen" method="post">
+            <div class="col-md-12 form-inline">
                 <img src="../img/search.svg" alt="" id="icon-search">
-                <input type="search" class="form-control mr-3" name="txtCariKompen" placeholder="Pencarian">
-                <input type="submit" value="Cari" name="cariKompen" class="btn btn-success cariKompen">
-              </form>
+                <input type="search" class="form-control mr-3" name="txtCariKompen" id="txtCariKompen" placeholder="Pencarian">
             </div>
           </div>
 
           <div class="row mt-3 mr-0 pr-0 scrollbar" id="dataKompen">
             <div class="col-md-12 pr-1 d-flex justify-content-center">
               <?php
-              if(isset($_POST["cariKompen"])){
-                $resultKompen=cariKompen($con, $_POST["txtCariKompen"]);
-              }
-              else{
-                $resultKompen=kompen($con);
-              }
+              $resultKompen=kompen($con);
               
               if (mysqli_num_rows($resultKompen) > 0){
               ?>
@@ -243,13 +235,13 @@ include "../process/proses_absenKompen.php";
                   $no=1;
                   while($rowKompen = mysqli_fetch_assoc($resultKompen)){
                     ?>
-                  <tr>
+                  <tr class="itemKompen">
                     <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $no;?></td>
-                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["nim"];?></td>
-                    <td class="text-left tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaMhs"];?></td>
-                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo prodi($con, $rowKompen["kode"]);?></td>
-                    <td class="tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo tampilTanggal($rowKompen["waktu"]);?></td>
-                    <td class="text-left tampil-detail" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaDosen"];?></td>
+                    <td class="tampil-detail nim" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["nim"];?></td>
+                    <td class="text-left tampil-detail nama-mhs" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaMhs"];?></td>
+                    <td class="tampil-detail prodi" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo prodi($con, $rowKompen["kode"]);?></td>
+                    <td class="tampil-detail nama-dosen" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo tampilTanggal($rowKompen["waktu"]);?></td>
+                    <td class="text-left tampil-detail waktu" data-id="<?php echo $rowKompen["id_kompen"];?>"><?php echo $rowKompen["namaDosen"];?></td>
                     <td><button type="button" id="<?php echo $rowKompen["id_kompen"];?>" class="btn btn-primary edit-kompen" data-toggle="modal" data-target="#modalEditKompen">Edit</button></td>
                     <td><button type="button" id="<?php echo $rowKompen["id_kompen"];?>"  class="btn btn-danger hapus-kompen" data-toggle="modal" data-target="#modalHapusKompen">Hapus</button></td>
                   </tr>
@@ -336,24 +328,16 @@ include "../process/proses_absenKompen.php";
         <h6 class="border-bottom border-gray pb-2 mb-0">Daftar Pekerjaan dari Dosen</h6>
         <div class="container-fluid mt-3 p-0">
           <div class="row">
-            <div class="col-md-12">
-              <form class="form-inline" action="?module=absenKompen" method="post">
+            <div class="col-md-12 form-inline">
                 <img src="../img/search.svg" alt="" id="icon-search">
-                <input type="search" class="form-control mr-3" name="txtCariPekerjaan" placeholder="Pencarian">
-                <input type="submit" value="Cari" name="cariPekerjaan" class="btn btn-success cariKompen">
-              </form>
+                <input type="search" class="form-control mr-3" name="txtCariPekerjaan" id="txtCariPekerjaan" placeholder="Pencarian">
             </div>
           </div>
 
           <div class="row mt-3 mr-0 pr-0 scrollbar" id="dataPekerjaan">
             <div class="col-md-12 pr-1 d-flex justify-content-center">
             <?php
-              if(isset($_POST["cariPekerjaan"])){
-                $resultPekerjaan=cariPekerjaan($con, $_POST["txtCariPekerjaan"]);
-              }
-              else{
-                $resultPekerjaan=pekerjaan($con);
-              }
+              $resultPekerjaan=pekerjaan($con);
               
               if (mysqli_num_rows($resultPekerjaan) > 0){
               ?>
@@ -373,11 +357,11 @@ include "../process/proses_absenKompen.php";
                   $no=1;
                   while($rowPekerjaan = mysqli_fetch_assoc($resultPekerjaan)){
                   ?>
-                    <tr>
+                    <tr class="itemPekerjaan">
                       <td><?php echo $no; ?></td>
-                      <td><?php echo $rowPekerjaan["nip"]; ?></td>
-                      <td class="text-left"><?php echo $rowPekerjaan["namaDosen"]; ?></td>
-                      <td class="text-left"><?php echo $rowPekerjaan["nama"]; ?></td>
+                      <td class="nip"><?php echo $rowPekerjaan["nip"]; ?></td>
+                      <td class="nama-dosen text-left"><?php echo $rowPekerjaan["namaDosen"]; ?></td>
+                      <td class="nama-pekerjaan text-left"><?php echo $rowPekerjaan["nama"]; ?></td>
                       <td><?php echo $rowPekerjaan["kuota"]; ?></td>
                       <td><?php echo $rowPekerjaan["semester"]; ?></td>
                     </tr>
@@ -408,25 +392,17 @@ include "../process/proses_absenKompen.php";
         <h6 class="border-bottom border-gray pb-2 mb-0">Rekap Kompen</h6>
         <div class="container-fluid mt-3 p-0">
           <div class="row">
-            <div class="col-md-12">
-              <form class="form-inline" action="?module=absenKompen" method="post">
+            <div class="col-md-12 form-inline">
                 <img src="../img/search.svg" alt="" id="icon-search">
-                <input type="search" class="form-control mr-3" name="txtCariRekap" placeholder="Pencarian">
-                <input type="submit" value="Cari" name="cariRekap" class="btn btn-success cariKompen">
-              </form>
+                <input type="search" class="form-control mr-3" name="txtCariRekap" id="txtCariRekap" placeholder="Pencarian">
             </div>
           </div>
 
           <div class="row mt-3 mr-0 pr-0 scrollbar" id="rekapKompen">
             <div class="col-md-12 pr-1">
             <?php
-              if(isset($_POST["cariRekap"])){
-                $resultRekap=cariRekap($con, $_POST["txtCariRekap"]);
-              }
-              else{
-                $resultRekap=rekap($con);
-              }
-              
+              $resultRekap=rekap($con);
+
               if (mysqli_num_rows($resultRekap) > 0){
               ?>
               <table class="table table-striped table-bordered text-center">
@@ -446,10 +422,10 @@ include "../process/proses_absenKompen.php";
                   $no=1;
                   while($rowRekap = mysqli_fetch_assoc($resultRekap)){
                   ?>
-                    <tr>
+                    <tr class="itemRekap">
                       <td><?php echo $no; ?></td>
-                      <td><?php echo $rowRekap["nim"] ?></td>
-                      <td><?php echo tampilKelas($con, $rowRekap["id_kelas"]) ?></td>
+                      <td class="nim"><?php echo $rowRekap["nim"] ?></td>
+                      <td class="kelas"><?php echo tampilKelas($con, $rowRekap["id_kelas"]) ?></td>
                       <td><?php echo kompenSemester($con, $rowRekap["id_mahasiswa"], $rowRekap["id_semester"]) ?></td>
                       <td><?php echo totalKompen($con, $rowRekap["id_mahasiswa"]) ?></td>
                       <td><?php echo kompenSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
