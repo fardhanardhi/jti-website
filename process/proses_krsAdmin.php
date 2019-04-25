@@ -30,4 +30,16 @@ function tampilKelas($con, $id_kelas){
     $hasil= $row["kode"]." - ".$row["tingkat"].$row["kode_kelas"];
     return $hasil;
 }
+
+if(isset($_POST["hapusKrs"])){
+    $result=krs($con);
+    if(mysqli_num_rows($result) > 0){
+      while($row = mysqli_fetch_assoc($result)){
+    if($_GET["module"]=="krs" && $_GET["act"]=="hapus"){
+        $hapusKrs="delete from tabel_krs_admin where id_krs = '$_POST[id_krs]'";
+        mysqli_query($con, $hapusKrs);
+        header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+}
+
 ?>

@@ -35,9 +35,9 @@
                                 <option value="<?php echo $rowKelas["id_kelas"];?>">
                                     <?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
                                 <?php
-                    }
-                  }
-                  ?>
+                                }
+                            }
+                            ?>
                         </select>
                         <select class="optionSemester custom-select" name="semester" style="width:150px">
                             <option value="0">Pilih Semester</option>
@@ -49,9 +49,9 @@
                             <option value="<?php echo $rowSemester["id_semester"];?>">
                                 <?php echo $rowSemester["semester"];?></option>
                             <?php
-                      }
-                    }
-                   ?>
+                            }
+                            }
+                        ?>
                         </select>
                         <button type="button" class="btn btn-cari btn-success ml-2">Cari</button>
                         </form>
@@ -67,54 +67,52 @@
                             </thead>
                             <tbody>
                                 <?php
-                            $result=krs($con);
-                            if(mysqli_num_rows($result) > 0){
-                              while($row = mysqli_fetch_assoc($result)){
-                                if($row["status_daftar_ulang"]=="Sudah" && $row["gambar_krs"]==NULL){
-                                  echo"
-                                    <tr class='ukt-lunas-belum-upload'>
-                                      <td>". $row["id_krs"] ."</td>
-                                      <td>". $row["nim"] ."</td>
-                                      <td>". $row["nama"] ."</td>
-                                      <td>
-                                      <input id='fileid' type='file' name='filename' hidden required />
-                                      <input id='buttonid' type='button' value='Upload' class='btn  btn-upload btn-success ml-2' />
-                                      </td>
-                                  </tr>
-                                  ";
-                                  }
-                                  else if($row["status_daftar_ulang"]=="Belum"){
-                                    echo"
-                                    <tr class='ukt-belum-lunas'>
-                                        <td>". $row["id_krs"] ."</td>
-                                        <td>". $row["nim"] ."</td>
-                                        <td>". $row["nama"] ."</td>
-                                        <td>
-                                      <input id='fileid' type='file' name='filename' hidden required />
-                                      <input id='buttonid' type='button' value='Upload' class='btn  btn-upload btn-success ml-2'
-                                      style='visibility: hidden' />
-                                      </td>
-                                    </tr>
-                                    ";
-                                  }
-                                  else if($row["status_daftar_ulang"]=="Sudah" && $row["gambar_krs"]!=NULL){
-                                    echo"
-                                    <tr class='ukt-lunas-sudah-upload'>
-                                    <td>". $row["id_krs"] ."</td>
-                                    <td>". $row["nim"] ."</td>
-                                    <td>". $row["nama"] ."</td>
-                                    <td><button type='button' class='btn btn-lihat btn-primary tmbl-lihat ml-2' data-toggle='modal'
-                                    data-target='#modalGambar'>Lihat</button>
-
-            <button type='button' class='btn btn-hapus btn-danger ml-2' data-toggle='modal'
-                data-target='#modalCheckout'>Hapus</button>
-                                    </td>
-                                </tr>
-                                ";
-                                }
-                              }
-                            ?>
-                            </tbody>
+                                    $result=krs($con);
+                                    if(mysqli_num_rows($result) > 0){
+                                    while($row = mysqli_fetch_assoc($result)){
+                                        if($row["status_daftar_ulang"]=="Sudah" && $row["gambar_krs"]==NULL){
+                                            ?>
+                                            <tr class="ukt-lunas-belum-upload">
+                                            <td><?php echo $row["id_krs"]?></td>
+                                            <td><?php echo $row["nim"]?></td>
+                                            <td><?php echo $row["nama"]?></td>
+                                            <td>
+                                            <input id="fileid" type="file" name= "filename" hidden required />
+                                            <input id="buttonid" type="button" value="Upload" class="btn  btn-upload btn-success ml-2"/>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        } else if($row["status_daftar_ulang"]=="Belum"){
+                                            ?>
+                                            <tr class="ukt-belum-lunas">
+                                            <td><?php echo $row["id_krs"]?></td>
+                                            <td><?php echo $row["nim"]?></td>
+                                            <td><?php echo $row["nama"]?></td>
+                                            <td>
+                                            <input id="fileid" type="file" name= "filename" hidden required />
+                                            <input id="buttonid" type="button" value="Upload" class="btn btn-upload btn-success ml-2"
+                                            style="visibility: hidden"/>
+                                            </td>
+                                            </tr>
+                                            <?php
+                                        } else if($row["status_daftar_ulang"]=="Sudah" && $row["gambar_krs"]!=NULL){
+                                            $id_krs = $row["id_krs"];
+                                            ?>
+                                            <tr class="ukt-lunas-sudah-upload">
+                                            <td><?php echo $row["id_krs"]?></td>
+                                            <td><?php echo $row["nim"]?></td>
+                                            <td><?php echo $row["nama"]?></td>
+                                            <td><button type="button" class="btn btn-lihat btn-primary tmbl-lihat ml-2" data-toggle="modal"
+                                            data-target="#modalGambar">Lihat</button>
+                                            <button type="submit" class="btn btn-danger btn-hapus ml-2" id="<?php echo $row["id_krs"];?>"
+                                            data-toggle="modal" data-target="#modalHapus">Hapus</button></td>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        }
+                                    }
+                                ?>
+                                </tbody>
                             <?php 
                         }else{
                             ?>
@@ -126,23 +124,26 @@
                         }
                         ?>
                         </table>
-                        <div class="modal fade" id="modalCheckout" tabindex="-1" role="dialog"
-                            aria-labelledby="modalCheckoutTitle" aria-hidden="true">
+                        <!-- Modal Hapus-->
+                        <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapus"
+                            aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
+                                <form action="../process/proses_krsAdmin.php?module=krs&act=hapus" method="post">
                                     <div class="modal-body pt-5 text-center">
-                                        <strong>Apakah Anda yakin?</strong>
+                                    <input type="hidden" name="id_krs" id="id_krsHapus">
+                                    <strong>Apakah Anda yakin?</strong>
                                     </div>
-                                    <div class="container-fluid pb-4 pt-4 d-flex justify-content-around">
-                                        <button type="button" class="btn btn-tidak btn-danger btn-confirm"
-                                            data-dismiss="modal">Tidak</button>
-                                        <button type="submit" name="checkout"
-                                            class="btn btn-ya btn-success btn-confirm">Ya</button>
+                                    <div class="pb-4 pt-4 d-flex justify-content-around">
+                                    <button type="button" class="btn btn-tidak btn-danger btn-confirm" data-dismiss="modal">Tidak</button>
+                                    <button type="submit" name="hapusKrs" class="btn btn-ya btn-success btn-confirm">Ya</button>
                                     </div>
+                                </form>
                                 </div>
                             </div>
+                            <!-- End Modal Hapus -->
                         </div>
-
+                        
                         <div class="modal fade" id="modalGambar" tabindex="-1" role="dialog"
                             aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
