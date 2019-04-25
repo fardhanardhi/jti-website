@@ -52,8 +52,12 @@
                 <div class="media text-muted pt-8">
                     <div class="media-body pb-8 mb-0">
                     <?php
-                        $resultTampilKhsLihat=khsLihat($con);
-                        if(mysqli_num_rows($resultTampilKhsLihat) > 0){
+                        if(isset($_POST["cariKhs"])){
+                        $result=khs($con, $_POST["kelas"], $_POST["semester"]);
+                        }else{
+                        $result = khsLihat($con);
+                        }
+                        if(mysqli_num_rows($result) > 0){
                         ?>
                         <table class="table table-striped table-bordered text-center">
                             <thead>
@@ -68,7 +72,7 @@
                             <tbody>
                             <?php 
                                 $no=1;
-                                while($row = mysqli_fetch_assoc($resultTampilKhsLihat)){
+                                while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                 <tr>
                                     <td><?php echo $no;?></td>
