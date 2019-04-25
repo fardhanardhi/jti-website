@@ -15,6 +15,7 @@
 #eComplain .btn-send {
   height: 2.5em;
   width: auto;
+  cursor: pointer;
 }
 
 #eComplain .chat-head {
