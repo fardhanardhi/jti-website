@@ -32,9 +32,6 @@ function tampilKelas($con, $id_kelas){
 }
 
 if(isset($_POST["hapusKrs"])){
-    $result=krs($con);
-    if(mysqli_num_rows($result) > 0){
-      while($row = mysqli_fetch_assoc($result)){
     if($_GET["module"]=="krs" && $_GET["act"]=="hapus"){
         $hapusKrs="delete from tabel_krs_admin where id_krs = '$_POST[id_krs]'";
         mysqli_query($con, $hapusKrs);

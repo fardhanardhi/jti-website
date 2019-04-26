@@ -104,7 +104,7 @@
                                             <td><?php echo $row["nama"]?></td>
                                             <td><button type="button" class="btn btn-lihat btn-primary tmbl-lihat ml-2" data-toggle="modal"
                                             data-target="#modalGambar">Lihat</button>
-                                            <button type="submit" class="btn btn-danger btn-hapus ml-2" id="<?php echo $row["id_krs"];?>"
+                                            <button type="button" class="btn btn-danger btn-hapus hapus-krs ml-2" id="<?php echo $row["id_krs"];?>"
                                             data-toggle="modal" data-target="#modalHapus">Hapus</button></td>
                                             </td>
                                         </tr>
