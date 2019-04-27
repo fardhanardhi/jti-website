@@ -49,8 +49,10 @@
                                                                         while($rowKelas=mysqli_fetch_assoc($resultKelas))
                                                                         {
                                                                         ?>
-                                                                            <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo $rowKelas["kode"];?>-<?php echo $rowKelas["tingkat"]; echo $rowKelas["kode_kelas"];?></option>
-                                                                        <?php
+                                                                    <option value="<?php echo $rowKelas["id_kelas"];?>">
+                                                                        <?php echo $rowKelas["kode"];?>-<?php echo $rowKelas["tingkat"]; echo $rowKelas["kode_kelas"];?>
+                                                                    </option>
+                                                                    <?php
                                                                         }
                                                                     }
                                                                 ?>
@@ -151,8 +153,10 @@
                                                                         while($rowMatkul=mysqli_fetch_assoc($resultMatkul))
                                                                         {
                                                                         ?>
-                                                                            <option value="<?php echo $rowMatkul["id_matkul"];?>"><?php echo $rowMatkul["nama"];?></option>
-                                                                        <?php
+                                                                    <option
+                                                                        value="<?php echo $rowMatkul["id_matkul"];?>">
+                                                                        <?php echo $rowMatkul["nama"];?></option>
+                                                                    <?php
                                                                         }
                                                                     }
                                                                 ?>
@@ -171,8 +175,9 @@
                                                                         while($rowRuang=mysqli_fetch_assoc($resultRuang))
                                                                         {
                                                                         ?>
-                                                                            <option value="<?php echo $rowRuang["id_ruang"];?>"><?php echo $rowRuang["kode"];?></option>
-                                                                        <?php
+                                                                    <option value="<?php echo $rowRuang["id_ruang"];?>">
+                                                                        <?php echo $rowRuang["kode"];?></option>
+                                                                    <?php
                                                                         }
                                                                     }
                                                                 ?>
@@ -192,8 +197,9 @@
                                                                         while($rowDosen=mysqli_fetch_assoc($resultDosen))
                                                                         {
                                                                         ?>
-                                                                            <option value="<?php echo $rowDosen["id_dosen"];?>"><?php echo $rowDosen["nama"];?></option>
-                                                                        <?php
+                                                                    <option value="<?php echo $rowDosen["id_dosen"];?>">
+                                                                        <?php echo $rowDosen["nama"];?></option>
+                                                                    <?php
                                                                         }
                                                                     }
                                                                 ?>
@@ -247,15 +253,16 @@
                                         ?>
                                         <tr>
                                             <td><?php echo $no;?></td>
-                                            <td><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?></td>
+                                            <td><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?>
+                                            </td>
                                             <td><?php echo $row["nama"]; ?></td>
                                             <td><?php echo $row["semester"]; ?></td>
                                             <td><?php echo $row["jumlah_matkul"]; ?></td>
                                             <td><?php echo $row["jumlah_sks"]; ?></td>
-                                            <td><button class=" tmbl-table btn btn-primary" type="button"
+                                            <td><button class="tmbl-table btn btn-primary" type="button"
                                                     class="pratinjau btn" data-toggle="modal" data-target="#editModal"
                                                     class="edit">Edit</button></td>
-                                            <td><button class=" tmbl-table btn btn-danger" type="button"
+                                            <td><button class="tmbl-table btn btn-danger" type="button"
                                                     class="pratinjau btn" data-toggle="modal" data-target="#hapus"
                                                     class="hapus">Hapus</button></td>
                                         </tr>
@@ -300,144 +307,213 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content p-3">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Data Jadwal Kuliah</h5>
+                <h5 class="col-11 modal-title text-center">Edit Data Jadwal Kuliah</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <!-- isi -->
             <div class="card-body">
-                <div class="col-md-12 p-0">
-                    <form action="" method="post">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Jam</label>
-                                        <div class="col-sm-4">
-                                            <select class="semester custom-select">
-                                                <option selected>Mulai</option>
-                                                <option>07.00</option>
-                                                <option>07.45</option>
-                                                <option>08.30</option>
-                                                <option>08.40</option>
-                                                <option>09.15</option>
-                                                <option>09.30</option>
-                                                <option>09.45</option>
-                                                <option>10.00</option>
-                                                <option>10.35</option>
-                                                <option>10.45</option>
-                                                <option>11.00</option>
-                                                <option>12.30</option>
-                                                <option>12.45</option>
-                                                <option>13.15</option>
-                                                <option>13.35</option>
-                                                <option>13.45</option>
-                                                <option>14.25</option>
-                                                <option>14.30</option>
-                                                <option>15.15</option>
-                                                <option>15.30</option>
-                                                <option>16.15</option>
-                                                <option>16.20</option>
-                                                <option>16.40</option>
-                                                <option>17.10</option>
-                                            </select>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <h5>Kelas : TI-2F</h5>
+                    </div>
+                    <div class="col-sm-9">
+                        <h5>Semester : 4</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            <h6 class="mb-0">
+                                Collapsible Group Item #1 <i class="fas fa-caret-down float-right"></i>
+                            </h6>
+
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="col-md-12 p-0">
+                                    <form action="" method="post">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Jam</label>
+                                                        <div class="col-sm-4">
+                                                            <select class="semester custom-select">
+                                                                <option selected>Mulai</option>
+                                                                <option>07.00</option>
+                                                                <option>07.45</option>
+                                                                <option>08.30</option>
+                                                                <option>08.40</option>
+                                                                <option>09.15</option>
+                                                                <option>09.30</option>
+                                                                <option>09.45</option>
+                                                                <option>10.00</option>
+                                                                <option>10.35</option>
+                                                                <option>10.45</option>
+                                                                <option>11.00</option>
+                                                                <option>12.30</option>
+                                                                <option>12.45</option>
+                                                                <option>13.15</option>
+                                                                <option>13.35</option>
+                                                                <option>13.45</option>
+                                                                <option>14.25</option>
+                                                                <option>14.30</option>
+                                                                <option>15.15</option>
+                                                                <option>15.30</option>
+                                                                <option>16.15</option>
+                                                                <option>16.20</option>
+                                                                <option>16.40</option>
+                                                                <option>17.10</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-1">
+                                                            <center>
+                                                                <h3>/</h3>
+                                                            </center>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <select class="semester custom-select">
+                                                                <option selected>Berakhir</option>
+                                                                <option>07.45</option>
+                                                                <option>07.50</option>
+                                                                <option>08.30</option>
+                                                                <option>08.40</option>
+                                                                <option>09.15</option>
+                                                                <option>09.30</option>
+                                                                <option>09.45</option>
+                                                                <option>10.00</option>
+                                                                <option>10.35</option>
+                                                                <option>10.45</option>
+                                                                <option>11.00</option>
+                                                                <option>12.30</option>
+                                                                <option>12.45</option>
+                                                                <option>13.15</option>
+                                                                <option>13.35</option>
+                                                                <option>13.45</option>
+                                                                <option>14.25</option>
+                                                                <option>14.30</option>
+                                                                <option>15.15</option>
+                                                                <option>15.30</option>
+                                                                <option>16.15</option>
+                                                                <option>16.20</option>
+                                                                <option>16.40</option>
+                                                                <option>17.10</option>
+                                                                <option>18.00</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Hari</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="semester custom-select">
+                                                                <option selected>Pilih Hari</option>
+                                                                <option>Senin</option>
+                                                                <option>Selasa</option>
+                                                                <option>Rabu</option>
+                                                                <option>Kamis</option>
+                                                                <option>Jum'at</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Dosen Pengajar</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="semester custom-select">
+                                                                <option selected>Pilih Dosen Pengajar</option>
+                                                                <option>Bapak/Ibu</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Ruangan</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="semester custom-select">
+                                                                <option selected>Pilih Ruangan</option>
+                                                                <option>Ruangan</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">SKS</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" name="sks" id="sks" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Mata Kuliah</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="semester custom-select">
+                                                                <option selected>Pilih Mata Kuliah</option>
+                                                                <option>Proyek 1</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <button type="button"
+                                                                class="btn btn-success float-right btn-edit">Edit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-1">
-                                            <center>
-                                                <h3>/</h3>
-                                            </center>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <select class="semester custom-select">
-                                                <option selected>Berakhir</option>
-                                                <option>07.45</option>
-                                                <option>07.50</option>
-                                                <option>08.30</option>
-                                                <option>08.40</option>
-                                                <option>09.15</option>
-                                                <option>09.30</option>
-                                                <option>09.45</option>
-                                                <option>10.00</option>
-                                                <option>10.35</option>
-                                                <option>10.45</option>
-                                                <option>11.00</option>
-                                                <option>12.30</option>
-                                                <option>12.45</option>
-                                                <option>13.15</option>
-                                                <option>13.35</option>
-                                                <option>13.45</option>
-                                                <option>14.25</option>
-                                                <option>14.30</option>
-                                                <option>15.15</option>
-                                                <option>15.30</option>
-                                                <option>16.15</option>
-                                                <option>16.20</option>
-                                                <option>16.40</option>
-                                                <option>17.10</option>
-                                                <option>18.00</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Hari</label>
-                                        <div class="col-sm-9">
-                                            <select class="semester custom-select">
-                                                <option selected>Pilih Hari</option>
-                                                <option>Senin</option>
-                                                <option>Selasa</option>
-                                                <option>Rabu</option>
-                                                <option>Kamis</option>
-                                                <option>Jum'at</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Dosen Pengajar</label>
-                                        <div class="col-sm-9">
-                                            <select class="semester custom-select">
-                                                <option selected>Pilih Dosen Pengajar</option>
-                                                <option>Bapak/Ibu</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Ruangan</label>
-                                        <div class="col-sm-9">
-                                            <select class="semester custom-select">
-                                                <option selected>Pilih Ruangan</option>
-                                                <option>Ruangan</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">SKS</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="sks" id="sks" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Mata Kuliah</label>
-                                        <div class="col-sm-9">
-                                            <select class="semester custom-select">
-                                                <option selected>Pilih Mata Kuliah</option>
-                                                <option>Proyek 1</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12">
-                                            <button type="button"
-                                                class="btn btn-success float-right btn-edit">Edit</button>
-                                        </div>
-                                    </div>
+
+                                    </form>
                                 </div>
                             </div>
                         </div>
-
-                    </form>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                    Collapsible Group Item #2
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Collapsible Group Item #3
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
