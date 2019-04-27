@@ -55,7 +55,7 @@
                             <?php echo $rowSemester["semester"];?></option>
                         <?php
                         }
-                        }
+                    }
                     ?>
                     </select>
                     <input type="submit" name="searchKrs" class="btn btn-cari btn-success ml-2" value="Search">
@@ -63,16 +63,16 @@
                 </div>
                     </form>
                     <div class="row scrollbar mr-0" id="cariKrs">
-                                <div class="col-md-12 pr-1 d-flex justify-content-center">
-                                    <?php
-                                    if(isset($_POST["searchKrs"])){
+                        <div class="col-md-12 pr-1 d-flex justify-content-center">
+                            <?php
+                                if(isset($_POST["searchKrs"])){
                                     $result=krsCariSemester($con, $_POST["kelas"], $_POST["semester"]);
-                                    }
-                                    else{
+                                }
+                                else{
                                     $result=krsCariSemester($con, minKelas($con), minSemester($con));
-                                    }
+                                }
                                     
-                                    if (mysqli_num_rows($result) > 0){
+                                if (mysqli_num_rows($result) > 0){
                                     ?>
                                     <table class="table tabel table-bordered">
                                     <thead class="text-white bg-blue">
@@ -88,7 +88,6 @@
                                         if(mysqli_num_rows($result) > 0){
                                             while($row = mysqli_fetch_assoc($result)){
                                                 if($row["status_daftar_ulang"]=="Sudah" && $row["gambar_krs"]==NULL){
-                                                    $idKrs=$row["id_krs"];
                                                     ?>
                                                     <tr class="ukt-lunas-belum-upload">
                                                     <td><?php echo $row["id_krs"]?></td>
@@ -135,26 +134,26 @@
                                             <?php
                                             }
                                         }
-                                            ?>
+                                        ?>
                                         </tbody>
                                         </table>
                                         <?php
                                         } else{
                                         ?>
                                         <div class="text-center">
-                                        <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                                        <p class="text-muted">Data Tidak Ditemukan</p>
+                                            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                                            <p class="text-muted">Data Tidak Ditemukan</p>
                                         </div>
                                         <?php
                                         }
                                     } else{
                                         ?>
                                         <div class="text-center">
-                                        <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                                        <p class="text-muted">Data Tidak Ditemukan</p>
+                                            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                                            <p class="text-muted">Data Tidak Ditemukan</p>
                                         </div>
                                         <?php
-                                    }
+                                        }
                                         ?>
                                     </div>
                                     </div>

@@ -44,13 +44,13 @@
                     </select>
                     <input type="submit" name="searchKrs" class="btn btn-cari btn-success ml-2" value="Search">
                     
-                    <a href="index.php?module=krsPerKelas" class="btn btn-lihat lihat-krs btn-primary float-right">Lihat
+                    <a href="index.php?module=krsPerKelas" class="btn btn-lihat btn-primary float-right">Lihat
                                 KRS</a>
                 </div>
                     </form>
-                            <div class="row scrollbar mr-0" id="cariKrs">
-                                <div class="col-md-12 pr-1 d-flex justify-content-center">
-                                    <?php
+                        <div class="row scrollbar mr-0" id="cariKrs">
+                            <div class="col-md-12 pr-1 d-flex justify-content-center">
+                                <?php
                                     if(isset($_POST["searchKrs"])){
                                     $result=krsCari($con, $_POST["kelas"]);
                                     }
@@ -74,7 +74,6 @@
                                         if(mysqli_num_rows($result) > 0){
                                         while($row = mysqli_fetch_assoc($result)){
                                             if($row["status_daftar_ulang"]=="Sudah" && $row["gambar_krs"]==NULL){
-                                                $idKrs=$row["id_krs"];
                                                 ?>
                                                 <tr class="ukt-lunas-belum-upload">
                                                 <td><?php echo $row["id_krs"]?></td>
@@ -120,7 +119,7 @@
                                             <?php
                                             }
                                         }
-                                            ?>
+                                        ?>
                                         </tbody>
                                         </table>
                                         <?php
@@ -139,8 +138,8 @@
                                         <p class="text-muted">Data Tidak Ditemukan</p>
                                         </div>
                                         <?php
-                                    }
-                                        ?>
+                                        }
+                                    ?>
                                     </div>
                                     </div>
                                 </div>
