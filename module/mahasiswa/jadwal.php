@@ -81,7 +81,7 @@ $kelasUser = $rowUser["id_kelas"];
           ?>
           </select>
           <button type="submit" name="cariJadwal" class="tmbl-filter btn btn-success ml-2">Filter</button>
-          <button type="button" class="tmbl-ruangan btn btn-info float-right">Ruangan</button>
+          <a href="?module=kelasKosong"><button type="button" class="tmbl-ruangan btn btn-info float-right">Ruangan</button></a>
         </form>
         <br>
         <?php
