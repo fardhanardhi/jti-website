@@ -31,8 +31,17 @@
                                 </div>
                                 <hr>
                                 <div class="form-group ketik-berita">
-                                    <textarea name="ketik-berita" id="" cols="30" rows="6" placeholder="Ketik Berita ..." maxlength="500" class="form-control border-0" oninput="Beritacharcountupdate(this.value)"></textarea>
+                                    <textarea name="ketik-berita" id="" cols="30" rows="6" placeholder="Ketik Berita ..." maxlength="500" class="form-control border-0" oninput="Beritacharcountupdate(this.value)">
+                                    </textarea> 
                                 </div>
+                                <div class="col-md-12 p-0">
+                                        <span class="close">&times;</span>
+                                        <p style="background-color:#CF212A; height: 30px; color: white;">&nbsp Pak Dimas.jpg (Gagal Upload) - Kapasitas gambar lebih dari 5 Mb</p>
+                                    </div>
+                                    <div class="col-md-12 p-0">
+                                        <span class="close">&times;</span>
+                                        <p style="background-color:#F5F5F5; height: 30px; margin-top: -10px;">&nbsp Pak Dimas.jpg</p>
+                                    </div>
                                 <hr>
                                 <div class="container m-0">
                                     <div class="row">
