@@ -47,4 +47,46 @@ function kelas($con)
     $resultKelas = mysqli_query($con,$kelas);
     return $resultKelas;
 }
+
+if (isset($_POST["insert"]) || isset($_POST["hapus"])){
+
+    if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="tambah"){
+
+    $query1 =   "INSERT INTO tabel_jadwal (id_ruang, id_kelas, id_prodi, id_semester, id_dosen, id_matkul, hari, jam_mulai, jam_selesai, tingkat, waktu_edit)            values (
+                            '$_POST[usernameMahasiswaAdmin]',
+                            '$_POST[passwordMahasiswaAdmin]',
+                            'mahasiswa'
+                        );
+    //  INSERT INTO tabel_mahasiswa (id_prodi, 
+    //  id_kelas, 
+    //  id_kelas, 
+    //  id_semester, 
+    //  nim,
+    //  nama,
+    //  alamat,
+    //  jenis_kelamin,
+    //  tempat_lahir,
+    //  foto,
+    //  id_user
+    //  );
+
+    //  values
+    //  ('$_POST[tes]',
+    //  '$_POST[tes]',
+    //  '$_POST[tes]',
+    //  '$_POST[tes]'
+         
+    //  )
+
+
+
+    //  ";
+
+    //  mysqli_query($con, $query1);
+
+    //  header('location:../module/index.php?module=' . $_GET["module"]);
+
+    }   
+}
+
 ?>
