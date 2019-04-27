@@ -599,7 +599,7 @@
             <div class="modal-content kontent-modal">
                 <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=hapus" method="post">
                     <div clas="modal-body">
-                        <input type="number" name="id_user" value="<?php $id_user?>" hidden>
+                        <input type="number" name="id_user" value="<?php $id_delete?>">
                         <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
                         <div class="tombolAksiHapusDataMahasiswa text-center">
                             <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>
