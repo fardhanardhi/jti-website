@@ -44,11 +44,6 @@ $kelasUser = $rowUser["id_kelas"];
     <div class="col-md-9 p-0">
       <div class="m-2 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-2">Jadwal Kuliah</h6>
-        <center>
-          <div class="warna-verifikasi col-md-12 mt-3 p-2">
-            <p class="card-title">Sudah terverifikasi oleh DPA</p>
-          </div>
-        </center>
         <div class="media text-muted pt-3">
           <p class="media-body pb-3 mb-0 small lh-125">
             <strong class="d-block text-dark">Periode Semester</strong>

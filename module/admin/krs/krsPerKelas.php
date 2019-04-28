@@ -55,7 +55,7 @@
                             <?php echo $rowSemester["semester"];?></option>
                         <?php
                         }
-                        }
+                    }
                     ?>
                     </select>
                     <input type="submit" name="searchKrs" class="btn btn-cari btn-success ml-2" value="Search">
@@ -63,16 +63,16 @@
                 </div>
                     </form>
                     <div class="row scrollbar mr-0" id="cariKrs">
-                                <div class="col-md-12 pr-1 d-flex justify-content-center">
-                                    <?php
-                                    if(isset($_POST["searchKrs"])){
+                        <div class="col-md-12 pr-1 d-flex justify-content-center">
+                            <?php
+                                if(isset($_POST["searchKrs"])){
                                     $result=krsCariSemester($con, $_POST["kelas"], $_POST["semester"]);
-                                    }
-                                    else{
+                                }
+                                else{
                                     $result=krsCariSemester($con, minKelas($con), minSemester($con));
-                                    }
+                                }
                                     
-                                    if (mysqli_num_rows($result) > 0){
+                                if (mysqli_num_rows($result) > 0){
                                     ?>
                                     <table class="table tabel table-bordered">
                                     <thead class="text-white bg-blue">
@@ -86,18 +86,24 @@
                                     <tbody>
                                     <?php
                                         if(mysqli_num_rows($result) > 0){
-                                        while($row = mysqli_fetch_assoc($result)){
-                                            if($row["status_daftar_ulang"]=="Sudah" && $row["gambar_krs"]==NULL){
-                                                ?>
-                                                <tr class="ukt-lunas-belum-upload">
-                                                <td><?php echo $row["id_krs"]?></td>
-                                                <td><?php echo $row["nim"]?></td>
-                                                <td><?php echo $row["nama"]?></td>
-                                                <td>
-                                                <input id="fileid" type="file" name= "filename" hidden required />
-                                                <input id="buttonid" type="button" value="Upload" class="btn  btn-upload btn-success ml-2"/>
-                                                </td>
-                                            </tr>
+                                            while($row = mysqli_fetch_assoc($result)){
+                                                if($row["status_daftar_ulang"]=="Sudah" && $row["gambar_krs"]==NULL){
+                                                    ?>
+                                                    <tr class="ukt-lunas-belum-upload">
+                                                    <td><?php echo $row["id_krs"]?></td>
+                                                    <td><?php echo $row["nim"]?></td>
+                                                    <td><?php echo $row["nama"]?></td>
+                                                    <td>
+                                                    <form action="../process/proses_krsAdmin.php?module=krs&act=upload&id=<?php echo $row["id_krs"];?>" method="post" 
+                                                    enctype="multipart/form-data" accept="image/jpg">                             
+                                                    <!--<label class="btn btn-upload btn-success ml-2" name="upload">
+                                                    Upload<input type="file" name="photo" onchange="this.form.submit()" style="display: none;">
+                                                    </label>-->
+                                                    <input type="file" name="photo" required>
+                                                    <button type="submit" class="btn btn-upload btn-success ml-2" name="upload">Upload</button>
+                                                    </form>
+                                                    </td>
+                                                </tr>
                                             <?php
                                             } else if($row["status_daftar_ulang"]=="Belum"){
                                                 ?>
@@ -128,26 +134,26 @@
                                             <?php
                                             }
                                         }
-                                            ?>
+                                        ?>
                                         </tbody>
                                         </table>
                                         <?php
                                         } else{
                                         ?>
                                         <div class="text-center">
-                                        <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                                        <p class="text-muted">Data Tidak Ditemukan</p>
+                                            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                                            <p class="text-muted">Data Tidak Ditemukan</p>
                                         </div>
                                         <?php
                                         }
                                     } else{
                                         ?>
                                         <div class="text-center">
-                                        <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                                        <p class="text-muted">Data Tidak Ditemukan</p>
+                                            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                                            <p class="text-muted">Data Tidak Ditemukan</p>
                                         </div>
                                         <?php
-                                    }
+                                        }
                                         ?>
                                     </div>
                                     </div>
@@ -183,7 +189,17 @@
                                     <center>
                                         <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close"><span aria-hidden="false">&times;</span></button>
-                                        <img src="../attachment/img/krs1.png" width="100%" alt="">
+                                        <?php
+                                        $query = "SELECT * FROM tabel_krs_admin WHERE id_krs=1";
+                                        $result = mysqli_query($con, $query);
+                                        if (mysqli_num_rows($result) > 0){
+                                            while($row = mysqli_fetch_assoc($result)){
+                                                ?>
+                                                <img src='../attachment/img/<?php echo $row["gambar_krs"]?>' width="100%" alt="">
+                                            <?php
+                                            }
+                                        }
+                                    ?>
                                     </center>
                                 </div>
                             </div>
