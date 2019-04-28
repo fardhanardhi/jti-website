@@ -2,15 +2,15 @@
   box-sizing: border-box;
   border-radius: 10px; 
   font-weight: bold;
-  }
+}
   
-  #krsAdmin .optionKelas {
+#krsAdmin .optionKelas {
     box-sizing: border-box;
     border-radius: 10px; 
     font-weight: bold;
-  }
+}
   
-  #krsAdmin .breadcrumb a{
+#krsAdmin .breadcrumb a{
     text-decoration: none;
     color: black;
 }
@@ -36,7 +36,7 @@
 
   #krsAdmin .btn-lihat, .btn-hapus, .btn-ya, .btn-tidak {
     border-radius: 10px;
-    width: 7em;
+    width: 8em;
     height: 1.8em;
     padding: 0;
   }

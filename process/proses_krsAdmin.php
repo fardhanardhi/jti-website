@@ -4,7 +4,7 @@ include "../config/connection.php";
 function krs($con)
 {
     $krs = "SELECT DISTINCT tabel_krs_admin.id_krs, tabel_mahasiswa.nim, tabel_mahasiswa.nama,
-    tabel_krs_admin.status_daftar_ulang, tabel_krs_admin.gambar_krs
+    tabel_krs_admin.status_daftar_ulang, tabel_krs_admin.gambar_krs, tabel_krs_admin.gambar_krs
     FROM tabel_krs_admin INNER JOIN tabel_mahasiswa ON tabel_krs_admin.id_mahasiswa = tabel_mahasiswa.id_mahasiswa";
     
     $resultTampilKrs = mysqli_query($con, $krs);
@@ -72,6 +72,27 @@ if(isset($_POST["hapusKrs"])){
         $hapusKrs="update tabel_krs_admin set gambar_krs=null where id_krs = '$_POST[id_krs]'";
         mysqli_query($con, $hapusKrs);
         header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+}
+
+if(isset($_POST["lihatKrs"])){
+    if($_GET["module"]=="krs" || $_GET["module"]=="krsPerKelas" && $_GET["act"]=="edit"){
+      mysqli_query($con, "SELECT * FROM tabel_krs_admin WHERE id_krs=$_POST'[id_krs]'");
+      header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+}
+
+if(isset($_POST["lihat_krs"])){
+    $lihat = "select * from tabel_krs_admin where id_krs=$_POST[lihat_krs]";
+    $resultLihat = mysqli_query($con, $lihat);
+    if(mysqli_num_rows($resultLihat)>0){
+      $row=mysqli_fetch_assoc($resultLihat);
+      $output="";
+        $output.="
+        <center>
+            <img src='../attachment/img/$row[gambar_krs]' width='100%'>
+        </center>";
+        echo $output;
     }
 }
 
