@@ -31,6 +31,15 @@ switch ($level) {
     $namaUser = "User tidak ditemukan";
     break;
 }
+
+// Melihat status pembayaran ukt
+$queryStatus = "SELECT tk.status_daftar_ulang FROM tabel_krs tk,tabel_mahasiswa tm
+                where tk.id_mahasiswa = tm.id_mahasiswa
+                and tm.id_user = $idUser";
+$resultStatus = mysqli_query($con, $queryStatus);
+$rowStatus = mysqli_fetch_assoc($resultStatus);
+$statusPembayaran = $rowStatus["status_daftar_ulang"];
+
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +71,11 @@ switch ($level) {
               <img src="../img/navigation/home.svg">
               <p class="mt-3">HOME</p>
             </div>
-            <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
+            <?php if($level == "dosen" || $statusPembayaran == "Sudah"){ ?>
+              <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
+            <?php } elseif($level == "mahasiswa" && $statusPembayaran == "Belum"){ ?>
+              <div onclick="location.href='index.php?module=krs';" class="navigation-menu col-md-3 col-lg-2 my-1">
+            <?php } ?>
               <?php
               if ($level == "mahasiswa") {
                 ?>
