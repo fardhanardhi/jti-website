@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2019 at 11:21 AM
+-- Generation Time: Apr 28, 2019 at 09:33 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.13
 
@@ -131,7 +131,9 @@ INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VAL
 (11, 'Nganggur', 45, 32, '2019-04-23 09:57:00'),
 (12, 'Bagi dulur-dulur di jawatimur yang mau masuk ke Malang atau mau keluar Malang, disarankan untuk tidak berangkat di hari jumat. Dikarenakan hari jumat tanggal 12 April 2019 Malang raya punya agenda besar  1. Final piala presiden 2019 Arema vs Persebaya 2. Final piala presiden di hadiri RI 1 Joko Widodo 3. Kampanye terbuka Capres 02 Prabowo-Sandi 4. Konvoi Besar Aremania se-Malang Raya  Dan di sarankan untuk dulur-dulur yang memiliki kendaraan dengan Plat Nomor L (surabaya) dan W (sidoarjo) untuk tidak nekat masuk wilayah Malang raya di hari tersebut (atas saran dari POLRI) demi keselamatan dulur semua. Terimakasih dan monggo di bantu share untuk kenyamanan masyarakat jawatimur bersama.', 32, 45, '2019-04-23 09:59:00'),
 (13, 'Ikut bro', 32, 45, '2019-04-23 09:59:00'),
-(14, 'Makasih', 45, 32, '2019-04-23 09:59:00');
+(14, 'Makasih', 45, 32, '2019-04-23 09:59:00'),
+(15, 'tes', 32, 45, '2019-04-26 14:55:00'),
+(16, 'tes', 32, 2, '2019-04-26 14:56:00');
 
 -- --------------------------------------------------------
 
@@ -440,7 +442,7 @@ INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `id_matkul`, `waktu_edit`) VA
 
 CREATE TABLE `tabel_krs_admin` (
   `id_krs` int(30) NOT NULL,
-  `id_mahasiswa` int(30) NOT NULL,
+  `id_mahasiswa` int(30) DEFAULT NULL,
   `status_daftar_ulang` varchar(50) DEFAULT NULL,
   `gambar_krs` varchar(100) DEFAULT NULL,
   `id_semester` int(30) DEFAULT NULL
@@ -451,9 +453,9 @@ CREATE TABLE `tabel_krs_admin` (
 --
 
 INSERT INTO `tabel_krs_admin` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`) VALUES
-(1, 33, 'Sudah', 'krs1.png', 7),
+(1, 33, 'Sudah', '20190428093312.png', 7),
 (2, 34, 'Belum', NULL, 7),
-(3, 35, 'Sudah', NULL, 7),
+(3, 35, 'Sudah', '20190428093318.png', 7),
 (4, 36, 'Belum', NULL, 7),
 (5, 37, 'Sudah', NULL, 7),
 (6, 38, 'Belum', NULL, 7),
@@ -1045,7 +1047,7 @@ ALTER TABLE `tabel_attachment`
 -- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
-  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
