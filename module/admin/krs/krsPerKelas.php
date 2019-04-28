@@ -47,10 +47,10 @@
                     <select class="optionSemester custom-select" name="semester" style="width:150px">
                         <option value="0">Pilih Semester</option>
                         <?php
-                    $resultSemester=tampilSemester($con);
-                    if(mysqli_num_rows($resultSemester)){
-                    while($rowSemester=mysqli_fetch_assoc($resultSemester)){
-                    ?>
+                            $resultSemester=tampilSemester($con);
+                            if(mysqli_num_rows($resultSemester)){
+                            while($rowSemester=mysqli_fetch_assoc($resultSemester)){
+                        ?>
                         <option value="<?php echo $rowSemester["id_semester"];?>">
                             <?php echo $rowSemester["semester"];?></option>
                         <?php
@@ -59,8 +59,7 @@
                     ?>
                     </select>
                     <input type="submit" name="searchKrs" class="btn btn-cari btn-success ml-2" value="Search">
-                    
-                </div>
+                    </div>
                     </form>
                     <div class="row scrollbar mr-0" id="cariKrs">
                         <div class="col-md-12 pr-1 d-flex justify-content-center">
@@ -94,6 +93,7 @@
                                                     <td><?php echo $row["nim"]?></td>
                                                     <td><?php echo $row["nama"]?></td>
                                                     <td>
+                                                    <center>
                                                     <form action="../process/proses_krsAdmin.php?module=krs&act=upload&id=<?php echo $row["id_krs"];?>" method="post" 
                                                     enctype="multipart/form-data" accept="image/jpg">                             
                                                     <!--<label class="btn btn-upload btn-success ml-2" name="upload">
@@ -102,6 +102,7 @@
                                                     <input type="file" name="photo" required>
                                                     <button type="submit" class="btn btn-upload btn-success ml-2" name="upload">Upload</button>
                                                     </form>
+                                                    </center>
                                                     </td>
                                                 </tr>
                                             <?php
@@ -125,10 +126,13 @@
                                                 <td><?php echo $row["id_krs"]?></td>
                                                 <td><?php echo $row["nim"]?></td>
                                                 <td><?php echo $row["nama"]?></td>
-                                                <td><button type="button" class="btn btn-lihat btn-primary tmbl-lihat ml-2" data-toggle="modal"
+                                                <td>
+                                                <center>
+                                                <button type="button" class="btn btn-lihat btn-primary lihat-krs tmbl-lihat mr-9" id="<?php echo $row["id_krs"];?>" data-toggle="modal"
                                                 data-target="#modalGambar">Lihat</button>
                                                 <button type="button" class="btn btn-danger btn-hapus hapus-krs ml-2" id="<?php echo $row["id_krs"];?>"
-                                                data-toggle="modal" data-target="#modalHapus">Hapus</button></td>
+                                                data-toggle="modal" data-target="#modalHapus">Hapus</button>
+                                                </center>
                                                 </td>
                                             </tr>
                                             <?php
@@ -158,10 +162,10 @@
                                     </div>
                                     </div>
                                 </div>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
                         <!-- Modal Hapus-->
                         <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-labelledby="modalHapus"
                             aria-hidden="true">
@@ -182,30 +186,25 @@
                             <!-- End Modal Hapus -->
                         </div>
                         
-                        <div class="modal fade" id="modalGambar" tabindex="-1" role="dialog"
-                            aria-labelledby="myModalLabel">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content" style="padding:10px">
-                                    <center>
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-label="Close"><span aria-hidden="false">&times;</span></button>
-                                        <?php
-                                        $query = "SELECT * FROM tabel_krs_admin WHERE id_krs=1";
-                                        $result = mysqli_query($con, $query);
-                                        if (mysqli_num_rows($result) > 0){
-                                            while($row = mysqli_fetch_assoc($result)){
-                                                ?>
-                                                <img src='../attachment/img/<?php echo $row["gambar_krs"]?>' width="100%" alt="">
-                                            <?php
-                                            }
-                                        }
-                                    ?>
-                                    </center>
+                        <div class="modal fade" id="modalGambar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"       aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <form action="../process/proses_krsAdmin.php?module=krsPerKelas&act=edit" method="post" onsubmit="return validasiSubmitEditKompen();">
+                                <div class="modal-body">
+                                <center>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close"><span aria-hidden="false">&times;</span></button>
+                                </center>
+                                    <input type="hidden" name="id_krs" id="id_krsLihat">
+                                    <div class="container-fluid p-0" id="lihat-krs">
+                                    </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
+</div>
