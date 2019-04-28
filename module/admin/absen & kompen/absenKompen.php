@@ -429,7 +429,7 @@ include "../process/proses_absenKompen.php";
                       <td><?php echo kompenSemester($con, $rowRekap["id_mahasiswa"], $rowRekap["id_semester"]) ?></td>
                       <td><?php echo totalKompen($con, $rowRekap["id_mahasiswa"]) ?></td>
                       <td><?php echo kompenSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
-                      <td><?php echo totalKompen($con, $rowRekap["id_mahasiswa"])-kompenSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
+                      <td><?php echo kompenBelumSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
                     </tr>
                   <?php
                   $no++;

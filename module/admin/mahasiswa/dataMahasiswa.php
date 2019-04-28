@@ -204,7 +204,7 @@
                                                             <?php
                                                                 $resultnyaProdi = tampilProdi($con); 
                                                             ?>
-                                                                <select name="prodi" class="custom-select" id="prodiMahasiswa"
+                                                                <select name="prodiMahasiswa" class="custom-select" 
                                                                     style="width:220px;">
 
                                                                     <?php 
@@ -225,7 +225,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2">Kelas</label>
                                                             <div class="col-sm-10">
-                                                            <select class="semester custom-select kelas" style="width:120px;" id="kelasMahasiswa" name="kelasMahasiswa">
+                                                            <select class="semester custom-select kelas" style="width:120px;" name="kelasMahasiswa">
                                                                 
                                                                 <?php
                                                                 $resultKelas=kelas($con);
@@ -239,6 +239,29 @@
                                                                         <?php
                                                                     }
                                                                 }        
+                                                                ?>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-3"></div>
+                                                            <div class="col-sm-9">
+                                                                <div id="kelasMahasiswaAdminBlank" class="text-danger">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-sm-2">Semester</label>
+                                                            <div class="col-sm-10">
+                                                            <select class="semester custom-select kelas" style="width:120px;"  name="semesterMahasiswa">
+                                                                
+                                                                <?php
+                                                                    $resultSemester=tampilSemester($con);
+                                                                    if(mysqli_num_rows($resultSemester)){
+                                                                    while($rowSemester=mysqli_fetch_assoc($resultSemester)){
+                                                                        ?>
+                                                                        <option value="<?php echo $rowSemester["id_semester"];?>"><?php echo $rowSemester["semester"];?></option>
+                                                                        <?php
+                                                                    }
+                                                                    }
                                                                 ?>
                                                                 </select>
                                                             </div>
@@ -326,7 +349,7 @@
                                                 $index = 1;
                                                 
                                                 while($row = mysqli_fetch_assoc($result)){
-                                                    $id_mahasiswa = $row["id_mahasiswa"];
+                                                    $id_delete = $row["id_user"];
                                                     echo"
                                                     <tr>
                                                         <td>". $index++ ."</td>
@@ -574,13 +597,18 @@
         aria-labelledby="hapusDataMahasiswaTitle" aria-hidden="true" data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content kontent-modal">
-                <div clas="modal-body">
-                    <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
-                    <div class="tombolAksiHapusDataMahasiswa text-center">
-                        <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>
-                        <button type="button" class="btn btn-success btn-iyaya">Ya</button>
+                <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=hapus" method="post">
+                    <div clas="modal-body">
+                        <input type="number" name="id_user" value="<?php $id_delete?>">
+                        <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
+                        <div class="tombolAksiHapusDataMahasiswa text-center">
+                            <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>
+                            
+                            <button type='submit' class='btn btn-success btn-iyaya' name='hapusMahasiswa'>Ya</button>
+                            
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -33,15 +33,18 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-12 p-0">
-                                        <form action="" method="post">
+                                        <form
+                                            action="../process/proses_adminJadwalKuliah.php?module=dataJadwalKuliah&act=tambah"
+                                            method="POST">
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Kelas</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select">
-                                                                    <option selected>Pilih Kelas</option>
+                                                                <select class="semester custom-select" id="id_kelas"
+                                                                    name="id_kelas">
+                                                                    <option selected disabled>Pilih Kelas</option>
                                                                     <?php 
                                                                     $resultKelas=kelas($con); 
                                                                     if(mysqli_num_rows($resultKelas))
@@ -62,45 +65,47 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Hari</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select">
-                                                                    <option selected>Pilih Hari</option>
-                                                                    <option>Senin</option>
-                                                                    <option>Selasa</option>
-                                                                    <option>Rabu</option>
-                                                                    <option>Kamis</option>
-                                                                    <option>Jum'at</option>
+                                                                <select class="semester custom-select" id="hari"
+                                                                    name="hari">
+                                                                    <option selected disabled>Pilih Hari</option>
+                                                                    <option value="Senin">Senin</option>
+                                                                    <option value="Selasa">Selasa</option>
+                                                                    <option value="Rabu">Rabu</option>
+                                                                    <option value="Kamis">Kamis</option>
+                                                                    <option value="Jum'at">Jum'at</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Jam</label>
                                                             <div class="col-sm-5">
-                                                                <select class="semester custom-select">
-                                                                    <option selected>Mulai</option>
-                                                                    <option>07.00</option>
-                                                                    <option>07.45</option>
-                                                                    <option>08.30</option>
-                                                                    <option>08.40</option>
-                                                                    <option>09.15</option>
-                                                                    <option>09.30</option>
-                                                                    <option>09.45</option>
-                                                                    <option>10.00</option>
-                                                                    <option>10.35</option>
-                                                                    <option>10.45</option>
-                                                                    <option>11.00</option>
-                                                                    <option>12.30</option>
-                                                                    <option>12.45</option>
-                                                                    <option>13.15</option>
-                                                                    <option>13.35</option>
-                                                                    <option>13.45</option>
-                                                                    <option>14.25</option>
-                                                                    <option>14.30</option>
-                                                                    <option>15.15</option>
-                                                                    <option>15.30</option>
-                                                                    <option>16.15</option>
-                                                                    <option>16.20</option>
-                                                                    <option>16.40</option>
-                                                                    <option>17.10</option>
+                                                                <select class="semester custom-select" id="jam_mulai"
+                                                                    name="jam_mulai">
+                                                                    <option selected disabled>Mulai</option>
+                                                                    <option value="07:00:00">07.00</option>
+                                                                    <option value="07:45:00">07.45</option>
+                                                                    <option value="08:30:00">08.30</option>
+                                                                    <option value="08:40:00">08.40</option>
+                                                                    <option value="09:15:00">09.15</option>
+                                                                    <option value="09:30:00">09.30</option>
+                                                                    <option value="09:45:00">09.45</option>
+                                                                    <option value="10:00:00">10.00</option>
+                                                                    <option value="10:35:00">10.35</option>
+                                                                    <option value="10:45:00">10.45</option>
+                                                                    <option value="11:00:00">11.00</option>
+                                                                    <option value="12:30:00">12.30</option>
+                                                                    <option value="12:45:00">12.45</option>
+                                                                    <option value="13:15:00">13.15</option>
+                                                                    <option value="13:35:00">13.35</option>
+                                                                    <option value="13:45:00">13.45</option>
+                                                                    <option value="14:25:00">14.25</option>
+                                                                    <option value="14:30:00">14.30</option>
+                                                                    <option value="15:15:00">15.15</option>
+                                                                    <option value="15:30:00">15.30</option>
+                                                                    <option value="16:15:00">16.15</option>
+                                                                    <option value="16:20:00">16.20</option>
+                                                                    <option value="16:40:00">16.40</option>
+                                                                    <option value="17:10:00">17.10</option>
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-1">
@@ -110,32 +115,33 @@
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <select class="semester custom-select">
-                                                                    <option selected>Berakhir</option>
-                                                                    <option>07.45</option>
-                                                                    <option>07.50</option>
-                                                                    <option>08.30</option>
-                                                                    <option>08.40</option>
-                                                                    <option>09.15</option>
-                                                                    <option>09.30</option>
-                                                                    <option>09.45</option>
-                                                                    <option>10.00</option>
-                                                                    <option>10.35</option>
-                                                                    <option>10.45</option>
-                                                                    <option>11.00</option>
-                                                                    <option>12.30</option>
-                                                                    <option>12.45</option>
-                                                                    <option>13.15</option>
-                                                                    <option>13.35</option>
-                                                                    <option>13.45</option>
-                                                                    <option>14.25</option>
-                                                                    <option>14.30</option>
-                                                                    <option>15.15</option>
-                                                                    <option>15.30</option>
-                                                                    <option>16.15</option>
-                                                                    <option>16.20</option>
-                                                                    <option>16.40</option>
-                                                                    <option>17.10</option>
-                                                                    <option>18.00</option>
+                                                                    <option selected disabled id="jam_selesai"
+                                                                        name="jam_selesai">Berakhir</option>
+                                                                    <option value="07:45:00">07.45</option>
+                                                                    <option value="07:50:00">07.50</option>
+                                                                    <option value="08:30:00">08.30</option>
+                                                                    <option value="08:40:00">08.40</option>
+                                                                    <option value="09:15:00">09.15</option>
+                                                                    <option value="09:30:00">09.30</option>
+                                                                    <option value="09:45:00">09.45</option>
+                                                                    <option value="10:00:00">10.00</option>
+                                                                    <option value="10:35:00">10.35</option>
+                                                                    <option value="10:45:00">10.45</option>
+                                                                    <option value="11:00:00">11.00</option>
+                                                                    <option value="12:30:00">12.30</option>
+                                                                    <option value="12:45:00">12.45</option>
+                                                                    <option value="13:15:00">13.15</option>
+                                                                    <option value="13:35:00">13.35</option>
+                                                                    <option value="13:45:00">13.45</option>
+                                                                    <option value="14:25:00">14.25</option>
+                                                                    <option value="14:30:00">14.30</option>
+                                                                    <option value="15:15:00">15.15</option>
+                                                                    <option value="15:30:00">15.30</option>
+                                                                    <option value="16:15:00">16.15</option>
+                                                                    <option value="16:20:00">16.20</option>
+                                                                    <option value="16:40:00">16.40</option>
+                                                                    <option value="17:10:00">17.10</option>
+                                                                    <option value="18:00:00">18.00</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -144,8 +150,9 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Mata Kuliah</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select">
-                                                                    <option selected>Pilih Mata Kuliah</option>
+                                                                <select class="semester custom-select" id="id_matkul"
+                                                                    name="id_matkul">
+                                                                    <option selected disabled>Pilih Mata Kuliah</option>
                                                                     <?php 
                                                                     $resultMatkul=matkul($con); 
                                                                     if(mysqli_num_rows($resultMatkul))
@@ -166,8 +173,9 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Ruangan</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select">
-                                                                    <option selected>Pilih Ruangan</option>
+                                                                <select class="semester custom-select" id="id_ruang"
+                                                                    name="id_ruang">
+                                                                    <option selected disabled>Pilih Ruangan</option>
                                                                     <?php 
                                                                     $resultRuang=ruang($con); 
                                                                     if(mysqli_num_rows($resultRuang))
@@ -188,8 +196,10 @@
                                                             <label class="col-sm-2 col-form-label">Dosen
                                                                 Pengajar</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select">
-                                                                    <option selected>Pilih Dosen Pengajar</option>
+                                                                <select class="semester custom-select" id="id_dosen"
+                                                                    name="id_dosen">
+                                                                    <option selected disabled>Pilih Dosen Pengajar
+                                                                    </option>
                                                                     <?php 
                                                                     $resultDosen=dosen($con); 
                                                                     if(mysqli_num_rows($resultDosen))
@@ -208,14 +218,13 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <button type="button"
+                                                                <button type="submit" name="insert"
                                                                     class="btn btn-success btn-tambahkan float-right">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </form>
                                     </div>
                                 </div>
@@ -250,6 +259,7 @@
                                         <?php
                                         $no=1;
                                         while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
+                                            $idKelasFix = $row["id_kelas"];
                                         ?>
                                         <tr>
                                             <td><?php echo $no;?></td>
@@ -259,10 +269,12 @@
                                             <td><?php echo $row["semester"]; ?></td>
                                             <td><?php echo $row["jumlah_matkul"]; ?></td>
                                             <td><?php echo $row["jumlah_sks"]; ?></td>
-                                            <td><button class="tmbl-table btn btn-primary" type="button"
+                                            <td><button class="tmbl-table btn btn-primary"
+                                                    id="<?php echo $row["id_kelas"]; ?>" type="button"
                                                     class="pratinjau btn" data-toggle="modal" data-target="#editModal"
                                                     class="edit">Edit</button></td>
-                                            <td><button class="tmbl-table btn btn-danger" type="button"
+                                            <td><button class="tmbl-table btn btn-danger"
+                                                    id="<?php echo $row["id_kelas"]; ?>" type="button"
                                                     class="pratinjau btn" data-toggle="modal" data-target="#hapus"
                                                     class="hapus">Hapus</button></td>
                                         </tr>
@@ -289,13 +301,17 @@
             aria-hidden="true" data-backdrop="false">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content konten-modal">
-                    <div class="modal-body ">
-                        <h5 class="isiHapusJadwal text-center">Apakah Anda Yakin?</h5>
-                        <div class="tombolAksiHapusJadwal text-center">
-                            <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                            <button type="button" class="btn btn-iya">Ya</button>
+                    <form action="../process/proses_adminJadwalKuliah.php?module=dataJadwalKuliah&act=hapus"
+                        method="POST">
+                        <div class="modal-body">
+                            <input type="hidden" name="id_kelas" id="id_kelas" value="<?php echo $idKelasFix; ?>">
+                            <h5 class="isiHapusJadwal text-center">Apakah Anda Yakin?</h5>
+                            <div class="tombolAksiHapusJadwal text-center">
+                                <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
+                                <button type="submit" name="delete" class="btn btn-iya">Ya</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

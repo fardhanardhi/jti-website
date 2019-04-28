@@ -1,7 +1,7 @@
 <?php
 
 include "../config/connection.php";
-// include "../process/proses_jadwalKuliah.php";
+include "../process/proses_krs.php";
 
 $idUser = $_SESSION['id'];
 
@@ -61,18 +61,32 @@ $kodeKelasUser = $rowUser["kode_kelas"];
                         <strong class="d-block text-dark">Periode Semester</strong>
                     </p>
                 </div>
-                <select class="custom-select" style="width:250px">
-                    <option selected>-</option>
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                    <option value="3">Semester 3</option>
-                    <option value="3">Semester 4</option>
-                    <option value="3">Semester 5</option>
-                    <option value="3">Semester 6</option>
-                    <option value="3">Semester 7</option>
-                    <option value="3">Semester 8</option>
+                <select class="semester custom-select" style="width:250px" name="semester">
+                    <option selected disabled>-</option>
+                    <?php 
+                        $resultSemester=semester($con); 
+                        if(mysqli_num_rows($resultSemester))
+                        {
+                            while($rowSemester=mysqli_fetch_assoc($resultSemester))
+                            {
+                            if($rowSemester["id_semester"] == $_POST["semester"])
+                            {
+                                $selected = "selected";
+                            }
+                            else
+                            {
+                                $selected = "";
+                            }
+                            ?>
+                            <option <?php echo $selected; ?> value="<?php echo $rowSemester["id_semester"];?>">
+                            Semester <?php echo $rowSemester["semester"];?>
+                            </option>
+                            <?php
+                            }
+                        }
+                    ?>
                 </select>
-                <button type="button" class="btn btn-success">Filter</button>
+                <button type="submit" name="cariKrs" class="tmbl-filter btn btn-success ml-2">Filter</button>
                 <button type="button" class="btn btn-success float-right">Kirim ke DPA &nbsp&nbsp<i
                         class="fas fa-arrow-circle-up"></i></button>
                 <br><br>

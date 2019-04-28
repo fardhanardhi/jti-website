@@ -4,7 +4,7 @@ include "../config/connection.php";
 function krs($con)
 {
     $krs = "SELECT DISTINCT tabel_krs_admin.id_krs, tabel_mahasiswa.nim, tabel_mahasiswa.nama,
-    tabel_krs_admin.status_daftar_ulang, tabel_krs_admin.gambar_krs
+    tabel_krs_admin.status_daftar_ulang, tabel_krs_admin.gambar_krs, tabel_krs_admin.gambar_krs
     FROM tabel_krs_admin INNER JOIN tabel_mahasiswa ON tabel_krs_admin.id_mahasiswa = tabel_mahasiswa.id_mahasiswa";
     
     $resultTampilKrs = mysqli_query($con, $krs);
@@ -69,10 +69,84 @@ function tampilKelas($con, $id_kelas){
 
 if(isset($_POST["hapusKrs"])){
     if($_GET["module"]=="krs" || $_GET["module"]=="krsPerKelas" && $_GET["act"]=="hapus"){
-        $hapusKrs="delete from tabel_krs_admin where id_krs = '$_POST[id_krs]'";
+        $hapusKrs="update tabel_krs_admin set gambar_krs=null where id_krs = '$_POST[id_krs]'";
         mysqli_query($con, $hapusKrs);
         header('location:../module/index.php?module=' . $_GET["module"]);
     }
 }
 
+if(isset($_POST["lihatKrs"])){
+    if($_GET["module"]=="krs" || $_GET["module"]=="krsPerKelas" && $_GET["act"]=="edit"){
+      mysqli_query($con, "SELECT * FROM tabel_krs_admin WHERE id_krs=$_POST'[id_krs]'");
+      header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+}
+
+if(isset($_POST["lihat_krs"])){
+    $lihat = "select * from tabel_krs_admin where id_krs=$_POST[lihat_krs]";
+    $resultLihat = mysqli_query($con, $lihat);
+    if(mysqli_num_rows($resultLihat)>0){
+      $row=mysqli_fetch_assoc($resultLihat);
+      $output="";
+        $output.="
+        <center>
+            <img src='../attachment/img/$row[gambar_krs]' width='100%'>
+        </center>";
+        echo $output;
+    }
+}
+
+if (isset($_POST["upload"])) {
+    if($_GET["module"]=="krs" || $_GET["module"]=="krsPerKelas" && $_GET["act"]=="upload"){
+    $message  = '';
+    $valid_file  = true;
+    $idKrs= $_GET["id"];
+    if($_FILES['photo']['name']){
+    // if no errors...
+    
+        if(!$_FILES['photo']['error']){
+        
+        // now is the time to modify the future file name and validate the file
+        $new_file_name = strtolower($_FILES['photo']['tmp_name']); //rename file menjadi huruf kecil
+        
+        // Mengatur format file yang boleh diupload
+        $image_path = pathinfo($_FILES['photo']['name'],PATHINFO_EXTENSION); //ambil extensi file
+        $extension = strtolower($image_path); //rename extensi file menjadi huruf kecil
+        
+        if($extension != "jpg" && $extension != "jpeg" && $extension != "png" && $extension != "gif" ) {
+        $valid_file = false;
+        //$message = "Maaf, file yang diijinkan hanya format JPG, JPEG, PNG & GIF. #".$extension;
+        header('location:../module/index.php?module=' . $_GET["module"]);
+        }
+        
+        // jika file lolos filter
+        if($valid_file == true)
+        {
+            // mengganti nama gambar
+            $rename_nama_file = date('YmdHis');
+            $nama_file_baru  = $rename_nama_file.'.'.$extension;
+            
+            $sql = "UPDATE tabel_krs_admin SET gambar_krs='$nama_file_baru'
+            WHERE id_krs = '$idKrs'";
+            if (!mysqli_query($con, $sql)) {
+                echo "Error: ".mysqli_error($con)."
+            ";
+                header('location:../module/index.php?module=' . $_GET["module"]);
+            }
+            
+            //memindahkan gambar ke tempat yang kita inginkan
+            move_uploaded_file($_FILES['photo']['tmp_name'], '../attachment/img/'.$nama_file_baru);
+            header('location:../module/index.php?module=' . $_GET["module"]);
+            }
+            }
+            //if there is an error...
+            else
+            {
+            //set that to be the returned message
+            //$message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['photo']['error'];
+                header('location:../module/index.php?module=' . $_GET["module"]);
+            }
+        }
+    }
+}
 ?>

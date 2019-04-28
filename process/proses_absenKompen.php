@@ -18,9 +18,14 @@ function kelas($con){
 function tampilKelas($con, $id_kelas){
   $kelas = "select a.*, b.* from tabel_kelas a, tabel_prodi b where a.id_prodi=b.id_prodi and a.id_kelas=$id_kelas";
   $resultKelas = mysqli_query($con, $kelas);  
-  $row=mysqli_fetch_assoc($resultKelas);
-  $hasil= $row["kode"]." - ".$row["tingkat"].$row["kode_kelas"];
-  return $hasil;
+  if(mysqli_num_rows($resultKelas)>0){
+    $row=mysqli_fetch_assoc($resultKelas);
+    $hasil= $row["kode"]." - ".$row["tingkat"].$row["kode_kelas"];
+    return $hasil;
+  }
+  else{
+    return "-";
+  }
 }
 
 function minKelas($con){
@@ -43,13 +48,6 @@ function kompen($con)
   return $resultKompen;
 }
 
-function cariKompen($con, $txtCariKompen)
-{
-  $kompen = "select a.*, b.nim, b.nama as namaMhs, c.nama as namaDosen, d.* from tabel_kompen a, tabel_mahasiswa b, tabel_dosen c, tabel_prodi d where a.id_mahasiswa=b.id_mahasiswa and a.id_dosen=c.id_dosen and b.id_prodi=d.id_prodi and (b.nim like '%$txtCariKompen%' or b.nama like '%$txtCariKompen%' or d.kode like '%$txtCariKompen%' or c.nama like '%$txtCariKompen%' or a.waktu like '%$txtCariKompen%') order by b.nama asc";
-  $resultKompen = mysqli_query($con, $kompen);
-  return $resultKompen;
-}
-
 function tampilTanggal($tanggal)
 {
   return date('d F Y', strtotime($tanggal));
@@ -59,13 +57,6 @@ function tampilTanggal($tanggal)
 function pekerjaan($con)
 {
   $pekerjaan = "select a.*, b.nip, b.nama as namaDosen, c.* from tabel_pekerjaan_kompen a, tabel_dosen b, tabel_semester c where a.id_dosen=b.id_dosen and a.id_semester=c.id_semester order by a.id_pekerjaan_kompen asc";
-  $resultPekerjaan = mysqli_query($con, $pekerjaan);
-  return $resultPekerjaan;
-}
-
-function cariPekerjaan($con, $txtCariPekerjaan)
-{
-  $pekerjaan = "select a.*, b.nip, b.nama as namaDosen, c.* from tabel_pekerjaan_kompen a, tabel_dosen b, tabel_semester c where a.id_dosen=b.id_dosen and a.id_semester=c.id_semester and (a.nama like '%$txtCariPekerjaan%' or b.nip like '%$txtCariPekerjaan%' or b.nama like '%$txtCariPekerjaan%' or a.kuota like '%$txtCariPekerjaan%' or c.semester like '%$txtCariPekerjaan%') order by a.id_pekerjaan_kompen asc";
   $resultPekerjaan = mysqli_query($con, $pekerjaan);
   return $resultPekerjaan;
 }
@@ -105,13 +96,18 @@ function totalKompen($con, $id_mahasiswa){
 function kompenSelesai($con, $id_mahasiswa){
   $kompenSelesai="select sum(a.jumlah_jam) as kompenSelesai from tabel_kompen a, tabel_mahasiswa b where a.id_mahasiswa=b.id_mahasiswa and a.status_verifikasi='sudah terverifikasi' and a.id_mahasiswa=$id_mahasiswa";
   $resultKompenSelesai = mysqli_query($con, $kompenSelesai);
-  if(mysqli_num_rows($resultKompenSelesai)>0){
+  if(mysqli_num_rows($resultKompenSelesai)){
     $rowKompenSelesai=mysqli_fetch_assoc($resultKompenSelesai);
-    return $rowKompenSelesai["kompenSelesai"];
+    if($rowKompenSelesai["kompenSelesai"]==NULL){
+      return 0;
+    }else{
+      return $rowKompenSelesai["kompenSelesai"];
+    }
   }
-  else{
-    return 0;
-  }
+}
+
+function kompenBelumSelesai($con, $id_mahasiswa){
+  return totalKompen($con, $id_mahasiswa)-kompenSelesai($con, $id_mahasiswa);
 }
 
 function prodi($con, $kode){

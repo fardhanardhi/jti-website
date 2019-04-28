@@ -8,12 +8,6 @@ function kuisioner($con, $tahun, $semester)
   return $resultKuisioner;
 }
 
-function kuisionerCariDosen($con, $txtCariDosen){
-  $kuisionerCariDosen="select distinct(a.id_dosen), b.*, b.nama as namaDosen, c.id_semester from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and (b.nama like '%$txtCariDosen%' or b.nip like '%$txtCariDosen%')";
-  $resultKuisionerCariDosen = mysqli_query($con, $kuisionerCariDosen);
-  return $resultKuisionerCariDosen;
-}
-
 function tampilTahun($con){
   $tahun="select distinct(YEAR(waktu_edit)) as tahun from tabel_hasil_kuisioner order by waktu_edit desc limit 5";
   $resultTahun = mysqli_query($con, $tahun);
@@ -49,9 +43,14 @@ function kelasDosen($con, $id_dosen)
 function tampilKelas($con, $id_kelas){
   $kelas = "select a.*, b.* from tabel_kelas a, tabel_prodi b where a.id_prodi=b.id_prodi and a.id_kelas=$id_kelas";
   $resultKelas = mysqli_query($con, $kelas);  
-  $row=mysqli_fetch_assoc($resultKelas);
-  $hasil= $row["kode"]." - ".$row["tingkat"].$row["kode_kelas"];
-  return $hasil;
+  if(mysqli_num_rows($resultKelas)>0){
+    $row=mysqli_fetch_assoc($resultKelas);
+    $hasil= $row["kode"]." - ".$row["tingkat"].$row["kode_kelas"];
+    return $hasil;
+  }
+  else{
+    return "-";
+  }
 }
 
 function cekStatusAktif($con){
@@ -90,7 +89,7 @@ if(isset($_POST["namaDosen"])){
 
 if(isset($_POST["id_dosen"])){
   $output='';
-  $query="select distinct(a.id_mahasiswa),sum(nilai) as totalNilai, c.*, d.* from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c, tabel_semester d where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and c.id_semester=d.id_semester and c.id_kelas=$_POST[kelas] and YEAR(a.waktu_edit)=$_POST[tahun] and c.id_semester=$_POST[semester] and a.id_dosen=$_POST[id_dosen]";
+  $query="select distinct(a.id_mahasiswa),sum(a.nilai) as totalNilai, c.*, d.* from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c, tabel_semester d where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and c.id_semester=d.id_semester and c.id_kelas=$_POST[kelas] and YEAR(a.waktu_edit)=$_POST[tahun] and c.id_semester=$_POST[semester] and a.id_dosen=$_POST[id_dosen] group by a.id_mahasiswa";
   $result=mysqli_query($con, $query);
 
   if(mysqli_num_rows($result)>0){
@@ -113,7 +112,7 @@ if(isset($_POST["id_dosen"])){
           <td>'.$no.'</td>
           <td>'.$row["nim"].'</td>
           <td>'.$row["nama"].'</td>
-          <td>'.tampilkelas($con,$row["id_kelas"]).'</td>
+          <td>'.tampilkelas($con,$_POST["kelas"]).'</td>
           <td>'.$row["totalNilai"].'</td>
         </tr>';
         $no++;
@@ -186,12 +185,6 @@ if(isset($_POST["lihatPerKelas"])){
 // Kriteria
 function kriteria($con){
   $kriteria="select * from tabel_kuisioner";
-  $resultKriteria = mysqli_query($con, $kriteria);
-  return $resultKriteria;
-}
-
-function cariKriteria($con, $txtCariKriteria){
-  $kriteria="select * from tabel_kuisioner where kriteria like '%$txtCariKriteria%'";
   $resultKriteria = mysqli_query($con, $kriteria);
   return $resultKriteria;
 }
