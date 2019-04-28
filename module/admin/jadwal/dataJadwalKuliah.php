@@ -34,14 +34,16 @@
                                 <div class="card-body">
                                     <div class="col-md-12 p-0">
                                         <form
-                                            action="../process/proses_adminJadwalKuliah.php?module=dataJadwalKuliah&act=tambah" method="POST">
+                                            action="../process/proses_adminJadwalKuliah.php?module=dataJadwalKuliah&act=tambah"
+                                            method="POST">
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Kelas</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select" id="id_kelas" name="id_kelas">
+                                                                <select class="semester custom-select" id="id_kelas"
+                                                                    name="id_kelas">
                                                                     <option selected disabled>Pilih Kelas</option>
                                                                     <?php 
                                                                     $resultKelas=kelas($con); 
@@ -63,7 +65,8 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Hari</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select" id="hari" name="hari">
+                                                                <select class="semester custom-select" id="hari"
+                                                                    name="hari">
                                                                     <option selected disabled>Pilih Hari</option>
                                                                     <option value="Senin">Senin</option>
                                                                     <option value="Selasa">Selasa</option>
@@ -76,7 +79,8 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Jam</label>
                                                             <div class="col-sm-5">
-                                                                <select class="semester custom-select" id="jam_mulai" name="jam_mulai">
+                                                                <select class="semester custom-select" id="jam_mulai"
+                                                                    name="jam_mulai">
                                                                     <option selected disabled>Mulai</option>
                                                                     <option value="07:00:00">07.00</option>
                                                                     <option value="07:45:00">07.45</option>
@@ -111,7 +115,8 @@
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <select class="semester custom-select">
-                                                                    <option selected disabled id="jam_selesai" name="jam_selesai">Berakhir</option>
+                                                                    <option selected disabled id="jam_selesai"
+                                                                        name="jam_selesai">Berakhir</option>
                                                                     <option value="07:45:00">07.45</option>
                                                                     <option value="07:50:00">07.50</option>
                                                                     <option value="08:30:00">08.30</option>
@@ -145,7 +150,8 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Mata Kuliah</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select" id="id_matkul" name="id_matkul">
+                                                                <select class="semester custom-select" id="id_matkul"
+                                                                    name="id_matkul">
                                                                     <option selected disabled>Pilih Mata Kuliah</option>
                                                                     <?php 
                                                                     $resultMatkul=matkul($con); 
@@ -167,7 +173,8 @@
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Ruangan</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select" id="id_ruang" name="id_ruang">
+                                                                <select class="semester custom-select" id="id_ruang"
+                                                                    name="id_ruang">
                                                                     <option selected disabled>Pilih Ruangan</option>
                                                                     <?php 
                                                                     $resultRuang=ruang($con); 
@@ -189,8 +196,10 @@
                                                             <label class="col-sm-2 col-form-label">Dosen
                                                                 Pengajar</label>
                                                             <div class="col-sm-10">
-                                                                <select class="semester custom-select" id="id_dosen" name="id_dosen">
-                                                                    <option selected disabled>Pilih Dosen Pengajar</option>
+                                                                <select class="semester custom-select" id="id_dosen"
+                                                                    name="id_dosen">
+                                                                    <option selected disabled>Pilih Dosen Pengajar
+                                                                    </option>
                                                                     <?php 
                                                                     $resultDosen=dosen($con); 
                                                                     if(mysqli_num_rows($resultDosen))
@@ -209,7 +218,8 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
-                                                                <button type="submit" name="insert" class="btn btn-success btn-tambahkan float-right">Tambahkan</button>
+                                                                <button type="submit" name="insert"
+                                                                    class="btn btn-success btn-tambahkan float-right">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -249,6 +259,7 @@
                                         <?php
                                         $no=1;
                                         while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
+                                            $idKelasFix = $row["id_kelas"];
                                         ?>
                                         <tr>
                                             <td><?php echo $no;?></td>
@@ -258,10 +269,12 @@
                                             <td><?php echo $row["semester"]; ?></td>
                                             <td><?php echo $row["jumlah_matkul"]; ?></td>
                                             <td><?php echo $row["jumlah_sks"]; ?></td>
-                                            <td><button class="tmbl-table btn btn-primary" type="button"
+                                            <td><button class="tmbl-table btn btn-primary"
+                                                    id="<?php echo $row["id_kelas"]; ?>" type="button"
                                                     class="pratinjau btn" data-toggle="modal" data-target="#editModal"
                                                     class="edit">Edit</button></td>
-                                            <td><button class="tmbl-table btn btn-danger" type="button"
+                                            <td><button class="tmbl-table btn btn-danger"
+                                                    id="<?php echo $row["id_kelas"]; ?>" type="button"
                                                     class="pratinjau btn" data-toggle="modal" data-target="#hapus"
                                                     class="hapus">Hapus</button></td>
                                         </tr>
@@ -288,13 +301,17 @@
             aria-hidden="true" data-backdrop="false">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content konten-modal">
-                    <div class="modal-body ">
-                        <h5 class="isiHapusJadwal text-center">Apakah Anda Yakin?</h5>
-                        <div class="tombolAksiHapusJadwal text-center">
-                            <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                            <button type="button" class="btn btn-iya">Ya</button>
+                    <form action="../process/proses_adminJadwalKuliah.php?module=dataJadwalKuliah&act=hapus"
+                        method="POST">
+                        <div class="modal-body">
+                            <input type="hidden" name="id_kelas" id="id_kelas" value="<?php echo $idKelasFix; ?>">
+                            <h5 class="isiHapusJadwal text-center">Apakah Anda Yakin?</h5>
+                            <div class="tombolAksiHapusJadwal text-center">
+                                <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
+                                <button type="submit" name="delete" class="btn btn-iya">Ya</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
