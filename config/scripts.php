@@ -31,3 +31,4 @@
   <script src="../js/adminEComplain.js"></script>
   <script src="../js/adminAbsenKompen.js"></script>
   <script src="../js/adminKrs.js"></script>
+  <script src="../js/mahasiswaKelasKosong.js"></script>

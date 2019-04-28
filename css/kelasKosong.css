@@ -1,3 +1,9 @@
+#kelasKosong #dataKelasKosongMhs{
+  max-height:67vh;
+  overflow-y: auto;
+  overflow-x:hidden;
+}
+
 #kelasKosong .btn-hari,
 .btn-cari {
   border-radius: 10px;
@@ -52,10 +58,6 @@
 #kelasKosong .dipesan {
   background-color: rgba(189, 189, 189, 0.5);
   color: #6c757d;
-}
-
-#kelasKosong .dipesan .btn-pesan {
-  visibility: hidden;
 }
 
 #kelasKosong .btn-confirm {
