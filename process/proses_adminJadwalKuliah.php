@@ -58,20 +58,12 @@ if (isset($_POST["insert"]) || isset($_POST["delete"]))
     $jam_mulai = $_POST['jam_mulai'];
     $jam_selesai = $_POST['jam_selesai'];
 
-    // Query mencari id_prodi dan tingkat, sebenere gak perlu sampek diganti kolom database e
-    $queryMencariProdiDanTingkat = "SELECT * FROM tabel_kelas where id_kelas='$id_kelas'";
-    $resultMencariProdiDanTingkat = mysqli_query($con,$queryMencariProdiDanTingkat);
-    $rowMencariProdiDanTingkat = mysqli_fetch_assoc($resultMencariProdiDanTingkat);
-
-    $id_prodi = $rowMencariProdiDanTingkat["id_prodi"];
-    $tingkat = $rowMencariProdiDanTingkat["tingkat"];
-
     if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="tambah")
     {
 
-        $queryInsert =   "INSERT INTO tabel_jadwal (id_ruang, id_kelas, id_prodi, id_semester, id_dosen, id_matkul, hari, jam_mulai, jam_selesai, tingkat, waktu_edit)
+        $queryInsert =   "INSERT INTO tabel_jadwal (id_ruang, id_kelas, id_semester, id_dosen, id_matkul, hari, jam_mulai, jam_selesai, waktu_edit)
 
-        values ('$id_ruang','$id_kelas','$id_prodi','7','$id_dosen','$id_matkul','$hari','$jam_mulai','$jam_selesai','$tingkat',now())";
+        values ('$id_ruang','$id_kelas','7','$id_dosen','$id_matkul','$hari','$jam_mulai','$jam_selesai',now())";
 
         mysqli_query($con, $queryInsert);
 
