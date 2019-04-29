@@ -148,6 +148,29 @@
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
+                                                            <label class="col-sm-2 col-form-label">Semester</label>
+                                                            <div class="col-sm-10">
+                                                                <select class="semester custom-select" id="id_semester"
+                                                                    name="id_semester">
+                                                                    <option selected disabled>Pilih Semester</option>
+                                                                    <?php 
+                                                                    $resultSemester=semester($con); 
+                                                                    if(mysqli_num_rows($resultSemester))
+                                                                    {
+                                                                        while($rowSemester=mysqli_fetch_assoc($resultSemester))
+                                                                        {
+                                                                        ?>
+                                                                    <option
+                                                                        value="<?php echo $rowSemester["id_semester"];?>">
+                                                                        <?php echo $rowSemester["semester"];?></option>
+                                                                    <?php
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Mata Kuliah</label>
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_matkul"
