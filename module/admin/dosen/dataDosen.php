@@ -1,3 +1,8 @@
+<?php
+    include "../config/connection.php";
+    include "../process/CRUD_dataDosen.php";
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -29,7 +34,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="col-md-12 p-0">
-                                            <form action="../process/CRUD_dataDosen.php" id="formAdminDosen" method="POST">
+                                            <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=tambah" id="formAdminDosen" method="POST">
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -237,8 +242,8 @@
                                                             <div class="row">
                                                                 <div class="col-sm-9"></div>
                                                                 <div class="col-sm-3">
-                                                                    <button type="submit" name="tambahDosen" class="btn btn-success"
-                                                                        onclick="eror(); showFilesSizes();">Tambahkan</button>
+                                                                    <button type="submit" name="tambahDosen" class="btn btn-success" name="insert"
+                                                                        onclick="eror();  showFilesSizes();">Tambahkan</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -255,7 +260,7 @@
                                     <button class="btn btn-success" type="submit">Cari</button>
                                 </form>
                                 <!-- <div class="scrolltable scrollbar-x"> -->
-                                <div class="scrolltable">
+                                <div class="scrolltable ">
                                     <table class="table table-striped table-bordered text-center">
                                         <thead>
                                             <tr>
@@ -326,23 +331,7 @@
                                                         ";
                                                     }
                                                 }
-
                                             ?>
-                                            <!-- <tr>
-                                                <td>1</td>
-                                                <td>fulan</td>
-                                                <td>123</td>
-                                                <td><img src="../attachment/img/avatar.jpeg" style="height:40px; width:40px; border-radius:50%;" alt=""></td>
-                                                <td>1741720001</td>
-                                                <td>Nama Dosen</td>
-                                                <td>Malang</td>
-                                                <td>1 Januari 1945</td>
-                                                <td>Laki-laki</td>
-                                                <td>Jl.soekarno hatta</td>
-                                                
-                                                <td><button type="button" class="tmbl-table btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button></td>
-                                                <td><button class=" tmbl-table btn btn-danger"  type="button" class="pratinjau btn" data-toggle="modal" data-target="#hapus" class="hapus">Hapus</button></td>
-                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -359,7 +348,7 @@
                             <h5 class="isiHapusKompen text-center">Apakah Anda Yakin?</h5>
                             <div class="tombolAksiHapusKompen text-center">
                                 <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                                <button type="button" class="btn btn-iya">Ya</button>
+                                <button type="button" name="delete" class="btn btn-iya">Ya</button>
                             </div>
                         </div>                 
                     </div>
