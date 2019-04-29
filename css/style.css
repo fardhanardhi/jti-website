@@ -404,3 +404,15 @@ body {
   cursor: pointer;
   user-select: none;
 }
+
+.global-chat-window {
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 500px;
+  height: 50vh;
+}
+
+.global-chat-input {
+  height: 3.5em;
+  background-color: #dbdbdb;
+}

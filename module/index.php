@@ -541,29 +541,79 @@ $statusPembayaran = $rowStatus["status_daftar_ulang"];
         }
       }
 
-      if ($level == "mahasiswa" || $level == "admin" || $level == "dosen") {
-        if ($module != 'eComplain') {
-          ?>
-          <img id="toggleChat" src="../img/Chat.svg" alt="chat" class="chat-bubble">
+      if ($level != "admin") {
+        ?>
+        <img id="toggleChat" src="../img/Chat.svg" alt="chat" class="chat-bubble">
 
-          <div class="chat-popup row shadow-lg" id="chatPopup">
-            <div class="col">
-              <div class="chat-head row px-1 py-1 text-white bg-dark">
-                <div class="col">
-                  <h6>E - Complain</h6>
-                </div>
-                <div id="closeChatPopup" class="col-auto">
-                  X
+        <div class="chat-popup row shadow-lg" id="chatPopup">
+          <div class="col ">
+            <div class="chat-head row px-1 py-1 text-white bg-dark">
+              <div class="col">
+                <h6>E - Complain</h6>
+              </div>
+              <div id="closeChatPopup" class="col-auto">
+                X
+              </div>
+            </div>
+            <div id="GlobalChatWindow" class="global-chat-window row scrollbar pt-3 ">
+              <div class="col">
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+                Loading...<br>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col global-chat-input">
+                <div class="row py-2 align-items-center justify-content-center h-100">
+                  <div class="col pr-0 pl-2">
+                    <input id="globalInputChat" type="text" class="form-control" placeholder="Ketik Pesan">
+                  </div>
+                  <div class="col-md-auto pr-3 pl-1">
+                    <img class="global-btn-send" src="../img/send.svg" alt="search">
+                  </div>
                 </div>
               </div>
-              <form action="/action_page.php" class="form-container row">
-                <label for="msg"><b>Message</b></label>
-                <textarea placeholder="Type message.." name="msg" required></textarea>
-              </form>
             </div>
           </div>
-        <?php
-      }
+        </div>
+      <?php
     }
     ?>
     </div>
