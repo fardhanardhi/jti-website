@@ -77,7 +77,7 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
 
     if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="hapus"){
         
-        $delete = $_POST[""];
+        $delete = $_POST["id_delete"];
 
         $query4 = "delete from tabel_mahasiswa where id_user = '$delete';";
 
