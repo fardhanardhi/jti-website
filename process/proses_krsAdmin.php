@@ -106,45 +106,45 @@ if (isset($_POST["upload"])) {
     
         if(!$_FILES['photo']['error']){
         
-        // now is the time to modify the future file name and validate the file
-        $new_file_name = strtolower($_FILES['photo']['tmp_name']); //rename file menjadi huruf kecil
-        
-        // Mengatur format file yang boleh diupload
-        $image_path = pathinfo($_FILES['photo']['name'],PATHINFO_EXTENSION); //ambil extensi file
-        $extension = strtolower($image_path); //rename extensi file menjadi huruf kecil
-        
-        if($extension != "jpg" && $extension != "jpeg" && $extension != "png" && $extension != "gif" ) {
-        $valid_file = false;
-        //$message = "Maaf, file yang diijinkan hanya format JPG, JPEG, PNG & GIF. #".$extension;
-        header('location:../module/index.php?module=' . $_GET["module"]);
-        }
-        
-        // jika file lolos filter
-        if($valid_file == true)
-        {
-            // mengganti nama gambar
-            $rename_nama_file = date('YmdHis');
-            $nama_file_baru  = $rename_nama_file.'.'.$extension;
+            // now is the time to modify the future file name and validate the file
+            $new_file_name = strtolower($_FILES['photo']['tmp_name']); //rename file menjadi huruf kecil
             
-            $sql = "UPDATE tabel_krs SET gambar_krs='$nama_file_baru'
-            WHERE id_krs = '$idKrs'";
-            if (!mysqli_query($con, $sql)) {
-                echo "Error: ".mysqli_error($con)."
-            ";
-                header('location:../module/index.php?module=' . $_GET["module"]);
-            }
+            // Mengatur format file yang boleh diupload
+            $image_path = pathinfo($_FILES['photo']['name'],PATHINFO_EXTENSION); //ambil extensi file
+            $extension = strtolower($image_path); //rename extensi file menjadi huruf kecil
             
-            //memindahkan gambar ke tempat yang kita inginkan
-            move_uploaded_file($_FILES['photo']['tmp_name'], '../attachment/img/'.$nama_file_baru);
+            if($extension != "jpg" && $extension != "jpeg" && $extension != "png" && $extension != "gif" ) {
+            $valid_file = false;
+            //$message = "Maaf, file yang diijinkan hanya format JPG, JPEG, PNG & GIF. #".$extension;
             header('location:../module/index.php?module=' . $_GET["module"]);
             }
+            
+            // jika file lolos filter
+            if($valid_file == true)
+            {
+                // mengganti nama gambar
+                $rename_nama_file = date('YmdHis');
+                $nama_file_baru  = $rename_nama_file.'.'.$extension;
+                
+                $sql = "UPDATE tabel_krs SET gambar_krs='$nama_file_baru'
+                WHERE id_krs = '$idKrs'";
+                if (!mysqli_query($con, $sql)) {
+                    echo "Error: ".mysqli_error($con)."
+                ";
+                    header('location:../module/index.php?module=' . $_GET["module"]);
+                }
+                
+                //memindahkan gambar ke tempat yang kita inginkan
+                move_uploaded_file($_FILES['photo']['tmp_name'], '../attachment/img/'.$nama_file_baru);
+                header('location:../module/index.php?module=' . $_GET["module"]);
+                }
             }
             //if there is an error...
             else
             {
             //set that to be the returned message
             //$message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['photo']['error'];
-                header('location:../module/index.php?module=' . $_GET["module"]);
+                    header('location:../module/index.php?module=' . $_GET["module"]);
             }
         }
     }

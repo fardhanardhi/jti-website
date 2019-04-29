@@ -17,3 +17,6 @@ $('.lihat-krs').click(function(){
 		}
 	})
 })
+function thisFileUpload(){
+	document.getElementById("file").click();
+}

@@ -66,7 +66,7 @@
                                         <th scope="col" style="text-align:center">No</th>
                                         <th scope="col" style="text-align:center; width: 300px">NIM</th>
                                         <th scope="col" style="text-align:center; width: 600px">Nama Mahasiswa</th>
-                                        <th scope="col" style="text-align:center">Action</th>
+                                        <th scope="col" style="text-align:center; width: 300px">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -86,8 +86,8 @@
                                                 <!--<label class="btn btn-upload btn-success ml-2" name="upload">
                                                 Upload<input type="file" name="photo" onchange="this.form.submit()" style="display: none;">
                                                 </label>-->
-                                                <input type="file" name="photo" required>
-                                                <button type="submit" class="btn btn-upload btn-success ml-2" name="upload">Upload</button>
+                                                <button type="submit" id="button" class="btn btn-upload btn-success ml-2" onclick="thisFileUpload();" name="upload">Upload</button>
+                                                <input type="file" name="photo" id="file" hidden required>
                                                 </form>
                                                 </center>
                                                 </td>
@@ -101,7 +101,7 @@
                                                 <td><?php echo $row["nama"]?></td>
                                                 <td>
                                                 <input id="fileid" type="file" name= "filename" hidden required />
-                                                <input id="buttonid" type="button" value="Upload" class="btn btn-upload btn-success ml-2"
+                                                <input id="button" type="button" value="Upload" class="btn btn-upload btn-success ml-2"
                                                 style="visibility: hidden"/>
                                                 </td>
                                                 </tr>
