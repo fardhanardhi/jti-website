@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 28, 2019 at 02:18 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.13
+-- Host: localhost
+-- Generation Time: Apr 29, 2019 at 06:15 AM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.1.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -286,14 +286,12 @@ CREATE TABLE `tabel_jadwal` (
   `id_jadwal` int(30) NOT NULL,
   `id_ruang` int(30) NOT NULL,
   `id_kelas` int(30) NOT NULL,
-  `id_prodi` int(11) NOT NULL,
   `id_semester` int(30) NOT NULL,
   `id_dosen` int(30) NOT NULL,
   `id_matkul` int(11) NOT NULL,
   `hari` varchar(30) NOT NULL,
   `jam_mulai` time NOT NULL,
   `jam_selesai` time NOT NULL,
-  `tingkat` int(11) NOT NULL,
   `waktu_edit` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -301,12 +299,12 @@ CREATE TABLE `tabel_jadwal` (
 -- Dumping data for table `tabel_jadwal`
 --
 
-INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_ruang`, `id_kelas`, `id_prodi`, `id_semester`, `id_dosen`, `id_matkul`, `hari`, `jam_mulai`, `jam_selesai`, `tingkat`, `waktu_edit`) VALUES
-(5, 1, 4, 3, 7, 8, 1, 'Senin', '07:00:00', '10:30:00', 2, '2019-04-09 00:00:00'),
-(6, 2, 4, 3, 7, 6, 2, 'Senin', '12:50:00', '18:00:00', 2, '2019-04-09 00:00:00'),
-(7, 4, 4, 3, 7, 5, 3, 'Rabu', '07:00:00', '11:20:00', 2, '2019-04-09 00:00:00'),
-(8, 2, 4, 3, 7, 5, 4, 'Kamis', '12:50:00', '15:20:00', 2, '2019-04-09 00:00:00'),
-(9, 5, 4, 3, 7, 7, 6, 'Jumat', '07:50:00', '11:20:00', 2, '2019-04-09 00:00:00');
+INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_ruang`, `id_kelas`, `id_semester`, `id_dosen`, `id_matkul`, `hari`, `jam_mulai`, `jam_selesai`, `waktu_edit`) VALUES
+(5, 1, 4, 7, 8, 1, 'Senin', '07:00:00', '10:30:00', '2019-04-09 00:00:00'),
+(6, 2, 4, 7, 6, 2, 'Senin', '12:50:00', '18:00:00', '2019-04-09 00:00:00'),
+(7, 4, 4, 7, 5, 3, 'Rabu', '07:00:00', '11:20:00', '2019-04-09 00:00:00'),
+(8, 2, 4, 7, 5, 4, 'Kamis', '12:50:00', '15:20:00', '2019-04-09 00:00:00'),
+(9, 5, 4, 7, 7, 6, 'Jumat', '07:50:00', '11:20:00', '2019-04-09 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -871,8 +869,7 @@ ALTER TABLE `tabel_jadwal`
   ADD KEY `dosen` (`id_dosen`),
   ADD KEY `id_semester` (`id_semester`),
   ADD KEY `kode_ruang` (`id_ruang`),
-  ADD KEY `id_matkul` (`id_matkul`),
-  ADD KEY `id_prodi` (`id_prodi`);
+  ADD KEY `id_matkul` (`id_matkul`);
 
 --
 -- Indexes for table `tabel_kelas`
@@ -1205,8 +1202,7 @@ ALTER TABLE `tabel_jadwal`
   ADD CONSTRAINT `tabel_jadwal_ibfk_2` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`),
   ADD CONSTRAINT `tabel_jadwal_ibfk_3` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_jadwal_ibfk_4` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tabel_jadwal_ibfk_5` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tabel_jadwal_ibfk_6` FOREIGN KEY (`id_prodi`) REFERENCES `tabel_prodi` (`id_prodi`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tabel_jadwal_ibfk_5` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_kelas`
