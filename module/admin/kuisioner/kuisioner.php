@@ -126,21 +126,17 @@
           </div>
 
           <div class="row mt-3">
-            <form class="col-md-12 d-flex" action="?module=kuisioner" method="POST">
+            <div class="col-md-12 d-flex">
               <small class="my-auto"><img src="../img/search.svg" alt="" id="icon-search"></small>
-              <input type="search" class="pencarian form-control mr-4" name="txtCariDosen" id="cari">
-              <input type="submit" value="Cari Dosen" name="cariDosen" class="btn btn-success btn-cariDosen">
-            </form>
+              <input type="search" class="pencarian form-control mr-4" id="txtCariDosenKuisioner">
+            </div>
           </div>
 
           <div class="row mt-3">
-            <div class="col-md-12 d-flex text-center justify-content-center">
+            <div class="col-md-12 d-flex text-center justify-content-center" id="dataDosenKuisioner">
             <?php
               if(isset($_POST["cariKuisioner"])){
                 $resultKuisioner=kuisioner($con, $_POST["tahun"], $_POST["semester"]);
-              }
-              else if(isset($_POST["cariDosen"])){
-                $resultKuisioner=kuisionerCariDosen($con, $_POST["txtCariDosen"]);
               }
               else{
                 $resultKuisioner=kuisioner($con, date("Y"), 7);
@@ -163,11 +159,11 @@
                     $no=1;
                     while($row = mysqli_fetch_assoc($resultKuisioner)){
                       ?>
-                      <tr>
+                      <tr class="itemDosenKuisioner">
                         <td><?php echo $no;?></td>
-                        <td><?php echo $row["nip"]; ?></td>
-                        <td><?php echo $row["namaDosen"]; ?></td>
-                        <td>
+                        <td class="nip"><?php echo $row["nip"]; ?></td>
+                        <td class="nama"><?php echo $row["namaDosen"]; ?></td>
+                        <td class="kelas">
                         <?php
                         $resultKelasDosen=kelasDosen($con,$row["id_dosen"]);
                         if (mysqli_num_rows($resultKelasDosen) > 0){
@@ -264,7 +260,7 @@
               </div>
 
               <div class="row mt-2">
-                <div class="col-md-12 p-0 d-flex justify-content-center scrollbar pr-1" id="tableData">
+                <div class="col-md-12 p-0 d-flex justify-content-center scrollbar pr-1" id="tableDataKuisionerDosen">
                   <div class="text-center">
                     <img src='../img/magnifier.svg' alt='pencarian' class='p-3'><p class='text-muted'>Data Tidak Ditemukan</p>
                   </div>

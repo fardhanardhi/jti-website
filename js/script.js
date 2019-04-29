@@ -1,22 +1,22 @@
-$("#navigation-btn").click(function () {
+$("#navigation-btn").click(function() {
   $("#navigation")
     .stop()
     .fadeIn(300);
 });
 
-$("#navigation").click(function () {
+$("#navigation").click(function() {
   $("#navigation")
     .stop()
     .fadeOut(300);
 });
 
-$("#navigation-admin-btn").click(function () {
+$("#navigation-admin-btn").click(function() {
   $("#navigation-admin")
     .stop()
     .fadeIn(300);
 });
 
-$("#navigation-admin-close, #navigation-admin-close2").click(function () {
+$("#navigation-admin-close, #navigation-admin-close2").click(function() {
   $("#navigation-admin")
     .stop()
     .fadeOut(300);
@@ -45,58 +45,59 @@ function showPassword() {
 $("#datepicker").datepicker();
 
 // set tanggal ke hidden input
-$("#datepicker").on("changeDate", function () {
+$("#datepicker").on("changeDate", function() {
   $("#my_hidden_input").val($("#datepicker").datepicker("getFormattedDate"));
 });
 
 // lightbox(preview gambar)
-$(document).on("click", '[data-toggle="lightbox"]', function (event) {
+$(document).on("click", '[data-toggle="lightbox"]', function(event) {
   event.preventDefault();
   $(this).ekkoLightbox();
 });
 
 // Initialize tooltip component
-$(function () {
+$(function() {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
 // Initialize popover component
-$(function () {
+$(function() {
   $('[data-toggle="popover"]').popover();
 });
 
 //   Popover
-$(function () {
+$(function() {
   $('[data-toggle="popover"]').popover();
 });
 
 // Login form validation
 function validateUsername(input) {
   if (input.value == "") {
-    document.getElementById('error-handling').classList.remove('d-none');
-    document.getElementById('error-handling').classList.add('d-flex');
-    document.getElementById('error-handling').innerHTML = "*Username harus diisi";
-    if (getUrl('error') == undefined || getUrl('error') != '') {
-      document.getElementById('error-handling2').classList.add('d-none');
-      document.getElementById('error-handling2').classList.remove('d-flex');
+    document.getElementById("error-handling").classList.remove("d-none");
+    document.getElementById("error-handling").classList.add("d-flex");
+    document.getElementById("error-handling").innerHTML =
+      "*Username harus diisi";
+    if (getUrl("error") == undefined || getUrl("error") != "") {
+      document.getElementById("error-handling2").classList.add("d-none");
+      document.getElementById("error-handling2").classList.remove("d-flex");
     }
     return false;
   } else if (!/^[0-9]+$/.test(input.value)) {
-    document.getElementById('error-handling').classList.remove('d-none');
-    document.getElementById('error-handling').classList.add('d-flex');
-    document.getElementById('error-handling').innerHTML = "*Username Invalid";
-    if (getUrl('error') == undefined || getUrl('error') != '') {
-      document.getElementById('error-handling2').classList.add('d-none');
-      document.getElementById('error-handling2').classList.remove('d-flex');
+    document.getElementById("error-handling").classList.remove("d-none");
+    document.getElementById("error-handling").classList.add("d-flex");
+    document.getElementById("error-handling").innerHTML = "*Username Invalid";
+    if (getUrl("error") == undefined || getUrl("error") != "") {
+      document.getElementById("error-handling2").classList.add("d-none");
+      document.getElementById("error-handling2").classList.remove("d-flex");
     }
     return false;
   } else {
-    document.getElementById('error-handling').classList.add('d-none');
-    document.getElementById('error-handling').classList.remove('d-flex');
-    document.getElementById('error-handling').innerHTML = "";
-    if (getUrl('error') == undefined || getUrl('error') != '') {
-      document.getElementById('error-handling2').classList.add('d-none');
-      document.getElementById('error-handling2').classList.remove('d-flex');
+    document.getElementById("error-handling").classList.add("d-none");
+    document.getElementById("error-handling").classList.remove("d-flex");
+    document.getElementById("error-handling").innerHTML = "";
+    if (getUrl("error") == undefined || getUrl("error") != "") {
+      document.getElementById("error-handling2").classList.add("d-none");
+      document.getElementById("error-handling2").classList.remove("d-flex");
     }
     return true;
   }
@@ -104,31 +105,32 @@ function validateUsername(input) {
 
 function validatePassword(input) {
   if (input.value == "") {
-    document.getElementById('error-handling').classList.remove('d-none');
-    document.getElementById('error-handling').classList.add('d-flex');
-    document.getElementById('error-handling').innerHTML = "*Password harus diisi";
-    if (getUrl('error') == undefined || getUrl('error') != '') {
-      document.getElementById('error-handling2').classList.add('d-none');
-      document.getElementById('error-handling2').classList.remove('d-flex');
+    document.getElementById("error-handling").classList.remove("d-none");
+    document.getElementById("error-handling").classList.add("d-flex");
+    document.getElementById("error-handling").innerHTML =
+      "*Password harus diisi";
+    if (getUrl("error") == undefined || getUrl("error") != "") {
+      document.getElementById("error-handling2").classList.add("d-none");
+      document.getElementById("error-handling2").classList.remove("d-flex");
     }
     return false;
   } else {
-    document.getElementById('error-handling').classList.add('d-none');
-    document.getElementById('error-handling').classList.remove('d-flex');
-    document.getElementById('error-handling').innerHTML = "";
-    if (getUrl('error') == undefined || getUrl('error') != '') {
-      document.getElementById('error-handling2').classList.add('d-none');
-      document.getElementById('error-handling2').classList.remove('d-flex');
+    document.getElementById("error-handling").classList.add("d-none");
+    document.getElementById("error-handling").classList.remove("d-flex");
+    document.getElementById("error-handling").innerHTML = "";
+    if (getUrl("error") == undefined || getUrl("error") != "") {
+      document.getElementById("error-handling2").classList.add("d-none");
+      document.getElementById("error-handling2").classList.remove("d-flex");
     }
     return true;
   }
 }
 
 function validateOnSubmit() {
-  if (validateUsername(document.getElementById('username')) == false) {
+  if (validateUsername(document.getElementById("username")) == false) {
     return false;
   }
-  if (validatePassword(document.getElementById('password')) == false) {
+  if (validatePassword(document.getElementById("password")) == false) {
     return false;
   }
   return true;
@@ -143,44 +145,53 @@ function getUrl(variable) {
       return pair[1];
     }
   }
-  return (false);
+  return false;
 }
 // End login form validation
 
 // Validasi Kriteria Kuisioner
 function validasiTambahKriteria(input) {
   if (input.value == "") {
-    document.getElementById('peringatanTambah').classList.remove('d-none');
-    document.getElementById('tambahIsiKriteria').classList.add('border-danger');
+    document.getElementById("peringatanTambah").classList.remove("d-none");
+    document.getElementById("tambahIsiKriteria").classList.add("border-danger");
     return false;
   } else {
-    document.getElementById('peringatanTambah').classList.add('d-none');
-    document.getElementById('tambahIsiKriteria').classList.remove('border-danger');
+    document.getElementById("peringatanTambah").classList.add("d-none");
+    document
+      .getElementById("tambahIsiKriteria")
+      .classList.remove("border-danger");
     return true;
   }
 }
 
 function validasiEditKriteria(input) {
   if (input.value == "") {
-    document.getElementById('peringatanEdit').classList.remove('d-none');
-    document.getElementById('editIsiKriteria').classList.add('border-danger');
+    document.getElementById("peringatanEdit").classList.remove("d-none");
+    document.getElementById("editIsiKriteria").classList.add("border-danger");
     return false;
   } else {
-    document.getElementById('peringatanEdit').classList.add('d-none');
-    document.getElementById('editIsiKriteria').classList.remove('border-danger');
+    document.getElementById("peringatanEdit").classList.add("d-none");
+    document
+      .getElementById("editIsiKriteria")
+      .classList.remove("border-danger");
     return true;
   }
 }
 
 function validasiSubmitTambahKriteria() {
-  if (validasiTambahKriteria(document.getElementById('tambahIsiKriteria')) == false) {
+  if (
+    validasiTambahKriteria(document.getElementById("tambahIsiKriteria")) ==
+    false
+  ) {
     return false;
   }
   return true;
 }
 
 function validasiSubmitEditKriteria() {
-  if (validasiEditKriteria(document.getElementById('editIsiKriteria')) == false) {
+  if (
+    validasiEditKriteria(document.getElementById("editIsiKriteria")) == false
+  ) {
     return false;
   }
   return true;
@@ -188,6 +199,17 @@ function validasiSubmitEditKriteria() {
 // End Validasi Kriteria Kuisioner
 
 //Tooltip Berita
-$(document).ready(function () {
+$(document).ready(function() {
   $('[data-toggle="tooltip"]').tooltip();
+});
+
+// chat
+// $(".chat-popup").hide();
+
+$("#toggleChat").click(function() {
+  $("#chatPopup").show();
+});
+
+$("#closeChatPopup").click(function() {
+  $("#chatPopup").hide();
 });

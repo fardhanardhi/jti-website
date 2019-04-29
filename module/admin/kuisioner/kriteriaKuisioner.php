@@ -28,22 +28,16 @@
           </div>
 
           <div class="row mt-4">
-            <form class="col-md-10 offset-1 d-flex" action="?module=kriteriaKuisioner" method="POST">
+            <div class="col-md-10 offset-1 d-flex">
               <small class="my-auto"><img src="../img/search.svg" alt="" id="icon-search"></small>
-              <input type="search" class="pencarian form-control mr-4" name="txtCariKriteria">
-              <input type="submit" value="Cari" name="cariKriteria" class="btn btn-success cariKuisioner">
-            </form>
+              <input type="search" class="pencarian form-control mr-4" id="txtCariKriteria">
+            </div>
           </div>
 
           <div class="row mt-3">
             <div class="col-md-10 offset-1 p-0 pr-3 d-flex justify-content-center scrollbar" id="dataKriteria">
             <?php
-              if(isset($_POST["cariKriteria"])){
-                $resultKriteria=cariKriteria($con, $_POST["txtCariKriteria"]);
-              }
-              else{
-                $resultKriteria=kriteria($con);
-              }
+              $resultKriteria=kriteria($con);
               
               if (mysqli_num_rows($resultKriteria) > 0){
               ?>
@@ -62,9 +56,9 @@
                 $no=1;
                 while($row=mysqli_fetch_assoc($resultKriteria)){
                   ?>
-                  <tr>
+                  <tr class="itemKriteria">
                     <td><?php echo $no; ?></td>
-                    <td class="text-left"><?php echo $row["kriteria"]; ?></td>
+                    <td class="text-left kriteria"><?php echo $row["kriteria"]; ?></td>
                     <td>
                       <button type="button" id="<?php echo $row["id_kuisioner"];?>" class="btn btn-primary edit-kriteria" data-toggle="modal" data-target="#modalEditKriteria">Edit</button>
                     </td>

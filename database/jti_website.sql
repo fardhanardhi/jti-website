@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2019 at 11:21 AM
+-- Generation Time: Apr 28, 2019 at 02:18 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.13
 
@@ -131,7 +131,9 @@ INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VAL
 (11, 'Nganggur', 45, 32, '2019-04-23 09:57:00'),
 (12, 'Bagi dulur-dulur di jawatimur yang mau masuk ke Malang atau mau keluar Malang, disarankan untuk tidak berangkat di hari jumat. Dikarenakan hari jumat tanggal 12 April 2019 Malang raya punya agenda besar  1. Final piala presiden 2019 Arema vs Persebaya 2. Final piala presiden di hadiri RI 1 Joko Widodo 3. Kampanye terbuka Capres 02 Prabowo-Sandi 4. Konvoi Besar Aremania se-Malang Raya  Dan di sarankan untuk dulur-dulur yang memiliki kendaraan dengan Plat Nomor L (surabaya) dan W (sidoarjo) untuk tidak nekat masuk wilayah Malang raya di hari tersebut (atas saran dari POLRI) demi keselamatan dulur semua. Terimakasih dan monggo di bantu share untuk kenyamanan masyarakat jawatimur bersama.', 32, 45, '2019-04-23 09:59:00'),
 (13, 'Ikut bro', 32, 45, '2019-04-23 09:59:00'),
-(14, 'Makasih', 45, 32, '2019-04-23 09:59:00');
+(14, 'Makasih', 45, 32, '2019-04-23 09:59:00'),
+(15, 'tes', 32, 45, '2019-04-26 14:55:00'),
+(16, 'tes', 32, 2, '2019-04-26 14:56:00');
 
 -- --------------------------------------------------------
 
@@ -417,50 +419,28 @@ INSERT INTO `tabel_kompen` (`id_kompen`, `id_mahasiswa`, `id_dosen`, `id_semeste
 
 CREATE TABLE `tabel_krs` (
   `id_krs` int(30) NOT NULL,
-  `id_mahasiswa` int(30) NOT NULL,
-  `id_matkul` int(100) DEFAULT NULL,
-  `waktu_edit` datetime NOT NULL
+  `id_mahasiswa` int(30) DEFAULT NULL,
+  `status_daftar_ulang` varchar(50) DEFAULT NULL,
+  `gambar_krs` varchar(100) DEFAULT NULL,
+  `id_semester` int(30) DEFAULT NULL,
+  `waktu_edit` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_krs`
 --
 
-INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `id_matkul`, `waktu_edit`) VALUES
-(1, 33, 1, '2019-04-09 00:00:00'),
-(2, 33, 2, '2019-04-09 00:00:00'),
-(3, 33, 4, '2019-04-09 00:00:00'),
-(4, 33, 6, '2019-04-09 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tabel_krs_admin`
---
-
-CREATE TABLE `tabel_krs_admin` (
-  `id_krs` int(30) NOT NULL,
-  `id_mahasiswa` int(30) NOT NULL,
-  `status_daftar_ulang` varchar(50) DEFAULT NULL,
-  `gambar_krs` varchar(100) DEFAULT NULL,
-  `id_semester` int(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tabel_krs_admin`
---
-
-INSERT INTO `tabel_krs_admin` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`) VALUES
-(1, 33, 'Sudah', 'krs1.png', 7),
-(2, 34, 'Belum', NULL, 7),
-(3, 35, 'Sudah', NULL, 7),
-(4, 36, 'Belum', NULL, 7),
-(5, 37, 'Sudah', NULL, 7),
-(6, 38, 'Belum', NULL, 7),
-(7, 39, 'Sudah', NULL, 7),
-(8, 40, 'Belum', NULL, 7),
-(9, 41, 'Sudah', NULL, 7),
-(10, 42, 'Belum', NULL, 7);
+INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`, `waktu_edit`) VALUES
+(1, 33, 'Sudah', '20190428093312.png', 7, NULL),
+(2, 34, 'Belum', NULL, 7, NULL),
+(3, 35, 'Sudah', '20190428093318.png', 7, NULL),
+(4, 36, 'Belum', NULL, 7, NULL),
+(5, 37, 'Sudah', NULL, 7, NULL),
+(6, 38, 'Belum', NULL, 7, NULL),
+(7, 39, 'Sudah', NULL, 7, NULL),
+(8, 40, 'Belum', NULL, 7, NULL),
+(9, 41, 'Sudah', NULL, 7, NULL),
+(10, 42, 'Belum', NULL, 7, NULL);
 
 -- --------------------------------------------------------
 
@@ -935,14 +915,6 @@ ALTER TABLE `tabel_kompen`
 ALTER TABLE `tabel_krs`
   ADD PRIMARY KEY (`id_krs`),
   ADD KEY `id_mahasiswa` (`id_mahasiswa`),
-  ADD KEY `id_matkul` (`id_matkul`);
-
---
--- Indexes for table `tabel_krs_admin`
---
-ALTER TABLE `tabel_krs_admin`
-  ADD PRIMARY KEY (`id_krs`),
-  ADD KEY `id_mahasiswa` (`id_mahasiswa`),
   ADD KEY `id_semester` (`id_semester`);
 
 --
@@ -1045,7 +1017,7 @@ ALTER TABLE `tabel_attachment`
 -- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
-  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
@@ -1106,12 +1078,6 @@ ALTER TABLE `tabel_komentar`
 --
 ALTER TABLE `tabel_kompen`
   MODIFY `id_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tabel_krs`
---
-ALTER TABLE `tabel_krs`
-  MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tabel_kuisioner`
@@ -1277,16 +1243,9 @@ ALTER TABLE `tabel_kompen`
 -- Constraints for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
-  ADD CONSTRAINT `tabel_krs_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tabel_krs_ibfk_2` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Constraints for table `tabel_krs_admin`
---
-ALTER TABLE `tabel_krs_admin`
-  ADD CONSTRAINT `tabel_krs_admin_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`),
-  ADD CONSTRAINT `tabel_krs_admin_ibfk_2` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`),
-  ADD CONSTRAINT `tabel_krs_admin_ibfk_3` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`);
+  ADD CONSTRAINT `tabel_krs_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`),
+  ADD CONSTRAINT `tabel_krs_ibfk_2` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`),
+  ADD CONSTRAINT `tabel_krs_ibfk_3` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`);
 
 --
 -- Constraints for table `tabel_mahasiswa`
