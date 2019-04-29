@@ -3,9 +3,9 @@ include "../config/connection.php";
 
 function krs($con)
 {
-    $krs = "SELECT DISTINCT tabel_krs_admin.id_krs, tabel_mahasiswa.nim, tabel_mahasiswa.nama,
-    tabel_krs_admin.status_daftar_ulang, tabel_krs_admin.gambar_krs, tabel_krs_admin.gambar_krs
-    FROM tabel_krs_admin INNER JOIN tabel_mahasiswa ON tabel_krs_admin.id_mahasiswa = tabel_mahasiswa.id_mahasiswa";
+    $krs = "SELECT DISTINCT tabel_krs.id_krs, tabel_mahasiswa.nim, tabel_mahasiswa.nama,
+    tabel_krs.status_daftar_ulang, tabel_krs.gambar_krs, tabel_krs.gambar_krs
+    FROM tabel_krs INNER JOIN tabel_mahasiswa ON tabel_krs.id_mahasiswa = tabel_mahasiswa.id_mahasiswa";
     
     $resultTampilKrs = mysqli_query($con, $krs);
     return $resultTampilKrs;
@@ -13,9 +13,9 @@ function krs($con)
 
 function krsCari($con, $kelas)
 {
-    $krs = "SELECT DISTINCT tabel_krs_admin.id_krs, tabel_mahasiswa.nim, tabel_mahasiswa.nama,
-    tabel_krs_admin.status_daftar_ulang, tabel_krs_admin.gambar_krs, tabel_mahasiswa.id_kelas
-    FROM tabel_krs_admin INNER JOIN tabel_mahasiswa ON tabel_krs_admin.id_mahasiswa = tabel_mahasiswa.id_mahasiswa
+    $krs = "SELECT DISTINCT tabel_krs.id_krs, tabel_mahasiswa.nim, tabel_mahasiswa.nama,
+    tabel_krs.status_daftar_ulang, tabel_krs.gambar_krs, tabel_mahasiswa.id_kelas
+    FROM tabel_krs INNER JOIN tabel_mahasiswa ON tabel_krs.id_mahasiswa = tabel_mahasiswa.id_mahasiswa
     AND tabel_mahasiswa.id_kelas='$kelas'";
     
     $resultTampilKrs = mysqli_query($con, $krs);
@@ -24,10 +24,10 @@ function krsCari($con, $kelas)
 
 function krsCariSemester($con, $kelas, $semester)
 {
-    $krs = "SELECT DISTINCT tabel_krs_admin.id_krs, tabel_mahasiswa.nim, tabel_mahasiswa.nama,
-    tabel_krs_admin.status_daftar_ulang, tabel_krs_admin.gambar_krs, tabel_mahasiswa.id_kelas, tabel_krs_admin.id_semester
-    FROM tabel_krs_admin INNER JOIN tabel_mahasiswa ON tabel_krs_admin.id_mahasiswa = tabel_mahasiswa.id_mahasiswa
-    AND tabel_mahasiswa.id_kelas='$kelas' AND tabel_krs_admin.id_semester='$semester'";
+    $krs = "SELECT DISTINCT tabel_krs.id_krs, tabel_mahasiswa.nim, tabel_mahasiswa.nama,
+    tabel_krs.status_daftar_ulang, tabel_krs.gambar_krs, tabel_mahasiswa.id_kelas, tabel_krs.id_semester
+    FROM tabel_krs INNER JOIN tabel_mahasiswa ON tabel_krs.id_mahasiswa = tabel_mahasiswa.id_mahasiswa
+    AND tabel_mahasiswa.id_kelas='$kelas' AND tabel_krs.id_semester='$semester'";
     
     $resultTampilKrs = mysqli_query($con, $krs);
     return $resultTampilKrs;
@@ -69,7 +69,7 @@ function tampilKelas($con, $id_kelas){
 
 if(isset($_POST["hapusKrs"])){
     if($_GET["module"]=="krs" || $_GET["module"]=="krsPerKelas" && $_GET["act"]=="hapus"){
-        $hapusKrs="update tabel_krs_admin set gambar_krs=null where id_krs = '$_POST[id_krs]'";
+        $hapusKrs="update tabel_krs set gambar_krs=null where id_krs = '$_POST[id_krs]'";
         mysqli_query($con, $hapusKrs);
         header('location:../module/index.php?module=' . $_GET["module"]);
     }
@@ -77,13 +77,13 @@ if(isset($_POST["hapusKrs"])){
 
 if(isset($_POST["lihatKrs"])){
     if($_GET["module"]=="krs" || $_GET["module"]=="krsPerKelas" && $_GET["act"]=="edit"){
-      mysqli_query($con, "SELECT * FROM tabel_krs_admin WHERE id_krs=$_POST'[id_krs]'");
+      mysqli_query($con, "SELECT * FROM tabel_krs WHERE id_krs=$_POST'[id_krs]'");
       header('location:../module/index.php?module=' . $_GET["module"]);
     }
 }
 
 if(isset($_POST["lihat_krs"])){
-    $lihat = "select * from tabel_krs_admin where id_krs=$_POST[lihat_krs]";
+    $lihat = "select * from tabel_krs where id_krs=$_POST[lihat_krs]";
     $resultLihat = mysqli_query($con, $lihat);
     if(mysqli_num_rows($resultLihat)>0){
       $row=mysqli_fetch_assoc($resultLihat);
@@ -126,7 +126,7 @@ if (isset($_POST["upload"])) {
             $rename_nama_file = date('YmdHis');
             $nama_file_baru  = $rename_nama_file.'.'.$extension;
             
-            $sql = "UPDATE tabel_krs_admin SET gambar_krs='$nama_file_baru'
+            $sql = "UPDATE tabel_krs SET gambar_krs='$nama_file_baru'
             WHERE id_krs = '$idKrs'";
             if (!mysqli_query($con, $sql)) {
                 echo "Error: ".mysqli_error($con)."
