@@ -71,11 +71,16 @@ $statusPembayaran = $rowStatus["status_daftar_ulang"];
               <img src="../img/navigation/home.svg">
               <p class="mt-3">HOME</p>
             </div>
-            <?php if ($level == "dosen" || $statusPembayaran == "Sudah") { ?>
+            <?php 
+            if ($level == "dosen" || $statusPembayaran == "Sudah") 
+            { ?>
               <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
-              <?php } elseif ($level == "mahasiswa" && $statusPembayaran == "Belum") { ?>
-                <div onclick="location.href='index.php?module=krs';" class="navigation-menu col-md-3 col-lg-2 my-1">
-                <?php } ?>
+              <?php 
+            } 
+            elseif ($level == "mahasiswa" || $statusPembayaran == "Belum") 
+            { ?>
+              <div onclick="location.href='index.php?module=krs';" class="navigation-menu col-md-3 col-lg-2 my-1">
+            <?php } ?>
                 <?php
                 if ($level == "mahasiswa") {
                   ?>

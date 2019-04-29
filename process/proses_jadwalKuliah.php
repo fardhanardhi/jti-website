@@ -7,8 +7,7 @@ function jadwalKuliah($con,$prodi,$kelas)
     where tj.id_matkul = tm.id_matkul
     and tj.id_dosen = td.id_dosen
     and tj.id_ruang = tr.id_ruang
-    and tj.id_kelas = $kelas
-    and tj.id_prodi = $prodi;";
+    and tj.id_kelas = $kelas;";
 
     $resultJadwalKuliah = mysqli_query($con,$jadwalKuliah);
     return $resultJadwalKuliah;
@@ -21,7 +20,6 @@ function jadwalKuliahCariSemester($con,$prodi,$kelas,$semester)
     and tj.id_dosen = td.id_dosen
     and tj.id_ruang = tr.id_ruang
     and tj.id_kelas = $kelas
-    and tj.id_prodi = $prodi
     and tj.id_semester = $semester;";
 
     $resultJadwalKuliahCariSemester = mysqli_query($con,$jadwalKuliahCariSemester);

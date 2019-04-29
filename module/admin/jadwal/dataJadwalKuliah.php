@@ -283,6 +283,7 @@
                                         $no=1;
                                         while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
                                             $idKelasFix = $row["id_kelas"];
+                                            $semesterFix = $row["id_semester"];
                                         ?>
                                         <tr>
                                             <td><?php echo $no;?></td>
@@ -328,6 +329,7 @@
                         method="POST">
                         <div class="modal-body">
                             <input type="hidden" name="id_kelas" id="id_kelas" value="<?php echo $idKelasFix; ?>">
+                            <input type="hidden" name="id_semester" id="id_semester" value="<?php echo $semesterFix; ?>">
                             <h5 class="isiHapusJadwal text-center">Apakah Anda Yakin?</h5>
                             <div class="tombolAksiHapusJadwal text-center">
                                 <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>

@@ -3,7 +3,7 @@ include "../config/connection.php";
 
 function jadwalKuliah($con)
 {
-    $jadwalKuliah = "select tj.id_kelas,tp.kode,tk.tingkat,tk.kode_kelas,tp.nama,ts.semester,count(tj.id_matkul) as jumlah_matkul,sum(tm.sks) as jumlah_sks from tabel_jadwal tj,tabel_kelas tk,tabel_ruang tr,tabel_semester ts,tabel_dosen td,tabel_matkul tm,tabel_prodi tp
+    $jadwalKuliah = "select tj.id_kelas,ts.id_semester,tp.kode,tk.tingkat,tk.kode_kelas,tp.nama,ts.semester,count(tj.id_matkul) as jumlah_matkul,sum(tm.sks) as jumlah_sks from tabel_jadwal tj,tabel_kelas tk,tabel_ruang tr,tabel_semester ts,tabel_dosen td,tabel_matkul tm,tabel_prodi tp
     where tj.id_kelas = tk.id_kelas
     and tj.id_ruang = tr.id_ruang
     and tj.id_semester = ts.id_semester
@@ -82,7 +82,7 @@ if (isset($_POST["insert"]) || isset($_POST["delete"]))
     }
     else if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="hapus")
     {
-        $queryDelete = "DELETE FROM tabel_jadwal WHERE id_kelas='$id_kelas'";
+        $queryDelete = "DELETE FROM tabel_jadwal WHERE id_kelas='$id_kelas' and id_semester='$id_semester'";
 
         mysqli_query($con,$queryDelete);
 
