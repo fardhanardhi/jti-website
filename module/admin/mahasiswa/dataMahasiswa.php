@@ -60,8 +60,7 @@
                                                             <label class="col-sm-2 col-form-label">Password</label>
                                                             <div class="col-sm-10">
                                                                 <input type="password" class="form-control"
-                                                                    placeholder="**********" id="passwordMahasiswaAdmin"
-                                                                    name="passwordMahasiswaAdmin" required />
+                                                                    placeholder="**********" id="passwordMahasiswaAdmin" required />
                                                             </div>
                                                             <div class="col-sm-3"></div>
                                                             <div class="col-sm-9">
@@ -274,9 +273,7 @@
                                                         <div class="row">
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
-                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="Cobacoba(); 
-                                                                    
-                                                                    showFilesSizes2();">Tambahkan</button>
+                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="Testing2(); showFilesSizes222();">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -320,14 +317,14 @@
 
                                             tabel_mahasiswa.id_mahasiswa,
                                             tabel_mahasiswa.nim, 
-                                            tabel_mahasiswa.nama, 
+                                            tabel_mahasiswa.nama as nama_mahasiswa, 
                                             tabel_mahasiswa.alamat, 
                                             tabel_mahasiswa.jenis_kelamin, 
                                             tabel_mahasiswa.tempat_lahir, 
                                             tabel_mahasiswa.tanggal_lahir, 
                                             tabel_mahasiswa.foto, 
 
-                                            tabel_prodi.nama,
+                                            tabel_prodi.nama as nama_prodi,
                                             tabel_kelas.kode_kelas 
                                             
                                             FROM tabel_user INNER JOIN
@@ -355,14 +352,14 @@
                                                         <td>". $index++ ."</td>
                                                         <td>". $row["username"] ."</td>
                                                         <td>". $row["password"] ."</td>
-                                                        <td>". $row["foto"] ."</td>
+                                                        <td><img src='../img/" . $row["foto"] . "' width='90'></td>
                                                         <td>". $row["nim"] ."</td>
-                                                        <td>". $row["nama"] ."</td>
+                                                        <td>". $row["nama_mahasiswa"] ."</td>
                                                         <td>". $row["tempat_lahir"] ."</td>
                                                         <td>". $row["tanggal_lahir"] ."</td>
                                                         <td>". $row["jenis_kelamin"] ."</td>
                                                         <td>". $row["alamat"] ."</td>
-                                                        <td>". $row["nama"]."</td>
+                                                        <td>". $row["nama_prodi"]."</td>
                                                         <td>". $row["kode_kelas"]."</td>
 
                                                         <td>
@@ -370,7 +367,7 @@
                                                                             
                                                         </td>
                                                         <td>
-                                                        <a id='$id_delete' class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
+                                                        <a class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
                                                              
                                                         </td>    
                                                     </tr>
@@ -599,7 +596,7 @@
             <div class="modal-content kontent-modal">
                 <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=hapus" method="post">
                     <div clas="modal-body">
-                        <input type="hidden" name="id_delete">
+                        <input type="number" name="id_delete" values="<?php echo $id_delete ?>" hidden>
                         <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
                         <div class="tombolAksiHapusDataMahasiswa text-center">
                             <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>
