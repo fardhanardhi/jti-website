@@ -30,6 +30,7 @@
   <script src="../js/adminKuisioner.js"></script>
   <script src="../js/adminAbsenKompen.js"></script>
   <script src="../js/adminKrs.js"></script>
+  <script src="../js/adminKhs.js"></script>
   <script src="../js/mahasiswaKelasKosong.js"></script>
   <?php
   if ($level == "admin") {
