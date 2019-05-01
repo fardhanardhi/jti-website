@@ -313,7 +313,8 @@
                                             $query = "SELECT 
                                             
                                             tabel_user.username, 
-                                            tabel_user.password, 
+                                            tabel_user.password,
+                                            tabel_user.id_user, 
 
                                             tabel_mahasiswa.id_mahasiswa,
                                             tabel_mahasiswa.nim, 
