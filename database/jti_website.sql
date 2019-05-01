@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 29, 2019 at 06:15 AM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.1.21
+-- Host: 127.0.0.1
+-- Generation Time: May 01, 2019 at 01:10 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -357,7 +357,17 @@ INSERT INTO `tabel_khs` (`id_khs`, `id_mahasiswa`, `id_kelas`, `id_semester`, `i
 (2, 33, 4, 7, 2, 4, '2019-04-09 00:00:00'),
 (3, 33, 4, 7, 4, 3.2, '2019-04-09 00:00:00'),
 (4, 33, 4, 7, 6, 3, '2019-04-09 00:00:00'),
-(5, 34, 4, 7, 1, 3, '2019-04-11 00:00:00');
+(5, 34, 4, 7, 1, 3, '2019-04-11 00:00:00'),
+(6, 33, 4, 6, 1, 3.7, '0000-00-00 00:00:00'),
+(7, 33, 4, 4, 5, 3.3, '0000-00-00 00:00:00'),
+(8, 33, 4, 6, 5, 3.3, '0000-00-00 00:00:00'),
+(9, 33, 4, 6, 3, 3, '0000-00-00 00:00:00'),
+(10, 33, 4, 6, 2, 3.1, '0000-00-00 00:00:00'),
+(13, 33, 4, 4, 7, 3.4, '0000-00-00 00:00:00'),
+(14, 33, 4, 4, 4, 3.5, '0000-00-00 00:00:00'),
+(15, 33, 4, 5, 2, 3.4, '0000-00-00 00:00:00'),
+(16, 33, 4, 5, 6, 3.5, '0000-00-00 00:00:00'),
+(17, 33, 4, 5, 7, 3.7, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1062,7 +1072,7 @@ ALTER TABLE `tabel_kelas`
 -- AUTO_INCREMENT for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
-  MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tabel_komentar`
