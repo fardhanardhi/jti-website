@@ -1,5 +1,7 @@
 var idUserTujuan = null;
 
+var prevChat = null;
+
 function recentChatSearch() {
   var input,
     filter,
@@ -100,7 +102,7 @@ $(document).ready(function() {
       .stop()
       .animate(
         {
-          scrollTop: $("#chatWindow")[0].scrollHeight
+          scrollTop: $("#chatWindow")[0].scrollHeight * 2
         },
         800
       );
@@ -117,6 +119,7 @@ $(document).ready(function() {
   function refresh() {
     clearInterval();
     setInterval(function() {
+      console.log("Admin E-Complain: Refreshed");
       // cek apakah search kosong
       if ($.trim($("input[type=text]").val()) == "") {
         recentChat(idUserTujuan);
@@ -158,6 +161,14 @@ $(document).ready(function() {
       },
       success: function(response) {
         // remove the deleted comment
+        if (prevChat == null) {
+          prevChat = response;
+        }
+
+        if (prevChat != response) {
+          bottomSCroll();
+          prevChat = response;
+        }
 
         $("#chatWindow")
           .empty()
