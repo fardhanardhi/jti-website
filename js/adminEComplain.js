@@ -95,8 +95,20 @@ $(document).ready(function() {
     }
   }
 
+  function bottomSCroll() {
+    $("#chatWindow")
+      .stop()
+      .animate(
+        {
+          scrollTop: $("#chatWindow")[0].scrollHeight
+        },
+        800
+      );
+  }
+
   function reload() {
-    $("#chatWindow").animate({ scrollTop: 20000000 }, "slow");
+    // $("#chatWindow").animate({ scrollTop: 20000000 }, "slow");
+    bottomSCroll();
     recentChat(idUserTujuan);
     chat(idUserTujuan);
     namaUserTujuan(idUserTujuan);
