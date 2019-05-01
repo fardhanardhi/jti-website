@@ -19,13 +19,9 @@ function queryTampilChat($idUser, $idUserTujuan)
     FROM
       tabel_chat
     WHERE
-      pengirim = $idUser 
-    AND 
       penerima = $idUserTujuan
     OR 
       pengirim = $idUserTujuan
-    AND 
-      penerima = $idUser
     ORDER BY
       waktu
     ";
@@ -140,9 +136,7 @@ function queryTampilRecentChat($idUser)
       ) 
     ) AS b
     WHERE
-      pengirim = $idUser 
-      OR 
-      penerima = $idUser
+      b.recent_user IN (SELECT id_user FROM tabel_user WHERE level != 'admin')
     ORDER BY
       waktu
     DESC
@@ -226,7 +220,7 @@ if (isset($_GET["tampilChat"])) {
   if (mysqli_num_rows($resultChat) > 0) {
     $prev = '';
     while ($rowChat = mysqli_fetch_assoc($resultChat)) {
-      if ($rowChat["penerima"] == $idUser) {
+      if (tampilLevelUser($con, $rowChat["penerima"]) == tampilLevelUser($con, $idUser)) {
         ?>
         <div class="row chat-kiri px-3 py-1 <?php echo (($prev != 'kiri') ? 'pt-3' : ''); ?>">
           <div class="photo-container p-0">
@@ -258,7 +252,7 @@ if (isset($_GET["tampilChat"])) {
 
         <?php
         $prev = 'kiri';
-      } elseif ($rowChat["pengirim"] == $idUser) {
+      } elseif (tampilLevelUser($con, $rowChat["pengirim"]) == tampilLevelUser($con, $idUser)) {
         ?>
         <div class="row chat-kanan px-3 py-1 <?php echo (($prev != 'kanan')  ? 'pt-3' : ''); ?>">
           <div class="col">

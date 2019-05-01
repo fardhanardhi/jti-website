@@ -208,8 +208,70 @@ $(document).ready(function() {
 
 $("#toggleChat").click(function() {
   $("#chatPopup").show();
+  reload();
+  refresh();
 });
 
 $("#closeChatPopup").click(function() {
   $("#chatPopup").hide();
 });
+
+/**
+ * CHAT
+ */
+prevChat = null;
+
+function bottomScroll() {
+  $("#globalChatWindow")
+    .stop()
+    .animate(
+      {
+        scrollTop: $("#globalChatWindow")[0].scrollHeight * 3
+      },
+      800
+    );
+}
+
+function reload() {
+  // $("#chatWindow").animate({ scrollTop: 20000000 }, "slow");
+  bottomScroll();
+  chat();
+}
+
+function refresh() {
+  clearInterval();
+  setInterval(function() {
+    console.log("Mahasiswa E-Complain: Refreshed");
+    // cek apakah search kosong
+    chat();
+  }, 2000);
+}
+
+function chat() {
+  var idUser = $("#idUser").val();
+  $.ajax({
+    url: "../process/proses_indexChat.php",
+    type: "GET",
+    data: {
+      tampilChat: 1,
+      idUser: idUser
+    },
+    success: function(response) {
+      // console.log(response);
+
+      // remove the deleted comment
+      if (prevChat == null) {
+        prevChat = response;
+      }
+
+      if (prevChat != response) {
+        bottomScroll();
+        prevChat = response;
+      }
+
+      $("#globalChatWindow")
+        .empty()
+        .append(response);
+    }
+  });
+}
