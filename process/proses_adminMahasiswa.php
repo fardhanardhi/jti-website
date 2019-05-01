@@ -35,13 +35,13 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
 
         // echo($_POST["semesterMahasiswa"]); 
 
-     $nama_folder="img";
-     $tmp=$_FILES["fileid"]["tmp_name"];
-     $nama_file=$_FILES["fileid"]["name"];
-     $path="../$nama_folder/$nama_file";
-
-
-     move_uploaded_file($tmp,$path);   
+        $pesan = "Upload Sukses";
+        $nama_folder = "img";
+        $tmp = $_FILES["fileid"]["tmp_name"];
+        $nama_file = $_FILES["fileid"]["name"];
+        echo $nama_file;
+        move_uploaded_file($tmp, "../$nama_folder/$nama_file");
+   
 
      $query1 = "INSERT INTO tabel_user (username, password, level) values (
          '$_POST[usernameMahasiswaAdmin]',
