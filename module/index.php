@@ -496,9 +496,6 @@ $statusPembayaran = $rowStatus["status_daftar_ulang"];
           case "khsLihat":
             include "admin/khs/khsLihat.php";
             break;
-          case "khsUpload":
-            include "admin/khs/khsUpload.php";
-            break;
           case "dataDosen":
             include "admin/dosen/dataDosen.php";
             break;
