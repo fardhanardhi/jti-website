@@ -62,3 +62,36 @@ $(".input-komentar").keydown(function(e) {
     });
   }
 });
+
+$(".reply-listener")
+  .mouseenter(function() {
+    $(this)
+      .find(".btn-reply-container")
+      .append(
+        "<strong style='cursor: pointer' class='col-auto btn-reply text-success'>Reply</strong>"
+      );
+
+    var replyEl = $(this);
+
+    $(".btn-reply").click(function() {
+      // alert(
+      //   $(replyEl)
+      //     .parent()
+      //     .parent()
+      //     .find("balas-komen")
+      //     .append("asdsafdaf")
+      // );
+      $(replyEl)
+        .parent()
+        .parent()
+        .find(".balas-komen")
+        .append(
+          "<div class='col mr-0'><input class='form-control form-control-sm' id='inputsm' placeholder='Tulis balasan' type='text'></div>"
+        );
+    });
+  })
+  .mouseleave(function() {
+    $(this)
+      .find(".btn-reply")
+      .remove();
+  });

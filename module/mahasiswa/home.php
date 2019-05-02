@@ -232,29 +232,43 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                   <?php
                   while ($row = mysqli_fetch_assoc($resultKomentar)) {
                     ?>
-                    <div class="col mt-3">
-                      <strong><?php echo tampilUser($con, $row["id_user"]) ?></strong>&nbsp;&nbsp;&nbsp;<span class="komen text-secondary"><?php echo $row["isi"] ?></span> <br>
-                    </div>
+                    <div class="komentar-item">
 
-                    <div class="row komens">
-                      <div class="col ml-4 ">
-                        <div class="balas-komen mt-1 border-left border-dark">
-                          <?php
-                          $resultReplyKomentar = replyKomentar($con, $row["id_komentar"]);
-                          if (mysqli_num_rows($resultKomentar) > 0) {
-                            while ($rowKomentar = mysqli_fetch_assoc($resultReplyKomentar)) {
-                              ?>
-                              <div class="col pr-0 mb-1">
-                                <strong><?php echo tampilUser($con, $rowKomentar["id_user"]) ?></strong>&nbsp;&nbsp;&nbsp;
-                                <span class="komen text-secondary"><?php echo $rowKomentar["isi"] ?></span>
-                              </div>
-                            <?php
-                          }
-                        }
-                        ?>
+                      <div class="col-md-12">
+                        <div class="row reply-listener">
+                          <div class="col mt-3 p-0">
+                            <strong><?php echo tampilUser($con, $row["id_user"]) ?></strong>&nbsp;&nbsp;&nbsp;<span class="komen text-secondary"><?php echo $row["isi"] ?></span> <br>
+                          </div>
+                          <div class="btn-reply-container col-auto p-0 pl-2 mt-3">
+                            <!-- <button class='col-auto'>add user</button> -->
+                          </div>
                         </div>
                       </div>
+                      <div class="col-md-12">
+                        <div class="row komens">
+                          <div class="col ml-4 ">
+                            <div class="balas-komen mt-1 border-left border-dark">
+                              <?php
+                              $resultReplyKomentar = replyKomentar($con, $row["id_komentar"]);
+                              if (mysqli_num_rows($resultKomentar) > 0) {
+                                while ($rowKomentar = mysqli_fetch_assoc($resultReplyKomentar)) {
+                                  ?>
+                                  <div class="col pr-0 mb-1">
+                                    <strong><?php echo tampilUser($con, $rowKomentar["id_user"]) ?></strong>&nbsp;&nbsp;&nbsp;
+                                    <span class="komen text-secondary"><?php echo $rowKomentar["isi"] ?></span>
+                                  </div>
+                                <?php
+                              }
+                            }
+                            ?>
+                            </div>
+                          </div>
+                          <div class="col-md-1"></div>
+                        </div>
+
+                      </div>
                     </div>
+
                   <?php
                 }
                 ?>
