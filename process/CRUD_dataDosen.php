@@ -1,155 +1,73 @@
 <?php
 include "../config/connection.php";
 
-// function username($con)
+// function tampilDosen($con, $idUser, $idDosen)
 // {
-//     $username = "select * from tabel_user";
-
-//     $resultUsername = mysqli_query($con,$username);
-//     return $resultUsername;
-// }
-// function password($con)
-// {
-//     $password = "select * from tabel_user";
-
-//     $resultPassword = mysqli_query($con,$password);
-//     return $resultPassword;
+//   $tampilDosen = "select a.*, b.* from tabel_khs a, tabel_matkul b, tabel_mahasiswa c, tabel_user d where a.id_matkul=b.id_matkul and a.id_mahasiswa=c.id_mahasiswa and c.id_user=d.id_user and d.id_user='$idUser' and a.id_semester=$idSemester";
+//   $resulttampilDosen = mysqli_query($con, $tampilDosen);
+//   return $resulttampilDosen;
 // }
 
-// function gambar($con)
+// function dataDosen($con)
 // {
-//     $password = "select * from tabel_user";
+//     $query = "SELECT 
+                                                
+//         tabel_user.username, 
+//         tabel_user.password, 
 
-//     $resultPassword = mysqli_query($con,$password);
-//     return $resultPassword;
+//         tabel_dosen.id_dosen,
+//         tabel_dosen.nip, 
+//         tabel_dosen.nama, 
+//         tabel_dosen.alamat, 
+//         tabel_dosen.jenis_kelamin, 
+//         tabel_dosen.tempat_lahir, 
+//         tabel_dosen.tanggal_lahir, 
+//         tabel_dosen.foto
+        
+//         FROM tabel_user INNER JOIN
+//         tabel_dosen ON 
+//         tabel_user.username = tabel_dosen.nip
+//         ";
+        
+//     $resultDataDosen = mysqli_query($con,$dataDosen);
+//     return $resultDataDosen;    
 // }
 
-// function nip($con)
+// function dataDosen($con)
 // {
-//     $nip = "select * from tabel_dosen";
-
-//     $resultNip = mysqli_query($con,$nip);
-//     return $resultNip;
-// }
-
-// function nama($con)
-// {
-//     $nama = "select * from tabel_dosen";
-
-//     $resultNama = mysqli_query($con,$nama);
-//     return $resultNama;
-// }
-
-// function tempatLahir($con)
-// {
-//     $tempatLahir = "select * from tabel_dosen";
-
-//     $resultTempatLahir = mysqli_query($con,$tempatLahir);
-//     return $resultTempatLahir;
-// }
-
-
-// // tanggal lhir
-// function optionTanggal($tanggalEdit){
-//     $output="";
-//     $tanggal= date('d', strtotime($tanggalEdit));
-//     for($i=1;$i<=31;$i++){
-//       if($tanggal == $i){
-//         $output.="<option value='$i' selected='selected'>$i</option>";
-//       }else{
-//         $output.="<option value='$i'>$i</option>";
-//       }
-//     }
-//     return $output;
-//   }
-  
-//   function optionBulan($tanggalEdit){
-//     $output="";
-//     $arrBulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");
-//     $bulan= date('m', strtotime($tanggalEdit));
-//     for($i=1;$i<=12;$i++){
-//       $tampilBulan=$arrBulan[$i-1];
-//       if($bulan == $i){
-//         $output.="<option value='$i' selected='selected'>$tampilBulan</option>";
-//       }else{
-//         $output.="<option value='$i'>$tampilBulan</option>";
-//       }
-//     }
-//     return $output;
-//   }
-  
-//   function optionTahun($tanggalEdit){
-//     $output="";
-//     $tahun= date('Y', strtotime($tanggalEdit));
-//     for($i=$tahun-4;$i<=$tahun;$i++){
-//       if($tahun == $i){
-//         $output.="<option value='$i' selected='selected'>$i</option>";
-//       }else{
-//         $output.="<option value='$i'>$i</option>";
-//       }
-//     }
-//     return $output;
-//   }
-// // tutup tgl lagir
-
-// function jenisKelamin($con)
-// {
-//     $jenisKelamin = "select * from tabel_dosen";
-
-//     $resultJenisKelamin = mysqli_query($con,$jenisKelamin);
-//     return $resultJenisKelamin;
-// }
-
-// function alamat($con)
-// {
-//     $alamat = "select * from tabel_dosen";
-
-//     $resultAlamat = mysqli_query($con,$alamat);
-//     return $resultAlamat;
+//     $kompen = "select a.*, b.username, b.password as pass, c.* from tabel_user a, tabel_mahasiswa b, tabel_dosen c, tabel_prodi d where a.id_mahasiswa=b.id_mahasiswa and a.id_dosen=c.id_dosen and b.id_prodi=d.id_prodi";
 // }
 
 if (isset($_POST["insert"]) || isset($_POST["delete"]))
 {
-    if($_GET["module"]=="dataDosen" && $_GET["act"]=="tambah"){
+    $id_ruang = $_POST['id_ruang'];
+    $id_kelas = $_POST['id_kelas'];
+    $id_dosen = $_POST['id_dosen'];
+    $id_matkul = $_POST['id_matkul'];
+    $id_semester = $_POST['id_semester'];
+    $hari = $_POST['hari'];
+    $jam_mulai = $_POST['jam_mulai'];
+    $jam_selesai = $_POST['jam_selesai'];
 
-        // echo($_POST["semesterMahasiswa"]); 
+    if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="tambah")
+    {
 
+        $queryInsert =   "INSERT INTO tabel_jadwal (id_ruang, id_kelas, id_semester, id_dosen, id_matkul, hari, jam_mulai, jam_selesai, waktu_edit)
 
-     $query1 = "INSERT INTO tabel_user (username, password, level) values (
-         '$_POST[usernameDosenAdmin]',
-         '$_POST[passwordDosenAdmin]',
-         'dosen'
+        values ('$id_ruang','$id_kelas','$id_semester','$id_dosen','$id_matkul','$hari','$jam_mulai','$jam_selesai',now())";
 
-     ); ";
+        mysqli_query($con, $queryInsert);
 
-     $query2 = "INSERT INTO tabel_dosen (
-     nip,
-     nama,
-     alamat,
-     jenis_kelamin,
-     tempat_lahir,
-     foto,
-     id_user
-     )
+        header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+    else if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="hapus")
+    {
+        $queryDelete = "DELETE FROM tabel_jadwal WHERE id_kelas='$id_kelas' and id_semester='$id_semester'";
 
-     values
-     '$_POST[nimDosenAdmin]',
-     '$_POST[namaDosenAdmin]',    
-     '$_POST[alamatDosenAdmin]',
-     '$_POST[genderDosenAdmin]',
-     '$_POST[tempatlahirDosenAdmin]',
-     '$_POST[fileid]', (select max(id_user) from tabel_user)
-     );";
+        mysqli_query($con,$queryDelete);
 
-     
-        if(mysqli_query($con, $query1) AND mysqli_query($con, $query2)){
-            header('location:../module/index.php?module=' . $_GET["module"]);
-        }
-
-        else{            
-            echo("Error description: " . mysqli_error($con));
-        }
-    }   
+        header('location:../module/index.php?module=' . $_GET["module"]);
+    } 
 }
 
 ?>
