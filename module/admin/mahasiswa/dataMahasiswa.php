@@ -24,7 +24,7 @@
                                     <li class="breadcrumb-item"><a href="index.php?module=home">Dashboard</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Mahasiswa</li>
                                 </ol>
-                            </nav>
+                            </nav> 
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
-                                                    <div id="fileidMahasiswaAdminBlank2" class="text-danger">
+                                                    <div id="fileidMahasiswaAdminBlank" class="text-danger">
                                                     </div>
                                                 </div>
                                             </div>
