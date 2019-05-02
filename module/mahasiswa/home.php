@@ -261,6 +261,9 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                               }
                             }
                             ?>
+                              <div class='col mr-0'>
+                                <input data-idinfo="<?php echo $id_info ?>" data-iduser="<?php echo $idUser ?>" data-idkomentar="<?php echo $row["id_komentar"] ?>" class='reply-komen-input form-control form-control-sm d-none' placeholder='Tulis balasan' type='text'>
+                              </div>
                             </div>
                           </div>
                           <div class="col-md-1"></div>
