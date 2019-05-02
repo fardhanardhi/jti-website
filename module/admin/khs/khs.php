@@ -10,7 +10,7 @@
                     <ol class="breadcrumb">
                         <li class="pr-4 title"><a href="#"><strong>Kartu Hasil Studi</strong></a></li>
                         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=khsUpload">Kartu Hasil Studi(KHS)</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=khs">Kartu Hasil Studi(KHS)</a></li>
                     </ol>
                 </nav>
             </div>
@@ -62,20 +62,35 @@
                             <?php 
                                 $no=1;
                                 while($row = mysqli_fetch_assoc($result)){
+                                    if(khsNilai($con, $row["id_mahasiswa"], $row["id_semester"])!=0){
                                     ?>
                                 <tr>
                                     <td><?php echo $no;?></td>
                                     <td><?php echo $row["nim"];?></td>
                                     <td><?php echo $row["nm_mahasiswa"];?></td>
                                     <td><?php echo $row["sks"];?></td>
-                                    <td><?php echo $row["ip"];?></td>
-                                    <td><button class="lihat tmbl-table btn btn-info" type="button" class="pratinjau btn" data-toggle="modal"
+                                    <td><?php echo khsNilai($con, $row["id_mahasiswa"], $row["id_semester"]) ?></td>
+                                    <td><button class="edit tmbl-table btn btn-success" type="button" class="pratinjau btn" data-toggle="modal"
                                             data-target="#myModal" class="edit">Edit</button>
                                     </td>
                                 </tr>
                                 <?php
+                                } else if(khsNilai($con, $row["id_mahasiswa"], $row["id_semester"])==0){
+                                    ?>
+                                <tr>
+                                    <td><?php echo $no;?></td>
+                                    <td><?php echo $row["nim"];?></td>
+                                    <td><?php echo $row["nm_mahasiswa"];?></td>
+                                    <td><?php echo $row["sks"];?></td>
+                                    <td><?php echo khsNilai($con, $row["id_mahasiswa"], $row["id_semester"]) ?></td>
+                                    <td><button class="lihat tmbl-table btn btn-info" type="button" class="pratinjau btn" data-toggle="modal"
+                                            data-target="#myModal" class="edit">Update</button>
+                                    </td>
+                                </tr>
+                                <?php
+                                }
                                     $no++;
-                                    }
+                                }
                                 ?>
                             </tbody>
                         </table>

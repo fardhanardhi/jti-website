@@ -77,7 +77,7 @@
                                                             <div class="col-md-2"></div>
                                                             <div class="col-md-10">
                                                                 <br>
-                                                                <input id='fileid' type='file' name='filename'
+                                                                <input type='file' name='fileid'
                                                                     onchange="preview_images2(event);" hidden
                                                                     required />
                                                                 <input id='buttonid' type='button' value='Load Gambar'
@@ -313,7 +313,8 @@
                                             $query = "SELECT 
                                             
                                             tabel_user.username, 
-                                            tabel_user.password, 
+                                            tabel_user.password,
+                                            tabel_user.id_user, 
 
                                             tabel_mahasiswa.id_mahasiswa,
                                             tabel_mahasiswa.nim, 
@@ -342,40 +343,42 @@
                                             ";
                                             $result = mysqli_query($con, $query);
 
-                                            if(mysqli_num_rows($result) > 0){
+                                            
                                                 $index = 1;
                                                 
                                                 while($row = mysqli_fetch_assoc($result)){
                                                     $id_delete = $row["id_user"];
-                                                    echo"
+
+                                                
+                                                ?>
                                                     <tr>
-                                                        <td>". $index++ ."</td>
-                                                        <td>". $row["username"] ."</td>
-                                                        <td>". $row["password"] ."</td>
-                                                        <td><img src='../img/" . $row["foto"] . "' width='90'></td>
-                                                        <td>". $row["nim"] ."</td>
-                                                        <td>". $row["nama_mahasiswa"] ."</td>
-                                                        <td>". $row["tempat_lahir"] ."</td>
-                                                        <td>". $row["tanggal_lahir"] ."</td>
-                                                        <td>". $row["jenis_kelamin"] ."</td>
-                                                        <td>". $row["alamat"] ."</td>
-                                                        <td>". $row["nama_prodi"]."</td>
-                                                        <td>". $row["kode_kelas"]."</td>
+                                                        <td><?php echo $index; ?></td>
+                                                        <td><?php echo $row["username"]; ?></td>
+                                                        <td><?php echo $row["password"]; ?></td>
+                                                        <td><?php echo $row["foto"]; ?></td>
+                                                        <td><?php echo $row["nim"]; ?></td>
+                                                        <td><?php echo $row["nama_mahasiswa"]; ?></td>
+                                                        <td><?php echo $row["tempat_lahir"]; ?></td>
+                                                        <td><?php echo $row["tanggal_lahir"]; ?></td>
+                                                        <td><?php echo $row["jenis_kelamin"]; ?></td>
+                                                        <td><?php echo $row["alamat"]; ?></td>
+                                                        <td><?php echo $row["nama_prodi"];?></td>
+                                                        <td><?php echo $row["kode_kelas"];?></td>
 
                                                         <td>
                                                         <a href='' class='btn btn-primary btn-edit ml-2' data-toggle='modal' data-target='#modalEditAdminMahasiswa'>Edit</a>
                                                                             
                                                         </td>
                                                         <td>
-                                                        <a class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
+                                                        <a id="<?php echo $row["id_user"]?>" class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
                                                              
                                                         </td>    
                                                     </tr>
-                                                    ";
+                                                    <?php $index++;
                                                 }
-                                            }
+                                                ?>
+                                            
 
-                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -596,7 +599,7 @@
             <div class="modal-content kontent-modal">
                 <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=hapus" method="post">
                     <div clas="modal-body">
-                        <input type="number" name="id_delete" values="<?php echo $id_delete ?>" hidden>
+                        <input type="hidden" name="id_delete" id="id_delete" value="<?php echo $id_delete ?>">
                         <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
                         <div class="tombolAksiHapusDataMahasiswa text-center">
                             <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>

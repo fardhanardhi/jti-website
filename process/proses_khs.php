@@ -19,16 +19,16 @@ function khs($con, $kelas, $semester)
 
 function khsKelas($con, $kelas)
 {
-    $khsKelas = "select distinct(a.id_mahasiswa), b.*, b.nim, 
-    b.nama as nm_mahasiswa, c.*, SUM(c.sks) as sks , d.*, d.id_kelas, e.*, e.semester , f.*, f.nama as nm_prodi,
-    SUM(c.sks * a.nilai)/SUM(c.sks) as ip from 
-    tabel_khs a, tabel_mahasiswa b, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_prodi f
-    where a.id_mahasiswa = b.id_mahasiswa
-    and a.id_matkul = c.id_matkul
-    and a.id_kelas = d.id_kelas
-    and d.id_prodi = f.id_prodi
-    and a.id_semester = e.id_semester 
-    and a.id_kelas = $kelas group by a.id_mahasiswa";
+    $khsKelas = "select distinct(a.id_mahasiswa), a.*, a.nim, 
+    a.nama as nm_mahasiswa, c.*, SUM(c.sks) as sks, d.id_kelas, e.*, e.semester, f.*
+    from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f
+    where a.id_kelas = d.id_kelas
+    and d.id_kelas = f.id_kelas
+    and a.id_semester = e.id_semester
+    and e.id_semester = f.id_semester
+    and c.id_matkul = f.id_matkul 
+    and a.id_kelas = $kelas
+    group by a.id_mahasiswa";
 
     $resultTampilKhsKelas = mysqli_query($con, $khsKelas);
     return $resultTampilKhsKelas;
@@ -36,30 +36,61 @@ function khsKelas($con, $kelas)
 
 function khsLihat($con)
 {
-    $khsLihat = "select distinct(a.id_mahasiswa), b.*, b.nim, 
-    b.nama as nm_mahasiswa, c.*, SUM(c.sks) as sks , d.*, d.id_kelas, e.*, e.semester , f.*, f.nama as nm_prodi,
-    SUM(c.sks * a.nilai)/SUM(c.sks) as ip from 
-    tabel_khs a, tabel_mahasiswa b, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_prodi f
-    where a.id_mahasiswa = b.id_mahasiswa
-    and a.id_matkul = c.id_matkul
-    and a.id_kelas = d.id_kelas
-    and d.id_prodi = f.id_prodi
-    and a.id_semester = e.id_semester group by a.id_mahasiswa";
+    $khsLihat = "select distinct(a.id_mahasiswa), a.*, a.nim, 
+    a.nama as nm_mahasiswa, c.*, SUM(c.sks) as sks, d.id_kelas, e.*, e.semester, f.*
+    from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f
+    where a.id_kelas = d.id_kelas
+    and d.id_kelas = f.id_kelas
+    and a.id_semester = e.id_semester
+    and e.id_semester = f.id_semester
+    and c.id_matkul = f.id_matkul 
+    group by a.id_mahasiswa";
     
     $resultTampilKhsLihat = mysqli_query($con, $khsLihat);
     return $resultTampilKhsLihat;
 }
 
-function khsNilai($con){
-    $khsNilai = "select distinct(a.id_mahasiswa),
-    a.nilai as nilai, b.*, c.*, c.nama as nm_matkul,
-    c.sks as sks, c.jam as jam from tabel_khs a, tabel_mahasiswa b, tabel_matkul c
+function cekSemester($con, $id_mahasiswa){
+    $cekSemester="select a.*, b.*, a.id_semester from tabel_semester a, tabel_mahasiswa b 
+    where a.id_semester=b.id_semester and b.id_mahasiswa = $id_mahasiswa";
+    $resultCekSemester=mysqli_query($con, $cekSemester);
+    $row=mysqli_fetch_assoc($resultCekSemester);
+    return $row["id_semester"];
+}
+
+function khsNilai($con, $id_mahasiswa, $id_semester){
+    $khsNilai = "select distinct(SUM(c.sks * a.nilai)/SUM(c.sks)) as ip, a.*, b.*, c.*, d.*, e.* from tabel_khs a, 
+    tabel_mahasiswa b, tabel_matkul c, tabel_jadwal d, tabel_semester e
     where a.id_mahasiswa = b.id_mahasiswa
-    and a.id_matkul = c.id_matkul group by a.id_mahasiswa";
+    and d.id_matkul = c.id_matkul 
+    and d.id_semester = e.id_semester
+    and a.id_mahasiswa = $id_mahasiswa and d.id_semester = $id_semester group by a.id_mahasiswa";
 
     $resultTampilKhsNilai = mysqli_query($con, $khsNilai);
-    return $resultTampilKhsNilai;
+    if(mysqli_num_rows($resultTampilKhsNilai)>0){
+        $rowKhsNilai = mysqli_fetch_assoc($resultTampilKhsNilai);
+        return $rowKhsNilai["ip"];
+    } else{
+        return 0;
+    }
 }
+
+// function khsSks($con, $id_mahasiswa, $id_semester){
+//     $khsSks = "select a.*, b.*, c.*, d.*, e.*, SUM(c.sks) as sks from tabel_khs a, 
+//     tabel_mahasiswa b, tabel_matkul c, tabel_jadwal d, tabel_semester e
+//     where a.id_mahasiswa = b.id_mahasiswa
+//     and d.id_matkul = c.id_matkul 
+//     and d.id_semester = e.id_semester
+//     and a.id_mahasiswa = $id_mahasiswa and d.id_semester = $id_semester";
+
+//     $resultTampilKhsSks = mysqli_query($con, $khsSks);
+//     if(mysqli_num_rows($resultTampilKhsSks)>0){
+//         $rowKhsSks = mysqli_fetch_assoc($resultTampilKhsSks);
+//         return $rowKhsSks["sks"];
+//     } else{
+//         return 0;
+//     }
+// }
 
 function kelas($con){
     $kelas="select * from tabel_kelas";
@@ -114,4 +145,5 @@ function matkul($con)
     $resultMatkul = mysqli_query($con,$matkul);
     return $resultMatkul;
 }
+
 ?>

@@ -35,13 +35,11 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
 
         // echo($_POST["semesterMahasiswa"]); 
 
-     $nama_folder="img";
-     $tmp=$_FILES["fileid"]["tmp_name"];
-     $nama_file=$_FILES["fileid"]["name"];
-     $path="../$nama_folder/$nama_file";
-
-
-     move_uploaded_file($tmp,$path);   
+        $nama_folder = "img";
+        $tmp = $_FILES["fileid"]["tmp_name"];
+        $nama_file = $_FILES["fileid"]["name"];
+        move_uploaded_file($tmp, "../$nama_folder/$nama_file");
+   
 
      $query1 = "INSERT INTO tabel_user (username, password, level) values (
          '$_POST[usernameMahasiswaAdmin]',
@@ -98,24 +96,16 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
         }
     }   
 
-    if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="hapus"){
-        
-        $delete = $_POST["id_delete"];
+    else if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="hapus")
+    {
+        $delete=$_POST['id_delete'];
 
-        $query4 = "delete from tabel_mahasiswa where id_user = '$delete';";
+        $queryDelete = "DELETE FROM tabel_mahasiswa WHERE id_user='$delete';";
 
-        $query5 = "delete from tabel_user where id_user = '$delete';";
+        mysqli_query($con,$queryDelete);
 
-
-        if(mysqli_query($con, $query4) AND mysqli_query($con, $query5)){
-            header('location:../module/index.php?module=' . $_GET["module"]);
-        }
-
-        else{            
-            echo("Error description: " . mysqli_error($con));
-        }
-
-    }
+        header('location:../module/index.php?module=' . $_GET["module"]);
+    } 
 
 }
 
