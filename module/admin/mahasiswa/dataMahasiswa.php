@@ -9,7 +9,7 @@
     ?>
 </head>
 
-<body onload="setup(); setup2();">
+<body onload="setup2(); setup3()">
     <main role="main" class="container-fluid">
         <div id="dataMahasiswa" class="row">
             <div class="col-md-12 p-0">
@@ -24,7 +24,7 @@
                                     <li class="breadcrumb-item"><a href="index.php?module=home">Dashboard</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Mahasiswa</li>
                                 </ol>
-                            </nav>
+                            </nav> 
                         </div>
                     </div>
                 </div>
@@ -60,8 +60,7 @@
                                                             <label class="col-sm-2 col-form-label">Password</label>
                                                             <div class="col-sm-10">
                                                                 <input type="password" class="form-control"
-                                                                    placeholder="**********" id="passwordMahasiswaAdmin"
-                                                                    name="passwordMahasiswaAdmin" required />
+                                                                    placeholder="**********" id="passwordMahasiswaAdmin" required />
                                                             </div>
                                                             <div class="col-sm-3"></div>
                                                             <div class="col-sm-9">
@@ -70,26 +69,25 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-md-2 col-form-label">Gambar</label>
-                                                            <div class="input-group col-md-10">
-                                                                <img src="../attachment/img/avatar.jpeg"
-                                                                    id="fotoPrevCoba" height="150px" width="150px">
-                                                            </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="col-md-10">
-                                                                <br>
-                                                                <input id='fileid' type='file' name='filename'
-                                                                    onchange="preview_images2(event);" hidden
-                                                                    required />
-                                                                <input id='buttonid' type='button' value='Load Gambar'
-                                                                    class="btn btn-load btn-primary tmbl-load ml-2" />
-                                                            </div>
-                                                            <div class="col-sm-3"></div>
-                                                            <div class="col-sm-9">
-                                                                <div id="fileidMahasiswaAdminBlank" class="text-danger">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <label class="col-sm-2 col-form-label">Gambar</label>
+                                                <div class="input-group col-sm-10">
+                                                    <img src="../attachment/img/avatar.jpeg"
+                                                        id="fotoPrevMahasiswaAdmin3" height="150px" width="150px">
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-9">
+                                                    <br>
+                                                    <input id='fileid2' type='file' name='filename2' onchange="preview_images22(event);"  hidden
+                                                        required />
+                                                    <input id='buttonid2' type='button' value='Load Gambar'
+                                                        class="btn btn-loading btn-primary tmbl-loading ml-2"  />
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="fileidMahasiswaAdminBlank" class="text-danger">
+                                                    </div>
+                                                </div>
+                                            </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
@@ -274,9 +272,7 @@
                                                         <div class="row">
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
-                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="Cobacoba(); 
-                                                                    
-                                                                    showFilesSizes2();">Tambahkan</button>
+                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="Validasi(); showFilesSizes222();">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -316,18 +312,19 @@
                                             $query = "SELECT 
                                             
                                             tabel_user.username, 
-                                            tabel_user.password, 
+                                            tabel_user.password,
+                                            tabel_user.id_user, 
 
                                             tabel_mahasiswa.id_mahasiswa,
                                             tabel_mahasiswa.nim, 
-                                            tabel_mahasiswa.nama, 
+                                            tabel_mahasiswa.nama as nama_mahasiswa, 
                                             tabel_mahasiswa.alamat, 
                                             tabel_mahasiswa.jenis_kelamin, 
                                             tabel_mahasiswa.tempat_lahir, 
                                             tabel_mahasiswa.tanggal_lahir, 
                                             tabel_mahasiswa.foto, 
 
-                                            tabel_prodi.nama,
+                                            tabel_prodi.nama as nama_prodi,
                                             tabel_kelas.kode_kelas 
                                             
                                             FROM tabel_user INNER JOIN
@@ -345,40 +342,43 @@
                                             ";
                                             $result = mysqli_query($con, $query);
 
-                                            if(mysqli_num_rows($result) > 0){
+                                            
                                                 $index = 1;
                                                 
                                                 while($row = mysqli_fetch_assoc($result)){
                                                     $id_delete = $row["id_user"];
-                                                    echo"
+                                                    $id = $row["id_mahasiswa"];
+
+                                                
+                                                ?>
                                                     <tr>
-                                                        <td>". $index++ ."</td>
-                                                        <td>". $row["username"] ."</td>
-                                                        <td>". $row["password"] ."</td>
-                                                        <td>". $row["foto"] ."</td>
-                                                        <td>". $row["nim"] ."</td>
-                                                        <td>". $row["nama"] ."</td>
-                                                        <td>". $row["tempat_lahir"] ."</td>
-                                                        <td>". $row["tanggal_lahir"] ."</td>
-                                                        <td>". $row["jenis_kelamin"] ."</td>
-                                                        <td>". $row["alamat"] ."</td>
-                                                        <td>". $row["nama"]."</td>
-                                                        <td>". $row["kode_kelas"]."</td>
+                                                        <td><?php echo $index; ?></td>
+                                                        <td><?php echo $row["username"]; ?></td>
+                                                        <td><?php echo $row["password"]; ?></td>
+                                                        <td><?php echo $row["foto"]; ?></td>
+                                                        <td><?php echo $row["nim"]; ?></td>
+                                                        <td><?php echo $row["nama_mahasiswa"]; ?></td>
+                                                        <td><?php echo $row["tempat_lahir"]; ?></td>
+                                                        <td><?php echo $row["tanggal_lahir"]; ?></td>
+                                                        <td><?php echo $row["jenis_kelamin"]; ?></td>
+                                                        <td><?php echo $row["alamat"]; ?></td>
+                                                        <td><?php echo $row["nama_prodi"];?></td>
+                                                        <td><?php echo $row["kode_kelas"];?></td>
 
                                                         <td>
                                                         <a href='' class='btn btn-primary btn-edit ml-2' data-toggle='modal' data-target='#modalEditAdminMahasiswa'>Edit</a>
                                                                             
                                                         </td>
                                                         <td>
-                                                        <a id='$id_delete' class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
+                                                        <a id="<?php echo $row["id_user"]?>" class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
                                                              
                                                         </td>    
                                                     </tr>
-                                                    ";
+                                                    <?php $index++;
                                                 }
-                                            }
+                                                ?>
+                                            
 
-                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -441,9 +441,9 @@
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-9">
                                                     <br>
-                                                    <input id='fileid2' type='file' name='filename' onchange="preview_images22(event);"  hidden
+                                                    <input id='fileid3' type='file' name='filename' onchange="preview_images6(event);"  hidden
                                                         required />
-                                                    <input id='buttonid2' type='button' value='Load Gambar'
+                                                    <input id='buttonid3' type='button' value='Load Gambar'
                                                         class="btn btn-loading btn-primary tmbl-loading ml-2"  />
                                                 </div>
                                                 <div class="col-sm-3"></div>
@@ -592,14 +592,17 @@
             </div>
         </div>
     </div>
-    <!-- modal hapus -->
+  
+</body>
+  <!-- modal hapus -->
     <div class="modal fade hapusMahasiswa-modal" id="modalHapusDataMahasiswa" tabindex="-1" role="dialog"
         aria-labelledby="hapusDataMahasiswaTitle" aria-hidden="true" data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content kontent-modal">
                 <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=hapus" method="post">
                     <div clas="modal-body">
-                        <input type="hidden" name="id_delete">
+                        <input type="hidden" name="id_delete" id="id_delete" value="<?php echo $id_delete ?>">
+                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswa" value="<?php echo $id ?>">
                         <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
                         <div class="tombolAksiHapusDataMahasiswa text-center">
                             <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>
@@ -612,6 +615,5 @@
             </div>
         </div>
     </div>
-</body>
 
 </html>

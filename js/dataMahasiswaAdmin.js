@@ -1,118 +1,24 @@
-function Cobacoba(){
-    var usernameMahasiswaAdmin = document.getElementById("usernameMahasiswaAdmin").value;
-
-    var passwordMahasiswaAdmin = document.getElementById("passwordMahasiswaAdmin").value;
-
-    var fileid = document.getElementById("fileid").value;
-
-    var nimMahasiswaAdmin = document.getElementById("nimMahasiswaAdmin").value;
-
-    var namaMahasiswaAdmin = document.getElementById("namaMahasiswaAdmin").value;
-
-    var tempatlahirMahasiswaAdmin = document.getElementById("tempatlahirMahasiswaAdmin").value;
-
-    var alamatMahasiswaAdmin = document.getElementById("alamatMahasiswaAdmin").value;
-
-    var kelasMahasiswaAdmin = document.getElementById("kelasMahasiswaAdmin").value;
-    
-    if(usernameMahasiswaAdmin==""){
-        document.getElementById("usernameMahasiswaAdminBlank").innerHTML="*Masukkan Username";
-    }
-
-    else if(usernameMahasiswaAdmin!=""){
-        document.getElementById("usernameMahasiswaAdminBlank").innerHTML="";
-    }
 
 
-    if(passwordMahasiswaAdmin==""){
-        document.getElementById("passwordMahasiswaAdminBlank").innerHTML="*Masukkan Password";
-    }
-
-    else if(passwordMahasiswaAdmin!=""){
-        document.getElementById("passwordMahasiswaAdminBlank").innerHTML="";
-    }
-
-    if(fileid==""){
-        document.getElementById("fileidMahasiswaAdminBlank").innerHTML="*Upload File Gambar";
-    }
-
-    else if(fileid!=""){
-        document.getElementById("fileidMahasiswaAdminBlank").innerHTML="";
-    }
-
-    if(nimMahasiswaAdmin==""){
-        document.getElementById("nimMahasiswaAdminBlank").innerHTML="*Masukkan NIM";
-    }
-
-    else if(nimMahasiswaAdmin!=""){
-        document.getElementById("nimMahasiswaAdminBlank").innerHTML="";
-    }
-
-
-    if(namaMahasiswaAdmin==""){
-        document.getElementById("namaMahasiswaAdminBlank").innerHTML="*Masukkan Nama Mahasiswa";
-    }
-
-    else if(namaMahasiswaAdmin!=""){
-        document.getElementById("namaMahasiswaAdminBlank").innerHTML="";
-    }
-
-
-    if(tempatlahirMahasiswaAdmin==""){
-        document.getElementById("tempatlahirMahasiswaAdminBlank").innerHTML="*Masukkan Tempat Lahir Mahasiswa";
-    }
-
-    else if(usernameMahasiswaAdmin!=""){
-        document.getElementById("tempatlahirMahasiswaAdminBlank").innerHTML="";
-    }
-
-
-    if(alamatMahasiswaAdmin==""){
-        document.getElementById("alamatMahasiswaAdminBlank").innerHTML="*Masukkan Alamat Mahasiswa";
-    }
-
-    else if(alamatMahasiswaAdmin!=""){
-        document.getElementById("alamatMahasiswaAdminBlank").innerHTML="";
-    }
-
-
-    if(kelasMahasiswaAdmin==""){
-        document.getElementById("kelasMahasiswaAdminBlank").innerHTML="*Masukkan Kelas Mahasiswa";
-    }
-
-    else if(kelasMahasiswaAdmin!=""){
-        document.getElementById("kelasMahasiswaAdminBlank").innerHTML="";
+function setup3() {
+    document.getElementById('buttonid3').addEventListener('click', openDialog2);
+    function openDialog2() {
+        document.getElementById('fileid3').click();
     }
 }
 
-function setup() {
-    document.getElementById('buttonid').addEventListener('click', openDialog);
-    function openDialog() {
-        document.getElementById('fileid').click();
-    }
-
-    /*document.getElementById('fileid').addEventListener('change', submitForm);
-    function submitForm() {
-        document.getElementById('formAdminMahasiswa').submit();
-    }*/
-}
 
 function setup2() {
     document.getElementById('buttonid2').addEventListener('click', openDialog);
     function openDialog() {
         document.getElementById('fileid2').click();
     }
-
-    /*document.getElementById('fileid').addEventListener('change', submitForm);
-    function submitForm() {
-        document.getElementById('formAdminMahasiswa').submit();
-    }*/
 }
 
-function preview_images2(event) {
+function preview_images6(event) {
     var reader = new FileReader();
     reader.onload = function() {
-      var output = document.getElementById("fotoPrevCoba");
+      var output = document.getElementById("fotoPrevMahasiswaAdmin2");
       output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
@@ -121,17 +27,17 @@ function preview_images2(event) {
   function preview_images22(event) {
     var reader = new FileReader();
     reader.onload = function() {
-      var output = document.getElementById("fotoPrevMahasiswaAdmin2");
+      var output = document.getElementById("fotoPrevMahasiswaAdmin3");
       output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
   }
   
 
-  function showFilesSizes2() {
+  function showFilesSizes222() {
     var input, file;
   
-    input = document.getElementById("fileid");
+    input = document.getElementById("fileid2");
   
     file = input.files[0];
   
@@ -145,7 +51,7 @@ function preview_images2(event) {
   function showFilesSizes22() {
     var input, file;
   
-    input = document.getElementById("fileid2");
+    input = document.getElementById("fileid3");
   
     file = input.files[0];
   
@@ -163,7 +69,7 @@ function preview_images2(event) {
 
     var passwordMahasiswaAdmin2 = document.getElementById("passwordMahasiswaAdmin2").value;
 
-    var fileid2 = document.getElementById("fileid2").value;
+    var fileid3 = document.getElementById("fileid3").value;
 
     var nimMahasiswaAdmin2 = document.getElementById("nimMahasiswaAdmin2").value;
 
@@ -192,11 +98,11 @@ function preview_images2(event) {
         document.getElementById("passwordMahasiswaAdminBlank2").innerHTML="";
     }
 
-    if(fileid2==""){
+    if(fileid3==""){
         document.getElementById("fileidMahasiswaAdminBlank2").innerHTML="*Upload File Gambar";
     }
 
-    else if(fileid2!=""){
+    else if(fileid3!=""){
         document.getElementById("fileidMahasiswaAdminBlank2").innerHTML="";
     }
 
@@ -243,4 +149,77 @@ function preview_images2(event) {
     else if(kelasMahasiswaAdmin2!=""){
         document.getElementById("kelasMahasiswaAdminBlank2").innerHTML="";
     }
+}
+
+
+
+function Validasi(){
+    var usernameMahasiswaAdmin = document.getElementById("usernameMahasiswaAdmin").value;
+    var passwordMahasiswaAdmin = document.getElementById("passwordMahasiswaAdmin").value;
+    var fileid2 = document.getElementById("fileid2").value;
+    var nimMahasiswaAdmin = document.getElementById("nimMahasiswaAdmin").value;
+    var namaMahasiswaAdmin = document.getElementById("namaMahasiswaAdmin").value;
+    var tempatlahirMahasiswaAdmin = document.getElementById("tempatlahirMahasiswaAdmin").value;
+    var alamatMahasiswaAdmin = document.getElementById("alamatMahasiswaAdmin").value;
+
+
+    if(usernameMahasiswaAdmin==""){
+        document.getElementById("usernameMahasiswaAdminBlank").innerHTML="*Masukkan Username";
+    }
+
+    else if(usernameMahasiswaAdmin!=""){
+        document.getElementById("usernameMahasiswaAdminBlank").innerHTML="";
+    }
+    
+    if(passwordMahasiswaAdmin==""){
+        document.getElementById("passwordMahasiswaAdminBlank").innerHTML="*Masukkan Password";
+    }
+
+    else if(passwordMahasiswaAdmin!=""){
+        document.getElementById("passwordMahasiswaAdminBlank").innerHTML="";
+    }
+
+    if(fileid2==""){
+        document.getElementById("fileidMahasiswaAdminBlank").innerHTML="*Upload File Gambar";
+    }
+
+    else if(fileid2!=""){
+        document.getElementById("fileidMahasiswaAdminBlank").innerHTML="";
+    }
+
+
+    if(nimMahasiswaAdmin==""){
+        document.getElementById("nimMahasiswaAdminBlank").innerHTML="*Masukkan NIM";
+    }
+
+    else if(nimMahasiswaAdmin!=""){
+        document.getElementById("nimMahasiswaAdminBlank").innerHTML="";
+    }
+
+    if(namaMahasiswaAdmin==""){
+        document.getElementById("namaMahasiswaAdminBlank").innerHTML="*Masukkan Nama Mahasiswa";
+    }
+
+    else if(namaMahasiswaAdmin!=""){
+        document.getElementById("namaMahasiswaAdminBlank").innerHTML="";
+    }
+
+    if(tempatlahirMahasiswaAdmin==""){
+        document.getElementById("tempatlahirMahasiswaAdminBlank").innerHTML="*Masukkan Tempat Lahir Mahasiswa";
+    }
+
+    else if(tempatlahirMahasiswaAdmin!=""){
+        document.getElementById("tempatlahirMahasiswaAdminBlank").innerHTML="";
+    }
+
+    if(alamatMahasiswaAdmin==""){
+        document.getElementById("alamatMahasiswaAdminBlank").innerHTML="*Masukkan Alamat Mahasiswa";
+    }
+
+    else if(alamatMahasiswaAdmin!=""){
+        document.getElementById("alamatMahasiswaAdminBlank").innerHTML="";
+    }
+
+
+
 }

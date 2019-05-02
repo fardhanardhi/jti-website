@@ -9,9 +9,9 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="pr-4 title"><a href="#"><strong>Lihat KHS</strong></a></li>
-                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=khsUpload">Kartu Hasil Studi(KHS)</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Lihat KHS</li>
+                        <li class="breadcrumb-item"><a href="?module=home">Dashboard</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="index.php?module=khs">Kartu Hasil Studi(KHS)</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="index.php?module=khsLihat">Lihat KHS</a></li>
                     </ol>
                 </nav>
             </div>
@@ -104,7 +104,7 @@
             </div>
         </div>
         <?php 
-            include('khsModalLihat.php');
+            #include('khsModalLihat.php');
         ?>
     </div>
 </main>

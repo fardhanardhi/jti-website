@@ -29,10 +29,17 @@ function tampilKelas($con, $id_kelas){
 
 if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
 
+    echo "nanana";
+
     if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="tambah"){
 
         // echo($_POST["semesterMahasiswa"]); 
 
+        $nama_folder = "img";
+        $tmp = $_FILES["fileid"]["tmp_name"];
+        $nama_file = $_FILES["fileid"]["name"];
+        move_uploaded_file($tmp, "../$nama_folder/$nama_file");
+   
 
      $query1 = "INSERT INTO tabel_user (username, password, level) values (
          '$_POST[usernameMahasiswaAdmin]',
@@ -62,11 +69,25 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
      '$_POST[alamatMahasiswaAdmin]',
      '$_POST[genderMahasiswaAdmin]',
      '$_POST[tempatlahirMahasiswaAdmin]',
-     '$_POST[fileid]', (select max(id_user) from tabel_user)
+     '$nama_file',
+    (select id_user from tabel_user where username='$_POST[nimMahasiswaAdmin]')
      );";
 
+     $query3 = "INSERT INTO tabel_absensi (id_mahasiswa, sakit, ijin, alpa, jumlah, id_status_mahasiswa, id_semester)
+
+     values
+     ((SELECT id_mahasiswa FROM tabel_mahasiswa WHERE nim='$_POST[nimMahasiswaAdmin]'),
+     0,
+     0,
+     0,
+     0,
+     7,
+     '$_POST[semesterMahasiswa]'
+     );
+     ";
+
      
-        if(mysqli_query($con, $query1) AND mysqli_query($con, $query2)){
+        if(mysqli_query($con, $query1) AND mysqli_query($con, $query2) AND mysqli_query($con, $query3)){
             header('location:../module/index.php?module=' . $_GET["module"]);
         }
 
@@ -75,24 +96,26 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
         }
     }   
 
-    if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="hapus"){
-        
-        $delete = $_POST["id_delete"];
+    else if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="hapus")
+    {
+        $delete=$_POST['id_delete'];
+        $idnya = $_POST['id_mahasiswa'];
 
-        $query4 = "delete from tabel_mahasiswa where id_user = '$delete';";
+        $queryDelete = "DELETE FROM tabel_mahasiswa WHERE id_user='$delete';";
+        $queryDelete2 = "DELETE FROM tabel_user WHERE id_user='$delete';";
+        $queryDelete3 = "DELETE FROM tabel_absensi WHERE id_mahasiswa='$idnya';";
 
-        $query5 = "delete from tabel_user where id_user = '$delete';";
 
+        if(mysqli_query($con,$queryDelete) && mysqli_query($con,$queryDelete2) && mysqli_query($con,$queryDelete3)){
 
-        if(mysqli_query($con, $query4) AND mysqli_query($con, $query5)){
             header('location:../module/index.php?module=' . $_GET["module"]);
         }
 
         else{            
             echo("Error description: " . mysqli_error($con));
         }
-
-    }
+       
+    } 
 
 }
 

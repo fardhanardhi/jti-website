@@ -416,3 +416,26 @@ body {
   height: 3.5em;
   background-color: #dbdbdb;
 }
+
+.global-chat-kiri {
+  padding-right: 7em !important;
+}
+
+.global-chat-kanan {
+  padding-left: 7em !important;
+}
+
+.global-chat-kiri .global-chat-window-item {
+  background-color: #f6f6f6 !important;
+  border-radius: 0.4em;
+}
+
+.global-chat-kanan .global-chat-window-item {
+  background-color: #7eccee !important;
+  border-radius: 0.4em;
+}
+
+.global-chat-window-item-info {
+  font-size: 0.65em;
+  color: gray;
+}

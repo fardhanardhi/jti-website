@@ -10,6 +10,32 @@
     background-color: #ececff;
 }
 
+#adminBerita .alert-danger {
+    color: white;
+    background-color: #CF212A;
+    border-color: #CF212A;
+    height: 35px;
+}
+
+#adminBerita .ber{
+    margin-top: -10px;
+}
+
+#adminBerita .alert-light {
+    color: black;
+    background-color: #F5F5F5;
+    border-color: #F5F5F5;
+    height: 35px;
+}
+
+#adminBerita .alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .3rem 1.25rem;
+    color: inherit;
+}
+
 #adminBerita .btn-tidak {
     padding: 0em 1.5em 0em 1.5em;
     margin-right: 5em;

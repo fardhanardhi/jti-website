@@ -38,18 +38,22 @@
 #khs .tmbl-table{
     width: 130px;
     font-family: Lato;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 #khs .tmbl-kirim{
     width: 130px;
     font-family: Lato;
-    font-size: 13px;
+    font-size: 14px;
     background: #3AAC5F;
 }
 
 #khs .lihat{
     background: #51A9EB;
+}
+
+#khs .edit{
+    background: #3AAC5F;
 }
 
 #khs .table-striped > thead > tr > th {

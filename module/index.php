@@ -40,6 +40,9 @@ $resultStatus = mysqli_query($con, $queryStatus);
 $rowStatus = mysqli_fetch_assoc($resultStatus);
 $statusPembayaran = $rowStatus["status_daftar_ulang"];
 
+if ($level != 'admin') {
+  include "../process/proses_indexChat.php";
+}
 ?>
 
 <!DOCTYPE html>
@@ -71,16 +74,13 @@ $statusPembayaran = $rowStatus["status_daftar_ulang"];
               <img src="../img/navigation/home.svg">
               <p class="mt-3">HOME</p>
             </div>
-            <?php 
-            if ($level == "dosen" || $statusPembayaran == "Sudah") 
-            { ?>
+            <?php
+            if ($level == "dosen" || $statusPembayaran == "Sudah") { ?>
               <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
-              <?php 
-            } 
-            elseif ($level == "mahasiswa" || $statusPembayaran == "Belum") 
-            { ?>
-              <div onclick="location.href='index.php?module=krs';" class="navigation-menu col-md-3 col-lg-2 my-1">
-            <?php } ?>
+              <?php
+            } elseif ($level == "mahasiswa" || $statusPembayaran == "Belum") { ?>
+                <div onclick="location.href='index.php?module=krs';" class="navigation-menu col-md-3 col-lg-2 my-1">
+                <?php } ?>
                 <?php
                 if ($level == "mahasiswa") {
                   ?>
@@ -496,9 +496,6 @@ $statusPembayaran = $rowStatus["status_daftar_ulang"];
           case "khsLihat":
             include "admin/khs/khsLihat.php";
             break;
-          case "khsUpload":
-            include "admin/khs/khsUpload.php";
-            break;
           case "dataDosen":
             include "admin/dosen/dataDosen.php";
             break;
@@ -560,48 +557,9 @@ $statusPembayaran = $rowStatus["status_daftar_ulang"];
                 X
               </div>
             </div>
-            <div id="GlobalChatWindow" class="global-chat-window row scrollbar pt-3 ">
-              <div class="col">
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
-                Loading...<br>
+            <div class="row">
+              <div id="globalChatWindow" class="col global-chat-window scrollbar pt-3">
+                Loading...
               </div>
             </div>
             <div class="row">

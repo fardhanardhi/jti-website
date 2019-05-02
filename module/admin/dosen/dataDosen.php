@@ -1,3 +1,8 @@
+<?php
+    include "../config/connection.php";
+    include "../process/CRUD_dataDosen.php";
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -29,7 +34,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="col-md-12 p-0">
-                                            <form action="" id="formAdminDosen" method="POST">
+                                            <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=tambah" id="formAdminDosen" method="POST">
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         <div class="col-sm-6">
@@ -83,10 +88,10 @@
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">NIM</label>
+                                                                <label class="col-sm-2 col-form-label">NIP</label>
                                                                 <div class="col-sm-10">
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="NIM Dosen" id="nimDosenAdmin"
+                                                                        placeholder="NIP Dosen" id="nimDosenAdmin"
                                                                         name="nimDosenAdmin" required />
                                                                 </div>
                                                                 <div class="col-sm-3"></div>
@@ -126,72 +131,72 @@
                                                                 <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
                                                                 <br>
                                                                 <div class="col-sm-2">
-                                                                    <select class="custom-select" style="width:110px;">
+                                                                    <select class="custom-select" name="tgl" style="width:110px;">
                                                                         <option value="" disabled selected>Tanggal</option>
-                                                                        <option>1</option>
-                                                                        <option>2</option>
-                                                                        <option>3</option>
-                                                                        <option>4</option>
-                                                                        <option>5</option>
-                                                                        <option>6</option>
-                                                                        <option>7</option>
-                                                                        <option>8</option>
-                                                                        <option>9</option>
-                                                                        <option>10</option>
-                                                                        <option>11</option>
-                                                                        <option>12</option>
-                                                                        <option>13</option>
-                                                                        <option>14</option>
-                                                                        <option>15</option>
-                                                                        <option>16</option>
-                                                                        <option>17</option>
-                                                                        <option>18</option>
-                                                                        <option>19</option>
-                                                                        <option>20</option>
-                                                                        <option>21</option>
-                                                                        <option>22</option>
-                                                                        <option>23</option>
-                                                                        <option>24</option>
-                                                                        <option>25</option>
-                                                                        <option>26</option>
-                                                                        <option>27</option>
-                                                                        <option>28</option>
-                                                                        <option>29</option>
-                                                                        <option>30</option>
-                                                                        <option>31</option>
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                                        <option value="4">4</option>
+                                                                        <option value="5">5</option>
+                                                                        <option value="6">6</option>
+                                                                        <option value="7">7</option>
+                                                                        <option value="8">8</option>
+                                                                        <option value="9">9</option>
+                                                                        <option value="10">10</option>
+                                                                        <!-- <option value="">11</option>
+                                                                        <option value="">12</option>
+                                                                        <option value="">13</option>
+                                                                        <option value="">14</option>
+                                                                        <option value="">15</option>
+                                                                        <option value="">16</option>
+                                                                        <option value="">17</option>
+                                                                        <option value="">18</option>
+                                                                        <option value="">19</option>
+                                                                        <option value="">20</option>
+                                                                        <option value="">21</option>
+                                                                        <option value="">22</option>
+                                                                        <option value="">23</option>
+                                                                        <option value="">24</option>
+                                                                        <option value="">25</option>
+                                                                        <option value="">26</option>
+                                                                        <option value="">27</option>
+                                                                        <option value="">28</option>
+                                                                        <option value="">29</option>
+                                                                        <option value="">30</option>
+                                                                        <option value="">31</option> -->
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-sm-2">
-                                                                    <select class="custom-select" style="width:110px;">
+                                                                    <select class="custom-select" name="bulan" style="width:110px;">
                                                                         <option value="" disabled selected>Bulan</option>
-                                                                        <option>Januari</option>
-                                                                        <option>Februari</option>
-                                                                        <option>Maret</option>
-                                                                        <option>April</option>
-                                                                        <option>Mei</option>
-                                                                        <option>Juni</option>
-                                                                        <option>Juli</option>
-                                                                        <option>Agustus</option>
-                                                                        <option>September</option>
-                                                                        <option>Oktober</option>
-                                                                        <option>November</option>
-                                                                        <option>Desember</option>
+                                                                        <option value="Januari">Januari</option>
+                                                                        <option value="Februari">Februari</option>
+                                                                        <option value="Maret">Maret</option>
+                                                                        <option value="April">April</option>
+                                                                        <option value="Mei">Mei</option>
+                                                                        <option value="Juni">Juni</option>
+                                                                        <option value="Juli">Juli</option>
+                                                                        <option value="Agustus">Agustus</option>
+                                                                        <option value="September">September</option>
+                                                                        <option value="Oktober">Oktober</option>
+                                                                        <option value="November">November</option>
+                                                                        <option value="Desember">Desember</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-sm-2">
-                                                                    <select class="custom-select" style="width:110px;">
+                                                                    <select class="custom-select" name="tahun" style="width:110px;">
                                                                         <option value="" disabled selected>Tahun</option>
-                                                                        <option>1980</option>
-                                                                        <option>1981</option>
-                                                                        <option>1982</option>
-                                                                        <option>1983</option>
-                                                                        <option>1984</option>
-                                                                        <option>1985</option>
-                                                                        <option>1986</option>
-                                                                        <option>1987</option>
-                                                                        <option>1988</option>
-                                                                        <option>1989</option>
-                                                                        <option>1990</option>
+                                                                        <option value="1980">1980</option>
+                                                                        <option value="1981">1981</option>
+                                                                        <option value="1982">1982</option>
+                                                                        <option value="1983">1983</option>
+                                                                        <option value="1984">1984</option>
+                                                                        <option value="1985">1985</option>
+                                                                        <option value="1986">1986</option>
+                                                                        <option value="1987">1987</option>
+                                                                        <option value="1988">1988</option>
+                                                                        <option value="1989">1989</option>
+                                                                        <option value="1990">1990</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -237,8 +242,8 @@
                                                             <div class="row">
                                                                 <div class="col-sm-9"></div>
                                                                 <div class="col-sm-3">
-                                                                    <button type="submit" class="btn btn-success"
-                                                                        onclick="eror(); showFilesSizes();">Tambahkan</button>
+                                                                    <button type="submit" name="tambahDosen" class="btn btn-success" name="insert"
+                                                                        onclick="eror();  showFilesSizes();">Tambahkan</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -254,8 +259,9 @@
                                     <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
                                     <button class="btn btn-success" type="submit">Cari</button>
                                 </form>
-                                <div class="scrolltable scrollbar-x">
-                                    <table class="table table-striped table-bordered text-center" style="width:120% ;">
+                                <!-- <div class="scrolltable scrollbar-x"> -->
+                                <div class="scrolltable ">
+                                    <table class="table table-striped table-bordered text-center">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -272,35 +278,60 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>fulan</td>
-                                                <td>123</td>
-                                                <td><img src="../attachment/img/avatar.jpeg" style="height:40px; width:40px; border-radius:50%;" alt=""></td>
-                                                <td>1741720001</td>
-                                                <td>Nama Dosen</td>
-                                                <td>Malang</td>
-                                                <td>1 Januari 1945</td>
-                                                <td>Laki-laki</td>
-                                                <td>Jl.soekarno hatta</td>
+                                            <?php
+                                                $query = "SELECT 
                                                 
-                                                <td><button type="button" class="tmbl-table btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button></td>
-                                                <td><button class=" tmbl-table btn btn-danger"  type="button" class="pratinjau btn" data-toggle="modal" data-target="#hapus" class="hapus">Hapus</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>fulan</td>
-                                                <td>123</td>
-                                                <td><img src="../attachment/img/avatar.jpeg" style="height:40px; width:40px; border-radius:50%;" alt=""></td>
-                                                <td>1741720001</td>
-                                                <td>Nama Dosen</td>
-                                                <td>Malang</td>
-                                                <td>1 Januari 1945</td>
-                                                <td>Laki-laki</td>
-                                                <td>Jl.soekarno hatta</td>
-                                                <td><button type="button" class="tmbl-table btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button></td>
-                                                <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal" data-target="#hapus">Hapus</button></td>
-                                            </tr>
+                                                tabel_user.username, 
+                                                tabel_user.password, 
+
+                                                tabel_dosen.id_dosen,
+                                                tabel_dosen.nip, 
+                                                tabel_dosen.nama, 
+                                                tabel_dosen.alamat, 
+                                                tabel_dosen.jenis_kelamin, 
+                                                tabel_dosen.tempat_lahir, 
+                                                tabel_dosen.tanggal_lahir, 
+                                                tabel_dosen.foto
+                                                
+                                                FROM tabel_user INNER JOIN
+
+                                                tabel_dosen ON 
+                                                tabel_user.username = tabel_dosen.nip
+
+                                                ";
+                                                $result = mysqli_query($con, $query);
+
+                                                if(mysqli_num_rows($result) > 0){
+                                                    $index = 1;
+                                                    
+                                                    while($row = mysqli_fetch_assoc($result)){
+                                                        $id_dosen = $row["id_dosen"];
+                                                        echo"
+                                                        <tr>
+                                                            <td>". $index++ ."</td>
+                                                            <td>". $row["username"] ."</td>
+                                                            <td>". $row["password"] ."</td>
+                                                            <td>". $row["foto"] ."</td>
+                                                            <td>". $row["nip"] ."</td>
+                                                            <td>". $row["nama"] ."</td>
+                                                            <td>". $row["tempat_lahir"] ."</td>
+                                                            <td>". $row["tanggal_lahir"] ."</td>
+                                                            <td>". $row["jenis_kelamin"] ."</td>
+                                                            <td>". $row["alamat"] ."</td>
+
+                                                            <td>
+                                                            <a href='' class='btn btn-primary btn-edit ml-2' data-toggle='modal' data-target='#editModal'>Edit</a>
+                                                                                
+                                                            </td>
+                                                            <td>
+                                                            <a href='' class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#hapus'>Hapus</a>
+                                                                
+                                                            </td>    
+                                                        </tr>
+                                                        ";
+                                                    }
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -317,7 +348,7 @@
                             <h5 class="isiHapusKompen text-center">Apakah Anda Yakin?</h5>
                             <div class="tombolAksiHapusKompen text-center">
                                 <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                                <button type="button" class="btn btn-iya">Ya</button>
+                                <button type="button" name="delete" class="btn btn-iya">Ya</button>
                             </div>
                         </div>                 
                     </div>

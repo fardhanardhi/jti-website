@@ -38,14 +38,18 @@
                                     <textarea name="ketik-berita" id="" cols="30" rows="6" placeholder="Ketik Berita ..." maxlength="500" class="form-control border-0" oninput="Beritacharcountupdate(this.value)">
                                     </textarea> 
                                 </div>
-                                <div class="col-md-12 p-0">
-                                        <span class="close">&times;</span>
-                                        <p style="background-color:#CF212A; height: 30px; color: white;">&nbsp Pak Dimas.jpg (Gagal Upload) - Kapasitas gambar lebih dari 5 Mb</p>
-                                    </div>
-                                    <div class="col-md-12 p-0">
-                                        <span class="close">&times;</span>
-                                        <p style="background-color:#F5F5F5; height: 30px; margin-top: -10px;">&nbsp Pak Dimas.jpg</p>
-                                    </div>
+                                <div class="col-md-12 p-1 alert alert-danger alert-dismissible fade show" role="alert">
+                                    <p>Pak Dimas.jpg (Gagal Upload) - Kapasitas gambar lebih dari 5 Mb</p>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="ber col-md-12 p-1 alert alert-light alert-dismissible fade show" role="alert">
+                                    <p>Pak Dimas.jpg</p>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
                                 <hr>
                                 <div class="container m-0">
                                     <div class="row">
