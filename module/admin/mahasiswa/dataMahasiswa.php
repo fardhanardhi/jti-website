@@ -9,7 +9,7 @@
     ?>
 </head>
 
-<body onload="setup(); setup2();">
+<body onload="setup2(); setup3()">
     <main role="main" class="container-fluid">
         <div id="dataMahasiswa" class="row">
             <div class="col-md-12 p-0">
@@ -69,26 +69,25 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label class="col-md-2 col-form-label">Gambar</label>
-                                                            <div class="input-group col-md-10">
-                                                                <img src="../attachment/img/avatar.jpeg"
-                                                                    id="fotoPrevCoba" height="150px" width="150px">
-                                                            </div>
-                                                            <div class="col-md-2"></div>
-                                                            <div class="col-md-10">
-                                                                <br>
-                                                                <input type='file' name='fileid'
-                                                                    onchange="preview_images2(event);" hidden
-                                                                    required />
-                                                                <input id='buttonid' type='button' value='Load Gambar'
-                                                                    class="btn btn-load btn-primary tmbl-load ml-2" />
-                                                            </div>
-                                                            <div class="col-sm-3"></div>
-                                                            <div class="col-sm-9">
-                                                                <div id="fileidMahasiswaAdminBlank" class="text-danger">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <label class="col-sm-2 col-form-label">Gambar</label>
+                                                <div class="input-group col-sm-10">
+                                                    <img src="../attachment/img/avatar.jpeg"
+                                                        id="fotoPrevMahasiswaAdmin3" height="150px" width="150px">
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-9">
+                                                    <br>
+                                                    <input id='fileid2' type='file' name='filename2' onchange="preview_images22(event);"  hidden
+                                                        required />
+                                                    <input id='buttonid2' type='button' value='Load Gambar'
+                                                        class="btn btn-loading btn-primary tmbl-loading ml-2"  />
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="fileidMahasiswaAdminBlank2" class="text-danger">
+                                                    </div>
+                                                </div>
+                                            </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group row">
@@ -273,7 +272,7 @@
                                                         <div class="row">
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
-                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="Testing2(); showFilesSizes222();">Tambahkan</button>
+                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="Validasi(); showFilesSizes222();">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -348,6 +347,7 @@
                                                 
                                                 while($row = mysqli_fetch_assoc($result)){
                                                     $id_delete = $row["id_user"];
+                                                    $id = $row["id_mahasiswa"];
 
                                                 
                                                 ?>
@@ -441,9 +441,9 @@
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-9">
                                                     <br>
-                                                    <input id='fileid2' type='file' name='filename' onchange="preview_images22(event);"  hidden
+                                                    <input id='fileid3' type='file' name='filename' onchange="preview_images6(event);"  hidden
                                                         required />
-                                                    <input id='buttonid2' type='button' value='Load Gambar'
+                                                    <input id='buttonid3' type='button' value='Load Gambar'
                                                         class="btn btn-loading btn-primary tmbl-loading ml-2"  />
                                                 </div>
                                                 <div class="col-sm-3"></div>
@@ -592,7 +592,9 @@
             </div>
         </div>
     </div>
-    <!-- modal hapus -->
+  
+</body>
+  <!-- modal hapus -->
     <div class="modal fade hapusMahasiswa-modal" id="modalHapusDataMahasiswa" tabindex="-1" role="dialog"
         aria-labelledby="hapusDataMahasiswaTitle" aria-hidden="true" data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -600,6 +602,7 @@
                 <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=hapus" method="post">
                     <div clas="modal-body">
                         <input type="hidden" name="id_delete" id="id_delete" value="<?php echo $id_delete ?>">
+                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswa" value="<?php echo $id ?>">
                         <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
                         <div class="tombolAksiHapusDataMahasiswa text-center">
                             <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>
@@ -612,6 +615,5 @@
             </div>
         </div>
     </div>
-</body>
 
 </html>

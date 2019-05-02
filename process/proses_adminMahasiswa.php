@@ -99,12 +99,22 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
     else if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="hapus")
     {
         $delete=$_POST['id_delete'];
+        $idnya = $_POST['id_mahasiswa'];
 
         $queryDelete = "DELETE FROM tabel_mahasiswa WHERE id_user='$delete';";
+        $queryDelete2 = "DELETE FROM tabel_user WHERE id_user='$delete';";
+        $queryDelete3 = "DELETE FROM tabel_absensi WHERE id_mahasiswa='$idnya';";
 
-        mysqli_query($con,$queryDelete);
 
-        header('location:../module/index.php?module=' . $_GET["module"]);
+        if(mysqli_query($con,$queryDelete) && mysqli_query($con,$queryDelete2) && mysqli_query($con,$queryDelete3)){
+
+            header('location:../module/index.php?module=' . $_GET["module"]);
+        }
+
+        else{            
+            echo("Error description: " . mysqli_error($con));
+        }
+       
     } 
 
 }
