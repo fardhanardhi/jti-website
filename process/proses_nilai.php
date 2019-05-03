@@ -30,16 +30,16 @@ function semester($con){
 
 function indeksSemester($con, $idUser){
     $idSemester=cekSemester($con, $idUser);
-    $indeksSemester = "select sum(a.nilai) as indeksSemester from tabel_khs a, tabel_matkul b, tabel_mahasiswa c, tabel_user d where a.id_matkul=b.id_matkul and a.id_mahasiswa=c.id_mahasiswa and c.id_user=d.id_user and d.id_user='$idUser' and a.id_semester=$idSemester";
+    $indeksSemester = "select avg(a.nilai) as indeksSemester from tabel_khs a, tabel_matkul b, tabel_mahasiswa c, tabel_user d where a.id_matkul=b.id_matkul and a.id_mahasiswa=c.id_mahasiswa and c.id_user=d.id_user and d.id_user='$idUser' and a.id_semester=$idSemester";
     $resultIndeksSemester = mysqli_query($con, $indeksSemester);
     $rowIndeksSemester=mysqli_fetch_assoc($resultIndeksSemester);
     return $rowIndeksSemester["indeksSemester"];
 }
-function rataRataSemester($con, $idUser){
+function indeksSemesterKumulatif($con, $idUser){
     $idSemester = cekSemester($con, $idUser);
-    $rataRataSemester = "select count(a.nilai) as rataRataSemester from tabel_khs a, tabel_matkul b, tabel_mahasiswa c, tabel_user d where a.id_matkul=b.id_matkul and a.id_mahasiswa=c.id_mahasiswa and c.id_user=d.id_user and d.id_user='$idUser' and a.id_semester=$idSemester";
-    $resultRataRataSemester = mysqli_query($con, $rataRataSemester);
-    $rowRataRataSemester=mysqli_fetch_assoc($resultRataRataSemester);
-    return $rowRataRataSemester["rataRataSemester"];
+    $indeksSemesterKumulatif = "select count(a.nilai) as indeksSemesterKumulatif from tabel_khs a, tabel_matkul b, tabel_mahasiswa c, tabel_user d where a.id_matkul=b.id_matkul and a.id_mahasiswa=c.id_mahasiswa and c.id_user=d.id_user and d.id_user='$idUser' and a.id_semester=$idSemester";
+    $resultIndeksSemesterKumulatif = mysqli_query($con, $indeksSemesterKumulatif);
+    $rowIndeksSemesterKumulatif=mysqli_fetch_assoc($resultIndeksSemesterKumulatif);
+    return $rowIndeksSemesterKumulatif["indeksSemesterKumulatif"];
 }
 ?>
