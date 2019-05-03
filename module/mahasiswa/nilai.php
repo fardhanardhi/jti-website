@@ -66,7 +66,7 @@ $prodiUser = $rowUser["prodi"];
                 </form>
 
                 <p>Indeks Prestasi Semester: <?php echo indeksSemester($con, $idUser);?> </p>
-                <p>Indeks Prestasi Kumulatif: </p>
+                <p>Indeks Prestasi Kumulatif: <?php echo indeksSemesterKumulatif($con, $idUser);?></p>
 
                 <?php
                 if(isset($_POST["filter"])){
