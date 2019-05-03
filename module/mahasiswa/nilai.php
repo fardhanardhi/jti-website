@@ -65,7 +65,15 @@ $prodiUser = $rowUser["prodi"];
                 <button type="submit" name="filter" class="tmbl-filter btn btn-success">Filter</button><br><br>
                 </form>
 
-                <p>Indeks Prestasi Semester: <?php echo indeksSemester($con, $idUser);?> </p>
+                <p>Indeks Prestasi Semester: <?php 
+                if(isset($_POST["filter"])){
+                    $ipSemester = indeksSemesterFix($con, $idUser, $_POST["semester"]);
+                    echo $ipSemester;
+                }
+                else
+                { 
+                    echo 0;
+                }; ?> </p>
                 <p>Indeks Prestasi Kumulatif: <?php echo indeksSemesterKumulatif($con, $idUser);?></p>
 
                 <?php
@@ -73,6 +81,7 @@ $prodiUser = $rowUser["prodi"];
                     $result=filterKhs($con, $idUser, $_POST["semester"]);
                 }else{
                     $result = khs($con, $idUser);
+                    $ipSemester = 0;
                 }
 
                 if(mysqli_num_rows($result) > 0){
