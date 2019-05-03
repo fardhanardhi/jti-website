@@ -293,10 +293,12 @@
                                             <td><?php echo $row["jumlah_sks"]; ?></td>
                                             <td><button class="tmbl-table btn btn-primary"
                                                     id="<?php echo $row["id_kelas"]; ?>" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#editModal">Edit</button></td>
+                                                    class="pratinjau btn" data-toggle="modal"
+                                                    data-target="#editModal">Edit</button></td>
                                             <td><button class="tmbl-table btn btn-danger hapus-jadwal-kuliah"
-                                                    id="<?php echo $row["id_kelas"]; ?>" attrSemester="<?php echo $row["id_semester"]; ?>" type="button" data-toggle="modal" data-target="#hapus"
-                                                    >Hapus</button></td>
+                                                    id="<?php echo $row["id_kelas"]; ?>"
+                                                    attrSemester="<?php echo $row["id_semester"]; ?>" type="button"
+                                                    data-toggle="modal" data-target="#hapus">Hapus</button></td>
                                         </tr>
                                         <?php
                                         $no++;
@@ -317,8 +319,7 @@
             </div>
         </div>
         <!-- modal hapus -->
-        <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus"
-            aria-hidden="true">
+        <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content konten-modal">
                     <form action="../process/proses_adminJadwalKuliah.php?module=dataJadwalKuliah&act=hapus"
