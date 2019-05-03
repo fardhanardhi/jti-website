@@ -22,10 +22,10 @@ include "../process/proses_absenKompen.php";
     <div class="col-md-9 p-0">
       <div class="m-2 p-3 bg-white mb-3 rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Absensi Mahasiswa</h6>
-          <div class="container-fluid mt-3 p-0 m-0">
+          <div class="container-fluid mt-3 p-0">
             <form class="row mb-3 mt-3" action="?module=absenKompen" method="post">
               <div class="col-md-3 d-flex">
-                <select class="absenKelas mr-3 w-auto" name="kelas">
+                <select class="absenKelas w-auto" name="kelas">
                   <?php
                   $resultKelas=kelas($con);
                   if(mysqli_num_rows($resultKelas)){
@@ -46,8 +46,9 @@ include "../process/proses_absenKompen.php";
               </div>
             </form>
             
-            <div class="row scrollbar mr-0" id="absen">
-              <div class="col-md-12 pr-1 d-flex justify-content-center">
+            <div class="container-fluid p-0">
+            <div class="row scrollbar scrollbar-x m-0" id="absen">
+              <div class="col-md-12 d-flex justify-content-center">
                 <?php
                 if(isset($_POST["cariAbsen"])){
                   $resultAbsensi=absensi($con, $_POST["kelas"]);
@@ -105,6 +106,7 @@ include "../process/proses_absenKompen.php";
                 ?>
               </div>
             </div>
+            </div>
           </div>
       </div>
     </div>
@@ -140,7 +142,7 @@ include "../process/proses_absenKompen.php";
           </form>
         </div>
           
-        <div class="container-fluid scrollbar m-0 pr-0" id="totalAbsen">
+        <div class="container-fluid scrollbar m-0 pr-0 scrollbar-x" id="totalAbsen">
           <?php
           if(isset($_POST["cariTotal"])){
             $resultTotal=absensi($con, $_POST["kelas"]);
@@ -159,26 +161,38 @@ include "../process/proses_absenKompen.php";
                   <span><?php echo $no;?></span>
                 </div>
                 <div class="col-md-8 p-0 align-self-center">
-                  <span><?php echo $rowTotal["nama"];?></span> <br>
-                  <small class="text-muted">
-                    <span class="mr-3">A: <?php echo $rowTotal["alpa"];?></span>
-                    <span class="mr-3">I: <?php echo $rowTotal["ijin"];?></span>
-                    <span class="mr-3">S: <?php echo $rowTotal["sakit"];?></span>
-                  </small>
+                  <div class="container-fluid p-0">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <span><?php echo $rowTotal["nama"];?></span>
+                      </div>
+                    </div>
+                    <div class="row text-muted">
+                      <div class="col-sm-4">
+                        <small>A: <?php echo $rowTotal["alpa"];?></small>
+                      </div>
+                      <div class="col-sm-4">
+                        <small>A: <?php echo $rowTotal["ijin"];?></small>
+                      </div>
+                      <div class="col-sm-4">
+                        <small>A: <?php echo $rowTotal["sakit"];?></small>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-3 text-right align-self-center p-0">
                   <?php
                   if($rowTotal["keterangan"]=="SP1"){
                     ?>
-                    <small><span class="bg-success text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 1</span></small>
+                    <small class="bg-success text-white pt-1 pb-1 pr-3 pl-3 rounded"><?php echo $rowTotal["keterangan"]?></small>
                     <?php
                   } else if($rowTotal["keterangan"]=="SP2"){
                     ?>
-                    <small><span class="bg-orange text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 2</span></small>
+                    <small class="bg-orange text-white pt-1 pb-1 pr-3 pl-3 rounded"><?php echo $rowTotal["keterangan"]?></small>
                     <?php
                   } else if($rowTotal["keterangan"]=="SP3"){
                     ?>
-                    <small><span class="bg-danger text-white pt-1 pb-1 pr-3 pl-3 rounded">SP 3</span></small>
+                    <small class="bg-danger text-white pt-1 pb-1 pr-3 pl-3 rounded"><?php echo $rowTotal["keterangan"]?></small>
                     <?php
                   }
                   ?>
@@ -211,8 +225,8 @@ include "../process/proses_absenKompen.php";
             </div>
           </div>
 
-          <div class="row mt-3 mr-0 pr-0 scrollbar" id="dataKompen">
-            <div class="col-md-12 pr-1 d-flex justify-content-center">
+          <div class="row mt-3 mr-0 ml-2 pr-0 scrollbar scrollbar-x" id="dataKompen">
+            <div class="col-md-12 pr-1 pl-0 d-flex justify-content-center">
               <?php
               $resultKompen=kompen($con);
               
@@ -334,8 +348,8 @@ include "../process/proses_absenKompen.php";
             </div>
           </div>
 
-          <div class="row mt-3 mr-0 pr-0 scrollbar" id="dataPekerjaan">
-            <div class="col-md-12 pr-1 d-flex justify-content-center">
+          <div class="row mt-3 mr-0 ml-2 pr-0 scrollbar scrollbar-x" id="dataPekerjaan">
+            <div class="col-md-12 pr-1 pl-0 d-flex justify-content-center">
             <?php
               $resultPekerjaan=pekerjaan($con);
               
@@ -398,8 +412,8 @@ include "../process/proses_absenKompen.php";
             </div>
           </div>
 
-          <div class="row mt-3 mr-0 pr-0 scrollbar" id="rekapKompen">
-            <div class="col-md-12 pr-1">
+          <div class="row mt-3 ml-1 mr-0 pr-0 scrollbar scrollbar-x" id="rekapKompen">
+            <div class="col-md-12 pr-1 pl-0">
             <?php
               $resultRekap=rekap($con);
 

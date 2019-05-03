@@ -1,7 +1,7 @@
 #absen{
   overflow-y: auto;
-  overflow-x: hidden;
-  max-height: 65vh;
+  overflow-x: auto;
+	max-height: 65vh;
 }
 
 #absenNo{
@@ -50,6 +50,7 @@
 #absenKompen #totalAbsen{
 	overflow-y: auto;
 	max-height: 65vh;
+	overflow-x: auto;
 }
 
 #absenKompen #icon-search{
@@ -66,6 +67,7 @@
 #absenKompen #dataKompen, #absenKompen #dataPekerjaan, #absenKompen #rekapKompen{
 	overflow-y: auto;
 	max-height: 65vh;
+	overflow-x: auto;
 }
 
 #absenKompen .btn-ok, #absenKompen .btn-batal{
