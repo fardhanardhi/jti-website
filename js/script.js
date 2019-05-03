@@ -210,6 +210,7 @@ $("#toggleChat").click(function() {
   $("#chatPopup").show();
   reload();
   refresh();
+  $("#globalInputChat").focus();
 });
 
 $("#closeChatPopup").click(function() {
@@ -274,4 +275,41 @@ function chat() {
         .append(response);
     }
   });
+}
+
+$(document).on("click", ".global-btn-send", function() {
+  kirimChat();
+});
+
+// detect enter
+$("#globalInputChat").keydown(function(e) {
+  if (e.keyCode == 13) {
+    kirimChat();
+  }
+});
+
+function kirimChat() {
+  console.log("kiriiiim");
+  var isiChat = $("#globalInputChat").val();
+  var idUser = $("#idUser").val();
+  if ($.trim(isiChat) != "") {
+    $.ajax({
+      url: "../process/proses_indexChat.php",
+      type: "POST",
+      data: {
+        sendChat: 1,
+        isiChat: isiChat,
+        idUser: idUser
+      },
+      success: function(response) {
+        console.log(response);
+
+        $("#globalInputChat").val("");
+        reload();
+      }
+    });
+  } else {
+    alert("Pesan tidak boleh kosong");
+    $("#globalInputChat").val("");
+  }
 }
