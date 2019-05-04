@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 01, 2019 at 01:10 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Host: localhost
+-- Generation Time: May 03, 2019 at 06:23 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.1.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -431,6 +431,7 @@ CREATE TABLE `tabel_krs` (
   `status_daftar_ulang` varchar(50) DEFAULT NULL,
   `gambar_krs` varchar(100) DEFAULT NULL,
   `id_semester` int(30) DEFAULT NULL,
+  `status_verifikasi` varchar(50) DEFAULT NULL,
   `waktu_edit` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -438,17 +439,17 @@ CREATE TABLE `tabel_krs` (
 -- Dumping data for table `tabel_krs`
 --
 
-INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`, `waktu_edit`) VALUES
-(1, 33, 'Sudah', '20190428093312.png', 7, NULL),
-(2, 34, 'Belum', NULL, 7, NULL),
-(3, 35, 'Sudah', '20190428093318.png', 7, NULL),
-(4, 36, 'Belum', NULL, 7, NULL),
-(5, 37, 'Sudah', NULL, 7, NULL),
-(6, 38, 'Belum', NULL, 7, NULL),
-(7, 39, 'Sudah', NULL, 7, NULL),
-(8, 40, 'Belum', NULL, 7, NULL),
-(9, 41, 'Sudah', NULL, 7, NULL),
-(10, 42, 'Belum', NULL, 7, NULL);
+INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`, `status_verifikasi`, `waktu_edit`) VALUES
+(1, 33, 'Sudah', '20190428093312.png', 7, 'Sudah', '2019-05-03 21:52:24'),
+(2, 34, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:52:45'),
+(3, 35, 'Sudah', '20190428093318.png', 7, 'Sudah', '2019-05-03 21:52:44'),
+(4, 36, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:52:41'),
+(5, 37, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:52:55'),
+(6, 38, 'Belum', NULL, 7, 'Sudah', '2019-05-03 21:52:59'),
+(7, 39, 'Sudah', NULL, 7, 'Belum', '2019-05-03 21:53:05'),
+(8, 40, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:53:09'),
+(9, 41, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:53:13'),
+(10, 42, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:53:17');
 
 -- --------------------------------------------------------
 
@@ -1060,7 +1061,7 @@ ALTER TABLE `tabel_info_kelas_kosong`
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
-  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tabel_kelas`

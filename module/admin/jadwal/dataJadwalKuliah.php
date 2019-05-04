@@ -282,8 +282,6 @@
                                         <?php
                                         $no=1;
                                         while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
-                                            $idKelasFix = $row["id_kelas"];
-                                            $semesterFix = $row["id_semester"];
                                         ?>
                                         <tr>
                                             <td><?php echo $no;?></td>
@@ -295,12 +293,12 @@
                                             <td><?php echo $row["jumlah_sks"]; ?></td>
                                             <td><button class="tmbl-table btn btn-primary"
                                                     id="<?php echo $row["id_kelas"]; ?>" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#editModal"
-                                                    class="edit">Edit</button></td>
-                                            <td><button class="tmbl-table btn btn-danger"
-                                                    id="<?php echo $row["id_kelas"]; ?>" type="button"
-                                                    class="pratinjau btn" data-toggle="modal" data-target="#hapus"
-                                                    class="hapus">Hapus</button></td>
+                                                    class="pratinjau btn" data-toggle="modal"
+                                                    data-target="#editModal">Edit</button></td>
+                                            <td><button class="tmbl-table btn btn-danger hapus-jadwal-kuliah"
+                                                    id="<?php echo $row["id_kelas"]; ?>"
+                                                    attrSemester="<?php echo $row["id_semester"]; ?>" type="button"
+                                                    data-toggle="modal" data-target="#hapus">Hapus</button></td>
                                         </tr>
                                         <?php
                                         $no++;
@@ -321,15 +319,14 @@
             </div>
         </div>
         <!-- modal hapus -->
-        <div class="modal fade hapusJadwal-modal" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle"
-            aria-hidden="true" data-backdrop="false">
+        <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content konten-modal">
                     <form action="../process/proses_adminJadwalKuliah.php?module=dataJadwalKuliah&act=hapus"
                         method="POST">
                         <div class="modal-body">
-                            <input type="hidden" name="id_kelas" id="id_kelas" value="<?php echo $idKelasFix; ?>">
-                            <input type="hidden" name="id_semester" id="id_semester" value="<?php echo $semesterFix; ?>">
+                            <input type="hidden" name="id_kelas" id="id_kelasHapus">
+                            <input type="hidden" name="id_semester" id="id_semesterHapus">
                             <h5 class="isiHapusJadwal text-center">Apakah Anda Yakin?</h5>
                             <div class="tombolAksiHapusJadwal text-center">
                                 <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>

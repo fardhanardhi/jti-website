@@ -431,11 +431,15 @@ body {
 }
 
 .global-chat-kanan .global-chat-window-item {
-  background-color: #7eccee !important;
+  background-color: #d5d7eb !important;
   border-radius: 0.4em;
 }
 
 .global-chat-window-item-info {
   font-size: 0.65em;
   color: gray;
+}
+
+.global-btn-send {
+  cursor: pointer;
 }

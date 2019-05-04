@@ -89,7 +89,7 @@ function tampilAdmin($con, $idUser)
 
 if (isset($_GET["tampilChat"])) {
   $idUser = $_GET['idUser'];
-  $idUserTujuan = "SELECT id_user FROM tabel_user WHERE level = 'admin' LIMIT 1";;
+  $idUserTujuan = "SELECT id_user FROM tabel_user WHERE level = 'admin' LIMIT 1";
 
   $resultChat = mysqli_query($con, queryTampilChat($idUser));
 
@@ -181,7 +181,7 @@ if (isset($_GET["tampilNamaUserTujuan"])) {
 if (isset($_POST['sendChat'])) {
   $isiChat = $_POST['isiChat'];
   $idUser = $_POST['idUser'];
-  $idUserTujuan = $_POST['idUserTujuan'];
+  $idUserTujuan = mysqli_fetch_assoc(mysqli_query($con, "SELECT id_user FROM tabel_user WHERE level = 'admin' LIMIT 1"));
   $date = date("m/d/Y h:i A");
   $final = strtotime($date);
   $datetimeNow = date("Y-m-d H:i:s", $final);
@@ -197,7 +197,7 @@ if (isset($_POST['sendChat'])) {
     VALUES(
       '$isiChat',
       $idUser,
-      $idUserTujuan,
+      45,
       '$datetimeNow'
     )";
 
