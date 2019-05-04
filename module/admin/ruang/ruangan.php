@@ -133,106 +133,106 @@ include "../process/proses_adminRuangan.php";
             <div class="m-2 p-3 bg-white rounded shadow-sm">
               <h6 class="border-bottom border-gray pb-2 mb-0">Daftar Ruangan</h6>
               <div class="pt-3">
-                  <div class="container-fluid pl-2">
-                    <div class="row">
-                      <div class="col-1 p-0 text-center">
-                        <strong>Hari</strong>
-                      </div>
-
-                      <div class="col-11 p-0">
-                        <div class="btn-group-toggle d-flex justify-content-around" data-toggle="buttons">
-                          <label class="btn btn-outline-dark btn-hari active">
-                            <input type="radio" name="hari" value="senin" class="hari" id="senin" autocomplete="off" checked> Senin
-                          </label>
-                          <label class="btn btn-outline-dark btn-hari">
-                            <input type="radio" name="hari" value="selasa" id="selasa" autocomplete="off">Selasa
-                          </label>
-                          <label class="btn btn-outline-dark btn-hari">
-                            <input type="radio" name="hari" value="rabu" id="rabu" autocomplete="off"> Rabu
-                          </label>
-                          <label class="btn btn-outline-dark btn-hari">
-                            <input type="radio" name="hari" value="kamis" id="kamis" autocomplete="off"> Kamis
-                          </label>
-                          <label class="btn btn-outline-dark btn-hari">
-                            <input type="radio" name="hari" value="jumat" id="jumat" autocomplete="off"> Jumat
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-1 p-0 text-center">
-                        <strong>Jam</strong>
-                      </div>
-                      <div class="col-2 text-center p-0 pl-2">
-                        <select class="optionJam" name="jam" id="jamKelasKosongAdmin">
-                          <option value="07:00:00">07.00</option>
-                          <?php
-                          $jam = tampilJam($con);
-                          while ($row = mysqli_fetch_array($jam)) {
-                            ?>
-                            <option value=<?php echo tampilWaktuDefault($row["waktu_mulai"]) ?>><?php echo tampilWaktu($row["waktu_mulai"]) ?></option>
-                          <?php
-                        }
-                        ?>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12 text-right">
-                        <input type="button" name="cari" class="btn btn-success btn-cari" value="Cari" id="cariKelasKosongAdmin">
-                      </div>
+                <div class="container-fluid pl-2">
+                  <div class="row">
+                    <div class="col-1 p-0 text-center">
+                      <strong>Hari</strong>
                     </div>
 
-                <div class="row pr-1 mt-2 scrollbar scrollbar-x" id="daftar-ruangan">
+                    <div class="col-11 p-0">
+                      <div class="btn-group-toggle d-flex justify-content-around" data-toggle="buttons">
+                        <label class="btn btn-outline-dark btn-hari active">
+                          <input type="radio" name="hari" value="senin" class="hari" id="senin" autocomplete="off" checked> Senin
+                        </label>
+                        <label class="btn btn-outline-dark btn-hari">
+                          <input type="radio" name="hari" value="selasa" id="selasa" autocomplete="off">Selasa
+                        </label>
+                        <label class="btn btn-outline-dark btn-hari">
+                          <input type="radio" name="hari" value="rabu" id="rabu" autocomplete="off"> Rabu
+                        </label>
+                        <label class="btn btn-outline-dark btn-hari">
+                          <input type="radio" name="hari" value="kamis" id="kamis" autocomplete="off"> Kamis
+                        </label>
+                        <label class="btn btn-outline-dark btn-hari">
+                          <input type="radio" name="hari" value="jumat" id="jumat" autocomplete="off"> Jumat
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-1 p-0 text-center">
+                      <strong>Jam</strong>
+                    </div>
+                    <div class="col-2 text-center p-0 pl-2">
+                      <select class="optionJam" name="jam" id="jamKelasKosongAdmin">
+                        <option value="07:00:00">07.00</option>
+                        <?php
+                        $jam = tampilJam($con);
+                        while ($row = mysqli_fetch_array($jam)) {
+                          ?>
+                          <option value=<?php echo tampilWaktuDefault($row["waktu_mulai"]) ?>><?php echo tampilWaktu($row["waktu_mulai"]) ?></option>
+                        <?php
+                      }
+                      ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-right">
+                      <input type="button" name="cari" class="btn btn-success btn-cari" value="Cari" id="cariKelasKosongAdmin">
+                    </div>
+                  </div>
 
-                  <?php
-                  $resultKelasKosong = kelasKosong($con, '07:00:00', 'senin');
-                  if (mysqli_num_rows($resultKelasKosong) > 0) {
-                    while ($row = mysqli_fetch_assoc($resultKelasKosong)) {
-                      $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
-                      if ($row["status_dipinjam"] == "kosong") {
-                        ?>
+                  <div class="row pr-1 mt-2 scrollbar scrollbar-x" id="daftar-ruangan">
+
+                    <?php
+                    $resultKelasKosong = kelasKosong($con, '07:00:00', 'senin');
+                    if (mysqli_num_rows($resultKelasKosong) > 0) {
+                      while ($row = mysqli_fetch_assoc($resultKelasKosong)) {
+                        $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
+                        if ($row["status_dipinjam"] == "kosong") {
+                          ?>
+                          <div class="col-md-6 p-2">
+                            <div class="p-3 ruang rounded">
+                              <form action="../process/proses_kelasKosong.php?act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" class="m-0" method="post">
+                                <div class="row d-flex align-items-center">
+                                  <div class="col-7 text-left">
+                                    <strong><span class="p-0 m-0 kelas"><?php echo $row["kode"]; ?></span></strong>
+                                    <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
+                                    <br>
+                                    <strong><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></strong>
+                                  </div>
+                                  <div class="col-5 text-right">
+                                    <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                      <?php
+                    } else if ($row["status_dipinjam"] == "dipinjam") {
+                      ?>
                         <div class="col-md-6 p-2">
-                          <div class="p-3 ruang rounded">
-                            <form action="../process/proses_kelasKosong.php?act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
-                              <div class="row d-flex align-items-center">
-                                <div class="col-7 text-left">
-                                  <strong><span class="p-0 m-0 kelas"><?php echo $row["kode_ruang"]; ?></span></strong>
-                                  <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
-                                  <br>
-                                  <strong><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></strong>
+                            <div class="p-3 ruang rounded container-fluid">
+                                <div class="row d-flex align-items-center">
+                                  <div class="col-7 text-left">
+                                    <strong><span class="p-0 m-0 kelas"><?php echo $row["kode"]; ?></span></strong>
+                                    <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
+                                    <br>
+                                    <strong><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></strong>
+                                  </div>
                                 </div>
-                                <div class="col-5 text-right">
-                                  <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                                </div>
-                              </div>
-                            </form>
+                            </div>
                           </div>
-                        </div>
-                    <?php
-                  } else if ($row["status_dipinjam"] == "dipinjam") {
-                    ?>
-                      <div class="col-md-6 p-2">
-                          <div class="p-3 ruang rounded container-fluid">
-                              <div class="row d-flex align-items-center">
-                                <div class="col-7 text-left">
-                                  <strong><span class="p-0 m-0 kelas"><?php echo $row["kode"]; ?></span></strong>
-                                  <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
-                                  <br>
-                                  <strong><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></strong>
-                                </div>
-                              </div>
-                          </div>
-                        </div>
-                    <?php
+                      <?php
+                    }
                   }
+                } else {
+                  ?><div class="col-12 text-center mt-3"><strong>Tidak ada ruang yang kosong</strong></div><?php
                 }
-              } else {
-                ?><div class="col-12 text-center mt-3"><strong>Tidak ada ruang yang kosong</strong></div><?php
-              }
 
-              ?>
-              </div>
+                ?>
+                </div>
             </div>
           </div>
         </div>
@@ -243,152 +243,108 @@ include "../process/proses_adminRuangan.php";
       <div class="col-md-12">
         <div class="m-2 p-3 bg-white rounded shadow-sm">
           <h6 class="border-bottom border-gray pb-2 mb-0">Ruangan Dipesan</h6>
-          <div class="row p-2">
-
-            <div id="carouselExampleControls" class="carousel slide col-md-12 m-0 p-0" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active m-0 pl-2 pr-2">
-                  <div class="col-md-6 p-2" id="ruang-dipesan">
-                    <div class="p-3 ruang rounded">
-                      <div class="row align-items-center">
-                        <div class="col-7 text-left">
-                          <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                          <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                          <br>
-                          <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                        </div>
-                        <div class="col-5 text-right">
-                          <h5><?php echo "Jumat"; ?></h5>
-                          <button class="btn btn-danger btn-checkout text-white" data-toggle="modal" data-target="#modalCheckout">Checkout</button>
+          <div class="mt-2">
+            
+          <?php 
+          $resultPinjaman=pinjaman($con, $_SESSION["id"]);
+          if(mysqli_num_rows($resultPinjaman)>0){
+            $resultCountPinjaman=countPinjaman($con, $_SESSION["id"]);
+            if($resultCountPinjaman>0){
+              ?>               
+              <!-- Carousel -->
+              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <?php
+                  $mulaiLimit=-2;
+                  for($i=0; $i<$resultCountPinjaman/2; $i++){
+                      if($i==0){
+                        ?>
+                        <div class="carousel-item active">
+                        <?php
+                      }else{
+                        ?>
+                        <div class="carousel-item">
+                        <?php
+                      }
+                      ?>
+                      <div class="container-fluid">
+                        <div class="row">
+                          <?php
+                          $mulaiLimit=$mulaiLimit+2;
+                          $jmlLimit=2;
+                          $resultItemPinjaman=itemPinjaman($con, $_SESSION["id"], $mulaiLimit, $jmlLimit);
+                          if(mysqli_num_rows($resultItemPinjaman)>0){
+                            while($rowItemPinjaman=mysqli_fetch_assoc($resultItemPinjaman)){
+                              ?>             
+                              <div class="col-md-6 p-2">
+                                <div class="p-3 ruang rounded container-fluid">
+                                  <div class="row align-items-center">
+                                    <div class="col-7 text-left">
+                                      <strong><span class="p-0 m-0 kelas"><?php echo $rowItemPinjaman["kode"] ?></span></strong>
+                                      <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " .$rowItemPinjaman["lantai"]. ")"; ?></span>
+                                      <br>
+                                      <strong><?php echo tampilWaktu($rowItemPinjaman["waktu_mulai"]) . " - " . tampilWaktu($rowItemPinjaman["waktu_selesai"]) ?></strong>
+                                    </div>
+                                    <div class="col-5 text-right">
+                                      <h5><?php echo ucfirst($rowItemPinjaman["hari"]); ?></h5>
+                                      <button class="btn btn-danger btn-checkout text-white checkout-ruang-admin" id=<?php echo $rowItemPinjaman["id_info_kelas_kosong"];?> data-toggle="modal" data-target="#modalCheckoutPinjamanAdmin">Checkout</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <?php
+                            }
+                          }
+                          ?> 
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-md-6 p-2" id="ruang-dipesan">
-                    <div class="p-3 ruang rounded">
-                      <div class="row align-items-center">
-                        <div class="col-7 text-left">
-                          <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                          <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                          <br>
-                          <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                        </div>
-                        <div class="col-5 text-right">
-                          <h5><?php echo "Jumat"; ?></h5>
-                          <button class="btn btn-danger btn-checkout text-white" data-toggle="modal" data-target="#modalCheckout">Checkout</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <?php
+                  }
+                  ?>
                 </div>
-                <div class="carousel-item active m-0 pl-2 pr-2">
-                  <div class="col-md-6 p-2" id="ruang-dipesan">
-                    <div class="p-3 ruang rounded">
-                      <div class="row align-items-center">
-                        <div class="col-7 text-left">
-                          <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                          <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                          <br>
-                          <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                        </div>
-                        <div class="col-5 text-right">
-                          <h5><?php echo "Jumat"; ?></h5>
-                          <button class="btn btn-danger btn-checkout text-white" data-toggle="modal" data-target="#modalCheckout">Checkout</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 p-2" id="ruang-dipesan">
-                    <div class="p-3 ruang rounded">
-                      <div class="row align-items-center">
-                        <div class="col-7 text-left">
-                          <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                          <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                          <br>
-                          <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                        </div>
-                        <div class="col-5 text-right">
-                          <h5><?php echo "Jumat"; ?></h5>
-                          <button class="btn btn-danger btn-checkout text-white" data-toggle="modal" data-target="#modalCheckout">Checkout</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- <div class="carousel-item m-0 pl-2 pr-2 col-md-12">
-                    <div class="row">
-                      <div class="col-md-6 p-2" id="ruang-dipesan">
-                        <div class="p-3 ruang rounded">
-                          <div class="row align-items-center">
-                            <div class="col-7 text-left">
-                              <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                              <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                              <br>
-                              <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                            </div>
-                            <div class="col-5 text-right">
-                              <h5><?php echo "Jumat"; ?></h5>
-                              <button class="btn btn-danger btn-checkout text-white" data-toggle="modal" data-target="#modalCheckout">Checkout</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col-md-6 p-2" id="ruang-dipesan">
-                        <div class="p-3 ruang rounded">
-                          <div class="row align-items-center">
-                            <div class="col-7 text-left">
-                              <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                              <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                              <br>
-                              <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                            </div>
-                            <div class="col-5 text-right">
-                              <h5><?php echo "Jumat"; ?></h5>
-                              <button class="btn btn-danger btn-checkout text-white" data-toggle="modal" data-target="#modalCheckout">Checkout</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-
-
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <small><span class="carousel-control-prev-icon" aria-hidden="true"></span></small>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <small><span class="carousel-control-next-icon" aria-hidden="true"></span></small>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-
+              <!-- End Carousel -->
+              <?php
+            }
+          }else{
+            ?>
+            <div class="text-center text-muted">Tidak ada ruangan yang dipesan</div>
+            <?php
+          }
+          ?>
         </div>
+      </div>
       </div>
     </div>
     </div>
     </div>
 
     <!-- Modal -->
-    <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
-      <div class="modal fade" id="modalCheckout" tabindex="-1" role="dialog" aria-labelledby="modalCheckoutTitle" aria-hidden="true">
+      <div class="modal fade" id="modalCheckoutPinjamanAdmin" tabindex="-1" role="dialog" aria-labelledby="modalCheckoutTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
+          <form action="../process/proses_adminRuangan.php?module=ruang&act=checkout" method="post">
             <div class="modal-body pt-5 text-center">
+              <input type="hidden" name="id_info_kelas_kosong" id="id_info_kelas_kosong_checkoutAdmin">
               <strong>Apakah Anda yakin?</strong>
             </div>
             <div class="pb-4 pt-4 d-flex justify-content-around">
               <button type="button" class="btn btn-danger btn-confirm" data-dismiss="modal">Tidak</button>
-              <button type="submit" name="checkout" class="btn btn-success btn-confirm">Ya</button>
+              <button type="submit" name="checkoutRuang" class="btn btn-success btn-confirm">Ya</button>
             </div>
+          </form>
           </div>
         </div>
       </div>
-    </form>
     <!-- End Modal -->
 
     <!-- Halaman Ruangan Bagian Bawah -->
@@ -404,7 +360,7 @@ include "../process/proses_adminRuangan.php";
               </div>
             </div>
 
-            <div class="row pt-2 mt-2 pl-0 scrollbar" id="ruangan2">
+            <div class="row pt-2 mt-2 pl-0 scrollbar scrollbar-x" id="ruangan2">
               <?php
               $resultRuangan=ruangan($con);
 
@@ -412,8 +368,10 @@ include "../process/proses_adminRuangan.php";
                 while($rowRuangan = mysqli_fetch_assoc($resultRuangan)){
               ?>
               <div class="col-md-4 m-0 pr-3 pb-4 p-0 itemRuangan">
+                <div class="container-fluid p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
+                    <div class="container-fluid p-0">
                     <div class="row d-flex align-items-center">
                       <div class="col-md-6 text-center">
                         <h5 class="my-auto kode"><?php echo $rowRuangan["kode"];?></h5> 
@@ -422,12 +380,14 @@ include "../process/proses_adminRuangan.php";
                         <span class="lantaiRuangan"><?php echo "Lantai ".$rowRuangan["lantai"];?></span>
                       </div>
                     </div>
+                    </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
                     <button type="button" id="<?php echo $rowRuangan["id_ruang"];?>" class="btn btn-danger hapus-ruang" data-toggle="modal" data-target="#modalHapusRuangan">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
                       </button>
                   </div>
+                </div>
                 </div>
               </div>
             <?php }
@@ -507,7 +467,7 @@ include "../process/proses_adminRuangan.php";
           <div class="col-md-12">
             <div class="m-2 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-0">Jumlah Ruangan Setiap Lantai</h6>
-            <div class="scrollbar pr-2" id="lantai">
+            <div class="scrollbar pr-2 scrollbar-x" id="lantai">
 
             <?php
               $resultJmlRuangLantai=jmlRuangLantai($con);

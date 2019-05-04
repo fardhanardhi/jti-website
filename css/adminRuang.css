@@ -70,8 +70,7 @@
 
 #ruang #pemesanan-ruang {
   max-height: 85vh !important;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
 }
 
 #ruang #daftar-ruangan {
@@ -81,14 +80,12 @@
 
 #ruang #ruangan2 {
   max-height: 60vh !important;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
 }
 
 #ruang #lantai {
   max-height: 33vh !important;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
 }
 
 #ruang #txtCariPemesanan {
@@ -124,14 +121,13 @@
 #ruang .carousel-control-prev,
 .carousel-control-next {
   filter: invert(100%);
-  margin: -0.2em !important;
   width: 1em !important;
 }
 
-#ruang .carousel-control-prev-icon {
-  margin-left: 0 !important;
+#ruang .carousel-control-prev {
+  margin-left: -10px !important;
 }
 
-#ruang .carousel-control-next-icon {
-  margin-right: 0 !important;
+#ruang .carousel-control-next {
+  margin-right: -10px !important;
 }

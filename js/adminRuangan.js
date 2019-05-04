@@ -109,5 +109,9 @@ $("#txtCariRuangan").keyup(function() {
 $(".hapus-ruang").click(function() {
   var id_ruang = $(this).attr("id");
   $("#id_ruangHapus").val(id_ruang);
-  $("#modalHapusRuangaan").modal("show");
+});
+
+$(".checkout-ruang-admin").click(function() {
+  var id_info_kelas_kosong = $(this).attr("id");
+  $("#id_info_kelas_kosong_checkoutAdmin").val(id_info_kelas_kosong);
 });

@@ -89,7 +89,7 @@ if(isset($_POST["cariKelasKosong"])){
         ?>
         <div class="col-md-6 p-2">
           <div class="p-3 ruang rounded">
-            <form action="../process/proses_kelasKosong.php?act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
+            <form action="../process/proses_kelasKosong.php?act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" method="post" class="m-0">
               <div class="row d-flex align-items-center">
                 <div class="col-7 text-left">
                   <strong><span class="p-0 m-0 kelas"><?php echo $row["kode"]; ?></span></strong>
@@ -127,6 +127,25 @@ if(isset($_POST["cariKelasKosong"])){
 }
 }
 
+function pinjaman($con, $id_user){
+  $pinjaman="select * from tabel_info_kelas_kosong where peminjam='$id_user' and status_dipinjam='dipinjam'";
+  $resultPinjaman = mysqli_query($con, $pinjaman);
+  return $resultPinjaman;
+}
+
+function countPinjaman($con, $id_user){
+  $countPinjaman="select count(id_info_kelas_kosong) as countPinjaman from tabel_info_kelas_kosong where peminjam='$id_user' and status_dipinjam='dipinjam'";
+  $resultCountPinjaman = mysqli_query($con, $countPinjaman);
+  $rowCountPinjaman=mysqli_fetch_assoc($resultCountPinjaman);
+  return $rowCountPinjaman["countPinjaman"];
+}
+
+function itemPinjaman($con, $id_user, $mulaiLimit, $jmlLimit){
+  $itemPinjaman="select a.*, b.* from tabel_info_kelas_kosong a, tabel_ruang b where a.id_ruang=b.id_ruang and a.peminjam='$id_user' and a.status_dipinjam='dipinjam' order by a.hari desc limit $mulaiLimit, $jmlLimit";
+  $resultItemPinjaman = mysqli_query($con, $itemPinjaman);
+  return $resultItemPinjaman;
+}
+
 function ruangan($con){
   $ruangan="select * from tabel_ruang";
   $resultRuangan = mysqli_query($con, $ruangan);
@@ -139,7 +158,7 @@ function jmlRuangLantai($con){
   return $resultJmlRuangLantai;
 }
 
-if(isset($_POST["tambahRuang"]) || isset($_POST["hapusRuang"])){
+if(isset($_POST["tambahRuang"]) || isset($_POST["hapusRuang"]) || isset($_POST["checkoutRuang"])){
   if($_GET["module"]=="ruang" && $_GET["act"]=="tambah"){
     mysqli_query($con, "insert into tabel_ruang values('','$_POST[kode]','$_POST[lantai]')");
     header('location:../module/index.php?module=' . $_GET["module"]);
@@ -148,6 +167,11 @@ if(isset($_POST["tambahRuang"]) || isset($_POST["hapusRuang"])){
     mysqli_query($con, "delete from tabel_ruang where id_ruang='$_POST[id_ruang]'");
     header('location:../module/index.php?module=' . $_GET["module"]);
   }
+  else if ($_GET["module"] == "ruang" && $_GET["act"] == "checkout") {
+    mysqli_query($con, "update tabel_info_kelas_kosong set status_dipinjam='kosong' where id_info_kelas_kosong='$_POST[id_info_kelas_kosong]'");
+    header('location: ../module/index.php?module='.$_GET["module"]);
+  }
 }
+
 ?>
 
