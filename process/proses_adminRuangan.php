@@ -2,7 +2,7 @@
 include "../config/connection.php";
 
 function peminjam($con){
-  $peminjam="select a.*, c.* from tabel_info_kelas_kosong a, tabel_user b, tabel_ruang c where a.peminjam=b.id_user and a.id_ruang=c.id_ruang order by a.waktu_mulai asc";
+  $peminjam="select a.*,b.*, c.* from tabel_info_kelas_kosong a, tabel_user b, tabel_ruang c where a.peminjam=b.id_user and a.id_ruang=c.id_ruang order by a.waktu_pinjam asc";
   $resultPeminjam = mysqli_query($con, $peminjam);
   return $resultPeminjam;
 }
@@ -23,12 +23,12 @@ function user($con, $id_user){
   }
 }
 
-function tampilKelas($con, $id_kelas){
-  $kelas = "select a.*, b.* from tabel_kelas a, tabel_prodi b where a.id_prodi=b.id_prodi and a.id_kelas=$id_kelas";
+function tampilKelas($con, $id_user){
+  $kelas = "select a.*, b.*, c.* from tabel_mahasiswa a, tabel_kelas b, tabel_prodi c where a.id_prodi=b.id_prodi and a.id_User=$id_user";
   $resultKelas = mysqli_query($con, $kelas);  
   if(mysqli_num_rows($resultKelas)>0){
     $row=mysqli_fetch_assoc($resultKelas);
-    $hasil= $row["kode"]." - ".$row["tingkat"].$row["kode_kelas"];
+    $hasil= $row["kode"]."-".$row["tingkat"].$row["kode_kelas"];
     return $hasil;
   }
   else{
@@ -57,6 +57,11 @@ function cekKelasLogin($con)
     $resultLogin = mysqli_fetch_assoc($login);
     return $resultLogin["id_kelas"];
   }
+}
+
+function tampilTanggal($tanggal)
+{
+  return date('d F Y', strtotime($tanggal));
 }
 
 function tampilWaktu($waktu)
@@ -120,6 +125,17 @@ if(isset($_POST["cariKelasKosong"])){
 } else {
 ?><div class="col-12 text-center mt-3"><strong>Tidak ada ruang yang kosong</strong></div><?php
 }
-mysqli_close($con);
+}
+
+function ruangan($con){
+  $ruangan="select * from tabel_ruang";
+  $resultRuangan = mysqli_query($con, $ruangan);
+  return $resultRuangan;
+}
+
+function jmlRuangLantai($con){
+  $jmlRuangLantai="select count(id_ruang) as jmlRuang, lantai from tabel_ruang group by lantai";
+  $resultJmlRuangLantai = mysqli_query($con, $jmlRuangLantai);
+  return $resultJmlRuangLantai;
 }
 ?>

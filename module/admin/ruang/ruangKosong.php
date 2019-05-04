@@ -11,10 +11,10 @@ include "../process/proses_adminRuangan.php";
       <div class="container-fluid p-0">
         <div class="row">
           <div class="col-md-12">
-            <form class="form-inline">
+            <div class="form-inline">
               <img src="../img/search.svg" alt="" id="icon-search">
-              <input type="search" class="form-control" name="cari" id="cari" placeholder="Pencarian">
-            </form>
+              <input type="search" class="form-control" id="txtCariPemesanan" placeholder="Pencarian">
+            </div>
           </div>
         </div>
 
@@ -27,7 +27,7 @@ include "../process/proses_adminRuangan.php";
             $no=1;
             while($rowPeminjam = mysqli_fetch_assoc($resultPeminjam)){
           ?>
-            <div class="col-md-12 p-2 border-top border-bottom">
+            <div class="col-md-12 p-2 border-top border-bottom itemPemesanan">
               <div class="container-fluid p-0">
                 <div class="row d-flex justify-content-around p-0 m-0">
                   <div class="col-md-1 my-auto">
@@ -44,34 +44,50 @@ include "../process/proses_adminRuangan.php";
                           $resultUser=user($con, $rowPeminjam["peminjam"]);
                           $rowUser=mysqli_fetch_assoc($resultUser);
                         ?>
-                          <strong><?php echo $rowUser["nama"];?>
-                           (TI-3B)</strong>
+                          <strong class="nama"><?php echo $rowUser["nama"];
+                          if($rowPeminjam["level"]=="mahasiswa"){
+                            echo " (".tampilKelas($con, $rowPeminjam["id_user"]).")";
+                          }
+                          ?>
+                          </strong>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-auto">
                           <small>
                             <i class="far fa-calendar-alt text-secondary"></i>
-                            <span class="pl-1 text-muted">10 April 2019</span>
+                            <span class="pl-1 text-muted tanggalPinjam"><?php echo tampilTanggal($rowPeminjam["waktu_pinjam"]);?></span>
                           </small>
                         </div>
                         <div class="col-md-auto">
                           <small>
                             <i class="far fa-clock text-secondary"></i>
-                            <span class="pl-1 text-muted">09.00 WIB</span>
+                            <span class="pl-1 text-muted waktuMulai"><?php echo tampilWaktu($rowPeminjam["waktu_mulai"]);?></span>
                           </small>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-2 my-auto pl-0">
-                    <h4>KB.03</h4>
+                    <h4 class="kodeRuang"><?php echo $rowPeminjam["kode"];?></h4>
                   </div>
                   <div class="col-md-1"></div>
                   <div class="bungkus label p-0">
+                  <?php
+                  if($rowPeminjam["status_dipinjam"]=="dipinjam"){
+                    ?>
                     <label class="bg-success text-white rounded-bottom text-center caption-label">
-                      <small>Pesan</small>
+                      <small class="pesan">Pesan</small>
                     </label>
+                    <?php
+                  }else if($rowPeminjam["status_dipinjam"]=="kosong"){
+                    ?>
+                    <label class="bg-danger text-white rounded-bottom text-center caption-label">
+                      <small class="selesai">Selesai</small>
+                    </label>
+                    <?php
+                  }
+                  ?>                    
                   </div>
                 </div>
               </div>
@@ -87,142 +103,8 @@ include "../process/proses_adminRuangan.php";
             <?php
           }
           ?>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="container-fluid p-0">
-              <div class="row d-flex justify-content-around p-0 m-0">
-                <div class="col-md-1 my-auto">
-                  <strong>1</strong>
-                </div>
-                <div class="col-md-1 my-auto">
-                  <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-                </div>
-                <div class="col-md-7 pl-5 my-auto">
-                  <div class="container-fluid p-0">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <strong>Salmiyatun (TI-3B)</strong>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-auto">
-                        <small>
-                          <i class="far fa-calendar-alt text-secondary"></i>
-                          <span class="pl-1 text-muted">10 April 2019</span>
-                        </small>
-                      </div>
-                      <div class="col-md-auto">
-                        <small>
-                          <i class="far fa-clock text-secondary"></i>
-                          <span class="pl-1 text-muted">09.00 WIB</span>
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2 my-auto pl-0">
-                  <h4>KB.03</h4>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="bungkus label p-0">
-                  <label class="bg-success text-white rounded-bottom text-center caption-label">
-                    <small>Pesan</small>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="container-fluid p-0">
-              <div class="row d-flex justify-content-around p-0 m-0">
-                <div class="col-md-1 my-auto">
-                  <strong>1</strong>
-                </div>
-                <div class="col-md-1 my-auto">
-                  <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-                </div>
-                <div class="col-md-7 pl-5 my-auto">
-                  <div class="container-fluid p-0">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <strong>Salmiyatun (TI-3B)</strong>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-auto">
-                        <small>
-                          <i class="far fa-calendar-alt text-secondary"></i>
-                          <span class="pl-1 text-muted">10 April 2019</span>
-                        </small>
-                      </div>
-                      <div class="col-md-auto">
-                        <small>
-                          <i class="far fa-clock text-secondary"></i>
-                          <span class="pl-1 text-muted">09.00 WIB</span>
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2 my-auto pl-0">
-                  <h4>KB.03</h4>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="bungkus label p-0">
-                  <label class="bg-success text-white rounded-bottom text-center caption-label">
-                    <small>Pesan</small>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="container-fluid p-0">
-              <div class="row d-flex justify-content-around p-0 m-0">
-                <div class="col-md-1 my-auto">
-                  <strong>1</strong>
-                </div>
-                <div class="col-md-1 my-auto">
-                  <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-                </div>
-                <div class="col-md-7 pl-5 my-auto">
-                  <div class="container-fluid p-0">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <strong>Salmiyatun (TI-3B)</strong>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-auto">
-                        <small>
-                          <i class="far fa-calendar-alt text-secondary"></i>
-                          <span class="pl-1 text-muted">10 April 2019</span>
-                        </small>
-                      </div>
-                      <div class="col-md-auto">
-                        <small>
-                          <i class="far fa-clock text-secondary"></i>
-                          <span class="pl-1 text-muted">09.00 WIB</span>
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-2 my-auto pl-0">
-                  <h4>KB.03</h4>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="bungkus label p-0">
-                  <label class="bg-success text-white rounded-bottom text-center caption-label">
-                    <small>Pesan</small>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
           <!-- End loop -->
+          
         </div>
       </div>
     </div>
