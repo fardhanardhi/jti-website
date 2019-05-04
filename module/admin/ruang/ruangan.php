@@ -424,9 +424,9 @@ include "../process/proses_adminRuangan.php";
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2">
+                    <button type="button" id="<?php echo $rowRuangan["id_ruang"];?>" class="btn btn-danger hapus-ruang" data-toggle="modal" data-target="#modalHapusRuangan">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
+                      </button>
                   </div>
                 </div>
               </div>
@@ -444,6 +444,26 @@ include "../process/proses_adminRuangan.php";
         </div>
       </div>
     </div>
+
+    <!-- Modal Hapus Ruangan-->
+    <div class="modal fade" id="modalHapusRuangan" tabindex="-1" role="dialog" aria-labelledby="modalHapusRuangan"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <form action="../process/proses_adminRuangan.php?module=ruang&act=hapus" method="post">
+            <div class="modal-body pt-5 text-center">
+              <input type="hidden" name="id_ruang" id="id_ruangHapus">
+              <strong>Apakah Anda yakin?</strong>
+            </div>
+            <div class="pb-4 pt-4 d-flex justify-content-around">
+              <button type="button" class="btn btn-danger mr-4 btn-confirm" data-dismiss="modal">Tidak</button>
+              <button type="submit" name="hapusRuang" class="btn btn-success btn-confirm">Ya</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal Hapus Ruangan -->
     
     <div class="col-md-3 p-0">
       <div class="container-fluid m-0 p-0">
@@ -451,11 +471,11 @@ include "../process/proses_adminRuangan.php";
           <div class="col-md-12">
             <div class="m-2 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-0">Tambah Ruangan</h6>
-            <form class="pt-3" id="tambah-data">
+            <form class="pt-3" action="../process/proses_adminRuangan.php?module=ruang&act=tambah" id="tambah-data" method="post">
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Ruangan</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control form-control-sm" placeholder="Kode Ruang..."></small>
+                  <input type="text" class="form-control form-control-sm" name="kode" placeholder="Kode Ruang..."></small>
                 </div>
               </div>
               <div class="form-group row mt-0">
@@ -475,7 +495,7 @@ include "../process/proses_adminRuangan.php";
               </div>
               <div class="form-group mb-0 row">
                 <div class="col-sm-12 text-right">
-                  <input type="submit" value="Tambah" class="btn btn-primary btn-checkout">
+                  <input type="submit" value="Tambah" name="tambahRuang" class="btn btn-primary btn-checkout">
                 </div>
               </div>
             </form>

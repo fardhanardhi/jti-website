@@ -105,3 +105,9 @@ $("#txtCariRuangan").keyup(function() {
     }
   }
 });
+
+$(".hapus-ruang").click(function() {
+  var id_ruang = $(this).attr("id");
+  $("#id_ruangHapus").val(id_ruang);
+  $("#modalHapusRuangaan").modal("show");
+});

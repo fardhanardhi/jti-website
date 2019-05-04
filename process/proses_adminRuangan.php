@@ -138,4 +138,16 @@ function jmlRuangLantai($con){
   $resultJmlRuangLantai = mysqli_query($con, $jmlRuangLantai);
   return $resultJmlRuangLantai;
 }
+
+if(isset($_POST["tambahRuang"]) || isset($_POST["hapusRuang"])){
+  if($_GET["module"]=="ruang" && $_GET["act"]=="tambah"){
+    mysqli_query($con, "insert into tabel_ruang values('','$_POST[kode]','$_POST[lantai]')");
+    header('location:../module/index.php?module=' . $_GET["module"]);
+  }
+  else if($_GET["module"]=="ruang" && $_GET["act"]=="hapus"){
+    mysqli_query($con, "delete from tabel_ruang where id_ruang='$_POST[id_ruang]'");
+    header('location:../module/index.php?module=' . $_GET["module"]);
+  }
+}
 ?>
+
