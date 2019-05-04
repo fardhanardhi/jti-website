@@ -32,6 +32,7 @@
   <script src="../js/adminKrs.js"></script>
   <script src="../js/adminKhs.js"></script>
   <script src="../js/mahasiswaKelasKosong.js"></script>
+  <script src="../js/adminRuangan.js"></script>
   <?php
   if ($level == "admin") {
     ?>

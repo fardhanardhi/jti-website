@@ -1,6 +1,6 @@
 <?php
 include "../config/connection.php";
-include "../process/proses_kelasKosong.php";
+include "../process/proses_adminRuangan.php";
 
 ?>
 
@@ -18,351 +18,207 @@ include "../process/proses_kelasKosong.php";
           </div>
         </div>
 
-        <div class="row pt-0 pl-3 pr-3 mr-0 mt-3 scrollbar" id="pemesanan-ruang">
+        <div class="row pt-0 pl-3 pr-3 mr-0 mt-3 scrollbar scrollbar-x" id="pemesanan-ruang">
+          
+          <?php
+          $resultPeminjam=peminjam($con);
+
+          if (mysqli_num_rows($resultPeminjam) > 0){
+            $no=1;
+            while($rowPeminjam = mysqli_fetch_assoc($resultPeminjam)){
+          ?>
+            <div class="col-md-12 p-2 border-top border-bottom">
+              <div class="container-fluid p-0">
+                <div class="row d-flex justify-content-around p-0 m-0">
+                  <div class="col-md-1 my-auto">
+                    <strong><?php echo $no;?></strong>
+                  </div>
+                  <div class="col-md-1 my-auto">
+                    <img src="../attachment/img/<?php echo $rowPeminjam['foto'];?>" style="height:3em; width:3em; border-radius:50%;" alt="">
+                  </div>
+                  <div class="col-md-7 pl-5 my-auto">
+                    <div class="container-fluid p-0">
+                      <div class="row">
+                        <div class="col-md-12">
+                        <?php 
+                          $resultUser=user($con, $rowPeminjam["peminjam"]);
+                          $rowUser=mysqli_fetch_assoc($resultUser);
+                        ?>
+                          <strong><?php echo $rowUser["nama"];?>
+                           (TI-3B)</strong>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-auto">
+                          <small>
+                            <i class="far fa-calendar-alt text-secondary"></i>
+                            <span class="pl-1 text-muted">10 April 2019</span>
+                          </small>
+                        </div>
+                        <div class="col-md-auto">
+                          <small>
+                            <i class="far fa-clock text-secondary"></i>
+                            <span class="pl-1 text-muted">09.00 WIB</span>
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 my-auto pl-0">
+                    <h4>KB.03</h4>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="bungkus label p-0">
+                    <label class="bg-success text-white rounded-bottom text-center caption-label">
+                      <small>Pesan</small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php
+            $no++;
+            }
+          }else{
+            ?>
+            <div class="col-md-12 p-2 text-center">
+              <p class="text-muted">Username, Kelas atau Ruangan tidak dapat ditemukan</p>
+            </div>
+            <?php
+          }
+          ?>
+
           <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
+            <div class="container-fluid p-0">
+              <div class="row d-flex justify-content-around p-0 m-0">
+                <div class="col-md-1 my-auto">
+                  <strong>1</strong>
+                </div>
+                <div class="col-md-1 my-auto">
+                  <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
+                </div>
+                <div class="col-md-7 pl-5 my-auto">
+                  <div class="container-fluid p-0">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <strong>Salmiyatun (TI-3B)</strong>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-auto">
+                        <small>
+                          <i class="far fa-calendar-alt text-secondary"></i>
+                          <span class="pl-1 text-muted">10 April 2019</span>
+                        </small>
+                      </div>
+                      <div class="col-md-auto">
+                        <small>
+                          <i class="far fa-clock text-secondary"></i>
+                          <span class="pl-1 text-muted">09.00 WIB</span>
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 my-auto pl-0">
+                  <h4>KB.03</h4>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="bungkus label p-0">
+                  <label class="bg-success text-white rounded-bottom text-center caption-label">
+                    <small>Pesan</small>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
+            <div class="container-fluid p-0">
+              <div class="row d-flex justify-content-around p-0 m-0">
+                <div class="col-md-1 my-auto">
+                  <strong>1</strong>
+                </div>
+                <div class="col-md-1 my-auto">
+                  <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
+                </div>
+                <div class="col-md-7 pl-5 my-auto">
+                  <div class="container-fluid p-0">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <strong>Salmiyatun (TI-3B)</strong>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-auto">
+                        <small>
+                          <i class="far fa-calendar-alt text-secondary"></i>
+                          <span class="pl-1 text-muted">10 April 2019</span>
+                        </small>
+                      </div>
+                      <div class="col-md-auto">
+                        <small>
+                          <i class="far fa-clock text-secondary"></i>
+                          <span class="pl-1 text-muted">09.00 WIB</span>
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 my-auto pl-0">
+                  <h4>KB.03</h4>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="bungkus label p-0">
+                  <label class="bg-success text-white rounded-bottom text-center caption-label">
+                    <small>Pesan</small>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-12 p-2 border-top border-bottom">
-            <div class="row d-flex justify-content-around p-0 m-0">
-              <div class="col-md-1 my-auto">
-                <strong>1</strong>
-              </div>
-              <div class="col-md-1 my-auto">
-                <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
-              </div>
-              <div class="col-md-7 pl-5 my-auto">
-                <strong>Salmiyatun (TI-3B)</strong><br>
-                <small>
-                  <i class="far fa-calendar-alt text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">10 April 2019</span>
-                  <i class="far fa-clock text-secondary"></i>
-                  <span class="pl-1 text-muted pr-4">09.00 WIB</span>
-                </small>
-              </div>
-              <div class="col-md-2 my-auto pl-0">
-                <h4>KB.03</h4>
-              </div>
-              <div class="col-md-1"></div>
-              <div class="bungkus label p-0">
-                <label class="bg-success text-white rounded-bottom text-center caption-label">
-                  <small>Pesan</small>
-                </label>
+            <div class="container-fluid p-0">
+              <div class="row d-flex justify-content-around p-0 m-0">
+                <div class="col-md-1 my-auto">
+                  <strong>1</strong>
+                </div>
+                <div class="col-md-1 my-auto">
+                  <img src="../attachment/img/ariadi.png" style="height:3em; width:3em; border-radius:50%;" alt="">
+                </div>
+                <div class="col-md-7 pl-5 my-auto">
+                  <div class="container-fluid p-0">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <strong>Salmiyatun (TI-3B)</strong>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-auto">
+                        <small>
+                          <i class="far fa-calendar-alt text-secondary"></i>
+                          <span class="pl-1 text-muted">10 April 2019</span>
+                        </small>
+                      </div>
+                      <div class="col-md-auto">
+                        <small>
+                          <i class="far fa-clock text-secondary"></i>
+                          <span class="pl-1 text-muted">09.00 WIB</span>
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 my-auto pl-0">
+                  <h4>KB.03</h4>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="bungkus label p-0">
+                  <label class="bg-success text-white rounded-bottom text-center caption-label">
+                    <small>Pesan</small>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -380,7 +236,6 @@ include "../process/proses_kelasKosong.php";
         <div class="m-2 p-3 bg-white rounded shadow-sm">
           <h6 class="border-bottom border-gray pb-2 mb-0">Daftar Ruangan</h6>
           <div class="pt-3">
-            <form action="?module=ruang" method="post">
               <div class="container-fluid pl-2">
                 <div class="row">
                   <div class="col-1 p-0 text-center">
@@ -412,7 +267,7 @@ include "../process/proses_kelasKosong.php";
                     <strong>Jam</strong>
                   </div>
                   <div class="col-2 text-center p-0 pl-2">
-                    <select class="optionJam" name="jam">
+                    <select class="optionJam" name="jam" id="jamKelasKosongAdmin">
                       <option value="07:00:00">07.00</option>
                       <?php
                       $jam = tampilJam($con);
@@ -427,224 +282,60 @@ include "../process/proses_kelasKosong.php";
                 </div>
                 <div class="row">
                   <div class="col-md-12 text-right">
-                    <input type="submit" name="cari" class="btn btn-success btn-cari" value="Cari">
+                    <input type="button" name="cari" class="btn btn-success btn-cari" value="Cari" id="cariKelasKosongAdmin">
                   </div>
                 </div>
-            </form>
 
-            <div class="row pr-1 mt-2 scrollbar" id="daftar-ruangan">
-
-              <div class="col-md-6 p-2">
-                <div class="p-3 ruang rounded">
-                  <form action="../process/proses_kelasKosong.php?act=pesan&id=1" method="post">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-7 text-left">
-                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                        <br>
-                        <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                      </div>
-                      <div class="col-5 text-right">
-                        <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <div class="col-md-6 p-2">
-                <div class="p-3 ruang rounded">
-                  <form action="../process/proses_kelasKosong.php?act=pesan&id=1" method="post">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-7 text-left">
-                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                        <br>
-                        <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                      </div>
-                      <div class="col-5 text-right">
-                        <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <div class="col-md-6 p-2">
-                <div class="p-3 ruang rounded">
-                  <form action="../process/proses_kelasKosong.php?act=pesan&id=1" method="post">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-7 text-left">
-                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                        <br>
-                        <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                      </div>
-                      <div class="col-5 text-right">
-                        <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <div class="col-md-6 p-2">
-                <div class="p-3 ruang rounded">
-                  <form action="../process/proses_kelasKosong.php?act=pesan&id=1" method="post">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-7 text-left">
-                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                        <br>
-                        <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                      </div>
-                      <div class="col-5 text-right">
-                        <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <div class="col-md-6 p-2">
-                <div class="p-3 ruang rounded">
-                  <form action="../process/proses_kelasKosong.php?act=pesan&id=1" method="post">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-7 text-left">
-                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                        <br>
-                        <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                      </div>
-                      <div class="col-5 text-right">
-                        <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <div class="col-md-6 p-2">
-                <div class="p-3 ruang rounded">
-                  <form action="../process/proses_kelasKosong.php?act=pesan&id=1" method="post">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-7 text-left">
-                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                        <br>
-                        <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                      </div>
-                      <div class="col-5 text-right">
-                        <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <div class="col-md-6 p-2">
-                <div class="p-3 ruang rounded">
-                  <form action="../process/proses_kelasKosong.php?act=pesan&id=1" method="post">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-7 text-left">
-                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                        <br>
-                        <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                      </div>
-                      <div class="col-5 text-right">
-                        <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-
-              <div class="col-md-6 p-2">
-                <div class="p-3 ruang rounded">
-                  <form action="../process/proses_kelasKosong.php?act=pesan&id=1" method="post">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-7 text-left">
-                        <strong><span class="p-0 m-0 kelas"><?php echo "LPR 1" ?></span></strong>
-                        <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . "1" . ")"; ?></span>
-                        <br>
-                        <strong><?php echo "08.00" . " - " . "10.000" ?></strong>
-                      </div>
-                      <div class="col-5 text-right">
-                        <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <!-- end loop -->
+            <div class="row pr-1 mt-2 scrollbar scrollbar-x" id="daftar-ruangan">
 
               <?php
-              if (isset($_POST["cari"])) {
-                $resultKelasKosong = kelasKosong($con, $_POST["jam"], $_POST["hari"]);
-              } else {
-                $resultKelasKosong = kelasKosong($con, '07:00:00', 'senin');
-              }
+              $resultKelasKosong = kelasKosong($con, '07:00:00', 'senin');
               if (mysqli_num_rows($resultKelasKosong) > 0) {
                 while ($row = mysqli_fetch_assoc($resultKelasKosong)) {
                   $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
-                  if ($row["status_dipinjam"] == "Kosong") {
+                  if ($row["status_dipinjam"] == "kosong") {
                     ?>
-                    <div class="col-md-6 p-0 mb-3 pr-3">
-                      <div class="rounded ruang p-3">
-
+                    <div class="col-md-6 p-2">
+                      <div class="p-3 ruang rounded">
                         <form action="../process/proses_kelasKosong.php?act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" method="post">
                           <div class="row d-flex align-items-center">
-                            <div class="col-3 text-center">
-                              <h4 class="p-0 m-0"><?php echo $row["kode_ruang"]; ?></h4>
-                              <span class="text-secondary"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
+                            <div class="col-7 text-left">
+                              <strong><span class="p-0 m-0 kelas"><?php echo $row["kode_ruang"]; ?></span></strong>
+                              <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
+                              <br>
+                              <strong><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></strong>
                             </div>
-                            <div class="col-5">
-                              <h5><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></h5>
+                            <div class="col-5 text-right">
+                              <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
                             </div>
-                            <div class="col-4 text-right">
-                              <?php
-                              if (cekPeminjamSekelas($con, $row["waktu_mulai"], $row["hari"]) == true) {
-                                ?>
-                                <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                              <?php
-                            } else {
-                              ?>
-                                <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                              <?php
-                            }
-                            ?>
-                            </div>
+                          </div>
                         </form>
                       </div>
                     </div>
-                  </div>
                 <?php
-              } else if ($row["status_dipinjam"] == "Dipinjam") {
+              } else if ($row["status_dipinjam"] == "dipinjam") {
                 ?>
-                  <div class="col-md-6 p-0 pr-3">
-                    <div class="rounded ruang p-3 dipesan">
-                      <div class="row d-flex align-items-center">
-                        <div class="col-3 text-center">
-                          <h4 class="p-0 m-0"><?php echo $row["kode_ruang"]; ?></h4>
-                          <span class="text-secondary"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
-                        </div>
-                        <div class="col-5">
-                          <h5><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></h5>
-                        </div>
+                  <div class="col-md-6 p-2">
+                      <div class="p-3 ruang rounded container-fluid">
+                          <div class="row d-flex align-items-center">
+                            <div class="col-7 text-left">
+                              <strong><span class="p-0 m-0 kelas"><?php echo $row["kode"]; ?></span></strong>
+                              <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
+                              <br>
+                              <strong><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></strong>
+                            </div>
+                          </div>
                       </div>
                     </div>
-                  </div>
                 <?php
               }
             }
           } else {
             ?><div class="col-12 text-center mt-3"><strong>Tidak ada ruang yang kosong</strong></div><?php
+          }
+          mysqli_close($con);
 
-                                                                                                    }
-                                                                                                    mysqli_close($con);
-
-                                                                                                    ?>
+          ?>
           </div>
         </div>
       </div>
