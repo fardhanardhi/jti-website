@@ -123,9 +123,7 @@
                                     <td><?= date('d F Y', strtotime($row["waktu"]))?></td>
                                     <td>25 Februari 2019</td>
                                     <td>belum</td>
-                                    <td><button class=" tmbl-table btn btn-primary" type="button"
-                                            class="pratinjau btn" data-toggle="modal" data-target="#editModal"
-                                            class="edit">Edit</button></td>
+                                    
                                     <td><button class=" tmbl-table btn btn-danger" type="button"
                                             class="pratinjau btn" data-toggle="modal" data-target="#hapus"
                                             class="hapus">Hapus</button></td>
