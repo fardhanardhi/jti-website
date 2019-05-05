@@ -9,7 +9,7 @@
 <head>
 </head>
 
-<body onload="setup();">
+<body onload="setupDosen();">
     <main role="main" class="container-fluid">
         <div id="dataDosen" class="row">
             <div class="col-md-12 p-0">
@@ -74,9 +74,9 @@
                                                                 <div class="col-md-2"></div>
                                                                 <div class="col-md-10">
                                                                     <br>
-                                                                    <input id='fileid' type='file' name='filename'
+                                                                    <input id='file' type='file' name='filename'
                                                                         onchange="preview_images(event);" hidden required />
-                                                                    <input id='buttonid' type='button' value='Load Gambar'
+                                                                    <input id='tombolid' type='button' value='Load Gambar'
                                                                         class="loadgambar btn btn-primary"/>
                                                                 </div>
                                                                 <div class="col-sm-3"></div>
@@ -259,8 +259,9 @@
                                     <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
                                     <button class="btn btn-success" type="submit">Cari</button>
                                 </form>
-                                <!-- <div class="scrolltable scrollbar-x"> -->
-                                <div class="scrolltable ">
+                                <div class="scrolltable scrollbar-x">
+                                <!-- <div class="scrolltable"> -->
+                                    
                                     <table class="table table-striped table-bordered text-center">
                                         <thead>
                                             <tr>
@@ -277,12 +278,12 @@
                                                 <th colspan="2">Proses</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <?php
+                                        <?php
                                                 $query = "SELECT 
                                                 
                                                 tabel_user.username, 
                                                 tabel_user.password, 
+                                                tabel_user.id_user,
 
                                                 tabel_dosen.id_dosen,
                                                 tabel_dosen.nip, 
@@ -301,14 +302,22 @@
                                                 ";
                                                 $result = mysqli_query($con, $query);
 
-                                                if(mysqli_num_rows($result) > 0){
+                                                // if(mysqli_num_rows($result) > 0){
+                                                    // $id_delete = $row["id_user"];
+                                                    // $id = $row["id_dosen"];
+
                                                     $index = 1;
                                                     
                                                     while($row = mysqli_fetch_assoc($result)){
-                                                        $id_dosen = $row["id_dosen"];
-                                                        echo"
+                                                        // $id_dosen = $row["id_dosen"];
+                                                        // echo"
+                                                        $id_delete = $row["id_user"];
+                                                        $id = $row["id_dosen"];
+                                                        
+                                                        ?>
+
                                                         <tr>
-                                                            <td>". $index++ ."</td>
+                                                            <!-- <td>". $index++ ."</td>
                                                             <td>". $row["username"] ."</td>
                                                             <td>". $row["password"] ."</td>
                                                             <td>". $row["foto"] ."</td>
@@ -317,21 +326,34 @@
                                                             <td>". $row["tempat_lahir"] ."</td>
                                                             <td>". $row["tanggal_lahir"] ."</td>
                                                             <td>". $row["jenis_kelamin"] ."</td>
-                                                            <td>". $row["alamat"] ."</td>
+                                                            <td>". $row["alamat"] ."</td> -->
+
+                                                            <td><?php echo $index; ?></td>
+                                                            <td><?php echo $row["username"]; ?></td>
+                                                            <td><?php echo $row["password"]; ?></td>
+                                                            <td><?php echo $row["foto"]; ?></td>
+                                                            <td><?php echo $row["nip"]; ?></td>
+                                                            <td><?php echo $row["nama"]; ?></td>
+                                                            <td><?php echo $row["tempat_lahir"]; ?></td>
+                                                            <td><?php echo $row["tanggal_lahir"]; ?></td>
+                                                            <td><?php echo $row["jenis_kelamin"]; ?></td>
+                                                            <td><?php echo $row["alamat"]; ?></td>
+                                                                
 
                                                             <td>
                                                             <a href='' class='btn btn-primary btn-edit ml-2' data-toggle='modal' data-target='#editModal'>Edit</a>
                                                                                 
                                                             </td>
                                                             <td>
-                                                            <a href='' class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#hapus'>Hapus</a>
+                                                            <a id="<?php echo $row["id_user"]?>" class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#hapus'>Hapus</a>
                                                                 
                                                             </td>    
                                                         </tr>
-                                                        ";
+                                                        <?php $index++;
                                                     }
-                                                }
-                                            ?>
+                                                    ?>
+                                                <!-- } -->
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -340,20 +362,7 @@
                     </div>
                 </div>
             </div>
-            <!-- modal hapus -->
-            <div class="modal fade hapusKompen-modal" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle" aria-hidden="true" data-backdrop="false">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content konten-modal">
-                        <div class="modal-body ">
-                            <h5 class="isiHapusKompen text-center">Apakah Anda Yakin?</h5>
-                            <div class="tombolAksiHapusKompen text-center">
-                                <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                                <button type="button" name="delete" class="btn btn-iya">Ya</button>
-                            </div>
-                        </div>                 
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </main>
 
@@ -494,4 +503,21 @@
         </div>
     </div>
 </body>
+    <!-- modal hapus -->
+    <div class="modal fade hapusKompen-modal" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content konten-modal">
+            <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=hapus" method="post">
+                <div class="modal-body ">
+                <input type="hidden" name="id_delete" id="id_delete" value="<?php echo $id_delete ?>">
+                <input type="hidden" name="id_dosen" id="id_dosen" value="<?php echo $id ?>">
+                    <h5 class="isiHapusKompen text-center">Apakah Anda Yakin?</h5>
+                    <div class="tombolAksiHapusKompen text-center">
+                        <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
+                        <button type="submit" name="delete" class="btn btn-iya">Ya</button>
+                    </div>
+                </div>                 
+            </div>
+        </div>
+    </div>
 </html>

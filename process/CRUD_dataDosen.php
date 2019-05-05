@@ -8,66 +8,96 @@ include "../config/connection.php";
 //   return $resulttampilDosen;
 // }
 
-// function dataDosen($con)
-// {
-//     $query = "SELECT 
-                                                
-//         tabel_user.username, 
-//         tabel_user.password, 
-
-//         tabel_dosen.id_dosen,
-//         tabel_dosen.nip, 
-//         tabel_dosen.nama, 
-//         tabel_dosen.alamat, 
-//         tabel_dosen.jenis_kelamin, 
-//         tabel_dosen.tempat_lahir, 
-//         tabel_dosen.tanggal_lahir, 
-//         tabel_dosen.foto
-        
-//         FROM tabel_user INNER JOIN
-//         tabel_dosen ON 
-//         tabel_user.username = tabel_dosen.nip
-//         ";
-        
-//     $resultDataDosen = mysqli_query($con,$dataDosen);
-//     return $resultDataDosen;    
-// }
-
-// function dataDosen($con)
-// {
-//     $kompen = "select a.*, b.username, b.password as pass, c.* from tabel_user a, tabel_mahasiswa b, tabel_dosen c, tabel_prodi d where a.id_mahasiswa=b.id_mahasiswa and a.id_dosen=c.id_dosen and b.id_prodi=d.id_prodi";
-// }
-
-if (isset($_POST["insert"]) || isset($_POST["delete"]))
+if (isset($_POST["tambahDosen"]) || isset($_POST["delete"]))
 {
-    $id_ruang = $_POST['id_ruang'];
-    $id_kelas = $_POST['id_kelas'];
-    $id_dosen = $_POST['id_dosen'];
-    $id_matkul = $_POST['id_matkul'];
-    $id_semester = $_POST['id_semester'];
-    $hari = $_POST['hari'];
-    $jam_mulai = $_POST['jam_mulai'];
-    $jam_selesai = $_POST['jam_selesai'];
+    if($_GET["module"]=="dataDosen" && $_GET["act"]=="tambah"){
 
-    if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="tambah")
+     $queryUser = "INSERT INTO tabel_user (username, password, level) values (
+         '$_POST[usernameDosenAdmin]',
+         '$_POST[passwordDosenAdmin]',
+         'dosen'
+
+     ); ";
+
+    
+    // $code = $_FILES["filename"]["error"];
+    // // die();
+
+    // if ($code == 0) 
+    // {
+    //     $pesan = "";
+    //     $nama_folder="attachment/img";
+    //     $tmp = $_FILES["filename"]["tmp_name"];
+    //     $nama_file=$_FILES["filename"]["name"];
+    //     $path = "../$nama_folder/$nama_file";
+    //     $dbpath = "$nama_folder/$nama_file";
+
+    //     $tipe_file = array("image/jpeg", "image/gif", "image/png");
+    //     if (!in_array($_FILES["filename"]["type"], $tipe_file)) {
+    //         $error = urldecode("tipe file salah");
+    //         header("Location:../module/index.php?module=dataDosen");
+    //         die();
+    //     }
+
+    //     if (move_uploaded_file($tmp,$path)) {
+    //         $error = "Upload Sukses";
+    //     }
+
+    // } elseif ($code === 4) {
+    //     $error = urldecode("UPLOAD GAGAL!, TIDAK TERUPLOAD");
+    //     header("Location:../module/index.php?error=$error");
+    // } else {
+    //     $error = "Upload gagal";
+    //     header("Location:../module/index.php?error=$error");
+    // }
+
+     $queryDosen = "INSERT INTO tabel_dosen (
+     nip,
+     nama,
+     alamat,
+     jenis_kelamin,
+     tempat_lahir,
+     id_user
+     )
+
+     values
+     (
+        '$_POST[nimDosenAdmin]',
+        '$_POST[namaDosenAdmin]',    
+        '$_POST[alamatDosenAdmin]',
+        '$_POST[genderDosenAdmin]',
+        '$_POST[tempatlahirDosenAdmin]',
+
+     (select id_user from tabel_user where username='$_POST[nimDosenAdmin]')
+     );";
+
+        if(mysqli_query($con, $queryUser) && mysqli_query($con, $queryDosen)){
+            header('location:../module/index.php?module=' . $_GET["module"]);
+        }
+
+        else{            
+            echo("Error description: " . mysqli_error($con));
+        }
+    }  
+    
+    else if($_GET["module"]=="dataDosen" && $_GET["act"]=="hapus")
     {
+        $delete=$_POST['id_delete'];
+        // $idnya = $_POST['id_dosen'];
 
-        $queryInsert =   "INSERT INTO tabel_jadwal (id_ruang, id_kelas, id_semester, id_dosen, id_matkul, hari, jam_mulai, jam_selesai, waktu_edit)
+        $queryDeleteUser = "DELETE FROM tabel_dosen WHERE id_user='$delete';";
+        $queryDeleteDosen = "DELETE FROM tabel_user WHERE id_user='$delete';";
 
-        values ('$id_ruang','$id_kelas','$id_semester','$id_dosen','$id_matkul','$hari','$jam_mulai','$jam_selesai',now())";
+        if(mysqli_query($con,$queryDeleteUser) && mysqli_query($con,$queryDeleteDosen)){
 
-        mysqli_query($con, $queryInsert);
+            header('location:../module/index.php?module=' . $_GET["module"]);
+        }
 
-        header('location:../module/index.php?module=' . $_GET["module"]);
+        else{            
+            echo("Error description: " . mysqli_error($con));
+        }
+       
     }
-    else if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="hapus")
-    {
-        $queryDelete = "DELETE FROM tabel_jadwal WHERE id_kelas='$id_kelas' and id_semester='$id_semester'";
-
-        mysqli_query($con,$queryDelete);
-
-        header('location:../module/index.php?module=' . $_GET["module"]);
-    } 
 }
 
 ?>
