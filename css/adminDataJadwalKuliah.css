@@ -1,35 +1,45 @@
 .btn-tidak {
-    margin-right: 5em;
-    background-color: #CF212A;
-    color: white;
+  margin-right: 5em;
+  background-color: #cf212a;
+  color: white;
 
-    border-radius: 10px;
-    width: 7em;
-    height: 1.8em;
-    padding: 0;
+  border-radius: 10px;
+  width: 7em;
+  height: 1.8em;
+  padding: 0;
 }
 
 .btn-iya {
-    margin-left: 5em;
-    background-color: #3AAC5F;
-    color: white;
+  margin-left: 5em;
+  background-color: #3aac5f;
+  color: white;
 
-    border-radius: 10px;
-    width: 7em;
-    height: 1.8em;
-    padding: 0;
+  border-radius: 10px;
+  width: 7em;
+  height: 1.8em;
+  padding: 0;
 }
 
 #hapusJadwal {
-    background-color: rgba(32, 32, 32, 0.86);
-    padding-bottom: 5em;
+  background-color: rgba(32, 32, 32, 0.86);
+  padding-bottom: 5em;
 }
 
 .isiHapusJadwal {
-    padding-top: 3em;
-    padding-bottom: 2em;
+  padding-top: 3em;
+  padding-bottom: 2em;
 }
 
 .tombolAksiHapusJadwal {
-    padding-bottom: 2em;
+  padding-bottom: 2em;
+}
+
+#dataJadwalKuliah .table-striped > thead > tr > th {
+  padding: 0.4em;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
+}
+#dataJadwalKuliah .table-striped > tbody > tr > td {
+  font-size: 1em;
+  padding: 0.3em;
 }

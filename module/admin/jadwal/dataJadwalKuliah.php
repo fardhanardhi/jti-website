@@ -254,10 +254,10 @@
                             </div>
                             <br>
                             <div class="form-inline ml-4">
-                                <i class="fas fa-search mr-2"></i>
-                                <input type="search" class="form-control mr-sm-2" name="txtCariJadwalKuliah" id="txtCariJadwalKuliah"  placeholder="Pencarian">
+                                <i class="fas fa-search fa-lg mr-2"></i>
+                                <input type="search" class="form-control form-control-sm" name="txtCariJadwalKuliah" id="txtCariJadwalKuliah" placeholder="Pencarian">
                             </div>
-                            <div class="scrolltable scrollbar-x" id="dataJadwalKuliah">
+                            <div class="scrollbar scrollbar-x" id="dataJadwalKuliah" style="overflow:auto;">
                                 <?php
 
                                     $resultJadwalKuliah=jadwalKuliah($con);
@@ -290,11 +290,11 @@
                                             <td class="semester"><?php echo $row["semester"]; ?></td>
                                             <td class="jumlah_matkul"><?php echo $row["jumlah_matkul"]; ?></td>
                                             <td class="jumlah_sks"><?php echo $row["jumlah_sks"]; ?></td>
-                                            <td><button class="tmbl-table btn btn-primary"
+                                            <td><button class="btn btn-primary"
                                                     id="<?php echo $row["id_kelas"]; ?>" type="button"
                                                     class="pratinjau btn" data-toggle="modal"
                                                     data-target="#editModal">Edit</button></td>
-                                            <td><button class="tmbl-table btn btn-danger hapus-jadwal-kuliah"
+                                            <td><button class="btn btn-danger hapus-jadwal-kuliah"
                                                     id="<?php echo $row["id_kelas"]; ?>"
                                                     attrSemester="<?php echo $row["id_semester"]; ?>" type="button"
                                                     data-toggle="modal" data-target="#hapus">Hapus</button></td>
