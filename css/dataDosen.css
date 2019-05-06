@@ -1,21 +1,21 @@
-#dataDosen .breadcrumb a{
+#dataDosen .breadcrumb a {
   text-decoration: none;
   color: black;
 }
 
-#dataDosen .breadcrumb{
+#dataDosen .breadcrumb {
   background: white;
 }
 
-#dataDosen .title{
+#dataDosen .title {
   font-size: 1.09em;
 }
-#dataDosen .loadgambar{
+#dataDosen .loadgambar {
   margin-left: 17px;
   width: 22%;
   height: 28px;
   border-radius: 5px;
-  padding-top:1px;
+  padding-top: 1px;
 
   font-family: Lato;
   font-style: normal;
@@ -25,23 +25,14 @@
   text-align: center;
 }
 
-#dataDosen .breadcrumb a:hover{
+#dataDosen .breadcrumb a:hover {
   color: #000000a9;
 }
-#dataDosen #icon-search{
+#dataDosen #icon-search {
   width: 1.5em;
   color: gray;
   margin-right: 1em;
 }
-
-#dataDosen .table {
-  margin-top: 2em;
-  width: 130%;
-}
-/* #dataDosen .judul-card {
-  margin-top: 2em;
-  width: 130%;
-} */
 
 #dataDosen .table-striped > thead > tr > th {
   background-color: #40407a;
@@ -55,28 +46,15 @@
 #dataDosen .table-striped > tbody > tr:nth-child(even) > td {
   background-color: #ececff;
 }
-#dataDosen .table-striped > tbody > tr > td {
+#tabelDosen .table-striped > tbody > tr > td {
   font-size: 1em;
-  padding-bottom: 1.1em;
-  padding-top: 1.1em;
+  padding-bottom: 0.6em;
+  padding-top: 0.6em;
 }
-#dataDosen .tmbl-table{
-  width: 130px;
-  font-family: Lato;
-  font-size: 12px;
-}
-
-#dataDosen .scrolltable{
-  overflow-x: auto;
-  width: 100%;
-  /* margin: 10px,10px,10px,10px; */
-  /* padding: 20px,20px,20px,20px; */
-}
-
 
 /* modal */
 #hapus {
-  background-color: rgba(0, 0, 0, 0.5)
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .close {
@@ -96,31 +74,29 @@
 .btn-tidak {
   padding: 0em 1.5em 0em 1.5em;
   margin-right: 5em;
-  background-color: #CF212A;
+  background-color: #cf212a;
   color: white;
 }
 
 .btn-iya {
   padding: 0em 1.5em 0em 1.5em;
   margin-left: 5em;
-  background-color: #3AAC5F;
+  background-color: #3aac5f;
   color: white;
 }
-.tombolAksiHapusKompen{
+.tombolAksiHapusKompen {
   padding-bottom: 2em;
 }
 
-
-
-#editModal #edit{
-  background-color: rgba(0, 0, 0, 0.5)
+#editModal #edit {
+  background-color: rgba(0, 0, 0, 0.5);
 }
-#editModal .loadgambar{
+#editModal .loadgambar {
   margin-left: 17px;
   width: 36%;
   height: 28px;
   border-radius: 5px;
-  padding-top:1px;
+  padding-top: 1px;
 
   font-family: Lato;
   font-style: normal;

@@ -23,251 +23,254 @@
                     </nav>
                 </div>
             </div>
+            
             <div class="col-md-12 p-0">
                 <div class="m-2 p-3 bg-white rounded shadow-sm">
-                    <div class="media text-muted">
-                        <div class="media-body pb-3 mb-0 small lh-125">
-                            <div class="isi">
-                                <div class="card border border-secondary">
-                                    <div class="judul-card card-header">
-                                        <h6>Tambah Data Dosen</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="col-md-12 p-0">
-                                            <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=tambah" id="formAdminDosen" method="POST">
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">Username</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Username" id="usernameDosenAdmin"
-                                                                        name="usernameDosenAdmin" required />
-                                                                </div>
-                                                                <div class="col-sm-3"></div>
-                                                                <div class="col-sm-9">
-                                                                    <div id="usernameDosenAdminBlank"
-                                                                        class="text-danger"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">Password</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="password" class="form-control"
-                                                                        placeholder="**********" id="passwordDosenAdmin"
-                                                                        name="passwordDosenAdmin" required />
-                                                                </div>
-                                                                <div class="col-sm-3"></div>
-                                                                <div class="col-sm-9">
-                                                                    <div id="passwordDosenAdminBlank"
-                                                                        class="text-danger"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-md-2 col-form-label">Gambar</label>
-                                                                <div class="input-group col-md-10">
-                                                                    <img src="../attachment/img/avatar.jpeg"
-                                                                        id="fotoPrevDosenAdmin" height="150px"
-                                                                        width="150px">
-                                                                </div>
-                                                                <div class="col-md-2"></div>
-                                                                <div class="col-md-10">
-                                                                    <br>
-                                                                    <input id='file' type='file' name='filename'
-                                                                        onchange="preview_images(event);" hidden required />
-                                                                    <input id='tombolid' type='button' value='Load Gambar'
-                                                                        class="loadgambar btn btn-primary"/>
-                                                                </div>
-                                                                <div class="col-sm-3"></div>
-                                                                <div class="col-sm-9">
-                                                                    <div id="fileidDosenAdminBlank" class="text-danger">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="media text-muted">
+                                    <div class="media-body pb-3 mb-0 small lh-125">
+                                        <div class="isi">
+                                            <div class="card border border-secondary">
+                                                <div class="judul-card card-header">
+                                                    <h6>Tambah Data Dosen</h6>
+                                                </div>
+                                                <div class="card-body row">
+                                                    <div class="col-md-12">
+                                                        <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=tambah" id="formAdminDosen" method="POST">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-2 col-form-label">Username</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    placeholder="Username" id="usernameDosenAdmin"
+                                                                                    name="usernameDosenAdmin" required />
+                                                                            </div>
+                                                                            <div class="col-sm-3"></div>
+                                                                            <div class="col-sm-9">
+                                                                                <div id="usernameDosenAdminBlank"
+                                                                                    class="text-danger"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-2 col-form-label">Password</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="password" class="form-control"
+                                                                                    placeholder="**********" id="passwordDosenAdmin"
+                                                                                    name="passwordDosenAdmin" required />
+                                                                            </div>
+                                                                            <div class="col-sm-3"></div>
+                                                                            <div class="col-sm-9">
+                                                                                <div id="passwordDosenAdminBlank"
+                                                                                    class="text-danger"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-md-2 col-form-label">Gambar</label>
+                                                                            <div class="input-group col-md-10">
+                                                                                <img src="../attachment/img/avatar.jpeg"
+                                                                                    id="fotoPrevDosenAdmin" height="150px"
+                                                                                    width="150px">
+                                                                            </div>
+                                                                            <div class="col-md-2"></div>
+                                                                            <div class="col-md-10">
+                                                                                <br>
+                                                                                <input id='file' type='file' name='filename'
+                                                                                    onchange="preview_images(event);" hidden required />
+                                                                                <input id='tombolid' type='button' value='Load Gambar'
+                                                                                    class="loadgambar btn btn-primary"/>
+                                                                            </div>
+                                                                            <div class="col-sm-3"></div>
+                                                                            <div class="col-sm-9">
+                                                                                <div id="fileidDosenAdminBlank" class="text-danger">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-2 col-form-label">NIP</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    placeholder="NIP Dosen" id="nimDosenAdmin"
+                                                                                    name="nimDosenAdmin" required />
+                                                                            </div>
+                                                                            <div class="col-sm-3"></div>
+                                                                            <div class="col-sm-9">
+                                                                                <div id="nimDosenAdminBlank" class="text-danger">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-2 col-form-label">Nama Lengkap</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    placeholder="Nama Dosen" id="namaDosenAdmin"
+                                                                                    name="namaDosenAdmin" required />
+                                                                            </div>
+                                                                            <div class="col-sm-3"></div>
+                                                                            <div class="col-sm-9">
+                                                                                <div id="namaDosenAdminBlank" class="text-danger">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-2 col-form-label">Tempat Lahir</label>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control"
+                                                                                    placeholder="Tempat Lahir Dosen"
+                                                                                    id="tempatlahirDosenAdmin"
+                                                                                    name="tempatlahirDosenAdmin" required />
+                                                                            </div>
+                                                                            <div class="col-sm-3"></div>
+                                                                            <div class="col-sm-9">
+                                                                                <div id="tempatlahirDosenAdminBlank"
+                                                                                    class="text-danger"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                                                                            <br>
+                                                                            <div class="col-sm-2">
+                                                                                <select class="custom-select" name="tgl" style="width:110px;">
+                                                                                    <option value="" disabled selected>Tanggal</option>
+                                                                                    <option value="1">1</option>
+                                                                                    <option value="2">2</option>
+                                                                                    <option value="3">3</option>
+                                                                                    <option value="4">4</option>
+                                                                                    <option value="5">5</option>
+                                                                                    <option value="6">6</option>
+                                                                                    <option value="7">7</option>
+                                                                                    <option value="8">8</option>
+                                                                                    <option value="9">9</option>
+                                                                                    <option value="10">10</option>
+                                                                                    <!-- <option value="">11</option>
+                                                                                    <option value="">12</option>
+                                                                                    <option value="">13</option>
+                                                                                    <option value="">14</option>
+                                                                                    <option value="">15</option>
+                                                                                    <option value="">16</option>
+                                                                                    <option value="">17</option>
+                                                                                    <option value="">18</option>
+                                                                                    <option value="">19</option>
+                                                                                    <option value="">20</option>
+                                                                                    <option value="">21</option>
+                                                                                    <option value="">22</option>
+                                                                                    <option value="">23</option>
+                                                                                    <option value="">24</option>
+                                                                                    <option value="">25</option>
+                                                                                    <option value="">26</option>
+                                                                                    <option value="">27</option>
+                                                                                    <option value="">28</option>
+                                                                                    <option value="">29</option>
+                                                                                    <option value="">30</option>
+                                                                                    <option value="">31</option> -->
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <select class="custom-select" name="bulan" style="width:110px;">
+                                                                                    <option value="" disabled selected>Bulan</option>
+                                                                                    <option value="Januari">Januari</option>
+                                                                                    <option value="Februari">Februari</option>
+                                                                                    <option value="Maret">Maret</option>
+                                                                                    <option value="April">April</option>
+                                                                                    <option value="Mei">Mei</option>
+                                                                                    <option value="Juni">Juni</option>
+                                                                                    <option value="Juli">Juli</option>
+                                                                                    <option value="Agustus">Agustus</option>
+                                                                                    <option value="September">September</option>
+                                                                                    <option value="Oktober">Oktober</option>
+                                                                                    <option value="November">November</option>
+                                                                                    <option value="Desember">Desember</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <select class="custom-select" name="tahun" style="width:110px;">
+                                                                                    <option value="" disabled selected>Tahun</option>
+                                                                                    <option value="1980">1980</option>
+                                                                                    <option value="1981">1981</option>
+                                                                                    <option value="1982">1982</option>
+                                                                                    <option value="1983">1983</option>
+                                                                                    <option value="1984">1984</option>
+                                                                                    <option value="1985">1985</option>
+                                                                                    <option value="1986">1986</option>
+                                                                                    <option value="1987">1987</option>
+                                                                                    <option value="1988">1988</option>
+                                                                                    <option value="1989">1989</option>
+                                                                                    <option value="1990">1990</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                                                                            <br>
+                                                                            <div class="col-sm-10">
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <label class="form-check-label"
+                                                                                        for="genderDosenAdmin1">
+                                                                                        <input class="mt-2" type="radio"
+                                                                                            name="genderDosenAdmin"
+                                                                                            id="genderDosenAdmin1" value="Laki-laki"
+                                                                                            checked>
+                                                                                        Laki-laki
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <label class="form-check-label"
+                                                                                        for="genderDosenAdmin2">
+                                                                                        <input class="mt-2" type="radio"
+                                                                                            name="genderDosenAdmin"
+                                                                                            id="genderDosenAdmin2"
+                                                                                            value="Perempuan">
+                                                                                        Perempuan
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <label class="col-sm-2 col-form-label">Alamat</label>
+                                                                            <div class="col-sm-10">
+                                                                                <textarea class="form-control" id="alamatDosenAdmin"
+                                                                                    name="alamatDosenAdmin" rows="3"
+                                                                                    placeholder="Alamat Dosen" required></textarea>
+                                                                            </div>
+                                                                            <div class="col-sm-3"></div>
+                                                                            <div class="col-sm-9">
+                                                                                <div id="alamatDosenAdminBlank" class="text-danger">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-9"></div>
+                                                                            <div class="col-sm-3">
+                                                                                <button type="submit" name="tambahDosen" class="btn btn-success" name="insert"
+                                                                                    onclick="eror();  showFilesSizes();">Tambahkan</button>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">NIP</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="NIP Dosen" id="nimDosenAdmin"
-                                                                        name="nimDosenAdmin" required />
-                                                                </div>
-                                                                <div class="col-sm-3"></div>
-                                                                <div class="col-sm-9">
-                                                                    <div id="nimDosenAdminBlank" class="text-danger">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">Nama Lengkap</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Nama Dosen" id="namaDosenAdmin"
-                                                                        name="namaDosenAdmin" required />
-                                                                </div>
-                                                                <div class="col-sm-3"></div>
-                                                                <div class="col-sm-9">
-                                                                    <div id="namaDosenAdminBlank" class="text-danger">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">Tempat Lahir</label>
-                                                                <div class="col-sm-10">
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Tempat Lahir Dosen"
-                                                                        id="tempatlahirDosenAdmin"
-                                                                        name="tempatlahirDosenAdmin" required />
-                                                                </div>
-                                                                <div class="col-sm-3"></div>
-                                                                <div class="col-sm-9">
-                                                                    <div id="tempatlahirDosenAdminBlank"
-                                                                        class="text-danger"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                                                                <br>
-                                                                <div class="col-sm-2">
-                                                                    <select class="custom-select" name="tgl" style="width:110px;">
-                                                                        <option value="" disabled selected>Tanggal</option>
-                                                                        <option value="1">1</option>
-                                                                        <option value="2">2</option>
-                                                                        <option value="3">3</option>
-                                                                        <option value="4">4</option>
-                                                                        <option value="5">5</option>
-                                                                        <option value="6">6</option>
-                                                                        <option value="7">7</option>
-                                                                        <option value="8">8</option>
-                                                                        <option value="9">9</option>
-                                                                        <option value="10">10</option>
-                                                                        <!-- <option value="">11</option>
-                                                                        <option value="">12</option>
-                                                                        <option value="">13</option>
-                                                                        <option value="">14</option>
-                                                                        <option value="">15</option>
-                                                                        <option value="">16</option>
-                                                                        <option value="">17</option>
-                                                                        <option value="">18</option>
-                                                                        <option value="">19</option>
-                                                                        <option value="">20</option>
-                                                                        <option value="">21</option>
-                                                                        <option value="">22</option>
-                                                                        <option value="">23</option>
-                                                                        <option value="">24</option>
-                                                                        <option value="">25</option>
-                                                                        <option value="">26</option>
-                                                                        <option value="">27</option>
-                                                                        <option value="">28</option>
-                                                                        <option value="">29</option>
-                                                                        <option value="">30</option>
-                                                                        <option value="">31</option> -->
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <select class="custom-select" name="bulan" style="width:110px;">
-                                                                        <option value="" disabled selected>Bulan</option>
-                                                                        <option value="Januari">Januari</option>
-                                                                        <option value="Februari">Februari</option>
-                                                                        <option value="Maret">Maret</option>
-                                                                        <option value="April">April</option>
-                                                                        <option value="Mei">Mei</option>
-                                                                        <option value="Juni">Juni</option>
-                                                                        <option value="Juli">Juli</option>
-                                                                        <option value="Agustus">Agustus</option>
-                                                                        <option value="September">September</option>
-                                                                        <option value="Oktober">Oktober</option>
-                                                                        <option value="November">November</option>
-                                                                        <option value="Desember">Desember</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-2">
-                                                                    <select class="custom-select" name="tahun" style="width:110px;">
-                                                                        <option value="" disabled selected>Tahun</option>
-                                                                        <option value="1980">1980</option>
-                                                                        <option value="1981">1981</option>
-                                                                        <option value="1982">1982</option>
-                                                                        <option value="1983">1983</option>
-                                                                        <option value="1984">1984</option>
-                                                                        <option value="1985">1985</option>
-                                                                        <option value="1986">1986</option>
-                                                                        <option value="1987">1987</option>
-                                                                        <option value="1988">1988</option>
-                                                                        <option value="1989">1989</option>
-                                                                        <option value="1990">1990</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
-                                                                <br>
-                                                                <div class="col-sm-10">
-                                                                    <div class="form-check form-check-inline">
-                                                                        <label class="form-check-label"
-                                                                            for="genderDosenAdmin1">
-                                                                            <input class="mt-2" type="radio"
-                                                                                name="genderDosenAdmin"
-                                                                                id="genderDosenAdmin1" value="Laki-laki"
-                                                                                checked>
-                                                                            Laki-laki
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-check form-check-inline">
-                                                                        <label class="form-check-label"
-                                                                            for="genderDosenAdmin2">
-                                                                            <input class="mt-2" type="radio"
-                                                                                name="genderDosenAdmin"
-                                                                                id="genderDosenAdmin2"
-                                                                                value="Perempuan">
-                                                                            Perempuan
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-2 col-form-label">Alamat</label>
-                                                                <div class="col-sm-10">
-                                                                    <textarea class="form-control" id="alamatDosenAdmin"
-                                                                        name="alamatDosenAdmin" rows="3"
-                                                                        placeholder="Alamat Dosen" required></textarea>
-                                                                </div>
-                                                                <div class="col-sm-3"></div>
-                                                                <div class="col-sm-9">
-                                                                    <div id="alamatDosenAdminBlank" class="text-danger">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-sm-9"></div>
-                                                                <div class="col-sm-3">
-                                                                    <button type="submit" name="tambahDosen" class="btn btn-success" name="insert"
-                                                                        onclick="eror();  showFilesSizes();">Tambahkan</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        </form>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
-                                <br>
-                                <!-- <form class="form-inline ml-4">
-                                    <img src="../img/search.svg" alt="" id="icon-search">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-                                    <button class="btn btn-success" type="submit">Cari</button>
-                                </form> -->
-
+                        <div class="row">
+                            <div class="col-md-12">
                                 <div class="form-inline ml-4">
                                     <img src="../img/search.svg" alt="" id="icon-search">
                                     <input type="search" class="form-control mr-sm-2" name="txtCariDataDosen" id="txtCariDataDosen"  placeholder="Pencarian">
-                                    <button class="btn btn-success" type="submit">Cari</button>
                                 </div>
 
-                                <div class="scrolltable scrollbar-x">
+                                <div class="scrollbar scrollbar-x mt-3" style="overflow:auto; max-height:78vh;">
                                     <table class="table table-striped table-bordered text-center">
                                         <thead>
                                             <tr>
@@ -276,10 +279,10 @@
                                                 <th>Password</th>
                                                 <th>Gambar</th>
                                                 <th>NIP</th>
-                                                <th>Nama Lengkap</th>
-                                                <th>Tempat Lahir</th>
-                                                <th>Tanggal Lahir</th>
-                                                <th>Jenis Kelamin</th>
+                                                <th class="text-nowrap">Nama Lengkap</th>
+                                                <th class="text-nowrap">Tempat Lahir</th>
+                                                <th class="text-nowrap">Tanggal Lahir</th>
+                                                <th class="text-nowrap">Jenis Kelamin</th>
                                                 <th>Alamat</th>
                                                 <th colspan="2">Proses</th>
                                             </tr>
@@ -317,16 +320,16 @@
                                                     ?>
                                                     <tr>
                                                         <td><?php echo $index; ?></td>
-                                                        <td><?php echo $row["username"]; ?></td>
-                                                        <td><?php echo $row["password"]; ?></td>
-                                                        <td><?php echo $row["foto"]; ?></td>
-                                                        <td><?php echo $row["nip"]; ?></td>
-                                                        <td><?php echo $row["nama"]; ?></td>
-                                                        <td><?php echo $row["tempat_lahir"]; ?></td>
-                                                        <td><?php echo $row["tanggal_lahir"]; ?></td>
-                                                        <td><?php echo $row["jenis_kelamin"]; ?></td>
-                                                        <td><?php echo $row["alamat"]; ?></td>
-                                                        <td><button type="button" id="<?php echo $rowKompen["id_kompen"];?>" class="btn btn-primary edit-kompen ml-4 mr-4" data-toggle="modal" data-target="#editModal">Edit</button></td>
+                                                        <td class="text-nowrap"><?php echo $row["username"]; ?></td>
+                                                        <td class="text-nowrap"><?php echo $row["password"]; ?></td>
+                                                        <td class="text-nowrap"><?php echo $row["foto"]; ?></td>
+                                                        <td class="text-nowrap"><?php echo $row["nip"]; ?></td>
+                                                        <td class="text-nowrap"><?php echo $row["nama"]; ?></td>
+                                                        <td class="text-nowrap"><?php echo $row["tempat_lahir"]; ?></td>
+                                                        <td class="text-nowrap"><?php echo $row["tanggal_lahir"]; ?></td>
+                                                        <td class="text-nowrap"><?php echo $row["jenis_kelamin"]; ?></td>
+                                                        <td class="text-nowrap"><?php echo $row["alamat"]; ?></td>
+                                                        <td class="text-nowrap"><button type="button" id="<?php echo $rowKompen["id_kompen"];?>" class="btn btn-primary edit-kompen ml-4 mr-4" data-toggle="modal" data-target="#editModal">Edit</button></td>
                                                         <td><button type="button" id="<?php echo $row["id_user"]?>"  class="btn btn-danger hapus-kompen mr-4 ml-4" data-toggle="modal" data-target="#hapus">Hapus</button></td>    
                                                     </tr>
                                                     <?php $index++;
@@ -337,6 +340,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
