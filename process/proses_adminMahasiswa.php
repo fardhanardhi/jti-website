@@ -29,15 +29,13 @@ function tampilKelas($con, $id_kelas){
 
 if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["editMahasiswa"])){
 
-    echo "nanana";
-
     if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="tambah"){
 
         // echo($_POST["semesterMahasiswa"]); 
 
-        $nama_folder = "img";
-        $tmp = $_FILES["fileid"]["tmp_name"];
-        $nama_file = $_FILES["fileid"]["name"];
+        $nama_folder = "attachment/img";
+        $tmp = $_FILES["filename2"]["tmp_name"];
+        $nama_file = $_FILES["filename2"]["name"];
         move_uploaded_file($tmp, "../$nama_folder/$nama_file");
    
 
@@ -57,7 +55,8 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
      jenis_kelamin,
      tempat_lahir,
      foto,
-     id_user
+     id_user,
+     waktu_edit
      )
 
      values
@@ -70,8 +69,8 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
      '$_POST[genderMahasiswaAdmin]',
      '$_POST[tempatlahirMahasiswaAdmin]',
      '$nama_file',
-    (select id_user from tabel_user where username='$_POST[nimMahasiswaAdmin]')
-     );";
+     (select id_user from tabel_user where username='$_POST[nimMahasiswaAdmin]'),
+     curdate());";
 
      $query3 = "INSERT INTO tabel_absensi (id_mahasiswa, sakit, ijin, alpa, jumlah, id_status_mahasiswa, id_semester)
 
@@ -86,7 +85,6 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
      );
      ";
 
-     
         if(mysqli_query($con, $query1) AND mysqli_query($con, $query2) AND mysqli_query($con, $query3)){
             header('location:../module/index.php?module=' . $_GET["module"]);
         }
@@ -122,6 +120,13 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
 
         $update = $_POST["id_userUpdate"];
 
+         // echo($_POST["semesterMahasiswa"]); 
+
+         $nama_folder = "attachment/img";
+         $tmp = $_FILES["filename"]["tmp_name"];
+         $namanya_file = $_FILES["filename"]["name"];
+         move_uploaded_file($tmp, "../$nama_folder/$namanya_file");
+
         $query9 = "UPDATE tabel_user 
         set username='$_POST[userMahasiswaAdmin2]',
         password='$_POST[passwordMahasiswaAdmin2]'
@@ -135,7 +140,8 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
         alamat = '$_POST[alamatMahasiswaAdmin2]',
         jenis_kelamin = '$_POST[genderMahasiswaAdmin3]',
         tempat_lahir = '$_POST[tempatlahirMahasiswaAdmin2]',
-        foto = '$_POST[fileid3]'
+        foto = '$namanya_file',
+        waktu_edit = curdate()
         where id_user='$update';";
 
         if(mysqli_query($con,$query9) && mysqli_query($con,$query10)){

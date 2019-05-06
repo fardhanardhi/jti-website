@@ -336,9 +336,8 @@
                                             tabel_mahasiswa.id_prodi = tabel_prodi.id_prodi
 
                                             INNER JOIN tabel_kelas ON
-                                            tabel_mahasiswa.id_kelas = tabel_kelas.id_kelas
-
-
+                                            tabel_mahasiswa.id_kelas = tabel_kelas.id_kelas;
+                                            
                                             ";
                                             $result = mysqli_query($con, $query);
 
