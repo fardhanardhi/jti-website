@@ -27,7 +27,7 @@ function tampilKelas($con, $id_kelas){
     return $hasil;
 }
 
-if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
+if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["editMahasiswa"])){
 
     echo "nanana";
 
@@ -98,15 +98,16 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
 
     else if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="hapus")
     {
-        $delete=$_POST['id_delete'];
+        $delete=$_POST['id_user'];
         $idnya = $_POST['id_mahasiswa'];
 
-        $queryDelete = "DELETE FROM tabel_mahasiswa WHERE id_user='$delete';";
-        $queryDelete2 = "DELETE FROM tabel_user WHERE id_user='$delete';";
+        $queryDelete5 = "DELETE FROM tabel_krs WHERE id_mahasiswa='$idnya';";
         $queryDelete3 = "DELETE FROM tabel_absensi WHERE id_mahasiswa='$idnya';";
+        $queryDelete = "DELETE FROM tabel_mahasiswa WHERE id_user='$idnya';";
+        $queryDelete2 = "DELETE FROM tabel_user WHERE id_user='$delete';";
 
 
-        if(mysqli_query($con,$queryDelete) && mysqli_query($con,$queryDelete2) && mysqli_query($con,$queryDelete3)){
+        if(mysqli_query($con,$queryDelete5) && mysqli_query($con,$queryDelete3) && mysqli_query($con,$queryDelete) && mysqli_query($con,$queryDelete2)){
 
             header('location:../module/index.php?module=' . $_GET["module"]);
         }
@@ -116,6 +117,36 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"])){
         }
        
     } 
+
+    else if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="edit"){
+
+        $update = $_POST["id_userUpdate"];
+
+        $query9 = "UPDATE tabel_user 
+        set username='$_POST[userMahasiswaAdmin2]',
+        password='$_POST[passwordMahasiswaAdmin2]'
+        where id_user= '$update';";
+
+        $query10="UPDATE tabel_mahasiswa 
+        set id_prodi = '$_POST[prodiMahasiswa2]',
+        id_semester = '$_POST[semesterMahasiswa2]',
+        nim = '$_POST[semesterMahasiswa2]',
+        nama = '$_POST[namaMahasiswaAdmin2]',
+        alamat = '$_POST[alamatMahasiswaAdmin2]',
+        jenis_kelamin = '$_POST[genderMahasiswaAdmin3]',
+        tempat_lahir = '$_POST[tempatlahirMahasiswaAdmin2]',
+        foto = '$_POST[fileid3]'
+        where id_user='$update';";
+
+        if(mysqli_query($con,$query9) && mysqli_query($con,$query10)){
+
+            header('location:../module/index.php?module=' . $_GET["module"]);
+        }
+
+        else{            
+            echo("Error description: " . mysqli_error($con));
+        }
+    }
 
 }
 
