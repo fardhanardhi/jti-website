@@ -42,13 +42,13 @@ include "../process/proses_absenKompen.php";
                   ?>
                 </select>
 
-                <input type="submit" name="cariAbsen" class="btn btn-success absenCari" value="Cari">
+                <input type="submit" name="cariAbsen" class="btn btn-success absenCari ml-4" value="Cari">
               </div>
             </form>
             
             <div class="container-fluid p-0">
             <div class="row scrollbar scrollbar-x m-0" id="absen">
-              <div class="col-md-12 d-flex justify-content-center">
+              <div class="col-md-12 p-0 d-flex justify-content-center">
                 <?php
                 if(isset($_POST["cariAbsen"])){
                   $resultAbsensi=absensi($con, $_POST["kelas"]);
@@ -117,7 +117,7 @@ include "../process/proses_absenKompen.php";
 
         <div class="container-fluid">
           <form class="row mb-3 mt-3" action="?module=absenKompen" method="post">
-            <div class="col-md-8 pr-3 p-0">
+            <div class="col-md-8 p-0">
               <select class="absenKelas" name="kelas">
                 <?php
                 $resultKelas=kelas($con);
@@ -136,7 +136,7 @@ include "../process/proses_absenKompen.php";
               </select>
             </div>
 
-            <div class="col-md-4 pl-3 p-0">
+            <div class="col-md-4 text-right">
               <input type="submit" name="cariTotal" class="btn btn-success absenCari" value="Cari">
             </div>
           </form>
@@ -172,10 +172,10 @@ include "../process/proses_absenKompen.php";
                         <small>A: <?php echo $rowTotal["alpa"];?></small>
                       </div>
                       <div class="col-sm-4">
-                        <small>A: <?php echo $rowTotal["ijin"];?></small>
+                        <small>I: <?php echo $rowTotal["ijin"];?></small>
                       </div>
                       <div class="col-sm-4">
-                        <small>A: <?php echo $rowTotal["sakit"];?></small>
+                        <small>S: <?php echo $rowTotal["sakit"];?></small>
                       </div>
                     </div>
                   </div>
@@ -265,16 +265,14 @@ include "../process/proses_absenKompen.php";
                 </tbody>
               </table>
               <?php
-              }else{
-                ?>
-                <div class="text-center">
-                  <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                  <p class="text-muted">Data Tidak Ditemukan</p>
-                </div>
-                <?php
               }
               ?>
+              </div>
             </div>
+
+          <div class="text-center" id="kompenTidakDitemukan" style="display:none">
+            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+            <p class="text-muted">Data Tidak Ditemukan</p>
           </div>
         </div>
       </div>
@@ -386,17 +384,16 @@ include "../process/proses_absenKompen.php";
                 </tbody>
               </table>
               <?php
-              }else{
-                ?>
-                <div class="text-center">
-                  <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                  <p class="text-muted">Pekerjaan Tidak Ditemukan</p>
-                </div>
-                <?php
               }
               ?>
             </div>
           </div>
+
+          <div class="text-center" id="pekerjaanTidakDitemukan" style="display:none">
+            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+            <p class="text-muted">Pekerjaan Tidak Ditemukan</p>
+          </div>
+
         </div>
       </div>
     </div>
@@ -452,17 +449,16 @@ include "../process/proses_absenKompen.php";
                 </tbody>
               </table>
               <?php
-              }else{
-                ?>
-                <div class="text-center">
-                  <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                  <p class="text-muted">Data Tidak Ditemukan</p>
-                </div>
-                <?php
               }
               ?>
             </div>
           </div>
+
+          <div class="text-center" id="rekapTidakDitemukan" style="display:none">
+            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+            <p class="text-muted">Data Tidak Ditemukan</p>
+          </div>
+
         </div>
       </div>
     </div>
