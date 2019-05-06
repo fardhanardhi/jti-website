@@ -253,12 +253,11 @@
                                 </div>
                             </div>
                             <br>
-                            <form class="form-inline ml-4">
+                            <div class="form-inline ml-4">
                                 <i class="fas fa-search mr-2"></i>
-                                <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
-                                <button class="btn btn-success btn-mencari" type="submit">Cari</button>
-                            </form>
-                            <div class="scrolltable scrollbar-x">
+                                <input type="search" class="form-control mr-sm-2" name="txtCariJadwalKuliah" id="txtCariJadwalKuliah"  placeholder="Pencarian">
+                            </div>
+                            <div class="scrolltable scrollbar-x" id="dataJadwalKuliah">
                                 <?php
 
                                     $resultJadwalKuliah=jadwalKuliah($con);
@@ -283,14 +282,14 @@
                                         $no=1;
                                         while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
                                         ?>
-                                        <tr>
+                                        <tr class="itemJadwalKuliah">
                                             <td><?php echo $no;?></td>
-                                            <td><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?>
+                                            <td class="kelas"><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?>
                                             </td>
-                                            <td><?php echo $row["nama"]; ?></td>
-                                            <td><?php echo $row["semester"]; ?></td>
-                                            <td><?php echo $row["jumlah_matkul"]; ?></td>
-                                            <td><?php echo $row["jumlah_sks"]; ?></td>
+                                            <td class="nama"><?php echo $row["nama"]; ?></td>
+                                            <td class="semester"><?php echo $row["semester"]; ?></td>
+                                            <td class="jumlah_matkul"><?php echo $row["jumlah_matkul"]; ?></td>
+                                            <td class="jumlah_sks"><?php echo $row["jumlah_sks"]; ?></td>
                                             <td><button class="tmbl-table btn btn-primary"
                                                     id="<?php echo $row["id_kelas"]; ?>" type="button"
                                                     class="pratinjau btn" data-toggle="modal"
@@ -303,16 +302,15 @@
                                         <?php
                                         $no++;
                                         }
+                                    }
                                         ?>
                                     </tbody>
                                 </table>
                             </div>
-                            <?php } else { ?>
-                            <div class="col-12 mt-5 text-center">
+                            <div id="tidakDitemukan" style="display:none" class="col-12 mt-5 text-center">
                                 <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
                                 <p>Nama, kelas atau prodi tidak dapat ditemukan</h>
                             </div>
-                            <?php } ?>
                         </div>
                     </div>
                 </div>
