@@ -253,15 +253,21 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <br>
-                                <form class="form-inline ml-4">
+                                <!-- <form class="form-inline ml-4">
                                     <img src="../img/search.svg" alt="" id="icon-search">
                                     <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
                                     <button class="btn btn-success" type="submit">Cari</button>
-                                </form>
+                                </form> -->
+
+                                <div class="form-inline ml-4">
+                                    <img src="../img/search.svg" alt="" id="icon-search">
+                                    <input type="search" class="form-control mr-sm-2" name="txtCariDataDosen" id="txtCariDataDosen"  placeholder="Pencarian">
+                                    <button class="btn btn-success" type="submit">Cari</button>
+                                </div>
+
                                 <div class="scrolltable scrollbar-x">
-                                <!-- <div class="scrolltable"> -->
-                                    
                                     <table class="table table-striped table-bordered text-center">
                                         <thead>
                                             <tr>
@@ -301,59 +307,31 @@
 
                                                 ";
                                                 $result = mysqli_query($con, $query);
-
-                                                // if(mysqli_num_rows($result) > 0){
-                                                    // $id_delete = $row["id_user"];
-                                                    // $id = $row["id_dosen"];
-
-                                                    $index = 1;
-                                                    
-                                                    while($row = mysqli_fetch_assoc($result)){
-                                                        // $id_dosen = $row["id_dosen"];
-                                                        // echo"
-                                                        $id_delete = $row["id_user"];
-                                                        $id = $row["id_dosen"];
-                                                        
-                                                        ?>
-
-                                                        <tr>
-                                                            <!-- <td>". $index++ ."</td>
-                                                            <td>". $row["username"] ."</td>
-                                                            <td>". $row["password"] ."</td>
-                                                            <td>". $row["foto"] ."</td>
-                                                            <td>". $row["nip"] ."</td>
-                                                            <td>". $row["nama"] ."</td>
-                                                            <td>". $row["tempat_lahir"] ."</td>
-                                                            <td>". $row["tanggal_lahir"] ."</td>
-                                                            <td>". $row["jenis_kelamin"] ."</td>
-                                                            <td>". $row["alamat"] ."</td> -->
-
-                                                            <td><?php echo $index; ?></td>
-                                                            <td><?php echo $row["username"]; ?></td>
-                                                            <td><?php echo $row["password"]; ?></td>
-                                                            <td><?php echo $row["foto"]; ?></td>
-                                                            <td><?php echo $row["nip"]; ?></td>
-                                                            <td><?php echo $row["nama"]; ?></td>
-                                                            <td><?php echo $row["tempat_lahir"]; ?></td>
-                                                            <td><?php echo $row["tanggal_lahir"]; ?></td>
-                                                            <td><?php echo $row["jenis_kelamin"]; ?></td>
-                                                            <td><?php echo $row["alamat"]; ?></td>
-                                                                
-
-                                                            <td>
-                                                            <a href='' class='btn btn-primary btn-edit ml-2' data-toggle='modal' data-target='#editModal'>Edit</a>
-                                                                                
-                                                            </td>
-                                                            <td>
-                                                            <a id="<?php echo $row["id_user"]?>" class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#hapus'>Hapus</a>
-                                                                
-                                                            </td>    
-                                                        </tr>
-                                                        <?php $index++;
-                                                    }
-                                                    ?>
-                                                <!-- } -->
                                             
+                                                $index = 1;
+                                                
+                                                while($row = mysqli_fetch_assoc($result)){
+                                                    $id_delete = $row["id_user"];
+                                                    $id = $row["id_dosen"];
+                                                    
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $index; ?></td>
+                                                        <td><?php echo $row["username"]; ?></td>
+                                                        <td><?php echo $row["password"]; ?></td>
+                                                        <td><?php echo $row["foto"]; ?></td>
+                                                        <td><?php echo $row["nip"]; ?></td>
+                                                        <td><?php echo $row["nama"]; ?></td>
+                                                        <td><?php echo $row["tempat_lahir"]; ?></td>
+                                                        <td><?php echo $row["tanggal_lahir"]; ?></td>
+                                                        <td><?php echo $row["jenis_kelamin"]; ?></td>
+                                                        <td><?php echo $row["alamat"]; ?></td>
+                                                        <td><button type="button" id="<?php echo $rowKompen["id_kompen"];?>" class="btn btn-primary edit-kompen ml-4 mr-4" data-toggle="modal" data-target="#editModal">Edit</button></td>
+                                                        <td><button type="button" id="<?php echo $row["id_user"]?>"  class="btn btn-danger hapus-kompen mr-4 ml-4" data-toggle="modal" data-target="#hapus">Hapus</button></td>    
+                                                    </tr>
+                                                    <?php $index++;
+                                                }
+                                                ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -371,140 +349,206 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header bg-light">
-                    <h5 class="modal-title">Edit Data Dosen</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                    
+                        <h5 class="modal-title">Edit Data Dosen</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                 </div>
-                <!-- isi -->
-                <div class="card-body">
-                    <div class="col-md-12 p-0">
-                        <form action="" method="post">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Username</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Username" required>
+                    
+                    <div class="card-body">
+                        <div class="col-md-12 p-0">
+                            <form action="" id="formEditAdminDosen" method="POST">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Username</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" placeholder="Username"
+                                                        id="usernameDosenAdmin2" name="usernameDosenAdmin2"
+                                                        required />
+                                                </div>
+                                                <div class="col-sm-3 col-form-label"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="usernameDosenAdminBlank2" class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Password</label>
+                                                <div class="col-sm-9">
+                                                    <input type="password" class="form-control" placeholder="**********"
+                                                        id="passwordDosenAdmin2" name="passwordDosenAdmin2"
+                                                        required />
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="passwordDosenAdminBlank2" class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-3 col-form-label">Gambar</label>
+                                                <div class="input-group col-md-9">
+                                                    <img src="../attachment/img/avatar.jpeg"
+                                                        id="fotoPrevDosenAdmin2" height="150px" width="150px">
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-9">
+                                                    <br>
+                                                    <input id='fileid3' type='file' name='filename' onchange="preview_images6(event);"  hidden
+                                                        required />
+                                                    <input id='buttonid3' type='button' value='Load Gambar'
+                                                        class="btn btn-loading btn-primary tmbl-loading ml-2"  />
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="fileidDosenAdminBlank2" class="text-danger">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Password</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Password" required>
+                                        <div class="col-sm-6">
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">NIM</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" placeholder="NIM Dosen"
+                                                        id="nimDosenAdmin2" name="nimDosenAdmin2" required />
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="nimDosenAdminBlank2" class="text-danger">
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Gambar</label>
-                                            <div class="col-md-8">
-                                                <img src="../attachment/img/avatar.jpeg" alt="dosen" style="width:150px;height:150px;"><br>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Nama Lengkap</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" placeholder="Nama Dosen"
+                                                        id="namaDosenAdmin2" name="namaDosenAdmin2" required />
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="namaDosenAdminBlank2" class="text-danger">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Tempat Lahir</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Tempat Lahir Dosen"
+                                                        id="tempatlahirDosenAdmin2"
+                                                        name="tempatlahirDosenAdmin2" required />
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="tempatlahirDosenAdminBlank2" class="text-danger"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
                                                 <br>
-                                                <input id='buttonid' type='button' value='Load Gambar' class="loadgambar btn btn-primary">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">NIP</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="NIP Dosen" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Nama Lengkap</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Nama Dosen" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Tempat Lahir</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="hargaBarang" id="hargaBarang" class="form-control" placeholder="Tempat Lahir Dosen" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
-                                            <div class="col-sm-2">
-                                                <select class="semester custom-select">
-                                                    <option selected>Tgl</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <select class="semester custom-select">
-                                                    <option selected>Bulan</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <select class="semester custom-select">
-                                                    <option selected>Tahun</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
-                                            <div class="col-sm-8">
-                                                <div class="form-check form-check-inline">
-                                                    <label class="form-check-label"
-                                                        for="genderDosenAdmin1">
-                                                        <input class="mt-2" type="radio"
-                                                            name="genderDosenAdmin"
-                                                            id="genderDosenAdmin1" value="Laki-laki">
-                                                        Laki-laki
-                                                    </label>
+                                                <div class="col-sm-3">
+                                                    <select class="custom-select">
+                                                        <option value="" disabled selected>Tanggal</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                    </select>
                                                 </div>
-                                                <div class="form-check form-check-inline">
-                                                    <label class="form-check-label"
-                                                        for="genderDosenAdmin2">
-                                                        <input class="mt-2" type="radio"
-                                                            name="genderDosenAdmin"
-                                                            id="genderDosenAdmin2"
-                                                            value="Perempuan">
-                                                        Perempuan
-                                                    </label>
+                                                <div class="col-sm-3">
+                                                    <select class="custom-select">
+                                                        <option value="" disabled selected>Bulan</option>
+                                                        <option value="Januari">Januari</option>
+                                                        <option value="Februari">Februari</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <select class="custom-select">
+                                                        <option value="" disabled selected>Tahun</option>
+                                                        <option value="2013">2013</option>
+                                                        <option value="2018">2018</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Alamat</label>
-                                            <div class="col-sm-8">
-                                                <textarea class="form-control" id="alamatDosenAdmin"
-                                                    name="alamatDosenAdmin" rows="5"
-                                                    placeholder="Alamat Dosen" required></textarea>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
+                                                <br>
+                                                <div class="col-sm-9">
+                                                    <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="genderDosenAdmin1">
+                                                            <input class="mt-2" type="radio" name="genderDosenAdmin"
+                                                                id="genderDosenAdmin1" value="Laki-laki" checked>
+                                                            Laki-laki
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="genderDosenAdmin2">
+                                                            <input class="mt-2" type="radio" name="genderDosenAdmin"
+                                                                id="genderDosenAdmin2" value="Perempuan">
+                                                            Perempuan
+                                                        </label>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Jurusan</label>
-                                            <div class="col-sm-5">
-                                                <select class="kelas custom-select">
-                                                    <option selected>Jurusan</option>
-                                                    <option value="1">Teknik Informatika</option>
-                                                    <option value="2">Manajemen Informatika</option>
-                                                </select>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3 col-form-label">Alamat</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control" id="alamatDosenAdmin2"
+                                                        name="alamatDosenAdmin2" rows="3"
+                                                        placeholder="Alamat Dosen" required></textarea>
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="alamatDosenAdminBlank2" class="text-danger">
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Kelas</label>
-                                            <div class="col-sm-5">
-                                                <select class="kelas custom-select">
-                                                    <option selected>Kelas</option>
-                                                    <option value="1">TI-2F</option>
-                                                    <option value="2">TI-2C</option>
-                                                </select>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3">Prodi</label>
+                                                <br>
+                                                <div class="col-sm-9">
+                                                    <select name="prodi" class="custom-select" style="width:220px;">
+                                                        <option value="Teknik Informatika">Teknik
+                                                            Informatika</option>
+                                                        <option value="Manajemen Informatika">Manajemen
+                                                            Informatika</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-3">Kelas</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" placeholder="Kelas"
+                                                        style="width:160px;" id="kelasDosenAdmin2"
+                                                        name="kelasDosenAdmin2" required />
+                                                </div>
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <div id="kelasDosenAdminBlank2" class="text-danger">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-9"></div>
+                                                <div class="col-sm-3">
+                                                    <button type="submit" class="btn btn-tambahkan btn-success tmbl-tambahkan" 
+                                                        onclick="Tambah(); 
+                                                                    showFilesSizes22();">Simpan</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
+               
             </div>
         </div>
     </div>
 </body>
     <!-- modal hapus -->
-    <div class="modal fade hapusKompen-modal" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle" aria-hidden="true" data-backdrop="false">
+    <!-- <div class="modal fade hapusKompen-modal" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle" aria-hidden="true"        data-backdrop="false">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content konten-modal">
             <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=hapus" method="post">
@@ -519,5 +563,25 @@
                 </div>                 
             </div>
         </div>
-    </div>
+    </div> -->
+    <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=hapus" method="post">
+                <div class="modal-body pt-5 text-center">
+                    <input type="hidden" name="id_delete" id="id_delete" value="<?php echo $id_delete ?>">
+                    <input type="hidden" name="id_dosen" id="id_dosen" value="<?php echo $id ?>">
+                  <input type="hidden" name="id_kompen" id="id_kompenHapus">
+                  <strong>Apakah Anda yakin?</strong>
+                </div>
+                <div class="pb-4 pt-4 d-flex justify-content-around">
+                  <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
+                  <!-- <button type="submit" name="hapusKompen" class="btn btn-success btn-ok">Ya</button> -->
+                  <button type="submit" name="delete" class="btn btn-success btn-ok">Ya</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
 </html>
