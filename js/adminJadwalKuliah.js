@@ -27,7 +27,6 @@ $("#txtCariJadwalKuliah").keyup(function() {
   filter = $(input)
     .val()
     .toUpperCase();
-  console.log(halamanTidakDitemukan);
 
   itemJadwalKuliah = $("#dataJadwalKuliah .itemJadwalKuliah");
   for (i = 0; i < itemJadwalKuliah.length; i++) {
