@@ -28,7 +28,7 @@ include "../process/proses_adminRuangan.php";
               <div class="col-md-12">
                 <div class="form-inline">
                   <img src="../img/search.svg" alt="" id="icon-search">
-                  <input type="search" class="form-control" id="txtCariPemesanan" placeholder="Pencarian">
+                  <input type="search" class="form-control" id="txtCariPemesanan" onkeyup="cariPemesanan()" placeholder="Pencarian">
                 </div>
               </div>
             </div>
@@ -110,17 +110,12 @@ include "../process/proses_adminRuangan.php";
               <?php
                 $no++;
                 }
-              }else{
-                ?>
-                <div class="col-md-12 p-2 text-center">
-                  <p class="text-muted">Username, Kelas atau Ruangan tidak dapat ditemukan</p>
-                </div>
-                <?php
               }
               ?>
               <!-- End loop -->
               
             </div>
+
           </div>
         </div>
       </div>
@@ -356,7 +351,7 @@ include "../process/proses_adminRuangan.php";
             <div class="row">
               <div class="col-md-3 p-0 m-0 d-flex">
                 <small class="my-auto"><img src="../img/search.svg" alt="" id="icon-search"></small>
-                <input type="search" class="pencarian form-control" id="txtCariRuangan">
+                <input type="search" class="pencarian form-control" id="txtCariRuangan" onkeyup="cariRuangan()">
               </div>
             </div>
 
@@ -391,14 +386,8 @@ include "../process/proses_adminRuangan.php";
                 </div>
               </div>
             <?php }
-              }else{
-                ?>
-                <div class="col-md-12 p-2 text-center">
-                  <p class="text-muted">Ruangan tidak dapat ditemukan</p>
-                </div>
-                <?php
               }
-              ?>              
+                ?>            
             </div>
           </div>
         </div>
