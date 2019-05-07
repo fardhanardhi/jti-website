@@ -60,7 +60,10 @@
                                                             <label class="col-sm-2 col-form-label">Password</label>
                                                             <div class="col-sm-10">
                                                                 <input type="password" class="form-control"
-                                                                    placeholder="**********" id="passwordMahasiswaAdmin" required />
+                                                                    placeholder="**********" name="passwordMahasiswaAdmin" 
+                                                                    
+                                                                    id="passwordMahasiswaAdmin"
+                                                                    required/>
                                                             </div>
                                                             <div class="col-sm-3"></div>
                                                             <div class="col-sm-9">
@@ -77,7 +80,7 @@
                                                 <div class="col-md-2"></div>
                                                 <div class="col-md-10">
                                                     <br>
-                                                    <input id='fileid2' type='file' name='filename2' onchange="preview_images22(event);"  hidden
+                                                    <input id='fileid2' type='file' name='fileid2' onchange="preview_images22(event);"  hidden
                                                         required />
                                                     <input id='buttonid2' type='button' value='Load Gambar'
                                                         class="btn btn-loading btn-primary tmbl-loading ml-2"  />
@@ -135,23 +138,17 @@
                                                             <br>
                                                             <div class="col-sm-2">
                                                                 <select class="custom-select" style="width:110px;" id="tanggalLahirMahasiswa" name="tanggalLahirMahasiswa">
-                                                                    <option value="" disabled selected>Tanggal</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
+                                                                <?php echo opsiTanggal($row["tanggal_lahir"]);?>
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <select class="custom-select" style="width:110px;" id="bulanLahirMahasiswa" name="bulanLahirMahasiswa">
-                                                                    <option value="" disabled selected>Bulan</option>
-                                                                    <option value="Januari">Januari</option>
-                                                                    <option value="Februari">Februari</option>
+                                                                    <?php echo opsiBulan($row["tanggal_lahir"]);?>
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <select class="custom-select" style="width:110px;" id="tahunLahirMahasiswa" name="tahunLahirMahasiswa">
-                                                                    <option value="" disabled selected>Tahun</option>
-                                                                    <option value="2013">2013</option>
-                                                                    <option value="2018">2018</option>
+                                                                <?php echo opsiTahun($row["tanggal_lahir"]);?>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -272,7 +269,7 @@
                                                         <div class="row">
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
-                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="Validasi(); showFilesSizes222();">Tambahkan</button>
+                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="ValidasiTambah(); showFilesSizesTambah();">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -339,8 +336,8 @@
                                             tabel_mahasiswa.id_kelas = tabel_kelas.id_kelas;
                                             
                                             ";
+                        
                                             $result = mysqli_query($con, $query);
-
                                             
                                                 $index = 1;
                                                 
@@ -378,8 +375,6 @@
                                                     <?php $index++;
                                                 }
                                                 ?>
-                                            
-
                                     </tbody>
                                 </table>
                             </div>
@@ -499,24 +494,18 @@
                                                 <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
                                                 <br>
                                                 <div class="col-sm-3">
-                                                    <select class="custom-select">
-                                                        <option value="" disabled selected>Tanggal</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
+                                                    <select class="custom-select" id="tanggalLahirMahasiswa2" name="tanggalLahirMahasiswa2">
+                                                        <?php echo opsiTanggal($row["tanggal_lahir"]);?>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <select class="custom-select">
-                                                        <option value="" disabled selected>Bulan</option>
-                                                        <option value="Januari">Januari</option>
-                                                        <option value="Februari">Februari</option>
+                                                    <select class="custom-select" id="bulanLahirMahasiswa2" name="bulanLahirMahasiswa2">
+                                                        <?php echo opsiBulan($row["tanggal_lahir"]);?>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <select class="custom-select">
-                                                        <option value="" disabled selected>Tahun</option>
-                                                        <option value="2013">2013</option>
-                                                        <option value="2018">2018</option>
+                                                    <select class="custom-select" id="tahunlLahirMahasiswa2" name="tahunLahirMahasiswa2">
+                                                        <?php echo opsiTahun($row["tanggal_lahir"]);?>
                                                     </select>
                                                 </div>
                                             </div>
