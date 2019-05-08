@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 12, 2019 at 03:52 PM
+-- Generation Time: May 15, 2019 at 07:57 AM
 -- Server version: 5.7.26-0ubuntu0.18.04.1
 -- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
@@ -132,7 +132,8 @@ INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VAL
 (13, 'Ikut bro', 32, 45, '2019-04-23 09:59:00'),
 (14, 'Makasih', 45, 32, '2019-04-23 09:59:00'),
 (15, 'tes', 32, 45, '2019-04-26 14:55:00'),
-(16, 'tes', 32, 2, '2019-04-26 14:56:00');
+(16, 'tes', 32, 2, '2019-04-26 14:56:00'),
+(17, 'Apa Min?', 2, 45, '2019-05-13 17:53:00');
 
 -- --------------------------------------------------------
 
@@ -410,7 +411,7 @@ CREATE TABLE `tabel_krs` (
 --
 
 INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`, `status_verifikasi`, `waktu_edit`) VALUES
-(1, 33, 'Sudah', '20190428093312.png', 7, 'Sudah', '2019-05-03 21:52:24'),
+(1, 33, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:52:24'),
 (2, 34, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:52:45'),
 (3, 35, 'Sudah', '20190428093318.png', 7, 'Sudah', '2019-05-03 21:52:44'),
 (4, 36, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:52:41'),
@@ -699,13 +700,6 @@ CREATE TABLE `tabel_ruang_dipinjam` (
   `waktu_pinjam` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tabel_ruang_dipinjam`
---
-
-INSERT INTO `tabel_ruang_dipinjam` (`id_ruang_dipinjam`, `id_ruang`, `peminjam`, `hari`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`) VALUES
-(1, 2, 32, 'senin', '07:00:00', '12:50:00', '2019-05-09 22:25:33');
-
 -- --------------------------------------------------------
 
 --
@@ -752,6 +746,30 @@ INSERT INTO `tabel_status_mahasiswa` (`id_status_mahasiswa`, `keterangan`) VALUE
 (5, 'Dropout '),
 (6, 'Kompen'),
 (7, 'Normal');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_task`
+--
+
+CREATE TABLE `tabel_task` (
+  `id_task` int(11) NOT NULL,
+  `pekerjaan` text NOT NULL,
+  `kuota` int(11) NOT NULL,
+  `id_dosen` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tabel_task`
+--
+
+INSERT INTO `tabel_task` (`id_task`, `pekerjaan`, `kuota`, `id_dosen`) VALUES
+(1, 'Membersihkan jendela', 2, 4),
+(2, 'Menginputkan data', 3, 4),
+(3, 'Mengangkat kursi', 5, 4),
+(4, 'Menyiapkan ruangan', 10, 4),
+(5, 'Mengambilkan makanan', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -1019,6 +1037,13 @@ ALTER TABLE `tabel_status_mahasiswa`
   ADD PRIMARY KEY (`id_status_mahasiswa`);
 
 --
+-- Indexes for table `tabel_task`
+--
+ALTER TABLE `tabel_task`
+  ADD PRIMARY KEY (`id_task`),
+  ADD KEY `id_dosen` (`id_dosen`);
+
+--
 -- Indexes for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
@@ -1047,7 +1072,7 @@ ALTER TABLE `tabel_attachment`
 -- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
-  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
 --
@@ -1072,7 +1097,7 @@ ALTER TABLE `tabel_info_beasiswa`
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
-  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
 --
@@ -1142,7 +1167,7 @@ ALTER TABLE `tabel_ruang`
 -- AUTO_INCREMENT for table `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
-  MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tabel_semester`
 --
@@ -1153,6 +1178,11 @@ ALTER TABLE `tabel_semester`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   MODIFY `id_status_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `tabel_task`
+--
+ALTER TABLE `tabel_task`
+  MODIFY `id_task` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tabel_user`
 --
@@ -1293,6 +1323,12 @@ ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
 ALTER TABLE `tabel_ruang_dipinjam`
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tabel_task`
+--
+ALTER TABLE `tabel_task`
+  ADD CONSTRAINT `tabel_task_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
