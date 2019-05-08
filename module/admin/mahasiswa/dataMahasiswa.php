@@ -60,7 +60,10 @@
                                                             <label class="col-sm-2 col-form-label">Password</label>
                                                             <div class="col-sm-10">
                                                                 <input type="password" class="form-control"
-                                                                    placeholder="**********" id="passwordMahasiswaAdmin" required />
+                                                                    placeholder="**********" name="passwordMahasiswaAdmin" 
+                                                                    
+                                                                    id="passwordMahasiswaAdmin"
+                                                                    required/>
                                                             </div>
                                                             <div class="col-sm-3"></div>
                                                             <div class="col-sm-9">
@@ -74,10 +77,10 @@
                                                     <img src="../attachment/img/avatar.jpeg"
                                                         id="fotoPrevMahasiswaAdmin3" height="150px" width="150px">
                                                 </div>
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-9">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-10">
                                                     <br>
-                                                    <input id='fileid2' type='file' name='filename2' onchange="preview_images22(event);"  hidden
+                                                    <input id='fileid2' type='file' name='fileid2' onchange="preview_images22(event);"  hidden
                                                         required />
                                                     <input id='buttonid2' type='button' value='Load Gambar'
                                                         class="btn btn-loading btn-primary tmbl-loading ml-2"  />
@@ -135,23 +138,17 @@
                                                             <br>
                                                             <div class="col-sm-2">
                                                                 <select class="custom-select" style="width:110px;" id="tanggalLahirMahasiswa" name="tanggalLahirMahasiswa">
-                                                                    <option value="" disabled selected>Tanggal</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
+                                                                <?php echo opsiTanggal($row["tanggal_lahir"]);?>
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <select class="custom-select" style="width:110px;" id="bulanLahirMahasiswa" name="bulanLahirMahasiswa">
-                                                                    <option value="" disabled selected>Bulan</option>
-                                                                    <option value="Januari">Januari</option>
-                                                                    <option value="Februari">Februari</option>
+                                                                    <?php echo opsiBulan($row["tanggal_lahir"]);?>
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-2">
                                                                 <select class="custom-select" style="width:110px;" id="tahunLahirMahasiswa" name="tahunLahirMahasiswa">
-                                                                    <option value="" disabled selected>Tahun</option>
-                                                                    <option value="2013">2013</option>
-                                                                    <option value="2018">2018</option>
+                                                                <?php echo opsiTahun($row["tanggal_lahir"]);?>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -272,7 +269,7 @@
                                                         <div class="row">
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
-                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="Validasi(); showFilesSizes222();">Tambahkan</button>
+                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="ValidasiTambah(); showFilesSizesTambah();">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -336,18 +333,17 @@
                                             tabel_mahasiswa.id_prodi = tabel_prodi.id_prodi
 
                                             INNER JOIN tabel_kelas ON
-                                            tabel_mahasiswa.id_kelas = tabel_kelas.id_kelas
-
-
+                                            tabel_mahasiswa.id_kelas = tabel_kelas.id_kelas;
+                                            
                                             ";
+                        
                                             $result = mysqli_query($con, $query);
-
                                             
                                                 $index = 1;
                                                 
                                                 while($row = mysqli_fetch_assoc($result)){
-                                                    $id_delete = $row["id_user"];
-                                                    $id = $row["id_mahasiswa"];
+                                                    // $id_delete = $row["id_user"];
+                                                    // $id = $row["id_mahasiswa"];
 
                                                 
                                                 ?>
@@ -366,19 +362,19 @@
                                                         <td><?php echo $row["kode_kelas"];?></td>
 
                                                         <td>
-                                                        <a href='' class='btn btn-primary btn-edit ml-2' data-toggle='modal' data-target='#modalEditAdminMahasiswa'>Edit</a>
+                                                        <a id_userEdit="<?php echo $row["id_user"]; ?>"
+                                                    id_mahasiswaEdit="<?php echo $row["id_mahasiswa"]; ?>" class='btn btn-primary btn-edit ml-2 edit-mahasiswa-admin' data-toggle='modal' data-target='#modalEditAdminMahasiswa'>Edit</a>
                                                                             
                                                         </td>
                                                         <td>
-                                                        <a id="<?php echo $row["id_user"]?>" class='btn btn-danger btn-hapus ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
+                                                        <a id_user="<?php echo $row["id_user"]; ?>"
+                                                    id_mahasiswa="<?php echo $row["id_mahasiswa"]; ?>" class='btn btn-danger btn-hapus hapus-mahasiswa-admin ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
                                                              
                                                         </td>    
                                                     </tr>
                                                     <?php $index++;
                                                 }
                                                 ?>
-                                            
-
                                     </tbody>
                                 </table>
                             </div>
@@ -404,11 +400,14 @@
                     
                     <div class="card-body">
                         <div class="col-md-12 p-0">
-                            <form action="" id="formEditAdminMahasiswa" method="POST">
+                            <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=edit" id="formEditAdminMahasiswa" method="POST">
+                                <input type="hidden" name="id_update" id="id_update" value="<?php echo $id_delete ?>">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group row">
+                                                <input type="hidden" name="id_userUpdate" id="id_userEdit" >
+                                                <input type="hidden" name="id_mahasiswaUpdate" id="id_mahasiswaEdit" >               
                                                 <label class="col-sm-3 col-form-label">Username</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" placeholder="Username"
@@ -495,24 +494,18 @@
                                                 <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
                                                 <br>
                                                 <div class="col-sm-3">
-                                                    <select class="custom-select">
-                                                        <option value="" disabled selected>Tanggal</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
+                                                    <select class="custom-select" id="tanggalLahirMahasiswa2" name="tanggalLahirMahasiswa2">
+                                                        <?php echo opsiTanggal($row["tanggal_lahir"]);?>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <select class="custom-select">
-                                                        <option value="" disabled selected>Bulan</option>
-                                                        <option value="Januari">Januari</option>
-                                                        <option value="Februari">Februari</option>
+                                                    <select class="custom-select" id="bulanLahirMahasiswa2" name="bulanLahirMahasiswa2">
+                                                        <?php echo opsiBulan($row["tanggal_lahir"]);?>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-3">
-                                                    <select class="custom-select">
-                                                        <option value="" disabled selected>Tahun</option>
-                                                        <option value="2013">2013</option>
-                                                        <option value="2018">2018</option>
+                                                    <select class="custom-select" id="tahunlLahirMahasiswa2" name="tahunLahirMahasiswa2">
+                                                        <?php echo opsiTahun($row["tanggal_lahir"]);?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -522,14 +515,14 @@
                                                 <div class="col-sm-9">
                                                     <div class="form-check form-check-inline">
                                                         <label class="form-check-label" for="genderMahasiswaAdmin1">
-                                                            <input class="mt-2" type="radio" name="genderMahasiswaAdmin"
+                                                            <input class="mt-2" type="radio" name="genderMahasiswaAdmin3"
                                                                 id="genderMahasiswaAdmin1" value="Laki-laki" checked>
                                                             Laki-laki
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <label class="form-check-label" for="genderMahasiswaAdmin2">
-                                                            <input class="mt-2" type="radio" name="genderMahasiswaAdmin"
+                                                            <input class="mt-2" type="radio" name="genderMahasiswaAdmin3"
                                                                 id="genderMahasiswaAdmin2" value="Perempuan">
                                                             Perempuan
                                                         </label>
@@ -553,20 +546,46 @@
                                                 <label class="col-sm-3">Prodi</label>
                                                 <br>
                                                 <div class="col-sm-9">
-                                                    <select name="prodi" class="custom-select" style="width:220px;">
-                                                        <option value="Teknik Informatika">Teknik
-                                                            Informatika</option>
-                                                        <option value="Manajemen Informatika">Manajemen
-                                                            Informatika</option>
-                                                    </select>
+                                                <?php
+                                                        $resultnyaProdi = tampilProdi($con); 
+                                                            ?>
+                                                                <select name="prodiMahasiswa2" class="custom-select" 
+                                                                    style="width:220px;">
+
+                                                                    <?php 
+                                                                    
+                                                                    if(mysqli_num_rows($resultnyaProdi) > 0){
+
+                                                                        while($row = mysqli_fetch_assoc($resultnyaProdi)){
+                                                                            echo "<option value='".$row['id_prodi']."'>".$row['nama']."</option>";
+                                                                        }
+
+                                                                    }
+                                                                    
+                                                                    ?>
+                                                                 
+                                                                </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-3">Kelas</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" placeholder="Kelas"
-                                                        style="width:160px;" id="kelasMahasiswaAdmin2"
-                                                        name="kelasMahasiswaAdmin2" required />
+                                                    <select class="semester custom-select kelas" style="width:120px;" name="kelasMahasiswa2">
+                                                                
+                                                                <?php
+                                                                $resultKelas=kelas($con);
+
+                                                                if(mysqli_num_rows($resultKelas)){
+                                                                    while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                                                                        ?>
+                                                                        <option value="<?php echo $rowKelas["id_kelas"];
+                                                                        ?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);
+                                                                        ?></option>
+                                                                        <?php
+                                                                    }
+                                                                }        
+                                                                ?>
+                                                                </select>
                                                 </div>
                                                 <div class="col-sm-3"></div>
                                                 <div class="col-sm-9">
@@ -574,12 +593,35 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                            <label class="col-sm-3">Semester</label>
+                                                            <div class="col-sm-9">
+                                                            <select class="semester custom-select kelas" style="width:120px;"  name="semesterMahasiswa2">
+                                                                
+                                                                <?php
+                                                                    $resultSemester=tampilSemester($con);
+                                                                    if(mysqli_num_rows($resultSemester)){
+                                                                    while($rowSemester=mysqli_fetch_assoc($resultSemester)){
+                                                                        ?>
+                                                                        <option value="<?php echo $rowSemester["id_semester"];?>"><?php echo $rowSemester["semester"];?></option>
+                                                                        <?php
+                                                                    }
+                                                                    }
+                                                                ?>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-sm-3"></div>
+                                                            <div class="col-sm-9">
+                                                                <div id="kelasMahasiswaAdminBlank" class="text-danger">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                             <div class="row">
                                                 <div class="col-sm-9"></div>
                                                 <div class="col-sm-3">
-                                                    <button type="submit" class="btn btn-tambahkan btn-success tmbl-tambahkan" 
-                                                        onclick="Testing(); 
-                                                                    showFilesSizes22();">Simpan</button>
+                                                    <button type="submit" class="btn btn-tambahkan btn-success tmbl-tambahkan" name="editMahasiswa"
+                                                        onclick="validasi2(); 
+                                                                    showFilesSizes2();">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -601,8 +643,8 @@
             <div class="modal-content kontent-modal">
                 <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=hapus" method="post">
                     <div clas="modal-body">
-                        <input type="hidden" name="id_delete" id="id_delete" value="<?php echo $id_delete ?>">
-                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswa" value="<?php echo $id ?>">
+                        <input type="hidden" name="id_user" id="id_userHapus" >
+                        <input type="hidden" name="id_mahasiswa" id="id_mahasiswaHapus" >
                         <h5 class="isiHapusDataMahasiswa text-center">Apakah Anda Yakin ?</h5>
                         <div class="tombolAksiHapusDataMahasiswa text-center">
                             <button type="button" class="btn btn-danger btn-tidakdak" data-dismiss="modal">Tidak</button>

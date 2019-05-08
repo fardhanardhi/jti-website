@@ -1,14 +1,16 @@
 $("#txtCariPekerjaan").keyup(function() {
   var input,
     filter,
-		itemPekerjan,
-		nip,
+    itemPekerjan,
+    nip,
     namaDosen,
     namPekerjaan,
     i,
     txtValueNip,
     txtValueNamaDosen,
-    txtValueNamaPekerjaan;
+    txtValueNamaPekerjaan,
+    tabelPekerjan = document.getElementById("dataPekerjaan"),
+    halamanTidakDitemukan = document.getElementById("pekerjaanTidakDitemukan");
   input = $("#txtCariPekerjaan");
   filter = $(input)
     .val()
@@ -33,9 +35,11 @@ $("#txtCariPekerjaan").keyup(function() {
         txtValueNamaPekerjaan.indexOf(filter) > -1 ||
         txtValueNip.indexOf(filter) > -1
       ) {
-        itemPekerjan[i].style.display = "";
+        tabelPekerjan.style.display = "block";
+        halamanTidakDitemukan.style.display = "none";
       } else {
-        itemPekerjan[i].style.display = "none";
+        tabelPekerjan.style.display = "none";
+        halamanTidakDitemukan.style.display = "block";
       }
     }
   }
@@ -44,8 +48,8 @@ $("#txtCariPekerjaan").keyup(function() {
 $("#txtCariKompen").keyup(function() {
   var input,
     filter,
-		itemKompen,
-		nim,
+    itemKompen,
+    nim,
     namaDosen,
     namaMhs,
     prodi,
@@ -55,7 +59,9 @@ $("#txtCariKompen").keyup(function() {
     txtValueNamaDosen,
     txtValueNamaMhs,
     txtValueProdi,
-    tctValueWaktu;
+    txtValueWaktu,
+    tabelKompen = document.getElementById("dataKompen"),
+    halamanTidakDitemukan = document.getElementById("kompenTidakDitemukan");
   input = $("#txtCariKompen");
   filter = $(input)
     .val()
@@ -90,9 +96,11 @@ $("#txtCariKompen").keyup(function() {
         txtValueProdi.indexOf(filter) > -1 ||
         txtValueWaktu.indexOf(filter) > -1
       ) {
-        itemKompen[i].style.display = "";
+        tabelKompen.style.display = "block";
+        halamanTidakDitemukan.style.display = "none";
       } else {
-        itemKompen[i].style.display = "none";
+        tabelKompen.style.display = "none";
+        halamanTidakDitemukan.style.display = "block";
       }
     }
   }
@@ -101,12 +109,14 @@ $("#txtCariKompen").keyup(function() {
 $("#txtCariRekap").keyup(function() {
   var input,
     filter,
-		itemRekap,
-		nim,
+    itemRekap,
+    nim,
     kelas,
     i,
     txtValueNim,
-    txtValueKelas;
+    txtValueKelas,
+    tabelRekap = document.getElementById("rekapKompen"),
+    halamanTidakDitemukan = document.getElementById("rekapTidakDitemukan");
   input = $("#txtCariRekap");
   filter = $(input)
     .val()
@@ -126,151 +136,158 @@ $("#txtCariRekap").keyup(function() {
         txtValueKelas.indexOf(filter) > -1 ||
         txtValueNim.indexOf(filter) > -1
       ) {
-        itemRekap[i].style.display = "";
+        tabelRekap.style.display = "block";
+        halamanTidakDitemukan.style.display = "none";
       } else {
-        itemRekap[i].style.display = "none";
+        tabelRekap.style.display = "none";
+        halamanTidakDitemukan.style.display = "block";
       }
     }
   }
 });
 
 function validasiTanggal(input) {
-	if (input.value == "") {
-		document.getElementById('peringatanTanggal').classList.remove('d-none');
-		input.classList.add('border-danger');
-		return false;
-	} else {
-		document.getElementById('peringatanTanggal').classList.add('d-none');
-		input.classList.remove('border-danger');
-		return true;
-	}
+  if (input.value == "") {
+    document.getElementById("peringatanTanggal").classList.remove("d-none");
+    input.classList.add("border-danger");
+    return false;
+  } else {
+    document.getElementById("peringatanTanggal").classList.add("d-none");
+    input.classList.remove("border-danger");
+    return true;
+  }
 }
 
 function validasiJenis(input) {
-	if (input.value == "") {
-		document.getElementById('peringatanJenis').classList.remove('d-none');
-		input.classList.add('border-danger');
-		return false;
-	} else {
-		document.getElementById('peringatanJenis').classList.add('d-none');
-		input.classList.remove('border-danger');
-		return true;
-	}
+  if (input.value == "") {
+    document.getElementById("peringatanJenis").classList.remove("d-none");
+    input.classList.add("border-danger");
+    return false;
+  } else {
+    document.getElementById("peringatanJenis").classList.add("d-none");
+    input.classList.remove("border-danger");
+    return true;
+  }
 }
 
 function validasiJenis(input) {
-	if (input.value == "") {
-		document.getElementById('peringatanJenis').classList.remove('d-none');
-		input.classList.add('border-danger');
-		return false;
-	} else {
-		document.getElementById('peringatanJenis').classList.add('d-none');
-		input.classList.remove('border-danger');
-		return true;
-	}
+  if (input.value == "") {
+    document.getElementById("peringatanJenis").classList.remove("d-none");
+    input.classList.add("border-danger");
+    return false;
+  } else {
+    document.getElementById("peringatanJenis").classList.add("d-none");
+    input.classList.remove("border-danger");
+    return true;
+  }
 }
 
 function validasiJam(input) {
-	if (input.value == "" || input.value == 0) {
-		document.getElementById('peringatanJam').classList.remove('d-none');
-		input.classList.add('border-danger');
-		return false;
-	} else {
-		document.getElementById('peringatanJam').classList.add('d-none');
-		input.classList.remove('border-danger');
-		return true;
-	}
+  if (input.value == "" || input.value == 0) {
+    document.getElementById("peringatanJam").classList.remove("d-none");
+    input.classList.add("border-danger");
+    return false;
+  } else {
+    document.getElementById("peringatanJam").classList.add("d-none");
+    input.classList.remove("border-danger");
+    return true;
+  }
 }
 
 function validasiDosen(input) {
-	if (input.value == "") {
-		document.getElementById('peringatanDosen').classList.remove('d-none');
-		input.classList.add('border-danger');
-		return false;
-	} else {
-		document.getElementById('peringatanDosen').classList.add('d-none');
-		input.classList.remove('border-danger');
-		return true;
-	}
+  if (input.value == "") {
+    document.getElementById("peringatanDosen").classList.remove("d-none");
+    input.classList.add("border-danger");
+    return false;
+  } else {
+    document.getElementById("peringatanDosen").classList.add("d-none");
+    input.classList.remove("border-danger");
+    return true;
+  }
 }
 
 function validasiSubmitEditKompen() {
-	if (validasiTanggal(document.getElementById('tanggal')) == false) {
-		return false;
-	}
-	if (validasiJenis(document.getElementById('jenisKompensasi')) == false) {
-		return false;
-	}
-	if (validasiJam(document.getElementById('totalJam')) == false) {
-		return false;
-	}
-	if (validasiDosen(document.getElementById('dosen')) == false) {
-		return false;
-	}
-	return true;
+  if (validasiTanggal(document.getElementById("tanggal")) == false) {
+    return false;
+  }
+  if (validasiJenis(document.getElementById("jenisKompensasi")) == false) {
+    return false;
+  }
+  if (validasiJam(document.getElementById("totalJam")) == false) {
+    return false;
+  }
+  if (validasiDosen(document.getElementById("dosen")) == false) {
+    return false;
+  }
+  return true;
 }
 
-$('.tampil-detail').click(function(){
-	var id_kompen=$(this).attr("data-id");
-	
-		$.ajax({
-		  url:"../process/proses_absenKompen.php",
-		  method:"post",
-			data:{tampilDetail:id_kompen},
-			success:function(data){
-				$('#detail-kompen').html(data);
-        $('#modalPreview').modal("show");
-      }
-		})
-})
+$(".tampil-detail").click(function() {
+  var id_kompen = $(this).attr("data-id");
 
-$('.submit-absen').click(function(){
-	var id_absen=$(this).attr("id");
-
-	$.ajax({
-		url:"../process/proses_absenKompen.php",
-		method:"post",
-    data:{
-      submitAbsen:id_absen, sakit: $("input[id='sakit"+id_absen+"']").val(), ijin: $("input[id='ijin"+id_absen+"']").val(), alpa: $("input[id='alpa"+id_absen+"']").val() 
-      },
-    success:function(data){
-			alert("Absensi berhasil disimpan");
-			location.reload();
+  $.ajax({
+    url: "../process/proses_absenKompen.php",
+    method: "post",
+    data: { tampilDetail: id_kompen },
+    success: function(data) {
+      $("#detail-kompen").html(data);
+      $("#modalPreview").modal("show");
     }
-	})
-})
+  });
+});
 
-$('.edit-kompen').click(function(){
-	var id_kompen=$(this).attr("id");
+$(".submit-absen").click(function() {
+  var id_absen = $(this).attr("id");
 
-	$.ajax({
-		url:"../process/proses_absenKompen.php",
-		method:"post",
-		data:{edit_kompen:id_kompen},
-		success:function(data){
-			$('#id_kompenEdit').val(id_kompen);
-			$('#edit-kompen').html(data);
-		}
-	})
-})
+  $.ajax({
+    url: "../process/proses_absenKompen.php",
+    method: "post",
+    data: {
+      submitAbsen: id_absen,
+      sakit: $("input[id='sakit" + id_absen + "']").val(),
+      ijin: $("input[id='ijin" + id_absen + "']").val(),
+      alpa: $("input[id='alpa" + id_absen + "']").val()
+    },
+    success: function(data) {
+      alert("Absensi berhasil disimpan");
+      location.reload();
+    }
+  });
+});
 
-$('.hapus-kompen').click(function(){
-	var id_kompen=$(this).attr("id");
-	$('#id_kompenHapus').val(id_kompen);
-	$('#modalHapusKompen').modal("show");
-})
+$(".edit-kompen").click(function() {
+  var id_kompen = $(this).attr("id");
 
-$('#modalEditKompen').on('change', 'select[name="dosen"]', function() {
+  $.ajax({
+    url: "../process/proses_absenKompen.php",
+    method: "post",
+    data: { edit_kompen: id_kompen },
+    success: function(data) {
+      $("#id_kompenEdit").val(id_kompen);
+      $("#edit-kompen").html(data);
+    }
+  });
+});
+
+$(".hapus-kompen").click(function() {
+  var id_kompen = $(this).attr("id");
+  $("#id_kompenHapus").val(id_kompen);
+  $("#modalHapusKompen").modal("show");
+});
+
+$("#modalEditKompen").on("change", 'select[name="dosen"]', function() {
   var id_dosen = $(this).val();
 
   $.ajax({
     type: "POST",
     url: "../process/proses_absenKompen.php",
-    data: {pilihDosen : id_dosen, id_semester:$('#id_semesterPekerjaan').val() },
-    success: function (data) {
+    data: {
+      pilihDosen: id_dosen,
+      id_semester: $("#id_semesterPekerjaan").val()
+    },
+    success: function(data) {
       $('select[name="jenisKompensasi"]').prop("disabled", false);
-      $('select[name="jenisKompensasi"]').html(data);      
+      $('select[name="jenisKompensasi"]').html(data);
     }
   });
 });
-

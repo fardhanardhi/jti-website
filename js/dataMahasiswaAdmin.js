@@ -34,7 +34,7 @@ function preview_images6(event) {
   }
   
 
-  function showFilesSizes222() {
+  function showFilesSizesTambah() {
     var input, file;
   
     input = document.getElementById("fileid2");
@@ -48,7 +48,7 @@ function preview_images6(event) {
     }
   }
 
-  function showFilesSizes22() {
+  function showFilesSizes2() {
     var input, file;
   
     input = document.getElementById("fileid3");
@@ -64,23 +64,16 @@ function preview_images6(event) {
 
 
 
-  function Testing(){
+
+  function validasi2(){
     var usernameMahasiswaAdmin2 = document.getElementById("usernameMahasiswaAdmin2").value;
-
     var passwordMahasiswaAdmin2 = document.getElementById("passwordMahasiswaAdmin2").value;
-
     var fileid3 = document.getElementById("fileid3").value;
-
     var nimMahasiswaAdmin2 = document.getElementById("nimMahasiswaAdmin2").value;
-
     var namaMahasiswaAdmin2 = document.getElementById("namaMahasiswaAdmin2").value;
-
     var tempatlahirMahasiswaAdmin2 = document.getElementById("tempatlahirMahasiswaAdmin2").value;
-
     var alamatMahasiswaAdmin2 = document.getElementById("alamatMahasiswaAdmin2").value;
 
-    var kelasMahasiswaAdmin2 = document.getElementById("kelasMahasiswaAdmin2").value;
-    
     if(usernameMahasiswaAdmin2==""){
         document.getElementById("usernameMahasiswaAdminBlank2").innerHTML="*Masukkan Username";
     }
@@ -89,7 +82,6 @@ function preview_images6(event) {
         document.getElementById("usernameMahasiswaAdminBlank2").innerHTML="";
     }
 
-
     if(passwordMahasiswaAdmin2==""){
         document.getElementById("passwordMahasiswaAdminBlank2").innerHTML="*Masukkan Password";
     }
@@ -97,7 +89,7 @@ function preview_images6(event) {
     else if(passwordMahasiswaAdmin2!=""){
         document.getElementById("passwordMahasiswaAdminBlank2").innerHTML="";
     }
-
+    
     if(fileid3==""){
         document.getElementById("fileidMahasiswaAdminBlank2").innerHTML="*Upload File Gambar";
     }
@@ -114,7 +106,7 @@ function preview_images6(event) {
         document.getElementById("nimMahasiswaAdminBlank2").innerHTML="";
     }
 
-
+    
     if(namaMahasiswaAdmin2==""){
         document.getElementById("namaMahasiswaAdminBlank2").innerHTML="*Masukkan Nama Mahasiswa";
     }
@@ -123,15 +115,14 @@ function preview_images6(event) {
         document.getElementById("namaMahasiswaAdminBlank2").innerHTML="";
     }
 
-
+     
     if(tempatlahirMahasiswaAdmin2==""){
         document.getElementById("tempatlahirMahasiswaAdminBlank2").innerHTML="*Masukkan Tempat Lahir Mahasiswa";
     }
 
-    else if(usernameMahasiswaAdmin2!=""){
+    else if(tempatlahirMahasiswaAdmin2!=""){
         document.getElementById("tempatlahirMahasiswaAdminBlank2").innerHTML="";
     }
-
 
     if(alamatMahasiswaAdmin2==""){
         document.getElementById("alamatMahasiswaAdminBlank2").innerHTML="*Masukkan Alamat Mahasiswa";
@@ -142,18 +133,9 @@ function preview_images6(event) {
     }
 
 
-    if(kelasMahasiswaAdmin2==""){
-        document.getElementById("kelasMahasiswaAdminBlank2").innerHTML="*Masukkan Kelas Mahasiswa";
-    }
-
-    else if(kelasMahasiswaAdmin2!=""){
-        document.getElementById("kelasMahasiswaAdminBlank2").innerHTML="";
-    }
 }
 
-
-
-function Validasi(){
+function ValidasiTambah(){
     var usernameMahasiswaAdmin = document.getElementById("usernameMahasiswaAdmin").value;
     var passwordMahasiswaAdmin = document.getElementById("passwordMahasiswaAdmin").value;
     var fileid2 = document.getElementById("fileid2").value;
@@ -220,6 +202,21 @@ function Validasi(){
         document.getElementById("alamatMahasiswaAdminBlank").innerHTML="";
     }
 
-
-
 }
+
+
+$('.hapus-mahasiswa-admin').click(function () {
+    var id_user = $(this).attr("id_user");
+    var id_mahasiswa = $(this).attr("id_mahasiswa");
+    $('#id_userHapus').val(id_user);
+    $('#id_mahasiswaHapus').val(id_mahasiswa);
+    $('#hapus').modal("show");
+})
+
+$('.edit-mahasiswa-admin').click(function () {
+    var id_userEdit = $(this).attr("id_userEdit");
+    var id_mahasiswaEdit = $(this).attr("id_mahasiswaEdit");
+    $('#id_userEdit').val(id_userEdit);
+    $('#id_mahasiswaEdit').val(id_mahasiswaEdit);
+    $('#hapus').modal("show");
+})

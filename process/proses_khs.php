@@ -3,15 +3,17 @@ include "../config/connection.php";
 
 function khs($con, $kelas, $semester)
 {
-    $khs = "select distinct(a.id_mahasiswa), b.*, b.nim, 
-    b.nama as nm_mahasiswa, c.*, SUM(c.sks) as sks , d.*, d.id_kelas, e.*, e.semester from 
-    tabel_khs a, tabel_mahasiswa b, tabel_matkul c, tabel_kelas d, tabel_semester e
-    where a.id_mahasiswa = b.id_mahasiswa
-    and a.id_matkul = c.id_matkul
-    and a.id_kelas = d.id_kelas
+    $khs = "select distinct(a.id_mahasiswa), a.*, a.nim, 
+    a.nama as nm_mahasiswa, c.*, SUM(c.sks) as sks, d.id_kelas, e.*, e.semester, f.*
+    from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f
+    where a.id_kelas = d.id_kelas
+    and d.id_kelas = f.id_kelas
     and a.id_semester = e.id_semester
+    and e.id_semester = f.id_semester
+    and c.id_matkul = f.id_matkul 
     and a.id_kelas = $kelas
-    and a.id_semester = $semester group by a.id_mahasiswa";
+    and a.id_semester = $semester
+    group by a.id_mahasiswa";
     
     $resultTampilKhs = mysqli_query($con, $khs);
     return $resultTampilKhs;
@@ -146,4 +148,17 @@ function matkul($con)
     return $resultMatkul;
 }
 
+function minKelas($con){
+	$minKelas = "select min(id_kelas) as minKelas from tabel_kelas";
+	$resultMinKelas = mysqli_query($con, $minKelas);
+	$rowMinKelas=mysqli_fetch_assoc($resultMinKelas);
+	return $rowMinKelas["minKelas"];
+}
+
+function minSemester($con){
+	$minSemester = "select min(id_semester) as minSemester from tabel_semester";
+	$resultMinSemester = mysqli_query($con, $minSemester);
+	$rowMinSemester=mysqli_fetch_assoc($resultMinSemester);
+	return $rowMinSemester["minSemester"];
+}
 ?>

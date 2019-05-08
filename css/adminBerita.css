@@ -28,6 +28,19 @@
     height: 35px;
 }
 
+#adminBerita .border-secondary {
+    border-color: solid rgba(90, 90, 90, 0.52)!important;
+}
+
+#adminBerita .border{
+    border: 1px solid rgba(90, 90, 90, 0.52)!important;
+    border-radius: 5px;
+}
+
+#adminBerita .card-header {
+    background-color: #E5E5E5;
+}
+
 #adminBerita .alert-dismissible .close {
     position: absolute;
     top: 0;
