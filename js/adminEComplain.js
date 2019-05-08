@@ -17,8 +17,9 @@ function recentChatSearch() {
   filter = $(input)
     .val()
     .toUpperCase();
+
   recentChatItem = $("#recentChat .recent-chat-item");
-  totalInactive = $("#recentChat .recent-chat-item:hidden");
+
   for (i = 0; i < recentChatItem.length; i++) {
     recentName = $(recentChatItem[i]).find(".recentName");
     recentIsi = $(recentChatItem[i]).find(".recentIsi");
@@ -39,15 +40,13 @@ function recentChatSearch() {
       }
     }
   }
-  $("#infoTidakDitemukan").hide();
-  $("#infoTidakDitemukan").remove();
+
+  totalInactive = $("#recentChat .recent-chat-item:hidden");
 
   if (recentChatItem.length == totalInactive.length) {
-    if (!$("#infoTidakDitemukan").length) {
-      $("#recentChat").append(
-        "<div id='infoTidakDitemukan' class='row pt-5'><div  class='infoTidakDitemukan col text-center text-muted'>Pencarian tidak dapat ditemukan</div></div>"
-      );
-    }
+    document.getElementById("infoTidakDitemukan").style.display = "block";
+  } else {
+    document.getElementById("infoTidakDitemukan").style.display = "none";
   }
 }
 

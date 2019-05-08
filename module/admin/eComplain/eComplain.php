@@ -45,9 +45,11 @@ include "../process/proses_eComplain.php";
               </div>
             </div>
             <div class="row chat-body">
+
               <div id="recentChat" class="recent-chat col-md-4 border-right border-gray scrollbar">
                 Loading...
               </div>
+
               <div class="conversation-window col-md-8">
                 <div class="row">
                   <div id="chatWindow" class="chat-window col scrollbar pt-3">
