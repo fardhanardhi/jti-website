@@ -41,7 +41,7 @@ include "../process/proses_adminBeasiswa.php";
                                     </div>
                                     <div class="col-md-2">
                                       <div class="input-group date " id="datepickerBatasTanggal">
-                                          <input type="text" class="form-control" value="Batas Tanggal" name="batasTanggal">
+                                          <input type="text" id="batasTanggal" class="form-control" placeholder="Batas Tanggal" name="batasTanggal">
                                           <div class="input-group-addon">
                                               <span>
                                                   <i class="far fa-calendar-alt"></i>
@@ -69,7 +69,8 @@ include "../process/proses_adminBeasiswa.php";
                                     </div>
                                     <div class="col-md-1">
                                         <div class="form-group">
-                                            <input id="submitBeasiswa" class="submitBeasiswa form-control btn btn-success" type="submit" value="Kirim" name="submitBeasiswa">
+                                            <button type="button" value="buttonValue" class="submitBeasiswa form-control btn btn-success" onclick="Kirim()">Kirim</button>
+                                            <input id="realSubmitBeasiswa" class="realSubmitBeasiswa form-control btn btn-success" type="submit" value="Kirim" name="realSubmitBeasiswa" hidden>
                                         </div>
                                     </div>
 
@@ -141,7 +142,7 @@ include "../process/proses_adminBeasiswa.php";
 
     </div>
 
-		<!-- Modal -->
+		<!-- Modal Preview-->
 
     <?php
 				$resultTampilBeasiswa=tampilBeasiswa($con);
@@ -173,7 +174,27 @@ include "../process/proses_adminBeasiswa.php";
 		}
     	?>
     
+    <!-- Button trigger modal valid-->
+    <button type="button" id="validShow" hidden class="btn btn-primary btn-lg" data-toggle="modal" data-target="#validationModalId">
+      Launch
+    </button>
     
+    <!-- Modal Valid -->
+    <div class="modal fade" id="validationModalId" tabindex="-1" role="dialog" aria-labelledby="validationModalId" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h1>Kesalahan</h1>
+            <p>Judul Beasiswa, Isi Beasiswa atau Link Kosong</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <!-- modal hapus -->
     <?php
 				$resultTampilBeasiswa=tampilBeasiswa($con);

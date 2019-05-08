@@ -34,7 +34,7 @@ function preview_images6(event) {
   }
   
 
-  function showFilesSizes222() {
+  function showFilesSizesTambah() {
     var input, file;
   
     input = document.getElementById("fileid2");
@@ -135,9 +135,7 @@ function preview_images6(event) {
 
 }
 
-
-
-function Validasi(){
+function ValidasiTambah(){
     var usernameMahasiswaAdmin = document.getElementById("usernameMahasiswaAdmin").value;
     var passwordMahasiswaAdmin = document.getElementById("passwordMahasiswaAdmin").value;
     var fileid2 = document.getElementById("fileid2").value;
@@ -205,6 +203,7 @@ function Validasi(){
     }
 
 }
+
 
 $('.hapus-mahasiswa-admin').click(function () {
     var id_user = $(this).attr("id_user");

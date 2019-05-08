@@ -8,7 +8,8 @@ function tampilBeasiswa($con)
     return $resultTampilBeasiswa;
 }
 
-if(isset($_POST["submitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_POST["hapusBeasiswa"])){
+if(isset($_POST["realSubmitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_POST["hapusBeasiswa"])){
+
     if($_GET["module"]=="beasiswa" && $_GET["act"]=="tambah"){
       $dateNow = date("Y-m-d H:i:s");
       $batasTanggal = date('Y-m-d', strtotime($_POST[batasTanggal]));
@@ -18,10 +19,10 @@ if(isset($_POST["submitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_POST["
       header('location:../module/index.php?module=' . $_GET["module"]);
     }
   
-    else if($_GET["module"]=="beasiswa" && $_GET["act"]=="edit"){
-      mysqli_query($con, "update tabel_kuisioner set kriteria='$_POST[isiKriteria]' where id_kuisioner='$_POST[id_kuisioner]'");
-      header('location:../module/index.php?module=' . $_GET["module"]);
-    }
+    // else if($_GET["module"]=="beasiswa" && $_GET["act"]=="edit"){
+    //   mysqli_query($con, "update tabel_kuisioner set kriteria='$_POST[isiKriteria]' where id_kuisioner='$_POST[id_kuisioner]'");
+    //   header('location:../module/index.php?module=' . $_GET["module"]);
+    // }
     
     else if($_GET["module"]=="beasiswa" && $_GET["act"]=="hapus"){
       $BeasiswaQuery="DELETE FROM tabel_info_beasiswa WHERE id_beasiswa='$_POST[idBeasiswa]'";

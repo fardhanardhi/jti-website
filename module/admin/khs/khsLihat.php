@@ -2,6 +2,7 @@
   include "../config/connection.php";
   include "../process/proses_khs.php";
 ?>
+<body onload="setup();">
 <main role="main" class="container-fluid">
     <div id="khs" class="row">
         <div class="col-md-12 p-0">
@@ -53,9 +54,10 @@
                     <div class="media-body pb-8 mb-0">
                     <?php
                         if(isset($_POST["cariKhs"])){
-                        $result=khs($con, $_POST["kelas"], $_POST["semester"]);
-                        }else{
-                        $result = khsLihat($con);
+                            $result=khs($con, $_POST["kelas"], $_POST["semester"]);
+                        }
+                        else{
+                            $result = khsLihat($con);
                         }
                         if(mysqli_num_rows($result) > 0){
                         ?>
@@ -72,7 +74,9 @@
                             <tbody>
                             <?php 
                                 $no=1;
-                                while($row = mysqli_fetch_assoc($result)){
+                                if(mysqli_num_rows($result) > 0){
+                                    
+                                    while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                 <tr>
                                     <td><?php echo $no;?></td>
@@ -93,10 +97,18 @@
                         }else{
                             ?>
                             <div class="text-center">
-                            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                            <p class="text-muted">Mahasiswa Tidak Ditemukan</p>
+                                <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                                <p class="text-muted">Mahasiswa Tidak Ditemukan</p>
                             </div>
                             <?php
+                        }
+                    }else{
+                        ?>
+                        <div class="text-center">
+                            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                                <p class="text-muted">Data Tidak Ditemukan</p>
+                                </div>
+                        <?php
                         }
                         ?>
                     </div>
