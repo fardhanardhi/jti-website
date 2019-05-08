@@ -12,7 +12,7 @@ $("#cariKelasKosongAdmin").click(function() {
   });
 });
 
-function cariPemesanan() {
+$("#txtCariPemesanan").keyup(function() {
   var input,
     filter,
     itemPemesanan,
@@ -35,7 +35,6 @@ function cariPemesanan() {
     .val()
     .toUpperCase();
   itemPemesanan = $("#pemesanan-ruang .itemPemesanan");
-  totalInactive = $("#pemesanan-ruang .itemPemesanan:hidden");
   for (i = 0; i < itemPemesanan.length; i++) {
     nama = $(itemPemesanan[i]).find(".nama");
     tanggalPinjam = $(itemPemesanan[i]).find(".tanggalPinjam");
@@ -76,17 +75,15 @@ function cariPemesanan() {
       }
     }
   }
-  $("#pemesananTidakDitemukan").hide();
-  $("#pemesananTidakDitemukan").remove();
+
+  totalInactive = $("#pemesanan-ruang .itemPemesanan:hidden");
 
   if (itemPemesanan.length == totalInactive.length) {
-    if (!$("#pemesananTidakDitemukan").length) {
-      $("#pemesanan-ruang").append(
-        "<div class='col-md-12 p-2 text-center mt-3' id='pemesananTidakDitemukan'><p class='text-muted'>Username, Kelas atau Ruangan tidak dapat ditemukan</p></div>"
-      );
-    }
+    document.getElementById("pemesananTidakDitemukan").style.display = "block";
+  } else {
+    document.getElementById("pemesananTidakDitemukan").style.display = "none";
   }
-}
+});
 
 $("#txtCariRuangan").keyup(function() {
   var input,

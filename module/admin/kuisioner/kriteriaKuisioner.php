@@ -42,7 +42,7 @@
               if (mysqli_num_rows($resultKriteria) > 0){
               ?>
 
-              <table class="table table-striped table-bordered text-center">
+              <table class="table table-striped table-bordered text-center itemKriteria">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -73,6 +73,12 @@
                 </tbody>
               </table>
               <?php
+              }else{
+                ?>
+                <div class="text-center">
+                  <p class="text-muted">Kriteria Kuisioner Kosong</p>
+                </div>
+                <?php
               } 
               ?>
 

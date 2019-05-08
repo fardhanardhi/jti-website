@@ -23,9 +23,9 @@ include "../process/proses_absenKompen.php";
       <div class="m-2 p-3 bg-white mb-3 rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Absensi Mahasiswa</h6>
           <div class="container-fluid mt-3 p-0">
-            <form class="row mb-3 mt-3" action="?module=absenKompen" method="post">
-              <div class="col-md-3 d-flex">
-                <select class="absenKelas w-auto" name="kelas">
+            <div class="row mb-3 mt-3">
+              <div class="col-md-auto">
+                <select class="absenKelas w-auto" name="kelas" id="kelasAbsensi">
                   <?php
                   $resultKelas=kelas($con);
                   if(mysqli_num_rows($resultKelas)){
@@ -41,22 +41,19 @@ include "../process/proses_absenKompen.php";
                   }
                   ?>
                 </select>
-
-                <input type="submit" name="cariAbsen" class="btn btn-success absenCari ml-4" value="Cari">
               </div>
-            </form>
+
+              <div class="col-md-1">
+                <button id="cariAbsensi" class="btn btn-success absenCari">Cari</button>
+              </div>
+            </div>
             
             <div class="container-fluid p-0">
             <div class="row scrollbar scrollbar-x m-0" id="absen">
               <div class="col-md-12 p-0 d-flex justify-content-center">
                 <?php
-                if(isset($_POST["cariAbsen"])){
-                  $resultAbsensi=absensi($con, $_POST["kelas"]);
-                }
-                else{
-                  $resultAbsensi=absensi($con, minKelas($con));
-                }
-                
+                $resultAbsensi=absensi($con, minKelas($con));
+
                 if (mysqli_num_rows($resultAbsensi) > 0){
                 ?>
                 <table class="table table-striped table-bordered text-center">
@@ -116,9 +113,9 @@ include "../process/proses_absenKompen.php";
         <h6 class="border-bottom border-gray pb-2 mb-0">Total Absensi Mahasiswa</h6>
 
         <div class="container-fluid">
-          <form class="row mb-3 mt-3" action="?module=absenKompen" method="post">
+          <div class="row mb-3 mt-3">
             <div class="col-md-8 p-0">
-              <select class="absenKelas" name="kelas">
+              <select class="absenKelas" name="kelas" id="kelasTotalAbsensi">
                 <?php
                 $resultKelas=kelas($con);
                 if(mysqli_num_rows($resultKelas)){
@@ -137,9 +134,9 @@ include "../process/proses_absenKompen.php";
             </div>
 
             <div class="col-md-4 text-right">
-              <input type="submit" name="cariTotal" class="btn btn-success absenCari" value="Cari">
+              <button id="cariTotalAbsensi" class="btn btn-success absenCari">Cari</button>
             </div>
-          </form>
+          </div>
         </div>
           
         <div class="container-fluid scrollbar m-0 pr-0 scrollbar-x" id="totalAbsen">
@@ -232,7 +229,7 @@ include "../process/proses_absenKompen.php";
               
               if (mysqli_num_rows($resultKompen) > 0){
               ?>
-              <table class="table table-striped table-bordered text-center">
+              <table class="table table-striped table-bordered text-center itemKompen">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -265,6 +262,12 @@ include "../process/proses_absenKompen.php";
                 </tbody>
               </table>
               <?php
+              }else{
+                ?>
+                <div class="text-center">
+                  <p class="text-muted">Data Kompensasi Kosong</p>
+                </div>
+                <?php
               }
               ?>
               </div>
@@ -353,7 +356,7 @@ include "../process/proses_absenKompen.php";
               
               if (mysqli_num_rows($resultPekerjaan) > 0){
               ?>
-              <table class="table table-striped table-bordered text-center">
+              <table class="table table-striped table-bordered text-center itemPekerjaan">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -374,8 +377,8 @@ include "../process/proses_absenKompen.php";
                       <td class="nip"><?php echo $rowPekerjaan["nip"]; ?></td>
                       <td class="nama-dosen text-left"><?php echo $rowPekerjaan["namaDosen"]; ?></td>
                       <td class="nama-pekerjaan text-left"><?php echo $rowPekerjaan["nama"]; ?></td>
-                      <td><?php echo $rowPekerjaan["kuota"]; ?></td>
-                      <td><?php echo $rowPekerjaan["semester"]; ?></td>
+                      <td class="kuota"><?php echo $rowPekerjaan["kuota"]; ?></td>
+                      <td class="semester"><?php echo $rowPekerjaan["semester"]; ?></td>
                     </tr>
                   <?php
                   $no++;
@@ -384,6 +387,12 @@ include "../process/proses_absenKompen.php";
                 </tbody>
               </table>
               <?php
+              }else{
+                ?>
+                <div class="text-center">
+                  <p class="text-muted">Data Pekerjaan Kosong</p>
+                </div>
+                <?php
               }
               ?>
             </div>
@@ -416,7 +425,7 @@ include "../process/proses_absenKompen.php";
 
               if (mysqli_num_rows($resultRekap) > 0){
               ?>
-              <table class="table table-striped table-bordered text-center">
+              <table class="table table-striped table-bordered text-center itemRekap">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -437,10 +446,10 @@ include "../process/proses_absenKompen.php";
                       <td><?php echo $no; ?></td>
                       <td class="nim"><?php echo $rowRekap["nim"] ?></td>
                       <td class="kelas"><?php echo tampilKelas($con, $rowRekap["id_kelas"]) ?></td>
-                      <td><?php echo kompenSemester($con, $rowRekap["id_mahasiswa"], $rowRekap["id_semester"]) ?></td>
-                      <td><?php echo totalKompen($con, $rowRekap["id_mahasiswa"]) ?></td>
-                      <td><?php echo kompenSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
-                      <td><?php echo kompenBelumSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
+                      <td class="kompenSemester"><?php echo kompenSemester($con, $rowRekap["id_mahasiswa"], $rowRekap["id_semester"]) ?></td>
+                      <td class="totalKompen"><?php echo totalKompen($con, $rowRekap["id_mahasiswa"]) ?></td>
+                      <td class="kompenSelesai"><?php echo kompenSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
+                      <td class="kompenBelumSelesai"><?php echo kompenBelumSelesai($con, $rowRekap["id_mahasiswa"]) ?></td>
                     </tr>
                   <?php
                   $no++;
@@ -449,6 +458,12 @@ include "../process/proses_absenKompen.php";
                 </tbody>
               </table>
               <?php
+              }else{
+                ?>
+                <div class="text-center">
+                  <p class="text-muted">Data Rekap Kompensasi Kosong</p>
+                </div>
+                <?php
               }
               ?>
             </div>

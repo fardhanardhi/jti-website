@@ -5,12 +5,15 @@ $("#txtCariPekerjaan").keyup(function() {
     nip,
     namaDosen,
     namPekerjaan,
+    kuota,
+    semester,
     i,
     txtValueNip,
     txtValueNamaDosen,
     txtValueNamaPekerjaan,
-    tabelPekerjan = document.getElementById("dataPekerjaan"),
-    halamanTidakDitemukan = document.getElementById("pekerjaanTidakDitemukan");
+    txtValueKuota,
+    txtValueSemester,
+    totalInactive;
   input = $("#txtCariPekerjaan");
   filter = $(input)
     .val()
@@ -20,7 +23,9 @@ $("#txtCariPekerjaan").keyup(function() {
     nip = $(itemPekerjan[i]).find(".nip");
     namaDosen = $(itemPekerjan[i]).find(".nama-dosen");
     namPekerjaan = $(itemPekerjan[i]).find(".nama-pekerjaan");
-    if (namaDosen || namPekerjaan || nip) {
+    kuota = $(itemPekerjan[i]).find(".kuota");
+    semester = $(itemPekerjan[i]).find(".semester");
+    if (namaDosen || namPekerjaan || nip || kuota || semester) {
       txtValueNip = $(nip)
         .text()
         .toUpperCase();
@@ -30,18 +35,32 @@ $("#txtCariPekerjaan").keyup(function() {
       txtValueNamaPekerjaan = $(namPekerjaan)
         .text()
         .toUpperCase();
+      txtValueKuota = $(kuota)
+        .text()
+        .toUpperCase();
+      txtValueSemester = $(semester)
+        .text()
+        .toUpperCase();
       if (
         txtValueNamaDosen.indexOf(filter) > -1 ||
         txtValueNamaPekerjaan.indexOf(filter) > -1 ||
-        txtValueNip.indexOf(filter) > -1
+        txtValueNip.indexOf(filter) > -1 ||
+        txtValueKuota.indexOf(filter) > -1 ||
+        txtValueSemester.indexOf(filter) > -1
       ) {
-        tabelPekerjan.style.display = "block";
-        halamanTidakDitemukan.style.display = "none";
+        itemPekerjan[i].style.display = "";
       } else {
-        tabelPekerjan.style.display = "none";
-        halamanTidakDitemukan.style.display = "block";
+        itemPekerjan[i].style.display = "none";
       }
     }
+  }
+
+  totalInactive = $("#dataPekerjaan .itemPekerjaan:hidden");
+
+  if (itemPekerjan.length == totalInactive.length) {
+    document.getElementById("pekerjaanTidakDitemukan").style.display = "block";
+  } else {
+    document.getElementById("pekerjaanTidakDitemukan").style.display = "none";
   }
 });
 
@@ -60,8 +79,7 @@ $("#txtCariKompen").keyup(function() {
     txtValueNamaMhs,
     txtValueProdi,
     txtValueWaktu,
-    tabelKompen = document.getElementById("dataKompen"),
-    halamanTidakDitemukan = document.getElementById("kompenTidakDitemukan");
+    totalInactive;
   input = $("#txtCariKompen");
   filter = $(input)
     .val()
@@ -96,13 +114,18 @@ $("#txtCariKompen").keyup(function() {
         txtValueProdi.indexOf(filter) > -1 ||
         txtValueWaktu.indexOf(filter) > -1
       ) {
-        tabelKompen.style.display = "block";
-        halamanTidakDitemukan.style.display = "none";
+        itemKompen[i].style.display = "";
       } else {
-        tabelKompen.style.display = "none";
-        halamanTidakDitemukan.style.display = "block";
+        itemKompen[i].style.display = "none";
       }
     }
+  }
+  totalInactive = $("#dataKompen .itemKompen:hidden");
+
+  if (itemKompen.length == totalInactive.length) {
+    document.getElementById("kompenTidakDitemukan").style.display = "block";
+  } else {
+    document.getElementById("kompenTidakDitemukan").style.display = "none";
   }
 });
 
@@ -112,11 +135,18 @@ $("#txtCariRekap").keyup(function() {
     itemRekap,
     nim,
     kelas,
+    kompenSemester,
+    totalKompen,
+    kompenSelesai,
+    kompenBelumSelesai,
     i,
     txtValueNim,
     txtValueKelas,
-    tabelRekap = document.getElementById("rekapKompen"),
-    halamanTidakDitemukan = document.getElementById("rekapTidakDitemukan");
+    txtValueKompenSemester,
+    txtValueTotalKompen,
+    txtValuekompenSelesai,
+    txtValueKompenBelumSelesai,
+    totalInactive;
   input = $("#txtCariRekap");
   filter = $(input)
     .val()
@@ -125,24 +155,57 @@ $("#txtCariRekap").keyup(function() {
   for (i = 0; i < itemRekap.length; i++) {
     nim = $(itemRekap[i]).find(".nim");
     kelas = $(itemRekap[i]).find(".kelas");
-    if (kelas || nim) {
+    kompenSemester = $(itemRekap[i]).find(".kompenSemester");
+    totalKompen = $(itemRekap[i]).find(".totalKompen");
+    kompenSelesai = $(itemRekap[i]).find(".kompenSelesai");
+    kompenBelumSelesai = $(itemRekap[i]).find(".kompenBelumSelesai");
+    if (
+      kelas ||
+      nim ||
+      kompenSemester ||
+      totalKompen ||
+      kompenSelesai ||
+      kompenBelumSelesai
+    ) {
       txtValueNim = $(nim)
         .text()
         .toUpperCase();
       txtValueKelas = $(kelas)
         .text()
         .toUpperCase();
+      txtValueKompenSemester = $(kompenSemester)
+        .text()
+        .toUpperCase();
+      txtValueTotalKompen = $(totalKompen)
+        .text()
+        .toUpperCase();
+      txtValuekompenSelesai = $(kompenSelesai)
+        .text()
+        .toUpperCase();
+      txtValueKompenBelumSelesai = $(kompenBelumSelesai)
+        .text()
+        .toUpperCase();
       if (
         txtValueKelas.indexOf(filter) > -1 ||
-        txtValueNim.indexOf(filter) > -1
+        txtValueNim.indexOf(filter) > -1 ||
+        txtValueKompenSemester.indexOf(filter) > -1 ||
+        txtValueTotalKompen.indexOf(filter) > -1 ||
+        txtValuekompenSelesai.indexOf(filter) > -1 ||
+        txtValueKompenBelumSelesai.indexOf(filter) > -1
       ) {
-        tabelRekap.style.display = "block";
-        halamanTidakDitemukan.style.display = "none";
+        itemRekap[i].style.display = "";
       } else {
-        tabelRekap.style.display = "none";
-        halamanTidakDitemukan.style.display = "block";
+        itemRekap[i].style.display = "none";
       }
     }
+  }
+
+  totalInactive = $("#rekapKompen .itemRekap:hidden");
+
+  if (itemRekap.length == totalInactive.length) {
+    document.getElementById("rekapTidakDitemukan").style.display = "block";
+  } else {
+    document.getElementById("rekapTidakDitemukan").style.display = "none";
   }
 });
 
@@ -288,6 +351,36 @@ $("#modalEditKompen").on("change", 'select[name="dosen"]', function() {
     success: function(data) {
       $('select[name="jenisKompensasi"]').prop("disabled", false);
       $('select[name="jenisKompensasi"]').html(data);
+    }
+  });
+});
+
+$("#cariAbsensi").click(function() {
+  var kelas = $("#kelasAbsensi option:selected").val();
+
+  $.ajax({
+    url: "../process/proses_absenKompen.php",
+    method: "post",
+    data: {
+      cariAbsensi: kelas
+    },
+    success: function(data) {
+      $("#absen").html(data);
+    }
+  });
+});
+
+$("#cariTotalAbsensi").click(function() {
+  var kelas = $("#kelasTotalAbsensi option:selected").val();
+
+  $.ajax({
+    url: "../process/proses_absenKompen.php",
+    method: "post",
+    data: {
+      cariTotalAbsensi: kelas
+    },
+    success: function(data) {
+      $("#totalAbsen").html(data);
     }
   });
 });

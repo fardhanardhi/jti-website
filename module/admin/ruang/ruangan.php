@@ -21,14 +21,14 @@ include "../process/proses_adminRuangan.php";
 
     <div class="col-md-6 p-0">
       <div class="m-2 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Pemesanan Ruang</h6>
+        <h6 class="border-bottom border-gray pb-2 mb-0">Riwayat Peminjaman Ruang</h6>
         <div class="pt-3">
           <div class="container-fluid p-0">
             <div class="row">
               <div class="col-md-12">
                 <div class="form-inline">
                   <img src="../img/search.svg" alt="" id="icon-search">
-                  <input type="search" class="form-control" id="txtCariPemesanan" onkeyup="cariPemesanan()" placeholder="Pencarian">
+                  <input type="search" class="form-control" id="txtCariPemesanan" placeholder="Pencarian">
                 </div>
               </div>
             </div>
@@ -110,11 +110,18 @@ include "../process/proses_adminRuangan.php";
               <?php
                 $no++;
                 }
+              }else{
+                ?>
+                <div class='col-md-12 p-2 text-center mt-3'>Data Peminjaman Kosong</div>
+                <?php
               }
               ?>
               <!-- End loop -->
               
             </div>
+            
+            <div class='col-md-12 p-2 text-center mt-3' id='pemesananTidakDitemukan' style="display:none;"><p class='text-muted'>Username, Kelas atau Ruangan tidak dapat ditemukan</p></div>
+
           </div>
         </div>
       </div>

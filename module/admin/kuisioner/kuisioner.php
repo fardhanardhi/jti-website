@@ -93,8 +93,8 @@
             </div>
 
             <div class="col-md-6">
-              <form action="?module=kuisioner" class="p-0 m-0 d-flex justify-content-end" method="post">
-                <select class="form-control form-control-sm w-auto mr-2" name="tahun">
+              <div class="p-0 m-0 d-flex justify-content-end">
+                <select class="form-control form-control-sm w-auto mr-2" name="tahun" id="tahunKuisioner">
                   <option value="0">Pilih Tahun Ajaran</option>
                   <?php
                     $resultTahun=tampilTahun($con);
@@ -107,7 +107,7 @@
                     }
                    ?>
                 </select>
-                <select class="form-control form-control-sm w-auto mr-2" name="semester">
+                <select class="form-control form-control-sm w-auto mr-2" name="semester" id="semesterKuisioner">
                   <option value="0">Pilih Semester</option>
                    <?php
                     $resultSemester=tampilSemester($con);
@@ -120,8 +120,8 @@
                     }
                    ?>
                 </select>
-                <input type="submit" value="Cari" name="cariKuisioner" class="btn btn-success button">
-              </form>
+                <button id="cariKuisioner" class="btn btn-success button">Cari</button>
+              </div>
             </div>
           </div>
 
@@ -135,16 +135,11 @@
           <div class="row mt-3 scrollbar scrollbar-x" style="overflow:auto" id="dataDosenKuisioner">
             <div class="col-md-12 d-flex text-center justify-content-center">
             <?php
-              if(isset($_POST["cariKuisioner"])){
-                $resultKuisioner=kuisioner($con, $_POST["tahun"], $_POST["semester"]);
-              }
-              else{
-                $resultKuisioner=kuisioner($con, date("Y"), 7);
-              }
+              $resultKuisioner=kuisioner($con, date("Y"), 7);
               
               if (mysqli_num_rows($resultKuisioner) > 0){
               ?>
-              <table class="table table-striped table-bordered text-center">
+              <table class="table table-striped table-bordered text-center itemDosenKuisioner">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -187,6 +182,12 @@
                 </tbody>
               </table>
             <?php 
+            }else{
+              ?>
+              <div class="text-center">
+                <p class="text-muted">Data Kuisioner Kosong</p>
+              </div>
+          <?php
             }
             ?>
             </div>
