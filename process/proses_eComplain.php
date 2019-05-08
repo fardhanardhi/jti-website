@@ -209,6 +209,12 @@ if (isset($_GET["tampilRecentChat"])) {
     </div>
   <?php
 }
+?>
+
+<div id='infoTidakDitemukan' class='row pt-5' style='display:none'>
+<div  class='infoTidakDitemukan col text-center text-muted'>Pencarian tidak dapat ditemukan</div>
+</div>
+<?php
 }
 
 if (isset($_GET["tampilChat"])) {
