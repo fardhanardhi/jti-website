@@ -12,16 +12,16 @@ $("#datepickerBatasTanggal").datepicker();
 function checkValidationBeasiswa()
 {
     var notValid = false;
-    if($("#judulBeasiswa").val() == null){
+    if($("#judulBeasiswa").val() == ""){
         notValid = true;
     }
-    if($("#batasTanggal").val() == null){
+    if($("#batasTanggal").val() == ""){
         notValid = true;
     }
-    if($("#isiBeasiswa").val() == null){
+    if($("#isiBeasiswa").val() == ""){
         notValid = true;
 				}
-				if($("#linkBeasiswa").val() == null){
+				if($("#linkBeasiswa").val() == ""){
 								notValid = true;
 				}
     return notValid;
@@ -31,6 +31,6 @@ function Kirim() {
 	if(checkValidationBeasiswa()){	
     $("#validShow").click();
 	}else
-    alert("Form is not valid");
+				$("#realSubmitBeasiswa").click();
 }
 

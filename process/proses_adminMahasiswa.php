@@ -35,14 +35,14 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
 
         // die();
 
-        // $nama_folder = "attachment/img";
-        // $tmp = $_FILES["fileid2"]["tmp_name"];
-        // $nama_file = $_FILES["fileid2"]["name"];
-        // move_uploaded_file($tmp, "../$nama_folder/$nama_file");
+         $nama_folder = "img";
+         $tmp = $_FILES["fileid2"]["tmp_name"];
+         $nama_file = $_FILES["fileid2"]["name"];
+         move_uploaded_file($tmp, "../attachment/$nama_folder/$nama_file");
 
-        // echo($nama_file);
+        //  echo($nama_file);
 
-        // die();
+        //  die();
    
         
 
@@ -60,7 +60,7 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
      alamat,
      jenis_kelamin,
      tempat_lahir,
-    --  foto,
+     foto,
      id_user,
      waktu_edit,
      tanggal_lahir
@@ -75,7 +75,7 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
      '$_POST[alamatMahasiswaAdmin]',
      '$_POST[genderMahasiswaAdmin]',
      '$_POST[tempatlahirMahasiswaAdmin]',
-    --  '$nama_file',
+      '$nama_file',
      (select id_user from tabel_user where username='$_POST[nimMahasiswaAdmin]'),
      curdate(),
      '$_POST[tahunLahirMahasiswa]-$_POST[bulanLahirMahasiswa]-$_POST[tanggalLahirMahasiswa]');";
@@ -205,8 +205,4 @@ function opsiTahun($tanggalLahir){
     }
     return $output;
 }
-  
-
-
-
 ?>

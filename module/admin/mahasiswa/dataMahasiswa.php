@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="col-md-12 p-0">
-                                        <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=tambah" id="formAdminMahasiswa" method="POST">
+                                        <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=tambah" id="formAdminMahasiswa" method="POST" enctype="multipart/form-data">
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -306,34 +306,13 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $query = "SELECT 
-                                            
-                                            tabel_user.username, 
-                                            tabel_user.password,
-                                            tabel_user.id_user, 
+                                            $query = "select tm.id_mahasiswa, tm.id_user, tu.username,tu.password,tm.foto,tm.nim,tm.nama as nama_mahasiswa,tm.tempat_lahir,tm.tanggal_lahir,tm.jenis_kelamin,tm.alamat,tp.nama as nama_prodi,tk.kode_kelas 
+                                            from tabel_mahasiswa tm,tabel_prodi tp,tabel_user tu,tabel_kelas tk
+                                            where tm.id_prodi = tp.id_prodi
+                                            and tm.id_user = tu.id_user
+                                            and tk.id_prodi = tp.id_prodi
+                                            and tm.id_kelas = tk.id_kelas
 
-                                            tabel_mahasiswa.id_mahasiswa,
-                                            tabel_mahasiswa.nim, 
-                                            tabel_mahasiswa.nama as nama_mahasiswa, 
-                                            tabel_mahasiswa.alamat, 
-                                            tabel_mahasiswa.jenis_kelamin, 
-                                            tabel_mahasiswa.tempat_lahir, 
-                                            tabel_mahasiswa.tanggal_lahir, 
-                                            tabel_mahasiswa.foto, 
-
-                                            tabel_prodi.nama as nama_prodi,
-                                            tabel_kelas.kode_kelas 
-                                            
-                                            FROM tabel_user INNER JOIN
-
-                                            tabel_mahasiswa ON 
-                                            tabel_user.username = tabel_mahasiswa.nim
-
-                                            INNER JOIN tabel_prodi ON
-                                            tabel_mahasiswa.id_prodi = tabel_prodi.id_prodi
-
-                                            INNER JOIN tabel_kelas ON
-                                            tabel_mahasiswa.id_kelas = tabel_kelas.id_kelas;
                                             
                                             ";
                         
@@ -351,7 +330,7 @@
                                                         <td><?php echo $index; ?></td>
                                                         <td><?php echo $row["username"]; ?></td>
                                                         <td><?php echo $row["password"]; ?></td>
-                                                        <td><?php echo $row["foto"]; ?></td>
+                                                        <td><img src="../attachment/img/<?php echo $row['foto']?>" width='40'></td>
                                                         <td><?php echo $row["nim"]; ?></td>
                                                         <td><?php echo $row["nama_mahasiswa"]; ?></td>
                                                         <td><?php echo $row["tempat_lahir"]; ?></td>
