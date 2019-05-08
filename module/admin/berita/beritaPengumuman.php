@@ -53,9 +53,11 @@
                                 <hr>
                                 <div class="container m-0">
                                     <div class="row">
-                                        <div class="col-md-1"> <span style="color:grey" id=Bercharcount></span>
+                                        <div class="col"> 
+                                            <span style="color:grey" id=Bercharcount></span>
+                                        
                                         </div>
-                                        <div class="col-md-11 text-right d-flex justify-content-end lampir">
+                                        <div class="col-auto text-right d-flex justify-content-end lampir">
                                                     <label for="file-input">
                                                     <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-placement="top" title="Lampirkan Gambar">
                                                     </label>
@@ -65,7 +67,8 @@
                                                     </label>
                                                     <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none"/>
                                                     <strong><label for="kategori-AdBer" class="labelBerita mt-1 mr-2">Kategori :
-                                                    </label></strong> 
+                                                    </label>
+                                                    </strong> 
                                                     <select name="" id="" class="mr-3 pilihKategoriBerita">
                                                         <option value="ridwan">Berita</option>
                                                         <option value="rudy">Pengumuman</option>
