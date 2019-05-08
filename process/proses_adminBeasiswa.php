@@ -8,7 +8,8 @@ function tampilBeasiswa($con)
     return $resultTampilBeasiswa;
 }
 
-if(isset($_POST["submitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_POST["hapusBeasiswa"])){
+if(isset($_POST["realSubmitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_POST["hapusBeasiswa"])){
+
     if($_GET["module"]=="beasiswa" && $_GET["act"]=="tambah"){
       $dateNow = date("Y-m-d H:i:s");
       $batasTanggal = date('Y-m-d', strtotime($_POST[batasTanggal]));

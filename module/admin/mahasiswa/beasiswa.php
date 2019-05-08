@@ -41,7 +41,7 @@ include "../process/proses_adminBeasiswa.php";
                                     </div>
                                     <div class="col-md-2">
                                       <div class="input-group date " id="datepickerBatasTanggal">
-                                          <input type="text" class="form-control" placeholder="Batas Tanggal" name="batasTanggal">
+                                          <input type="text" id="batasTanggal" class="form-control" placeholder="Batas Tanggal" name="batasTanggal">
                                           <div class="input-group-addon">
                                               <span>
                                                   <i class="far fa-calendar-alt"></i>
@@ -70,7 +70,7 @@ include "../process/proses_adminBeasiswa.php";
                                     <div class="col-md-1">
                                         <div class="form-group">
                                             <button type="button" value="buttonValue" class="submitBeasiswa form-control btn btn-success" onclick="Kirim()">Kirim</button>
-                                            <input id="submitBeasiswa" class="submitBeasiswa form-control btn btn-success" type="submit" value="Kirim" name="submitBeasiswa" hidden>
+                                            <input id="realSubmitBeasiswa" class="realSubmitBeasiswa form-control btn btn-success" type="submit" value="Kirim" name="realSubmitBeasiswa" hidden>
                                         </div>
                                     </div>
 
