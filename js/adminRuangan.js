@@ -88,7 +88,7 @@ function cariPemesanan() {
   }
 }
 
-function cariRuangan() {
+$("#txtCariRuangan").keyup(function() {
   var input,
     filter,
     itemRuangan,
@@ -98,13 +98,14 @@ function cariRuangan() {
     txtValueKode,
     txtValueLantai,
     totalInactive;
+
   input = $("#txtCariRuangan");
 
   filter = $(input)
     .val()
     .toUpperCase();
   itemRuangan = $("#ruangan2 .itemRuangan");
-  totalInactive = $("#ruangan2 .itemRuangan:hidden");
+
   for (i = 0; i < itemRuangan.length; i++) {
     kode = $(itemRuangan[i]).find(".kode");
     lantai = $(itemRuangan[i]).find(".lantaiRuangan");
@@ -119,23 +120,21 @@ function cariRuangan() {
         txtValueKode.indexOf(filter) > -1 ||
         txtValueLantai.indexOf(filter) > -1
       ) {
-        itemRuangan[i].style.display = "";
+        itemRuangan[i].style.display = "block";
       } else {
         itemRuangan[i].style.display = "none";
       }
     }
   }
-  $("#ruanganTidakDitemukan").hide();
-  $("#ruanganTidakDitemukan").remove();
 
-  if (itemRuangan.length === totalInactive.length) {
-    if (!$("#ruanganTidakDitemukan").length) {
-      $("#ruangan2").append(
-        "<div class='col-md-12 p-2 text-center' id='ruanganTidakDitemukan'><p class='text-muted'>Ruangan tidak dapat ditemukan</p></div> "
-      );
-    }
+  totalInactive = $("#ruangan2 .itemRuangan:hidden");
+
+  if (itemRuangan.length == totalInactive.length) {
+    document.getElementById("ruanganTidakDitemukan").style.display = "block";
+  } else {
+    document.getElementById("ruanganTidakDitemukan").style.display = "none";
   }
-}
+});
 
 $(".hapus-ruang").click(function() {
   var id_ruang = $(this).attr("id");
@@ -145,11 +144,4 @@ $(".hapus-ruang").click(function() {
 $(".checkout-ruang-admin").click(function() {
   var id_info_kelas_kosong = $(this).attr("id");
   $("#id_info_kelas_kosong_checkoutAdmin").val(id_info_kelas_kosong);
-});
-
-$(document).ready(function() {
-  setInterval(function() {
-    cariRuangan();
-    cariPemesanan();
-  }, 200);
 });

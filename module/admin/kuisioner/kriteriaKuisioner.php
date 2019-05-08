@@ -34,8 +34,8 @@
             </div>
           </div>
 
-          <div class="row mt-3">
-            <div class="col-md-10 offset-1 p-0 pr-3 d-flex justify-content-center scrollbar" id="dataKriteria">
+          <div class="row mt-3 scrollbar scrollbar-x" style="overflow:auto" id="dataKriteria">
+            <div class="col-md-10 offset-1 p-0 pr-3 d-flex justify-content-center">
             <?php
               $resultKriteria=kriteria($con);
               
@@ -73,19 +73,17 @@
                 </tbody>
               </table>
               <?php
-              } else{
-                ?>
-                <div class="text-center">
-                  <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                  <p class="text-muted">Kriteria Tidak Ditemukan</p>
-                </div>
-              <?php
-              }
+              } 
               ?>
 
             </div>
           </div>
           
+          <div class="text-center" id="kriteriaTidakDitemukan" style="display:none">
+            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+            <p class="text-muted">Kriteria Tidak Ditemukan</p>
+          </div>
+
           <div class="row">
             <div class="col-md-10 offset-1 mt-3 text-center">
               <button type="button" class="btn btn-outline-secondary btn-tambah" data-toggle="modal" data-target="#modalTambahKriteria">Tambah Kriteria</button>

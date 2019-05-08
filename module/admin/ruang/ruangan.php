@@ -115,7 +115,6 @@ include "../process/proses_adminRuangan.php";
               <!-- End loop -->
               
             </div>
-
           </div>
         </div>
       </div>
@@ -351,7 +350,7 @@ include "../process/proses_adminRuangan.php";
             <div class="row">
               <div class="col-md-3 p-0 m-0 d-flex">
                 <small class="my-auto"><img src="../img/search.svg" alt="" id="icon-search"></small>
-                <input type="search" class="pencarian form-control" id="txtCariRuangan" onkeyup="cariRuangan()">
+                <input type="search" class="pencarian form-control" id="txtCariRuangan">
               </div>
             </div>
 
@@ -386,9 +385,16 @@ include "../process/proses_adminRuangan.php";
                 </div>
               </div>
             <?php }
+              }else{
+                ?>
+                <div class='col-md-12 p-2 text-center'><p class='text-muted'>Data Ruang Kosong</p></div>
+                <?php
               }
                 ?>            
             </div>
+            
+            <div class='col-md-12 p-2 text-center' id='ruanganTidakDitemukan' style="display:none;"><p class='text-muted'>Ruangan tidak dapat ditemukan</p></div>
+
           </div>
         </div>
       </div>

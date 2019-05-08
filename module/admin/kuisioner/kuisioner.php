@@ -132,8 +132,8 @@
             </div>
           </div>
 
-          <div class="row mt-3">
-            <div class="col-md-12 d-flex text-center justify-content-center" id="dataDosenKuisioner">
+          <div class="row mt-3 scrollbar scrollbar-x" style="overflow:auto" id="dataDosenKuisioner">
+            <div class="col-md-12 d-flex text-center justify-content-center">
             <?php
               if(isset($_POST["cariKuisioner"])){
                 $resultKuisioner=kuisioner($con, $_POST["tahun"], $_POST["semester"]);
@@ -177,7 +177,7 @@
                             ?>
                         </td>
                         <td>
-                          <button type="button" id="<?php echo $row["id_dosen"];?>" class="btn btn-primary lihat-detail" data-toggle="modal" data-target="#modalLihatHasil">Lihat Hasil</button>
+                          <button type="button" id="<?php echo $row["id_dosen"];?>" class="btn btn-primary lihat-detail text-nowrap" data-toggle="modal" data-target="#modalLihatHasil">Lihat Hasil</button>
                         </td>
                       </tr>
                     <?php
@@ -187,18 +187,17 @@
                 </tbody>
               </table>
             <?php 
-            }else{
-              ?>
-              <div class="text-center">
-                <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                <p class="text-muted">Dosen Tidak Ditemukan</p>
-              </div>
-              <?php
             }
             ?>
             </div>
           </div>
-        </div>
+          
+          <div class="text-center" id="kuisionerTidakDitemukan" style="display:none">
+            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+            <p class="text-muted">Dosen Tidak Ditemukan</p>
+          </div>
+
+        </div>          
       </div>
     </div>
 
