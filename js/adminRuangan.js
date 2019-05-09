@@ -139,6 +139,6 @@ $(".hapus-ruang").click(function() {
 });
 
 $(".checkout-ruang-admin").click(function() {
-  var id_info_kelas_kosong = $(this).attr("id");
-  $("#id_info_kelas_kosong_checkoutAdmin").val(id_info_kelas_kosong);
+  var id_ruang_dipinjam = $(this).attr("id");
+  $("#id_ruang_dipinjam").val(id_ruang_dipinjam);
 });
