@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 03, 2019 at 06:23 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.1.21
+-- Host: 127.0.0.1
+-- Generation Time: May 09, 2019 at 06:29 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -251,34 +251,6 @@ INSERT INTO `tabel_info_beasiswa` (`id_beasiswa`, `judul`, `isi`, `link`, `waktu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tabel_info_kelas_kosong`
---
-
-CREATE TABLE `tabel_info_kelas_kosong` (
-  `id_info_kelas_kosong` int(30) NOT NULL,
-  `id_ruang` int(30) NOT NULL,
-  `peminjam` int(30) DEFAULT NULL,
-  `hari` varchar(30) NOT NULL,
-  `jumlah_jam` int(30) NOT NULL,
-  `status_dipinjam` enum('kosong','dipinjam') NOT NULL,
-  `waktu_mulai` time NOT NULL,
-  `waktu_selesai` time NOT NULL,
-  `waktu_pinjam` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tabel_info_kelas_kosong`
---
-
-INSERT INTO `tabel_info_kelas_kosong` (`id_info_kelas_kosong`, `id_ruang`, `peminjam`, `hari`, `jumlah_jam`, `status_dipinjam`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`) VALUES
-(1, 6, 3, 'senin', 4, 'dipinjam', '08:00:00', '12:00:00', '2019-04-10 07:00:00'),
-(2, 3, 27, 'jumat', 2, 'dipinjam', '10:00:00', '13:00:00', '2019-04-10 09:00:00'),
-(3, 1, 33, 'kamis', 4, 'dipinjam', '09:00:00', '13:00:00', '2019-04-10 07:00:00'),
-(4, 2, 21, 'selasa', 2, 'dipinjam', '08:00:00', '11:00:00', '2019-04-10 07:00:00');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tabel_jadwal`
 --
 
@@ -300,11 +272,11 @@ CREATE TABLE `tabel_jadwal` (
 --
 
 INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_ruang`, `id_kelas`, `id_semester`, `id_dosen`, `id_matkul`, `hari`, `jam_mulai`, `jam_selesai`, `waktu_edit`) VALUES
-(5, 1, 4, 7, 8, 1, 'Senin', '07:00:00', '10:30:00', '2019-04-09 00:00:00'),
-(6, 2, 4, 7, 6, 2, 'Senin', '12:50:00', '18:00:00', '2019-04-09 00:00:00'),
-(7, 4, 4, 7, 5, 3, 'Rabu', '07:00:00', '11:20:00', '2019-04-09 00:00:00'),
-(8, 2, 4, 7, 5, 4, 'Kamis', '12:50:00', '15:20:00', '2019-04-09 00:00:00'),
-(9, 5, 4, 7, 7, 6, 'Jumat', '07:50:00', '11:20:00', '2019-04-09 00:00:00');
+(5, 1, 4, 7, 8, 1, 'senin', '07:00:00', '10:30:00', '2019-04-09 00:00:00'),
+(6, 2, 4, 7, 6, 2, 'senin', '12:50:00', '18:00:00', '2019-04-09 00:00:00'),
+(7, 4, 4, 7, 5, 3, 'kamis', '07:00:00', '11:20:00', '2019-04-09 00:00:00'),
+(8, 2, 4, 7, 5, 4, 'kamis', '12:50:00', '15:20:00', '2019-04-09 00:00:00'),
+(9, 5, 4, 7, 7, 6, 'jumat', '07:50:00', '11:20:00', '2019-04-09 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -668,6 +640,30 @@ INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `isi`, `id_komentar`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+
+CREATE TABLE `tabel_riwayat_peminjam_kelas_kosong` (
+  `id_riwayat_peminjam_kelas_kosong` int(30) NOT NULL,
+  `id_ruang` int(30) NOT NULL,
+  `peminjam` int(30) DEFAULT NULL,
+  `hari` varchar(30) NOT NULL,
+  `waktu_mulai` time NOT NULL,
+  `waktu_selesai` time NOT NULL,
+  `waktu_pinjam` datetime NOT NULL,
+  `waktu_checkout` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+
+INSERT INTO `tabel_riwayat_peminjam_kelas_kosong` (`id_riwayat_peminjam_kelas_kosong`, `id_ruang`, `peminjam`, `hari`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`, `waktu_checkout`) VALUES
+(1, 1, 32, 'selasa', '07:50:00', '18:00:00', '2019-05-09 22:29:16', '2019-05-09 22:37:36');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tabel_ruang`
 --
 
@@ -688,6 +684,29 @@ INSERT INTO `tabel_ruang` (`id_ruang`, `kode`, `lantai`) VALUES
 (4, 'LPJ03', 7),
 (5, 'LSI1', 6),
 (6, 'LID01', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_ruang_dipinjam`
+--
+
+CREATE TABLE `tabel_ruang_dipinjam` (
+  `id_ruang_dipinjam` int(30) NOT NULL,
+  `id_ruang` int(30) NOT NULL,
+  `peminjam` int(30) DEFAULT NULL,
+  `hari` varchar(30) NOT NULL,
+  `waktu_mulai` time NOT NULL,
+  `waktu_selesai` time NOT NULL,
+  `waktu_pinjam` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_ruang_dipinjam`
+--
+
+INSERT INTO `tabel_ruang_dipinjam` (`id_ruang_dipinjam`, `id_ruang`, `peminjam`, `hari`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`) VALUES
+(1, 2, 32, 'senin', '07:00:00', '12:50:00', '2019-05-09 22:25:33');
 
 -- --------------------------------------------------------
 
@@ -864,14 +883,6 @@ ALTER TABLE `tabel_info_beasiswa`
   ADD PRIMARY KEY (`id_beasiswa`);
 
 --
--- Indexes for table `tabel_info_kelas_kosong`
---
-ALTER TABLE `tabel_info_kelas_kosong`
-  ADD PRIMARY KEY (`id_info_kelas_kosong`),
-  ADD KEY `peminjam` (`peminjam`),
-  ADD KEY `id_ruang` (`id_ruang`);
-
---
 -- Indexes for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
@@ -976,10 +987,26 @@ ALTER TABLE `tabel_reply_komentar`
   ADD KEY `id_komentar` (`id_komentar`);
 
 --
+-- Indexes for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
+  ADD PRIMARY KEY (`id_riwayat_peminjam_kelas_kosong`),
+  ADD KEY `id_ruang` (`id_ruang`),
+  ADD KEY `peminjam` (`peminjam`);
+
+--
 -- Indexes for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   ADD PRIMARY KEY (`id_ruang`);
+
+--
+-- Indexes for table `tabel_ruang_dipinjam`
+--
+ALTER TABLE `tabel_ruang_dipinjam`
+  ADD PRIMARY KEY (`id_ruang_dipinjam`),
+  ADD KEY `peminjam` (`peminjam`),
+  ADD KEY `id_ruang` (`id_ruang`);
 
 --
 -- Indexes for table `tabel_semester`
@@ -1052,16 +1079,10 @@ ALTER TABLE `tabel_info_beasiswa`
   MODIFY `id_beasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tabel_info_kelas_kosong`
---
-ALTER TABLE `tabel_info_kelas_kosong`
-  MODIFY `id_info_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
-  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
@@ -1130,10 +1151,22 @@ ALTER TABLE `tabel_reply_komentar`
   MODIFY `id_reply_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
+  MODIFY `id_riwayat_peminjam_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   MODIFY `id_ruang` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `tabel_ruang_dipinjam`
+--
+ALTER TABLE `tabel_ruang_dipinjam`
+  MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tabel_semester`
@@ -1197,13 +1230,6 @@ ALTER TABLE `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_info`
   ADD CONSTRAINT `tabel_info_ibfk_1` FOREIGN KEY (`id_attachment`) REFERENCES `tabel_attachment` (`id_attachment`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Constraints for table `tabel_info_kelas_kosong`
---
-ALTER TABLE `tabel_info_kelas_kosong`
-  ADD CONSTRAINT `tabel_info_kelas_kosong_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tabel_info_kelas_kosong_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_jadwal`
@@ -1281,6 +1307,20 @@ ALTER TABLE `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_reply_komentar`
   ADD CONSTRAINT `tabel_reply_komentar_ibfk_1` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
+  ADD CONSTRAINT `tabel_riwayat_peminjam_kelas_kosong_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tabel_riwayat_peminjam_kelas_kosong_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tabel_ruang_dipinjam`
+--
+ALTER TABLE `tabel_ruang_dipinjam`
+  ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
