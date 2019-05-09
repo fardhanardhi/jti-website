@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../config/connection.php";
+include "../process/proses_modalPengaturan.php";
 
 $level = $_SESSION['level'];
 $idUser = $_SESSION['id'];
@@ -378,8 +379,10 @@ if ($level != 'admin') {
                 <br>
                 <center><?php echo ($namaUser); ?></center>
                 <br>
-                <form class="px-2" action="" id="formModalPengaturan2" method="POST">
+                <form class="px-2" action="../process/proses_modalPengaturan.php?module=modalPengaturan&act=edit" id="formModalPengaturan2" method="POST" enctype="multipart/form-data">
                   <div class="form-group row">
+                    <input type="hidden" name="id_usernya" id="id_usernya" value="<?php echo $idUser?>">
+                    <input type="hidden" name="id_levelnya" id="id_levelnya" value="<?php echo $level?>">
                     <label class="col-md-3" for="foto">Ganti Foto</label>
                     <div class="input-group col-md-9">
                       <label for="foto" class="file form-control text-secondary" id="label-file">
@@ -421,12 +424,13 @@ if ($level != 'admin') {
                     <div id="fotoType" class="text-danger"></div>
                     <div id="konfirmasipasswordSalah" class="text-danger"></div>
                   </div>
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-9">
+                      <button type="submit" class="btn btn-success" name="update" onclick="Coba(); showFilesSize(); checkFoto();">Simpan</button>
+                  </div>
                 </form>
               </div>
             </div>
-          </div>
-          <div class="align-self-end p-4">
-            <button type="submit" class="btn btn-success" onclick="Coba(); showFilesSize(); checkFoto();">Simpan</button>
           </div>
         </div>
       </div>
