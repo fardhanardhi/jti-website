@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2019 at 06:29 PM
+-- Generation Time: May 09, 2019 at 07:02 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -272,11 +272,11 @@ CREATE TABLE `tabel_jadwal` (
 --
 
 INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_ruang`, `id_kelas`, `id_semester`, `id_dosen`, `id_matkul`, `hari`, `jam_mulai`, `jam_selesai`, `waktu_edit`) VALUES
-(5, 1, 4, 7, 8, 1, 'senin', '07:00:00', '10:30:00', '2019-04-09 00:00:00'),
-(6, 2, 4, 7, 6, 2, 'senin', '12:50:00', '18:00:00', '2019-04-09 00:00:00'),
-(7, 4, 4, 7, 5, 3, 'kamis', '07:00:00', '11:20:00', '2019-04-09 00:00:00'),
-(8, 2, 4, 7, 5, 4, 'kamis', '12:50:00', '15:20:00', '2019-04-09 00:00:00'),
-(9, 5, 4, 7, 7, 6, 'jumat', '07:50:00', '11:20:00', '2019-04-09 00:00:00');
+(5, 1, 4, 7, 8, 1, 'Senin', '07:00:00', '10:30:00', '2019-04-09 00:00:00'),
+(6, 2, 4, 7, 6, 2, 'Senin', '12:50:00', '18:00:00', '2019-04-09 00:00:00'),
+(7, 4, 4, 7, 5, 3, 'Rabu', '07:00:00', '11:20:00', '2019-04-09 00:00:00'),
+(8, 2, 4, 7, 5, 4, 'Kamis', '12:50:00', '15:20:00', '2019-04-09 00:00:00'),
+(9, 5, 4, 7, 7, 6, 'Jumat', '07:50:00', '11:20:00', '2019-04-09 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1082,7 +1082,7 @@ ALTER TABLE `tabel_info_beasiswa`
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
-  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
