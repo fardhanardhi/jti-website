@@ -68,7 +68,7 @@ function jamSelesaiKelasKosong($con, $jam, $hari, $id_ruang){
 }
 
 function cekRuangDipinjam($con, $jamMulai, $jamSelesai, $hari, $id_ruang){
-  $cekRuangDipinjam="select * from tabel_ruang_dipinjam where waktu_mulai='$jamMulai' and waktu_selesai='$jamSelesai' and id_ruang='$id_ruang'";
+  $cekRuangDipinjam="select * from tabel_ruang_dipinjam where waktu_mulai='$jamMulai' and waktu_selesai='$jamSelesai' and id_ruang='$id_ruang' and hari='$hari'";
   $resultCekRuangDipinjam = mysqli_query($con, $cekRuangDipinjam);
   if(mysqli_num_rows($resultCekRuangDipinjam)>0){
     return true;
@@ -289,7 +289,6 @@ if(isset($_POST["autoCheckout"])) {
       // menghapus data di tabel_ruang_dipinjam
       mysqli_query($con, "delete from tabel_ruang_dipinjam where id_ruang_dipinjam='$id_ruang_dipinjam'");
     }
-    echo 'success';
   }
 }
 
@@ -318,7 +317,7 @@ if(isset($_POST["reloadPemesanan"])){
             <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
             <?php
           }else{
-            if($rowUser["foto"]==NULL){
+            if($rowUser["foto"]=="NULL"){
               ?>
               <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
               <?php
@@ -394,7 +393,7 @@ if(isset($_POST["reloadPemesanan"])){
               <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
               <?php
             }else{
-              if($rowRiwayatUser["foto"]==NULL){
+              if($rowRiwayatUser["foto"]=="NULL"){
                 ?>
                 <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                 <?php
