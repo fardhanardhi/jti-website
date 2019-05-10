@@ -81,11 +81,11 @@ include "../process/proses_adminBeasiswa.php";
                     </div>
                     
                     <div class="cari mt-2">
-                        <form class="form-inline">
+                        <div class="form-inline">
                             <i class="fas fa-search mr-2"></i>
                             <div class="col-2">
-                                <div class="input-group date " id="datepicker">
-                                    <input type="text" class="form-control" value="12-02-2012">
+                                <div class="input-group date " id="datepickerCari">
+                                    <input type="text" class="form-control"  id="tanggalBeasiswa" placeholder="<?= date("d-m-Y") ?>">
                                     <div class="input-group-addon">
                                         <span>
                                             <i class="far fa-calendar-alt"></i>
@@ -93,47 +93,54 @@ include "../process/proses_adminBeasiswa.php";
                                     </div>
                                 </div>
                             </div>
-                                <button class="btn btn-success cari-btn" type="submit">Cari</button>
-                        </form>
+                                <button class="btn btn-success cari-btn" id="adminCariBeasiswa">Cari</button>
+                        </div>
                     </div>
 
                
-                    <div class="scrolltable">
+                    <div class="scrolltable" id="tabelBeasiswa">
+                    <?php
+                      $resultTampilBeasiswa=tampilBeasiswa($con);
+                      $index=1;
+                      if (mysqli_num_rows($resultTampilBeasiswa) > 0){
+                        ?>
                         <table class="table table-striped table-bordered">
                             <thead class="text-center">
                                 <tr>
                                     <th>No</th>
                                     <th>Beasiswa</th>
                                     <th>Tanggal Pembuatan</th>
-                                    <th>Tanggal Perubahan</th>
                                     <th>Batas Tanggal</th>
-                                    <th colspan="2">Proses</th>
+                                    <th>Proses</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center m-auto">
                                   <?php
-                                  $resultTampilBeasiswa=tampilBeasiswa($con);
-                                  $index=1;
-                              if (mysqli_num_rows($resultTampilBeasiswa) > 0){
                                 while ($row = mysqli_fetch_assoc($resultTampilBeasiswa)) {
                                     ?>
                                   <tr>
                                       <td><?= $index?></td>
                                       <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview<?= $index?>"><?= $row["judul"]?></td>
-                                      <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_publish"]))?></td>
-                                      <td style="width:15em;">25 Februari 2019</td>
-                                      <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_berakhir"]));?></td>
-                                      <td><button class="btn btn-primary beasiswa-edit-btn">Edit</button></td>
+                                      <td style="width:15em;"><?= tampilTanggal($row["waktu_publish"])?></td>
+                                      <td style="width:15em;"><?= tampilTanggal($row["waktu_berakhir"]);?></td>
                                       <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus<?= $index?>">Hapus</button></td>
                                   </tr>
                                     <?php
                                 $index++;
                                 }
-                              }
                                     ?>
 																	                                
                             </tbody>
                         </table>
+                        <?php
+                        }else{
+                          ?>
+                          <div class="text-center">
+                            <p class="text-muted">Data beasiswa kosong</p>
+                          </div>
+                          <?php
+                        }
+                        ?>
                     </div>
 
                 </div>

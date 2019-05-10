@@ -21,13 +21,12 @@ $("#txtCariJadwalKuliah").keyup(function () {
     txtValueSemester,
     txtValueJumlahMatkul,
     txtValueJumlahSks,
-    halamanTidakDitemukan = document.getElementById("tidakDitemukan"),
-    tabelJadwalKuliah = document.getElementById("dataJadwalKuliah");
-  input = $("#txtCariJadwalKuliah");
+    totalInactive,
+    input = $("#txtCariJadwalKuliah");
   filter = $(input)
     .val()
     .toUpperCase();
-  
+
   itemJadwalKuliah = $("#dataJadwalKuliah .itemJadwalKuliah");
   for (i = 0; i < itemJadwalKuliah.length; i++) {
     kelas = $(itemJadwalKuliah[i]).find(".kelas");
@@ -58,13 +57,19 @@ $("#txtCariJadwalKuliah").keyup(function () {
         txtValueJumlahMatkul.indexOf(filter) > -1 ||
         txtValueJumlahSks.indexOf(filter) > -1
       ) {
-        tabelJadwalKuliah.style.display = "block";
-        halamanTidakDitemukan.style.display = "none";
+        itemJadwalKuliah[i].style.display = "";
       } else {
-        tabelJadwalKuliah.style.display = "none";
-        halamanTidakDitemukan.style.display = "block";
+        itemJadwalKuliah[i].style.display = "none";
       }
     }
+  }
+
+  totalInactive = $("#dataJadwalKuliah .itemJadwalKuliah:hidden");
+
+  if (itemJadwalKuliah.length == totalInactive.length) {
+    document.getElementById("tidakDitemukan").style.display = "block";
+  } else {
+    document.getElementById("tidakDitemukan").style.display = "none";
   }
 });
 
@@ -82,6 +87,26 @@ $(".tampil-detail").click(function () {
     success: function (data) {
       $("#detail-jadwalKuliah").html(data);
       $("#modalPreview").modal("show");
+    }
+  });
+});
+
+$(".edit-jadwal-kuliah").click(function () {
+  var id_kelas = $(this).attr("data-kelas");
+  var id_semester = $(this).attr("data-semester");
+
+  $.ajax({
+    url: "../process/proses_adminJadwalKuliah.php",
+    method: "post",
+    data: {
+      editJadwal_kelas: id_kelas,
+      editJadwal_semester: id_semester
+    },
+    success: function (data) {
+      $("#id_kelasEdit").val(id_kelas);
+      $("#id_semesterEdit").val(id_semester);
+      $("#edit-jadwalKuliah").html(data);
+      $("#modalEdit").modal("show");
     }
   });
 });

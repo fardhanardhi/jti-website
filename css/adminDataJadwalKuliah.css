@@ -34,12 +34,17 @@
   padding-bottom: 2em;
 }
 
-#dataJadwalKuliah .table-striped > thead > tr > th {
+#dataJadwalKuliah .table-striped>thead>tr>th {
   padding: 0.4em;
   padding-left: 0.7em;
   padding-right: 0.7em;
 }
-#dataJadwalKuliah .table-striped > tbody > tr > td {
+
+#dataJadwalKuliah .table-striped>tbody>tr>td {
   font-size: 1em;
   padding: 0.3em;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

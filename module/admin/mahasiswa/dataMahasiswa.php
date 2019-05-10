@@ -269,7 +269,7 @@
                                                         <div class="row">
                                                             <div class="col-sm-9"></div>
                                                             <div class="col-sm-3">
-                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="ValidasiTambah(); showFilesSizesTambah();">Tambahkan</button>
+                                                                <button type="submit" class="btn btn-kumpulkan btn-success tmbl-kumpulkan ml-2" name="insert" onclick="ValidasiTambah(); preventDefaultAction(event);">Tambahkan</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -306,7 +306,7 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $query = "select tm.id_mahasiswa, tm.id_user, tu.username,tu.password,tm.foto,tm.nim,tm.nama as nama_mahasiswa,tm.tempat_lahir,tm.tanggal_lahir,tm.jenis_kelamin,tm.alamat,tp.nama as nama_prodi,tk.kode_kelas 
+                                            $query = "select tp.kode, tk.tingkat, tm.id_mahasiswa, tm.id_user, tu.username,tu.password,tm.foto,tm.nim,tm.nama as nama_mahasiswa,tm.tempat_lahir,tm.tanggal_lahir,tm.jenis_kelamin,tm.alamat,tp.nama as nama_prodi,tk.kode_kelas 
                                             from tabel_mahasiswa tm,tabel_prodi tp,tabel_user tu,tabel_kelas tk
                                             where tm.id_prodi = tp.id_prodi
                                             and tm.id_user = tu.id_user
@@ -328,8 +328,8 @@
                                                     <tr class="itemDataMahasiswa">
                                                         <td><?php echo $index; ?></td>
                                                         <td class="usernameMahasiswa"><?php echo $row["username"]; ?></td>
-                                                        <td class="passwordMahasiswa"><?php echo $row["password"]; ?></td>
-                                                        <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo $row['foto']?>" width='40'></td>
+                                                        <td class="passwordMahasiswa">**********</td>
+                                                        <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo $row['foto']?>" style="width:50px;height:50px;border-radius:50%;"></td>
                                                         <td class="nimMahasiswa"><?php echo $row["nim"]; ?></td>
                                                         <td class="namaMahasiswa"><?php echo $row["nama_mahasiswa"]; ?></td>
                                                         <td class="tempatLahirMahasiswa"><?php echo $row["tempat_lahir"]; ?></td>
@@ -337,7 +337,7 @@
                                                         <td class="jenisKelaminMahasiswa"><?php echo $row["jenis_kelamin"]; ?></td>
                                                         <td class="alamatMahasiswa"><?php echo $row["alamat"]; ?></td>
                                                         <td class="namaProdiMahasiswa"><?php echo $row["nama_prodi"];?></td>
-                                                        <td class="kodeKelasMahasiswa"><?php echo $row["kode_kelas"];?></td>
+                                                        <td class="kodeKelasMahasiswa"><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?></td>
 
                                                         <td>
                                                         <a id_userEdit="<?php echo $row["id_user"]; ?>"
@@ -603,7 +603,7 @@
                                                 <div class="col-sm-3">
                                                     <button type="submit" class="btn btn-tambahkan btn-success tmbl-tambahkan" name="editMahasiswa"
                                                         onclick="validasi2(); 
-                                                                    showFilesSizes2();">Simpan</button>
+                                                                    preventDefaultAction2(event);">Simpan</button>
                                                 </div>
                                             </div>
                                         </div>

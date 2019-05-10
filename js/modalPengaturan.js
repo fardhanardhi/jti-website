@@ -23,14 +23,163 @@ function Coba() {
     ) {
       document.getElementById("Blank").innerHTML = "";
   
-      if (konfirmasiPassword != passwordBaru) {
-        document.getElementById("konfirmasipasswordSalah").innerHTML =
-          "* Konfirmasi password tidak sesuai";
-      } else if (konfirmasiPassword == passwordBaru) {
-        document.getElementById("konfirmasipasswordSalah").innerHTML = "";
-      }
+     
     }
   }
+
+   // if (konfirmasiPassword != passwordBaru) {
+      //   document.getElementById("konfirmasipasswordSalah").innerHTML =
+      //     "* Konfirmasi password tidak sesuai";
+      // } else if (konfirmasiPassword == passwordBaru) {
+      //   document.getElementById("konfirmasipasswordSalah").innerHTML = "";
+      // }
+
+        // function showFilesSize() {
+  //   var input, file;
+  
+  //   input = document.getElementById("foto");
+  
+  //   file = input.files[0];
+  
+  //   if (file.size > 1000000) {
+  //     document.getElementById("fotoSize").innerHTML = "* Ukuran melebihi 1 MB";
+  //   } else if (file.size < 1000000) {
+  //     document.getElementById("fotoSize").innerHTML = "";
+  //   }
+  // }
+
+  function showFilesSize(event){
+
+    var masukan, fail;
+    masukan = document.getElementById("foto");
+
+    fail = masukan.files[0];
+
+    var passwordBaru2 = document.getElementById("passwordBaru").value;
+    var konfirmasiPassword2 = document.getElementById("konfirmasiPassword").value;    
+    var passwordLama2 = document.getElementById("passwordLama").value;
+    var passwordLamaKonfirmasi = document.getElementById("passwordModal").value;
+
+    if (konfirmasiPassword2 == passwordBaru2 && fail.size < 1000000 && passwordLama2 == passwordLamaKonfirmasi){
+      document.getElementById("konfirmasipasswordSalah").innerHTML = "";
+      document.getElementById("fotoSize").innerHTML = "";
+      document.getElementById("konfirmasipasswordLamaSalah").innerHTML = "";
+      
+    }
+
+    else if (konfirmasiPassword2 != passwordBaru2 && fail.size < 1000000 && passwordLama2 == passwordLamaKonfirmasi){
+      document.getElementById("konfirmasipasswordSalah").innerHTML = "* Konfirmasi password tidak sesuai";
+      document.getElementById("fotoSize").innerHTML = "";
+      document.getElementById("konfirmasipasswordLamaSalah").innerHTML = "";
+      
+      event = event || window.event;
+
+      if(event.preventDefault){
+          event.preventDefault();
+      }
+      else{
+          event.returnValue = false;
+      }
+     
+    }
+
+    else if (konfirmasiPassword2 == passwordBaru2 && fail.size > 1000000 && passwordLama2 == passwordLamaKonfirmasi){
+      document.getElementById("konfirmasipasswordSalah").innerHTML = "";
+      document.getElementById("fotoSize").innerHTML = "* Ukuran foto melebihi 1 MB";
+      document.getElementById("konfirmasipasswordLamaSalah").innerHTML = "";
+      
+      event = event || window.event;
+
+      if(event.preventDefault){
+          event.preventDefault();
+      }
+      else{
+          event.returnValue = false;
+      }
+     
+    }
+
+    else if (konfirmasiPassword2 == passwordBaru2 && fail.size < 1000000 && passwordLama2 != passwordLamaKonfirmasi){
+      document.getElementById("konfirmasipasswordSalah").innerHTML = "";
+      document.getElementById("fotoSize").innerHTML = "";
+      document.getElementById("konfirmasipasswordLamaSalah").innerHTML = "* Password lama tidak sesuai";
+      
+      event = event || window.event;
+
+      if(event.preventDefault){
+          event.preventDefault();
+      }
+      else{
+          event.returnValue = false;
+      }
+     
+    }
+
+    else if (konfirmasiPassword2 != passwordBaru2 && fail.size > 1000000 && passwordLama2 != passwordLamaKonfirmasi){
+      document.getElementById("konfirmasipasswordSalah").innerHTML = "* Konfirmasi password tidak sesuai";
+      document.getElementById("fotoSize").innerHTML = "* Ukuran foto melebihi 1 MB";
+      document.getElementById("konfirmasipasswordLamaSalah").innerHTML = "* Password lama tidak sesuai";
+      
+      event = event || window.event;
+
+      if(event.preventDefault){
+          event.preventDefault();
+      }
+      else{
+          event.returnValue = false;
+      }
+     
+    }
+
+    else if (konfirmasiPassword2 == passwordBaru2 && fail.size > 1000000 && passwordLama2 != passwordLamaKonfirmasi){
+      document.getElementById("konfirmasipasswordSalah").innerHTML = "";
+      document.getElementById("fotoSize").innerHTML = "* Ukuran foto melebihi 1 MB";
+      document.getElementById("konfirmasipasswordLamaSalah").innerHTML = "* Password lama tidak sesuai";
+      
+      event = event || window.event;
+
+      if(event.preventDefault){
+          event.preventDefault();
+      }
+      else{
+          event.returnValue = false;
+      }
+     
+    }
+
+    else if (konfirmasiPassword2 != passwordBaru2 && fail.size < 1000000 && passwordLama2 != passwordLamaKonfirmasi){
+      document.getElementById("konfirmasipasswordSalah").innerHTML = "* Konfirmasi password tidak sesuai";
+      document.getElementById("fotoSize").innerHTML = "";
+      document.getElementById("konfirmasipasswordLamaSalah").innerHTML = "* Password lama tidak sesuai";
+      
+      event = event || window.event;
+
+      if(event.preventDefault){
+          event.preventDefault();
+      }
+      else{
+          event.returnValue = false;
+      }
+     
+    }
+
+    else if (konfirmasiPassword2 != passwordBaru2 && fail.size > 1000000 && passwordLama2 == passwordLamaKonfirmasi){
+      document.getElementById("konfirmasipasswordSalah").innerHTML = "* Konfirmasi password tidak sesuai";
+      document.getElementById("fotoSize").innerHTML = "* Ukuran foto melebihi 1 MB";
+      document.getElementById("konfirmasipasswordLamaSalah").innerHTML = "";
+      
+      event = event || window.event;
+
+      if(event.preventDefault){
+          event.preventDefault();
+      }
+      else{
+          event.returnValue = false;
+      }
+     
+    }
+
+}
   
   function reset_Blank() {
     var foto = document.getElementById("foto").value;
@@ -48,19 +197,6 @@ function Coba() {
     }
   }
   
-  function showFilesSize() {
-    var input, file;
-  
-    input = document.getElementById("foto");
-  
-    file = input.files[0];
-  
-    if (file.size > 1000000) {
-      document.getElementById("fotoSize").innerHTML = "* Ukuran melebihi 1 MB";
-    } else if (file.size < 1000000) {
-      document.getElementById("fotoSize").innerHTML = "";
-    }
-  }
   
   function reset_Size() {
     var input, file;

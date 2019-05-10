@@ -98,7 +98,7 @@ function preview_imagesModal(event)
 {
     var reader = new FileReader();
     reader.onload = function() {
-      var output = document.getElementById("fotoPrevDosenAdmin");
+      var output = document.getElementById("fotoPrevDosenAdmin2");
       output.src = reader.result;
     };
     reader.readAsDataURL(event.target.files[0]);
@@ -212,4 +212,12 @@ $('.hapus-dosen-admin').click(function () {
     $('#id_userDosenHapus').val(id_userDosen);
     $('#id_dosenDosenHapus').val(id_dosenDosen);
     $('#hapus').modal("show");
+})
+
+$('.edit-dosen-admin').click(function () {
+    var id_userUpdate = $(this).attr("id_userUpdate");
+    var id_dosenUpdate = $(this).attr("id_dosenUpdate");
+    $('#id_userUpdate').val(id_userUpdate);
+    $('#id_dosenUpdate').val(id_dosenUpdate);
+    $('#editModal').modal("show");
 })

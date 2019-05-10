@@ -1,11 +1,20 @@
 <?php
 include "../config/connection.php";
 
+$idMhs = mysqli_fetch_assoc(mysqli_query($con, "SELECT id_mahasiswa FROM tabel_mahasiswa WHERE id_user = 2"));
+
 function info($con)
 {
   $info = "select * from tabel_info";
   $resultInfo = mysqli_query($con, $info);
   return $resultInfo;
+}
+
+function infoBeasiswa($con)
+{
+  $infoBerita = "SELECT * FROM tabel_info_beasiswa";
+  $resultInfoBeasiswa = mysqli_query($con, $infoBerita);
+  return $resultInfoBeasiswa;
 }
 
 function attachment($con, $id_info)
@@ -68,3 +77,18 @@ function replyKomentar($con, $id_komentar)
   $resultReplyKomentar = mysqli_query($con, $replyKomentar);
   return $resultReplyKomentar;
 }
+
+function dosenKuisioner($con)
+{
+  $dosenKuisioner = "SELECT id_dosen FROM tabel_jadwal";
+
+  $resultDosenKuisioner = mysqli_query ($con, $dosenKuisioner);
+  return $resultDosenKuisioner;
+}
+
+// if(isset($_POST["kirimKuisioner"])){
+//   if($_GET["module"] == "home" && $_GET["act"]=="tambah"){
+//     $KuisionerQuery = "INSERT INTO tabel_hasil_kuisioner (id_mahasiswa, id_dosen, id_kuisioner, nilai)
+//     VALUES ('$idMhs', '$_POST['id_dosen']', )"
+//   }
+// }

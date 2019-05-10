@@ -15,24 +15,32 @@
     color: #000000a9;
 }
 
-#khs .kelas {
-    box-sizing: border-box;
-    border-radius: 10px; 
+#khs .form-control-sm {
+    height: calc(1.5em + .5rem + 2px);
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 10px;
     font-weight: bold;
+    box-sizing: border-box;
 }
 
 #khs .tmbl-filter {
     background: #3AAC5F;
-    border-radius: 15px;
+    border-radius: 10px;
     width: 90px;
     font-size: 14px;
+    padding-bottom: 0;
+    padding-top: 0;
 }
 
 #khs .tmbl-ruangan {
     background: #51A9EB;
-    border-radius: 15px;
+    border-radius: 10px;
     font-size: 14px;
-    width: 120px;
+    width: 110px;
+    padding-bottom: 0;
+    padding-top: 0;
 }
 
 #khs .tmbl-table{
