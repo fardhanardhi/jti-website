@@ -144,6 +144,11 @@ $(".checkout-ruang-admin").click(function() {
 });
 
 $(document).ready(function() {
+  refreshAdminRuang();
+});
+
+function refreshAdminRuang() {
+  clearInterval();
   setInterval(function() {
     $.ajax({
       url: "../process/proses_adminRuangan.php",
@@ -153,8 +158,8 @@ $(document).ready(function() {
         reloadRuangan();
       }
     });
-  }, 2000);
-});
+  }, 5000);
+}
 
 // fungsi untuk reload semua div
 function reloadRuangan() {

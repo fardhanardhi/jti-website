@@ -32,7 +32,7 @@
                 <!-- Button trigger modal -->
                 <div class="row">
                   <div class="col-12 text-right">
-                    <button class="btn btn-danger btn-checkout text-white checkout-kelas" id="<?php echo $rowKelasDipesan["id_ruang_dipinjam"] ; ?>">Checkout</button>
+                    <button class="btn btn-danger btn-checkout text-white checkout-kelas" data-toggle="modal" data-target="#modalCheckout" id="<?php echo $rowKelasDipesan["id_ruang_dipinjam"] ; ?>">Checkout</button>
                   </div>
                 </div>
               </div>
@@ -46,7 +46,8 @@
           <?php
         }
 
-        ?>
+        ?> 
+      </div>       
         <!-- Modal Checkout-->
         <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=checkout" method="post">
         <div class="modal fade" id="modalCheckout" tabindex="-1" role="dialog" aria-labelledby="modalCheckoutTitle"
@@ -54,7 +55,7 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-body pt-5 text-center">
-                <input type="text" name="id_ruang_dipinjam" id="id_ruang_dipinjam_mhs">
+                <input type="hidden" name="id_ruang_dipinjam" id="id_ruang_dipinjam_mhs">
                 <strong>Apakah Anda yakin?</strong>
               </div>
               <div class="pb-4 pt-4 d-flex justify-content-around">
@@ -66,8 +67,6 @@
         </div>
         </form>
         <!-- End Modal -->
-
-      </div>
     </div>
 
     <div class="col-md-9 p-0">

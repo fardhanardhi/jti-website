@@ -15,10 +15,15 @@ $("#cariKelasKosongMhs").click(function() {
 $(".checkout-kelas").click(function() {
   var id_ruang_dipinjam = $(this).attr("id");
   $("#id_ruang_dipinjam_mhs").val(id_ruang_dipinjam);
-  $("#modalCheckout").modal("show");
 });
 
 $(document).ready(function() {
+  refreshKelasKosong();
+});
+
+function refreshKelasKosong() {
+  clearInterval();
+
   setInterval(function() {
     $.ajax({
       url: "../process/proses_kelasKosong.php",
@@ -28,8 +33,8 @@ $(document).ready(function() {
         reloadKelasKosongMhs();
       }
     });
-  }, 2000);
-});
+  }, 5000);
+}
 
 // fungsi untuk reload semua div
 function reloadKelasKosongMhs() {

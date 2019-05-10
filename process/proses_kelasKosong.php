@@ -138,29 +138,19 @@ if(isset($_POST["cariKelasKosong"])){
   }
 }
 
-// script to activate popover
-?>
-<script>
-$(function() {
-  $('[data-toggle="popover"]').popover();
-  $('[data-trigger="focus"]').popover();
-});
-</script>
-<?php
-
 // Reload div pemesanan
 if(isset($_POST["ruangDipesan"])){
   session_start();
   $resultKelasDipesan=kelasDipesan($con);
   if (mysqli_num_rows($resultKelasDipesan) > 0){
-      while($rowKelasDipesan = mysqli_fetch_assoc($resultKelasDipesan)){ 
+      while($rowKelasDipesan = mysqli_fetch_assoc($resultKelasDipesan)){
         ?>
         <div class="pesanan p-3 container-fluid border-top pb-3">
           <div class="row d-flex align-items-center">
             <div class="col-7 text-left">
               <strong><span class="p-0 m-0 kelas"><?php echo $rowKelasDipesan["kode"]; ?></span></strong>
               <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai ".$rowKelasDipesan["lantai"].")"; ?></span>
-              <br>
+              <br> 
               <strong><?php echo tampilWaktu($rowKelasDipesan["waktu_mulai"]). " - ".tampilWaktu($rowKelasDipesan["waktu_selesai"]) ?></strong>
             </div>
             <div class="col-5 text-right">
@@ -171,7 +161,7 @@ if(isset($_POST["ruangDipesan"])){
           <!-- Button trigger modal -->
           <div class="row">
             <div class="col-12 text-right">
-              <button class="btn btn-danger btn-checkout text-white checkout-kelas" id="<?php echo $rowKelasDipesan["id_ruang_dipinjam"] ; ?>">Checkout</button>
+              <button class="btn btn-danger btn-checkout text-white checkout-kelas" data-toggle="modal" data-target="#modalCheckout" id="<?php echo $rowKelasDipesan["id_ruang_dipinjam"] ; ?>">Checkout</button>
             </div>
           </div>
         </div>
@@ -242,3 +232,15 @@ if(isset($_POST["pesan"]) || isset($_POST["checkout"])){
     header('location: ../module/index.php?module='.$_GET["module"]);
   }
 }
+?>
+
+<script>
+$(function() {
+  $('[data-toggle="popover"]').popover();
+  $('[data-trigger="focus"]').popover();
+  $(".checkout-kelas").click(function() {
+    var id_ruang_dipinjam = $(this).attr("id");
+    $("#id_ruang_dipinjam_mhs").val(id_ruang_dipinjam);
+  });
+});
+</script>

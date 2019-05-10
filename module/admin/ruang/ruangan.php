@@ -410,7 +410,7 @@ include "../process/proses_adminRuangan.php";
       </div>
     </div>
     </div>
-    </div>
+    </div> 
 
     <!-- Modal -->
       <div class="modal fade" id="modalCheckoutPinjamanAdmin" tabindex="-1" role="dialog" aria-labelledby="modalCheckoutTitle" aria-hidden="true">

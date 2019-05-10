@@ -42,13 +42,6 @@ function tampilKelas($con, $id_user){
   }
 }
 
-function kelasDipesan($con)
-{
-  $kelasDipesan = "select a.*, b.* from tabel_info_kelas_dipinjam a, tabel_ruang b where a.id_ruang = b.id_ruang and a.peminjam='$_SESSION[id]'";
-  $resultKelasDipesan = mysqli_query($con, $kelasDipesan);
-  return $resultKelasDipesan; 
-}
-
 function kelasKosong($con, $jam, $hari)
 {
   $kelasKosong="select * from tabel_ruang where id_ruang not in (select id_ruang from tabel_jadwal where jam_mulai = '$jam' and hari = '$hari')";
@@ -77,18 +70,13 @@ function cekRuangDipinjam($con, $jamMulai, $jamSelesai, $hari, $id_ruang){
   }
 }
 
-function cekKelasLogin($con)
-{
-  if ($_SESSION['level'] == "mahasiswa") {
-    $login = mysqli_query($con, "select * from tabel_mahasiswa where id_user='$_SESSION[id]'");
-    $resultLogin = mysqli_fetch_assoc($login);
-    return $resultLogin["id_kelas"];
-  }
-}
-
 function tampilTanggal($tanggal)
 {
-  return date('d F Y', strtotime($tanggal));
+  $arrBulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");  
+  $tanggalHasil=date('d', strtotime($tanggal));
+  $bulan= date('m', strtotime($tanggal));
+  $tahun=date('Y', strtotime($tanggal));
+  return $tanggalHasil." ".$arrBulan[$bulan-1]." ".$tahun;
 }
 
 function tampilWaktu($waktu)
@@ -533,5 +521,14 @@ if(isset($_POST["ruangDipesan"])){
     <?php
   }
 }
+
 ?>
+<script>
+$(function(){
+  $(".checkout-ruang-admin").click(function() {
+    var id_ruang_dipinjam = $(this).attr("id");
+    $("#id_ruang_dipinjam").val(id_ruang_dipinjam);
+  });
+})
+</script>
 
