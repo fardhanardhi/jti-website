@@ -10,34 +10,33 @@
       <div class="ml-2 mr-2 mt-2 p-1 bg-blue rounded-top shadow-sm">
         <h5 class="text-white pl-3">Pemesanan</h5>
       </div>
-      <div class="ml-2 mr-2 mb-2 mt-0 bg-white rounded-bottom shadow-sm scrollbar" style="max-height: 67vh; overflow-y: auto;">
+      <div class="ml-2 mr-2 mb-2 mt-0 bg-white rounded-bottom shadow-sm scrollbar" id="ruang-dipesan-mhs">
       <?php
         $resultKelasDipesan=kelasDipesan($con);
         if (mysqli_num_rows($resultKelasDipesan) > 0){
-            while($row = mysqli_fetch_assoc($resultKelasDipesan)){ 
-                $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
-                ?>
-                <div class="pesanan p-3 container-fluid border-top">
-                  <div class="row d-flex align-items-center">
-                    <div class="col-7 text-left">
-                      <strong><span class="p-0 m-0 kelas"><?php echo $row["kode"]; ?></span></strong>
-                      <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai ".$row["lantai"].")"; ?></span>
-                      <br>
-                      <strong><?php echo tampilWaktu($row["waktu_mulai"]). " - ".tampilWaktu($row["waktu_selesai"]) ?></strong>
-                    </div>
-                    <div class="col-5 text-right">
-                      <h4><?php echo ucfirst($row["hari"]); ?></h4>
-                    </div>
+            while($rowKelasDipesan = mysqli_fetch_assoc($resultKelasDipesan)){ 
+              ?>
+              <div class="pesanan p-3 container-fluid border-top">
+                <div class="row d-flex align-items-center">
+                  <div class="col-7 text-left">
+                    <strong><span class="p-0 m-0 kelas"><?php echo $rowKelasDipesan["kode"]; ?></span></strong>
+                    <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai ".$rowKelasDipesan["lantai"].")"; ?></span>
+                    <br>
+                    <strong><?php echo tampilWaktu($rowKelasDipesan["waktu_mulai"]). " - ".tampilWaktu($rowKelasDipesan["waktu_selesai"]) ?></strong>
                   </div>
-
-                  <!-- Button trigger modal -->
-                  <div class="row">
-                    <div class="col-12 text-right">
-                      <button class="btn btn-danger btn-checkout text-white checkout-kelas" id="<?php echo $id_info_kelas_kosong; ?>">Checkout</button>
-                    </div>
+                  <div class="col-5 text-right">
+                    <h4><?php echo ucfirst($rowKelasDipesan["hari"]); ?></h4>
                   </div>
                 </div>
-                <?php
+
+                <!-- Button trigger modal -->
+                <div class="row">
+                  <div class="col-12 text-right">
+                    <button class="btn btn-danger btn-checkout text-white checkout-kelas" id="<?php echo $rowKelasDipesan["id_ruang_dipinjam"] ; ?>">Checkout</button>
+                  </div>
+                </div>
+              </div>
+              <?php
             }
         }else{
             ?>
@@ -55,7 +54,7 @@
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-body pt-5 text-center">
-                <input type="hidden" name="id_info_kelas_kosong" id="idInfoKelasKosong">
+                <input type="text" name="id_ruang_dipinjam" id="id_ruang_dipinjam_mhs">
                 <strong>Apakah Anda yakin?</strong>
               </div>
               <div class="pb-4 pt-4 d-flex justify-content-around">
@@ -109,7 +108,7 @@
                   $jam=tampilJam($con);
                   while($row=mysqli_fetch_array($jam)){
                     ?>
-                    <option value=<?php echo tampilWaktuDefault($row["waktu_mulai"])?>><?php echo tampilWaktu($row["waktu_mulai"])?></option>
+                    <option value=<?php echo tampilWaktuDefault($row["jam_mulai"])?>><?php echo tampilWaktu($row["jam_mulai"])?></option>
                     <?php
                   }
                   ?>
@@ -124,65 +123,66 @@
           <?php
             $resultKelasKosong=kelasKosong($con,'07:00:00','senin');
               if (mysqli_num_rows($resultKelasKosong) > 0){
-                  while($row = mysqli_fetch_assoc($resultKelasKosong)){
-                      $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
-                      if($row["status_dipinjam"]=="kosong"){
-                        ?>
-                        <div class="col-md-6 p-2">
-                          <div class="rounded ruang p-3">
+                while($rowKelasKosong = mysqli_fetch_assoc($resultKelasKosong)){
+                  if(cekRuangDipinjam($con, '07:00:00', jamSelesaiKelasKosong($con, '07:00:00', 'senin', $rowKelasKosong["id_ruang"]), 'senin', $rowKelasKosong["id_ruang"]) == false) {
+                    ?>
+                    <div class="col-md-6 p-2">
+                      <div class="rounded ruang p-3">
 
-                            <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" method="post" class="mb-0 mt-0">
-                            <div class="row d-flex align-items-center">
-                              <div class="col-3 text-center">
-                                <h4 class="p-0 m-0"><?php echo $row["kode"]; ?></h4>
-                                <span class="text-secondary"><?php echo "(Lantai ".$row["lantai"].")"; ?></span>
-                              </div>
-                              <div class="col-5">
-                                <h5><?php echo tampilWaktu($row["waktu_mulai"]). " - ".tampilWaktu($row["waktu_selesai"]) ?></h5>
-                              </div>
-                              <div class="col-4 text-right">
-                                <?php
-                                  if (cekPeminjamSekelas($con, $row["waktu_mulai"], $row["hari"])==true){
-                                    ?>
-                                    <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                                    <?php
-                                  }else{
-                                    ?>
-                                    <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                                    <?php
-                                  }
+                        <form action="../process/proses_kelasKosong.php?module=kelasKosong&act=pesan" method="post" class="mb-0 mt-0">
+                          <input type="hidden" name="id_ruang" value="<?php echo $rowKelasKosong["id_ruang"];?>">
+                          <input type="hidden" name="waktu_mulai" value="07:00:00">
+                          <input type="hidden" name="hari" value="senin">
+                          <input type="hidden" name="waktu_selesai" value="<?php echo jamSelesaiKelasKosong($con, '07:00:00', 'senin', $rowKelasKosong["id_ruang"]); ?>">
+                        <div class="row d-flex align-items-center">
+                          <div class="col-3 text-center">
+                            <h4 class="p-0 m-0"><?php echo $rowKelasKosong["kode"]; ?></h4>
+                            <span class="text-secondary"><?php echo "(Lantai ".$rowKelasKosong["lantai"].")"; ?></span>
+                          </div>
+                          <div class="col-5">
+                            <h5><?php echo "07.00 - " . tampilWaktu(jamSelesaiKelasKosong($con, '07:00:00', 'senin', $rowKelasKosong["id_ruang"])); ?></h5>
+                          </div>
+                          <div class="col-4 text-right">
+                            <?php
+                              if (cekPeminjamSekelas($con, '07:00:00', jamSelesaiKelasKosong($con, '07:00:00', 'senin', $rowKelasKosong["id_ruang"]), 'senin')==true){
                                 ?>
-                              </div>
-                              </form>
+                                <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
+                                <?php
+                              }else{
+                                ?>
+                                <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
+                                <?php
+                              }
+                            ?>
+                          </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <?php
+                  }else{
+                    ?>
+                    <div class="col-md-6 p-2">
+                      <div class="rounded ruang p-3 dipesan">
+                        <div class="mb-0 mt-0">
+                          <div class="row d-flex align-items-center">
+                            <div class="col-3 text-center">
+                              <h4 class="p-0 m-0"><?php echo $rowKelasKosong["kode"]; ?></h4>
+                              <span class="text-secondary"><?php echo "(Lantai ".$rowKelasKosong["lantai"].")"; ?></span>
+                            </div>
+                            <div class="col-5">
+                              <h5><?php echo "07.00 - " . tampilWaktu(jamSelesaiKelasKosong($con, '07:00:00', 'senin', $rowKelasKosong["id_ruang"])); ?></h5>
                             </div>
                           </div>
                         </div>
-                        <?php
-                      }else if($row["status_dipinjam"]=="dipinjam"){
-                        ?>
-                        <div class="col-md-6 p-2">
-                          <div class="rounded ruang p-3 dipesan">
-                            <div class="mb-0 mt-0">
-                              <div class="row d-flex align-items-center">
-                                <div class="col-3 text-center">
-                                  <h4 class="p-0 m-0"><?php echo $row["kode"]; ?></h4>
-                                  <span class="text-secondary"><?php echo "(Lantai ".$row["lantai"].")"; ?></span>
-                                </div>
-                                <div class="col-5">
-                                  <h5><?php echo tampilWaktu($row["waktu_mulai"]). " - ".tampilWaktu($row["waktu_selesai"]) ?></h5>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <?php
-                      }
+                      </div>
+                    </div>
+                    <?php
                   }
+                }
               }else{
-                  ?><div class="col-12 text-center mt-3"><strong>Tidak ada ruang yang kosong</strong></div><?php
+                ?><div class="col-12 text-center mt-3"><strong>Tidak ada ruang yang kosong</strong></div><?php
               }
-              mysqli_close($con);
-
               ?>
           </div>
         </div>
