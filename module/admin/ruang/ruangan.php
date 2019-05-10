@@ -33,7 +33,7 @@ include "../process/proses_adminRuangan.php";
             </div>
 
             <div class="row pt-0 pl-3 pr-3 mr-0 mt-3 scrollbar scrollbar-x" id="pemesanan-ruang">
-              
+
               <?php
               $resultPeminjam=peminjam($con);
               $resultRiwayatPeminjam=riwayatPeminjam($con);
@@ -150,7 +150,7 @@ include "../process/proses_adminRuangan.php";
                         <div class="container-fluid p-0">
                           <div class="row">
                             <div class="col-md-12">
-                              <strong class="nama"><?php echo $rowUser["nama"];
+                              <strong class="nama"><?php echo $rowRiwayatUser["nama"];
                               if($rowRiwayatPeminjam["level"]=="mahasiswa"){
                                 echo " (".tampilKelas($con, $rowRiwayatPeminjam["id_user"]).")";
                               }
@@ -327,7 +327,7 @@ include "../process/proses_adminRuangan.php";
       <div class="col-md-12">
         <div class="m-2 p-3 bg-white rounded shadow-sm">
           <h6 class="border-bottom border-gray pb-2 mb-0">Ruangan Dipesan</h6>
-          <div class="mt-2">
+          <div class="mt-2" id="ruang-dipesan">
             
           <?php 
           $resultPinjaman=pinjaman($con, $_SESSION["id"]);

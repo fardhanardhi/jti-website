@@ -142,3 +142,62 @@ $(".checkout-ruang-admin").click(function() {
   var id_ruang_dipinjam = $(this).attr("id");
   $("#id_ruang_dipinjam").val(id_ruang_dipinjam);
 });
+
+$(document).ready(function() {
+  setInterval(function() {
+    $.ajax({
+      url: "../process/proses_adminRuangan.php",
+      method: "post",
+      data: { autoCheckout: true },
+      success: function() {
+        reloadRuangan();
+      }
+    });
+  }, 2000);
+});
+
+// fungsi untuk reload semua div
+function reloadRuangan() {
+  pemesananRuang();
+  ruangKosong();
+  ruangDipesan();
+}
+
+// fungsi untuk reload pemesanan ruang
+function pemesananRuang() {
+  $.ajax({
+    url: "../process/proses_adminRuangan.php",
+    method: "post",
+    data: { reloadPemesanan: true },
+    success: function(data) {
+      $("#pemesanan-ruang").html(data);
+    }
+  });
+}
+
+// fungsi untuk reload ruang kosong
+function ruangKosong() {
+  var radioHari = $("input[name='hari']:checked").val(),
+    jam = $("#jamKelasKosongAdmin").val();
+
+  $.ajax({
+    url: "../process/proses_adminRuangan.php",
+    method: "post",
+    data: { cariKelasKosong: true, hari: radioHari, jam: jam },
+    success: function(data) {
+      $("#daftar-ruangan").html(data);
+    }
+  });
+}
+
+// fungsi untuk reload ruangan dipesan
+function ruangDipesan() {
+  $.ajax({
+    url: "../process/proses_adminRuangan.php",
+    method: "post",
+    data: { ruangDipesan: true },
+    success: function(data) {
+      $("#ruang-dipesan").html(data);
+    }
+  });
+}
