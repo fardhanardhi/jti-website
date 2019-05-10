@@ -121,6 +121,123 @@ function prodi($con, $kode){
   }
 }
 
+if(isset($_POST["cariAbsensi"])){
+  ?>
+  <div class="col-md-12 p-0 d-flex justify-content-center">
+  <?php
+    $resultAbsensi=absensi($con, $_POST["cariAbsensi"]);
+  
+  if (mysqli_num_rows($resultAbsensi) > 0){
+  ?>
+  <table class="table table-striped table-bordered text-center">
+    <thead>
+      <tr>
+        <th id="absenNo">No</th>
+        <th id="absenNama">Nama</th>
+        <th id="absenSakit">Sakit</th>
+        <th id="absenIjin">Ijin</th>
+        <th id="absenAlpha">Alpha</th>
+        <th id="absenProses">Proses</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      $no=1;
+      while($rowAbsensi = mysqli_fetch_assoc($resultAbsensi)){
+      ?>
+        <tr>
+          <td><?php echo $no; ?></td>
+          <td class="text-left"><?php echo $rowAbsensi["nama"]; ?></td>
+          <td>
+            <input type="number" id="sakit<?php echo $rowAbsensi["id_absensi"]; ?>" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["sakit"]; ?>" name="sakit">
+          </td> 
+          <td>
+            <input type="number" id="ijin<?php echo $rowAbsensi["id_absensi"]; ?>" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["ijin"]; ?>" name="ijin">
+          </td>
+          <td>
+            <input type="number" id="alpa<?php echo $rowAbsensi["id_absensi"]; ?>" class="form-control bg-transparent" min="0" value="<?php echo $rowAbsensi["alpa"]; ?>" name="alpha">
+          </td>
+          <td><input type="button" value="Simpan" id="<?php echo $rowAbsensi["id_absensi"]; ?>" class="btn btn-success submit-absen"></td>
+        </tr>
+      <?php
+      $no++;
+      }
+      ?>
+    </tbody>
+  </table>
+  <?php
+  } else{
+    ?>
+    <div class="text-center">
+      <p class="text-muted">Data Kosong</p>
+    </div>
+  <?php
+  }
+}
+
+if(isset($_POST["cariTotalAbsensi"])){
+  $resultTotal=absensi($con, $_POST["cariTotalAbsensi"]);
+  
+  if (mysqli_num_rows($resultTotal) > 0){
+    $no=1;
+    while($rowTotal = mysqli_fetch_assoc($resultTotal)){
+      ?>
+      <!-- Loop data -->
+      <div class="row border-bottom border-top pt-1 pb-1 mr-1">
+        <div class="col-md-1 align-self-center p-0">
+          <span><?php echo $no;?></span>
+        </div>
+        <div class="col-md-8 p-0 align-self-center">
+          <div class="container-fluid p-0">
+            <div class="row">
+              <div class="col-sm-12">
+                <span><?php echo $rowTotal["nama"];?></span>
+              </div>
+            </div>
+            <div class="row text-muted">
+              <div class="col-sm-4">
+                <small>A: <?php echo $rowTotal["alpa"];?></small>
+              </div>
+              <div class="col-sm-4">
+                <small>I: <?php echo $rowTotal["ijin"];?></small>
+              </div>
+              <div class="col-sm-4">
+                <small>S: <?php echo $rowTotal["sakit"];?></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 text-right align-self-center p-0">
+          <?php
+          if($rowTotal["keterangan"]=="SP1"){
+            ?>
+            <small class="bg-success text-white pt-1 pb-1 pr-3 pl-3 rounded"><?php echo $rowTotal["keterangan"]?></small>
+            <?php
+          } else if($rowTotal["keterangan"]=="SP2"){
+            ?>
+            <small class="bg-orange text-white pt-1 pb-1 pr-3 pl-3 rounded"><?php echo $rowTotal["keterangan"]?></small>
+            <?php
+          } else if($rowTotal["keterangan"]=="SP3"){
+            ?>
+            <small class="bg-danger text-white pt-1 pb-1 pr-3 pl-3 rounded"><?php echo $rowTotal["keterangan"]?></small>
+            <?php
+          }
+          ?>
+        </div>
+      </div>
+      <!-- End Loop Data -->
+  <?php
+    $no++;
+    }
+  } else{
+    ?>
+    <div class="text-center">
+      <p class="text-muted">Data Kosong</p>
+    </div>
+  <?php
+  }
+}
+
 // Modal Preview
 if(isset($_POST["tampilDetail"])){
   $detailKompen = "select a.*, b.nim, b.nama as namaMhs, c.nama as namaDosen, d.nama as pekerjaan from tabel_kompen a, tabel_mahasiswa b, tabel_dosen c, tabel_pekerjaan_kompen d where a.id_mahasiswa=b.id_mahasiswa and a.id_dosen=c.id_dosen and a.id_pekerjaan_kompen=d.id_pekerjaan_kompen and a.id_kompen=$_POST[tampilDetail]";

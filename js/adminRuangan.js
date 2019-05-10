@@ -12,7 +12,7 @@ $("#cariKelasKosongAdmin").click(function() {
   });
 });
 
-function cariPemesanan() {
+$("#txtCariPemesanan").keyup(function() {
   var input,
     filter,
     itemPemesanan,
@@ -35,7 +35,6 @@ function cariPemesanan() {
     .val()
     .toUpperCase();
   itemPemesanan = $("#pemesanan-ruang .itemPemesanan");
-  totalInactive = $("#pemesanan-ruang .itemPemesanan:hidden");
   for (i = 0; i < itemPemesanan.length; i++) {
     nama = $(itemPemesanan[i]).find(".nama");
     tanggalPinjam = $(itemPemesanan[i]).find(".tanggalPinjam");
@@ -76,17 +75,15 @@ function cariPemesanan() {
       }
     }
   }
-  $("#pemesananTidakDitemukan").hide();
-  $("#pemesananTidakDitemukan").remove();
+
+  totalInactive = $("#pemesanan-ruang .itemPemesanan:hidden");
 
   if (itemPemesanan.length == totalInactive.length) {
-    if (!$("#pemesananTidakDitemukan").length) {
-      $("#pemesanan-ruang").append(
-        "<div class='col-md-12 p-2 text-center mt-3' id='pemesananTidakDitemukan'><p class='text-muted'>Username, Kelas atau Ruangan tidak dapat ditemukan</p></div>"
-      );
-    }
+    document.getElementById("pemesananTidakDitemukan").style.display = "block";
+  } else {
+    document.getElementById("pemesananTidakDitemukan").style.display = "none";
   }
-}
+});
 
 $("#txtCariRuangan").keyup(function() {
   var input,
@@ -142,6 +139,65 @@ $(".hapus-ruang").click(function() {
 });
 
 $(".checkout-ruang-admin").click(function() {
-  var id_info_kelas_kosong = $(this).attr("id");
-  $("#id_info_kelas_kosong_checkoutAdmin").val(id_info_kelas_kosong);
+  var id_ruang_dipinjam = $(this).attr("id");
+  $("#id_ruang_dipinjam").val(id_ruang_dipinjam);
 });
+
+$(document).ready(function() {
+  setInterval(function() {
+    $.ajax({
+      url: "../process/proses_adminRuangan.php",
+      method: "post",
+      data: { autoCheckout: true },
+      success: function() {
+        reloadRuangan();
+      }
+    });
+  }, 2000);
+});
+
+// fungsi untuk reload semua div
+function reloadRuangan() {
+  pemesananRuang();
+  ruangKosong();
+  ruangDipesan();
+}
+
+// fungsi untuk reload pemesanan ruang
+function pemesananRuang() {
+  $.ajax({
+    url: "../process/proses_adminRuangan.php",
+    method: "post",
+    data: { reloadPemesanan: true },
+    success: function(data) {
+      $("#pemesanan-ruang").html(data);
+    }
+  });
+}
+
+// fungsi untuk reload ruang kosong
+function ruangKosong() {
+  var radioHari = $("input[name='hari']:checked").val(),
+    jam = $("#jamKelasKosongAdmin").val();
+
+  $.ajax({
+    url: "../process/proses_adminRuangan.php",
+    method: "post",
+    data: { cariKelasKosong: true, hari: radioHari, jam: jam },
+    success: function(data) {
+      $("#daftar-ruangan").html(data);
+    }
+  });
+}
+
+// fungsi untuk reload ruangan dipesan
+function ruangDipesan() {
+  $.ajax({
+    url: "../process/proses_adminRuangan.php",
+    method: "post",
+    data: { ruangDipesan: true },
+    success: function(data) {
+      $("#ruang-dipesan").html(data);
+    }
+  });
+}

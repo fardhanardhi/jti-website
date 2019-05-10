@@ -1,7 +1,6 @@
 <?php
 include "../config/connection.php";
 include "../process/proses_adminRuangan.php";
-
 ?>
 
 <main role="main" class="container-fluid" id="ruang">
@@ -28,19 +27,20 @@ include "../process/proses_adminRuangan.php";
               <div class="col-md-12">
                 <div class="form-inline">
                   <img src="../img/search.svg" alt="" id="icon-search">
-                  <input type="search" class="form-control" id="txtCariPemesanan" onkeyup="cariPemesanan()" placeholder="Pencarian">
+                  <input type="search" class="form-control" id="txtCariPemesanan" placeholder="Pencarian">
                 </div>
               </div>
             </div>
 
             <div class="row pt-0 pl-3 pr-3 mr-0 mt-3 scrollbar scrollbar-x" id="pemesanan-ruang">
-              
+
               <?php
               $resultPeminjam=peminjam($con);
+              $resultRiwayatPeminjam=riwayatPeminjam($con);
 
-              if (mysqli_num_rows($resultPeminjam) > 0){
-                $no=1;
-                while($rowPeminjam = mysqli_fetch_assoc($resultPeminjam)){
+              if (mysqli_num_rows($resultPeminjam) > 0 || mysqli_num_rows($resultRiwayatPeminjam) > 0){
+              $no=1;
+              while($rowPeminjam = mysqli_fetch_assoc($resultPeminjam)){
               ?>
                 <div class="col-md-12 p-2 border-top border-bottom itemPemesanan">
                   <div class="container-fluid p-0">
@@ -49,16 +49,31 @@ include "../process/proses_adminRuangan.php";
                         <strong><?php echo $no;?></strong>
                       </div>
                       <div class="col-md-1 my-auto">
-                        <img src="../attachment/img/<?php echo $rowPeminjam['foto'];?>" style="height:3em; width:3em; border-radius:50%;" alt="">
+                      <?php
+                      $resultUser=user($con, $rowPeminjam["peminjam"]);
+                      $rowUser=mysqli_fetch_assoc($resultUser);
+
+                      if($rowPeminjam["level"]=="admin"){
+                        ?>
+                        <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
+                        <?php
+                      }else{
+                        if($rowUser["foto"]==NULL){
+                          ?>
+                          <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
+                          <?php
+                        }else{
+                          ?>
+                          <img src="../attachment/img/<?php echo $rowUser["foto"];?>" class="nav-profile-photo" alt="">
+                          <?php
+                        }
+                      }
+                      ?>
                       </div>
                       <div class="col-md-7 pl-5 my-auto">
                         <div class="container-fluid p-0">
                           <div class="row">
                             <div class="col-md-12">
-                            <?php 
-                              $resultUser=user($con, $rowPeminjam["peminjam"]);
-                              $rowUser=mysqli_fetch_assoc($resultUser);
-                            ?>
                               <strong class="nama"><?php echo $rowUser["nama"];
                               if($rowPeminjam["level"]=="mahasiswa"){
                                 echo " (".tampilKelas($con, $rowPeminjam["id_user"]).")";
@@ -88,21 +103,9 @@ include "../process/proses_adminRuangan.php";
                       </div>
                       <div class="col-md-1"></div>
                       <div class="bungkus label p-0">
-                      <?php
-                      if($rowPeminjam["status_dipinjam"]=="dipinjam"){
-                        ?>
                         <label class="bg-success text-white rounded-bottom text-center caption-label">
                           <small class="pesan">Pesan</small>
-                        </label>
-                        <?php
-                      }else if($rowPeminjam["status_dipinjam"]=="kosong"){
-                        ?>
-                        <label class="bg-danger text-white rounded-bottom text-center caption-label">
-                          <small class="selesai">Selesai</small>
-                        </label>
-                        <?php
-                      }
-                      ?>                    
+                        </label>                  
                       </div>
                     </div>
                   </div>
@@ -110,11 +113,94 @@ include "../process/proses_adminRuangan.php";
               <?php
                 $no++;
                 }
+
+              // perulangan untuk tabel riwayat peminjam
+              $no=$no;
+              while($rowRiwayatPeminjam = mysqli_fetch_assoc($resultRiwayatPeminjam)){
+              ?>
+                <div class="col-md-12 p-2 border-top border-bottom itemPemesanan">
+                  <div class="container-fluid p-0">
+                    <div class="row d-flex justify-content-around p-0 m-0">
+                      <div class="col-md-1 my-auto">
+                        <strong><?php echo $no;?></strong>
+                      </div>
+                      <div class="col-md-1 my-auto">
+                        <?php
+                        $resultRiwayatUser=user($con, $rowRiwayatPeminjam["peminjam"]);
+                        $rowRiwayatUser=mysqli_fetch_assoc($resultRiwayatUser);
+  
+                        if($rowRiwayatPeminjam["level"]=="admin"){
+                          ?>
+                          <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
+                          <?php
+                        }else{
+                          if($rowRiwayatUser["foto"]==NULL){
+                            ?>
+                            <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
+                            <?php
+                          }else{
+                            ?>
+                            <img src="../attachment/img/<?php echo $rowRiwayatUser["foto"];?>" class="nav-profile-photo" alt="">
+                            <?php
+                          }
+                        }
+                        ?>
+                      </div>
+                      <div class="col-md-7 pl-5 my-auto">
+                        <div class="container-fluid p-0">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <strong class="nama"><?php echo $rowRiwayatUser["nama"];
+                              if($rowRiwayatPeminjam["level"]=="mahasiswa"){
+                                echo " (".tampilKelas($con, $rowRiwayatPeminjam["id_user"]).")";
+                              }
+                              ?>
+                              </strong>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-auto">
+                              <small>
+                                <i class="far fa-calendar-alt text-secondary"></i>
+                                <span class="pl-1 text-muted tanggalPinjam"><?php echo tampilTanggal($rowRiwayatPeminjam["waktu_pinjam"]);?></span>
+                              </small>
+                            </div>
+                            <div class="col-md-auto">
+                              <small>
+                                <i class="far fa-clock text-secondary"></i>
+                                <span class="pl-1 text-muted waktuMulai"><?php echo tampilWaktu($rowRiwayatPeminjam["waktu_mulai"]);?></span>
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 my-auto pl-0">
+                        <h4 class="kodeRuang"><?php echo $rowRiwayatPeminjam["kode"];?></h4>
+                      </div>
+                      <div class="col-md-1"></div>
+                      <div class="bungkus label p-0">
+                        <label class="bg-danger text-white rounded-bottom text-center caption-label">
+                          <small class="selesai">Selesai</small>
+                        </label>                   
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php
+                $no++;
+                }
+              }else{
+                ?>
+                <div class='col-md-12 p-2 text-center text-muted'>Data Pemesanan Ruang Kosong</div>
+                <?php
               }
               ?>
               <!-- End loop -->
               
             </div>
+            
+            <div class='col-md-12 p-2 text-center mt-3' id='pemesananTidakDitemukan' style="display:none;"><p class='text-muted'>Username, Kelas atau Ruangan tidak dapat ditemukan</p></div>
+
           </div>
         </div>
       </div>
@@ -164,7 +250,7 @@ include "../process/proses_adminRuangan.php";
                         $jam = tampilJam($con);
                         while ($row = mysqli_fetch_array($jam)) {
                           ?>
-                          <option value=<?php echo tampilWaktuDefault($row["waktu_mulai"]) ?>><?php echo tampilWaktu($row["waktu_mulai"]) ?></option>
+                          <option value=<?php echo tampilWaktuDefault($row["jam_mulai"]) ?>><?php echo tampilWaktu($row["jam_mulai"]) ?></option>
                         <?php
                       }
                       ?>
@@ -182,49 +268,53 @@ include "../process/proses_adminRuangan.php";
                     <?php
                     $resultKelasKosong = kelasKosong($con, '07:00:00', 'senin');
                     if (mysqli_num_rows($resultKelasKosong) > 0) {
-                      while ($row = mysqli_fetch_assoc($resultKelasKosong)) {
-                        $id_info_kelas_kosong = $row["id_info_kelas_kosong"];
-                        if ($row["status_dipinjam"] == "kosong") {
-                          ?>
-                          <div class="col-md-6 p-2">
-                            <div class="p-3 ruang rounded">
-                              <form action="../process/proses_kelasKosong.php?act=pesan&id=<?php echo $id_info_kelas_kosong; ?>" class="m-0" method="post">
-                                <div class="row d-flex align-items-center">
-                                  <div class="col-7 text-left">
-                                    <strong><span class="p-0 m-0 kelas"><?php echo $row["kode"]; ?></span></strong>
-                                    <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
-                                    <br>
-                                    <strong><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></strong>
-                                  </div>
-                                  <div class="col-5 text-right">
-                                    <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                      <?php
-                    } else if ($row["status_dipinjam"] == "dipinjam") {
-                      ?>
+                      while ($rowKelasKosong = mysqli_fetch_assoc($resultKelasKosong)) {
+                        if(cekRuangDipinjam($con, '07:00:00', jamSelesaiKelasKosong($con, '07:00:00', 'senin', $rowKelasKosong["id_ruang"]), 'senin', $rowKelasKosong["id_ruang"]) == false) {
+                        ?>
                         <div class="col-md-6 p-2">
-                            <div class="p-3 ruang rounded container-fluid">
-                                <div class="row d-flex align-items-center">
-                                  <div class="col-7 text-left">
-                                    <strong><span class="p-0 m-0 kelas"><?php echo $row["kode"]; ?></span></strong>
-                                    <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $row["lantai"] . ")"; ?></span>
-                                    <br>
-                                    <strong><?php echo tampilWaktu($row["waktu_mulai"]) . " - " . tampilWaktu($row["waktu_selesai"]) ?></strong>
-                                  </div>
+                          <div class="p-3 ruang rounded">
+                            <form action="../process/proses_adminRuangan.php?module=ruang&act=pesan" class="m-0" method="post">
+                              <input type="hidden" name="id_ruang" value="<?php echo $rowKelasKosong["id_ruang"];?>">
+                              <input type="hidden" name="waktu_mulai" value="07:00:00">
+                              <input type="hidden" name="hari" value="senin">
+                              <input type="hidden" name="waktu_selesai" value="<?php echo jamSelesaiKelasKosong($con, '07:00:00', 'senin', $rowKelasKosong["id_ruang"]); ?>">
+                              <div class="row d-flex align-items-center">
+                                <div class="col-7 text-left">
+                                  <strong><span class="p-0 m-0 kelas"><?php echo $rowKelasKosong["kode"]; ?></span></strong>
+                                  <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $rowKelasKosong["lantai"] . ")"; ?></span>
+                                  <br>
+                                  <strong><?php echo "07.00 - " . tampilWaktu(jamSelesaiKelasKosong($con, '07:00:00', 'senin', $rowKelasKosong["id_ruang"])); ?></strong>
                                 </div>
+                                <div class="col-5 text-right">
+                                  <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      <?php
+                      }else{
+                        ?>
+                        <div class="col-md-6 p-2">
+                          <div class="p-3 ruang rounded dipesan">
+                            <div class="m-0">
+                              <div class="row d-flex align-items-center">
+                                <div class="col-7 text-left">
+                                  <strong><span class="p-0 m-0 kelas"><?php echo $rowKelasKosong["kode"]; ?></span></strong>
+                                  <span class="text-secondary lantai pl-1 pt-3"><?php echo "(Lantai " . $rowKelasKosong["lantai"] . ")"; ?></span>
+                                  <br>
+                                  <strong><?php echo "07.00 - " . tampilWaktu(jamSelesaiKelasKosong($con, '07:00:00', 'senin', $rowKelasKosong["id_ruang"])); ?></strong>
+                                </div>
+                              </div>
                             </div>
                           </div>
+                        </div>
                       <?php
+                      }
+                      }
+                    } else {
+                      ?><div class="col-12 text-center mt-3"><strong>Tidak ada ruang yang kosong</strong></div><?php
                     }
-                  }
-                } else {
-                  ?><div class="col-12 text-center mt-3"><strong>Tidak ada ruang yang kosong</strong></div><?php
-                }
-
                 ?>
                 </div>
             </div>
@@ -237,7 +327,7 @@ include "../process/proses_adminRuangan.php";
       <div class="col-md-12">
         <div class="m-2 p-3 bg-white rounded shadow-sm">
           <h6 class="border-bottom border-gray pb-2 mb-0">Ruangan Dipesan</h6>
-          <div class="mt-2">
+          <div class="mt-2" id="ruang-dipesan">
             
           <?php 
           $resultPinjaman=pinjaman($con, $_SESSION["id"]);
@@ -281,7 +371,7 @@ include "../process/proses_adminRuangan.php";
                                     </div>
                                     <div class="col-5 text-right">
                                       <h5><?php echo ucfirst($rowItemPinjaman["hari"]); ?></h5>
-                                      <button class="btn btn-danger btn-checkout text-white checkout-ruang-admin" id=<?php echo $rowItemPinjaman["id_info_kelas_kosong"];?> data-toggle="modal" data-target="#modalCheckoutPinjamanAdmin">Checkout</button>
+                                      <button class="btn btn-danger btn-checkout text-white checkout-ruang-admin" id=<?php echo $rowItemPinjaman["id_ruang_dipinjam"];?> data-toggle="modal" data-target="#modalCheckoutPinjamanAdmin">Checkout</button>
                                     </div>
                                   </div>
                                 </div>
@@ -328,7 +418,7 @@ include "../process/proses_adminRuangan.php";
           <div class="modal-content">
           <form action="../process/proses_adminRuangan.php?module=ruang&act=checkout" method="post">
             <div class="modal-body pt-5 text-center">
-              <input type="hidden" name="id_info_kelas_kosong" id="id_info_kelas_kosong_checkoutAdmin">
+              <input type="hidden" name="id_ruang_dipinjam" id="id_ruang_dipinjam">
               <strong>Apakah Anda yakin?</strong>
             </div>
             <div class="pb-4 pt-4 d-flex justify-content-around">

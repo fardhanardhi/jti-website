@@ -189,6 +189,69 @@ function kriteria($con){
   return $resultKriteria;
 }
 
+if(isset($_POST["cariKuisioner"])){
+  ?>
+  <div class="col-md-12 d-flex text-center justify-content-center">
+  <?php
+    $resultKuisioner=kuisioner($con, $_POST["tahun"], $_POST["semester"]);
+    
+    if (mysqli_num_rows($resultKuisioner) > 0){
+    ?>
+    <table class="table table-striped table-bordered text-center itemDosenKuisioner">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>NIP</th>
+          <th>Nama Dosen</th>
+          <th>Kelas yang Diajar Semester Ini</th>
+          <th>Proses</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php
+          $no=1;
+          while($row = mysqli_fetch_assoc($resultKuisioner)){
+            ?>
+            <tr class="itemDosenKuisioner">
+              <td><?php echo $no;?></td>
+              <td class="nip"><?php echo $row["nip"]; ?></td>
+              <td class="nama"><?php echo $row["namaDosen"]; ?></td>
+              <td class="kelas">
+              <?php
+              $resultKelasDosen=kelasDosen($con,$row["id_dosen"]);
+              if (mysqli_num_rows($resultKelasDosen) > 0){
+                while($rowKelas = mysqli_fetch_assoc($resultKelasDosen)){
+                    echo tampilKelas($con,$rowKelas["id_kelas"]);
+                }
+              }
+              else{
+                echo "-";
+              }
+                  ?>
+              </td>
+              <td>
+                <button type="button" id="<?php echo $row["id_dosen"];?>" class="btn btn-primary lihat-detail text-nowrap" data-toggle="modal" data-target="#modalLihatHasil">Lihat Hasil</button>
+              </td>
+            </tr>
+          <?php
+            $no++;
+          }
+          ?>
+      </tbody>
+    </table>
+  <?php 
+  }else{
+    ?>
+    <div class="text-center">
+      <p class="text-muted">Data Kuisioner Kosong</p>
+    </div>
+<?php
+  }
+  ?>
+  </div>
+  <?php
+}
+
 // CUD Kriteria
 if(isset($_POST["edit_kuisioner"])){
   $output='';

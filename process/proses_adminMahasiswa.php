@@ -76,7 +76,7 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
      '$_POST[genderMahasiswaAdmin]',
      '$_POST[tempatlahirMahasiswaAdmin]',
       '$nama_file',
-     (select id_user from tabel_user where username='$_POST[nimMahasiswaAdmin]'),
+     (select id_user from tabel_user where username='$_POST[usernameMahasiswaAdmin]'),
      curdate(),
      '$_POST[tahunLahirMahasiswa]-$_POST[bulanLahirMahasiswa]-$_POST[tanggalLahirMahasiswa]');";
 
@@ -128,12 +128,17 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
 
         $update = $_POST["id_userUpdate"];
 
-         // echo($_POST["semesterMahasiswa"]); 
+         echo($_POST["semesterMahasiswa"]); 
 
-        //  $nama_folder = "attachment/img";
-        //  $tmp = $_FILES["filename"]["tmp_name"];
-        //  $namanya_file = $_FILES["filename"]["name"];
-        //  move_uploaded_file($tmp, "../$nama_folder/$namanya_file");
+         $nama_folder = "img";
+         $tmp = $_FILES["fileid3"]["tmp_name"];
+         $namanya_file = $_FILES["fileid3"]["name"];
+         move_uploaded_file($tmp, "../attachment/$nama_folder/$namanya_file");
+
+        // echo($namanya_file);
+
+        // die();
+
 
         $query9 = "UPDATE tabel_user 
         set username='$_POST[usernameMahasiswaAdmin2]',
@@ -148,7 +153,7 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
         alamat = '$_POST[alamatMahasiswaAdmin2]',
         jenis_kelamin = '$_POST[genderMahasiswaAdmin3]',
         tempat_lahir = '$_POST[tempatlahirMahasiswaAdmin2]',
-        -- foto = '$namanya_file',
+        foto = '$namanya_file',
         waktu_edit = curdate(),
         tanggal_lahir = '$_POST[tahunLahirMahasiswa2]-$_POST[bulanLahirMahasiswa2]-$_POST[tanggalLahirMahasiswa2]'
         where id_user='$update';";
