@@ -1111,10 +1111,6 @@ ALTER TABLE `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_jadwal`
   MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-<<<<<<< HEAD
-=======
-
->>>>>>> 7184641fbf3fb0c5abcabbc0882da247a0832fb7
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
 --
@@ -1204,10 +1200,6 @@ ALTER TABLE `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT;
-<<<<<<< HEAD
-=======
-
->>>>>>> 7184641fbf3fb0c5abcabbc0882da247a0832fb7
 --
 -- AUTO_INCREMENT for table `tabel_semester`
 --
