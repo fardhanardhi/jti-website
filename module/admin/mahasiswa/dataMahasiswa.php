@@ -310,8 +310,7 @@
                                             from tabel_mahasiswa tm,tabel_prodi tp,tabel_user tu,tabel_kelas tk
                                             where tm.id_prodi = tp.id_prodi
                                             and tm.id_user = tu.id_user
-                                            and tk.id_prodi = tp.id_prodi
-                                            and tm.id_kelas = tk.id_kelas
+                                            and tm.id_kelas = tk.id_kelas;
 
                                             
                                             ";
