@@ -27,7 +27,7 @@ $("#txtCariJadwalKuliah").keyup(function () {
   filter = $(input)
     .val()
     .toUpperCase();
-
+  
   itemJadwalKuliah = $("#dataJadwalKuliah .itemJadwalKuliah");
   for (i = 0; i < itemJadwalKuliah.length; i++) {
     kelas = $(itemJadwalKuliah[i]).find(".kelas");

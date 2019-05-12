@@ -338,16 +338,7 @@ var input,
                 tabelDataMahasiswa.style.display = "none";
                 halamanTidakDitemukan.style.display = "block";
 
-            }
-            
-
+            }   
         }
-
     }
-
-
-    
-
-
-
 });
