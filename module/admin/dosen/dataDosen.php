@@ -258,9 +258,12 @@
                                                         <td class="text-nowrap"><?php echo $row["tanggal_lahir"]; ?></td>
                                                         <td class="text-nowrap"><?php echo $row["jenis_kelamin"]; ?></td>
                                                         <td class="text-nowrap"><?php echo $row["alamat"]; ?></td>
-                                                        <td class="text-nowrap"><button type="button" id="<?php echo $rowKompen["id_kompen"];?>" class="btn btn-primary edit-kompen ml-4 mr-4" data-toggle="modal" data-target="#editModal">Edit</button></td>
+                                                        
+                                                        <td><button type="button" id="<?php echo $row["id_user"];?>" class="btn btn-primary edit-kompen ml-4 mr-4 edit-dosen-admin" data-toggle="modal" data-target="#editModal" id_userUpdate="<?php echo $row["id_user"]; ?>"
+                                                        id_dosenUpdate="<?php echo $row["id_dosen"]; ?>">Edit</button></td>
+                                                        
                                                         <td><button type="button" id="<?php echo $row["id_user"]?>"  class="btn btn-danger hapus-kompen mr-4 ml-4 hapus-dosen-admin" data-toggle="modal" data-target="#hapus" id_user="<?php echo $row["id_user"]; ?>"
-                                                    id_dosen="<?php echo $row["id_dosen"]; ?>">Hapus</button></td>    
+                                                        id_dosen="<?php echo $row["id_dosen"]; ?>">Hapus</button></td>    
                                                     </tr>
                                                     <?php $index++;
                                                 }
@@ -270,7 +273,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -290,13 +292,13 @@
                 </div>  
                 <div class="card-body">
                     <div class="col-md-12 p-0">
-                        <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=edit" id="formEditAdminDosen" method="POST">
+                        <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=edit" id="formEditAdminDosen" method="POST" enctype="multipart/form-data">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group row">
-                                            <input type="hidden" name="id_userUpdate" id="id_userEdit" >
-                                            <input type="hidden" name="id_mahasiswaUpdate" id="id_mahasiswaEdit" >
+                                            <input type="hidden" name="id_userUpdateModal" id="id_userUpdate" >
+                                            <input type="hidden" name="id_dosenUpdateModal" id="id_dosenUpdate" >
                                             <label class="col-sm-3 col-form-label">Username</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" placeholder="Username"
@@ -383,17 +385,17 @@
                                             <label class="col-sm-3 col-form-label">Tanggal Lahir</label>
                                             <br>
                                             <div class="col-sm-3">
-                                                <select class="custom-select" style="width:110px;" id="tanggalLahirDosen" name="tanggalLahirDosen">
+                                                <select class="custom-select" style="width:110px;" id="tanggalLahirDosenModal" name="tanggalLahirDosenModal">
                                                 <?php echo optionTanggalAdmin($row["tanggal_lahir"]);?>
                                                 </select>
                                             </div>
                                             <div class="col-sm-3">
-                                                <select class="custom-select" style="width:110px;" id="bulanLahirDosen" name="bulanLahirDosen">
+                                                <select class="custom-select" style="width:110px;" id="bulanLahirDosenModal" name="bulanLahirDosenModal">
                                                 <?php echo optionBulanAdmin($row["tanggal_lahir"]);?>
                                                 </select>
                                             </div>
                                             <div class="col-sm-3">
-                                                <select class="custom-select" style="width:110px;" id="tahunLahirDosen" name="tahunLahirDosen">
+                                                <select class="custom-select" style="width:110px;" id="tahunLahirDosenModal" name="tahunLahirDosenModal">
                                                 <?php echo optionTahunAdmin($row["tanggal_lahir"]);?>
                                                 </select>
                                             </div>
@@ -434,7 +436,7 @@
                                         <div class="row">
                                             <div class="col-sm-9"></div>
                                             <div class="col-sm-3">
-                                                <button type="submit" class="btn btn-tambahkan btn-success tmbl-tambahkan" name="editDosen"
+                                                <button type="submit" class="btn btn-tambahkan btn-success tmbl-tambahkan" name="edit"
                                                     onclick="erorModal(); showFilesSizesModal();">Simpan</button>
                                             </div>
                                         </div>
@@ -467,22 +469,21 @@
     </div> -->
     <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle"
           aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-            <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=hapus" method="post">
-                <div class="modal-body pt-5 text-center">
-                <input type="hidden" name="id_userDosen" id="id_userDosenHapus" >
+                <form action="../process/CRUD_dataDosen.php?module=dataDosen&act=hapus" method="post">
+                    <div class="modal-body pt-5 text-center">
+                        <input type="hidden" name="id_userDosen" id="id_userDosenHapus" >
                         <input type="hidden" name="id_dosenDosen" id="id_dosenDosenHapus" >
-                  <input type="hidden" name="id_kompen" id="id_kompenHapus">
-                  <strong>Apakah Anda yakin?</strong>
-                </div>
-                <div class="pb-4 pt-4 d-flex justify-content-around">
-                  <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                  <!-- <button type="submit" name="hapusKompen" class="btn btn-success btn-ok">Ya</button> -->
-                  <button type="submit" name="delete" class="btn btn-success btn-ok">Ya</button>
-                </div>
-              </form>
+                        <input type="hidden" name="id_kompen" id="id_kompenHapus">
+                        <strong>Apakah Anda yakin?</strong>
+                    </div>
+                    <div class="pb-4 pt-4 d-flex justify-content-around">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                    <button type="submit" name="delete" class="btn btn-success btn-ok">Ya</button>
+                    </div>
+                </form>
             </div>
-          </div>
         </div>
+    </div>
 </html>

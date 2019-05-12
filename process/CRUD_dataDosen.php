@@ -42,7 +42,7 @@ if (isset($_POST["tambahDosen"]) || isset($_POST["delete"]) || isset($_POST["edi
         '$_POST[tempatlahirDosenAdmin]',
         '$nama_file',
 
-     (select id_user from tabel_user where username='$_POST[nimDosenAdmin]')
+     (select id_user from tabel_user where username='$_POST[usernameDosenAdmin]')
      );";
 
         if(mysqli_query($con, $queryUser) && mysqli_query($con, $queryDosen)){
@@ -56,23 +56,28 @@ if (isset($_POST["tambahDosen"]) || isset($_POST["delete"]) || isset($_POST["edi
     
     else if($_GET["module"]=="dataDosen" && $_GET["act"]=="edit"){
 
-        $updateDosen = $_POST["id_userUpdate"];
+        $updateDosen = $_POST["id_userUpdateModal"];
+
+        $nama_folder = "img";
+         $tmp = $_FILES["filenyaModal"]["tmp_name"];
+         $namanya_file = $_FILES["filenyaModal"]["name"];
+         move_uploaded_file($tmp, "../attachment/$nama_folder/$namanya_file");
 
         $queryEditUser = "UPDATE tabel_user 
         set username='$_POST[usernameDosenAdmin2]',
         password='$_POST[passwordDosenAdmin2]'
-        where id_user= '$update';";
+        where id_user= '$updateDosen';";
 
-        $queryEditDosen="UPDATE tabel_mahasiswa 
+        $queryEditDosen="UPDATE tabel_dosen 
         set 
         nip = '$_POST[nimDosenAdmin2]',
         nama = '$_POST[namaDosenAdmin2]',
         alamat = '$_POST[alamatDosenAdmin2]',
         jenis_kelamin = '$_POST[genderDosenAdmin3]',
         tempat_lahir = '$_POST[tempatlahirDosenAdmin2]',
-        -- foto = '$namanya_file',
-        -- waktu_edit = curdate(),
-        -- tanggal_lahir = '$_POST[tahunLahirMahasiswa2]-$_POST[bulanLahirMahasiswa2]-$_POST[tanggalLahirMahasiswa2]'
+        foto = '$namanya_file',
+        waktu_edit = curdate(),
+        tanggal_lahir = '$_POST[tahunLahirDosenModal]-$_POST[bulanLahirDosenModal]-$_POST[tanggalLahirDosenModal]'
         where id_user='$updateDosen';";
 
         if(mysqli_query($con,$queryEditUser) && mysqli_query($con,$queryEditDosen)){
