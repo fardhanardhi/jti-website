@@ -58,7 +58,7 @@ include "../process/proses_adminRuangan.php";
                         <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                         <?php
                       }else{
-                        if($rowUser["foto"]==NULL){
+                        if($rowUser["foto"]=="NULL"){
                           ?>
                           <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                           <?php
@@ -134,7 +134,7 @@ include "../process/proses_adminRuangan.php";
                           <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                           <?php
                         }else{
-                          if($rowRiwayatUser["foto"]==NULL){
+                          if($rowRiwayatUser["foto"]=="NULL"){
                             ?>
                             <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                             <?php
@@ -410,7 +410,7 @@ include "../process/proses_adminRuangan.php";
       </div>
     </div>
     </div>
-    </div>
+    </div> 
 
     <!-- Modal -->
       <div class="modal fade" id="modalCheckoutPinjamanAdmin" tabindex="-1" role="dialog" aria-labelledby="modalCheckoutTitle" aria-hidden="true">

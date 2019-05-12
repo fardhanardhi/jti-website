@@ -42,13 +42,6 @@ function tampilKelas($con, $id_user){
   }
 }
 
-function kelasDipesan($con)
-{
-  $kelasDipesan = "select a.*, b.* from tabel_info_kelas_dipinjam a, tabel_ruang b where a.id_ruang = b.id_ruang and a.peminjam='$_SESSION[id]'";
-  $resultKelasDipesan = mysqli_query($con, $kelasDipesan);
-  return $resultKelasDipesan; 
-}
-
 function kelasKosong($con, $jam, $hari)
 {
   $kelasKosong="select * from tabel_ruang where id_ruang not in (select id_ruang from tabel_jadwal where jam_mulai = '$jam' and hari = '$hari')";
@@ -68,7 +61,7 @@ function jamSelesaiKelasKosong($con, $jam, $hari, $id_ruang){
 }
 
 function cekRuangDipinjam($con, $jamMulai, $jamSelesai, $hari, $id_ruang){
-  $cekRuangDipinjam="select * from tabel_ruang_dipinjam where waktu_mulai='$jamMulai' and waktu_selesai='$jamSelesai' and id_ruang='$id_ruang'";
+  $cekRuangDipinjam="select * from tabel_ruang_dipinjam where waktu_mulai='$jamMulai' and waktu_selesai='$jamSelesai' and id_ruang='$id_ruang' and hari='$hari'";
   $resultCekRuangDipinjam = mysqli_query($con, $cekRuangDipinjam);
   if(mysqli_num_rows($resultCekRuangDipinjam)>0){
     return true;
@@ -77,18 +70,13 @@ function cekRuangDipinjam($con, $jamMulai, $jamSelesai, $hari, $id_ruang){
   }
 }
 
-function cekKelasLogin($con)
-{
-  if ($_SESSION['level'] == "mahasiswa") {
-    $login = mysqli_query($con, "select * from tabel_mahasiswa where id_user='$_SESSION[id]'");
-    $resultLogin = mysqli_fetch_assoc($login);
-    return $resultLogin["id_kelas"];
-  }
-}
-
 function tampilTanggal($tanggal)
 {
-  return date('d F Y', strtotime($tanggal));
+  $arrBulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");  
+  $tanggalHasil=date('d', strtotime($tanggal));
+  $bulan= date('m', strtotime($tanggal));
+  $tahun=date('Y', strtotime($tanggal));
+  return $tanggalHasil." ".$arrBulan[$bulan-1]." ".$tahun;
 }
 
 function tampilWaktu($waktu)
@@ -289,7 +277,6 @@ if(isset($_POST["autoCheckout"])) {
       // menghapus data di tabel_ruang_dipinjam
       mysqli_query($con, "delete from tabel_ruang_dipinjam where id_ruang_dipinjam='$id_ruang_dipinjam'");
     }
-    echo 'success';
   }
 }
 
@@ -318,7 +305,7 @@ if(isset($_POST["reloadPemesanan"])){
             <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
             <?php
           }else{
-            if($rowUser["foto"]==NULL){
+            if($rowUser["foto"]=="NULL"){
               ?>
               <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
               <?php
@@ -394,7 +381,7 @@ if(isset($_POST["reloadPemesanan"])){
               <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
               <?php
             }else{
-              if($rowRiwayatUser["foto"]==NULL){
+              if($rowRiwayatUser["foto"]=="NULL"){
                 ?>
                 <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                 <?php
@@ -534,5 +521,14 @@ if(isset($_POST["ruangDipesan"])){
     <?php
   }
 }
+
 ?>
+<script>
+$(function(){
+  $(".checkout-ruang-admin").click(function() {
+    var id_ruang_dipinjam = $(this).attr("id");
+    $("#id_ruang_dipinjam").val(id_ruang_dipinjam);
+  });
+})
+</script>
 
