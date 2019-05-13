@@ -77,6 +77,7 @@
                                             <th>No.</th>
                                             <th>NIM</th>
                                             <th>Nama</th>
+                                            <th>Semester</th>
                                             <th>SKS</th>
                                             <th>IP</th>
                                             <th>Proses</th>
@@ -93,6 +94,7 @@
                                                         <td><?php echo $no;?></td>
                                                         <td><?php echo $row["nim"];?></td>
                                                         <td><?php echo $row["nm_mahasiswa"];?></td>
+                                                        <td><?php echo $row["semester"];?></td>
                                                         <td><?php echo $row["sks"];?></td>
                                                         <td><?php echo khsNilai($con, $row["id_mahasiswa"], $row["id_semester"]) ?></td>
                                                         <td><button class="edit tmbl-table btn btn-success" type="button" class="pratinjau btn" data-toggle="modal"
@@ -106,6 +108,7 @@
                                                         <td><?php echo $no;?></td>
                                                         <td><?php echo $row["nim"];?></td>
                                                         <td><?php echo $row["nm_mahasiswa"];?></td>
+                                                        <td><?php echo $row["semester"];?></td>
                                                         <td><?php echo $row["sks"];?></td>
                                                         <td><?php echo khsNilai($con, $row["id_mahasiswa"], $row["id_semester"]) ?></td>
                                                         <td><button class="lihat tmbl-table btn btn-info" type="button" class="pratinjau btn" data-toggle="modal"
