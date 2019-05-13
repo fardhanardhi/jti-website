@@ -127,8 +127,11 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
     else if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="edit"){
 
         $update = $_POST["id_userUpdate"];
+        $id_mahasiswaUpdate = $_POST["id_mahasiswaUpdate"];
 
-         echo($_POST["semesterMahasiswa"]); 
+        //  echo($_POST["id_mahasiswaUpdate"]); 
+
+        // die();
 
          $nama_folder = "img";
          $tmp = $_FILES["fileid3"]["tmp_name"];
@@ -148,7 +151,8 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
         $query10="UPDATE tabel_mahasiswa 
         set id_prodi = '$_POST[prodiMahasiswa2]',
         id_semester = '$_POST[semesterMahasiswa2]',
-        nim = '$_POST[semesterMahasiswa2]',
+        id_kelas = '$_POST[kelasMahasiswa2]',
+        nim = '$_POST[nimMahasiswaAdmin2]',
         nama = '$_POST[namaMahasiswaAdmin2]',
         alamat = '$_POST[alamatMahasiswaAdmin2]',
         jenis_kelamin = '$_POST[genderMahasiswaAdmin3]',
@@ -158,7 +162,9 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
         tanggal_lahir = '$_POST[tahunLahirMahasiswa2]-$_POST[bulanLahirMahasiswa2]-$_POST[tanggalLahirMahasiswa2]'
         where id_user='$update';";
 
-        if(mysqli_query($con,$query9) && mysqli_query($con,$query10)){
+        $query11="UPDATE tabel_absensi SET id_semester = '$_POST[semesterMahasiswa2]' WHERE id_mahasiswa='$id_mahasiswaUpdate';";
+
+        if(mysqli_query($con,$query9) && mysqli_query($con,$query10) && mysqli_query($con,$query11)){
 
             header('location:../module/index.php?module=' . $_GET["module"]);
         }

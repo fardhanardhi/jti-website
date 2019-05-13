@@ -34,33 +34,89 @@ function preview_images6(event) {
   }
   
 
-  function showFilesSizesTambah() {
-    var input, file;
+//   function showFilesSizesTambah() {
+//     var input, file;
   
-    input = document.getElementById("fileid2");
+//     input = document.getElementById("fileid2");
   
-    file = input.files[0];
+//     file = input.files[0];
   
-    if (file.size > 1000000) {
-      document.getElementById("fileidMahasiswaAdminBlank").innerHTML = "* Ukuran melebihi 1 MB";
-    } else if (file.size < 1000000) {
-      document.getElementById("fileidMahasiswaAdminBlank").innerHTML = "";
-    }
+//     if (file.size > 1000000) {
+//       document.getElementById("fileidMahasiswaAdminBlank").innerHTML = "* Ukuran melebihi 1 MB";
+//     } else if (file.size < 1000000) {
+//       document.getElementById("fileidMahasiswaAdminBlank").innerHTML = "";
+//     }
+//   }
+
+  function preventDefaultAction(event){
+
+        var input, file;
+
+        input = document.getElementById("fileid2");
+
+        file = input.files[0];
+
+        if(file.size > 1000000){
+            
+            event = event || window.event;
+            
+            document.getElementById("fileidMahasiswaAdminBlank").innerHTML = "*Ukuran melebihi 1 MB";
+
+            if(event.preventDefault){
+                event.preventDefault();
+            }
+            else{
+                event.returnValue = false;
+            }
+        }
+
+        else if(file.size < 1000000){
+            document.getElementById("fileidMahasiswaAdminBlank").innerHTML = "";
+        }
   }
 
-  function showFilesSizes2() {
-    var input, file;
+
+
+//   function showFilesSizes2() {
+//     var input, file;
   
-    input = document.getElementById("fileid3");
+//     input = document.getElementById("fileid3");
   
-    file = input.files[0];
+//     file = input.files[0];
   
-    if (file.size > 1000000) {
-      document.getElementById("fileidMahasiswaAdminBlank2").innerHTML = "* Ukuran melebihi 1 MB";
-    } else if (file.size < 1000000) {
-      document.getElementById("fileidMahasiswaAdminBlank2").innerHTML = "";
+//     if (file.size > 1000000) {
+//       document.getElementById("fileidMahasiswaAdminBlank2").innerHTML = "* Ukuran melebihi 1 MB";
+//     } else if (file.size < 1000000) {
+//       document.getElementById("fileidMahasiswaAdminBlank2").innerHTML = "";
+//     }
+//   }
+
+  function preventDefaultAction2(event){
+
+    var input2, file2;
+
+    input2 = document.getElementById("fileid3");
+
+    file2 = input2.files[0];
+
+    if(file2.size > 1000000){
+        
+        event = event || window.event;
+        
+        document.getElementById("fileidMahasiswaAdminBlank2").innerHTML = "*Ukuran melebihi 1 MB";
+
+        if(event.preventDefault){
+            event.preventDefault();
+        }
+        else{
+            event.returnValue = false;
+        }
     }
-  }
+
+    else if(file.size < 1000000){
+        document.getElementById("fileidMahasiswaAdminBlank2").innerHTML = "";
+    }
+}
 
 
 
