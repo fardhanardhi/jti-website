@@ -26,13 +26,6 @@ function tampilSemester($con){
   return $resultSemester;
 }
 
-function minIdSemester($con){
-  $minIdSemester="select min(id_semester) as minIdSemester from tabel_semester";
-  $resultIdSemester=mysqli_query($con, $minIdSemester);
-  $row=mysqli_fetch_assoc($resultIdSemester);
-  return $row["minIdSemester"];
-}
-
 function kelasDosen($con, $id_dosen)
 {
   $kelasDosen = "select a.*, b.id_kelas, c.id_kelas from tabel_dosen a, tabel_jadwal b, tabel_kelas c where b.id_kelas=c.id_kelas and a.id_dosen=b.id_dosen and a.id_dosen=$id_dosen";
@@ -80,21 +73,22 @@ if(isset($_POST["namaDosen"])){
 
   if(mysqli_num_rows($result)>0){
     $row=mysqli_fetch_assoc($result);
-    echo "<h5 class='modal-title text-center'>".$row["nama"]."</h5>
-          <input type='hidden' name='id_dosen' id='id_dosen' value='".$row["id_dosen"]."'>";
+    ?>
+    <h5 class="modal-title text-center"><?php echo $row["nama"]; ?></h5>
+    <input type="hidden" name="id_dosen" id="id_dosen" value="<?php echo $row["id_dosen"]; ?>">
+    <?php
   }else{
     echo "-";
   }
 }
 
 if(isset($_POST["id_dosen"])){
-  $output='';
   $query="select distinct(a.id_mahasiswa),sum(a.nilai) as totalNilai, c.*, d.* from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c, tabel_semester d where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and c.id_semester=d.id_semester and c.id_kelas=$_POST[kelas] and YEAR(a.waktu_edit)=$_POST[tahun] and c.id_semester=$_POST[semester] and a.id_dosen=$_POST[id_dosen] group by a.id_mahasiswa";
   $result=mysqli_query($con, $query);
 
   if(mysqli_num_rows($result)>0){
-    $output.="
-      <table class='table table-striped table-bordered text-center'>
+    ?>
+    <table class='table table-striped table-bordered text-center'>
       <thead>
         <tr>
           <th>No</th>
@@ -104,36 +98,36 @@ if(isset($_POST["id_dosen"])){
           <th>Nilai Kuisioner</th>
         </tr>
       </thead>
-      <tbody>";
+      <tbody>
+      <?php
       $no=1;
       while($row=mysqli_fetch_assoc($result)){
-        $output.='
+        ?>
         <tr>
-          <td>'.$no.'</td>
-          <td>'.$row["nim"].'</td>
-          <td>'.$row["nama"].'</td>
-          <td>'.tampilkelas($con,$_POST["kelas"]).'</td>
-          <td>'.$row["totalNilai"].'</td>
-        </tr>';
+          <td><?php echo $no; ?></td>
+          <td><?php echo $row["nim"]; ?></td>
+          <td><?php echo $row["nama"]; ?></td>
+          <td><?php echo tampilkelas($con,$_POST["kelas"]); ?></td>
+          <td><?php echo $row["totalNilai"]; ?></td>
+        </tr>
+        <?php
         $no++;
       }
-      $output .="
+      ?>
       </tbody>
-    </table>";
-
-    echo $output;
-
+    </table>
+  <?php
   }else{
-    echo $output.="
-      <div class='text-center'>
-        <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
-        <p class='text-muted'>Data Tidak Ditemukan</p>
-      </div>";
+    ?>
+    <div class='text-center'>
+      <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
+      <p class='text-muted'>Data Tidak Ditemukan</p>
+    </div>
+    <?php
   }
 }
 
 if(isset($_POST["lihatPerKelas"])){
-  $output='';
   $query="select distinct(a.id_mahasiswa),b.nim, b.nama, count(distinct a.id_kuisioner) as 'telahMengisi' from tabel_hasil_kuisioner a, tabel_mahasiswa b, tabel_kelas c where a.id_mahasiswa=b.id_mahasiswa and b.id_kelas=b.id_kelas and b.id_kelas=$_POST[lihatPerKelas] group by a.id_mahasiswa";
   $result=mysqli_query($con, $query);
 
@@ -142,8 +136,8 @@ if(isset($_POST["lihatPerKelas"])){
   $rowSemuaKuisioner=mysqli_fetch_assoc($resultSemuaKuisioner);
   
   if(mysqli_num_rows($result)>0){
-    $output.="
-      <table class='table table-striped table-bordered text-center'>
+    ?>
+    <table class='table table-striped table-bordered text-center'>
       <thead>
         <tr>
           <th>No</th>
@@ -153,32 +147,33 @@ if(isset($_POST["lihatPerKelas"])){
           <th>Belum Mengisi Kuisioner</th>
         </tr>
       </thead>
-      <tbody>";
+      <tbody>
+      <?php
       $no=1;
       while($row=mysqli_fetch_assoc($result)){
         $belumMengisi=$rowSemuaKuisioner["semuaKuisioner"]-$row["telahMengisi"];
-        $output.='
+        ?>
         <tr>
-          <td>'.$no.'</td>
-          <td>'.$row["nim"].'</td>
-          <td>'.$row["nama"].'</td>
-          <td>'.$row["telahMengisi"].'</td>
-          <td>'.$belumMengisi.'</td>
-        </tr>';
+          <td><?php echo $no; ?></td>
+          <td><?php echo $row["nim"]; ?></td>
+          <td><?php echo $row["nama"]; ?></td>
+          <td><?php echo $row["telahMengisi"]; ?></td>
+          <td><?php echo $belumMengisi; ?></td>
+        </tr>
+        <?php
         $no++;
       }
-      $output .="
+      ?>
       </tbody>
-    </table>";
-
-    echo $output;
-
+    </table>
+  <?php
   }else{
-    echo $output.="
-      <div class='text-center'>
-        <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
-        <p class='text-muted'>Data Tidak Ditemukan</p>
-      </div>";
+    ?>
+    <div class='text-center'>
+      <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
+      <p class='text-muted'>Data Tidak Ditemukan</p>
+    </div>
+    <?php
   }
 }
 

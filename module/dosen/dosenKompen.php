@@ -44,31 +44,28 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="sudah-konfirmasi">
+                  <tr class="Sudah-konfirmasi">
                     <td>1</td>
                     <td>1741720001</td>
                     <td>fulan 1</td>
                     <td>TI-2A</td>
                     <td><button type="button" class="pratinjau btn" data-toggle="modal" data-target="#exampleModalCenter">Filter</button></td>
                   </tr>
-                  <tr class="belum-konfirmasi">
+                  <tr class="Belum-konfirmasi">
                     <td>2</td>
                     <td>1741720001</td>
                     <td>fulan 1</td>
                     <td>TI-2A</td>
-                    <td><button type="button" class="pratinjau btn">Filter</button></td>
+                    <td><button type="button" class="pratinjau btn" data-toggle="modal" data-target="#exampleModalCenter">Filter</button></td>
                   </tr>
                 </tbody>
               </table>
               <div class="form-group row">
-                <label class="col-xl-1">Keterangan:</label>
-                <div class="keterangan input-group col-sm-5">
-                  <ul type="square">
-                    <li class="sudah">Sudah dikonfirmasi</li>
-                  </ul>
-                  <ul type="square"class="belum">
-                    <li>Belum dikonfirmasi</li>
-                  </ul>
+                <strong><label class="col-xl-1">Keterangan:</label></strong>
+                <div class="col-sm-5">
+                  <div class="box1"></div><br>
+                  
+                  <div class="box2"></div>
                 </div>
               </div>
             </div>
@@ -77,9 +74,9 @@
       </div>
     </div>
     <!-- Kompen Mahasiswa -->
-    <div class="col-md-3 p-0">
+    <div class="col-md-3 p-2">
       <div class="sticky-sidebar sticky-top">
-        <div class="kompen-bar m-2 p-3 bg-white rounded shadow-sm my-auto">
+        <div class="kompen-bar m-0 p-3 bg-white rounded shadow-sm my-auto">
           <h6 class="border-bottom border-gray pb-2 mb-0 judul">KOMPEN MAHASISWA</h6>
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small">

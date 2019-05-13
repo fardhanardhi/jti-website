@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 03, 2019 at 06:23 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.1.21
+-- Host: localhost:3306
+-- Generation Time: May 12, 2019 at 03:52 PM
+-- Server version: 5.7.26-0ubuntu0.18.04.1
+-- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -85,19 +83,20 @@ INSERT INTO `tabel_admin` (`id_admin`, `nama`, `nip`, `alamat`, `tempat_lahir`, 
 CREATE TABLE `tabel_attachment` (
   `id_attachment` int(30) NOT NULL,
   `tipe` enum('gambar','file') NOT NULL,
-  `file` text NOT NULL
+  `file` text NOT NULL,
+  `id_info` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_attachment`
 --
 
-INSERT INTO `tabel_attachment` (`id_attachment`, `tipe`, `file`) VALUES
-(1, 'gambar', 'yan.png'),
-(2, 'gambar', 'yuri.png'),
-(3, 'gambar', 'ariadi.png'),
-(4, 'gambar', 'atiqah.png'),
-(5, 'gambar', 'ridwan.png');
+INSERT INTO `tabel_attachment` (`id_attachment`, `tipe`, `file`, `id_info`) VALUES
+(1, 'gambar', 'yan.png', 1),
+(2, 'gambar', 'yuri.png', 1),
+(3, 'gambar', 'ariadi.png', 2),
+(4, 'gambar', 'atiqah.png', 2),
+(5, 'gambar', 'ridwan.png', 2);
 
 -- --------------------------------------------------------
 
@@ -211,20 +210,19 @@ CREATE TABLE `tabel_info` (
   `judul` varchar(250) NOT NULL,
   `isi` text NOT NULL,
   `tipe` enum('pengumuman','berita') NOT NULL,
-  `waktu` datetime NOT NULL,
-  `id_attachment` int(30) DEFAULT NULL
+  `waktu` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_info`
 --
 
-INSERT INTO `tabel_info` (`id_info`, `judul`, `isi`, `tipe`, `waktu`, `id_attachment`) VALUES
-(1, '5 Dosen dikirim ke Jepang', 'Dikarenakan dosen bernama : \r\n- Pak Yan \r\n- Pak Rosa \r\n- Pak Vipkas \r\nsedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi untuk meminta tugas. \r\n\r\nTerima Kasih...', 'pengumuman', '2019-04-11 03:00:00', 1),
-(2, 'Workshop Pembuatan Dokumen Kurikulum', 'Pada hari Selasa, 29 Januari 2019 Jurusan Teknologi Informasi (JTI) menggelar kegiatan Workshop Pembuatan Dokumen Kurikulum yang diikuti oleh seluruh dosen JTI. Acara ini diadakan di Ruang Meeting Dosen Sipil Lantai 4, Politeknik Negeri Malang.\r\n\r\nWorkshop ini menghadirkan pembicara dari Universitas Negeri Malang, Dr. Ir. Sya’ad Patmanthara, M.Pd. Tujuan dari diadakannya workshop ini adalah para dosen dapat membuat Rencana Perkuliahan Semester (RPS),  kontrak perkuliahan dan rubik penilaian untuk semester genap tahun ajaran 2018-2019 dengan lebih baik. Acara yang berlangsung dari pukul 08.00 – 16.00 WIB berlangsung tertib dan lancar.', 'berita', '2019-04-11 07:00:00', NULL),
-(3, 'Pengumuman Laporan Akhir dan Skripsi 2018/2019', '1. Pendaftaran untuk usulan dosen pembimbing sudah dibuka\r\n2. Pendaftaran usulan dosen pembimbing berakhir pada tanggal 26 November 2018 pukul 11.00\r\n3. Pengumuman dosen pembimbing dilaksanakan antara tanggal 27-29 November 2018\r\n4. Pendaftaran sidang proposal dan upload proposal dilaksanakan tanggal 29 November-3 Desember 2018\r\n5. Ujian proposal dilaksanakan mulai tanggal 4 Desember 2018', 'pengumuman', '2019-04-11 07:00:00', NULL),
-(4, 'PSS (Pelaksanaan Sertifikasi Sektor) thn. 2018 untuk Mahasiswa Jurusan TI', 'PSS merupakan program hibah dari BNSP untuk melakukan sertifikasi kompetensi terhadap mahasiswa. Dan pada tahun 2018 ini, Polinema melalui LSP P1 Polinema, mendapatkan program tersebut dan sebagai tindak lanjutnya wajib melakukan sertifikasi terhadap mahasiswa Polinema. Berkenaan dengan hal tersebut, jurusan TI mendapatkan kuota mahasiswa sejumlah 340 orang untuk diikutkan program PSS tersebut.', 'berita', '2019-04-11 06:00:00', NULL),
-(5, 'Update Pembimbing Proposal LA', 'Setelah melalui berbagai pertimbangan dan koreksi oleh panitia, maka update terbaru Pembimbing Proposal LA sebagai berikut:', 'pengumuman', '2019-04-11 03:00:00', NULL);
+INSERT INTO `tabel_info` (`id_info`, `judul`, `isi`, `tipe`, `waktu`) VALUES
+(1, '2 Dosen dikirim ke Jepang', 'Dikarenakan dosen bernama : \r\n- Pak Yan \r\n- Pak Rosa \r\n- Pak Vipkas \r\nsedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi untuk meminta tugas. \r\n\r\nTerima Kasih...', 'pengumuman', '2019-04-11 03:00:00'),
+(2, 'Workshop Pembuatan Dokumen Kurikulum Oleh 3 Dosen', 'Pada hari Selasa, 29 Januari 2019 Jurusan Teknologi Informasi (JTI) menggelar kegiatan Workshop Pembuatan Dokumen Kurikulum yang diikuti oleh seluruh dosen JTI. Acara ini diadakan di Ruang Meeting Dosen Sipil Lantai 4, Politeknik Negeri Malang.\r\n\r\nWorkshop ini menghadirkan pembicara dari Universitas Negeri Malang, Dr. Ir. Sya’ad Patmanthara, M.Pd. Tujuan dari diadakannya workshop ini adalah para dosen dapat membuat Rencana Perkuliahan Semester (RPS),  kontrak perkuliahan dan rubik penilaian untuk semester genap tahun ajaran 2018-2019 dengan lebih baik. Acara yang berlangsung dari pukul 08.00 – 16.00 WIB berlangsung tertib dan lancar.', 'berita', '2019-04-11 07:00:00'),
+(3, 'Pengumuman Laporan Akhir dan Skripsi 2018/2019', '1. Pendaftaran untuk usulan dosen pembimbing sudah dibuka\r\n2. Pendaftaran usulan dosen pembimbing berakhir pada tanggal 26 November 2018 pukul 11.00\r\n3. Pengumuman dosen pembimbing dilaksanakan antara tanggal 27-29 November 2018\r\n4. Pendaftaran sidang proposal dan upload proposal dilaksanakan tanggal 29 November-3 Desember 2018\r\n5. Ujian proposal dilaksanakan mulai tanggal 4 Desember 2018', 'pengumuman', '2019-04-11 07:00:00'),
+(4, 'PSS (Pelaksanaan Sertifikasi Sektor) thn. 2018 untuk Mahasiswa Jurusan TI', 'PSS merupakan program hibah dari BNSP untuk melakukan sertifikasi kompetensi terhadap mahasiswa. Dan pada tahun 2018 ini, Polinema melalui LSP P1 Polinema, mendapatkan program tersebut dan sebagai tindak lanjutnya wajib melakukan sertifikasi terhadap mahasiswa Polinema. Berkenaan dengan hal tersebut, jurusan TI mendapatkan kuota mahasiswa sejumlah 340 orang untuk diikutkan program PSS tersebut.', 'berita', '2019-04-11 06:00:00'),
+(5, 'Update Pembimbing Proposal LA', 'Setelah melalui berbagai pertimbangan dan koreksi oleh panitia, maka update terbaru Pembimbing Proposal LA sebagai berikut:', 'pengumuman', '2019-04-11 03:00:00');
 
 -- --------------------------------------------------------
 
@@ -247,34 +245,6 @@ CREATE TABLE `tabel_info_beasiswa` (
 
 INSERT INTO `tabel_info_beasiswa` (`id_beasiswa`, `judul`, `isi`, `link`, `waktu_publish`, `waktu_berakhir`) VALUES
 (1, 'Pendaftaran Beasiswa 2019', 'Kepada Seluruh mahasiswa Politenik Negeri Malang untuk Jenjang D# maupun D4, diberitahukan dibuka pendaftaran beasiswa : \r\n1. Beasiswa PPA \r\n2. Beasiswa BBP ( BBM) \r\n3. Beasiswa Supersemar Pendaftaran mulai \r\n\r\ntanggal : 17 Maret s.d 4 April 2019 pendaftaran lewat ONLINE ( download di : http:// beasiswa.polinema.ac.id) untuk keterangan lebih lanjut dapat dilihat spanduk yang ada sekitar politeknik atau di poster pada tiap-tiap jurusan . Terima kasih atas perhatiannya', NULL, '2019-03-17 02:00:00', '2019-04-04');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tabel_info_kelas_kosong`
---
-
-CREATE TABLE `tabel_info_kelas_kosong` (
-  `id_info_kelas_kosong` int(30) NOT NULL,
-  `id_ruang` int(30) NOT NULL,
-  `peminjam` int(30) DEFAULT NULL,
-  `hari` varchar(30) NOT NULL,
-  `jumlah_jam` int(30) NOT NULL,
-  `status_dipinjam` enum('kosong','dipinjam') NOT NULL,
-  `waktu_mulai` time NOT NULL,
-  `waktu_selesai` time NOT NULL,
-  `waktu_pinjam` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tabel_info_kelas_kosong`
---
-
-INSERT INTO `tabel_info_kelas_kosong` (`id_info_kelas_kosong`, `id_ruang`, `peminjam`, `hari`, `jumlah_jam`, `status_dipinjam`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`) VALUES
-(1, 6, 3, 'senin', 4, 'dipinjam', '08:00:00', '12:00:00', '2019-04-10 07:00:00'),
-(2, 3, 27, 'jumat', 2, 'dipinjam', '10:00:00', '13:00:00', '2019-04-10 09:00:00'),
-(3, 1, 33, 'kamis', 4, 'dipinjam', '09:00:00', '13:00:00', '2019-04-10 07:00:00'),
-(4, 2, 21, 'selasa', 2, 'dipinjam', '08:00:00', '11:00:00', '2019-04-10 07:00:00');
 
 -- --------------------------------------------------------
 
@@ -668,6 +638,30 @@ INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `isi`, `id_komentar`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+
+CREATE TABLE `tabel_riwayat_peminjam_kelas_kosong` (
+  `id_riwayat_peminjam_kelas_kosong` int(30) NOT NULL,
+  `id_ruang` int(30) NOT NULL,
+  `peminjam` int(30) DEFAULT NULL,
+  `hari` varchar(30) NOT NULL,
+  `waktu_mulai` time NOT NULL,
+  `waktu_selesai` time NOT NULL,
+  `waktu_pinjam` datetime NOT NULL,
+  `waktu_checkout` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+
+INSERT INTO `tabel_riwayat_peminjam_kelas_kosong` (`id_riwayat_peminjam_kelas_kosong`, `id_ruang`, `peminjam`, `hari`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`, `waktu_checkout`) VALUES
+(1, 1, 32, 'selasa', '07:50:00', '18:00:00', '2019-05-09 22:29:16', '2019-05-09 22:37:36');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tabel_ruang`
 --
 
@@ -688,6 +682,29 @@ INSERT INTO `tabel_ruang` (`id_ruang`, `kode`, `lantai`) VALUES
 (4, 'LPJ03', 7),
 (5, 'LSI1', 6),
 (6, 'LID01', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabel_ruang_dipinjam`
+--
+
+CREATE TABLE `tabel_ruang_dipinjam` (
+  `id_ruang_dipinjam` int(30) NOT NULL,
+  `id_ruang` int(30) NOT NULL,
+  `peminjam` int(30) DEFAULT NULL,
+  `hari` varchar(30) NOT NULL,
+  `waktu_mulai` time NOT NULL,
+  `waktu_selesai` time NOT NULL,
+  `waktu_pinjam` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabel_ruang_dipinjam`
+--
+
+INSERT INTO `tabel_ruang_dipinjam` (`id_ruang_dipinjam`, `id_ruang`, `peminjam`, `hari`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`) VALUES
+(1, 2, 32, 'senin', '07:00:00', '12:50:00', '2019-05-09 22:25:33');
 
 -- --------------------------------------------------------
 
@@ -823,7 +840,8 @@ ALTER TABLE `tabel_admin`
 -- Indexes for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
-  ADD PRIMARY KEY (`id_attachment`);
+  ADD PRIMARY KEY (`id_attachment`),
+  ADD KEY `id_info` (`id_info`);
 
 --
 -- Indexes for table `tabel_chat`
@@ -854,22 +872,13 @@ ALTER TABLE `tabel_hasil_kuisioner`
 -- Indexes for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
-  ADD PRIMARY KEY (`id_info`),
-  ADD KEY `id_attachment` (`id_attachment`);
+  ADD PRIMARY KEY (`id_info`);
 
 --
 -- Indexes for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   ADD PRIMARY KEY (`id_beasiswa`);
-
---
--- Indexes for table `tabel_info_kelas_kosong`
---
-ALTER TABLE `tabel_info_kelas_kosong`
-  ADD PRIMARY KEY (`id_info_kelas_kosong`),
-  ADD KEY `peminjam` (`peminjam`),
-  ADD KEY `id_ruang` (`id_ruang`);
 
 --
 -- Indexes for table `tabel_jadwal`
@@ -976,10 +985,26 @@ ALTER TABLE `tabel_reply_komentar`
   ADD KEY `id_komentar` (`id_komentar`);
 
 --
+-- Indexes for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
+  ADD PRIMARY KEY (`id_riwayat_peminjam_kelas_kosong`),
+  ADD KEY `id_ruang` (`id_ruang`),
+  ADD KEY `peminjam` (`peminjam`);
+
+--
 -- Indexes for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   ADD PRIMARY KEY (`id_ruang`);
+
+--
+-- Indexes for table `tabel_ruang_dipinjam`
+--
+ALTER TABLE `tabel_ruang_dipinjam`
+  ADD PRIMARY KEY (`id_ruang_dipinjam`),
+  ADD KEY `peminjam` (`peminjam`),
+  ADD KEY `id_ruang` (`id_ruang`);
 
 --
 -- Indexes for table `tabel_semester`
@@ -1008,151 +1033,131 @@ ALTER TABLE `tabel_user`
 --
 ALTER TABLE `tabel_absensi`
   MODIFY `id_absensi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   MODIFY `id_admin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   MODIFY `id_attachment` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
   MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   MODIFY `id_dosen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
 --
 -- AUTO_INCREMENT for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
   MODIFY `id_hasil_kuisioner` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
   MODIFY `id_info` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   MODIFY `id_beasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tabel_info_kelas_kosong`
---
-ALTER TABLE `tabel_info_kelas_kosong`
-  MODIFY `id_info_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
   MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   MODIFY `id_kelas` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
   MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
 --
 -- AUTO_INCREMENT for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   MODIFY `id_komentar` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   MODIFY `id_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
   MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
 --
 -- AUTO_INCREMENT for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   MODIFY `id_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
-
 --
 -- AUTO_INCREMENT for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
   MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   MODIFY `id_notifikasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   MODIFY `id_pekerjaan_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
   MODIFY `id_prodi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   MODIFY `id_reply_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+--
+-- AUTO_INCREMENT for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
+  MODIFY `id_riwayat_peminjam_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   MODIFY `id_ruang` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+--
+-- AUTO_INCREMENT for table `tabel_ruang_dipinjam`
+--
+ALTER TABLE `tabel_ruang_dipinjam`
+  MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tabel_semester`
 --
 ALTER TABLE `tabel_semester`
   MODIFY `id_semester` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   MODIFY `id_status_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
   MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
 --
 -- Constraints for dumped tables
 --
@@ -1170,6 +1175,12 @@ ALTER TABLE `tabel_absensi`
 --
 ALTER TABLE `tabel_admin`
   ADD CONSTRAINT `tabel_admin_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tabel_attachment`
+--
+ALTER TABLE `tabel_attachment`
+  ADD CONSTRAINT `tabel_attachment_ibfk_1` FOREIGN KEY (`id_info`) REFERENCES `tabel_info` (`id_info`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_chat`
@@ -1191,19 +1202,6 @@ ALTER TABLE `tabel_hasil_kuisioner`
   ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_2` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_3` FOREIGN KEY (`id_kuisioner`) REFERENCES `tabel_kuisioner` (`id_kuisioner`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `tabel_info`
---
-ALTER TABLE `tabel_info`
-  ADD CONSTRAINT `tabel_info_ibfk_1` FOREIGN KEY (`id_attachment`) REFERENCES `tabel_attachment` (`id_attachment`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Constraints for table `tabel_info_kelas_kosong`
---
-ALTER TABLE `tabel_info_kelas_kosong`
-  ADD CONSTRAINT `tabel_info_kelas_kosong_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tabel_info_kelas_kosong_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_jadwal`
@@ -1281,7 +1279,20 @@ ALTER TABLE `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_reply_komentar`
   ADD CONSTRAINT `tabel_reply_komentar_ibfk_1` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
+
+--
+-- Constraints for table `tabel_riwayat_peminjam_kelas_kosong`
+--
+ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
+  ADD CONSTRAINT `tabel_riwayat_peminjam_kelas_kosong_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tabel_riwayat_peminjam_kelas_kosong_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tabel_ruang_dipinjam`
+--
+ALTER TABLE `tabel_ruang_dipinjam`
+  ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -60,14 +60,10 @@ $(function() {
   $('[data-toggle="tooltip"]').tooltip();
 });
 
-// Initialize popover component
-$(function() {
-  $('[data-toggle="popover"]').popover();
-});
-
 //   Popover
 $(function() {
   $('[data-toggle="popover"]').popover();
+  $('[data-trigger="focus"]').popover();
 });
 
 // Login form validation

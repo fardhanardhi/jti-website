@@ -17,15 +17,37 @@
   color: white;
 }
 
-#dosenKompen .sudah-konfirmasi{
+#dosenKompen .Sudah-konfirmasi{
   background-color: #A7FCA5;
 }
-#dosenKompen .belum-konfirmasi{
+#dosenKompen .Belum-konfirmasi{
   background-color: #FCA5A5;
 }
 /* #dosenKompen .table-striped > tbody > tr > td {
   background-color: #FCA5A5;
 } */
+
+#dosenKompen .box1{
+  height: 17px;
+  width: 17px;
+  background-color: #A7FCA5;
+}
+#dosenKompen .box2{
+  height: 17px;
+  width: 17px;
+  background-color: #FCA5A5;
+}
+#dosenKompen .sudah{
+  margin-right: 121px;
+}
+#dosenKompen .belum{
+  margin-left: 40px;
+  padding-left: 40px;
+}
+#dosenKompen .hiya{
+  margin-left: 40px;
+  padding-left: 40px;
+}
 
 /* list kompen */
 #dosenKompen .judul {
@@ -48,9 +70,6 @@
   font-size: 12px;
   font-family: lato;
   width: 190px;
-}
-#dosenKompen ul.keterangan{
-  list-style-type: square;
 }
 #dosenKompen td.nomor-kompen{
   width: 0.3em;

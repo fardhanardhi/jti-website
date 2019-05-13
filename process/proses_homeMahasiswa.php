@@ -8,6 +8,24 @@ function info($con)
   return $resultInfo;
 }
 
+function attachment($con, $id_info)
+{
+  $attachment =
+    "SELECT
+      a.*
+    FROM
+      tabel_attachment a,
+      tabel_info b
+    WHERE
+      a.id_info = b.id_info 
+    AND 
+      a.id_info = '$id_info'
+    ";
+
+  $resultAttachment = mysqli_query($con, $attachment);
+  return $resultAttachment;
+}
+
 function tampilTanggal($tanggal)
 {
   return date('d F Y', strtotime($tanggal));

@@ -90,4 +90,114 @@ if (isset($_POST["insert"]) || isset($_POST["delete"]))
     } 
 }
 
+// Modal Preview
+if(isset($_POST["tampilDetailKelas"]) && isset($_POST["tampilDetailSemester"]))
+{
+    $id_kelas = $_POST['tampilDetailKelas'];
+    $id_semester = $_POST['tampilDetailSemester'];
+
+    $detailJadwalKuliah = "select tp.kode as prodi_kelas,tk.tingkat,tk.kode_kelas,ts.semester,tm.nama as nama_matkul,td.nama,tr.kode,tj.hari,DATE_FORMAT(tj.jam_mulai, '%H:%i') as jam_mulai,
+    DATE_FORMAT(tj.jam_selesai, '%H:%i') as jam_selesai,tm.sks from tabel_jadwal tj,tabel_matkul tm,tabel_dosen td,tabel_ruang tr,tabel_kelas tk,tabel_semester ts,tabel_prodi tp
+    where tj.id_matkul = tm.id_matkul
+    and tj.id_dosen = td.id_dosen
+    and tj.id_ruang = tr.id_ruang
+    and tj.id_kelas = tk.id_kelas
+    and tj.id_semester = ts.id_semester
+    and tk.id_prodi = tp.id_prodi
+    and tj.id_kelas = $id_kelas
+    and tj.id_semester = $id_semester";
+
+    $resultDetailJadwalKuliah = mysqli_query($con, $detailJadwalKuliah);
+    $resultDetailJadwalKuliah2 = mysqli_query($con, $detailJadwalKuliah);
+
+    if(mysqli_num_rows($resultDetailJadwalKuliah)>0)
+    {
+        $no = 1;
+        $output ="";
+        $outputDetail = "";
+
+        $rowDetailJadwalKuliah2=mysqli_fetch_assoc($resultDetailJadwalKuliah2);
+
+        $outputDetail ="
+        <div class='card-body'>
+                <div class='row'>
+                    <div class='col-sm-2'>
+                        <h5>Kelas : ".$rowDetailJadwalKuliah2["prodi_kelas"]."-".$rowDetailJadwalKuliah2["tingkat"]."".$rowDetailJadwalKuliah2["kode_kelas"]."</h5>
+                    </div>
+                    <div class='col-sm-9'>
+                        <h5>Semester : ".$rowDetailJadwalKuliah2["semester"]."</h5>
+                    </div>
+                </div>
+            </div>
+        ";
+
+        while($rowDetailJadwalKuliah=mysqli_fetch_assoc($resultDetailJadwalKuliah))
+        {
+            $output.="
+                <div id='accordion'>
+                    <div class='card'>
+                        <div class='card-header' id='heading".$no."' data-toggle='collapse' data-target='#collapse".$no."' aria-expanded='true' aria-controls='collapse".$no."'>
+                            <h6 class='mb-0'>
+                                ".$rowDetailJadwalKuliah["nama_matkul"]."<i class='fas fa-caret-down float-right'></i>
+                            </h6>
+                        </div>
+                            <div id='collapse".$no."' class='collapse' aria-labelledby='heading".$no."' data-parent='#accordion'>
+                                <div class='card-body'>
+                                    <div class='col-md-12 p-0'>
+                                        <div class='container-fluid'>
+                                            <div class='row'>
+                                                <div class='col-sm-6'>
+                                                    <div class='form-group row'>
+                                                        <label class='col-sm-4'>Dosen Pengajar</label>
+                                                        <div class='col-sm-8'>
+                                                            ".$rowDetailJadwalKuliah["nama"]."
+                                                        </div>
+                                                    </div>
+                                                    <div class='form-group row'>
+                                                        <label class='col-sm-4'>Ruangan</label>
+                                                        <div class='col-sm-8'>
+                                                            ".$rowDetailJadwalKuliah["kode"]."
+                                                        </div>
+                                                    </div>
+                                                    <div class='form-group row'>
+                                                        <label class='col-sm-4'>Hari</label>
+                                                        <div class='col-sm-8'>
+                                                            ".$rowDetailJadwalKuliah["hari"]."
+                                                        </div>
+                                                    </div>
+                                                    <div class='form-group row'>
+                                                        <label class='col-sm-4'>Jam</label>
+                                                        <div class='col-sm-8'>
+                                                            ".$rowDetailJadwalKuliah["jam_mulai"]." / ".$rowDetailJadwalKuliah["jam_selesai"]."
+                                                        </div>
+                                                    </div>
+                                                    <div class='form-group row'>
+                                                        <label class='col-sm-4'>SKS</label>
+                                                        <div class='col-sm-8'>
+                                                            ".$rowDetailJadwalKuliah["sks"]."
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>";
+            $no++;
+        }
+        
+        echo $outputDetail;
+        echo "<div class='card-body'>";
+        echo $output;
+        echo "</div>";
+
+    }
+    else
+    {
+        echo $output.="Data Kosong";
+    }
+}
+
 ?>

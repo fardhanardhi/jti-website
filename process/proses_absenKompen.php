@@ -50,7 +50,11 @@ function kompen($con)
 
 function tampilTanggal($tanggal)
 {
-  return date('d F Y', strtotime($tanggal));
+  $arrBulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");  
+  $tanggalHasil=date('d', strtotime($tanggal));
+  $bulan= date('m', strtotime($tanggal));
+  $tahun=date('Y', strtotime($tanggal));
+  return $tanggalHasil." ".$arrBulan[$bulan-1]." ".$tahun;
 }
 
 // Pekerjaan

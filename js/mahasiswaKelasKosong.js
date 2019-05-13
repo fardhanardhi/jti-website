@@ -1,19 +1,70 @@
-$('#cariKelasKosongMhs').click(function () {
-    var radioHari = $("input[name='hari']:checked").val(),
-        jam = $("#jamKelasKosong").val();
+$("#cariKelasKosongMhs").click(function() {
+  var radioHari = $("input[name='hari']:checked").val(),
+    jam = $("#jamKelasKosong").val();
 
+  $.ajax({
+    url: "../process/proses_kelasKosong.php",
+    method: "post",
+    data: { cariKelasKosong: true, hari: radioHari, jam: jam },
+    success: function(data) {
+      $("#dataKelasKosongMhs").html(data);
+    }
+  });
+});
+
+$(".checkout-kelas").click(function() {
+  var id_ruang_dipinjam = $(this).attr("id");
+  $("#id_ruang_dipinjam_mhs").val(id_ruang_dipinjam);
+});
+
+$(document).ready(function() {
+  refreshKelasKosong();
+});
+
+function refreshKelasKosong() {
+  clearInterval();
+
+  setInterval(function() {
     $.ajax({
-        url: "../process/proses_kelasKosong.php",
-        method: "post",
-        data: { cariKelasKosong: true, hari: radioHari, jam: jam },
-        success: function (data) {
-            $('#dataKelasKosongMhs').html(data);
-        }
-    })
-})
+      url: "../process/proses_kelasKosong.php",
+      method: "post",
+      data: { autoCheckout: true },
+      success: function() {
+        reloadKelasKosongMhs();
+      }
+    });
+  }, 5000);
+}
 
-$('.checkout-kelas').click(function () {
-    var id_info_kelas_kosong = $(this).attr("id");
-    $('#idInfoKelasKosong').val(id_info_kelas_kosong);
-    $('#modalCheckout').modal("show");
-})
+// fungsi untuk reload semua div
+function reloadKelasKosongMhs() {
+  ruangKosongMhs();
+  ruangDipesanMhs();
+}
+
+// fungsi untuk reload ruang kosong
+function ruangKosongMhs() {
+  var radioHari = $("input[name='hari']:checked").val(),
+    jam = $("#jamKelasKosong").val();
+
+  $.ajax({
+    url: "../process/proses_kelasKosong.php",
+    method: "post",
+    data: { cariKelasKosong: true, hari: radioHari, jam: jam },
+    success: function(data) {
+      $("#dataKelasKosongMhs").html(data);
+    }
+  });
+}
+
+// fungsi untuk reload ruangan dipesan
+function ruangDipesanMhs() {
+  $.ajax({
+    url: "../process/proses_kelasKosong.php",
+    method: "post",
+    data: { ruangDipesan: true },
+    success: function(data) {
+      $("#ruang-dipesan-mhs").html(data);
+    }
+  });
+}

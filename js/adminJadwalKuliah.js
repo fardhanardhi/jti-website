@@ -1,4 +1,4 @@
-$(".hapus-jadwal-kuliah").click(function() {
+$(".hapus-jadwal-kuliah").click(function () {
   var id_kelas = $(this).attr("id");
   var id_semester = $(this).attr("attrSemester");
   $("#id_kelasHapus").val(id_kelas);
@@ -6,7 +6,7 @@ $(".hapus-jadwal-kuliah").click(function() {
   $("#hapus").modal("show");
 });
 
-$("#txtCariJadwalKuliah").keyup(function() {
+$("#txtCariJadwalKuliah").keyup(function () {
   var input,
     filter,
     itemJadwalKuliah,
@@ -27,7 +27,7 @@ $("#txtCariJadwalKuliah").keyup(function() {
   filter = $(input)
     .val()
     .toUpperCase();
-
+  
   itemJadwalKuliah = $("#dataJadwalKuliah .itemJadwalKuliah");
   for (i = 0; i < itemJadwalKuliah.length; i++) {
     kelas = $(itemJadwalKuliah[i]).find(".kelas");
@@ -66,4 +66,22 @@ $("#txtCariJadwalKuliah").keyup(function() {
       }
     }
   }
+});
+
+$(".tampil-detail").click(function () {
+  var id_kelas = $(this).attr("data-kelas");
+  var id_semester = $(this).attr("data-semester");
+
+  $.ajax({
+    url: "../process/proses_adminJadwalKuliah.php",
+    method: "post",
+    data: {
+      tampilDetailKelas: id_kelas,
+      tampilDetailSemester: id_semester
+    },
+    success: function (data) {
+      $("#detail-jadwalKuliah").html(data);
+      $("#modalPreview").modal("show");
+    }
+  });
 });

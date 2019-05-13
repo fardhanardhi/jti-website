@@ -255,7 +255,8 @@
                             <br>
                             <div class="form-inline ml-4">
                                 <i class="fas fa-search fa-lg mr-2"></i>
-                                <input type="search" class="form-control form-control-sm" name="txtCariJadwalKuliah" id="txtCariJadwalKuliah" placeholder="Pencarian">
+                                <input type="search" class="form-control form-control-sm" name="txtCariJadwalKuliah"
+                                    id="txtCariJadwalKuliah" placeholder="Pencarian">
                             </div>
                             <div class="scrollbar scrollbar-x" id="dataJadwalKuliah" style="overflow:auto;">
                                 <?php
@@ -283,16 +284,29 @@
                                         while($row = mysqli_fetch_assoc($resultJadwalKuliah)){
                                         ?>
                                         <tr class="itemJadwalKuliah">
-                                            <td><?php echo $no;?></td>
-                                            <td class="kelas"><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?>
+                                            <td class="tampil-detail" data-kelas="<?php echo $row["id_kelas"];?>"
+                                                data-semester="<?php echo $row["id_semester"];?>"><?php echo $no;?></td>
+                                            <td class="tampil-detail kelas" data-kelas="<?php echo $row["id_kelas"];?>"
+                                                data-semester="<?php echo $row["id_semester"];?>">
+                                                <?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?>
                                             </td>
-                                            <td class="nama"><?php echo $row["nama"]; ?></td>
-                                            <td class="semester"><?php echo $row["semester"]; ?></td>
-                                            <td class="jumlah_matkul"><?php echo $row["jumlah_matkul"]; ?></td>
-                                            <td class="jumlah_sks"><?php echo $row["jumlah_sks"]; ?></td>
-                                            <td><button class="btn btn-primary"
-                                                    id="<?php echo $row["id_kelas"]; ?>" type="button"
-                                                    class="pratinjau btn" data-toggle="modal"
+                                            <td class="tampil-detail nama" data-kelas="<?php echo $row["id_kelas"];?>"
+                                                data-semester="<?php echo $row["id_semester"];?>">
+                                                <?php echo $row["nama"]; ?></td>
+                                            <td class="tampil-detail semester"
+                                                data-kelas="<?php echo $row["id_kelas"];?>"
+                                                data-semester="<?php echo $row["id_semester"];?>">
+                                                <?php echo $row["semester"]; ?></td>
+                                            <td class="tampil-detail jumlah_matkul"
+                                                data-kelas="<?php echo $row["id_kelas"];?>"
+                                                data-semester="<?php echo $row["id_semester"];?>">
+                                                <?php echo $row["jumlah_matkul"]; ?></td>
+                                            <td class="tampil-detail jumlah_sks"
+                                                data-kelas="<?php echo $row["id_kelas"];?>"
+                                                data-semester="<?php echo $row["id_semester"];?>">
+                                                <?php echo $row["jumlah_sks"]; ?></td>
+                                            <td><button class="btn btn-primary" id="<?php echo $row["id_kelas"]; ?>"
+                                                    type="button" class="pratinjau btn" data-toggle="modal"
                                                     data-target="#editModal">Edit</button></td>
                                             <td><button class="btn btn-danger hapus-jadwal-kuliah"
                                                     id="<?php echo $row["id_kelas"]; ?>"
@@ -337,6 +351,24 @@
         </div>
     </div>
 </main>
+
+<!-- Modal preview -->
+<div class="modal fade" id="modalPreview">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content p-3">
+            <div class="modal-header">
+                <h5 class="col-11 modal-title text-center">Jadwal Kuliah</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- isi -->
+            <div class="container-fluid p-0" id="detail-jadwalKuliah">
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal edit -->
 <div class="modal fade" id="editModal">

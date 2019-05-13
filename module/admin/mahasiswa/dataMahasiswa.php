@@ -282,10 +282,10 @@
                             <br>
                             <form class="form-inline ml-4">
                                 <i class="fas fa-search mr-2"></i>
-                                <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+                                <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search" name="txtCariDataMahasiswa" id="txtCariDataMahasiswa">
                                 <button class="btn btn-mencari btn-success tmbl-mencari"type="submit">Cari</button>
                             </form>
-                            <div class="scrolltable">
+                            <div class="scrolltable" id="dataAdminMahasiswa">
                                 <table class="table table-striped table-bordered text-center mt-3">
                                     <thead>
                                         <tr>
@@ -310,8 +310,7 @@
                                             from tabel_mahasiswa tm,tabel_prodi tp,tabel_user tu,tabel_kelas tk
                                             where tm.id_prodi = tp.id_prodi
                                             and tm.id_user = tu.id_user
-                                            and tk.id_prodi = tp.id_prodi
-                                            and tm.id_kelas = tk.id_kelas
+                                            and tm.id_kelas = tk.id_kelas;
 
                                             
                                             ";
@@ -326,19 +325,19 @@
 
                                                 
                                                 ?>
-                                                    <tr>
+                                                    <tr class="itemDataMahasiswa">
                                                         <td><?php echo $index; ?></td>
-                                                        <td><?php echo $row["username"]; ?></td>
-                                                        <td><?php echo $row["password"]; ?></td>
-                                                        <td><img src="../attachment/img/<?php echo $row['foto']?>" width='40'></td>
-                                                        <td><?php echo $row["nim"]; ?></td>
-                                                        <td><?php echo $row["nama_mahasiswa"]; ?></td>
-                                                        <td><?php echo $row["tempat_lahir"]; ?></td>
-                                                        <td><?php echo $row["tanggal_lahir"]; ?></td>
-                                                        <td><?php echo $row["jenis_kelamin"]; ?></td>
-                                                        <td><?php echo $row["alamat"]; ?></td>
-                                                        <td><?php echo $row["nama_prodi"];?></td>
-                                                        <td><?php echo $row["kode_kelas"];?></td>
+                                                        <td class="usernameMahasiswa"><?php echo $row["username"]; ?></td>
+                                                        <td class="passwordMahasiswa"><?php echo $row["password"]; ?></td>
+                                                        <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo $row['foto']?>" width='40'></td>
+                                                        <td class="nimMahasiswa"><?php echo $row["nim"]; ?></td>
+                                                        <td class="namaMahasiswa"><?php echo $row["nama_mahasiswa"]; ?></td>
+                                                        <td class="tempatLahirMahasiswa"><?php echo $row["tempat_lahir"]; ?></td>
+                                                        <td class="tanggalLahirMahasiswa"><?php echo $row["tanggal_lahir"]; ?></td>
+                                                        <td class="jenisKelaminMahasiswa"><?php echo $row["jenis_kelamin"]; ?></td>
+                                                        <td class="alamatMahasiswa"><?php echo $row["alamat"]; ?></td>
+                                                        <td class="namaProdiMahasiswa"><?php echo $row["nama_prodi"];?></td>
+                                                        <td class="kodeKelasMahasiswa"><?php echo $row["kode_kelas"];?></td>
 
                                                         <td>
                                                         <a id_userEdit="<?php echo $row["id_user"]; ?>"
@@ -356,6 +355,10 @@
                                                 ?>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div id="tidakDapatDitemukan" style="display:none" class="col-12 mt-5 text-center">
+                                <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
+                                <p>Data yang anda cari tidak dapat ditemukan</h>
                             </div>
                         </div>
                     </div>
@@ -379,7 +382,7 @@
                     
                     <div class="card-body">
                         <div class="col-md-12 p-0">
-                            <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=edit" id="formEditAdminMahasiswa" method="POST">
+                            <form action="../process/proses_adminMahasiswa.php?module=dataMahasiswa&act=edit" id="formEditAdminMahasiswa" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="id_update" id="id_update" value="<?php echo $id_delete ?>">
                                 <div class="container-fluid">
                                     <div class="row">
@@ -419,7 +422,7 @@
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-9">
                                                     <br>
-                                                    <input id='fileid3' type='file' name='filename' onchange="preview_images6(event);"  hidden
+                                                    <input id='fileid3' type='file' name='fileid3' onchange="preview_images6(event);"  hidden
                                                         required />
                                                     <input id='buttonid3' type='button' value='Load Gambar'
                                                         class="btn btn-loading btn-primary tmbl-loading ml-2"  />
