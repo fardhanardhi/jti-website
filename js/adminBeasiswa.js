@@ -5,8 +5,9 @@ function Beasiswacharcountupdate(beasiswacount){
 	document.getElementById("charcount").innerHTML = lng + '/300';
 }
 
-
 $("#datepickerBatasTanggal").datepicker();
+
+$( "#datepickerCari" ).datepicker({format: "yyyy/mm/dd"});
 
 
 function checkValidationBeasiswa()

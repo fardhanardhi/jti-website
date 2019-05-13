@@ -10,12 +10,25 @@ function tampilBeasiswa($con)
 
 function cariBeasiswa($con, $tanggal)
 {
-    $tampilCariBeasiswa="select * from tabel_info_beasiswa where waktu_publish = '$tanggal' OR waktu_berakhir ='$tanggal' OR judul = '$tanggal'";
+    $tampilCariBeasiswa="SELECT * from tabel_info_beasiswa WHERE waktu_publish LIKE '$tanggal%' OR waktu_berakhir LIKE '$tanggal%' OR judul LIKE '$tanggal%'";
     $resultTampilCariBeasiswa=mysqli_query($con, $tampilCariBeasiswa);
     return $resultTampilCariBeasiswa;
 }
 
+function tampilTanggal($tanggal)
+{
+  $arrBulan = array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember");  
+  $tanggalHasil=date('d', strtotime($tanggal));
+  $bulan=date('m', strtotime($tanggal));
+  $tahun=date('Y', strtotime($tanggal));
+  return $tanggalHasil." ".$arrBulan[$bulan-1]." ".$tahun;
+}
 
+function formatTanggalBeasiswa($tanggal){
+  $date1=strtr($tanggal,'/','-');
+  $newFormat=date('Y-m-d',strtotime($date1));
+  return $newFormat;
+}
 
 if(isset($_POST["realSubmitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_POST["hapusBeasiswa"])){
 
@@ -44,7 +57,7 @@ if(isset($_POST["realSubmitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_PO
 
 <?php
 if(isset($_POST["adminCariBeasiswa"])){
-  $resultTampilBeasiswa=cariBeasiswa($con, $_POST["tanggal"]);
+  $resultTampilBeasiswa=cariBeasiswa($con,formatTanggalBeasiswa($_POST["tanggal"]));
   $index=1;
   if (mysqli_num_rows($resultTampilBeasiswa) > 0){
     ?>
@@ -56,7 +69,7 @@ if(isset($_POST["adminCariBeasiswa"])){
                 <th>Tanggal Pembuatan</th>
                 <th>Tanggal Perubahan</th>
                 <th>Batas Tanggal</th>
-                <th colspan="2">Proses</th>
+                <th>Proses</th>
             </tr>
         </thead>
         <tbody class="text-center m-auto">
@@ -66,10 +79,8 @@ if(isset($_POST["adminCariBeasiswa"])){
               <tr>
                   <td><?= $index?></td>
                   <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview<?= $index?>"><?= $row["judul"]?></td>
-                  <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_publish"]))?></td>
-                  <td style="width:15em;">25 Februari 2019</td>
-                  <td style="width:15em;"><?= date('d F Y', strtotime($row["waktu_berakhir"]));?></td>
-                  <td><button class="btn btn-primary beasiswa-edit-btn">Edit</button></td>
+                  <td style="width:15em;"><?= tampilTanggal($row["waktu_publish"])?></td>
+                  <td style="width:15em;"><?= tampilTanggal($row["waktu_berakhir"]);?></td>
                   <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus<?= $index?>">Hapus</button></td>
               </tr>
                 <?php
@@ -80,12 +91,13 @@ if(isset($_POST["adminCariBeasiswa"])){
         </tbody>
     </table>
     <?php
-    }else{
+  }else{
       ?>
       <div class="text-center">
-        <p class="text-muted">Data beasiswa kosong</p>
+        <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+        <p class="text-muted">Tidak ada beasiswa pada "<?php echo tampilTanggal(formatTanggalBeasiswa($_POST["tanggal"]));?>"</p>
       </div>
       <?php
-    }
+  }
 }
 ?>
