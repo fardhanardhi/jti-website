@@ -266,7 +266,7 @@
 
                                 if (mysqli_num_rows($resultJadwalKuliah) > 0){
                                 ?>
-                                <table class="table table-striped table-bordered text-center mt-3">
+                                <table class="table table-striped table-bordered text-center mt-3 itemJadwalKuliah">
                                     <thead>
                                         <tr>
                                             <th>No</th>

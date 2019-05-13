@@ -21,13 +21,12 @@ $("#txtCariJadwalKuliah").keyup(function () {
     txtValueSemester,
     txtValueJumlahMatkul,
     txtValueJumlahSks,
-    halamanTidakDitemukan = document.getElementById("tidakDitemukan"),
-    tabelJadwalKuliah = document.getElementById("dataJadwalKuliah");
-  input = $("#txtCariJadwalKuliah");
+    totalInactive,
+    input = $("#txtCariJadwalKuliah");
   filter = $(input)
     .val()
     .toUpperCase();
-  
+
   itemJadwalKuliah = $("#dataJadwalKuliah .itemJadwalKuliah");
   for (i = 0; i < itemJadwalKuliah.length; i++) {
     kelas = $(itemJadwalKuliah[i]).find(".kelas");
@@ -58,13 +57,19 @@ $("#txtCariJadwalKuliah").keyup(function () {
         txtValueJumlahMatkul.indexOf(filter) > -1 ||
         txtValueJumlahSks.indexOf(filter) > -1
       ) {
-        tabelJadwalKuliah.style.display = "block";
-        halamanTidakDitemukan.style.display = "none";
+        itemJadwalKuliah[i].style.display = "";
       } else {
-        tabelJadwalKuliah.style.display = "none";
-        halamanTidakDitemukan.style.display = "block";
+        itemJadwalKuliah[i].style.display = "none";
       }
     }
+  }
+
+  totalInactive = $("#dataJadwalKuliah .itemJadwalKuliah:hidden");
+
+  if (itemJadwalKuliah.length == totalInactive.length) {
+    document.getElementById("tidakDitemukan").style.display = "block";
+  } else {
+    document.getElementById("tidakDitemukan").style.display = "none";
   }
 });
 
