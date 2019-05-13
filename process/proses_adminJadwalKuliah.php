@@ -136,7 +136,7 @@ if(isset($_POST["tampilDetailKelas"]) && isset($_POST["tampilDetailSemester"]))
             $output.="
                 <div id='accordion'>
                     <div class='card'>
-                        <div class='card-header' id='heading".$no."' data-toggle='collapse' data-target='#collapse".$no."' aria-expanded='true' aria-controls='collapse".$no."'>
+                        <div class='card-header cursor-pointer' id='heading".$no."' data-toggle='collapse' data-target='#collapse".$no."' aria-expanded='true' aria-controls='collapse".$no."'>
                             <h6 class='mb-0'>
                                 ".$rowDetailJadwalKuliah["nama_matkul"]."<i class='fas fa-caret-down float-right'></i>
                             </h6>
