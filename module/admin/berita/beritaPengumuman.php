@@ -35,8 +35,7 @@
                                 </div>
                                 <hr>
                                 <div class="form-group ketik-berita">
-                                    <textarea name="ketik-berita" id="" cols="30" rows="6" placeholder="Ketik Berita ..." maxlength="500" class="form-control border-0" oninput="Beritacharcountupdate(this.value)">
-                                    </textarea> 
+                                    <textarea name="ketik-berita" id="" cols="30" rows="6" placeholder="Ketik Berita ..." maxlength="500" class="form-control border-0" oninput="Beritacharcountupdate(this.value)"></textarea> 
                                 </div>
                                 <div class="col-md-12 p-1 alert alert-danger alert-dismissible fade show" role="alert">
                                     <p>Pak Dimas.jpg (Gagal Upload) - Kapasitas gambar lebih dari 5 Mb</p>
