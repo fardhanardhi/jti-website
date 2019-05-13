@@ -77,23 +77,6 @@ function khsNilai($con, $id_mahasiswa, $id_semester){
     }
 }
 
-// function khsSks($con, $id_mahasiswa, $id_semester){
-//     $khsSks = "select a.*, b.*, c.*, d.*, e.*, SUM(c.sks) as sks from tabel_khs a, 
-//     tabel_mahasiswa b, tabel_matkul c, tabel_jadwal d, tabel_semester e
-//     where a.id_mahasiswa = b.id_mahasiswa
-//     and d.id_matkul = c.id_matkul 
-//     and d.id_semester = e.id_semester
-//     and a.id_mahasiswa = $id_mahasiswa and d.id_semester = $id_semester";
-
-//     $resultTampilKhsSks = mysqli_query($con, $khsSks);
-//     if(mysqli_num_rows($resultTampilKhsSks)>0){
-//         $rowKhsSks = mysqli_fetch_assoc($resultTampilKhsSks);
-//         return $rowKhsSks["sks"];
-//     } else{
-//         return 0;
-//     }
-// }
-
 function kelas($con){
     $kelas="select * from tabel_kelas";
     $resultKelas = mysqli_query($con, $kelas);
@@ -119,18 +102,6 @@ function tampilTahun($con){
     $resultTahun = mysqli_query($con, $tahun);
     return $resultTahun;
 }
-
-// function tampilKelasDis($con){
-//     $tampilKelasDis = "select distinct(a.id_mahasiswa), 
-//     b.*, c.* from tabel_kelas a, tabel_mahasiswa b, 
-//     tabel_prodi c where 
-//     a.id_mahasiswa = b.id_mahasiswa
-//     and a.id_prodi=c.id_prodi group by a.id_mahasiswa";
-//     $resultTampilKelasDis = mysqli_query($con, $tampilKelasDis);  
-//     $rowKelasDis=mysqli_fetch_assoc($resultTampilKelasDis);
-//     $hasil= $rowKelasDis["kode"]." - ".$rowKelasDis["tingkat"].$rowKelasDis["kode_kelas"];
-//     return $hasil;
-// }
 
 function dosen($con)
 {
@@ -161,4 +132,122 @@ function minSemester($con){
 	$rowMinSemester=mysqli_fetch_assoc($resultMinSemester);
 	return $rowMinSemester["minSemester"];
 }
+
+// Modal KHS LIHAT
+if(isset($_POST["tampilDetailMhs"]) && isset($_POST["tampilDetailSemester"]))
+{
+    $id_mahasiswa = $_POST['tampilDetailMhs'];
+    $id_semester = $_POST['tampilDetailSemester'];
+
+    $detailMahasiswa="select distinct(c.id_matkul), a.id_mahasiswa, a.*, a.nim, 
+    a.nama as nm_mahasiswa, c.*, c.sks, d.id_kelas, d.* ,e.*, e.semester, f.*, h.*, c.nama as nm_matkul
+    from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f, tabel_prodi h
+    where a.id_kelas = d.id_kelas
+    and d.id_kelas = f.id_kelas
+    and h.id_prodi = d.id_prodi
+    and a.id_semester = e.id_semester
+    and e.id_semester = f.id_semester
+    and c.id_matkul = f.id_matkul
+    and a.id_semester = $id_semester
+    and a.id_mahasiswa = $id_mahasiswa group by a.id_mahasiswa";
+
+    $resultDetailMahasiswa = mysqli_query($con, $detailMahasiswa);
+    
+    if(mysqli_num_rows($resultDetailMahasiswa) == 0){}
+        else{
+            $no = 1;
+            while ($row = mysqli_fetch_assoc($resultDetailMahasiswa)) {
+                ?>    
+                <div class="modal-body">
+                    <div class ="isi-modaLihat border-bottom1 border-gray">
+                    <p>Tahun Akademik : 2017/2018 Ganjil</p>
+                    <p>Nama : <?php echo $row["nm_mahasiswa"]; ?></p>
+                    <p>NIM : <?php echo $row["nim"]; ?></p>
+                    <p>Kelas : <?php echo $row["kode"]." - ".$row["tingkat"].$row["kode_kelas"] ?></p>
+                    <p>Prodi : <?php echo $row["nama"]; ?></p>
+                </div> 
+                <div id = "khsModal">
+                <div class="media text-muted pt-8">
+                <?php
+                
+                $nilai = "select distinct(c.id_matkul), a.id_mahasiswa, a.*, c.*, d.* ,e.*, e.semester, f.*, g.*, h.*, c.nama as nm_matkul
+                from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f, tabel_khs g, tabel_prodi h
+                where a.id_kelas = d.id_kelas
+                and d.id_kelas = f.id_kelas
+                and h.id_prodi = d.id_prodi
+                and a.id_semester = e.id_semester
+                and a.id_semester = f.id_semester
+                and c.id_matkul = f.id_matkul
+                and g.id_matkul = f.id_matkul 
+                and g.id_mahasiswa = a.id_mahasiswa
+                and g.id_semester = $id_semester
+                and g.id_mahasiswa = $id_mahasiswa";
+                
+                $resultTampilNilai = mysqli_query($con, $nilai);
+                if(mysqli_num_rows($resultTampilNilai) > 0){
+                ?>            
+                <div class="media-body pb-8 mb-0">
+                    <table class="table table-striped table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Mata Kuliah</th>
+                                <th>SKS</th>
+                                <th>Jam</th>
+                                <th>Nilai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                        $index=1;
+                        while($row1 = mysqli_fetch_assoc($resultTampilNilai)){
+                        if($row1["nilai"]!=0){
+                        ?>
+                        <tr>
+                            <td><?php echo $index;?></td>
+                            <td><?php echo $row1["nm_matkul"];?></td>
+                            <td><?php echo $row1["sks"];?></td>
+                            <td><?php echo $row1["jam"];?></td>
+                            <td><?php echo $row1["nilai"];?></td>
+                        </tr>
+                        <?php
+                        } else{
+                        ?>
+                        <tr>
+                            <td><?php echo $index;?></td>
+                            <td><?php echo $row1["nm_matkul"];?></td>
+                            <td><?php echo $row1["sks"];?></td>
+                            <td><?php echo $row1["jam"];?></td>
+                        <td><?php echo "Belum Diisi"; ?></td>
+                        </tr>
+                        <?php
+                        }
+                        $index++;
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                    <?php
+                    }else{
+                    ?>
+                    <div class='text-center'>
+                        <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
+                        <p class='text-muted'>Data Nilai Masih Kosong</p>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+            ?>
+            </div>
+        </div>
+        </div>
+        <?php
+    }
+    $no++;
+}
+// MODAL KHS LIHAT END
+
 ?>
