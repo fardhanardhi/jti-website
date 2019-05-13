@@ -61,7 +61,7 @@ function cekSemester($con, $id_mahasiswa){
 }
 
 function khsNilai($con, $id_mahasiswa, $id_semester){
-    $khsNilai = "select distinct(SUM(c.sks * a.nilai)/SUM(c.sks)) as ip, a.*, b.*, c.*, d.*, e.* from tabel_khs a, 
+    $khsNilai = "select distinct(ROUND(SUM(c.sks * a.nilai)/SUM(c.sks),2)) as ip, a.*, b.*, c.*, d.*, e.* from tabel_khs a, 
     tabel_mahasiswa b, tabel_matkul c, tabel_jadwal d, tabel_semester e
     where a.id_mahasiswa = b.id_mahasiswa
     and d.id_matkul = c.id_matkul 
