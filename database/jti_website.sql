@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: May 12, 2019 at 03:52 PM
--- Server version: 5.7.26-0ubuntu0.18.04.1
--- PHP Version: 7.2.17-0ubuntu0.18.04.1
+-- Host: localhost
+-- Generation Time: May 13, 2019 at 09:35 PM
+-- Server version: 5.7.26-0ubuntu0.16.04.1
+-- PHP Version: 7.2.14-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -150,6 +150,7 @@ CREATE TABLE `tabel_dosen` (
   `tanggal_lahir` date DEFAULT NULL,
   `foto` text,
   `id_user` int(11) NOT NULL,
+  `waktu_tambah` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `waktu_edit` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -157,20 +158,20 @@ CREATE TABLE `tabel_dosen` (
 -- Dumping data for table `tabel_dosen`
 --
 
-INSERT INTO `tabel_dosen` (`id_dosen`, `nip`, `nama`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`, `id_user`, `waktu_edit`) VALUES
-(4, '198603182012121001', 'Ridwan Rismanto,SST.,M.KOM', 'Perum Bunul Asri B-20 Malang', 'laki-laki', NULL, NULL, NULL, 31, '2019-04-01 00:00:00'),
-(5, '196201051990031002', 'Budi Harijanto, ST., MMkom', 'Perum Giri Palma KAV.113 Malang', 'laki-laki', NULL, NULL, NULL, 33, '2019-04-09 00:00:00'),
-(6, '198108102005012002', 'Ariadi Retno Tri Hayati Ririd, S.Kom., M.Kom', 'Jl. Semolo Waru Elok Blok F/38 Malang', 'perempuan', NULL, NULL, NULL, 34, '2019-04-09 00:00:00'),
-(7, '197704242008121001', 'Gunawan Budi Prasetyo, ST., MMT', 'Bekasi', 'laki-laki', NULL, NULL, NULL, 35, '2019-04-09 00:00:00'),
-(8, '198007162010121002', 'Yuri Ariyanto, S.Kom., M.Kom', 'Jl. Ahila 2 9B/39 Sawojajar 2 Malang', 'laki-laki', NULL, NULL, NULL, 36, '2019-04-09 00:00:00'),
-(9, '197606252005012001', 'Atiqah Nurul Asri, S.Pd., M.Pd', 'Jl. Ade Irma Suryani IIIA/332 Malang', 'perempuan', NULL, NULL, NULL, 37, '2019-04-09 00:00:00'),
-(10, '198406102008121004', 'Imam Fahrur Rozi, ST., MT', 'Suko Timur Malang', 'laki-laki', NULL, NULL, NULL, 38, '2019-04-09 00:00:00'),
-(11, '197111101999031002', 'Rudy Ariyanto, ST, M.Cs', '', 'laki-laki', NULL, NULL, NULL, 39, '2019-04-09 00:00:00'),
-(12, '198103182010122002', 'Widaningsih, S.Psi, SH., MH', '', 'perempuan', NULL, NULL, NULL, 40, '2019-04-09 00:00:00'),
-(13, '198101052005011005', 'Yan Watequlis Syaifudin, ST., MMT', '', 'laki-laki', NULL, NULL, NULL, 41, '2019-04-09 00:00:00'),
-(14, '197305102008011010', 'Indra Dharma Wijaya, ST., MMT', 'Jl. Mayjen Panjaitan 7 RT.4 RW.1 Malang Perum Graha Pelita Asrikatan C-19 Asri', 'laki-laki', NULL, NULL, NULL, 42, '2019-04-09 00:00:00'),
-(15, '197903132008121002', 'Arief Prasetyo, S.Kom., M.Kom', 'Permata Jingga Blok Sawo No.11 Malang', 'laki-laki', NULL, NULL, NULL, 43, '2019-04-09 00:00:00'),
-(16, '198108092010121002', 'Banni Satria Andoko, S.Kom., MMSI.', 'Sulfat Rivera Residence RI No.7 Malang', 'laki-laki', NULL, NULL, NULL, 44, '2019-04-09 00:00:00');
+INSERT INTO `tabel_dosen` (`id_dosen`, `nip`, `nama`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`, `id_user`, `waktu_tambah`, `waktu_edit`) VALUES
+(4, '198603182012121001', 'Ridwan Rismanto,SST.,M.KOM', 'Perum Bunul Asri B-20 Malang', 'laki-laki', NULL, NULL, NULL, 31, '2017-08-16 13:26:21', '2019-04-01 00:00:00'),
+(5, '196201051990031002', 'Budi Harijanto, ST., MMkom', 'Perum Giri Palma KAV.113 Malang', 'laki-laki', NULL, NULL, NULL, 33, '2017-05-13 13:26:21', '2019-04-09 00:00:00'),
+(6, '198108102005012002', 'Ariadi Retno Tri Hayati Ririd, S.Kom., M.Kom', 'Jl. Semolo Waru Elok Blok F/38 Malang', 'perempuan', NULL, NULL, NULL, 34, '2017-05-13 13:26:21', '2019-04-09 00:00:00'),
+(7, '197704242008121001', 'Gunawan Budi Prasetyo, ST., MMT', 'Bekasi', 'laki-laki', NULL, NULL, NULL, 35, '2016-05-13 13:26:21', '2019-04-09 00:00:00'),
+(8, '198007162010121002', 'Yuri Ariyanto, S.Kom., M.Kom', 'Jl. Ahila 2 9B/39 Sawojajar 2 Malang', 'laki-laki', NULL, NULL, NULL, 36, '2016-05-13 13:26:21', '2019-04-09 00:00:00'),
+(9, '197606252005012001', 'Atiqah Nurul Asri, S.Pd., M.Pd', 'Jl. Ade Irma Suryani IIIA/332 Malang', 'perempuan', NULL, NULL, NULL, 37, '2016-05-13 13:26:21', '2019-04-09 00:00:00'),
+(10, '198406102008121004', 'Imam Fahrur Rozi, ST., MT', 'Suko Timur Malang', 'laki-laki', NULL, NULL, NULL, 38, '2018-05-13 13:26:21', '2019-04-09 00:00:00'),
+(11, '197111101999031002', 'Rudy Ariyanto, ST, M.Cs', '', 'laki-laki', NULL, NULL, NULL, 39, '2018-05-13 13:26:21', '2019-04-09 00:00:00'),
+(12, '198103182010122002', 'Widaningsih, S.Psi, SH., MH', '', 'perempuan', NULL, NULL, NULL, 40, '2018-05-13 13:26:21', '2019-04-09 00:00:00'),
+(13, '198101052005011005', 'Yan Watequlis Syaifudin, ST., MMT', '', 'laki-laki', NULL, NULL, NULL, 41, '2018-05-13 13:26:21', '2019-04-09 00:00:00'),
+(14, '197305102008011010', 'Indra Dharma Wijaya, ST., MMT', 'Jl. Mayjen Panjaitan 7 RT.4 RW.1 Malang Perum Graha Pelita Asrikatan C-19 Asri', 'laki-laki', NULL, NULL, NULL, 42, '2019-05-13 13:26:21', '2019-04-09 00:00:00'),
+(15, '197903132008121002', 'Arief Prasetyo, S.Kom., M.Kom', 'Permata Jingga Blok Sawo No.11 Malang', 'laki-laki', NULL, NULL, NULL, 43, '2019-05-13 13:26:21', '2019-04-09 00:00:00'),
+(16, '198108092010121002', 'Banni Satria Andoko, S.Kom., MMSI.', 'Sulfat Rivera Residence RI No.7 Malang', 'laki-laki', NULL, NULL, NULL, 44, '2019-05-13 13:26:21', '2019-04-09 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -479,43 +480,44 @@ CREATE TABLE `tabel_mahasiswa` (
   `tanggal_lahir` date DEFAULT NULL,
   `foto` text,
   `waktu_edit` datetime DEFAULT NULL,
-  `id_user` int(11) NOT NULL
+  `id_user` int(11) NOT NULL,
+  `waktu_tambah` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_mahasiswa`
 --
 
-INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `id_semester`, `nim`, `nama`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`, `waktu_edit`, `id_user`) VALUES
-(33, 3, 4, 7, '1741720144', 'Abdallah Darussalam Candra', 'Perum Graha Kota Asri Blok D-1 No. 9 Jl. Muharto V', 'laki-laki', 'Sumenep', '1999-10-30', 'NULL', '2019-04-04 00:00:00', 2),
-(34, 3, 4, 7, '1741720008', 'Adn Maulidya Handah Putri', 'Jl. Klampok No. 97-A', 'perempuan', 'Malang', '1999-06-25', 'NULL', '2019-04-04 00:00:00', 3),
-(35, 3, 4, 7, '1741720040', 'Aldihamda Sulthon Fuad Prajakusuma', 'Jl. Jatirejo', 'laki-laki', 'Trenggalek', '1998-06-26', 'NULL', '2019-04-04 00:00:00', 4),
-(36, 3, 4, 7, '1741720043', 'Amin Anis Kuddah', 'Jl. Segara 186', 'laki-laki', 'Pamekasan', '1999-09-27', 'NULL', '2019-04-04 00:00:00', 5),
-(37, 3, 4, 7, '1741720086', 'Chintya Puspa Dewi', 'Dsn. Dadapan', 'perempuan', 'Malang', '1999-05-27', 'NULL', '2019-04-04 00:00:00', 6),
-(38, 3, 4, 7, '1741720053', 'Dimas Shella Charlinawati', 'Dsn. Dander', 'perempuan', 'Jember', '1999-07-04', 'NULL', '2019-04-04 00:00:00', 7),
-(39, 3, 4, 7, '1741720054', 'Ermi Pristiyaningrum', 'Dsn. Banca\'an', 'perempuan', 'Tulungagung', '1998-12-06', 'NULL', '2019-04-04 00:00:00', 8),
-(40, 3, 4, 7, '1741720045', 'Fardhan Ardhi Ramadhan', 'Jl. Titas Asri X Blok H No. 12', 'laki-laki', 'Malang', '1999-01-16', 'NULL', '2019-04-04 00:00:00', 9),
-(41, 3, 4, 7, '1741720026', 'Galang Yudha Pratama', 'Perum Joyo Grand Blok A No. 8', 'laki-laki', 'Malang', '1998-10-27', 'NULL', '2019-04-04 00:00:00', 10),
-(42, 3, 4, 7, '1741720088', 'Greggy Gianini Firmansyah', 'Jl. Gading No. 38', 'laki-laki', 'Malang', '1999-03-22', 'NULL', '2019-04-04 00:00:00', 11),
-(43, 3, 4, 7, '1741720192', 'Hafizh Dias Ramadhan', 'Perum Bumi Mondoroko Raya AC-9', 'laki-laki', 'Malang', '1999-01-13', 'NULL', '2019-04-04 00:00:00', 12),
-(44, 3, 4, 7, '1741720058', 'Haryo Bagus Setyawan', 'Jl. Ksatrian Dalam No. 15-A', 'laki-laki', 'Medan', '1999-08-31', 'NULL', '2019-04-04 00:00:00', 13),
-(45, 3, 4, 7, '1741720032', 'Hesti Anisa Reski', 'Jl. Gang TengaH No. 41', 'perempuan', 'Malang', '1998-12-19', 'NULL', '2019-04-04 00:00:00', 14),
-(46, 3, 4, 7, '1741720018', 'Ika Puspa Fairuz Wiwanata', 'Jl. Kesatrian No. 6', 'perempuan', 'Surakarta', '1999-08-21', 'NULL', '2019-04-04 00:00:00', 15),
-(47, 3, 4, 7, '1741720011', 'Ilham Nuswantoro Aji', 'Jl. Kh. Achmad Dahlan 11 No.65', 'laki-laki', 'Pasuruan', '2000-04-10', 'NULL', '2019-04-04 00:00:00', 16),
-(48, 3, 4, 7, '1741720027', 'Leni Saputri', 'Suwayuwo Kulon Embong RT.01 RW.03', 'perempuan', 'Pasuruan', '1999-07-09', 'NULL', '2019-04-04 00:00:00', 17),
-(49, 3, 4, 7, '1741720031', 'Muhammad Aliyul Murtadlo', 'Dsn. Kedawong', 'laki-laki', 'Jombang', '1999-06-04', 'NULL', '2019-04-04 00:00:00', 18),
-(50, 3, 4, 7, '1741720114', 'Okta Chandika Salsabila', 'Jl. Ahmad Yani No.191', 'perempuan', 'Malang', '1999-10-20', 'NULL', '2019-04-04 00:00:00', 19),
-(51, 3, 4, 7, '1741720049', 'Panji Awwaludi Dzikriawan', 'Dsn. Bebe\'an Lor', 'laki-laki', 'Pasuruan', '1999-04-30', 'NULL', '2019-04-04 00:00:00', 20),
-(52, 3, 4, 7, '1741720061', 'Rahardhiyan Wahyu Putra', 'Dsn. Sambiroto', 'laki-laki', 'Sidoarjo', '1999-06-06', 'NULL', '2019-04-04 00:00:00', 21),
-(53, 3, 4, 7, '1741720112', 'Reffan Pandu Amirulloh', 'Sukarsid', 'laki-laki', 'Malang', '1998-11-13', 'NULL', '2019-04-04 00:00:00', 22),
-(54, 3, 4, 7, '1741720160', 'Reza Ariestya Putra', 'Jl. Katu No. 6', 'laki-laki', 'Jakarta', '1998-04-19', 'NULL', '2019-04-04 00:00:00', 23),
-(55, 3, 4, 7, '1741720111', 'Septa Kusumaningtyas', 'Jl. Sumber Bangun D-76', 'perempuan', 'Malang', '1998-09-07', 'NULL', '2019-04-04 00:00:00', 24),
-(56, 3, 4, 7, '1741720196', 'Septian Caesar Floresko', 'Perum Sekarsari Indah B-28', 'laki-laki', 'Manggarai', '1998-09-09', 'NULL', '2019-04-04 00:00:00', 25),
-(57, 3, 4, 7, '1741720158', 'Sulthan Rafif', 'Jl. Gondosuli No.2', 'laki-laki', 'Malang', '1999-09-05', 'NULL', '2019-04-04 00:00:00', 26),
-(58, 3, 4, 7, '1741720081', 'Syahdanny Alhamda', 'Jl. Raya Slamet Wiroto', 'laki-laki', 'Malang', '1998-10-11', 'NULL', '2019-04-04 00:00:00', 27),
-(59, 3, 4, 7, '1741720203', 'Vian Satria Maulana Navalino', 'Perum Arjuna Gumilang A-3', 'laki-laki', 'Jakarta', '1999-06-29', 'NULL', '2019-04-04 00:00:00', 28),
-(60, 3, 4, 7, '1741720076', 'Vicko Handika Nanda Firdiansyah', 'Jl. Panjaitan No. 1', 'laki-laki', 'Malang', '1998-07-14', 'NULL', '2019-04-04 00:00:00', 29),
-(61, 3, 4, 7, '1741720036', 'Wiji Prabowo', 'Dsn. Tlogosari', 'laki-laki', 'Pasuruan ', '1999-10-04', 'NULL', '2019-04-04 00:00:00', 30);
+INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `id_semester`, `nim`, `nama`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`, `waktu_edit`, `id_user`, `waktu_tambah`) VALUES
+(33, 3, 4, 7, '1741720144', 'Abdallah Darussalam Candra', 'Perum Graha Kota Asri Blok D-1 No. 9 Jl. Muharto V', 'laki-laki', 'Sumenep', '1999-10-30', 'NULL', '2019-04-04 00:00:00', 2, '2017-05-13 13:32:33'),
+(34, 3, 4, 7, '1741720008', 'Adn Maulidya Handah Putri', 'Jl. Klampok No. 97-A', 'perempuan', 'Malang', '1999-06-25', 'NULL', '2019-04-04 00:00:00', 3, '2017-05-13 13:32:33'),
+(35, 3, 4, 7, '1741720040', 'Aldihamda Sulthon Fuad Prajakusuma', 'Jl. Jatirejo', 'laki-laki', 'Trenggalek', '1998-06-26', 'NULL', '2019-04-04 00:00:00', 4, '2017-05-13 13:32:33'),
+(36, 3, 4, 7, '1741720043', 'Amin Anis Kuddah', 'Jl. Segara 186', 'laki-laki', 'Pamekasan', '1999-09-27', 'NULL', '2019-04-04 00:00:00', 5, '2017-05-13 13:32:33'),
+(37, 3, 4, 7, '1741720086', 'Chintya Puspa Dewi', 'Dsn. Dadapan', 'perempuan', 'Malang', '1999-05-27', 'NULL', '2019-04-04 00:00:00', 6, '2017-05-13 13:32:33'),
+(38, 3, 4, 7, '1741720053', 'Dimas Shella Charlinawati', 'Dsn. Dander', 'perempuan', 'Jember', '1999-07-04', 'NULL', '2019-04-04 00:00:00', 7, '2017-05-13 13:32:33'),
+(39, 3, 4, 7, '1741720054', 'Ermi Pristiyaningrum', 'Dsn. Banca\'an', 'perempuan', 'Tulungagung', '1998-12-06', 'NULL', '2019-04-04 00:00:00', 8, '2017-05-13 13:32:33'),
+(40, 3, 4, 7, '1741720045', 'Fardhan Ardhi Ramadhan', 'Jl. Titas Asri X Blok H No. 12', 'laki-laki', 'Malang', '1999-01-16', 'NULL', '2019-04-04 00:00:00', 9, '2017-05-13 13:32:33'),
+(41, 3, 4, 7, '1741720026', 'Galang Yudha Pratama', 'Perum Joyo Grand Blok A No. 8', 'laki-laki', 'Malang', '1998-10-27', 'NULL', '2019-04-04 00:00:00', 10, '2017-05-13 13:32:33'),
+(42, 3, 4, 7, '1741720088', 'Greggy Gianini Firmansyah', 'Jl. Gading No. 38', 'laki-laki', 'Malang', '1999-03-22', 'NULL', '2019-04-04 00:00:00', 11, '2017-05-13 13:32:33'),
+(43, 3, 4, 7, '1741720192', 'Hafizh Dias Ramadhan', 'Perum Bumi Mondoroko Raya AC-9', 'laki-laki', 'Malang', '1999-01-13', 'NULL', '2019-04-04 00:00:00', 12, '2017-05-13 13:32:33'),
+(44, 3, 4, 7, '1741720058', 'Haryo Bagus Setyawan', 'Jl. Ksatrian Dalam No. 15-A', 'laki-laki', 'Medan', '1999-08-31', 'NULL', '2019-04-04 00:00:00', 13, '2017-05-13 13:32:33'),
+(45, 3, 4, 7, '1741720032', 'Hesti Anisa Reski', 'Jl. Gang TengaH No. 41', 'perempuan', 'Malang', '1998-12-19', 'NULL', '2019-04-04 00:00:00', 14, '2017-05-13 13:32:33'),
+(46, 3, 4, 7, '1741720018', 'Ika Puspa Fairuz Wiwanata', 'Jl. Kesatrian No. 6', 'perempuan', 'Surakarta', '1999-08-21', 'NULL', '2019-04-04 00:00:00', 15, '2017-05-13 13:32:33'),
+(47, 3, 4, 7, '1741720011', 'Ilham Nuswantoro Aji', 'Jl. Kh. Achmad Dahlan 11 No.65', 'laki-laki', 'Pasuruan', '2000-04-10', 'NULL', '2019-04-04 00:00:00', 16, '2017-05-13 13:32:33'),
+(48, 3, 4, 7, '1741720027', 'Leni Saputri', 'Suwayuwo Kulon Embong RT.01 RW.03', 'perempuan', 'Pasuruan', '1999-07-09', 'NULL', '2019-04-04 00:00:00', 17, '2017-05-13 13:32:33'),
+(49, 3, 4, 7, '1741720031', 'Muhammad Aliyul Murtadlo', 'Dsn. Kedawong', 'laki-laki', 'Jombang', '1999-06-04', 'NULL', '2019-04-04 00:00:00', 18, '2017-05-13 13:32:33'),
+(50, 3, 4, 7, '1741720114', 'Okta Chandika Salsabila', 'Jl. Ahmad Yani No.191', 'perempuan', 'Malang', '1999-10-20', 'NULL', '2019-04-04 00:00:00', 19, '2017-05-13 13:32:33'),
+(51, 3, 4, 7, '1741720049', 'Panji Awwaludi Dzikriawan', 'Dsn. Bebe\'an Lor', 'laki-laki', 'Pasuruan', '1999-04-30', 'NULL', '2019-04-04 00:00:00', 20, '2017-05-13 13:32:33'),
+(52, 3, 4, 7, '1741720061', 'Rahardhiyan Wahyu Putra', 'Dsn. Sambiroto', 'laki-laki', 'Sidoarjo', '1999-06-06', 'NULL', '2019-04-04 00:00:00', 21, '2017-05-13 13:32:33'),
+(53, 3, 4, 7, '1741720112', 'Reffan Pandu Amirulloh', 'Sukarsid', 'laki-laki', 'Malang', '1998-11-13', 'NULL', '2019-04-04 00:00:00', 22, '2017-05-13 13:32:33'),
+(54, 3, 4, 7, '1741720160', 'Reza Ariestya Putra', 'Jl. Katu No. 6', 'laki-laki', 'Jakarta', '1998-04-19', 'NULL', '2019-04-04 00:00:00', 23, '2017-05-13 13:32:33'),
+(55, 3, 4, 7, '1741720111', 'Septa Kusumaningtyas', 'Jl. Sumber Bangun D-76', 'perempuan', 'Malang', '1998-09-07', 'NULL', '2019-04-04 00:00:00', 24, '2017-05-13 13:32:33'),
+(56, 3, 4, 7, '1741720196', 'Septian Caesar Floresko', 'Perum Sekarsari Indah B-28', 'laki-laki', 'Manggarai', '1998-09-09', 'NULL', '2019-04-04 00:00:00', 25, '2017-05-13 13:32:33'),
+(57, 3, 4, 7, '1741720158', 'Sulthan Rafif', 'Jl. Gondosuli No.2', 'laki-laki', 'Malang', '1999-09-05', 'NULL', '2019-04-04 00:00:00', 26, '2017-05-13 13:32:33'),
+(58, 3, 4, 7, '1741720081', 'Syahdanny Alhamda', 'Jl. Raya Slamet Wiroto', 'laki-laki', 'Malang', '1998-10-11', 'NULL', '2019-04-04 00:00:00', 27, '2017-05-13 13:32:33'),
+(59, 3, 4, 7, '1741720203', 'Vian Satria Maulana Navalino', 'Perum Arjuna Gumilang A-3', 'laki-laki', 'Jakarta', '1999-06-29', 'NULL', '2019-04-04 00:00:00', 28, '2017-05-13 13:32:33'),
+(60, 3, 4, 7, '1741720076', 'Vicko Handika Nanda Firdiansyah', 'Jl. Panjaitan No. 1', 'laki-laki', 'Malang', '1998-07-14', 'NULL', '2019-04-04 00:00:00', 29, '2017-05-13 13:32:33'),
+(61, 3, 4, 7, '1741720036', 'Wiji Prabowo', 'Dsn. Tlogosari', 'laki-laki', 'Pasuruan ', '1999-10-04', 'NULL', '2019-04-04 00:00:00', 30, '2017-05-13 13:32:33');
 
 -- --------------------------------------------------------
 
@@ -554,14 +556,14 @@ CREATE TABLE `tabel_notifikasi` (
   `isi` text NOT NULL,
   `waktu` time NOT NULL,
   `status_dibaca` enum('sudah','belum') NOT NULL,
-  `id_mahasiswa` int(30) NOT NULL
+  `id_user` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_notifikasi`
 --
 
-INSERT INTO `tabel_notifikasi` (`id_notifikasi`, `isi`, `waktu`, `status_dibaca`, `id_mahasiswa`) VALUES
+INSERT INTO `tabel_notifikasi` (`id_notifikasi`, `isi`, `waktu`, `status_dibaca`, `id_user`) VALUES
 (1, 'Anda telah mengganti foto profil', '13:00:00', 'sudah', 33),
 (2, 'Anda telah mengganti passord', '18:00:00', 'sudah', 33),
 (3, 'Anda telah mempunyai pesan dari admin', '10:00:00', 'belum', 33),
@@ -698,13 +700,6 @@ CREATE TABLE `tabel_ruang_dipinjam` (
   `waktu_selesai` time NOT NULL,
   `waktu_pinjam` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tabel_ruang_dipinjam`
---
-
-INSERT INTO `tabel_ruang_dipinjam` (`id_ruang_dipinjam`, `id_ruang`, `peminjam`, `hari`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`) VALUES
-(1, 2, 32, 'senin', '07:00:00', '12:50:00', '2019-05-09 22:25:33');
 
 -- --------------------------------------------------------
 
@@ -961,7 +956,7 @@ ALTER TABLE `tabel_matkul`
 --
 ALTER TABLE `tabel_notifikasi`
   ADD PRIMARY KEY (`id_notifikasi`),
-  ADD KEY `id_mahasiswa` (`id_mahasiswa`);
+  ADD KEY `id_mahasiswa` (`id_user`);
 
 --
 -- Indexes for table `tabel_pekerjaan_kompen`
@@ -1265,7 +1260,7 @@ ALTER TABLE `tabel_mahasiswa`
 -- Constraints for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
-  ADD CONSTRAINT `tabel_notifikasi_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tabel_notifikasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`);
 
 --
 -- Constraints for table `tabel_pekerjaan_kompen`
