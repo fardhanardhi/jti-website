@@ -1,3 +1,8 @@
+<?php
+  include "../config/connection.php";
+  include "../process/proses_dosenHome.php";
+?>
+
 <main role="main" class="container-fluid" id="dosenHomepage">
   <link rel="stylesheet" href="../css/dosen.css">
   <div class="row">
@@ -8,19 +13,28 @@
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small lh-125">
               <div class="isi">
+          <?php 
+          $resultTampilProfilDosen=tampilDataProfilDosen($con, $idUser);
+        if (mysqli_num_rows($resultTampilProfilDosen) > 0){
+          while ($row = mysqli_fetch_assoc($resultTampilProfilDosen)) {
+        ?>
                 <div class="d-flex justify-content-center">
                   <img src="../attachment/img/avatar.jpeg" alt="dosen"
                     style="width:150px;height:150px;border-radius:50%;">
                 </div>
                 <div class="data-dosen text-center">
-                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">BABANG NICHOL</h6>
-                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">1984757018014</h6>
+                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0"><?= $row["nama"]?></h6>
+                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0"><?= $row["nip"]?></h6>
                   <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">JABATAN FUNGSIONAL</h6>
                   <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">PENDIDIDIKAN</h6>
                   <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">STATUS IKATAN KERJA</h6>
                   <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">STATUS AKTIVITAS</h6>
                 </div>
               </div>
+        <?php
+          } 
+        }
+        ?>      
             </div>
           </div>
         </div>
