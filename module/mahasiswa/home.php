@@ -6,6 +6,10 @@ $queryUser = "SELECT a.id_dosen, b.nama dosen, c.nama matkul FROM tabel_jadwal a
 $resultUser = mysqli_query($con, $queryUser);
 $rowUser = mysqli_fetch_assoc($resultUser);
 
+$queryIsiKuis = "SELECT * FROM tabel_kuisioner";
+$resultIsiKuis = mysqli_query($con, $queryIsiKuis);
+$rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
+
 ?>
 
 <main role="main" class="container-fluid" id="home">
@@ -66,7 +70,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
                       <h5 class="p-2">Kuisioner</h5>
                     </center>
                   </strong>
-                  <form action="">
+                  <form action="../process/proses_homeMahasiswa.php?module=home&act=tambah" method="post">
                     <div class="pilihan-dosen">
                       <strong><label for="nama-dosen" class="nama-dosen">Dosen Pengajar dan Mata Kuliah :
                         </label></strong>
@@ -115,152 +119,39 @@ $rowUser = mysqli_fetch_assoc($resultUser);
                       </div>
                     </div>
                     <div class="isi-kuisioner p-1">
+                      <?php
+                        if(mysqli_num_rows($resultIsiKuis))
+                        {
+                          $i = 1;
+                          while($rowIsiKuis=mysqli_fetch_assoc($resultIsiKuis))
+                          {
+                      ?>
                       <div class="row pil1">
                         <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
+                          <label><?=$rowIsiKuis['kriteria']?></label>
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai5" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
-                      <div class="row pil2">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil3">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil4">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil5">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil6">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil7">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil8">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil9">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil10">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
+                      
+                      <?php
+                            $i++;
+                          }
+                        }
+                      ?>
                     </div>
                   </form>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn kirim">Kirim</button>
+                <button type="submit" class="btn kirimKuisioner" name="kirimKuisioner">Kirim</button>
               </div>
             </div>
           </div>

@@ -76,3 +76,9 @@ function dosenKuisioner($con)
   $resultDosenKuisioner = mysqli_query ($con, $dosenKuisioner);
   return $resultDosenKuisioner;
 }
+
+if(isset($_POST["kirimKuisioner"])){
+  if($_GET["module"] == "home" && $_GET["act"]=="tambah"){
+    
+  }
+}
