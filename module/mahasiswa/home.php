@@ -1,6 +1,11 @@
 <?php
 include "../config/connection.php";
 include "../process/proses_homeMahasiswa.php";
+
+$queryUser = "SELECT a.id_dosen, b.nama dosen, c.nama matkul FROM tabel_jadwal a INNER JOIN tabel_dosen b ON a.id_dosen = b.id_dosen INNER JOIN tabel_matkul c ON a.id_matkul = c.id_matkul";
+$resultUser = mysqli_query($con, $queryUser);
+$rowUser = mysqli_fetch_assoc($resultUser);
+
 ?>
 
 <main role="main" class="container-fluid" id="home">
@@ -66,8 +71,29 @@ include "../process/proses_homeMahasiswa.php";
                       <strong><label for="nama-dosen" class="nama-dosen">Dosen Pengajar dan Mata Kuliah :
                         </label></strong>
                       <select name="nama-dosen" id="nama-dosen" class="p-1 ">
-                        <option value="ridwan">Ridwan Rismanto, SST., M.KOM. (Pemrograman Dasar) </option>
-                        <option value="rudy">Rudy Arianto, ST, M.Cs. (Proyek 2)</option>
+                        <option selected disable>---</option>
+                        <?php 
+                          $resultDosenKuisioner=dosenKuisioner($con); 
+                          if(mysqli_num_rows($resultDosenKuisioner))
+                          {
+                            while($rowDosenKuisioner=mysqli_fetch_assoc($resultUser))
+                            {
+                              if($rowDosenKuisioner["id_dosen"] == $_POST["nama-dosen"])
+                              {
+                                $selected = "selected";
+                              }
+                              else
+                              {
+                                $selected = "";
+                              }
+                            ?>
+                            <option <?php echo $selected; ?> value="<?php echo $rowDosenKuisioner["id_dosen"];?>">
+                              <?php echo $rowDosenKuisioner["dosen"]."(".$rowDosenKuisioner["matkul"].")";?>
+                            </option>
+                            <?php
+                          }
+                        }
+                      ?>
                       </select>
                     </div>
                     <div class="kriteria-kuisioner p-2 border-bottom border-gray ">

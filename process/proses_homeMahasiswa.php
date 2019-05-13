@@ -68,3 +68,11 @@ function replyKomentar($con, $id_komentar)
   $resultReplyKomentar = mysqli_query($con, $replyKomentar);
   return $resultReplyKomentar;
 }
+
+function dosenKuisioner($con)
+{
+  $dosenKuisioner = "SELECT id_dosen FROM tabel_jadwal";
+
+  $resultDosenKuisioner = mysqli_query ($con, $dosenKuisioner);
+  return $resultDosenKuisioner;
+}
