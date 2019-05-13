@@ -34,3 +34,17 @@ function Kirim() {
 				$("#realSubmitBeasiswa").click();
 }
 
+
+$("#adminCariBeasiswa").click(function() {
+    var tanggal = $("#tanggalBeasiswa").val();
+
+    $.ajax({
+      url: "../process/proses_adminBeasiswa.php",
+      method: "post",
+      data: { adminCariBeasiswa: true, tanggal: tanggal },
+      success: function(data) {
+        $("#tabelBeasiswa").html(data);
+      }
+    });
+  });
+  

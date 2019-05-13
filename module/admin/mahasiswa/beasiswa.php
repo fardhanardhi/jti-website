@@ -81,11 +81,11 @@ include "../process/proses_adminBeasiswa.php";
                     </div>
                     
                     <div class="cari mt-2">
-                        <form class="form-inline">
+                        <div class="form-inline">
                             <i class="fas fa-search mr-2"></i>
                             <div class="col-2">
                                 <div class="input-group date " id="datepicker">
-                                    <input type="text" class="form-control" value="12-02-2012">
+                                    <input type="text" class="form-control" value="12-02-2012" id="tanggalBeasiswa">
                                     <div class="input-group-addon">
                                         <span>
                                             <i class="far fa-calendar-alt"></i>
@@ -93,12 +93,17 @@ include "../process/proses_adminBeasiswa.php";
                                     </div>
                                 </div>
                             </div>
-                                <button class="btn btn-success cari-btn" type="submit">Cari</button>
-                        </form>
+                                <button class="btn btn-success cari-btn" id="adminCariBeasiswa">Cari</button>
+                        </div>
                     </div>
 
                
-                    <div class="scrolltable">
+                    <div class="scrolltable" id="tabelBeasiswa">
+                    <?php
+                      $resultTampilBeasiswa=tampilBeasiswa($con);
+                      $index=1;
+                      if (mysqli_num_rows($resultTampilBeasiswa) > 0){
+                        ?>
                         <table class="table table-striped table-bordered">
                             <thead class="text-center">
                                 <tr>
@@ -112,9 +117,6 @@ include "../process/proses_adminBeasiswa.php";
                             </thead>
                             <tbody class="text-center m-auto">
                                   <?php
-                                  $resultTampilBeasiswa=tampilBeasiswa($con);
-                                  $index=1;
-                              if (mysqli_num_rows($resultTampilBeasiswa) > 0){
                                 while ($row = mysqli_fetch_assoc($resultTampilBeasiswa)) {
                                     ?>
                                   <tr>
@@ -129,11 +131,20 @@ include "../process/proses_adminBeasiswa.php";
                                     <?php
                                 $index++;
                                 }
-                              }
                                     ?>
 																	                                
                             </tbody>
                         </table>
+                        <?php
+                        }else{
+                          ?>
+                          <div class="text-center">
+                            <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                            <p class="text-muted">Tidak ada beasiswa pada ""</p>
+                          </div>
+                          <?php
+                        }
+                        ?>
                     </div>
 
                 </div>
