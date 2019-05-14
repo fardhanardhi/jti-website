@@ -1,6 +1,20 @@
 // set tanggal ke hidden input
 $("#datepickerSearchBerita").datepicker({ format: "yyyy/mm/dd" });
 
+// $(document).ready(function() {
+//   $(".hasilSearchBerita").on("click", function() {
+//     var d = $(this).data("idinfo");
+//     alert(d);
+//     console.log(d, " hahsaj");
+//   });
+// });
+
+$(document).on("click", ".hasilSearchBerita", function(e) {
+  e.preventDefault();
+  var d = $(this).data("idinfo");
+  alert(d);
+});
+
 $("#datepickerSearchBerita").on("changeDate", function() {
   var tglPencarianBerita = $("#datepickerSearchBerita").datepicker(
     "getFormattedDate"

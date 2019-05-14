@@ -180,7 +180,7 @@ if (isset($_GET["searchBerita"])) {
         <?php
         while ($rowPencarianBerita = mysqli_fetch_assoc($resultSearchBerita)) {
           ?>
-          <a href="" class=""><?php echo $rowPencarianBerita["judul"] ?></a><br>
+          <a href="#" class="hasilSearchBerita" data-idinfo="<?php echo $rowPencarianBerita["id_info"] ?>"><?php echo $rowPencarianBerita["judul"] ?></a><br>
         <?php
       }
       ?>

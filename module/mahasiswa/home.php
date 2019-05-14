@@ -167,28 +167,60 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                 <div class="isi-mhs">
                   <?php echo $row["isi"]; ?>
                 </div>
-                <div class="photos">
-                  <div class="row">
-                    <?php
-                    $resultAttachment = attachment($con, $row["id_info"]);
-                    if (mysqli_num_rows($resultAttachment) > 0) {
+                <?php
+                $resultAttachment = attachment($con, $row["id_info"]);
+                $resultAttachment2 = attachment($con, $row["id_info"]);
+                if (mysqli_num_rows($resultAttachment) > 0) {
+                  ?>
+                  <div class="photos">
+                    <div class="row">
+                      <?php
                       while ($row = mysqli_fetch_assoc($resultAttachment)) {
+                        if ($row["tipe"] == "gambar") {
+                          ?>
+                          <div class="col-md-6 p-2">
+                            <div class="image">
+                              <a href="../attachment/img/<?php echo $row['file']; ?>" data-toggle="lightbox" data-gallery="mixedgallery<?php echo $row['id_info']; ?>">
+                                <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row['file']; ?>" alt="<?php echo $row['file']; ?>">
+                              </a>
+                            </div>
+                          </div>
+
+                        <?php
+                      }
+                    }
+                    ?>
+                    </div>
+                  </div>
+
+                  <div class="files">
+                    <?php
+                    while ($row = mysqli_fetch_assoc($resultAttachment2)) {
+                      if ($row["tipe"] == "file") {
                         ?>
-                        <div class="col-md-6 p-2">
-                          <div class="image">
-                            <a href="../attachment/img/<?php echo $row['file']; ?>" data-toggle="lightbox" data-gallery="mixedgallery<?php echo $row['id_info']; ?>">
-                              <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row['file']; ?>" alt="<?php echo $row['file']; ?>">
-                            </a>
+                        <div class="row isi-download">
+                          <div class="col-md-12">
+                            <button class="btn btn-outline-dark download d-flex">
+                              <div class="col-sm-7">
+                                <a href="">
+                                  <h5>Dokumen Rahasia</h5>
+                                </a>
+                              </div>
+                              <div class="col-sm-5 text-right">
+                                <img src="../img/vector.svg" alt="Download button" class="">
+                              </div>
+                            </button>
                           </div>
                         </div>
-
                       <?php
                     }
                   }
                   ?>
-
                   </div>
-                </div>
+                <?php
+              }
+              ?>
+
               </div>
             </div>
             <div class="form-group border-bottom border-gray">
