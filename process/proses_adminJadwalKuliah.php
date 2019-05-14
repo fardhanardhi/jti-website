@@ -195,7 +195,7 @@ function optionJamSelesai($jamSelesaiEdit)
     return $output;
 }
 
-if (isset($_POST["insert"]) || isset($_POST["delete"]))
+if (isset($_POST["insert"]) || isset($_POST["delete"]) || isset($_POST["update"]))
 {
     $id_ruang = $_POST['id_ruang'];
     $id_kelas = $_POST['id_kelas'];
@@ -205,6 +205,8 @@ if (isset($_POST["insert"]) || isset($_POST["delete"]))
     $hari = $_POST['hari'];
     $jam_mulai = $_POST['jam_mulai'];
     $jam_selesai = $_POST['jam_selesai'];
+
+    $id_jadwalEdit = $_POST['id_jadwalEdit'];
 
     if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="tambah")
     {
@@ -217,6 +219,18 @@ if (isset($_POST["insert"]) || isset($_POST["delete"]))
 
         header('location:../module/index.php?module=' . $_GET["module"]);
     }
+    else if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="edit")
+    {
+        // id_matkul = '$id_matkul'
+        $queryUpdate = "UPDATE tabel_jadwal SET jam_mulai = '$jam_mulai', jam_selesai = '$jam_selesai', hari = '$hari', id_dosen = '$id_dosen', id_ruang = '$id_ruang'
+                                                ,waktu_edit = now()
+                                                WHERE id_jadwal = '$id_jadwalEdit'";
+
+        mysqli_query($con,$queryUpdate);      
+        header('location:../module/index.php?module=' . $_GET["module"]);
+
+        
+    } 
     else if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="hapus")
     {
         $queryDelete = "DELETE FROM tabel_jadwal WHERE id_kelas='$id_kelas' and id_semester='$id_semester'";
@@ -343,7 +357,7 @@ if(isset($_POST["editJadwal_kelas"]) && isset($_POST["editJadwal_semester"]))
     $id_kelas = $_POST['editJadwal_kelas'];
     $id_semester = $_POST['editJadwal_semester'];
 
-    $detailJadwalKuliah = "select tj.id_matkul,td.id_dosen,tj.id_ruang,tp.kode as prodi_kelas,tk.tingkat,tk.kode_kelas,ts.semester,tm.nama as nama_matkul,td.nama,tr.kode,tj.hari,tj.jam_mulai,tj.jam_selesai,tm.sks from tabel_jadwal tj,tabel_matkul tm,tabel_dosen td,tabel_ruang tr,tabel_kelas tk,tabel_semester ts,tabel_prodi tp
+    $detailJadwalKuliah = "select tj.id_matkul,tj.id_jadwal,td.id_dosen,tj.id_ruang,tp.kode as prodi_kelas,tk.tingkat,tk.kode_kelas,ts.semester,tm.nama as nama_matkul,td.nama,tr.kode,tj.hari,tj.jam_mulai,tj.jam_selesai,tm.sks from tabel_jadwal tj,tabel_matkul tm,tabel_dosen td,tabel_ruang tr,tabel_kelas tk,tabel_semester ts,tabel_prodi tp
     where tj.id_matkul = tm.id_matkul
     and tj.id_dosen = td.id_dosen
     and tj.id_ruang = tr.id_ruang
@@ -390,70 +404,65 @@ if(isset($_POST["editJadwal_kelas"]) && isset($_POST["editJadwal_semester"]))
                             <div id='collapse".$no."' class='collapse' aria-labelledby='heading".$no."' data-parent='#accordion'>
                                 <div class='card-body'>
                                     <div class='col-md-12 p-0'>
-                                        <div class='container-fluid'>
-                                            <div class='row'>
-                                                <div class='col-sm-6'>
-                                                    <div class='form-group row'>
-                                                        <label class='col-sm-3 col-form-label'>Jam</label>
-                                                        <div class='col-sm-4'>
-                                                            <select class='semester custom-select'>
-                                                                ".optionJamMulai($rowDetailJadwalKuliah['jam_mulai'])."
-                                                            </select>
+                                        <form action='../process/proses_adminJadwalKuliah.php?module=dataJadwalKuliah&act=edit' method='POST'>
+                                            <input type='hidden' name='id_jadwalEdit' id='id_jadwalEdit' value='".$rowDetailJadwalKuliah['id_jadwal']."'>
+                                            <div class='container-fluid'>
+                                                <div class='row'>
+                                                    <div class='col-sm-6'>
+                                                        <div class='form-group row'>
+                                                            <label class='col-sm-3 col-form-label'>Jam</label>
+                                                            <div class='col-sm-4'>
+                                                                <select class='semester custom-select' id='jam_mulai' name='jam_mulai'>
+                                                                    ".optionJamMulai($rowDetailJadwalKuliah['jam_mulai'])."
+                                                                </select>
+                                                            </div>
+                                                            <div class='col-sm-1'>
+                                                                <center>
+                                                                    <h3>/</h3>
+                                                                </center>
+                                                            </div>
+                                                            <div class='col-sm-4'>
+                                                                <select class='semester custom-select' id='jam_selesai' name='jam_selesai'>
+                                                                    ".optionJamSelesai($rowDetailJadwalKuliah['jam_selesai'])."
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                        <div class='col-sm-1'>
-                                                            <center>
-                                                                <h3>/</h3>
-                                                            </center>
+                                                        <div class='form-group row'>
+                                                            <label class='col-sm-3 col-form-label'>Hari</label>
+                                                            <div class='col-sm-9'>
+                                                                <select class='semester custom-select' id='hari' name='hari'>
+                                                                    ".optionHari($rowDetailJadwalKuliah['hari'])."
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                        <div class='col-sm-4'>
-                                                            <select class='semester custom-select'>
-                                                                ".optionJamSelesai($rowDetailJadwalKuliah['jam_selesai'])."
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class='form-group row'>
-                                                        <label class='col-sm-3 col-form-label'>Hari</label>
-                                                        <div class='col-sm-9'>
-                                                            <select class='semester custom-select'>
-                                                                ".optionHari($rowDetailJadwalKuliah['hari'])."
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class='form-group row'>
-                                                        <label class='col-sm-3 col-form-label'>Dosen Pengajar</label>
-                                                        <div class='col-sm-9'>
-                                                            <select class='semester custom-select'>
-                                                                ".tampilDosen($con,$rowDetailJadwalKuliah['id_dosen'])."
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class='col-sm-6'>
-                                                    <div class='form-group row'>
-                                                        <label class='col-sm-3 col-form-label'>Ruangan</label>
-                                                        <div class='col-sm-9'>
-                                                            <select class='semester custom-select'>
-                                                                ".tampilRuang($con,$rowDetailJadwalKuliah['id_ruang'])."
-                                                            </select>
+                                                        <div class='form-group row'>
+                                                            <label class='col-sm-3 col-form-label'>Dosen Pengajar</label>
+                                                            <div class='col-sm-9'>
+                                                                <select class='semester custom-select' id='id_dosen' name='id_dosen'>
+                                                                    ".tampilDosen($con,$rowDetailJadwalKuliah['id_dosen'])."
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class='form-group row'>
-                                                        <label class='col-sm-3 col-form-label'>Mata Kuliah</label>
-                                                        <div class='col-sm-9'>
-                                                            <select class='semester custom-select'>
-                                                                ".tampilMatkul($con,$rowDetailJadwalKuliah['id_matkul'])."
-                                                            </select>
+                                                    <div class='col-sm-6'>
+                                                        <div class='form-group row'>
+                                                            <label class='col-sm-3 col-form-label'>Ruangan</label>
+                                                            <div class='col-sm-9'>
+                                                                <select class='semester custom-select' id='id_ruang' name='id_ruang'>
+                                                                    ".tampilRuang($con,$rowDetailJadwalKuliah['id_ruang'])."
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class='form-group row'>
-                                                        <div class='col-sm-12'>
-                                                            <button type='button'
-                                                                class='btn btn-success float-right btn-edit'>Edit</button>
+                                                        <div class='form-group row'>
+                                                            <div class='col-sm-12'>
+                                                                <button type='submit' name='update'
+                                                                    class='btn btn-success float-right btn-edit'>Edit</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -474,4 +483,16 @@ if(isset($_POST["editJadwal_kelas"]) && isset($_POST["editJadwal_semester"]))
     }
 }
 
+/*
+<div class='form-group row'>
+                                                            <label class='col-sm-3 col-form-label'>Mata Kuliah</label>
+                                                            <div class='col-sm-9'>
+                                                                <select class='semester custom-select' id='id_matkul' name='id_matkul'>
+                                                                    ".tampilMatkul($con,$rowDetailJadwalKuliah['id_matkul'])."
+                                                                </select>
+                                                            </div>
+                                                        </div>
+*/ 
+
 ?>
+
