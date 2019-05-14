@@ -1,4 +1,4 @@
-<?php
+<?php error_reporting(0);
 include "../config/connection.php";
 
 function krs($con)
@@ -95,58 +95,35 @@ if(isset($_POST["lihat_krs"])){
         echo $output;
     }
 }
+    $module=$_GET['module'];
+    $proses=$_GET['act'];
 
-if (isset($_POST["upload"])) {
-    if($_GET["module"]=="krs" || $_GET["module"]=="krsPerKelas" && $_GET["act"]=="upload"){
-    $message  = '';
-    $valid_file  = true;
-    $idKrs= $_GET["id"];
-    if($_FILES['photo']['name']){
-    // if no errors...
-    
-        if(!$_FILES['photo']['error']){
-        
-            // now is the time to modify the future file name and validate the file
-            $new_file_name = strtolower($_FILES['photo']['tmp_name']); //rename file menjadi huruf kecil
-            
-            // Mengatur format file yang boleh diupload
-            $image_path = pathinfo($_FILES['photo']['name'],PATHINFO_EXTENSION); //ambil extensi file
-            $extension = strtolower($image_path); //rename extensi file menjadi huruf kecil
-            
-            if($extension != "jpg" && $extension != "jpeg" && $extension != "png" && $extension != "gif" ) {
-            $valid_file = false;
-            //$message = "Maaf, file yang diijinkan hanya format JPG, JPEG, PNG & GIF. #".$extension;
-            header('location:../module/index.php?module=' . $_GET["module"]);
-            }
-            
-            // jika file lolos filter
-            if($valid_file == true)
-            {
-                // mengganti nama gambar
-                $rename_nama_file = date('YmdHis');
-                $nama_file_baru  = $rename_nama_file.'.'.$extension;
+    if($module=='krs' || $module=='krsPerKelas' && $proses=='updateFoto'){
+        if(!$_FILES["foto"]["name"]==""){
+            $code=$_FILES["foto"]["error"];
+                    if($code===0){
+                        $nama_folder="../attachment/img";
+                        $tmp=$_FILES["foto"]["tmp_name"];
+                        $nama_file=$_FILES["foto"]["name"];
+                        $path="$nama_folder/$nama_file";
+                        $upload_check=false;
+                        $tipe_file=array("image/jpeg","image/jpg","image/png");
                 
-                $sql = "UPDATE tabel_krs SET gambar_krs='$nama_file_baru'
-                WHERE id_krs = '$idKrs'";
-                if (!mysqli_query($con, $sql)) {
-                    echo "Error: ".mysqli_error($con)."
-                ";
-                    header('location:../module/index.php?module=' . $_GET["module"]);
+                        if(!in_array($_FILES["foto"]["type"],$tipe_file)){
+                            ?><script>alert("Cek kembali ekstensi file anda (*.jpeg,*.jpg,*.png)"); </script><?php
+                            $upload_check=true;
+                            header('location:../module/index.php?module=' . $module);
+                        }
+                        if(!$upload_check and move_uploaded_file($tmp,$path)){
+                            mysqli_query($con, "update tabel_krs set gambar_krs='$nama_file' 
+                            where id_krs=$_POST[id_krs]");
+                            header('location:../module/index.php?module=' . $module);
+                        }
+                        else{
+                            ?><script>alert("Upload gambar gagal!"); </script><?php
+                            header('location:../module/index.php?module=' . $module);
+                        }
+                    }
                 }
-                
-                //memindahkan gambar ke tempat yang kita inginkan
-                move_uploaded_file($_FILES['photo']['tmp_name'], '../attachment/img/'.$nama_file_baru);
-                header('location:../module/index.php?module=' . $_GET["module"]);
-                }
-            }
-            //if there is an error...
-            else
-            {
-            //set that to be the returned message
-            //$message = 'Ooops!  Your upload triggered the following error:  '.$_FILES['photo']['error'];
-                    header('location:../module/index.php?module=' . $_GET["module"]);
-            }
-        }
     }
-}
 ?>

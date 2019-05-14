@@ -1,4 +1,4 @@
-<?php
+<?php error_reporting(0);
   include "../config/connection.php";
   include "../process/proses_krsAdmin.php";
 ?>
@@ -81,13 +81,11 @@
                                                 <td><?php echo $row["nama"]?></td>
                                                 <td>
                                                 <center>
-                                                <form action="../process/proses_krsAdmin.php?module=krs&act=upload&id=<?php echo $row["id_krs"];?>" method="post" 
-                                                enctype="multipart/form-data" accept="image/jpg">                             
-                                                <!--<label class="btn btn-upload btn-success ml-2" name="upload">
-                                                Upload<input type="file" name="photo" onchange="this.form.submit()" style="display: none;">
-                                                </label>-->
-                                                <button type="submit" id="button" class="btn btn-upload btn-success ml-2" onclick="thisFileUpload();" name="upload">Upload</button>
-                                                <input type="file" name="photo" id="file" hidden required>
+                                                <form action="../process/proses_krsAdmin.php?module=krs&act=updateFoto" method="POST" enctype="multipart/form-data" id="formFoto">                                                    
+                                                    <label class="btn btn-upload btn-success ml-2" name="upload">
+                                                Upload<input type="file" name="foto" id="foto" onchange="this.form.submit()" style="display: none;">
+                                                </label>
+                                                    <input type="hidden" name="id_krs" value="<?php echo $row["id_krs"];?>">
                                                 </form>
                                                 </center>
                                                 </td>
@@ -193,3 +191,8 @@
     </div>
 </div>
 </div>
+<script>
+    document.getElementById("foto").onchange = function() {
+    document.getElementById("formFoto").submit();
+}
+</script>

@@ -1,4 +1,4 @@
-<?php
+<?php error_reporting(0);
   include "../config/connection.php";
   include "../process/proses_krsAdmin.php";
 ?>
@@ -68,7 +68,7 @@
                                     $result=krsCariSemester($con, $_POST["kelas"], $_POST["semester"]);
                                 }
                                 else{
-                                    $result=krsCariSemester($con, minKelas($con), minSemester($con));
+                                    $result=krsCariSemester($con, minKelas($con), 7);
                                 }
                                     
                                 if (mysqli_num_rows($result) > 0){
@@ -79,7 +79,7 @@
                                         <th scope="col" style="text-align:center">No</th>
                                         <th scope="col" style="text-align:center; width: 300px">NIM</th>
                                         <th scope="col" style="text-align:center; width: 600px">Nama Mahasiswa</th>
-                                        <th scope="col" style="text-align:center">Action</th>
+                                        <th scope="col" style="text-align:center; width: 300px">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -94,13 +94,11 @@
                                                     <td><?php echo $row["nama"]?></td>
                                                     <td>
                                                     <center>
-                                                    <form action="../process/proses_krsAdmin.php?module=krs&act=upload&id=<?php echo $row["id_krs"];?>" method="post" 
-                                                    enctype="multipart/form-data" accept="image/jpg">                             
-                                                    <!--<label class="btn btn-upload btn-success ml-2" name="upload">
-                                                    Upload<input type="file" name="photo" onchange="this.form.submit()" style="display: none;">
-                                                    </label>-->
-                                                    <input type="file" name="photo" required>
-                                                    <button type="submit" class="btn btn-upload btn-success ml-2" name="upload">Upload</button>
+                                                    <form action="../process/proses_krsAdmin.php?module=krsPerKelas&act=updateFoto" method="POST" enctype="multipart/form-data" id="formFoto">                                                    
+                                                    <label class="btn btn-upload btn-success ml-2" name="upload">
+                                                    Upload<input type="file" name="foto" id="foto" onchange="this.form.submit()" style="display: none;">
+                                                    </label>
+                                                        <input type="hidden" name="id_krs" value="<?php echo $row["id_krs"];?>">
                                                     </form>
                                                     </center>
                                                     </td>

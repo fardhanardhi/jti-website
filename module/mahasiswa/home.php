@@ -1,6 +1,15 @@
 <?php
 include "../config/connection.php";
 include "../process/proses_homeMahasiswa.php";
+
+$queryUser = "SELECT a.id_dosen, b.nama dosen, c.nama matkul FROM tabel_jadwal a INNER JOIN tabel_dosen b ON a.id_dosen = b.id_dosen INNER JOIN tabel_matkul c ON a.id_matkul = c.id_matkul";
+$resultUser = mysqli_query($con, $queryUser);
+$rowUser = mysqli_fetch_assoc($resultUser);
+
+$queryIsiKuis = "SELECT * FROM tabel_kuisioner";
+$resultIsiKuis = mysqli_query($con, $queryIsiKuis);
+$rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
+
 ?>
 
 <main role="main" class="container-fluid" id="home">
@@ -61,13 +70,34 @@ include "../process/proses_homeMahasiswa.php";
                       <h5 class="p-2">Kuisioner</h5>
                     </center>
                   </strong>
-                  <form action="">
+                  <form action="../process/proses_homeMahasiswa.php?module=home&act=tambah" method="post">
                     <div class="pilihan-dosen">
                       <strong><label for="nama-dosen" class="nama-dosen">Dosen Pengajar dan Mata Kuliah :
                         </label></strong>
                       <select name="nama-dosen" id="nama-dosen" class="p-1 ">
-                        <option value="ridwan">Ridwan Rismanto, SST., M.KOM. (Pemrograman Dasar) </option>
-                        <option value="rudy">Rudy Arianto, ST, M.Cs. (Proyek 2)</option>
+                        <option selected disable>---</option>
+                        <?php 
+                          $resultDosenKuisioner=dosenKuisioner($con); 
+                          if(mysqli_num_rows($resultDosenKuisioner))
+                          {
+                            while($rowDosenKuisioner=mysqli_fetch_assoc($resultUser))
+                            {
+                              if($rowDosenKuisioner["id_dosen"] == $_POST["id_dosen"])
+                              {
+                                $selected = "selected";
+                              }
+                              else
+                              {
+                                $selected = "";
+                              }
+                            ?>
+                            <option <?php echo $selected; ?> value="<?php echo $rowDosenKuisioner["id_dosen"];?>">
+                              <?php echo $rowDosenKuisioner["dosen"]."(".$rowDosenKuisioner["matkul"].")";?>
+                            </option>
+                            <?php
+                          }
+                        }
+                      ?>
                       </select>
                     </div>
                     <div class="kriteria-kuisioner p-2 border-bottom border-gray ">
@@ -89,152 +119,39 @@ include "../process/proses_homeMahasiswa.php";
                       </div>
                     </div>
                     <div class="isi-kuisioner p-1">
+                      <?php
+                        if(mysqli_num_rows($resultIsiKuis))
+                        {
+                          $i = 1;
+                          while($rowIsiKuis=mysqli_fetch_assoc($resultIsiKuis))
+                          {
+                      ?>
                       <div class="row pil1">
                         <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
+                          <label><?=$rowIsiKuis['kriteria']?></label>
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name1" value="nilai5" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai1" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai2" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai5" /></div>
                           </div>
                         </div>
                       </div>
-                      <div class="row pil2">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name2" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil3">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name3" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil4">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name4" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil5">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name5" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil6">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name6" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil7">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name7" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil8">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name8" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil9">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name9" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row pil10">
-                        <div class="col-sm-7">
-                          <label>Ruang kuliah tertata dengan rapi</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name10" value="nilai5" /></div>
-                          </div>
-                        </div>
-                      </div>
+                      
+                      <?php
+                            $i++;
+                          }
+                        }
+                      ?>
                     </div>
                   </form>
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn kirim">Kirim</button>
+                <button type="submit" class="btn kirimKuisioner" name="kirimKuisioner">Kirim</button>
               </div>
             </div>
           </div>
@@ -540,29 +457,32 @@ include "../process/proses_homeMahasiswa.php";
       </div>
     </div>
 
+    <?php
+      $resultInfoBeasiswa = infoBeasiswa($con);
+      if (mysqli_num_rows($resultInfoBeasiswa) > 0) {
+        while ($row = mysqli_fetch_assoc($resultInfoBeasiswa)) {
+          $id_infoBeasiswa = $row["id_beasiswa"];
+          ?>
     <div class="col-md-3 p-0">
       <div class="sticky-sidebar sticky-top">
         <div class="m-2 p-3 bg-white rounded shadow-sm">
           <div class="beasiswa pb-3 mb-0 border-bottom border-dark">
             <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
-            <h6><strong>Beasiswa Astra</strong></h6>
-            <p class="isi-beasiswa">PT Astra Internasional, Tbk memiliki 2 beasiswa kuliah S1 yang diberikan untuk kamu.
-              Pertama adalah Beasiswa Astra 1st yang diberikan pada mahasiswa yang berkuliah di Pulau Jawa dan
-              diutamakan dari jurusan Teknik, Ekonomi, Psikologi, IT, dan Statistik yang berada di semester 2,4, atau 6.
+            <h6><strong><?php echo $row["judul"]; ?></strong></h6>
+            <p class="isi-beasiswa">
+              <?php echo $row["isi"]; ?>
             </p>
             <small class="d-block text-right mt-3 ">
-              <button class="check btn"><a href="#">Cek Link</a></button>
-            </small>
-          </div>
-          <div class="beasiswa pt-3 pb-3 mb-0 border-bottom border-dark">
-            <h6><strong>Beasiswa Astra</strong></h6>
-            <p class="isi-beasiswa">PT Astra Internasional, Tbk memiliki 2 beasiswa kuliah S1 yang diberikan untuk kamu.
-              Pertama adalah Beasiswa Astra 1st yang diberikan.</p>
-            <small class="d-block text-right mt-3 ">
-              <button class="check btn"><a href="#">Cek Link</a></button>
+              <button class="check btn"><a href="<?=$row['link']; ?>" target="_blank">Cek Link</a></button>
             </small>
           </div>
         </div>
+
+        <?php
+          }
+        }
+        ?>
+
         <!-- <div class="m-2 p-3 bg-white rounded shadow-sm">
           <div class="beasiswa pb-3 mb-0 ">
             <h5 class="text-center"><strong>Info Beasiswa</strong></h5>

@@ -93,7 +93,15 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
      );
      ";
 
-        if(mysqli_query($con, $query1) AND mysqli_query($con, $query2) AND mysqli_query($con, $query3)){
+     $queryKrs = "INSERT INTO tabel_krs (id_mahasiswa, status_daftar_ulang, id_semester, status_verifikasi, waktu_edit)
+     VALUES ((SELECT id_mahasiswa FROM tabel_mahasiswa WHERE nim='$_POST[nimMahasiswaAdmin]'), 
+     'belum',
+     '$_POST[semesterMahasiswa]',
+     'belum',      
+     curdate()
+     );";
+
+        if(mysqli_query($con, $query1) AND mysqli_query($con, $query2) AND mysqli_query($con, $query3) AND mysqli_query($con, $queryKrs)){
             header('location:../module/index.php?module=' . $_GET["module"]);
         }
 
@@ -164,7 +172,9 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
 
         $query11="UPDATE tabel_absensi SET id_semester = '$_POST[semesterMahasiswa2]' WHERE id_mahasiswa='$id_mahasiswaUpdate';";
 
-        if(mysqli_query($con,$query9) && mysqli_query($con,$query10) && mysqli_query($con,$query11)){
+        $queryUpdateKrs="UPDATE tabel_krs SET id_semester = '$_POST[semesterMahasiswa2]' WHERE id_mahasiswa='$id_mahasiswaUpdate';";
+
+        if(mysqli_query($con,$query9) && mysqli_query($con,$query10) && mysqli_query($con,$query11) && mysqli_query($con,$queryUpdateKrs)){
 
             header('location:../module/index.php?module=' . $_GET["module"]);
         }

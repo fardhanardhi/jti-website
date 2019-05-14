@@ -1,83 +1,78 @@
 <?php
+include "../config/connection.php";
+
 if (isset($_POST["update"])){
     if ($_GET["module"]=="modalPengaturan" && $_GET["act"]=="edit"){
 
-        // echo($_POST['id_usernya']);
+        if($_POST["id_levelnya"] == 'dosen'){
 
-        // die();
 
-        $queryValidasi="SELECT password FROM tabel_user;";
-
-        $result=mysqli_query($con, $queryValidasi);
-
-        while($row = mysqli_fetch_assoc($result)){
-            echo $row["password"];
-
+            $nama_folderDosen = "img";
+            $tmp = $_FILES["foto"]["tmp_name"];
+            $fotoDosen = $_FILES["foto"]["name"];
+            move_uploaded_file($tmp, "../attachment/$nama_folderDosen/$fotoDosen");
             
-        }    
+            $queryDosen="UPDATE tabel_user SET password = '$_POST[konfirmasiPassword]' WHERE id_user = $_POST[id_usernya]";
 
-        die();
+            $queryUploadDosen="UPDATE tabel_dosen SET foto = '$fotoDosen' WHERE id_user = '$_POST[id_usernya]';";
 
+            if(mysqli_query($con, $queryDosen) && mysqli_query($con, $queryUploadDosen)){
 
-        if($_POST["passwordLama"] == $result){
-            echo "password sesuai";
+                header('location:../module/index.php?module=home');
+            }
+
+            else{
+                echo("Error description: " . mysqli_error($con));
+            }
+
         }
 
-        else if($_POST["passwordLama"] != $result){
-            echo "password tidak sesuai";
+        else if($_POST["id_levelnya"] == 'mahasiswa'){
+
+            $nama_folderMahasiswa = "img";
+            $tmp = $_FILES["foto"]["tmp_name"];
+            $fotoMahasiswa = $_FILES["foto"]["name"];
+            move_uploaded_file($tmp, "../attachment/$nama_folderMahasiswa/$fotoMahasiswa");
+            
+            $queryMahasiswa="UPDATE tabel_user SET password = '$_POST[konfirmasiPassword]' WHERE id_user = $_POST[id_usernya]";
+
+            $queryUploadMahasiswa="UPDATE tabel_mahasiswa SET foto = '$fotoMahasiswa' WHERE id_user = '$_POST[id_usernya]';";
+
+            if(mysqli_query($con, $queryMahasiswa) && mysqli_query($con, $queryUploadMahasiswa)){
+
+                header('location:../module/index.php?module=home');
+            }
+
+            else{
+                echo("Error description: " . mysqli_error($con));
+            }
         }
+
+
+        else if($_POST["id_levelnya"] == 'admin'){
+
+            $nama_folderAdmin = "img";
+            $tmp = $_FILES["foto"]["tmp_name"];
+            $fotoAdmin = $_FILES["foto"]["name"];
+            move_uploaded_file($tmp, "../attachment/$nama_folderAdmin/$fotoAdmin");
+            
+            $queryAdmin="UPDATE tabel_user SET password = '$_POST[konfirmasiPassword]' WHERE id_user = $_POST[id_usernya]";
+
+            $queryUploadAdmin="UPDATE tabel_admin SET foto = '$fotoAdmin' WHERE id_user = '$_POST[id_usernya]';";
+
+            if(mysqli_query($con, $queryAdmin) && mysqli_query($con, $queryUploadAdmin)){
+
+                header('location:../module/index.php?module=home');
+            }
+
+            else{
+                echo("Error description: " . mysqli_error($con));
+            }
+        }
+        
     }
 }
 
-
- // if($_POST["id_levelnya"] == "mahasiswa"){
-        //     // echo "mahasiswa";
-
-        //     // echo($_POST["id_usernya"]);
-
-        //     $queryValidasi="select password from tabel_user where id_user=;";
-
-        //     $result=mysqli_query($con, $queryValidasi);
-
-
-
-
-
-        //     if(){
-
-        //     }
-
-
-
-
-        //     // $nama_foldernya = "img";
-        //     // $tmp = $_FILES["foto"]["tmp_name"];
-        //     // $nama_filenya = $_FILES["foto"]["name"];
-        //     // move_uploaded_file($tmp, "../attachment/$nama_foldernya/$nama_filenya");
-
-        //     // echo($nama_filenya);
-
-        //     // die();
-
-        //     // $query1="INSERT INTO tabel_mahasiswa (foto) values ($nama_filenya)";
-
-        //     // $query5="INSERT INTO tabel_user (password) values ($_POST[konfirmasiPassword])";
-
-        //     // if(mysqli_query($con,$query1) && mysqli_query($con,$query5)){
-
-        //     //     header('location:../module/index.php?module=' . $_GET["module"]);
-        //     // }
-    
-        //     // else{            
-        //     //     echo("Error description: " . mysqli_error($con));
-        //     // }
-
-        // }
-
-        // else if($_POST["id_levelnya"] == "dosen"){
-        //     echo "dosen";
-
-        // }
 
 
 ?>
