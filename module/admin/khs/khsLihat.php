@@ -21,7 +21,7 @@
                                 <a href="index.php?module=khs">Kartu Hasil Studi(KHS)</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="index.php?module=khsLihat">Lihat KHS</a>
+                                Lihat KHS
                             </li>
                         </ol>
                     </nav>
@@ -147,7 +147,7 @@
             <!-- Modal Lihat-->
             <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content pl-3 pr-3 text-left">
                         <!-- Modal Header -->
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100">Kartu Hasil Studi</h4>
@@ -156,45 +156,6 @@
                         <div class="container-fluid p-0" id="detail-nilaiMhs">
                         <!-- Modal Header End-->
                         <!-- Modal body -->
-                        <!-- <div class="modal-body">
-                            <div class="isi-modaLihat border-bottom1 border-gray">
-                                <p>Tahun Akademik : 2017/2018 Ganjil</p>
-                                <p>Nama : </p>
-                                <p>NIM : </p>
-                                <p>Kelas : </p>
-                                <p>Prodi : </p>                                  
-                            </div>
-                            <form action=""> -->
-                                <!-- Modal isi-->
-                                <!-- <div id = "khsModal">
-                                    <div class="media text-muted pt-8">
-                                        <div class="media-body pb-8 mb-0">
-                                            <table class="table table-striped table-bordered text-center">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Nama Mata Kuliah</th>
-                                                        <th>SKS</th>
-                                                        <th>Jam</th>
-                                                        <th>Nilai</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- Modal isi End-->
-                            <!-- </form>
-                        </div> -->
                         <!-- Modal body End-->
                     </div>
                 </div>

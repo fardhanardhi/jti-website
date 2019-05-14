@@ -18,7 +18,7 @@
                                 <a href="#">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                <a href="index.php?module=khs">Kartu Hasil Studi(KHS)</a>
+                                Kartu Hasil Studi(KHS)
                             </li>
                         </ol>
                     </nav>
@@ -97,8 +97,8 @@
                                                         <td><?php echo $row["semester"];?></td>
                                                         <td><?php echo $row["sks"];?></td>
                                                         <td><?php echo khsNilai($con, $row["id_mahasiswa"], $row["id_semester"]) ?></td>
-                                                        <td><button class="edit tmbl-table btn btn-success" type="button" class="pratinjau btn" data-toggle="modal"
-                                                            data-target="#myModal" class="edit">Edit</button>
+                                                        <td><button class="edit tmbl-table btn btn-success edit-nilai" type="button" class="pratinjau btn" data-toggle="modal"
+                                                            data-target="#myModal" class="edit" data-mhs="<?php echo $row["id_mahasiswa"];?>" data-semester="<?php echo $row["id_semester"];?>">Edit</button>
                                                         </td>
                                                     </tr>
                                                     <?php
@@ -111,8 +111,8 @@
                                                         <td><?php echo $row["semester"];?></td>
                                                         <td><?php echo $row["sks"];?></td>
                                                         <td><?php echo khsNilai($con, $row["id_mahasiswa"], $row["id_semester"]) ?></td>
-                                                        <td><button class="lihat tmbl-table btn btn-info" type="button" class="pratinjau btn" data-toggle="modal"
-                                                            data-target="#myModal" class="edit">Update</button>
+                                                        <td><button class="lihat tmbl-table btn btn-info update-nilai" type="button" class="pratinjau btn" data-toggle="modal"
+                                                            data-target="#updateModal" class="edit" data-mhs="<?php echo $row["id_mahasiswa"];?>" data-semester="<?php echo $row["id_semester"];?>">Update</button>
                                                         </td>
                                                     </tr>
                                                     <?php
@@ -152,67 +152,35 @@
             <!-- Modal Lihat-->
             <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content pl-3 pr-3 text-left">
                         <!-- Modal Header -->
                         <div class="modal-header text-center">
                             <h4 class="modal-title w-100">Kartu Hasil Studi</h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
+                        <div class="container-fluid p-0" id="input-Mhs">
                         <!-- Modal Header End-->
                         <!-- Modal body -->
-                        <div class="modal-body">
-                            <div class="isi-modaLihat">
-                                <p>Nama : Mahasiswa A</p>
-                                <p>Nim : 1741720060</p>                                    
-                            </div>
-                            <form action="">
-                                <div class="border-bottom border-gray">
-                                    <div class="row">
-                                        <div class="col-sm-5">
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="row isi-modaLihat">
-                                                <p class="col">A</p>
-                                                <p class="col">B+</p>
-                                                <p class="col">B</p>
-                                                <p class="col">C</p>
-                                                <p class="col">C+</p>
-                                                <p class="col">D</p>
-                                                <p class="col">E</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Modal isi-->
-                                <div>
-                                    <div class="row isi-modaLihat">
-                                        <div class="col-sm-5">
-                                            <p>Sistem Manajemen Basis Data</p>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="row">
-                                                <div class="col"><input type="radio" name="name1" value="nilai1" /></div>
-                                                <div class="col"><input type="radio" name="name1" value="nilai2" /></div>
-                                                <div class="col"><input type="radio" name="name1" value="nilai3" /></div>
-                                                <div class="col"><input type="radio" name="name1" value="nilai4" /></div>
-                                                <div class="col"><input type="radio" name="name1" value="nilai5" /></div>
-                                                <div class="col"><input type="radio" name="name1" value="nilai5" /></div>
-                                                <div class="col"><input type="radio" name="name1" value="nilai5" /></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Modal isi End-->
-                            </form>
-                        </div>
-                        <!-- Modal body End-->
-                        <div class="modal-footer">
-                            <button type="button" class="tmbl-kirim btn btn-success float-right">Kirim</button>
-                        </div>
                     </div>
                 </div>
             </div>
             <!-- Modal Lihat END-->
         </div>
+        <!-- Modal Lihat-->
+        <div id="updateModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-backdrop="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content pl-3 pr-3 text-left">
+                        <!-- Modal Header -->
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100">Kartu Hasil Studi</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="container-fluid p-0" id="update-Mhs">
+                        <!-- Modal Header End-->
+                        <!-- Modal body -->
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Lihat END-->
     </main>
 <body>
