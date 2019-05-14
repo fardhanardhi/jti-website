@@ -221,9 +221,9 @@ if (isset($_POST["insert"]) || isset($_POST["delete"]) || isset($_POST["update"]
     }
     else if($_GET["module"]=="dataJadwalKuliah" && $_GET["act"]=="edit")
     {
-        // id_matkul = '$id_matkul'
+        
         $queryUpdate = "UPDATE tabel_jadwal SET jam_mulai = '$jam_mulai', jam_selesai = '$jam_selesai', hari = '$hari', id_dosen = '$id_dosen', id_ruang = '$id_ruang'
-                                                ,waktu_edit = now()
+                                                ,waktu_edit = now(), id_matkul = '$id_matkul'
                                                 WHERE id_jadwal = '$id_jadwalEdit'";
 
         mysqli_query($con,$queryUpdate);      
@@ -454,6 +454,14 @@ if(isset($_POST["editJadwal_kelas"]) && isset($_POST["editJadwal_semester"]))
                                                             </div>
                                                         </div>
                                                         <div class='form-group row'>
+                                                            <label class='col-sm-3 col-form-label'>Mata Kuliah</label>
+                                                            <div class='col-sm-9'>
+                                                                <select class='semester custom-select' id='id_matkul' name='id_matkul'>
+                                                                    ".tampilMatkul($con,$rowDetailJadwalKuliah['id_matkul'])."
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class='form-group row'>
                                                             <div class='col-sm-12'>
                                                                 <button type='submit' name='update'
                                                                     class='btn btn-success float-right btn-edit'>Edit</button>
@@ -484,14 +492,7 @@ if(isset($_POST["editJadwal_kelas"]) && isset($_POST["editJadwal_semester"]))
 }
 
 /*
-<div class='form-group row'>
-                                                            <label class='col-sm-3 col-form-label'>Mata Kuliah</label>
-                                                            <div class='col-sm-9'>
-                                                                <select class='semester custom-select' id='id_matkul' name='id_matkul'>
-                                                                    ".tampilMatkul($con,$rowDetailJadwalKuliah['id_matkul'])."
-                                                                </select>
-                                                            </div>
-                                                        </div>
+
 */ 
 
 ?>
