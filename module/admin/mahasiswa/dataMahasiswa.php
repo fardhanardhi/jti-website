@@ -328,8 +328,8 @@
                                                     <tr class="itemDataMahasiswa">
                                                         <td><?php echo $index; ?></td>
                                                         <td class="usernameMahasiswa"><?php echo $row["username"]; ?></td>
-                                                        <td class="passwordMahasiswa"><?php echo $row["password"]; ?></td>
-                                                        <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo $row['foto']?>" width='40'></td>
+                                                        <td class="passwordMahasiswa">**********</td>
+                                                        <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo $row['foto']?>" style="width:50px;height:50px;border-radius:50%;"></td>
                                                         <td class="nimMahasiswa"><?php echo $row["nim"]; ?></td>
                                                         <td class="namaMahasiswa"><?php echo $row["nama_mahasiswa"]; ?></td>
                                                         <td class="tempatLahirMahasiswa"><?php echo $row["tempat_lahir"]; ?></td>

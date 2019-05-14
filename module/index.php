@@ -5,6 +5,15 @@ include "../process/proses_modalPengaturan.php";
 
 $level = $_SESSION['level'];
 $idUser = $_SESSION['id'];
+
+$queryModalPengaturan = "SELECT * FROM tabel_user WHERE id_user = '$idUser';";
+$resultModalPengaturan = mysqli_query($con, $queryModalPengaturan);
+
+$item = '';
+if(mysqli_num_rows($resultModalPengaturan) == 1){
+  $item = mysqli_fetch_assoc($resultModalPengaturan);
+}
+
 ?>
 <input id="idUser" type="hidden" name="idUser" value="<?php echo $idUser ?>">
 <?php
@@ -372,7 +381,7 @@ if ($level != 'admin') {
             </button>
             <h5 class="modal-title text-center">Pengaturan</h5>
             <hr class="pl-4 pr-4 bg-dark">
-
+            <input type="text" id="passwordModal" value="<?php echo $item["password"]?>">
             <div class="row">
               <div class="col-md-12">
                 <center><img src="../attachment/img/avatar.jpeg" id="fotoPrev" height="150px" width="150px" class="rounded-circle" /></center>
@@ -423,10 +432,11 @@ if ($level != 'admin') {
                     <div id="fotoSize" class="text-danger"></div>
                     <div id="fotoType" class="text-danger"></div>
                     <div id="konfirmasipasswordSalah" class="text-danger"></div>
+                    <div id="konfirmasipasswordLamaSalah" class="text-danger"></div>
                   </div>
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                      <button type="submit" class="btn btn-success" name="update" onclick="Coba(); showFilesSize(); checkFoto();">Simpan</button>
+                      <button type="submit" class="btn btn-success" name="update" onclick="Coba(); showFilesSize(event); cekPasword(event); checkFoto();">Simpan</button>
                   </div>
                 </form>
               </div>
