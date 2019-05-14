@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2.1
--- http://www.phpmyadmin.net
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 13, 2019 at 09:35 PM
--- Server version: 5.7.26-0ubuntu0.16.04.1
--- PHP Version: 7.2.14-1+ubuntu16.04.1+deb.sury.org+1
+-- Host: localhost:3306
+-- Generation Time: May 14, 2019 at 07:40 PM
+-- Server version: 5.7.26-0ubuntu0.18.04.1
+-- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -59,6 +59,7 @@ CREATE TABLE `tabel_admin` (
   `id_admin` int(30) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `nip` int(20) NOT NULL,
+  `foto` text,
   `alamat` text,
   `tempat_lahir` varchar(50) DEFAULT NULL,
   `tangal_lahir` date DEFAULT NULL,
@@ -70,9 +71,9 @@ CREATE TABLE `tabel_admin` (
 -- Dumping data for table `tabel_admin`
 --
 
-INSERT INTO `tabel_admin` (`id_admin`, `nama`, `nip`, `alamat`, `tempat_lahir`, `tangal_lahir`, `id_user`, `waktu_edit`) VALUES
-(3, 'Vipkas', 12345, NULL, NULL, NULL, 32, '2019-04-01 00:00:00'),
-(4, 'Adan', 123, NULL, NULL, NULL, 45, '2019-04-23 00:00:00');
+INSERT INTO `tabel_admin` (`id_admin`, `nama`, `nip`, `foto`, `alamat`, `tempat_lahir`, `tangal_lahir`, `id_user`, `waktu_edit`) VALUES
+(3, 'Vipkas', 12345, NULL, NULL, NULL, NULL, 32, '2019-04-01 00:00:00'),
+(4, 'Adan', 123, NULL, NULL, NULL, NULL, 45, '2019-04-23 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1067,7 +1068,7 @@ ALTER TABLE `tabel_info_beasiswa`
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
-  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
 --
@@ -1088,6 +1089,11 @@ ALTER TABLE `tabel_komentar`
 --
 ALTER TABLE `tabel_kompen`
   MODIFY `id_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `tabel_krs`
+--
+ALTER TABLE `tabel_krs`
+  MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tabel_kuisioner`
 --
@@ -1137,7 +1143,7 @@ ALTER TABLE `tabel_ruang`
 -- AUTO_INCREMENT for table `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
-  MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tabel_semester`
 --
