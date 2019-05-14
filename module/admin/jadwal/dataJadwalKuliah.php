@@ -114,9 +114,9 @@
                                                                 </center>
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <select class="semester custom-select">
-                                                                    <option selected disabled id="jam_selesai"
-                                                                        name="jam_selesai">Berakhir</option>
+                                                                <select class="semester custom-select" id="jam_selesai"
+                                                                        name="jam_selesai">
+                                                                    <option selected disabled>Berakhir</option>
                                                                     <option value="07:45:00">07.45</option>
                                                                     <option value="07:50:00">07.50</option>
                                                                     <option value="08:30:00">08.30</option>
