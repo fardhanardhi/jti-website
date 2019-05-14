@@ -82,7 +82,7 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
                           {
                             while($rowDosenKuisioner=mysqli_fetch_assoc($resultUser))
                             {
-                              if($rowDosenKuisioner["id_dosen"] == $_POST["nama-dosen"])
+                              if($rowDosenKuisioner["id_dosen"] == $_POST["id_dosen"])
                               {
                                 $selected = "selected";
                               }
@@ -457,29 +457,32 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
       </div>
     </div>
 
+    <?php
+      $resultInfoBeasiswa = infoBeasiswa($con);
+      if (mysqli_num_rows($resultInfoBeasiswa) > 0) {
+        while ($row = mysqli_fetch_assoc($resultInfoBeasiswa)) {
+          $id_infoBeasiswa = $row["id_beasiswa"];
+          ?>
     <div class="col-md-3 p-0">
       <div class="sticky-sidebar sticky-top">
         <div class="m-2 p-3 bg-white rounded shadow-sm">
           <div class="beasiswa pb-3 mb-0 border-bottom border-dark">
             <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
-            <h6><strong>Beasiswa Astra</strong></h6>
-            <p class="isi-beasiswa">PT Astra Internasional, Tbk memiliki 2 beasiswa kuliah S1 yang diberikan untuk kamu.
-              Pertama adalah Beasiswa Astra 1st yang diberikan pada mahasiswa yang berkuliah di Pulau Jawa dan
-              diutamakan dari jurusan Teknik, Ekonomi, Psikologi, IT, dan Statistik yang berada di semester 2,4, atau 6.
+            <h6><strong><?php echo $row["judul"]; ?></strong></h6>
+            <p class="isi-beasiswa">
+              <?php echo $row["isi"]; ?>
             </p>
             <small class="d-block text-right mt-3 ">
-              <button class="check btn"><a href="#">Cek Link</a></button>
-            </small>
-          </div>
-          <div class="beasiswa pt-3 pb-3 mb-0 border-bottom border-dark">
-            <h6><strong>Beasiswa Astra</strong></h6>
-            <p class="isi-beasiswa">PT Astra Internasional, Tbk memiliki 2 beasiswa kuliah S1 yang diberikan untuk kamu.
-              Pertama adalah Beasiswa Astra 1st yang diberikan.</p>
-            <small class="d-block text-right mt-3 ">
-              <button class="check btn"><a href="#">Cek Link</a></button>
+              <button class="check btn"><a href="<?=$row['link']; ?>" target="_blank">Cek Link</a></button>
             </small>
           </div>
         </div>
+
+        <?php
+          }
+        }
+        ?>
+
         <!-- <div class="m-2 p-3 bg-white rounded shadow-sm">
           <div class="beasiswa pb-3 mb-0 ">
             <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
