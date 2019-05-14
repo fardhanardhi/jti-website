@@ -46,23 +46,13 @@
         <h6 class="border-bottom border-gray pb-2 mb-0 judul">JADWAL DOSEN</h6>
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125">
-            <div class="isi">
-
-              <!-- ------------------------ -->
-              <!-- Jika Jadwal Dosen Kosong -->
-              <!-- ------------------------ -->
-
-              <!-- <div class="jadwal-dosen-kosong text-center">
-                  <img src="../img/jadwalKosong.svg" alt="jadwal kosong">
-                  <p>Maaf, jadwal masih belum tersedia. <br> Jadwal baru bisa dilihat pada bulan Juni 2019</p>
-              </div> -->
-
-              <!-- ---------------------------- -->
-              <!-- END Jika Jadwal Dosen Kosong -->
-              <!-- ---------------------------- -->
-
-
-
+            <div class="isi" id="isiJadwalDosen">
+              
+          <?php
+            $resultQueryJadwalDosen = ambilJadwalDosen($con, $idUser);
+          if (mysqli_num_rows($resultQueryJadwalDosen) > 0) {
+            $index = 1;
+          ?>
               <table class="table table-striped table-bordered text-center">
                 <thead>
                   <tr>
@@ -74,73 +64,44 @@
                     <th>Ruang</th>
                   </tr>
                 </thead>
+            <?php
+            while ($row = mysqli_fetch_assoc($resultQueryJadwalDosen)) {
+
+            ?>
                 <tbody>
                   <tr>
-                    <td>1</td>
-                    <td>Basis Data</td>
-                    <td>Sabtu</td>
-                    <td>09:00 - 09:01</td>
-                    <td>26</td>
-                    <td>LIP3(Lt.9)</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Basis Data</td>
-                    <td>Sabtu</td>
-                    <td>09:00 - 09:01</td>
-                    <td>26</td>
-                    <td>LIP3(Lt.9)</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Basis Data</td>
-                    <td>Sabtu</td>
-                    <td>09:00 - 09:01</td>
-                    <td>26</td>
-                    <td>LIP3(Lt.9)</td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>Basis Data</td>
-                    <td>Sabtu</td>
-                    <td>09:00 - 09:01</td>
-                    <td>26</td>
-                    <td>LIP3(Lt.9)</td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>Basis Data</td>
-                    <td>Sabtu</td>
-                    <td>09:00 - 09:01</td>
-                    <td>26</td>
-                    <td>LIP3(Lt.9)</td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>Basis Data</td>
-                    <td>Sabtu</td>
-                    <td>09:00 - 09:01</td>
-                    <td>26</td>
-                    <td>LIP3(Lt.9)</td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>Basis Data</td>
-                    <td>Sabtu</td>
-                    <td>09:00 - 09:01</td>
-                    <td>26</td>
-                    <td>LIP3(Lt.9)</td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>Basis Data</td>
-                    <td>Sabtu</td>
-                    <td>09:00 - 09:01</td>
-                    <td>26</td>
-                    <td>LIP3(Lt.9)</td>
+                    <td><?= $index ?></td>
+                    <td><?= $row["nama"]?></td>
+                    <td><?= $row["hari"]?></td>
+                    <td><?= $row["jam_mulai"]?> - <?= $row["jam_selesai"]?></td>
+                    <td><?= $row["sks"]?></td>
+                    <td><?= $row["kode"]?>(Lt.<?= $row["lantai"]?>)</td>
                   </tr>
                 </tbody>
-              </table>
+          <?php
+            $index++;
+            }
+            ?>
+              </table>  
+          <?php  
+          }else {
+          ?>
+            <!-- ------------------------ -->
+              <!-- Jika Jadwal Dosen Kosong -->
+              <!-- ------------------------ -->
+
+              <div class="jadwal-dosen-kosong text-center">
+                  <img src="../img/jadwalKosong.svg" alt="jadwal kosong">
+                  <p>Maaf, jadwal masih belum tersedia. <br> Jadwal baru bisa dilihat pada bulan Juni 2019</p>
+              </div>
+
+              <!-- ---------------------------- -->
+              <!-- END Jika Jadwal Dosen Kosong -->
+              <!-- ---------------------------- -->
+          <?php
+          }
+          ?>
+
             </div>
           </div>
         </div>
