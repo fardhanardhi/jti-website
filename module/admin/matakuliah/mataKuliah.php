@@ -1,3 +1,7 @@
+<?php
+include "../config/connection.php";
+include "../process/proses_adminMatakuliah.php";
+?>
 <main role="main" class="container-fluid" id="ruang">
   <div class="row">
 
@@ -30,276 +34,70 @@
             </div>
 
             <div class="row pt-2 mt-2 pl-0 scrollbar" id="ruangan2">
+            <?php
+              $resultMatakuliah=matakuliah($con);
 
+              if (mysqli_num_rows($resultMatakuliah) > 0){
+                while($rowMatakuliah = mysqli_fetch_assoc($resultMatakuliah)){
+              ?>
               <div class="col-md-6 m-0 pr-3 pb-4 p-0">
                 <div class="row pl-3 pr-3 pt-0 pb-0">
                   <div class="col-md-9 p-2 ruang rounded-left">
                     <div class="row d-flex align-items-center">
                       <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
+                        <h5 class="my-auto"><?php echo $rowMatakuliah["nama"];?></h5> 
                       </div>
                     </div>
                     <div class="row d-flex align-items-center">
                       <div class="col-md-4">
-                        <small class="">Semester : 3</small>
+                        <small class="semester">Semester : 3</small>
                       </div>
                       <div class="col-md-4">
-                        <small class="">SKS : 4</small>
+                        <small class="sks"><?php echo "SKS :".$rowMatakuliah["sks"];?></small>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
+                  <button type="button" id="<?php echo $rowMatakuliah["id_matkul"];?>" class="btn btn-danger hapus-ruang" data-toggle="modal" data-target="#modalHapusRuangan">
                       <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
+                      </button>
                   </div>
                 </div>
               </div>  
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div> 
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>  
-              <div class="col-md-6 m-0 pr-3 pb-4 p-0">
-                <div class="row pl-3 pr-3 pt-0 pb-0">
-                  <div class="col-md-9 p-2 ruang rounded-left">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md">
-                        <h5 class="my-auto">Pemrograman Web Lanjut</h5> 
-                      </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                      <div class="col-md-4">
-                        <small class="">Semester : 3</small>
-                      </div>
-                      <div class="col-md-4">
-                        <small class="">SKS : 4</small>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 p-0 d-flex">
-                    <a href="#" class="btn btn-danger text-white hapus pl-2 pr-2 pt-3">
-                      <i class="far fa-trash-alt"><small class="pl-1">Hapus</small></i>
-                    </a>
-                  </div>
-                </div>
-              </div>  
+              <?php }
+              }else{
+                ?>
+                <div class='col-md-12 p-2 text-center'><p class='text-muted'>Data Ruang Kosong</p></div>
+                <?php
+              }
+                ?> 
+
+              <div class='col-md-12 p-2 text-center' id='ruanganTidakDitemukan' style="display:none;"><p class='text-muted'>Ruangan tidak dapat ditemukan</p></div> 
             </div>
           </div>
         </div>
       </div>
     </div>
+
+        <!-- Modal Hapus Ruangan-->
+        <div class="modal fade" id="modalHapusRuangan" tabindex="-1" role="dialog" aria-labelledby="modalHapusRuangan"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <form action="../process/proses_adminRuangan.php?module=ruang&act=hapus" method="post">
+            <div class="modal-body pt-5 text-center">
+              <input type="hidden" name="id_ruang" id="id_ruangHapus">
+              <strong>Apakah Anda yakin?</strong>
+            </div>
+            <div class="pb-4 pt-4 d-flex justify-content-around">
+              <button type="button" class="btn btn-danger mr-4 btn-confirm" data-dismiss="modal">Tidak</button>
+              <button type="submit" name="hapusRuang" class="btn btn-success btn-confirm">Ya</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal Hapus Ruangan -->
     
     
     <div class="col-md-3 p-0">
