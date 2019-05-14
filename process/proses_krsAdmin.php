@@ -1,4 +1,4 @@
-<?php
+<?php error_reporting(0);
 include "../config/connection.php";
 
 function krs($con)
