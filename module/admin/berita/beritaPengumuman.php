@@ -50,13 +50,13 @@
                                     </button>
                                 </div>
                                 <hr>
-                                <div class="container m-0">
+                                <div class="container-fluid m-0">
                                     <div class="row">
-                                        <div class="col"> 
+                                        <div class="col-6"> 
                                             <span style="color:grey" id=Bercharcount></span>
                                         
                                         </div>
-                                        <div class="col-auto text-right d-flex justify-content-end lampir">
+                                        <div class="col-6 text-right d-flex justify-content-end lampir">
                                                     <label for="file-input">
                                                     <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-placement="top" title="Lampirkan Gambar">
                                                     </label>
@@ -68,7 +68,7 @@
                                                     <strong><label for="kategori-AdBer" class="labelBerita mt-1 mr-2">Kategori :
                                                     </label>
                                                     </strong> 
-                                                    <select name="" id="" class="mr-3 pilihKategoriBerita">
+                                                    <select name="" id="" class="mr-3 pilihKategoriBerita w-auto">
                                                         <option value="ridwan">Berita</option>
                                                         <option value="rudy">Pengumuman</option>
                                                     </select>
@@ -116,36 +116,63 @@
                             </thead>
                             <tbody>
                             <?php 
+                                if(mysqli_num_rows($result) > 0){
                                 $no=1;
                                 while($row = mysqli_fetch_assoc($result)){
+                                    if(jumlahKomentar($con, $row["id_info"])!=0){
                                     ?>
                                 <tr>
                                     <td><?php echo $no;?></td>
                                     <td class="text-left" data-toggle="modal" data-target="#preview1<?= $no?>"><?php echo $row["judul"];?></td>
-                                    <td><?= date('d F Y', strtotime($row["waktu"]))?></td>
-                                    <td>25 Februari 2019</td>
-                                    <td>belum</td>
+                                    <td><?= date('d F Y', strtotime($row["waktu_publish"]));?></td>
+                                    <td><?= date('d F Y', strtotime($row["waktu_perubahan"]));?></td>
+                                    <td><?php echo jumlahKomentar($con, $row["id_info"]); ?></td>
                                     
                                     <td><button class=" tmbl-table btn btn-danger" type="button"
                                             class="pratinjau btn" data-toggle="modal" data-target="#hapus"
                                             class="hapus">Hapus</button></td>
                                 </tr>
                                 <?php
-                                    $no++;
-                                    }
+                                } else if(jumlahKomentar($con, $row["id_info"])==0){
+                                    ?>
+                                    <tr>
+                                    <td><?php echo $no;?></td>
+                                    <td class="text-left" data-toggle="modal" data-target="#preview1<?= $no?>"><?php echo $row["judul"];?></td>
+                                    <td><?= date('d F Y', strtotime($row["waktu_publish"]));?></td>
+                                    <td><?= date('d F Y', strtotime($row["waktu_perubahan"]));?></td>
+                                    <td><?php echo jumlahKomentar($con, $row["id_info"]); ?></td>
+                                    
+                                    <td><button class=" tmbl-table btn btn-danger" type="button"
+                                            class="pratinjau btn" data-toggle="modal" data-target="#hapus"
+                                            class="hapus">Hapus</button></td>
+                                </tr>
+                                <?php
+                                }
+                                $no++;
+                                }
                                 ?>
-                            </tbody>
+                                </tbody>
+                                <?php 
+                                }else{
+                                ?>
+                                <div class='text-center'>
+                                    <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
+                                    <p class='text-muted'>Tidak ada berita pada "03 juni 2019"</p>
+                                </div>
+                                <?php
+                                }
+                                ?>
                         </table>
-                        <?php 
-                        }else{
-                        ?>
-                        <div class='text-center'>
-                        <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
-                        <p class='text-muted'>Tidak ada berita pada "03 juni 2019"</p>
-                        </div>
                         <?php
-                        }
-                        ?>
+                                    } else{
+                                    ?>
+                                    <div class="text-center">
+                                        <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+                                        <p class="text-muted">Data Mahasiswa Per-Kelas Tidak Ditemukan</p>
+                                    </div>
+                                    <?php
+                                    }
+                                    ?>
                     </div>   
                 </div>
             </div>
