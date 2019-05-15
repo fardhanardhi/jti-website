@@ -51,7 +51,7 @@ if(isset($_POST["realSubmitBeasiswa"]) || isset($_POST["editIsi"]) || isset($_PO
       mysqli_query($con, $BeasiswaQuery);
       header('location:../module/index.php?module=' . $_GET["module"]);
     }
-  }
+}
 
 ?>
 

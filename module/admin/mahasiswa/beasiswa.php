@@ -120,10 +120,10 @@ include "../process/proses_adminBeasiswa.php";
                                     ?>
                                   <tr>
                                       <td><?= $index?></td>
-                                      <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview<?= $index?>"><?= $row["judul"]?></td>
+                                      <td  style="width:40em;" class="text-left" data-toggle="modal" data-target="#preview<?= $row["id_beasiswa"]?>"><?= $row["judul"]?></td>
                                       <td style="width:15em;"><?= tampilTanggal($row["waktu_publish"])?></td>
                                       <td style="width:15em;"><?= tampilTanggal($row["waktu_berakhir"]);?></td>
-                                      <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus<?= $index?>">Hapus</button></td>
+                                      <td><button class="btn btn-danger beasiswa-hapus-btn" data-toggle="modal" data-target="#hapus<?= $row["id_beasiswa"]?>">Hapus</button></td>
                                   </tr>
                                     <?php
                                 $index++;
@@ -157,7 +157,7 @@ include "../process/proses_adminBeasiswa.php";
 		if (mysqli_num_rows($resultTampilBeasiswa) > 0){
 			while ($row = mysqli_fetch_assoc($resultTampilBeasiswa)) {
 					?>
-				<div class="modal fade" id="preview<?= $index?>" tabindex="-1" role="dialog" aria-labelledby="preview<?= $index?>Title" aria-hidden="true">
+				<div class="modal fade" id="preview<?= $row["id_beasiswa"]?>" tabindex="-1" role="dialog" aria-labelledby="preview<?= $row["id_beasiswa"]?>Title" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 								<div class="modal-content">
 										<div class="modal-header">
@@ -211,7 +211,7 @@ include "../process/proses_adminBeasiswa.php";
         $idBeasiswa = $row["id_beasiswa"];
 					?>
 
-          <div class="modal fade hapusKompen-modal" id="hapus<?= $index?>" tabindex="-1" role="dialog" aria-labelledby="hapus<?= $index?>Title" aria-hidden="true" data-backdrop="false">
+          <div class="modal fade hapusKompen-modal" id="hapus<?= $row["id_beasiswa"]?>" tabindex="-1" role="dialog" aria-labelledby="hapus<?= $index?>Title" aria-hidden="true" data-backdrop="false">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
               <div class="modal-content konten-modal">
                 <div class="modal-body ">
