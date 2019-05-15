@@ -181,7 +181,7 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
                 <div class="col-sm-8">
                   <div class="judul">
                     <h5><strong><?php echo $row["judul"]; ?></strong></h5>
-                    <p><?php echo tampilTanggal($row["waktu"]); ?></p>
+                    <p><?php echo tampilTanggal($row["waktu_publish"]); ?></p>
                   </div>
                 </div>
                 <div class="col-sm-4 mt-2 text-right">
