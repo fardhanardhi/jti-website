@@ -123,7 +123,7 @@
                                     ?>
                                 <tr>
                                     <td><?php echo $no;?></td>
-                                    <td class="text-left" data-toggle="modal" data-target="#preview1<?= $no?>"><?php echo $row["judul"];?></td>
+                                    <td class="text-left detail-berita" data-toggle="modal" data-target="#modalPreview" data-info="<?php echo $row["id_info"];?>"><?php echo $row["judul"];?></td>
                                     <td><?= date('d F Y', strtotime($row["waktu_publish"]));?></td>
                                     <td><?= date('d F Y', strtotime($row["waktu_perubahan"]));?></td>
                                     <td><?php echo jumlahKomentar($con, $row["id_info"]); ?></td>
@@ -137,7 +137,7 @@
                                     ?>
                                     <tr>
                                     <td><?php echo $no;?></td>
-                                    <td class="text-left" data-toggle="modal" data-target="#preview1<?= $no?>"><?php echo $row["judul"];?></td>
+                                    <td class="text-left detail-berita" data-toggle="modal" data-target="#modalPreview" data-info="<?php echo $row["id_info"];?>"><?php echo $row["judul"];?></td>
                                     <td><?= date('d F Y', strtotime($row["waktu_publish"]));?></td>
                                     <td><?= date('d F Y', strtotime($row["waktu_perubahan"]));?></td>
                                     <td><?php echo jumlahKomentar($con, $row["id_info"]); ?></td>
@@ -193,42 +193,17 @@
         </div>
     </div>
 
-    <!-- Modal Preview -->
-    <?php
-		$resultTampilBerita=tampilBerita($con);
-		$no=1;
-		if (mysqli_num_rows($resultTampilBerita) > 0){
-			while ($row = mysqli_fetch_assoc($resultTampilBerita)) {
-					?>
-    <div class="modal fade prevBer1" id="preview1<?= $no?>" tabindex="-1" role="dialog" aria-labelledby="previewTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <strong><h5 class="modal-title"><?php echo $row["judul"];?></h5></strong>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        <?php echo $row["isi"];?>
-                    </p>
-                </div>
-                <img class="img img-fluid img-responsive" width="20%" src="../attachment/img/yuri.png" alt="foto">
-                        <button class="btn btn-outline-dark download d-flex">
-                            <div class="col-sm-7">
-                                <a href=""><h6 class="mt-1">Dokumen Rahasia</h6></a>
-                            </div>
-                            <div class="col-sm-5 text-right">
-                                <img src="../img/vector.svg" alt="Download button" class="">
-                            </div>
-                        </button>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-tutup" data-dismiss="modal">Tutup</button>
-                </div>
+       <!-- Modal preview -->
+<div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-backdrop="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content pl-3 pr-3">
+
+            <!-- isi -->
+            <div class="container-fluid p-0" id="Tampildetail-berita">
+
             </div>
         </div>
     </div>
-    <?php
-			$no++;
-			}
-		}
-    	?>
+</div>
+
 </main>
