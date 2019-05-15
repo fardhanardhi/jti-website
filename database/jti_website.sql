@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 15, 2019 at 07:57 AM
--- Server version: 5.7.26-0ubuntu0.18.04.1
--- PHP Version: 7.2.17-0ubuntu0.18.04.1
+-- Host: 127.0.0.1
+-- Generation Time: May 15, 2019 at 03:54 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -446,7 +446,6 @@ INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gamba
 (28, 60, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
 (29, 61, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00');
 
-
 -- --------------------------------------------------------
 
 --
@@ -553,22 +552,21 @@ INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `id_semes
 CREATE TABLE `tabel_matkul` (
   `id_matkul` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `sks` int(11) NOT NULL,
-  `jam` int(11) NOT NULL
+  `sks` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tabel_matkul`
 --
 
-INSERT INTO `tabel_matkul` (`id_matkul`, `nama`, `sks`, `jam`) VALUES
-(1, 'Manajemen Proyek', 4, 4),
-(2, 'Analisis Dan Desain Berorientasi Objek', 6, 6),
-(3, 'Sistem Manajemen Basisdata', 0, 6),
-(4, 'Proyek 1', 0, 5),
-(5, 'Komputasi Kognitif', 0, 4),
-(6, 'Sistem Informasi', 0, 4),
-(7, 'Pemrograman Web Lanjut', 0, 6);
+INSERT INTO `tabel_matkul` (`id_matkul`, `nama`, `sks`) VALUES
+(1, 'Manajemen Proyek', 4),
+(2, 'Analisis Dan Desain Berorientasi Objek', 6),
+(3, 'Sistem Manajemen Basisdata', 0),
+(4, 'Proyek 1', 0),
+(5, 'Komputasi Kognitif', 0),
+(6, 'Sistem Informasi', 0),
+(7, 'Pemrograman Web Lanjut', 0);
 
 -- --------------------------------------------------------
 
@@ -1102,6 +1100,7 @@ ALTER TABLE `tabel_attachment`
 --
 ALTER TABLE `tabel_chat`
   MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
 --
@@ -1131,6 +1130,7 @@ ALTER TABLE `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_jadwal`
   MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
 --
@@ -1159,7 +1159,7 @@ ALTER TABLE `tabel_kompen`
 -- AUTO_INCREMENT for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
-  MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tabel_kuisioner`
@@ -1177,7 +1177,7 @@ ALTER TABLE `tabel_mahasiswa`
 -- AUTO_INCREMENT for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
-  MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tabel_notifikasi`
@@ -1220,6 +1220,7 @@ ALTER TABLE `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tabel_semester`
 --
@@ -1237,6 +1238,7 @@ ALTER TABLE `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_task`
   MODIFY `id_task` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tabel_user`
 --
@@ -1378,13 +1380,13 @@ ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
 ALTER TABLE `tabel_ruang_dipinjam`
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
-COMMIT;
 
 --
 -- Constraints for table `tabel_task`
 --
 ALTER TABLE `tabel_task`
   ADD CONSTRAINT `tabel_task_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
