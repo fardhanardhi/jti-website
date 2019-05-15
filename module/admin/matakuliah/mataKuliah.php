@@ -121,6 +121,12 @@ include "../process/proses_adminMatakuliah.php";
                   </select>
                 </div>
               </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Jam</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control form-control-sm" name="jam" placeholder="Jam.."></small>
+                </div>
+              </div>
               <div class="form-group mb-0 row">
                 <div class="col-sm-12 text-right">
                   <input type="submit" value="Tambah" name="tambahMatakuliah" class="btn btn-primary btn-checkout">

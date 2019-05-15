@@ -19,6 +19,14 @@
   <!-- chartjs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
+  <script>
+  jQuery(document).ready(function($) {
+    $(".baca-notifikasi").click(function() {
+      window.location = $(this).data("href");
+    });
+  });
+  </script>
+
   <script src="../js/script.js"></script>
   <script src="../js/modalPengaturan.js"></script>
   <script src="../js/dosenScript.js"></script>
@@ -31,6 +39,7 @@
   <script src="../js/adminKhs.js"></script>
   <script src="../js/adminJadwalKuliah.js"></script>
   <script src="../js/mahasiswaKelasKosong.js"></script>
+  <script src="../js/dosenKompen.js"></script>
   <?php
   if ($level == "admin") {
     ?>

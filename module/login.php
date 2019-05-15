@@ -19,7 +19,8 @@ include "../config/connection.php";
 
 <body>
   <div class="fullscreen d-flex flex-column justify-content-center align-items-center">
-    <h1 style="font-weight: 800; color: #40407A;">MASUK</h1>
+    <h1 style="font-weight: 800; color: #40407A;">LOGIN</h1>
+    <h3 style="font-weight: 800; color: #40407A;">WEBSITE JTI</h3>
     <div class="row mt-3 w-100">
       <div class="col-md-3"></div>
       <div class="col-md-6 p-4 shadow-sm bg-white rounded">

@@ -24,13 +24,20 @@ function beritaCari($con, $tanggal)
     return $resultBeritaCari;
 }
 
-function jumlahKomentar($con){
-    $jumlahKomentar = "select sum(b.id_info) as komentar from tabel_info a, 
-    tabel_komentar b where 
+function jumlahKomentar($con, $id_info){
+    $jumlahKomentar = "select (b.id_info + c.id_komentar) as komentar , a.*, b.*, c.*
+    from tabel_info a, tabel_komentar b, tabel_reply_komentar c where 
     a.id_info = b.id_info
-    and b.id_info = '$id_info'";
+    and b.id_komentar = c.id_komentar
+    and b.id_info = $id_info group by a.id_info";
+
     $resultJumlahKomentar = mysqli_query($con, $jumlahKomentar);
-    $rowJumlahKomentar = mysqli_fetch_assoc($resultJumlahKomentar);
-    return $rowJumlahKomentar["jumlahKomentar"];
+    if(mysqli_num_rows($resultJumlahKomentar) > 0){
+        $rowJumlahKomentar = mysqli_fetch_assoc($resultJumlahKomentar);
+        return $rowJumlahKomentar["komentar"];
+    } else {
+        return "0";
+    }
 }
+
 ?>
