@@ -79,17 +79,18 @@
                                         <th scope="col" style="text-align:center">No</th>
                                         <th scope="col" style="text-align:center; width: 300px">NIM</th>
                                         <th scope="col" style="text-align:center; width: 600px">Nama Mahasiswa</th>
-                                        <th scope="col" style="text-align:center; width: 300px">Action</th>
+                                        <th scope="col" style="text-align:center; width: 350px">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                         if(mysqli_num_rows($result) > 0){
+                                            $index=1;
                                             while($row = mysqli_fetch_assoc($result)){
                                                 if($row["status_daftar_ulang"]=="Sudah" && $row["gambar_krs"]==NULL){
                                                     ?>
                                                     <tr class="ukt-lunas-belum-upload">
-                                                    <td><?php echo $row["id_krs"]?></td>
+                                                    <td><?php echo $index ?></td>
                                                     <td><?php echo $row["nim"]?></td>
                                                     <td><?php echo $row["nama"]?></td>
                                                     <td>
@@ -107,7 +108,7 @@
                                             } else if($row["status_daftar_ulang"]=="Belum"){
                                                 ?>
                                                 <tr class="ukt-belum-lunas">
-                                                <td><?php echo $row["id_krs"]?></td>
+                                                <td><?php echo $index ?></td>
                                                 <td><?php echo $row["nim"]?></td>
                                                 <td><?php echo $row["nama"]?></td>
                                                 <td>
@@ -121,7 +122,7 @@
                                                 $id_krs = $row["id_krs"];
                                                 ?>
                                                 <tr class="ukt-lunas-sudah-upload">
-                                                <td><?php echo $row["id_krs"]?></td>
+                                                <td><?php echo $index ?></td>
                                                 <td><?php echo $row["nim"]?></td>
                                                 <td><?php echo $row["nama"]?></td>
                                                 <td>
@@ -135,6 +136,7 @@
                                             </tr>
                                             <?php
                                             }
+                                             $index++;
                                         }
                                         ?>
                                         </tbody>
