@@ -297,16 +297,18 @@ var input,
     i,
 
     txtValueUsernameMahasiswa,
-    // txtValuePasswordMahasiswa,
-    // txtValueFotoMahasiswa,
-    // txtValueNimMahasiswa,
-    // txtValueNamaMahasiswa,
-    // txtValueTempatLahirMahasiswa,
-    // txtValueTanggalLahirMahasiswa,
-    // txtValueJenisKelaminMahasiswa,
-    // txtValueAlamatMahasiswa,
-    // txtValueNamaProdiMahasiswa,
-    // txtValueKodeKelasMahasiswa,
+    txtValuePasswordMahasiswa,
+    txtValueFotoMahasiswa,
+    txtValueNimMahasiswa,
+    txtValueNamaMahasiswa,
+    txtValueTempatLahirMahasiswa,
+    txtValueTanggalLahirMahasiswa,
+    txtValueJenisKelaminMahasiswa,
+    txtValueAlamatMahasiswa,
+    txtValueNamaProdiMahasiswa,
+    txtValueKodeKelasMahasiswa,
+
+    totalInactive,
 
     halamanTidakDitemukan = document.getElementById("tidakDapatDitemukan"),
     tabelDataMahasiswa = document.getElementById("dataAdminMahasiswa");
@@ -322,79 +324,87 @@ var input,
     for(i=0; i < itemDataMahasiswa.length; i++){
 
         usernameMahasiswa = $(itemDataMahasiswa[i]).find(".usernameMahasiswa");
-        // passwordMahasiswa = $(itemDataMahasiswa[i]).find(".passwordMahasiswa");
-        // fotoMahasiswa = $(itemDataMahasiswa[i]).find(".fotoMahasiswa");
-        // nimMahasiswa = $(itemDataMahasiswa[i]).find(".nimMahasiswa");
-        // namaMahasiswa = $(itemDataMahasiswa[i]).find(".namaMahasiswa");
-        // tempatLahirMahasiswa = $(itemDataMahasiswa[i]).find(".tempatLahirMahasiswa");
-        // tanggalLahirMahasiswa = $(itemDataMahasiswa[i]).find(".tanggalLahirMahasiswa");
-        // jenisKelaminMahasiswa = $(itemDataMahasiswa[i]).find(".jenisKelaminMahasiswa");
-        // alamatMahasiswa = $(itemDataMahasiswa[i]).find(".alamatMahasiswa");
-        // namaProdiMahasiswa = $(itemDataMahasiswa[i]).find(".namaProdiMahasiswa");
-        // kodeKelasMahasiswa = $(itemDataMahasiswa[i]).find(".kodeKelasMahasiswa");
+        passwordMahasiswa = $(itemDataMahasiswa[i]).find(".passwordMahasiswa");
+        fotoMahasiswa = $(itemDataMahasiswa[i]).find(".fotoMahasiswa");
+        nimMahasiswa = $(itemDataMahasiswa[i]).find(".nimMahasiswa");
+        namaMahasiswa = $(itemDataMahasiswa[i]).find(".namaMahasiswa");
+        tempatLahirMahasiswa = $(itemDataMahasiswa[i]).find(".tempatLahirMahasiswa");
+        tanggalLahirMahasiswa = $(itemDataMahasiswa[i]).find(".tanggalLahirMahasiswa");
+        jenisKelaminMahasiswa = $(itemDataMahasiswa[i]).find(".jenisKelaminMahasiswa");
+        alamatMahasiswa = $(itemDataMahasiswa[i]).find(".alamatMahasiswa");
+        namaProdiMahasiswa = $(itemDataMahasiswa[i]).find(".namaProdiMahasiswa");
+        kodeKelasMahasiswa = $(itemDataMahasiswa[i]).find(".kodeKelasMahasiswa");
 
-        // || passwordMahasiswa || fotoMahasiswa || nimMahasiswa || namaMahasiswa || tempatLahirMahasiswa || tanggalLahirMahasiswa || jenisKelaminMahasiswa || alamatMahasiswa || namaProdiMahasiswa || kodeKelasMahasiswa
+        // 
 
-        if(usernameMahasiswa){
+        if(usernameMahasiswa || passwordMahasiswa || fotoMahasiswa || nimMahasiswa || namaMahasiswa || tempatLahirMahasiswa || tanggalLahirMahasiswa || jenisKelaminMahasiswa || alamatMahasiswa || namaProdiMahasiswa || kodeKelasMahasiswa){
 
             txtValueUsernameMahasiswa = $(usernameMahasiswa)
                 .text()
                 .toUpperCase();
 
-            // txtValuePasswordMahasiswa = $(passwordMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValuePasswordMahasiswa = $(passwordMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValueFotoMahasiswa = $(fotoMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValueFotoMahasiswa = $(fotoMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValueNimMahasiswa = $(nimMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValueNimMahasiswa = $(nimMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValueNamaMahasiswa = $(namaMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValueNamaMahasiswa = $(namaMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValueTempatLahirMahasiswa = $(tempatLahirMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValueTempatLahirMahasiswa = $(tempatLahirMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValueTanggalLahirMahasiswa = $(tanggalLahirMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValueTanggalLahirMahasiswa = $(tanggalLahirMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValueJenisKelaminMahasiswa = $(jenisKelaminMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValueJenisKelaminMahasiswa = $(jenisKelaminMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValueAlamatMahasiswa = $(alamatMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValueAlamatMahasiswa = $(alamatMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValueNamaProdiMahasiswa = $(namaProdiMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValueNamaProdiMahasiswa = $(namaProdiMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValueKodeKelasMahasiswa = $(kodeKelasMahasiswa)
-            //     .text()
-            //     .toUpperCase();
+            txtValueKodeKelasMahasiswa = $(kodeKelasMahasiswa)
+                .text()
+                .toUpperCase();
 
-            // txtValuePasswordMahasiswa.indexOf(filter) > -1 || txtValueFotoMahasiswa.indexOf(filter) > -1 || txtValueNimMahasiswa.indexOf(filter) > -1 ||txtValueNamaMahasiswa.indexOf(filter) > -1 ||txtValueTempatLahirMahasiswa.indexOf(filter) > -1 ||txtValueTanggalLahirMahasiswa.indexOf(filter) > -1 ||txtValueJenisKelaminMahasiswa.indexOf(filter) > -1 ||txtValueAlamatMahasiswa.indexOf(filter) > -1 ||txtValueNamaProdiMahasiswa.indexOf(filter) > -1 ||txtValueKodeKelasMahasiswa.indexOf(filter) > -1
+            // 
 
-            if(txtValueUsernameMahasiswa.indexOf(filter) > -1){
+            if(txtValueUsernameMahasiswa.indexOf(filter) > -1 || txtValuePasswordMahasiswa.indexOf(filter) > -1 || txtValueFotoMahasiswa.indexOf(filter) > -1 || txtValueNimMahasiswa.indexOf(filter) > -1 ||txtValueNamaMahasiswa.indexOf(filter) > -1 ||txtValueTempatLahirMahasiswa.indexOf(filter) > -1 ||txtValueTanggalLahirMahasiswa.indexOf(filter) > -1 ||txtValueJenisKelaminMahasiswa.indexOf(filter) > -1 ||txtValueAlamatMahasiswa.indexOf(filter) > -1 ||txtValueNamaProdiMahasiswa.indexOf(filter) > -1 ||txtValueKodeKelasMahasiswa.indexOf(filter) > -1){
 
-                tabelDataMahasiswa.style.display = "block";
-                halamanTidakDitemukan.style.display = "none";
+                itemDataMahasiswa[i].style.display = "";
             }
 
             else{
 
-                tabelDataMahasiswa.style.display = "none";
-                halamanTidakDitemukan.style.display = "block";
+                itemDataMahasiswa[i].style.display = "none";
 
             }   
         }
+    }
+
+    totalInactive = $("#dataAdminMahasiswa. itemDataMahasiswa:hidden");
+
+    if(itemDataMahasiswa.length == totalInactive.length){
+        document.getElementById("tidakDapatDitemukan").style.display = "block";
+    }
+
+    else{
+        document.getElementById("tidakDapatDitemukan").style.display = "none";
     }
 });

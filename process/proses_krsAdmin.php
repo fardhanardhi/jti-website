@@ -16,7 +16,7 @@ function krsCari($con, $kelas)
     $krs = "SELECT DISTINCT tabel_krs.id_krs, tabel_mahasiswa.nim, tabel_mahasiswa.nama,
     tabel_krs.status_daftar_ulang, tabel_krs.gambar_krs, tabel_mahasiswa.id_kelas
     FROM tabel_krs INNER JOIN tabel_mahasiswa ON tabel_krs.id_mahasiswa = tabel_mahasiswa.id_mahasiswa
-    AND tabel_mahasiswa.id_kelas='$kelas'";
+    AND tabel_mahasiswa.id_kelas='$kelas' WHERE tabel_krs.id_semester = '7'";
     
     $resultTampilKrs = mysqli_query($con, $krs);
     return $resultTampilKrs;

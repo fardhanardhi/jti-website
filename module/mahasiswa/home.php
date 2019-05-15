@@ -53,14 +53,12 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
         <button type="button" class="check-modal btn" data-toggle="modal" data-target="#modelId">Isi Kuisioner</button>
 
         <!-- Modal -->
-        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-          aria-hidden="true">
+        <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-body">
                 <div class="icon">
-                  <button type="button" class="close text-right text-white active" data-dismiss="modal"
-                    aria-label="Close">
+                  <button type="button" class="close text-right text-white active" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
@@ -158,12 +156,12 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
         </div>
 
         <script>
-        $('#exampleModal').on('show.bs.modal', event => {
-          var button = $(event.relatedTarget);
-          var modal = $(this);
-          // Use above variables to manipulate the DOM
+          $('#exampleModal').on('show.bs.modal', event => {
+            var button = $(event.relatedTarget);
+            var modal = $(this);
+            // Use above variables to manipulate the DOM
 
-        });
+          });
         </script>
       </div>
 
@@ -173,99 +171,96 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
         while ($row = mysqli_fetch_assoc($resultInfo)) {
           $id_info = $row["id_info"];
           ?>
-      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
-        <div class="border-bottom border-gray">
-          <div class="row">
-            <div class="col-sm-8">
-              <div class="judul">
-                <h5><strong><?php echo $row["judul"]; ?></strong></h5>
-                <p><?php echo tampilTanggal($row["waktu"]); ?></p>
+          <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
+            <div class="border-bottom border-gray">
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="judul">
+                    <h5><strong><?php echo $row["judul"]; ?></strong></h5>
+                    <p><?php echo tampilTanggal($row["waktu"]); ?></p>
+                  </div>
+                </div>
+                <div class="col-sm-4 mt-2 text-right">
+                  <span class="kategori-label badge badge-secondary px-3 py-2"><?php echo ucfirst($row["tipe"]); ?></span>
+                </div>
               </div>
             </div>
-            <div class="col-sm-4 mt-2 text-right">
-              <span class="kategori-label badge badge-secondary px-3 py-2"><?php echo ucfirst($row["tipe"]); ?></span>
-            </div>
-          </div>
-        </div>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="isi-mhs">
-              <?php echo $row["isi"]; ?>
-            </div>
-            <div class="photos">
-              <div class="row">
-                <?php
+            <div class="media text-muted pt-3">
+              <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="isi-mhs">
+                  <?php echo $row["isi"]; ?>
+                </div>
+                <div class="photos">
+                  <div class="row">
+                    <?php
                     $resultAttachment = attachment($con, $row["id_info"]);
                     if (mysqli_num_rows($resultAttachment) > 0) {
                       while ($row = mysqli_fetch_assoc($resultAttachment)) {
                         ?>
-                <div class="col-md-6 p-2">
-                  <div class="image">
-                    <a href="../attachment/img/<?php echo $row['file']; ?>" data-toggle="lightbox"
-                      data-gallery="mixedgallery<?php echo $row['id_info']; ?>">
-                      <img class="img img-fluid img-responsive full-width cursor"
-                        src="../attachment/img/<?php echo $row['file']; ?>" alt="<?php echo $row['file']; ?>">
-                    </a>
-                  </div>
-                </div>
+                        <div class="col-md-6 p-2">
+                          <div class="image">
+                            <a href="../attachment/img/<?php echo $row['file']; ?>" data-toggle="lightbox" data-gallery="mixedgallery<?php echo $row['id_info']; ?>">
+                              <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row['file']; ?>" alt="<?php echo $row['file']; ?>">
+                            </a>
+                          </div>
+                        </div>
 
-                <?php
+                      <?php
                     }
                   }
                   ?>
 
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="form-group border-bottom border-gray">
-          <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
-        </div>
-        <div class="media-body pb-3 mb-0 small lh-125">
-          <div class="isi-mhs">
-            <?php
+            <div class="form-group border-bottom border-gray">
+              <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
+            </div>
+            <div class="media-body pb-3 mb-0 small lh-125">
+              <div class="isi-mhs">
+                <?php
                 $resultKomentar = komentar($con, $row["id_info"]);
                 if (mysqli_num_rows($resultKomentar) > 0) {
                   while ($row = mysqli_fetch_assoc($resultKomentar)) {
                     ?>
-            <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
-            <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
-            <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
+                    <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
+                    <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
+                    <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
 
-            <div class="row komens">
-              <div class="col-sm-8 ml-5 ">
-                <div class="balas-komen p-2 border-left border-dark">
-                  <?php
+                    <div class="row komens">
+                      <div class="col-sm-8 ml-5 ">
+                        <div class="balas-komen pl-3 my-2 border-left border-dark">
+                          <?php
                           $resultReplyKomentar = replyKomentar($con, $row["id_komentar"]);
                           if (mysqli_num_rows($resultKomentar) > 0) {
                             while ($row = mysqli_fetch_assoc($resultKomentar)) {
                               ?>
-                  <strong>Admin</strong>
-                  <span class="komen">Dosen pergi ke jepang dalam rangka sebagai perwakilan
-                    indonesia di pertemuan KTT 2019</span> <br>
-                  <?php
+                              <strong>Admin</strong>
+                              <span class="komen">Dosen pergi ke jepang dalam rangka sebagai perwakilan
+                                indonesia di pertemuan KTT 2019</span> <br>
+                            <?php
                           }
                         }
                         ?>
-                </div><br>
-                <div class="form-group border-bottom border-top border-gray">
-                  <textarea class="form-control border-0" name="" id="" rows="1"
-                    placeholder="Tulis Komentar..."></textarea>
-                </div>
-              </div>
-              <div class="col-sm-2">
-                <strong>Reply</strong>
-              </div>
-            </div>
-            <?php
+                        </div><br>
+                        <div class="form-group border-bottom border-top border-gray">
+                          <textarea class="form-control border-0" name="" id="" rows="1" placeholder="Tulis Komentar..."></textarea>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <strong>Reply</strong>
+                      </div>
+                    </div>
+                  <?php
                 }
               }
               ?>
 
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <?php
+        <?php
       }
     }
     ?>
@@ -339,40 +334,35 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
                 <div class="col-md-6 p-2">
                   <div class="image">
                     <a href="../attachment/img/yuri.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/yuri.png"
-                        alt="foto">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/yuri.png" alt="foto">
                     </a>
                   </div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
                     <a href="../attachment/img/ariadi.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/ariadi.png"
-                        alt="foto">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/ariadi.png" alt="foto">
                     </a>
                   </div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
                     <a href="../attachment/img/atiqah.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/atiqah.png"
-                        alt="foto">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/atiqah.png" alt="foto">
                     </a>
                   </div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
                     <a href="../attachment/img/ridwan.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/ridwan.png"
-                        alt="foto">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/ridwan.png" alt="foto">
                     </a>
                   </div>
                 </div>
                 <div class="col-md-6 p-2">
                   <div class="image">
                     <a href="../attachment/img/yan.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/yan.png"
-                        alt="foto">
+                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/yan.png" alt="foto">
                     </a>
                   </div>
                 </div>

@@ -250,4 +250,232 @@ if(isset($_POST["tampilDetailMhs"]) && isset($_POST["tampilDetailSemester"]))
 }
 // MODAL KHS LIHAT END
 
+// Modal KHS EDIT
+if(isset($_POST["editNilaimhs"]) && isset($_POST["editNilaiSemester"]))
+{
+    $id_mahasiswa = $_POST['editNilaimhs'];
+    $id_semester = $_POST['editNilaiSemester'];
+
+    $editNilaiMahasiswa="
+    select distinct(a.id_mahasiswa), a.*, a.nim, 
+    a.nama as nm_mahasiswa, c.*, d.id_kelas, e.*, e.semester, f.*
+    from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f
+    where a.id_kelas = d.id_kelas
+    and d.id_kelas = f.id_kelas
+    and a.id_semester = e.id_semester
+    and e.id_semester = f.id_semester
+    and c.id_matkul = f.id_matkul 
+    and a.id_semester = $id_semester
+    and a.id_mahasiswa = $id_mahasiswa group by a.id_mahasiswa";
+
+    $resultEditNilaiMahasiswa = mysqli_query($con, $editNilaiMahasiswa);
+    
+    if(mysqli_num_rows($resultEditNilaiMahasiswa) == 0){}
+        else{
+            $no = 1;
+            while ($row = mysqli_fetch_assoc($resultEditNilaiMahasiswa)) {
+                ?> 
+                
+                    <div class="modal-body">
+                        <div class="isi-modaLihat">
+                            <p>Nama : <?php echo $row["nm_mahasiswa"]; ?></p>
+                            <p>Nim : <?php echo $row["nim"]; ?></p>                                    
+                        </div>   
+                <?php
+                 $editNilaiMhs="
+                 select distinct(a.id_mahasiswa), a.*, a.nim, 
+                 a.nama as nm_mahasiswa, c.*, c.nama as nm_matkul, d.id_kelas, d.*, e.*, e.semester, f.*
+                 from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f
+                 where a.id_kelas = d.id_kelas
+                 and d.id_kelas = f.id_kelas
+                 and a.id_semester = e.id_semester
+                 and e.id_semester = f.id_semester
+                 and c.id_matkul = f.id_matkul 
+                 and a.id_semester = $id_semester
+                 and a.id_mahasiswa = $id_mahasiswa";
+             
+                $resultEditNilaiMhs = mysqli_query($con, $editNilaiMhs);
+                if(mysqli_num_rows($resultEditNilaiMhs)){
+                ?>       
+                <form action="">     
+                <div class="border-bottom border-gray">
+                    <div class="row">
+                        <div class="col-sm-5">
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="row isi-modaLihat">
+                                <p class="col">A</p>
+                                <p class="col">B+</p>
+                                <p class="col">B</p>
+                                <p class="col">C</p>
+                                <p class="col">C+</p>
+                                <p class="col">D</p>
+                                <p class="col">E</p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <!-- Modal isi-->
+                <div>
+                    <?php 
+                    $index=1;
+                    while($row1 = mysqli_fetch_assoc($resultEditNilaiMhs)){
+                    ?>
+                     <div class="row isi-modaLihat">
+                        <div class="col-sm-5">
+                            <p><?php echo $row1["nm_matkul"];?></p>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="row">
+                                <div class="col"><input type="radio" name="nilai" value="nilai1" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai2" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai3" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai4" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Modal isi End-->
+                    </div>
+                    <!-- Modal body End-->
+                    <?php
+                        $index++;
+                    }
+                    ?>
+                    <div class="modal-footer">
+                        <button type="button" class="tmbl-kirim btn btn-success float-right">Kirim</button>
+                    </div>
+                    </form>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <?php
+    }
+    $no++;
+}
+
+// MODAL KHS EDIT END
+
+
+// Modal KHS UPLOAD 
+if(isset($_POST["updateNilaiMhs"]) && isset($_POST["updateNilaiSemester"]))
+{
+    $id_mahasiswa = $_POST['updateNilaiMhs'];
+    $id_semester = $_POST['updateNilaiSemester'];
+
+    $updateNilaiMahasiswa="
+    select distinct(a.id_mahasiswa), a.*, a.nim, 
+    a.nama as nm_mahasiswa, c.*, d.id_kelas, e.*, e.semester, f.*
+    from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f
+    where a.id_kelas = d.id_kelas
+    and d.id_kelas = f.id_kelas
+    and a.id_semester = e.id_semester
+    and e.id_semester = f.id_semester
+    and c.id_matkul = f.id_matkul 
+    and a.id_semester = $id_semester
+    and a.id_mahasiswa = $id_mahasiswa group by a.id_mahasiswa";
+
+    $resultUpdateNilaiMahasiswa = mysqli_query($con, $updateNilaiMahasiswa);
+    
+    if(mysqli_num_rows($resultUpdateNilaiMahasiswa) == 0){}
+        else{
+            $no = 1;
+            while ($row = mysqli_fetch_assoc( $resultUpdateNilaiMahasiswa)) {
+                ?> 
+                
+                    <div class="modal-body">
+                        <div class="isi-modaLihat">
+                            <p>Nama : <?php echo $row["nm_mahasiswa"]; ?></p>
+                            <p>Nim : <?php echo $row["nim"]; ?></p>                                    
+                        </div>   
+                <?php
+                 $updateNilaiMhs="
+                 select distinct(a.id_mahasiswa), a.*, a.nim, 
+                 a.nama as nm_mahasiswa, c.*, c.nama as nm_matkul, d.id_kelas, d.*, e.*, e.semester, f.*
+                 from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f
+                 where a.id_kelas = d.id_kelas
+                 and d.id_kelas = f.id_kelas
+                 and a.id_semester = e.id_semester
+                 and e.id_semester = f.id_semester
+                 and c.id_matkul = f.id_matkul 
+                 and a.id_semester = $id_semester
+                 and a.id_mahasiswa = $id_mahasiswa";
+             
+                $resultUpdateNilaiMhs = mysqli_query($con, $updateNilaiMhs);
+                if(mysqli_num_rows($resultUpdateNilaiMhs)){
+                ?>       
+                <form action="">     
+                <div class="border-bottom border-gray">
+                    <div class="row">
+                        <div class="col-sm-5">
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="row isi-modaLihat">
+                                <p class="col">A</p>
+                                <p class="col">B+</p>
+                                <p class="col">B</p>
+                                <p class="col">C</p>
+                                <p class="col">C+</p>
+                                <p class="col">D</p>
+                                <p class="col">E</p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <!-- Modal isi-->
+                <div>
+                    <?php 
+                    $index=1;
+                    while($row1 = mysqli_fetch_assoc($resultUpdateNilaiMhs)){
+                    ?>
+                     <div class="row isi-modaLihat">
+                        <div class="col-sm-5">
+                            <p><?php echo $row1["nm_matkul"];?></p>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="row">
+                                <div class="col"><input type="radio" name="nilai" value="nilai1" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai2" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai3" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai4" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
+                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Modal isi End-->
+                    </div>
+                    <!-- Modal body End-->
+                    <?php
+                        $index++;
+                    }
+                    ?>
+                    <div class="modal-footer">
+                        <button type="button" class="tmbl-kirim btn btn-success float-right">Kirim</button>
+                    </div>
+                    </form>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <?php
+    }
+    $no++;
+}
+// MODAL KHS UPLOAD END
+
 ?>

@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 14, 2019 at 07:40 PM
+-- Generation Time: May 15, 2019 at 07:57 AM
 -- Server version: 5.7.26-0ubuntu0.18.04.1
 -- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -133,7 +135,8 @@ INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VAL
 (13, 'Ikut bro', 32, 45, '2019-04-23 09:59:00'),
 (14, 'Makasih', 45, 32, '2019-04-23 09:59:00'),
 (15, 'tes', 32, 45, '2019-04-26 14:55:00'),
-(16, 'tes', 32, 2, '2019-04-26 14:56:00');
+(16, 'tes', 32, 2, '2019-04-26 14:56:00'),
+(17, 'Apa Min?', 2, 45, '2019-05-13 17:53:00');
 
 -- --------------------------------------------------------
 
@@ -212,19 +215,20 @@ CREATE TABLE `tabel_info` (
   `judul` varchar(250) NOT NULL,
   `isi` text NOT NULL,
   `tipe` enum('pengumuman','berita') NOT NULL,
-  `waktu` datetime NOT NULL
+  `waktu_publish` datetime NOT NULL,
+  `waktu_perubahan` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_info`
 --
 
-INSERT INTO `tabel_info` (`id_info`, `judul`, `isi`, `tipe`, `waktu`) VALUES
-(1, '2 Dosen dikirim ke Jepang', 'Dikarenakan dosen bernama : \r\n- Pak Yan \r\n- Pak Rosa \r\n- Pak Vipkas \r\nsedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi untuk meminta tugas. \r\n\r\nTerima Kasih...', 'pengumuman', '2019-04-11 03:00:00'),
-(2, 'Workshop Pembuatan Dokumen Kurikulum Oleh 3 Dosen', 'Pada hari Selasa, 29 Januari 2019 Jurusan Teknologi Informasi (JTI) menggelar kegiatan Workshop Pembuatan Dokumen Kurikulum yang diikuti oleh seluruh dosen JTI. Acara ini diadakan di Ruang Meeting Dosen Sipil Lantai 4, Politeknik Negeri Malang.\r\n\r\nWorkshop ini menghadirkan pembicara dari Universitas Negeri Malang, Dr. Ir. Sya’ad Patmanthara, M.Pd. Tujuan dari diadakannya workshop ini adalah para dosen dapat membuat Rencana Perkuliahan Semester (RPS),  kontrak perkuliahan dan rubik penilaian untuk semester genap tahun ajaran 2018-2019 dengan lebih baik. Acara yang berlangsung dari pukul 08.00 – 16.00 WIB berlangsung tertib dan lancar.', 'berita', '2019-04-11 07:00:00'),
-(3, 'Pengumuman Laporan Akhir dan Skripsi 2018/2019', '1. Pendaftaran untuk usulan dosen pembimbing sudah dibuka\r\n2. Pendaftaran usulan dosen pembimbing berakhir pada tanggal 26 November 2018 pukul 11.00\r\n3. Pengumuman dosen pembimbing dilaksanakan antara tanggal 27-29 November 2018\r\n4. Pendaftaran sidang proposal dan upload proposal dilaksanakan tanggal 29 November-3 Desember 2018\r\n5. Ujian proposal dilaksanakan mulai tanggal 4 Desember 2018', 'pengumuman', '2019-04-11 07:00:00'),
-(4, 'PSS (Pelaksanaan Sertifikasi Sektor) thn. 2018 untuk Mahasiswa Jurusan TI', 'PSS merupakan program hibah dari BNSP untuk melakukan sertifikasi kompetensi terhadap mahasiswa. Dan pada tahun 2018 ini, Polinema melalui LSP P1 Polinema, mendapatkan program tersebut dan sebagai tindak lanjutnya wajib melakukan sertifikasi terhadap mahasiswa Polinema. Berkenaan dengan hal tersebut, jurusan TI mendapatkan kuota mahasiswa sejumlah 340 orang untuk diikutkan program PSS tersebut.', 'berita', '2019-04-11 06:00:00'),
-(5, 'Update Pembimbing Proposal LA', 'Setelah melalui berbagai pertimbangan dan koreksi oleh panitia, maka update terbaru Pembimbing Proposal LA sebagai berikut:', 'pengumuman', '2019-04-11 03:00:00');
+INSERT INTO `tabel_info` (`id_info`, `judul`, `isi`, `tipe`, `waktu_publish`, `waktu_perubahan`) VALUES
+(1, '2 Dosen dikirim ke Jepang', 'Dikarenakan dosen bernama : \r\n- Pak Yan \r\n- Pak Rosa \r\n- Pak Vipkas \r\nsedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi untuk meminta tugas. \r\n\r\nTerima Kasih...', 'pengumuman', '2019-04-11 03:00:00', '0000-00-00 00:00:00'),
+(2, 'Workshop Pembuatan Dokumen Kurikulum Oleh 3 Dosen', 'Pada hari Selasa, 29 Januari 2019 Jurusan Teknologi Informasi (JTI) menggelar kegiatan Workshop Pembuatan Dokumen Kurikulum yang diikuti oleh seluruh dosen JTI. Acara ini diadakan di Ruang Meeting Dosen Sipil Lantai 4, Politeknik Negeri Malang.\r\n\r\nWorkshop ini menghadirkan pembicara dari Universitas Negeri Malang, Dr. Ir. Sya’ad Patmanthara, M.Pd. Tujuan dari diadakannya workshop ini adalah para dosen dapat membuat Rencana Perkuliahan Semester (RPS),  kontrak perkuliahan dan rubik penilaian untuk semester genap tahun ajaran 2018-2019 dengan lebih baik. Acara yang berlangsung dari pukul 08.00 – 16.00 WIB berlangsung tertib dan lancar.', 'berita', '2019-04-11 07:00:00', '0000-00-00 00:00:00'),
+(3, 'Pengumuman Laporan Akhir dan Skripsi 2018/2019', '1. Pendaftaran untuk usulan dosen pembimbing sudah dibuka\r\n2. Pendaftaran usulan dosen pembimbing berakhir pada tanggal 26 November 2018 pukul 11.00\r\n3. Pengumuman dosen pembimbing dilaksanakan antara tanggal 27-29 November 2018\r\n4. Pendaftaran sidang proposal dan upload proposal dilaksanakan tanggal 29 November-3 Desember 2018\r\n5. Ujian proposal dilaksanakan mulai tanggal 4 Desember 2018', 'pengumuman', '2019-04-11 07:00:00', '0000-00-00 00:00:00'),
+(4, 'PSS (Pelaksanaan Sertifikasi Sektor) thn. 2018 untuk Mahasiswa Jurusan TI', 'PSS merupakan program hibah dari BNSP untuk melakukan sertifikasi kompetensi terhadap mahasiswa. Dan pada tahun 2018 ini, Polinema melalui LSP P1 Polinema, mendapatkan program tersebut dan sebagai tindak lanjutnya wajib melakukan sertifikasi terhadap mahasiswa Polinema. Berkenaan dengan hal tersebut, jurusan TI mendapatkan kuota mahasiswa sejumlah 340 orang untuk diikutkan program PSS tersebut.', 'berita', '2019-04-11 06:00:00', '0000-00-00 00:00:00'),
+(5, 'Update Pembimbing Proposal LA', 'Setelah melalui berbagai pertimbangan dan koreksi oleh panitia, maka update terbaru Pembimbing Proposal LA sebagai berikut:', 'pengumuman', '2019-04-11 03:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -412,16 +416,36 @@ CREATE TABLE `tabel_krs` (
 --
 
 INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`, `status_verifikasi`, `waktu_edit`) VALUES
-(1, 33, 'Sudah', '20190428093312.png', 7, 'Sudah', '2019-05-03 21:52:24'),
+(1, 33, 'Sudah', 'krs1.png', 7, 'Sudah', '2019-05-03 21:52:24'),
 (2, 34, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:52:45'),
-(3, 35, 'Sudah', '20190428093318.png', 7, 'Sudah', '2019-05-03 21:52:44'),
+(3, 35, 'Sudah', 'krs1.png', 7, 'Sudah', '2019-05-03 21:52:44'),
 (4, 36, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:52:41'),
-(5, 37, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:52:55'),
+(5, 37, 'Sudah', 'krs1.png', 7, 'Sudah', '2019-05-03 21:52:55'),
 (6, 38, 'Belum', NULL, 7, 'Sudah', '2019-05-03 21:52:59'),
 (7, 39, 'Sudah', NULL, 7, 'Belum', '2019-05-03 21:53:05'),
 (8, 40, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:53:09'),
 (9, 41, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:53:13'),
-(10, 42, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:53:17');
+(10, 42, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:53:17'),
+(11, 43, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(12, 44, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(13, 45, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(14, 46, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(15, 47, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(16, 48, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(17, 49, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(18, 50, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(19, 51, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(20, 52, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(21, 53, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(22, 54, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(23, 55, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(24, 56, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(25, 57, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(26, 58, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(27, 59, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(28, 60, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(29, 61, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00');
+
 
 -- --------------------------------------------------------
 
@@ -752,6 +776,30 @@ INSERT INTO `tabel_status_mahasiswa` (`id_status_mahasiswa`, `keterangan`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tabel_task`
+--
+
+CREATE TABLE `tabel_task` (
+  `id_task` int(11) NOT NULL,
+  `pekerjaan` text NOT NULL,
+  `kuota` int(11) NOT NULL,
+  `id_dosen` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tabel_task`
+--
+
+INSERT INTO `tabel_task` (`id_task`, `pekerjaan`, `kuota`, `id_dosen`) VALUES
+(1, 'Membersihkan jendela', 2, 4),
+(2, 'Menginputkan data', 3, 4),
+(3, 'Mengangkat kursi', 5, 4),
+(4, 'Menyiapkan ruangan', 10, 4),
+(5, 'Mengambilkan makanan', 1, 4);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tabel_user`
 --
 
@@ -1015,6 +1063,13 @@ ALTER TABLE `tabel_status_mahasiswa`
   ADD PRIMARY KEY (`id_status_mahasiswa`);
 
 --
+-- Indexes for table `tabel_task`
+--
+ALTER TABLE `tabel_task`
+  ADD PRIMARY KEY (`id_task`),
+  ADD KEY `id_dosen` (`id_dosen`);
+
+--
 -- Indexes for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
@@ -1029,41 +1084,48 @@ ALTER TABLE `tabel_user`
 --
 ALTER TABLE `tabel_absensi`
   MODIFY `id_absensi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   MODIFY `id_admin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   MODIFY `id_attachment` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
-  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   MODIFY `id_dosen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
   MODIFY `id_hasil_kuisioner` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
   MODIFY `id_info` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   MODIFY `id_beasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
@@ -1074,71 +1136,85 @@ ALTER TABLE `tabel_jadwal`
 --
 ALTER TABLE `tabel_kelas`
   MODIFY `id_kelas` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
   MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   MODIFY `id_komentar` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   MODIFY `id_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
   MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   MODIFY `id_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+
 --
 -- AUTO_INCREMENT for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
   MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   MODIFY `id_notifikasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   MODIFY `id_pekerjaan_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
   MODIFY `id_prodi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   MODIFY `id_reply_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   MODIFY `id_riwayat_peminjam_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   MODIFY `id_ruang` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `tabel_ruang_dipinjam`
 --
@@ -1149,16 +1225,24 @@ ALTER TABLE `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_semester`
   MODIFY `id_semester` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   MODIFY `id_status_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tabel_task`
+--
+ALTER TABLE `tabel_task`
+  MODIFY `id_task` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
   MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
 --
 -- Constraints for dumped tables
 --
@@ -1294,6 +1378,13 @@ ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
 ALTER TABLE `tabel_ruang_dipinjam`
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
+COMMIT;
+
+--
+-- Constraints for table `tabel_task`
+--
+ALTER TABLE `tabel_task`
+  ADD CONSTRAINT `tabel_task_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
