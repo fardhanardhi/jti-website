@@ -359,7 +359,7 @@ if ($level != 'admin') {
         </i>
 
         <div class="dropdown mr-5">
-          <img class="dropdown-toggle nav-profile-photo ml-4 " src="../attachment/img/avatar.jpeg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="dropdown-toggle nav-profile-photo ml-4 " src="../attachment/img/<?php echo ($rowUser['foto'] == null)? 'avatar.jpeg' : $rowUser['foto'] ; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:50px;height:50px;border-radius:50%;">
           <a href="#" class="dropdown-toggle ml-2 profile-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ($namaUser); ?>&nbsp;<b class="caret"></b></a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <b class="caret d-none d-lg-block d-xl-block"></b>

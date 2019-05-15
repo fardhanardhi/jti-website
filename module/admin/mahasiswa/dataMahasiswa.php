@@ -325,15 +325,15 @@
 
                                                 
                                                 ?>
-                                                    <tr class="itemDataMahasiswa">
+                                                    <tr id="<?php echo $row["id_mahasiswa"] ?>" class="itemDataMahasiswa">
                                                         <td><?php echo $index; ?></td>
                                                         <td class="usernameMahasiswa"><?php echo $row["username"]; ?></td>
                                                         <td class="passwordMahasiswa">**********</td>
-                                                        <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo $row['foto']?>" style="width:50px;height:50px;border-radius:50%;"></td>
+                                                        <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo ($row['foto'] == null)? 'avatar.jpeg' : $row['foto'] ; ?>" style="width:50px;height:50px;border-radius:50%;"></td>
                                                         <td class="nimMahasiswa"><?php echo $row["nim"]; ?></td>
                                                         <td class="namaMahasiswa"><?php echo $row["nama_mahasiswa"]; ?></td>
                                                         <td class="tempatLahirMahasiswa"><?php echo $row["tempat_lahir"]; ?></td>
-                                                        <td class="tanggalLahirMahasiswa"><?php echo $row["tanggal_lahir"]; ?></td>
+                                                        <td class="tanggalLahirMahasiswa"><?php echo date("d M Y", strtotime($row["tanggal_lahir"])) ?></td>
                                                         <td class="jenisKelaminMahasiswa"><?php echo $row["jenis_kelamin"]; ?></td>
                                                         <td class="alamatMahasiswa"><?php echo $row["alamat"]; ?></td>
                                                         <td class="namaProdiMahasiswa"><?php echo $row["nama_prodi"];?></td>
