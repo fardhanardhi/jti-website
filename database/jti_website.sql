@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2019 at 03:54 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Generation Time: May 15, 2019 at 05:04 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -552,21 +552,22 @@ INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `id_semes
 CREATE TABLE `tabel_matkul` (
   `id_matkul` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `sks` int(11) NOT NULL
+  `sks` int(11) NOT NULL,
+  `jam` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tabel_matkul`
 --
 
-INSERT INTO `tabel_matkul` (`id_matkul`, `nama`, `sks`) VALUES
-(1, 'Manajemen Proyek', 4),
-(2, 'Analisis Dan Desain Berorientasi Objek', 6),
-(3, 'Sistem Manajemen Basisdata', 0),
-(4, 'Proyek 1', 0),
-(5, 'Komputasi Kognitif', 0),
-(6, 'Sistem Informasi', 0),
-(7, 'Pemrograman Web Lanjut', 0);
+INSERT INTO `tabel_matkul` (`id_matkul`, `nama`, `sks`, `jam`) VALUES
+(1, 'Manajemen Proyek', 4, 2),
+(2, 'Analisis Dan Desain Berorientasi Objek', 6, 2),
+(3, 'Sistem Manajemen Basisdata', 0, 2),
+(4, 'Proyek 1', 0, 2),
+(5, 'Komputasi Kognitif', 0, 0),
+(6, 'Sistem Informasi', 0, 0),
+(7, 'Pemrograman Web Lanjut', 0, 0);
 
 -- --------------------------------------------------------
 
