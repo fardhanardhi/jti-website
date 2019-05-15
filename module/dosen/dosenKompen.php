@@ -1,3 +1,12 @@
+<?php
+
+include "../config/connection.php";
+include "../process/proses_dosenKompen.php";
+
+
+
+?>
+
 <main role="main" class="container-fluid" id="dosenKompen">
   <link rel="stylesheet" href="../css/dosen.css">
   <div class="row">
@@ -8,19 +17,30 @@
           <div class="media text-muted pt-3">
             <div class="media-body pb-3 mb-0 small lh-125">
               <div class="isi">
+
+              <?php 
+                  $resultTampilProfilDosen=tampilDataProfilDosen($con, $idUser);
+                if (mysqli_num_rows($resultTampilProfilDosen) > 0){
+                  while ($row = mysqli_fetch_assoc($resultTampilProfilDosen)) {
+              ?>
+
                 <div class="d-flex justify-content-center">
                   <img src="../attachment/img/avatar.jpeg" alt="dosen"
                     style="width:150px;height:150px;border-radius:50%;">
                 </div>
                 <div class="data-dosen text-center">
-                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">BABANG NICHOL</h6>
-                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">1984757018014</h6>
-                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">JABATAN FUNGSIONAL</h6>
+                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0"><?= $row["nama"]?></h6>
+                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0"><?= $row["nip"]?></h6>
+                  <!-- <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">JABATAN FUNGSIONAL</h6>
                   <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">PENDIDIDIKAN</h6>
                   <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">STATUS IKATAN KERJA</h6>
-                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">STATUS AKTIVITAS</h6>
+                  <h6 class="detail-dosen border-bottom border-gray pb-2 mb-0">STATUS AKTIVITAS</h6> -->
                 </div>
               </div>
+              <?php
+                } 
+              }
+              ?> 
             </div>
           </div>
         </div>
@@ -33,7 +53,8 @@
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125">
             <div class="isi">
-              <table class="table table-striped table-bordered text-center">
+
+              <table class="table table-bordered text-center">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -44,28 +65,53 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="Sudah-konfirmasi">
-                    <td>1</td>
-                    <td>1741720001</td>
-                    <td>fulan 1</td>
-                    <td>TI-2A</td>
-                    <td><button type="button" class="pratinjau btn" data-toggle="modal" data-target="#exampleModalCenter">Filter</button></td>
-                  </tr>
-                  <tr class="Belum-konfirmasi">
+                  <?php
+                    $queryKompen ="select a.nim, a.nama,  b.kode, c.kode_kelas, c.tingkat, d.id_mahasiswa, d.id_kompen from  tabel_mahasiswa a inner join tabel_prodi b on a.id_prodi = b.id_prodi inner join tabel_kelas c on a.id_kelas = c.id_kelas
+                    inner join tabel_kompen d on a.id_mahasiswa = d.id_mahasiswa";
+                    $result = mysqli_query($con, $queryKompen);
+                    $index = 1;
+                    while($row = mysqli_fetch_assoc($result)){
+                  ?>
+                    <tr class="Sudah-konfirmasi">
+                      <td><?php echo $index; ?></td>
+                      <td><?php echo $row["nim"]; ?></td>
+                      <td><?php echo $row["nama"]; ?></td>
+                      <td><?=$row['kode'].' - '.$row['tingkat'].$row['kode_kelas']?></td>
+                      <td><button type="button" class="pratinjau btn detail-kompen" data-id="<?php echo $row["id_kompen"];?>" data-toggle="modal" data-target="#modalLihat">Lihat</button></td>
+                    </tr>
+                  <?php $index++;
+                    }
+                  ?>
+                  <!-- <tr class="Belum-konfirmasi">
                     <td>2</td>
                     <td>1741720001</td>
                     <td>fulan 1</td>
                     <td>TI-2A</td>
-                    <td><button type="button" class="pratinjau btn" data-toggle="modal" data-target="#exampleModalCenter">Filter</button></td>
-                  </tr>
+                    <td><button type="button" class="pratinjau btn" data-toggle="modal" data-target="#modalLihat">Lihat</button></td>
+                  </tr> -->
                 </tbody>
               </table>
               <div class="form-group row">
                 <strong><label class="col-xl-1">Keterangan:</label></strong>
                 <div class="col-sm-5">
-                  <div class="box1"></div><br>
-                  
-                  <div class="box2"></div>
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <div class="box1">
+                      </div><br>
+                    </div>
+                    <div class="col-sm-5">
+                      Sudah dikonfirmasi
+                    </div>
+                  </div>  
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <div class="box2">
+                      </div><br>
+                    </div>
+                    <div class="col-sm-5">
+                    Belum dikonfirmasi
+                    </div>
+                  </div> 
                 </div>
               </div>
             </div>
@@ -418,48 +464,18 @@
   </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false">
+    <div class="modal fade" id="modalLihat" tabindex="-1" role="dialog" aria-labelledby="modalLihatTitle" aria-hidden="true" data-backdrop="false">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">                        
             <button type="button" class="close text-right active" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>                     
             <center>
-              <h5 class=" modal-title text-center border-bottom border-gray pb-2 mb-0" id="exampleModalCenterTitle" style="margin: 0 auto;">Form Konfirmasi Kompensasi</h5>
+              <h5 class=" modal-title text-center border-bottom border-gray pb-2 mb-0" id="modalLihatTitle" style="margin: 0 auto;">Form Konfirmasi Kompensasi</h5>
             </center>
-          <form action="" method="post">
-            <div class="modal-body">
-              <div class="form-group row">
-                  <label class="col-sm-3">NIM</label>
-                  <div class="input-group col-sm-9">
-                    <p>: 1741720001</p>
-                  </div>
-                  <label class="col-sm-3">Nama</label>
-                  <div class="input-group col-sm-9">
-                    <p>: Fulan bin fulan</p>
-                  </div>
-                  <label class="col-sm-3" for="passwordLama">Tanggal</label>
-                  <div class="input-group col-sm-9">
-                    <p>: 6 Februari 2019</p>
-                  </div>
-                  <label class="col-sm-3" for="passwordLama">Jenis Kompensasi</label>
-                  <div class="input-group col-sm-9">
-                    <p>: Merapikan Mouse dan Keyboard</p>
-                  </div>
-                  <label class="col-sm-3" for="passwordLama">Total Jam</label>
-                  <div class="input-group col-sm-9">
-                    <p>: 2 Jam</p>
-                  </div>
-                  <label class="col-sm-3" for="passwordLama">Dosen</label>
-                  <div class="input-group col-sm-9">
-                    <p>: Grezio</p>
-                  </div>
-                <div class="modal-footer col-12 tambahkan-modal-parent text-right">
-                  <button type="submit" class="btn tambahkan-modal ">Konfirmasi</button>
-                </div>
-              </div>
+            <div id="kompen-dosen">
+            
             </div>
-          </form>
         </div>
       </div>
     </div>
