@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 15, 2019 at 07:57 AM
--- Server version: 5.7.26-0ubuntu0.18.04.1
--- PHP Version: 7.2.17-0ubuntu0.18.04.1
+-- Host: 127.0.0.1
+-- Generation Time: May 15, 2019 at 03:54 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -416,16 +416,35 @@ CREATE TABLE `tabel_krs` (
 --
 
 INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`, `status_verifikasi`, `waktu_edit`) VALUES
-(1, 33, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:52:24'),
+(1, 33, 'Sudah', 'krs1.png', 7, 'Sudah', '2019-05-03 21:52:24'),
 (2, 34, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:52:45'),
-(3, 35, 'Sudah', '20190428093318.png', 7, 'Sudah', '2019-05-03 21:52:44'),
+(3, 35, 'Sudah', 'krs1.png', 7, 'Sudah', '2019-05-03 21:52:44'),
 (4, 36, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:52:41'),
-(5, 37, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:52:55'),
+(5, 37, 'Sudah', 'krs1.png', 7, 'Sudah', '2019-05-03 21:52:55'),
 (6, 38, 'Belum', NULL, 7, 'Sudah', '2019-05-03 21:52:59'),
 (7, 39, 'Sudah', NULL, 7, 'Belum', '2019-05-03 21:53:05'),
 (8, 40, 'Belum', NULL, 7, 'Belum', '2019-05-03 21:53:09'),
 (9, 41, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:53:13'),
-(10, 42, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:53:17');
+(10, 42, 'Sudah', NULL, 7, 'Sudah', '2019-05-03 21:53:17'),
+(11, 43, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(12, 44, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(13, 45, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(14, 46, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(15, 47, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(16, 48, 'Sudah', 'krs1.png', 4, 'Sudah', '2019-05-14 00:00:00'),
+(17, 49, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(18, 50, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(19, 51, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(20, 52, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(21, 53, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(22, 54, 'Sudah', 'krs1.png', 5, 'Sudah', '2019-05-14 00:00:00'),
+(23, 55, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(24, 56, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(25, 57, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(26, 58, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(27, 59, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(28, 60, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00'),
+(29, 61, 'Sudah', 'krs1.png', 6, 'Sudah', '2019-05-14 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -533,22 +552,21 @@ INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `id_semes
 CREATE TABLE `tabel_matkul` (
   `id_matkul` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `sks` int(11) NOT NULL,
-  `jam` int(11) NOT NULL
+  `sks` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tabel_matkul`
 --
 
-INSERT INTO `tabel_matkul` (`id_matkul`, `nama`, `sks`, `jam`) VALUES
-(1, 'Manajemen Proyek', 4, 4),
-(2, 'Analisis Dan Desain Berorientasi Objek', 6, 6),
-(3, 'Sistem Manajemen Basisdata', 0, 6),
-(4, 'Proyek 1', 0, 5),
-(5, 'Komputasi Kognitif', 0, 4),
-(6, 'Sistem Informasi', 0, 4),
-(7, 'Pemrograman Web Lanjut', 0, 6);
+INSERT INTO `tabel_matkul` (`id_matkul`, `nama`, `sks`) VALUES
+(1, 'Manajemen Proyek', 4),
+(2, 'Analisis Dan Desain Berorientasi Objek', 6),
+(3, 'Sistem Manajemen Basisdata', 0),
+(4, 'Proyek 1', 0),
+(5, 'Komputasi Kognitif', 0),
+(6, 'Sistem Informasi', 0),
+(7, 'Pemrograman Web Lanjut', 0);
 
 -- --------------------------------------------------------
 
@@ -1082,6 +1100,7 @@ ALTER TABLE `tabel_attachment`
 --
 ALTER TABLE `tabel_chat`
   MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
 --
@@ -1111,6 +1130,7 @@ ALTER TABLE `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_jadwal`
   MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
 --
@@ -1139,7 +1159,7 @@ ALTER TABLE `tabel_kompen`
 -- AUTO_INCREMENT for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
-  MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tabel_kuisioner`
@@ -1157,7 +1177,7 @@ ALTER TABLE `tabel_mahasiswa`
 -- AUTO_INCREMENT for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
-  MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tabel_notifikasi`
@@ -1200,6 +1220,7 @@ ALTER TABLE `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tabel_semester`
 --
@@ -1217,6 +1238,7 @@ ALTER TABLE `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_task`
   MODIFY `id_task` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tabel_user`
 --
@@ -1358,13 +1380,13 @@ ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
 ALTER TABLE `tabel_ruang_dipinjam`
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
-COMMIT;
 
 --
 -- Constraints for table `tabel_task`
 --
 ALTER TABLE `tabel_task`
   ADD CONSTRAINT `tabel_task_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
