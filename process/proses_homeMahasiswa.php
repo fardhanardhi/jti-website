@@ -89,6 +89,18 @@ function dosenKuisioner($con)
 // if(isset($_POST["kirimKuisioner"])){
 //   if($_GET["module"] == "home" && $_GET["act"]=="tambah"){
 //     $KuisionerQuery = "INSERT INTO tabel_hasil_kuisioner (id_mahasiswa, id_dosen, id_kuisioner, nilai)
-//     VALUES ('$idMhs', '$_POST['id_dosen']', )"
+//     VALUES ('$idMhs', '$_POST['id_dosen']', )";
 //   }
 // }
+
+function cekStatusAktif($con){
+  $status="select distinct(status_aktif) as status_aktif from tabel_kuisioner";
+  $resultStatus = mysqli_query($con, $status);  
+  $rowStatus=mysqli_fetch_assoc($resultStatus);
+  if($rowStatus["status_aktif"]=='ya'){
+    return true;
+  }
+  else if($rowStatus["status_aktif"]=='tidak'){
+    return false;
+  }
+}

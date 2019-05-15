@@ -44,7 +44,10 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
     </div>
 
     <div class="col-md-6 p-0 pb-3">
-      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
+      <?php
+      if(cekStatusAktif($con)==true){
+        ?>
+        <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
         <h5 class="border-bottom border-gray pb-2 mb-3"><strong>Kuisioner</strong></h5>
         <div class="isi-mhs small lh-125 mb-2">
           note : Apabila tidak mengisi kuisioner maka akan mendapat sanksi berupa alpha 1(satu) jam setiap mata kuliah
@@ -164,8 +167,9 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
           });
         </script>
       </div>
-
       <?php
+      }
+
       $resultInfo = info($con);
       if (mysqli_num_rows($resultInfo) > 0) {
         while ($row = mysqli_fetch_assoc($resultInfo)) {
@@ -473,7 +477,7 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
         }
         ?>
 
-        <!-- <div class="m-2 p-3 bg-white rounded shadow-sm">
+        <!-- <div class="m-2 p-3 bg-white rounded shadow-sm"> 
           <div class="beasiswa pb-3 mb-0 ">
             <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
             <div class="scholarship text-center mt-5 mb-5">
