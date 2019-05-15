@@ -68,7 +68,7 @@
                                     $result=krsCariSemester($con, $_POST["kelas"], $_POST["semester"]);
                                 }
                                 else{
-                                    $result=krsCariSemester($con, minKelas($con), 7);
+                                    $result=krs($con);
                                 }
                                     
                                 if (mysqli_num_rows($result) > 0){
