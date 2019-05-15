@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2.1
--- http://www.phpmyadmin.net
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 15, 2019 at 10:48 AM
--- Server version: 5.7.26-0ubuntu0.16.04.1
--- PHP Version: 7.2.14-1+ubuntu16.04.1+deb.sury.org+1
+-- Host: localhost:3306
+-- Generation Time: May 15, 2019 at 11:05 AM
+-- Server version: 5.7.26-0ubuntu0.18.04.1
+-- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -512,35 +512,35 @@ CREATE TABLE `tabel_mahasiswa` (
 --
 
 INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `id_semester`, `nim`, `nama`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`, `waktu_edit`, `id_user`, `waktu_tambah`) VALUES
-(33, 3, 4, 7, '1741720144', 'Abdallah Darussalam Candra', 'Perum Graha Kota Asri Blok D-1 No. 9 Jl. Muharto V', 'laki-laki', 'Sumenep', '1999-10-30', 'NULL', '2019-04-04 00:00:00', 2, '2017-05-13 13:32:33'),
-(34, 3, 4, 7, '1741720008', 'Adn Maulidya Handah Putri', 'Jl. Klampok No. 97-A', 'perempuan', 'Malang', '1999-06-25', 'NULL', '2019-04-04 00:00:00', 3, '2017-05-13 13:32:33'),
-(35, 3, 4, 7, '1741720040', 'Aldihamda Sulthon Fuad Prajakusuma', 'Jl. Jatirejo', 'laki-laki', 'Trenggalek', '1998-06-26', 'NULL', '2019-04-04 00:00:00', 4, '2017-05-13 13:32:33'),
-(36, 3, 4, 7, '1741720043', 'Amin Anis Kuddah', 'Jl. Segara 186', 'laki-laki', 'Pamekasan', '1999-09-27', 'NULL', '2019-04-04 00:00:00', 5, '2017-05-13 13:32:33'),
-(37, 3, 4, 7, '1741720086', 'Chintya Puspa Dewi', 'Dsn. Dadapan', 'perempuan', 'Malang', '1999-05-27', 'NULL', '2019-04-04 00:00:00', 6, '2017-05-13 13:32:33'),
-(38, 3, 4, 7, '1741720053', 'Dimas Shella Charlinawati', 'Dsn. Dander', 'perempuan', 'Jember', '1999-07-04', 'NULL', '2019-04-04 00:00:00', 7, '2017-05-13 13:32:33'),
-(39, 3, 4, 7, '1741720054', 'Ermi Pristiyaningrum', 'Dsn. Banca\'an', 'perempuan', 'Tulungagung', '1998-12-06', 'NULL', '2019-04-04 00:00:00', 8, '2017-05-13 13:32:33'),
-(40, 3, 4, 7, '1741720045', 'Fardhan Ardhi Ramadhan', 'Jl. Titas Asri X Blok H No. 12', 'laki-laki', 'Malang', '1999-01-16', 'NULL', '2019-04-04 00:00:00', 9, '2017-05-13 13:32:33'),
-(41, 3, 4, 7, '1741720026', 'Galang Yudha Pratama', 'Perum Joyo Grand Blok A No. 8', 'laki-laki', 'Malang', '1998-10-27', 'NULL', '2019-04-04 00:00:00', 10, '2017-05-13 13:32:33'),
-(42, 3, 4, 7, '1741720088', 'Greggy Gianini Firmansyah', 'Jl. Gading No. 38', 'laki-laki', 'Malang', '1999-03-22', 'NULL', '2019-04-04 00:00:00', 11, '2017-05-13 13:32:33'),
-(43, 3, 4, 7, '1741720192', 'Hafizh Dias Ramadhan', 'Perum Bumi Mondoroko Raya AC-9', 'laki-laki', 'Malang', '1999-01-13', 'NULL', '2019-04-04 00:00:00', 12, '2017-05-13 13:32:33'),
-(44, 3, 4, 7, '1741720058', 'Haryo Bagus Setyawan', 'Jl. Ksatrian Dalam No. 15-A', 'laki-laki', 'Medan', '1999-08-31', 'NULL', '2019-04-04 00:00:00', 13, '2017-05-13 13:32:33'),
-(45, 3, 4, 7, '1741720032', 'Hesti Anisa Reski', 'Jl. Gang TengaH No. 41', 'perempuan', 'Malang', '1998-12-19', 'NULL', '2019-04-04 00:00:00', 14, '2017-05-13 13:32:33'),
-(46, 3, 4, 7, '1741720018', 'Ika Puspa Fairuz Wiwanata', 'Jl. Kesatrian No. 6', 'perempuan', 'Surakarta', '1999-08-21', 'NULL', '2019-04-04 00:00:00', 15, '2017-05-13 13:32:33'),
-(47, 3, 4, 7, '1741720011', 'Ilham Nuswantoro Aji', 'Jl. Kh. Achmad Dahlan 11 No.65', 'laki-laki', 'Pasuruan', '2000-04-10', 'NULL', '2019-04-04 00:00:00', 16, '2017-05-13 13:32:33'),
-(48, 3, 4, 7, '1741720027', 'Leni Saputri', 'Suwayuwo Kulon Embong RT.01 RW.03', 'perempuan', 'Pasuruan', '1999-07-09', 'NULL', '2019-04-04 00:00:00', 17, '2017-05-13 13:32:33'),
-(49, 3, 4, 7, '1741720031', 'Muhammad Aliyul Murtadlo', 'Dsn. Kedawong', 'laki-laki', 'Jombang', '1999-06-04', 'NULL', '2019-04-04 00:00:00', 18, '2017-05-13 13:32:33'),
-(50, 3, 4, 7, '1741720114', 'Okta Chandika Salsabila', 'Jl. Ahmad Yani No.191', 'perempuan', 'Malang', '1999-10-20', 'NULL', '2019-04-04 00:00:00', 19, '2017-05-13 13:32:33'),
-(51, 3, 4, 7, '1741720049', 'Panji Awwaludi Dzikriawan', 'Dsn. Bebe\'an Lor', 'laki-laki', 'Pasuruan', '1999-04-30', 'NULL', '2019-04-04 00:00:00', 20, '2017-05-13 13:32:33'),
-(52, 3, 4, 7, '1741720061', 'Rahardhiyan Wahyu Putra', 'Dsn. Sambiroto', 'laki-laki', 'Sidoarjo', '1999-06-06', 'NULL', '2019-04-04 00:00:00', 21, '2017-05-13 13:32:33'),
-(53, 3, 4, 7, '1741720112', 'Reffan Pandu Amirulloh', 'Sukarsid', 'laki-laki', 'Malang', '1998-11-13', 'NULL', '2019-04-04 00:00:00', 22, '2017-05-13 13:32:33'),
-(54, 3, 4, 7, '1741720160', 'Reza Ariestya Putra', 'Jl. Katu No. 6', 'laki-laki', 'Jakarta', '1998-04-19', 'NULL', '2019-04-04 00:00:00', 23, '2017-05-13 13:32:33'),
-(55, 3, 4, 7, '1741720111', 'Septa Kusumaningtyas', 'Jl. Sumber Bangun D-76', 'perempuan', 'Malang', '1998-09-07', 'NULL', '2019-04-04 00:00:00', 24, '2017-05-13 13:32:33'),
-(56, 3, 4, 7, '1741720196', 'Septian Caesar Floresko', 'Perum Sekarsari Indah B-28', 'laki-laki', 'Manggarai', '1998-09-09', 'NULL', '2019-04-04 00:00:00', 25, '2017-05-13 13:32:33'),
-(57, 3, 4, 7, '1741720158', 'Sulthan Rafif', 'Jl. Gondosuli No.2', 'laki-laki', 'Malang', '1999-09-05', 'NULL', '2019-04-04 00:00:00', 26, '2017-05-13 13:32:33'),
-(58, 3, 4, 7, '1741720081', 'Syahdanny Alhamda', 'Jl. Raya Slamet Wiroto', 'laki-laki', 'Malang', '1998-10-11', 'NULL', '2019-04-04 00:00:00', 27, '2017-05-13 13:32:33'),
-(59, 3, 4, 7, '1741720203', 'Vian Satria Maulana Navalino', 'Perum Arjuna Gumilang A-3', 'laki-laki', 'Jakarta', '1999-06-29', 'NULL', '2019-04-04 00:00:00', 28, '2017-05-13 13:32:33'),
-(60, 3, 4, 7, '1741720076', 'Vicko Handika Nanda Firdiansyah', 'Jl. Panjaitan No. 1', 'laki-laki', 'Malang', '1998-07-14', 'NULL', '2019-04-04 00:00:00', 29, '2017-05-13 13:32:33'),
-(61, 3, 4, 7, '1741720036', 'Wiji Prabowo', 'Dsn. Tlogosari', 'laki-laki', 'Pasuruan ', '1999-10-04', 'NULL', '2019-04-04 00:00:00', 30, '2017-05-13 13:32:33');
+(33, 3, 4, 7, '1741720144', 'Abdallah Darussalam Candra', 'Perum Graha Kota Asri Blok D-1 No. 9 Jl. Muharto V', 'laki-laki', 'Sumenep', '1999-10-30', NULL, '2019-04-04 00:00:00', 2, '2017-05-13 13:32:33'),
+(34, 3, 4, 7, '1741720008', 'Adn Maulidya Handah Putri', 'Jl. Klampok No. 97-A', 'perempuan', 'Malang', '1999-06-25', NULL, '2019-04-04 00:00:00', 3, '2017-05-13 13:32:33'),
+(35, 3, 4, 7, '1741720040', 'Aldihamda Sulthon Fuad Prajakusuma', 'Jl. Jatirejo', 'laki-laki', 'Trenggalek', '1998-06-26', NULL, '2019-04-04 00:00:00', 4, '2017-05-13 13:32:33'),
+(36, 3, 4, 7, '1741720043', 'Amin Anis Kuddah', 'Jl. Segara 186', 'laki-laki', 'Pamekasan', '1999-09-27', NULL, '2019-04-04 00:00:00', 5, '2017-05-13 13:32:33'),
+(37, 3, 4, 7, '1741720086', 'Chintya Puspa Dewi', 'Dsn. Dadapan', 'perempuan', 'Malang', '1999-05-27', NULL, '2019-04-04 00:00:00', 6, '2017-05-13 13:32:33'),
+(38, 3, 4, 7, '1741720053', 'Dimas Shella Charlinawati', 'Dsn. Dander', 'perempuan', 'Jember', '1999-07-04', NULL, '2019-04-04 00:00:00', 7, '2017-05-13 13:32:33'),
+(39, 3, 4, 7, '1741720054', 'Ermi Pristiyaningrum', 'Dsn. Banca\'an', 'perempuan', 'Tulungagung', '1998-12-06', NULL, '2019-04-04 00:00:00', 8, '2017-05-13 13:32:33'),
+(40, 3, 4, 7, '1741720045', 'Fardhan Ardhi Ramadhan', 'Jl. Titas Asri X Blok H No. 12', 'laki-laki', 'Malang', '1999-01-16', NULL, '2019-04-04 00:00:00', 9, '2017-05-13 13:32:33'),
+(41, 3, 4, 7, '1741720026', 'Galang Yudha Pratama', 'Perum Joyo Grand Blok A No. 8', 'laki-laki', 'Malang', '1998-10-27', NULL, '2019-04-04 00:00:00', 10, '2017-05-13 13:32:33'),
+(42, 3, 4, 7, '1741720088', 'Greggy Gianini Firmansyah', 'Jl. Gading No. 38', 'laki-laki', 'Malang', '1999-03-22', NULL, '2019-04-04 00:00:00', 11, '2017-05-13 13:32:33'),
+(43, 3, 4, 7, '1741720192', 'Hafizh Dias Ramadhan', 'Perum Bumi Mondoroko Raya AC-9', 'laki-laki', 'Malang', '1999-01-13', NULL, '2019-04-04 00:00:00', 12, '2017-05-13 13:32:33'),
+(44, 3, 4, 7, '1741720058', 'Haryo Bagus Setyawan', 'Jl. Ksatrian Dalam No. 15-A', 'laki-laki', 'Medan', '1999-08-31', NULL, '2019-04-04 00:00:00', 13, '2017-05-13 13:32:33'),
+(45, 3, 4, 7, '1741720032', 'Hesti Anisa Reski', 'Jl. Gang TengaH No. 41', 'perempuan', 'Malang', '1998-12-19', NULL, '2019-04-04 00:00:00', 14, '2017-05-13 13:32:33'),
+(46, 3, 4, 7, '1741720018', 'Ika Puspa Fairuz Wiwanata', 'Jl. Kesatrian No. 6', 'perempuan', 'Surakarta', '1999-08-21', NULL, '2019-04-04 00:00:00', 15, '2017-05-13 13:32:33'),
+(47, 3, 4, 7, '1741720011', 'Ilham Nuswantoro Aji', 'Jl. Kh. Achmad Dahlan 11 No.65', 'laki-laki', 'Pasuruan', '2000-04-10', NULL, '2019-04-04 00:00:00', 16, '2017-05-13 13:32:33'),
+(48, 3, 4, 7, '1741720027', 'Leni Saputri', 'Suwayuwo Kulon Embong RT.01 RW.03', 'perempuan', 'Pasuruan', '1999-07-09', NULL, '2019-04-04 00:00:00', 17, '2017-05-13 13:32:33'),
+(49, 3, 4, 7, '1741720031', 'Muhammad Aliyul Murtadlo', 'Dsn. Kedawong', 'laki-laki', 'Jombang', '1999-06-04', NULL, '2019-04-04 00:00:00', 18, '2017-05-13 13:32:33'),
+(50, 3, 4, 7, '1741720114', 'Okta Chandika Salsabila', 'Jl. Ahmad Yani No.191', 'perempuan', 'Malang', '1999-10-20', NULL, '2019-04-04 00:00:00', 19, '2017-05-13 13:32:33'),
+(51, 3, 4, 7, '1741720049', 'Panji Awwaludi Dzikriawan', 'Dsn. Bebe\'an Lor', 'laki-laki', 'Pasuruan', '1999-04-30', NULL, '2019-04-04 00:00:00', 20, '2017-05-13 13:32:33'),
+(52, 3, 4, 7, '1741720061', 'Rahardhiyan Wahyu Putra', 'Dsn. Sambiroto', 'laki-laki', 'Sidoarjo', '1999-06-06', NULL, '2019-04-04 00:00:00', 21, '2017-05-13 13:32:33'),
+(53, 3, 4, 7, '1741720112', 'Reffan Pandu Amirulloh', 'Sukarsid', 'laki-laki', 'Malang', '1998-11-13', NULL, '2019-04-04 00:00:00', 22, '2017-05-13 13:32:33'),
+(54, 3, 4, 7, '1741720160', 'Reza Ariestya Putra', 'Jl. Katu No. 6', 'laki-laki', 'Jakarta', '1998-04-19', NULL, '2019-04-04 00:00:00', 23, '2017-05-13 13:32:33'),
+(55, 3, 4, 7, '1741720111', 'Septa Kusumaningtyas', 'Jl. Sumber Bangun D-76', 'perempuan', 'Malang', '1998-09-07', NULL, '2019-04-04 00:00:00', 24, '2017-05-13 13:32:33'),
+(56, 3, 4, 7, '1741720196', 'Septian Caesar Floresko', 'Perum Sekarsari Indah B-28', 'laki-laki', 'Manggarai', '1998-09-09', NULL, '2019-04-04 00:00:00', 25, '2017-05-13 13:32:33'),
+(57, 3, 4, 7, '1741720158', 'Sulthan Rafif', 'Jl. Gondosuli No.2', 'laki-laki', 'Malang', '1999-09-05', NULL, '2019-04-04 00:00:00', 26, '2017-05-13 13:32:33'),
+(58, 3, 4, 7, '1741720081', 'Syahdanny Alhamda', 'Jl. Raya Slamet Wiroto', 'laki-laki', 'Malang', '1998-10-11', NULL, '2019-04-04 00:00:00', 27, '2017-05-13 13:32:33'),
+(59, 3, 4, 7, '1741720203', 'Vian Satria Maulana Navalino', 'Perum Arjuna Gumilang A-3', 'laki-laki', 'Jakarta', '1999-06-29', NULL, '2019-04-04 00:00:00', 28, '2017-05-13 13:32:33'),
+(60, 3, 4, 7, '1741720076', 'Vicko Handika Nanda Firdiansyah', 'Jl. Panjaitan No. 1', 'laki-laki', 'Malang', '1998-07-14', NULL, '2019-04-04 00:00:00', 29, '2017-05-13 13:32:33'),
+(61, 3, 4, 7, '1741720036', 'Wiji Prabowo', 'Dsn. Tlogosari', 'laki-laki', 'Pasuruan ', '1999-10-04', NULL, '2019-04-04 00:00:00', 30, '2017-05-13 13:32:33');
 
 -- --------------------------------------------------------
 
