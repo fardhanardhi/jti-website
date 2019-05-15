@@ -2,13 +2,12 @@
 include "../config/connection.php";
 include "../process/proses_homeMahasiswa.php";
 
-$queryUser = "SELECT a.id_dosen, b.nama dosen, c.nama matkul FROM tabel_jadwal a INNER JOIN tabel_dosen b ON a.id_dosen = b.id_dosen INNER JOIN tabel_matkul c ON a.id_matkul = c.id_matkul";
+$queryUser = "SELECT a.id_dosen, b.nama dosen, c.nama matkul FROM tabel_jadwal a INNER JOIN tabel_dosen b ON a.id_dosen = b.id_dosen INNER JOIN tabel_matkul c ON a.id_matkul = c.id_matkul where b.id_dosen not in (select distinct(id_dosen) from tabel_hasil_kuisioner where id_mahasiswa='$_SESSION[id]')";
 $resultUser = mysqli_query($con, $queryUser);
 $rowUser = mysqli_fetch_assoc($resultUser);
 
 $queryIsiKuis = "SELECT * FROM tabel_kuisioner";
 $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
-$rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
 
 ?>
 
@@ -75,7 +74,7 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
                     <div class="pilihan-dosen">
                       <strong><label for="nama-dosen" class="nama-dosen">Dosen Pengajar dan Mata Kuliah :
                         </label></strong>
-                      <select name="nama-dosen" id="nama-dosen" class="p-1 ">
+                      <select name="id_dosen" id="nama-dosen" class="p-1 ">
                         <option selected disable>---</option>
                         <?php 
                           $resultDosenKuisioner=dosenKuisioner($con); 
@@ -93,13 +92,15 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
                               }
                             ?>
                             <option <?php echo $selected; ?> value="<?php echo $rowDosenKuisioner["id_dosen"];?>">
-                              <?php echo $rowDosenKuisioner["dosen"]."(".$rowDosenKuisioner["matkul"].")";?>
+                              <?php echo $rowDosenKuisioner["dosen"]." (".$rowDosenKuisioner["matkul"].")";?>
                             </option>
                             <?php
                           }
                         }
                       ?>
                       </select>
+                      <input type="hidden" name="idDosen" value="">
+                      <input type="hidden" name="idMatkul" value="">
                     </div>
                     <div class="kriteria-kuisioner p-2 border-bottom border-gray ">
                       <div class="row kriteria">
@@ -121,7 +122,7 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
                     </div>
                     <div class="isi-kuisioner p-1">
                       <?php
-                        if(mysqli_num_rows($resultIsiKuis))
+                        if(mysqli_num_rows($resultIsiKuis)>0)
                         {
                           $i = 1;
                           while($rowIsiKuis=mysqli_fetch_assoc($resultIsiKuis))
@@ -129,15 +130,16 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
                       ?>
                       <div class="row pil1">
                         <div class="col-sm-7">
+                          <input type="hidden" name="id_kuisioner<?=$i?>" value="<?=$rowIsiKuis["id_kuisioner"]?>">
                           <label><?=$rowIsiKuis['kriteria']?></label>
                         </div>
                         <div class="col-sm-5">
                           <div class="row">
-                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai1" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai2" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai3" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai4" /></div>
-                            <div class="col-sm-2"><input type="radio" name="name<?=$i?>" value="nilai5" /></div>
+                            <div class="col-sm-2"><input type="radio" name="nilai<?=$i?>" value="1" checked /></div>
+                            <div class="col-sm-2"><input type="radio" name="nilai<?=$i?>" value="2"/></div>
+                            <div class="col-sm-2"><input type="radio" name="nilai<?=$i?>" value="3" /></div>
+                            <div class="col-sm-2"><input type="radio" name="nilai<?=$i?>" value="4" /></div>
+                            <div class="col-sm-2"><input type="radio" name="nilai<?=$i?>" value="5" /></div>
                           </div>
                         </div>
                       </div>
@@ -148,12 +150,12 @@ $rowIsiKuis = mysqli_fetch_assoc($resultIsiKuis);
                         }
                       ?>
                     </div>
-                  </form>
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn kirimKuisioner" name="kirimKuisioner">Kirim</button>
-              </div>
+              </div>              
+              </form>
             </div>
           </div>
         </div>

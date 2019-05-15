@@ -1,8 +1,6 @@
 <?php
 include "../config/connection.php";
 
-$idMhs = mysqli_fetch_assoc(mysqli_query($con, "SELECT id_mahasiswa FROM tabel_mahasiswa WHERE id_user = 2"));
-
 function info($con)
 {
   $info = "select * from tabel_info";
@@ -86,12 +84,31 @@ function dosenKuisioner($con)
   return $resultDosenKuisioner;
 }
 
-// if(isset($_POST["kirimKuisioner"])){
-//   if($_GET["module"] == "home" && $_GET["act"]=="tambah"){
-//     $KuisionerQuery = "INSERT INTO tabel_hasil_kuisioner (id_mahasiswa, id_dosen, id_kuisioner, nilai)
-//     VALUES ('$idMhs', '$_POST['id_dosen']', )";
-//   }
-// }
+if(isset($_POST["kirimKuisioner"])){
+  session_start();
+
+  if($_GET["module"] == "home" && $_GET["act"]=="tambah"){
+    $idMhs = mysqli_fetch_assoc(mysqli_query($con, "SELECT id_mahasiswa FROM tabel_mahasiswa WHERE id_user = $_SESSION[id]"));
+    $idMhs=$idMhs["id_mahasiswa"];
+
+    $resultIsiKuis=mysqli_query($con, "select * from tabel_kuisioner");
+    if(mysqli_num_rows($resultIsiKuis)>0)
+    {
+      $i = 1;
+      while($rowIsiKuis=mysqli_fetch_assoc($resultIsiKuis))
+      {
+        $kuisioner= $_POST['id_kuisioner'.$i];   
+        $nilai= $_POST['nilai'.$i];   
+        $waktu=date('Y-m-d H:i:s'); 
+        mysqli_query($con, "INSERT INTO tabel_hasil_kuisioner (id_mahasiswa, id_dosen, id_kuisioner, nilai, waktu_edit)
+        VALUES ('$idMhs', '$_POST[id_dosen]', $kuisioner, $nilai, '$waktu')");
+      
+        $i++;
+      }
+    }
+    header('location:../module/index.php?module=' . $_GET["module"]);
+  }
+}
 
 function cekStatusAktif($con){
   $status="select distinct(status_aktif) as status_aktif from tabel_kuisioner";
