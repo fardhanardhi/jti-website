@@ -160,7 +160,7 @@
                           <div class="dropdown">
                             <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
                             <div class="dropdown-kompen dropdown-menu">
-                              <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen"><i class="far fa-trash-alt"></i> Hapus</a>
+                              <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen<?= $row["id_task"]?>"><i class="far fa-trash-alt"></i> Hapus</a>
                             </div>
                           </div>
                         </div>
@@ -172,25 +172,56 @@
             <?php
                 $index++;
                 }
+              }else {
+                ?>
+              <!-- ------------------ -->
+              <!-- Jika Kompen Kosong -->
+              <!-- ------------------ -->
+
+              <div class="isi py-5 text-center">
+                <div class="text-center mb-2">
+                  <img src="../img/clipboard.svg" alt="clipBoard" class="clipBoard">
+                </div>
+                <div class="data-kompen text-center w-50 mr-auto ml-auto">
+                  <h6>Anda tidak mempunyai daftar pekerjaan</h6>
+                </div>
+              </div>
+
+              <!-- ---------------------- -->
+              <!-- END Jika Kompen Kosong -->
+              <!-- ---------------------- -->
+                <?php
               }
             ?>    
 
               </div>
               <!-- Modal -->
-              <div class="modal fade hapusKompen-modal" id="hapusKompen" tabindex="-1" role="dialog" 
-              aria-labelledby="hapusKompenTitle" aria-hidden="true" data-backdrop="false">
+              <?php
+              $resultQueryTask= tampilTaskDosen($con, $idUser);
+            if (mysqli_num_rows($resultQueryTask) > 0) {
+              while ($row = mysqli_fetch_assoc($resultQueryTask)) {
+              ?>
+              <div class="modal fade hapusKompen-modal" id="hapusKompen<?= $row["id_task"]?>" tabindex="-1" role="dialog" 
+              aria-labelledby="hapusKompen<?= $row["id_task"]?>Title" aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                   <div class="modal-content konten-modal">
                     <div class="modal-body ">
                       <h5 class="isiHapusKompen text-center">Apakah Anda Yakin?</h5>
                       <div class="tombolAksiHapusKompen text-center">
+                      <form action="../process/proses_dosenHome.php?module=home&act=hapus" method="post">
                         <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                        <button type="button" class="btn btn-iya">Ya</button>
+                        <input type="hidden" name="idTask" value="<?= $row["id_task"]?>">
+                        <input type="submit" class="btn btn-iya" name="hapusTask" value="Ya">
+                      </form>
                       </div>
                     </div>                 
                   </div>
                 </div>
               </div>
+            <?php
+              }
+            }
+            ?>  
               <!-- ---------------- -->
               <!-- END Kompen Tabel -->
               <!-- ---------------- -->
@@ -212,7 +243,7 @@
                       <h5 class=" modal-title text-center border-bottom border-gray pb-2 mb-0"
                         id="exampleModalCenterTitle" style="margin: 0 auto;">Tambah Pekerjaan</h5>
                     </center>
-                    <form action="" method="post">
+                    <form action="../process/proses_dosenHome.php?module=home&act=tambah" method="post">
                       <div class="modal-body">
                         <div class="form-group row">
                           <div class="col-2"></div>
@@ -222,7 +253,8 @@
                             </label>
                           </div>
                           <div class="col-6">
-                            <input id="pekerjaanKompensasi" class="form-control" type="text">
+                            <input type="hidden" name="idDosen" value="<?= $idUser?>">
+                            <input id="pekerjaanKompensasi" class="form-control" type="text" name="taskPekerjaan">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -233,42 +265,42 @@
                             </label>
                           </div>
                           <div class="col-3">
-                            <select class="form-control kuota-mahasiswa" id="kuotaMahasiswa">
+                            <select class="form-control kuota-mahasiswa" id="kuotaMahasiswa" name="kuotaMhs">
                           </div>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                          <option>10</option>
-                          <option>11</option>
-                          <option>12</option>
-                          <option>13</option>
-                          <option>14</option>
-                          <option>15</option>
-                          <option>16</option>
-                          <option>17</option>
-                          <option>18</option>
-                          <option>19</option>
-                          <option>20</option>
-                          <option>21</option>
-                          <option>22</option>
-                          <option>23</option>
-                          <option>24</option>
-                          <option>25</option>
-                          <option>26</option>
-                          <option>27</option>
-                          <option>28</option>
-                          <option>29</option>
-                          <option>30</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                          <option value="27">27</option>
+                          <option value="28">28</option>
+                          <option value="29">29</option>
+                          <option value="30">30</option>
                           </select>
                         </div>
                         <div class="modal-footer col-12 tambahkan-modal-parent text-right">
-                          <button type="submit" class="btn tambahkan-modal ">Tambahkan</button>
+                          <button type="submit" class="btn tambahkan-modal" name="tambahTask">Tambahkan</button>
                         </div>
                       </div>
                     </form>
@@ -276,22 +308,7 @@
                 </div>
               </div>
 
-              <!-- ------------------ -->
-              <!-- Jika Kompen Kosong -->
-              <!-- ------------------ -->
-
-              <!-- <div class="isi py-5 text-center">
-                <div class="text-center mb-2">
-                  <img src="../img/clipboard.svg" alt="clipBoard" class="clipBoard">
-                </div>
-                <div class="data-kompen text-center w-50 mr-auto ml-auto">
-                  <h6>Anda tidak mempunyai daftar pekerjaan</h6>
-                </div>
-              </div> -->
-
-              <!-- ---------------------- -->
-              <!-- END Jika Kompen Kosong -->
-              <!-- ---------------------- -->
+              
             </div>
           </div>
         </div>
