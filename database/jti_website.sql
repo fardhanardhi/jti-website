@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 15, 2019 at 11:05 AM
+-- Generation Time: May 15, 2019 at 11:10 AM
 -- Server version: 5.7.26-0ubuntu0.18.04.1
 -- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
@@ -791,19 +791,20 @@ CREATE TABLE `tabel_task` (
   `id_task` int(11) NOT NULL,
   `pekerjaan` text NOT NULL,
   `kuota` int(11) NOT NULL,
-  `id_dosen` int(11) NOT NULL
+  `id_dosen` int(11) NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tabel_task`
 --
 
-INSERT INTO `tabel_task` (`id_task`, `pekerjaan`, `kuota`, `id_dosen`) VALUES
-(1, 'Membersihkan jendela', 2, 4),
-(2, 'Menginputkan data', 3, 4),
-(3, 'Mengangkat kursi', 5, 4),
-(4, 'Menyiapkan ruangan', 10, 4),
-(5, 'Mengambilkan makanan', 1, 4);
+INSERT INTO `tabel_task` (`id_task`, `pekerjaan`, `kuota`, `id_dosen`, `status`) VALUES
+(1, 'Membersihkan jendela', 2, 4, '1'),
+(2, 'Menginputkan data', 3, 4, '1'),
+(3, 'Mengangkat kursi', 5, 4, '1'),
+(4, 'Menyiapkan ruangan', 10, 4, '1'),
+(5, 'Mengambilkan makanan', 1, 4, '1');
 
 -- --------------------------------------------------------
 
