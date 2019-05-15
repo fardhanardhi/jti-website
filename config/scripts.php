@@ -38,6 +38,7 @@
     <script src="../js/adminRuangan.js"></script>
     <script src="../js/adminKuisioner.js"></script>
     <script src="../js/adminAbsenKompen.js"></script>
+    <script src="../js/adminMatakuliah.js"></script>
   <?php
 }
 ?>
