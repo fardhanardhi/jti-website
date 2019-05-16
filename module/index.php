@@ -495,6 +495,9 @@ if ($level != 'admin') {
           case "kelasKosong":
             include "dosen/dosenKelasKosong.php";
             break;
+          case "krs";
+            include "dosen/dosenKrs.php";
+            break;
           case "notifikasi":
             include "notifikasi.php";
             break;
