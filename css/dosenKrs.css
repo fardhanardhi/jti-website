@@ -1,0 +1,21 @@
+/* profil dosen */
+#dosenKrs .data-dosen{
+    padding: 2em;
+    color: black
+}
+
+
+#dosenKrs .detail-dosen.border-bottom.border-gray.pb-2.mb-0 {
+    margin-top: 1em;
+}
+
+#dosenKrs .tambah-pekerjaan-kompen{
+    background-color: #40407a;
+    color: white;
+}
+
+#dosenKrs .kompen-submit-btn{
+    background-color: #3AAC5F;
+    color: white;
+    border-radius: 20px;
+}
