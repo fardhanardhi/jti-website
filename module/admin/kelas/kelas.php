@@ -24,11 +24,21 @@
             <div class="row">
                 <label class="col-form-label">Kelas</label>
                 <div class="col-sm-1">
-                    <select class="form-control form-control-sm" name="kelas">
-                        <option value="">Kelas</option>
-                        <option value="1">TI-3F</option>
-                        <option value="2">TI-2F</option>
-                        <option value="3">TI-1F</option>
+                    <select class="form-control form-control-sm" name="kelas" id="kelasCari">
+                        <?php
+                        $resultKelas=kelas($con);
+                        if(mysqli_num_rows($resultKelas)){
+                            while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                            ?>
+                            <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
+                            <?php
+                            }
+                        }else{
+                            ?>
+                            <option value="0">Kelas Kosong</option>
+                            <?php
+                        }
+                        ?>
                     </select>
                 </div>
                 <label class="col-form-label">Tahun Ajaran</label>
@@ -42,41 +52,53 @@
                 </div>
               
               <div class="col-md-2">
-                <button class="btn btn-success btn-checkout text-white">Cari</button>
+                <button id="cariKelas"class="btn btn-success btn-checkout text-white">Cari</button>
               </div>
             </div>
 
-            <div class="row pt-2 mt-2 pl-0 scrollbar" id="ruangan2">
-                <? $resultKelas=kelas($con);?>
-                <table class="table table-striped table-bordered text-center">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>NIM</th>
-                            <th>Nama</th>
-                            <th>Alamat </th>
-                            <th>Jenis Kelamin</th>
-                            <th>Proses</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $index=1;
-                        while($rowKelas = mysqli_fetch_assoc($resultKelas)){
-                        ?>
-                        <tr>
-                            <td><?php echo $index; ?></td>
-                            <td class="nimMahasiswa"><?php echo $rowKelas["nim"]; ?></td>
-                            <td class="namaMahasiswa"><?php echo $rowKelas["nama_mahasiswa"]; ?></td>
-                            <td class="alamatMahasiswa"><?php echo $rowKelas["alamat"]; ?></td>
-                            <td class="jenisKelaminMahasiswa"><?php echo $rowKelas["jenis_kelamin"]; ?></td>
-                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal" data-target="#hapus" class="edit">Hapus</button></td>    
-                        </tr>
-                        <?php $index++;
-                        }
-                        ?>
-                    </tbody>
-                </table>
+            <div class="row pt-2 mt-2 pl-0 scrollbar" id="mencariKelas">
+                <? $resultKelasData=kelasData($con, minKelas($con));
+                if (mysqli_num_rows($resultKelasData) > 0)
+                {?>
+                    <table class="table table-striped table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>NIM</th>
+                                <th>Nama</th>
+                                <th>Alamat </th>
+                                <th>Jenis Kelamin</th>
+                                <th>Proses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $index=1;
+                            while($rowKelas = mysqli_fetch_assoc($resultKelasData)){
+                            ?>
+                            <tr>
+                                <td><?php echo $index; ?></td>
+                                <td class="nimMahasiswa"><?php echo $rowKelas["nim"]; ?></td>
+                                <td class="namaMahasiswa"><?php echo $rowKelas["nama_mahasiswa"]; ?></td>
+                                <td class="alamatMahasiswa"><?php echo $rowKelas["alamat"]; ?></td>
+                                <td class="jenisKelaminMahasiswa"><?php echo $rowKelas["jenis_kelamin"]; ?></td>
+                                <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal" data-target="#hapus" class="edit">Hapus</button></td>    
+                            </tr>
+                            <?php $index++;
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                <?php
+                } 
+                else
+                {?>
+                  <div class="text-center">
+                    <p class="text-muted">Data Kosong</p>
+                  </div>
+                <?php
+                }?>
+
             </div>
           </div>
         </div>
