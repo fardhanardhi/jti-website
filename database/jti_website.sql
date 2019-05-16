@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Bulan Mei 2019 pada 04.58
--- Versi server: 10.1.36-MariaDB
--- Versi PHP: 7.2.10
+-- Generation Time: May 16, 2019 at 07:12 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_absensi`
+-- Table structure for table `tabel_absensi`
 --
 
 CREATE TABLE `tabel_absensi` (
@@ -40,7 +40,7 @@ CREATE TABLE `tabel_absensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_absensi`
+-- Dumping data for table `tabel_absensi`
 --
 
 INSERT INTO `tabel_absensi` (`id_absensi`, `id_mahasiswa`, `sakit`, `ijin`, `alpa`, `jumlah`, `id_status_mahasiswa`, `id_semester`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `tabel_absensi` (`id_absensi`, `id_mahasiswa`, `sakit`, `ijin`, `alp
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_admin`
+-- Table structure for table `tabel_admin`
 --
 
 CREATE TABLE `tabel_admin` (
@@ -70,7 +70,7 @@ CREATE TABLE `tabel_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_admin`
+-- Dumping data for table `tabel_admin`
 --
 
 INSERT INTO `tabel_admin` (`id_admin`, `nama`, `nip`, `foto`, `alamat`, `tempat_lahir`, `tangal_lahir`, `id_user`, `waktu_edit`) VALUES
@@ -80,7 +80,7 @@ INSERT INTO `tabel_admin` (`id_admin`, `nama`, `nip`, `foto`, `alamat`, `tempat_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_attachment`
+-- Table structure for table `tabel_attachment`
 --
 
 CREATE TABLE `tabel_attachment` (
@@ -91,7 +91,7 @@ CREATE TABLE `tabel_attachment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_attachment`
+-- Dumping data for table `tabel_attachment`
 --
 
 INSERT INTO `tabel_attachment` (`id_attachment`, `tipe`, `file`, `id_info`) VALUES
@@ -104,7 +104,7 @@ INSERT INTO `tabel_attachment` (`id_attachment`, `tipe`, `file`, `id_info`) VALU
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_chat`
+-- Table structure for table `tabel_chat`
 --
 
 CREATE TABLE `tabel_chat` (
@@ -116,7 +116,7 @@ CREATE TABLE `tabel_chat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_chat`
+-- Dumping data for table `tabel_chat`
 --
 
 INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VALUES
@@ -142,7 +142,7 @@ INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_dosen`
+-- Table structure for table `tabel_dosen`
 --
 
 CREATE TABLE `tabel_dosen` (
@@ -160,7 +160,7 @@ CREATE TABLE `tabel_dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_dosen`
+-- Dumping data for table `tabel_dosen`
 --
 
 INSERT INTO `tabel_dosen` (`id_dosen`, `nip`, `nama`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`, `id_user`, `waktu_tambah`, `waktu_edit`) VALUES
@@ -181,7 +181,7 @@ INSERT INTO `tabel_dosen` (`id_dosen`, `nip`, `nama`, `alamat`, `jenis_kelamin`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_hasil_kuisioner`
+-- Table structure for table `tabel_hasil_kuisioner`
 --
 
 CREATE TABLE `tabel_hasil_kuisioner` (
@@ -194,7 +194,7 @@ CREATE TABLE `tabel_hasil_kuisioner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_hasil_kuisioner`
+-- Dumping data for table `tabel_hasil_kuisioner`
 --
 
 INSERT INTO `tabel_hasil_kuisioner` (`id_hasil_kuisioner`, `id_mahasiswa`, `id_matkul`, `id_kuisioner`, `nilai`, `waktu_edit`) VALUES
@@ -223,7 +223,7 @@ INSERT INTO `tabel_hasil_kuisioner` (`id_hasil_kuisioner`, `id_mahasiswa`, `id_m
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_info`
+-- Table structure for table `tabel_info`
 --
 
 CREATE TABLE `tabel_info` (
@@ -236,7 +236,7 @@ CREATE TABLE `tabel_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_info`
+-- Dumping data for table `tabel_info`
 --
 
 INSERT INTO `tabel_info` (`id_info`, `judul`, `isi`, `tipe`, `waktu_publish`, `waktu_perubahan`) VALUES
@@ -249,7 +249,7 @@ INSERT INTO `tabel_info` (`id_info`, `judul`, `isi`, `tipe`, `waktu_publish`, `w
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_info_beasiswa`
+-- Table structure for table `tabel_info_beasiswa`
 --
 
 CREATE TABLE `tabel_info_beasiswa` (
@@ -262,7 +262,7 @@ CREATE TABLE `tabel_info_beasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_info_beasiswa`
+-- Dumping data for table `tabel_info_beasiswa`
 --
 
 INSERT INTO `tabel_info_beasiswa` (`id_beasiswa`, `judul`, `isi`, `link`, `waktu_publish`, `waktu_berakhir`) VALUES
@@ -271,7 +271,7 @@ INSERT INTO `tabel_info_beasiswa` (`id_beasiswa`, `judul`, `isi`, `link`, `waktu
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_jadwal`
+-- Table structure for table `tabel_jadwal`
 --
 
 CREATE TABLE `tabel_jadwal` (
@@ -288,7 +288,7 @@ CREATE TABLE `tabel_jadwal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_jadwal`
+-- Dumping data for table `tabel_jadwal`
 --
 
 INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_ruang`, `id_kelas`, `id_semester`, `id_dosen`, `id_matkul`, `hari`, `jam_mulai`, `jam_selesai`, `waktu_edit`) VALUES
@@ -301,7 +301,7 @@ INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_ruang`, `id_kelas`, `id_semester`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_kelas`
+-- Table structure for table `tabel_kelas`
 --
 
 CREATE TABLE `tabel_kelas` (
@@ -312,7 +312,7 @@ CREATE TABLE `tabel_kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_kelas`
+-- Dumping data for table `tabel_kelas`
 --
 
 INSERT INTO `tabel_kelas` (`id_kelas`, `kode_kelas`, `id_prodi`, `tingkat`) VALUES
@@ -327,7 +327,7 @@ INSERT INTO `tabel_kelas` (`id_kelas`, `kode_kelas`, `id_prodi`, `tingkat`) VALU
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_khs`
+-- Table structure for table `tabel_khs`
 --
 
 CREATE TABLE `tabel_khs` (
@@ -341,30 +341,20 @@ CREATE TABLE `tabel_khs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_khs`
+-- Dumping data for table `tabel_khs`
 --
 
 INSERT INTO `tabel_khs` (`id_khs`, `id_mahasiswa`, `id_kelas`, `id_semester`, `id_matkul`, `nilai`, `waktu_edit`) VALUES
-(1, 33, 4, 7, 1, 3.5, '2019-04-09 00:00:00'),
-(2, 33, 4, 7, 2, 4, '2019-04-09 00:00:00'),
-(3, 33, 4, 7, 4, 3.2, '2019-04-09 00:00:00'),
-(4, 33, 4, 7, 6, 3, '2019-04-09 00:00:00'),
-(5, 34, 4, 7, 1, 3, '2019-04-11 00:00:00'),
-(6, 33, 4, 6, 1, 3.7, '0000-00-00 00:00:00'),
-(7, 33, 4, 4, 5, 3.3, '0000-00-00 00:00:00'),
-(8, 33, 4, 6, 5, 3.3, '0000-00-00 00:00:00'),
-(9, 33, 4, 6, 3, 3, '0000-00-00 00:00:00'),
-(10, 33, 4, 6, 2, 3.1, '0000-00-00 00:00:00'),
-(13, 33, 4, 4, 7, 3.4, '0000-00-00 00:00:00'),
-(14, 33, 4, 4, 4, 3.5, '0000-00-00 00:00:00'),
-(15, 33, 4, 5, 2, 3.4, '0000-00-00 00:00:00'),
-(16, 33, 4, 5, 6, 3.5, '0000-00-00 00:00:00'),
-(17, 33, 4, 5, 7, 3.7, '0000-00-00 00:00:00');
+(1, 33, 4, 7, 1, 90, '2019-04-09 00:00:00'),
+(2, 33, 4, 7, 2, 80, '2019-04-09 00:00:00'),
+(3, 33, 4, 7, 4, 70, '2019-04-09 00:00:00'),
+(4, 33, 4, 7, 6, 75, '2019-04-09 00:00:00'),
+(5, 33, 4, 7, 3, 80, '2019-04-09 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_komentar`
+-- Table structure for table `tabel_komentar`
 --
 
 CREATE TABLE `tabel_komentar` (
@@ -376,7 +366,7 @@ CREATE TABLE `tabel_komentar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_komentar`
+-- Dumping data for table `tabel_komentar`
 --
 
 INSERT INTO `tabel_komentar` (`id_komentar`, `id_info`, `id_user`, `isi`, `waktu`) VALUES
@@ -389,7 +379,7 @@ INSERT INTO `tabel_komentar` (`id_komentar`, `id_info`, `id_user`, `isi`, `waktu
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_kompen`
+-- Table structure for table `tabel_kompen`
 --
 
 CREATE TABLE `tabel_kompen` (
@@ -405,7 +395,7 @@ CREATE TABLE `tabel_kompen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_kompen`
+-- Dumping data for table `tabel_kompen`
 --
 
 INSERT INTO `tabel_kompen` (`id_kompen`, `id_mahasiswa`, `id_dosen`, `id_semester`, `jumlah_jam`, `waktu`, `id_pekerjaan_kompen`, `waktu_verifikasi`, `status_verifikasi`) VALUES
@@ -414,7 +404,7 @@ INSERT INTO `tabel_kompen` (`id_kompen`, `id_mahasiswa`, `id_dosen`, `id_semeste
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_krs`
+-- Table structure for table `tabel_krs`
 --
 
 CREATE TABLE `tabel_krs` (
@@ -428,7 +418,7 @@ CREATE TABLE `tabel_krs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_krs`
+-- Dumping data for table `tabel_krs`
 --
 
 INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`, `status_verifikasi`, `waktu_edit`) VALUES
@@ -465,7 +455,7 @@ INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gamba
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_kuisioner`
+-- Table structure for table `tabel_kuisioner`
 --
 
 CREATE TABLE `tabel_kuisioner` (
@@ -475,7 +465,7 @@ CREATE TABLE `tabel_kuisioner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_kuisioner`
+-- Dumping data for table `tabel_kuisioner`
 --
 
 INSERT INTO `tabel_kuisioner` (`id_kuisioner`, `kriteria`, `status_aktif`) VALUES
@@ -504,7 +494,7 @@ INSERT INTO `tabel_kuisioner` (`id_kuisioner`, `kriteria`, `status_aktif`) VALUE
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_mahasiswa`
+-- Table structure for table `tabel_mahasiswa`
 --
 
 CREATE TABLE `tabel_mahasiswa` (
@@ -525,7 +515,7 @@ CREATE TABLE `tabel_mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_mahasiswa`
+-- Dumping data for table `tabel_mahasiswa`
 --
 
 INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `id_semester`, `nim`, `nama`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`, `waktu_edit`, `id_user`, `waktu_tambah`) VALUES
@@ -562,7 +552,7 @@ INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `id_semes
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_matkul`
+-- Table structure for table `tabel_matkul`
 --
 
 CREATE TABLE `tabel_matkul` (
@@ -573,22 +563,22 @@ CREATE TABLE `tabel_matkul` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_matkul`
+-- Dumping data for table `tabel_matkul`
 --
 
 INSERT INTO `tabel_matkul` (`id_matkul`, `nama`, `sks`, `jam`) VALUES
-(1, 'Manajemen Proyek', 4, 2),
-(2, 'Analisis Dan Desain Berorientasi Objek', 6, 2),
-(3, 'Sistem Manajemen Basisdata', 0, 2),
-(4, 'Proyek 1', 0, 2),
-(5, 'Komputasi Kognitif', 0, 0),
-(6, 'Sistem Informasi', 0, 0),
-(7, 'Pemrograman Web Lanjut', 0, 0);
+(1, 'Manajemen Proyek', 2, 4),
+(2, 'Analisis Dan Desain Berorientasi Objek', 3, 6),
+(3, 'Sistem Manajemen Basisdata', 3, 6),
+(4, 'Proyek 1', 3, 8),
+(5, 'Komputasi Kognitif', 2, 4),
+(6, 'Sistem Informasi', 2, 4),
+(7, 'Pemrograman Web Lanjut', 3, 6);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_notifikasi`
+-- Table structure for table `tabel_notifikasi`
 --
 
 CREATE TABLE `tabel_notifikasi` (
@@ -600,7 +590,7 @@ CREATE TABLE `tabel_notifikasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_notifikasi`
+-- Dumping data for table `tabel_notifikasi`
 --
 
 INSERT INTO `tabel_notifikasi` (`id_notifikasi`, `isi`, `waktu`, `status_dibaca`, `id_user`) VALUES
@@ -623,7 +613,7 @@ INSERT INTO `tabel_notifikasi` (`id_notifikasi`, `isi`, `waktu`, `status_dibaca`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_pekerjaan_kompen`
+-- Table structure for table `tabel_pekerjaan_kompen`
 --
 
 CREATE TABLE `tabel_pekerjaan_kompen` (
@@ -635,7 +625,7 @@ CREATE TABLE `tabel_pekerjaan_kompen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_pekerjaan_kompen`
+-- Dumping data for table `tabel_pekerjaan_kompen`
 --
 
 INSERT INTO `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`, `id_dosen`, `nama`, `kuota`, `id_semester`) VALUES
@@ -648,7 +638,7 @@ INSERT INTO `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`, `id_dosen`, `nama`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_prodi`
+-- Table structure for table `tabel_prodi`
 --
 
 CREATE TABLE `tabel_prodi` (
@@ -658,7 +648,7 @@ CREATE TABLE `tabel_prodi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_prodi`
+-- Dumping data for table `tabel_prodi`
 --
 
 INSERT INTO `tabel_prodi` (`id_prodi`, `nama`, `kode`) VALUES
@@ -668,7 +658,7 @@ INSERT INTO `tabel_prodi` (`id_prodi`, `nama`, `kode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_reply_komentar`
+-- Table structure for table `tabel_reply_komentar`
 --
 
 CREATE TABLE `tabel_reply_komentar` (
@@ -679,7 +669,7 @@ CREATE TABLE `tabel_reply_komentar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_reply_komentar`
+-- Dumping data for table `tabel_reply_komentar`
 --
 
 INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `isi`, `id_komentar`, `waktu`) VALUES
@@ -690,7 +680,7 @@ INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `isi`, `id_komentar`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- Table structure for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 
 CREATE TABLE `tabel_riwayat_peminjam_kelas_kosong` (
@@ -705,7 +695,7 @@ CREATE TABLE `tabel_riwayat_peminjam_kelas_kosong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- Dumping data for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 
 INSERT INTO `tabel_riwayat_peminjam_kelas_kosong` (`id_riwayat_peminjam_kelas_kosong`, `id_ruang`, `peminjam`, `hari`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`, `waktu_checkout`) VALUES
@@ -714,7 +704,7 @@ INSERT INTO `tabel_riwayat_peminjam_kelas_kosong` (`id_riwayat_peminjam_kelas_ko
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_ruang`
+-- Table structure for table `tabel_ruang`
 --
 
 CREATE TABLE `tabel_ruang` (
@@ -724,7 +714,7 @@ CREATE TABLE `tabel_ruang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_ruang`
+-- Dumping data for table `tabel_ruang`
 --
 
 INSERT INTO `tabel_ruang` (`id_ruang`, `kode`, `lantai`) VALUES
@@ -738,7 +728,7 @@ INSERT INTO `tabel_ruang` (`id_ruang`, `kode`, `lantai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_ruang_dipinjam`
+-- Table structure for table `tabel_ruang_dipinjam`
 --
 
 CREATE TABLE `tabel_ruang_dipinjam` (
@@ -754,7 +744,7 @@ CREATE TABLE `tabel_ruang_dipinjam` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_semester`
+-- Table structure for table `tabel_semester`
 --
 
 CREATE TABLE `tabel_semester` (
@@ -763,7 +753,7 @@ CREATE TABLE `tabel_semester` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_semester`
+-- Dumping data for table `tabel_semester`
 --
 
 INSERT INTO `tabel_semester` (`id_semester`, `semester`) VALUES
@@ -777,7 +767,7 @@ INSERT INTO `tabel_semester` (`id_semester`, `semester`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_status_mahasiswa`
+-- Table structure for table `tabel_status_mahasiswa`
 --
 
 CREATE TABLE `tabel_status_mahasiswa` (
@@ -786,7 +776,7 @@ CREATE TABLE `tabel_status_mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_status_mahasiswa`
+-- Dumping data for table `tabel_status_mahasiswa`
 --
 
 INSERT INTO `tabel_status_mahasiswa` (`id_status_mahasiswa`, `keterangan`) VALUES
@@ -801,7 +791,7 @@ INSERT INTO `tabel_status_mahasiswa` (`id_status_mahasiswa`, `keterangan`) VALUE
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_task`
+-- Table structure for table `tabel_task`
 --
 
 CREATE TABLE `tabel_task` (
@@ -813,7 +803,7 @@ CREATE TABLE `tabel_task` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_task`
+-- Dumping data for table `tabel_task`
 --
 
 INSERT INTO `tabel_task` (`id_task`, `pekerjaan`, `kuota`, `id_dosen`, `status`) VALUES
@@ -826,7 +816,7 @@ INSERT INTO `tabel_task` (`id_task`, `pekerjaan`, `kuota`, `id_dosen`, `status`)
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_user`
+-- Table structure for table `tabel_user`
 --
 
 CREATE TABLE `tabel_user` (
@@ -837,7 +827,7 @@ CREATE TABLE `tabel_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_user`
+-- Dumping data for table `tabel_user`
 --
 
 INSERT INTO `tabel_user` (`id_user`, `username`, `password`, `level`) VALUES
@@ -891,7 +881,7 @@ INSERT INTO `tabel_user` (`id_user`, `username`, `password`, `level`) VALUES
 --
 
 --
--- Indeks untuk tabel `tabel_absensi`
+-- Indexes for table `tabel_absensi`
 --
 ALTER TABLE `tabel_absensi`
   ADD PRIMARY KEY (`id_absensi`),
@@ -900,21 +890,21 @@ ALTER TABLE `tabel_absensi`
   ADD KEY `id_semester` (`id_semester`);
 
 --
--- Indeks untuk tabel `tabel_admin`
+-- Indexes for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   ADD PRIMARY KEY (`id_admin`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_attachment`
+-- Indexes for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   ADD PRIMARY KEY (`id_attachment`),
   ADD KEY `id_info` (`id_info`);
 
 --
--- Indeks untuk tabel `tabel_chat`
+-- Indexes for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
   ADD PRIMARY KEY (`id_chat`),
@@ -923,14 +913,14 @@ ALTER TABLE `tabel_chat`
   ADD KEY `penerima_2` (`penerima`);
 
 --
--- Indeks untuk tabel `tabel_dosen`
+-- Indexes for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   ADD PRIMARY KEY (`id_dosen`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_hasil_kuisioner`
+-- Indexes for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
   ADD PRIMARY KEY (`id_hasil_kuisioner`),
@@ -939,19 +929,19 @@ ALTER TABLE `tabel_hasil_kuisioner`
   ADD KEY `id_kuisoner` (`id_kuisioner`);
 
 --
--- Indeks untuk tabel `tabel_info`
+-- Indexes for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
   ADD PRIMARY KEY (`id_info`);
 
 --
--- Indeks untuk tabel `tabel_info_beasiswa`
+-- Indexes for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   ADD PRIMARY KEY (`id_beasiswa`);
 
 --
--- Indeks untuk tabel `tabel_jadwal`
+-- Indexes for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
   ADD PRIMARY KEY (`id_jadwal`),
@@ -962,14 +952,14 @@ ALTER TABLE `tabel_jadwal`
   ADD KEY `id_matkul` (`id_matkul`);
 
 --
--- Indeks untuk tabel `tabel_kelas`
+-- Indexes for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   ADD PRIMARY KEY (`id_kelas`),
   ADD KEY `id_prodi` (`id_prodi`);
 
 --
--- Indeks untuk tabel `tabel_khs`
+-- Indexes for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
   ADD PRIMARY KEY (`id_khs`),
@@ -979,7 +969,7 @@ ALTER TABLE `tabel_khs`
   ADD KEY `id_matkul` (`id_matkul`);
 
 --
--- Indeks untuk tabel `tabel_komentar`
+-- Indexes for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   ADD PRIMARY KEY (`id_komentar`),
@@ -987,7 +977,7 @@ ALTER TABLE `tabel_komentar`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_kompen`
+-- Indexes for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   ADD PRIMARY KEY (`id_kompen`),
@@ -997,7 +987,7 @@ ALTER TABLE `tabel_kompen`
   ADD KEY `id_pekerjaan_kompen` (`id_pekerjaan_kompen`);
 
 --
--- Indeks untuk tabel `tabel_krs`
+-- Indexes for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   ADD PRIMARY KEY (`id_krs`),
@@ -1005,13 +995,13 @@ ALTER TABLE `tabel_krs`
   ADD KEY `id_semester` (`id_semester`);
 
 --
--- Indeks untuk tabel `tabel_kuisioner`
+-- Indexes for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
   ADD PRIMARY KEY (`id_kuisioner`);
 
 --
--- Indeks untuk tabel `tabel_mahasiswa`
+-- Indexes for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   ADD PRIMARY KEY (`id_mahasiswa`),
@@ -1021,20 +1011,20 @@ ALTER TABLE `tabel_mahasiswa`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_matkul`
+-- Indexes for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
   ADD PRIMARY KEY (`id_matkul`);
 
 --
--- Indeks untuk tabel `tabel_notifikasi`
+-- Indexes for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   ADD PRIMARY KEY (`id_notifikasi`),
   ADD KEY `id_mahasiswa` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_pekerjaan_kompen`
+-- Indexes for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   ADD PRIMARY KEY (`id_pekerjaan_kompen`),
@@ -1042,20 +1032,20 @@ ALTER TABLE `tabel_pekerjaan_kompen`
   ADD KEY `id_semester` (`id_semester`);
 
 --
--- Indeks untuk tabel `tabel_prodi`
+-- Indexes for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
   ADD PRIMARY KEY (`id_prodi`);
 
 --
--- Indeks untuk tabel `tabel_reply_komentar`
+-- Indexes for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   ADD PRIMARY KEY (`id_reply_komentar`),
   ADD KEY `id_komentar` (`id_komentar`);
 
 --
--- Indeks untuk tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- Indexes for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   ADD PRIMARY KEY (`id_riwayat_peminjam_kelas_kosong`),
@@ -1063,13 +1053,13 @@ ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   ADD KEY `peminjam` (`peminjam`);
 
 --
--- Indeks untuk tabel `tabel_ruang`
+-- Indexes for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   ADD PRIMARY KEY (`id_ruang`);
 
 --
--- Indeks untuk tabel `tabel_ruang_dipinjam`
+-- Indexes for table `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   ADD PRIMARY KEY (`id_ruang_dipinjam`),
@@ -1077,208 +1067,208 @@ ALTER TABLE `tabel_ruang_dipinjam`
   ADD KEY `id_ruang` (`id_ruang`);
 
 --
--- Indeks untuk tabel `tabel_semester`
+-- Indexes for table `tabel_semester`
 --
 ALTER TABLE `tabel_semester`
   ADD PRIMARY KEY (`id_semester`);
 
 --
--- Indeks untuk tabel `tabel_status_mahasiswa`
+-- Indexes for table `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   ADD PRIMARY KEY (`id_status_mahasiswa`);
 
 --
--- Indeks untuk tabel `tabel_task`
+-- Indexes for table `tabel_task`
 --
 ALTER TABLE `tabel_task`
   ADD PRIMARY KEY (`id_task`),
   ADD KEY `id_dosen` (`id_dosen`);
 
 --
--- Indeks untuk tabel `tabel_user`
+-- Indexes for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_absensi`
+-- AUTO_INCREMENT for table `tabel_absensi`
 --
 ALTER TABLE `tabel_absensi`
   MODIFY `id_absensi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_admin`
+-- AUTO_INCREMENT for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   MODIFY `id_admin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_attachment`
+-- AUTO_INCREMENT for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   MODIFY `id_attachment` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_chat`
+-- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
   MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_dosen`
+-- AUTO_INCREMENT for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   MODIFY `id_dosen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_hasil_kuisioner`
+-- AUTO_INCREMENT for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
   MODIFY `id_hasil_kuisioner` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_info`
+-- AUTO_INCREMENT for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
   MODIFY `id_info` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_info_beasiswa`
+-- AUTO_INCREMENT for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   MODIFY `id_beasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_jadwal`
+-- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
-  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_kelas`
+-- AUTO_INCREMENT for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   MODIFY `id_kelas` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_khs`
+-- AUTO_INCREMENT for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
-  MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_komentar`
+-- AUTO_INCREMENT for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   MODIFY `id_komentar` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_kompen`
+-- AUTO_INCREMENT for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   MODIFY `id_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_krs`
+-- AUTO_INCREMENT for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_kuisioner`
+-- AUTO_INCREMENT for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
   MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_mahasiswa`
+-- AUTO_INCREMENT for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   MODIFY `id_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_matkul`
+-- AUTO_INCREMENT for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
   MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_notifikasi`
+-- AUTO_INCREMENT for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   MODIFY `id_notifikasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_pekerjaan_kompen`
+-- AUTO_INCREMENT for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   MODIFY `id_pekerjaan_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_prodi`
+-- AUTO_INCREMENT for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
   MODIFY `id_prodi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_reply_komentar`
+-- AUTO_INCREMENT for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   MODIFY `id_reply_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- AUTO_INCREMENT for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   MODIFY `id_riwayat_peminjam_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_ruang`
+-- AUTO_INCREMENT for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   MODIFY `id_ruang` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_ruang_dipinjam`
+-- AUTO_INCREMENT for table `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_semester`
+-- AUTO_INCREMENT for table `tabel_semester`
 --
 ALTER TABLE `tabel_semester`
   MODIFY `id_semester` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_status_mahasiswa`
+-- AUTO_INCREMENT for table `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   MODIFY `id_status_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_task`
+-- AUTO_INCREMENT for table `tabel_task`
 --
 ALTER TABLE `tabel_task`
   MODIFY `id_task` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_user`
+-- AUTO_INCREMENT for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
   MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tabel_absensi`
+-- Constraints for table `tabel_absensi`
 --
 ALTER TABLE `tabel_absensi`
   ADD CONSTRAINT `tabel_absensi_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1286,32 +1276,32 @@ ALTER TABLE `tabel_absensi`
   ADD CONSTRAINT `tabel_absensi_ibfk_3` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_admin`
+-- Constraints for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   ADD CONSTRAINT `tabel_admin_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_attachment`
+-- Constraints for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   ADD CONSTRAINT `tabel_attachment_ibfk_1` FOREIGN KEY (`id_info`) REFERENCES `tabel_info` (`id_info`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_chat`
+-- Constraints for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
   ADD CONSTRAINT `tabel_chat_ibfk_1` FOREIGN KEY (`pengirim`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_chat_ibfk_2` FOREIGN KEY (`penerima`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_dosen`
+-- Constraints for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   ADD CONSTRAINT `tabel_dosen_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_hasil_kuisioner`
+-- Constraints for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
   ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_2` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1319,7 +1309,7 @@ ALTER TABLE `tabel_hasil_kuisioner`
   ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_4` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_jadwal`
+-- Constraints for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
   ADD CONSTRAINT `tabel_jadwal_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `tabel_kelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1329,13 +1319,13 @@ ALTER TABLE `tabel_jadwal`
   ADD CONSTRAINT `tabel_jadwal_ibfk_5` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_kelas`
+-- Constraints for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   ADD CONSTRAINT `tabel_kelas_ibfk_1` FOREIGN KEY (`id_prodi`) REFERENCES `tabel_prodi` (`id_prodi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_khs`
+-- Constraints for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
   ADD CONSTRAINT `tabel_khs_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `tabel_kelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1344,14 +1334,14 @@ ALTER TABLE `tabel_khs`
   ADD CONSTRAINT `tabel_khs_ibfk_5` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_komentar`
+-- Constraints for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   ADD CONSTRAINT `tabel_komentar_ibfk_1` FOREIGN KEY (`id_info`) REFERENCES `tabel_info` (`id_info`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_komentar_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_kompen`
+-- Constraints for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   ADD CONSTRAINT `tabel_kompen_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1360,7 +1350,7 @@ ALTER TABLE `tabel_kompen`
   ADD CONSTRAINT `tabel_kompen_ibfk_4` FOREIGN KEY (`id_pekerjaan_kompen`) REFERENCES `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_krs`
+-- Constraints for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   ADD CONSTRAINT `tabel_krs_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`),
@@ -1368,7 +1358,7 @@ ALTER TABLE `tabel_krs`
   ADD CONSTRAINT `tabel_krs_ibfk_3` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`);
 
 --
--- Ketidakleluasaan untuk tabel `tabel_mahasiswa`
+-- Constraints for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   ADD CONSTRAINT `tabel_mahasiswa_ibfk_1` FOREIGN KEY (`id_prodi`) REFERENCES `tabel_prodi` (`id_prodi`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1377,40 +1367,40 @@ ALTER TABLE `tabel_mahasiswa`
   ADD CONSTRAINT `tabel_mahasiswa_ibfk_4` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_notifikasi`
+-- Constraints for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   ADD CONSTRAINT `tabel_notifikasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `tabel_pekerjaan_kompen`
+-- Constraints for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   ADD CONSTRAINT `tabel_pekerjaan_kompen_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_pekerjaan_kompen_ibfk_2` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_reply_komentar`
+-- Constraints for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   ADD CONSTRAINT `tabel_reply_komentar_ibfk_1` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- Constraints for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   ADD CONSTRAINT `tabel_riwayat_peminjam_kelas_kosong_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_riwayat_peminjam_kelas_kosong_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_ruang_dipinjam`
+-- Constraints for table `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_task`
+-- Constraints for table `tabel_task`
 --
 ALTER TABLE `tabel_task`
   ADD CONSTRAINT `tabel_task_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
