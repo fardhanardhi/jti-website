@@ -202,7 +202,7 @@ if(isset($_POST["autoCheckout"])) {
       echo $id_ruang_dipinjam;
 
       // insert ke tabel_riwayat_peminjam_kelas_kosong
-      mysqli_query($con, "insert into tabel_riwayat_peminjam_kelas_kosong values ('', '$id_ruang', '$peminjam', '$hari', '$waktu_mulai', '$waktu_selesai', '$waktu_pinjam', '$waktu_checkout')");
+      mysqli_query($con, "insert into tabel_riwayat_peminjam_kelas_kosong (id_ruang, peminjam, hari, waktu_mulai, waktu_selesai, waktu_pinjam, waktu_checkout) values ('$id_ruang', '$peminjam', '$hari', '$waktu_mulai', '$waktu_selesai', '$waktu_pinjam', '$waktu_checkout')");
 
       // menghapus data di tabel_ruang_dipinjam
       mysqli_query($con, "delete from tabel_ruang_dipinjam where id_ruang_dipinjam='$id_ruang_dipinjam'");
@@ -219,13 +219,9 @@ if(isset($_POST["pesan"]) || isset($_POST["checkout"])){
     
     
     if(mysqli_query($con, "insert into tabel_ruang_dipinjam (id_ruang, peminjam, hari, waktu_mulai, waktu_selesai, waktu_pinjam) values ('$_POST[id_ruang]','$_SESSION[id]', '$_POST[hari]', '$_POST[waktu_mulai]', '$_POST[waktu_selesai]', '$dateNow')")){
-
-          header('location:../module/index.php?module=' . $_GET["module"]);
-
+      header('location:../module/index.php?module=' . $_GET["module"]);
     }
-
     else{
-
       echo("Error description: " . mysqli_error($con));
       // mysqli_error($con);
     }
@@ -242,7 +238,7 @@ if(isset($_POST["pesan"]) || isset($_POST["checkout"])){
     $waktu_checkout=date('Y-m-d H:i:s');
 
     // insert ke tabel_riwayat_peminjam_kelas_kosong
-    mysqli_query($con, "insert into tabel_riwayat_peminjam_kelas_kosong values ('', '$id_ruang', '$peminjam', '$hari', '$waktu_mulai', '$waktu_selesai', '$waktu_pinjam', '$waktu_checkout')");
+    mysqli_query($con, "insert into tabel_riwayat_peminjam_kelas_kosong (id_ruang, peminjam, hari, waktu_mulai, waktu_selesai, waktu_pinjam, waktu_checkout) values ('$id_ruang', '$peminjam', '$hari', '$waktu_mulai', '$waktu_selesai', '$waktu_pinjam', '$waktu_checkout')");
 
     // menghapus data di tabel_ruang_dipinjam
     mysqli_query($con, "delete from tabel_ruang_dipinjam where id_ruang_dipinjam='$_POST[id_ruang_dipinjam]'");
