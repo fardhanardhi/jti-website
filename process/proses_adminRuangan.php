@@ -324,6 +324,10 @@ if(isset($_POST["reloadPemesanan"])){
                   <strong class="nama"><?php echo $rowUser["nama"];
                   if($rowPeminjam["level"]=="mahasiswa"){
                     echo " (".tampilKelas($con, $rowPeminjam["id_user"]).")";
+                  }else if($rowPeminjam["level"]=="admin"){
+                    echo " (Admin)";
+                  }else{
+                    echo " (Dosen)";
                   }
                   ?>
                   </strong>
@@ -400,6 +404,10 @@ if(isset($_POST["reloadPemesanan"])){
                   <strong class="nama"><?php echo $rowRiwayatUser["nama"];
                   if($rowRiwayatPeminjam["level"]=="mahasiswa"){
                     echo " (".tampilKelas($con, $rowRiwayatPeminjam["id_user"]).")";
+                  }else if($rowRiwayatPeminjam["level"]=="admin"){
+                    echo " (Admin)";
+                  }else{
+                    echo " (Dosen)";
                   }
                   ?>
                   </strong>
