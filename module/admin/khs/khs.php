@@ -112,7 +112,7 @@
                                                         <td><?php echo $row["sks"];?></td>
                                                         <td><?php echo khsNilai($con, $row["id_mahasiswa"], $row["id_semester"]) ?></td>
                                                         <td><button class="lihat tmbl-table btn btn-info update-nilai" type="button" class="pratinjau btn" data-toggle="modal"
-                                                            data-target="#updateModal" class="edit" data-mhs="<?php echo $row["id_mahasiswa"];?>" data-semester="<?php echo $row["id_semester"];?>">Update</button>
+                                                            data-target="#updateModal" class="edit" data-mhs="<?php echo $row["id_mahasiswa"];?>" data-semester="<?php echo $row["id_semester"];?>">Upload</button>
                                                         </td>
                                                     </tr>
                                                     <?php
