@@ -135,8 +135,7 @@
           <div class="row mt-3 scrollbar scrollbar-x" style="overflow:auto" id="dataDosenKuisioner">
             <div class="col-md-12 d-flex text-center justify-content-center">
             <?php
-              $mhsLogin=mysqli_fetch_assoc(mhsLogin($con));
-              $resultKuisioner=kuisioner($con, date("Y"), $mhsLogin["id_semester"]);
+              $resultKuisioner=kuisioner($con, date("Y"), 4);
               
               if (mysqli_num_rows($resultKuisioner) > 0){
               ?>
