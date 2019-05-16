@@ -58,13 +58,13 @@ include "../process/proses_adminRuangan.php";
                         <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                         <?php
                       }else{
-                        if($rowUser["foto"]=="NULL"){
+                        if($rowUser["foto"]==NULL){
                           ?>
-                          <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
+                          <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="foto peminjam">
                           <?php
                         }else{
                           ?>
-                          <img src="../attachment/img/<?php echo $rowUser["foto"];?>" class="nav-profile-photo" alt="">
+                          <img src="../attachment/img/<?php echo $rowUser["foto"];?>" class="nav-profile-photo" alt="foto peminjam">
                           <?php
                         }
                       }
@@ -134,7 +134,7 @@ include "../process/proses_adminRuangan.php";
                           <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                           <?php
                         }else{
-                          if($rowRiwayatUser["foto"]=="NULL"){
+                          if($rowRiwayatUser["foto"]==NULL){
                             ?>
                             <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                             <?php

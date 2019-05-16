@@ -305,7 +305,7 @@ if(isset($_POST["reloadPemesanan"])){
             <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
             <?php
           }else{
-            if($rowUser["foto"]=="NULL"){
+            if($rowUser["foto"]==NULL){
               ?>
               <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
               <?php
@@ -381,7 +381,7 @@ if(isset($_POST["reloadPemesanan"])){
               <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
               <?php
             }else{
-              if($rowRiwayatUser["foto"]=="NULL"){
+              if($rowRiwayatUser["foto"]==NULL){
                 ?>
                 <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                 <?php
