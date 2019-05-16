@@ -84,42 +84,44 @@ if ($level != 'admin') {
               <img src="../img/navigation/home.svg">
               <p class="mt-3">HOME</p>
             </div>
-            <?php
-            if ($level == "dosen" || $statusPembayaran == "Sudah") { ?>
-              <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
               <?php
-            } elseif ($level == "mahasiswa" || $statusPembayaran == "Belum") { ?>
-                <div onclick="location.href='index.php?module=krs';" class="navigation-menu col-md-3 col-lg-2 my-1">
-                <?php } ?>
-                <?php
-                if ($level == "mahasiswa") {
-                  ?>
+              if ($level == "mahasiswa" || $statusPembayaran == "Sudah") { ?>
+                <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
                   <img src="../img/navigation/jadwalKuliah.svg">
                   <p class="mt-3">JADWAL KULIAH</p>
-                <?php
-              } elseif ($level == "dosen") {
+                </div>
+              <?php
+              } elseif ($level == "mahasiswa" || $statusPembayaran == "Belum") { ?>
+                <div onclick="location.href='index.php?module=krs';" class="navigation-menu col-md-3 col-lg-2 my-1">
+                  <img src="../img/navigation/jadwalKuliah.svg">
+                  <p class="mt-3">JADWAL KULIAH</p>
+                </div>
+              <?php
+              }elseif($level=="dosen"){
                 ?>
+                <div onclick="location.href='index.php?module=kelasKosong';" class="navigation-menu col-md-3 col-lg-2 my-1">
                   <img src="../img/navigation/pesanKelas.svg">
                   <p class="mt-3">PESAN KELAS</p>
+                </div>
                 <?php
-              }
+                }
+              
+              if ($level == "mahasiswa") {
               ?>
-              </div>
-              <div onclick="location.href='index.php?module=nilai';" class="navigation-menu col-md-3 col-lg-2 my-1">
-                <?php
-                if ($level == "mahasiswa") {
-                  ?>
+                <div onclick="location.href='index.php?module=nilai';" class="navigation-menu col-md-3 col-lg-2 my-1">
                   <img src="../img/navigation/nilaiMahasiswa.svg">
                   <p class="mt-3">NILAI MAHASISWA</p>
+                </div>
                 <?php
               } elseif ($level == "dosen") {
                 ?>
+                <div onclick="location.href='index.php?module=krs';" class="navigation-menu col-md-3 col-lg-2 my-1">
                   <img src="../img/navigation/pengajuanKRS.svg">
                   <p class="mt-3">PENGAJUAN KRS MAHASISWA</p>
+                </div>
                 <?php
               }
               ?>
-              </div>
               <div onclick="location.href='index.php?module=kompenAbsen';" class="navigation-menu col-md-3 col-lg-2 my-1">
                 <?php
                 if ($level == "mahasiswa") {
@@ -489,6 +491,9 @@ if ($level != 'admin') {
             break;
           case "kompenAbsen":
             include "dosen/dosenKompen.php";
+            break;
+          case "kelasKosong":
+            include "dosen/dosenKelasKosong.php";
             break;
           case "notifikasi":
             include "notifikasi.php";

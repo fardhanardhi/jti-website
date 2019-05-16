@@ -97,10 +97,16 @@ if(isset($_POST["cariKelasKosong"])){
               </div>
               <div class="col-4 text-right">
                 <?php
-                  if (cekPeminjamSekelas($con, $_POST["jam"], jamSelesaiKelasKosong($con, $_POST["jam"], $_POST["hari"], $rowKelasKosong["id_ruang"]), $_POST["hari"])==true){
-                    ?>
-                    <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
-                    <?php
+                  if($_SESSION["level"]=="mahasiswa"){
+                    if (cekPeminjamSekelas($con, $_POST["jam"], jamSelesaiKelasKosong($con, $_POST["jam"], $_POST["hari"], $rowKelasKosong["id_ruang"]), $_POST["hari"])==true){
+                      ?>
+                      <a tabindex="0" class="btn btn-pesan p-1 bg-blue text-white" role="button" data-toggle="popover" data-trigger="focus" data-content="*Kelas anda telah melakukan pemesanan ruangan!" data-placement="bottom">Pesan</a>
+                      <?php
+                    }else{
+                      ?>
+                      <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
+                      <?php
+                    }
                   }else{
                     ?>
                     <button type="submit" name="pesan" class="btn btn-pesan p-1 bg-blue text-white">Pesan</button>
