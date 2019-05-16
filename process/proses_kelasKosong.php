@@ -210,8 +210,19 @@ if(isset($_POST["pesan"]) || isset($_POST["checkout"])){
 
   if($_GET["module"]=="kelasKosong" && $_GET["act"]=="pesan"){
     $dateNow = date('Y-m-d H:i:s');
-    mysqli_query($con, "insert into tabel_ruang_dipinjam values('','$_POST[id_ruang]','$_SESSION[id]', '$_POST[hari]', '$_POST[waktu_mulai]', '$_POST[waktu_selesai]', '$dateNow')");
-    header('location:../module/index.php?module=' . $_GET["module"]);
+    
+    
+    if(mysqli_query($con, "insert into tabel_ruang_dipinjam (id_ruang, peminjam, hari, waktu_mulai, waktu_selesai, waktu_pinjam) values ('$_POST[id_ruang]','$_SESSION[id]', '$_POST[hari]', '$_POST[waktu_mulai]', '$_POST[waktu_selesai]', '$dateNow')")){
+
+          header('location:../module/index.php?module=' . $_GET["module"]);
+
+    }
+
+    else{
+
+      echo("Error description: " . mysqli_error($con));
+      // mysqli_error($con);
+    }
   }
   else if ($_GET["module"] == "kelasKosong" && $_GET["act"] == "checkout") {
     $ruangDipinjam=mysqli_query($con,"select * from tabel_ruang_dipinjam where id_ruang_dipinjam='$_POST[id_ruang_dipinjam]'");
