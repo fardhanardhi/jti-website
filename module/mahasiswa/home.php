@@ -281,17 +281,17 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
       </div>
     </div>
 
-    <?php
-    $resultInfoBeasiswa = infoBeasiswa($con);
-    if (mysqli_num_rows($resultInfoBeasiswa) > 0) {
-      while ($row = mysqli_fetch_assoc($resultInfoBeasiswa)) {
-        $id_infoBeasiswa = $row["id_beasiswa"];
-        ?>
-        <div class="col-md-3 p-0">
-          <div class="sticky-sidebar sticky-top">
-            <div class="m-2 p-3 bg-white rounded shadow-sm">
-              <div class="beasiswa pb-3 mb-0 border-bottom border-dark">
-                <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
+    <div class="col-md-3 p-0">
+      <div class="sticky-sidebar sticky-top">
+        <div class="m-2 px-3 py-1 bg-white rounded shadow-sm">
+          <h5 class="text-center my-3"><strong>Info Beasiswa</strong></h5>
+          <?php
+          $resultInfoBeasiswa = infoBeasiswa($con);
+          if (mysqli_num_rows($resultInfoBeasiswa) > 0) {
+            while ($row = mysqli_fetch_assoc($resultInfoBeasiswa)) {
+              $id_infoBeasiswa = $row["id_beasiswa"];
+              ?>
+              <div class="beasiswa pb-2 pt-3 mb-0 border-top border-dark">
                 <h6><strong><?php echo $row["judul"]; ?></strong></h6>
                 <p class="isi-beasiswa">
                   <?php echo $row["isi"]; ?>
@@ -300,23 +300,22 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                   <button class="check btn"><a href="<?= $row['link']; ?>" target="_blank">Cek Link</a></button>
                 </small>
               </div>
+            <?php
+          }
+        } else {
+          ?>
+            <div class="beasiswa pb-3 mb-0 ">
+              <div class="scholarship text-center mt-5 mb-5">
+                <img src="../img/scholarship.svg" alt="Scholarship" class="">
+                <br>
+                <p>Mohon maaf, untuk saat ini beasiswa belum tersedia</p>
+              </div>
             </div>
-
           <?php
         }
-      }
-      ?>
+        ?>
+        </div>
 
-        <!-- <div class="m-2 p-3 bg-white rounded shadow-sm"> 
-          <div class="beasiswa pb-3 mb-0 ">
-            <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
-            <div class="scholarship text-center mt-5 mb-5">
-              <img src="../img/scholarship.svg" alt="Scholarship" class="">
-              <br>
-              <p>Mohon maaf, untuk saat ini beasiswa belum tersedia</p>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

@@ -14,6 +14,8 @@
 }
 #home .isi-beasiswa {
   font-size: 0.7em;
+  word-break: break-all;
+  white-space: normal;
 }
 #home .check {
   width: 7.5em;
@@ -36,11 +38,11 @@
   font-size: 12px;
 }
 
-#home .temu-berita a{
+#home .temu-berita a {
   color: black;
 }
 
-#home .search-back a{
+#home .search-back a {
   color: black;
 }
 
@@ -80,10 +82,10 @@
   color: white;
 }
 
-#home .isi-kuisioner{
+#home .isi-kuisioner {
   font-size: 18px;
 }
-#home input[type="radio"]{
+#home input[type="radio"] {
   width: 18px;
   height: 18px;
   margin-top: 7px;
@@ -137,7 +139,7 @@
   color: black;
 }
 
-#home .isi-download button:hover{
+#home .isi-download button:hover {
   background-color: white;
 }
 
