@@ -1,3 +1,8 @@
+<?php
+    include "../config/connection.php";
+    include "../process/proses_kelas.php";
+?>
+
 <main role="main" class="container-fluid" id="kelas">
   <div class="row">
     <div class="col-md-12 p-0">
@@ -42,6 +47,7 @@
             </div>
 
             <div class="row pt-2 mt-2 pl-0 scrollbar" id="ruangan2">
+                <? $resultKelas=kelas($con);?>
                 <table class="table table-striped table-bordered text-center">
                     <thead>
                         <tr>
@@ -54,86 +60,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        $index=1;
+                        while($rowKelas = mysqli_fetch_assoc($resultKelas)){
+                        ?>
                         <tr>
-                            <td>1</td>
-                            <td>1721740065</td>
-                            <td>Mahasiswa A</td>
-                            <td>Malang</td>
-                            <td>Laki - Laki</td>
-                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#hapus" class="edit">Hapus</button>
-                            </td>
+                            <td><?php echo $index; ?></td>
+                            <td class="nimMahasiswa"><?php echo $rowKelas["nim"]; ?></td>
+                            <td class="namaMahasiswa"><?php echo $rowKelas["nama_mahasiswa"]; ?></td>
+                            <td class="alamatMahasiswa"><?php echo $rowKelas["alamat"]; ?></td>
+                            <td class="jenisKelaminMahasiswa"><?php echo $rowKelas["jenis_kelamin"]; ?></td>
+                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal" data-target="#hapus" class="edit">Hapus</button></td>    
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>1721740065</td>
-                            <td>Mahasiswa B</td>
-                            <td>Kediri</td>
-                            <td>Perempuan</td>
-                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#hapus" class="edit">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>1721740065</td>
-                            <td>Mahasiswa C</td>
-                            <td>Jakarta</td>
-                            <td>Perempuan</td>
-                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#hapus" class="edit">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>1721740065</td>
-                            <td>Mahasiswa D</td>
-                            <td>Malang</td>
-                            <td>Laki -Laki</td>
-                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#hapus" class="edit">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>1721740065</td>
-                            <td>Mahasiswa E</td>
-                            <td>Malang</td>
-                            <td>Laki -Laki</td>
-                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#hapus" class="edit">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>1721740065</td>
-                            <td>Mahasiswa F</td>
-                            <td>Malang</td>
-                            <td>Laki -Laki</td>
-                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#hapus" class="edit">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>1721740065</td>
-                            <td>Mahasiswa G</td>
-                            <td>Malang</td>
-                            <td>Laki -Laki</td>
-                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#hapus" class="edit">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>1721740065</td>
-                            <td>Mahasiswa H</td>
-                            <td>Malang</td>
-                            <td>Laki -Laki</td>
-                            <td><button class=" tmbl-table btn btn-danger" type="button" class="pratinjau btn" data-toggle="modal"
-                                    data-target="#hapus" class="edit">Hapus</button>
-                            </td>
-                        </tr>
+                        <?php $index++;
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
