@@ -183,11 +183,11 @@ if(isset($_POST["pesan"]) || isset($_POST["tambahRuang"]) || isset($_POST["hapus
 
   if($_GET["module"]=="ruang" && $_GET["act"]=="pesan"){
     $dateNow = date('Y-m-d H:i:s');
-    mysqli_query($con, "insert into tabel_ruang_dipinjam values('','$_POST[id_ruang]','$_SESSION[id]', '$_POST[hari]', '$_POST[waktu_mulai]', '$_POST[waktu_selesai]', '$dateNow')");
+    mysqli_query($con, "insert into tabel_ruang_dipinjam (id_ruang, peminjam, hari, waktu_mulai, waktu_selesai, waktu_pinjam) values ('$_POST[id_ruang]','$_SESSION[id]', '$_POST[hari]', '$_POST[waktu_mulai]', '$_POST[waktu_selesai]', '$dateNow')");
     header('location:../module/index.php?module=' . $_GET["module"]);
   }
   else if($_GET["module"]=="ruang" && $_GET["act"]=="tambah"){
-    mysqli_query($con, "insert into tabel_ruang values('','$_POST[kode]','$_POST[lantai]')");
+    mysqli_query($con, "insert into tabel_ruang (kode, lantai) values ($_POST[kode]','$_POST[lantai]')");
     header('location:../module/index.php?module=' . $_GET["module"]);
   }
   else if($_GET["module"]=="ruang" && $_GET["act"]=="hapus"){
@@ -206,7 +206,7 @@ if(isset($_POST["pesan"]) || isset($_POST["tambahRuang"]) || isset($_POST["hapus
     $waktu_checkout=date('Y-m-d H:i:s');
 
     // insert ke tabel_riwayat_peminjam_kelas_kosong
-    mysqli_query($con, "insert into tabel_riwayat_peminjam_kelas_kosong values ('', '$id_ruang', '$peminjam', '$hari', '$waktu_mulai', '$waktu_selesai', '$waktu_pinjam', '$waktu_checkout')");
+    mysqli_query($con, "insert into tabel_riwayat_peminjam_kelas_kosong (id_ruang, peminjam, hari, waktu_mulai, waktu_selesai, waktu_pinjam, waktu_checkout) values ('$id_ruang', '$peminjam', '$hari', '$waktu_mulai', '$waktu_selesai', '$waktu_pinjam', '$waktu_checkout')");
 
     // menghapus data di tabel_ruang_dipinjam
     mysqli_query($con, "delete from tabel_ruang_dipinjam where id_ruang_dipinjam='$_POST[id_ruang_dipinjam]'");
@@ -272,7 +272,7 @@ if(isset($_POST["autoCheckout"])) {
       echo $id_ruang_dipinjam;
 
       // insert ke tabel_riwayat_peminjam_kelas_kosong
-      mysqli_query($con, "insert into tabel_riwayat_peminjam_kelas_kosong values ('', '$id_ruang', '$peminjam', '$hari', '$waktu_mulai', '$waktu_selesai', '$waktu_pinjam', '$waktu_checkout')");
+      mysqli_query($con, "insert into tabel_riwayat_peminjam_kelas_kosong (id_ruang, peminjam, hari, waktu_mulai, waktu_selesai, waktu_pinjam, waktu_checkout) values ('$id_ruang', '$peminjam', '$hari', '$waktu_mulai', '$waktu_selesai', '$waktu_pinjam', '$waktu_checkout')");
 
       // menghapus data di tabel_ruang_dipinjam
       mysqli_query($con, "delete from tabel_ruang_dipinjam where id_ruang_dipinjam='$id_ruang_dipinjam'");
@@ -305,7 +305,7 @@ if(isset($_POST["reloadPemesanan"])){
             <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
             <?php
           }else{
-            if($rowUser["foto"]=="NULL"){
+            if($rowUser["foto"]==NULL){
               ?>
               <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
               <?php
@@ -324,6 +324,10 @@ if(isset($_POST["reloadPemesanan"])){
                   <strong class="nama"><?php echo $rowUser["nama"];
                   if($rowPeminjam["level"]=="mahasiswa"){
                     echo " (".tampilKelas($con, $rowPeminjam["id_user"]).")";
+                  }else if($rowPeminjam["level"]=="admin"){
+                    echo " (Admin)";
+                  }else{
+                    echo " (Dosen)";
                   }
                   ?>
                   </strong>
@@ -381,7 +385,7 @@ if(isset($_POST["reloadPemesanan"])){
               <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
               <?php
             }else{
-              if($rowRiwayatUser["foto"]=="NULL"){
+              if($rowRiwayatUser["foto"]==NULL){
                 ?>
                 <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                 <?php
@@ -400,6 +404,10 @@ if(isset($_POST["reloadPemesanan"])){
                   <strong class="nama"><?php echo $rowRiwayatUser["nama"];
                   if($rowRiwayatPeminjam["level"]=="mahasiswa"){
                     echo " (".tampilKelas($con, $rowRiwayatPeminjam["id_user"]).")";
+                  }else if($rowRiwayatPeminjam["level"]=="admin"){
+                    echo " (Admin)";
+                  }else{
+                    echo " (Dosen)";
                   }
                   ?>
                   </strong>

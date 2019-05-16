@@ -58,13 +58,13 @@ include "../process/proses_adminRuangan.php";
                         <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                         <?php
                       }else{
-                        if($rowUser["foto"]=="NULL"){
+                        if($rowUser["foto"]==NULL){
                           ?>
-                          <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
+                          <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="foto peminjam">
                           <?php
                         }else{
                           ?>
-                          <img src="../attachment/img/<?php echo $rowUser["foto"];?>" class="nav-profile-photo" alt="">
+                          <img src="../attachment/img/<?php echo $rowUser["foto"];?>" class="nav-profile-photo" alt="foto peminjam">
                           <?php
                         }
                       }
@@ -77,6 +77,10 @@ include "../process/proses_adminRuangan.php";
                               <strong class="nama"><?php echo $rowUser["nama"];
                               if($rowPeminjam["level"]=="mahasiswa"){
                                 echo " (".tampilKelas($con, $rowPeminjam["id_user"]).")";
+                              }else if($rowPeminjam["level"]=="admin"){
+                                echo " (Admin)";
+                              }else{
+                                echo " (Dosen)";
                               }
                               ?>
                               </strong>
@@ -134,7 +138,7 @@ include "../process/proses_adminRuangan.php";
                           <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                           <?php
                         }else{
-                          if($rowRiwayatUser["foto"]=="NULL"){
+                          if($rowRiwayatUser["foto"]==NULL){
                             ?>
                             <img src="../attachment/img/avatar.jpeg" class="nav-profile-photo" alt="">
                             <?php
@@ -153,6 +157,10 @@ include "../process/proses_adminRuangan.php";
                               <strong class="nama"><?php echo $rowRiwayatUser["nama"];
                               if($rowRiwayatPeminjam["level"]=="mahasiswa"){
                                 echo " (".tampilKelas($con, $rowRiwayatPeminjam["id_user"]).")";
+                              }else if($rowRiwayatPeminjam["level"]=="admin"){
+                                echo " (Admin)";
+                              }else{
+                                echo " (Dosen)";
                               }
                               ?>
                               </strong>

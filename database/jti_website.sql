@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Bulan Mei 2019 pada 04.58
--- Versi server: 10.1.36-MariaDB
--- Versi PHP: 7.2.10
+-- Generation Time: May 16, 2019 at 07:10 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_absensi`
+-- Table structure for table `tabel_absensi`
 --
 
 CREATE TABLE `tabel_absensi` (
@@ -40,7 +40,7 @@ CREATE TABLE `tabel_absensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_absensi`
+-- Dumping data for table `tabel_absensi`
 --
 
 INSERT INTO `tabel_absensi` (`id_absensi`, `id_mahasiswa`, `sakit`, `ijin`, `alpa`, `jumlah`, `id_status_mahasiswa`, `id_semester`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `tabel_absensi` (`id_absensi`, `id_mahasiswa`, `sakit`, `ijin`, `alp
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_admin`
+-- Table structure for table `tabel_admin`
 --
 
 CREATE TABLE `tabel_admin` (
@@ -70,7 +70,7 @@ CREATE TABLE `tabel_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_admin`
+-- Dumping data for table `tabel_admin`
 --
 
 INSERT INTO `tabel_admin` (`id_admin`, `nama`, `nip`, `foto`, `alamat`, `tempat_lahir`, `tangal_lahir`, `id_user`, `waktu_edit`) VALUES
@@ -80,7 +80,7 @@ INSERT INTO `tabel_admin` (`id_admin`, `nama`, `nip`, `foto`, `alamat`, `tempat_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_attachment`
+-- Table structure for table `tabel_attachment`
 --
 
 CREATE TABLE `tabel_attachment` (
@@ -91,7 +91,7 @@ CREATE TABLE `tabel_attachment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_attachment`
+-- Dumping data for table `tabel_attachment`
 --
 
 INSERT INTO `tabel_attachment` (`id_attachment`, `tipe`, `file`, `id_info`) VALUES
@@ -104,7 +104,7 @@ INSERT INTO `tabel_attachment` (`id_attachment`, `tipe`, `file`, `id_info`) VALU
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_chat`
+-- Table structure for table `tabel_chat`
 --
 
 CREATE TABLE `tabel_chat` (
@@ -116,7 +116,7 @@ CREATE TABLE `tabel_chat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_chat`
+-- Dumping data for table `tabel_chat`
 --
 
 INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VALUES
@@ -142,7 +142,7 @@ INSERT INTO `tabel_chat` (`id_chat`, `isi`, `pengirim`, `penerima`, `waktu`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_dosen`
+-- Table structure for table `tabel_dosen`
 --
 
 CREATE TABLE `tabel_dosen` (
@@ -160,70 +160,44 @@ CREATE TABLE `tabel_dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_dosen`
+-- Dumping data for table `tabel_dosen`
 --
 
 INSERT INTO `tabel_dosen` (`id_dosen`, `nip`, `nama`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`, `id_user`, `waktu_tambah`, `waktu_edit`) VALUES
-(4, '198603182012121001', 'Ridwan Rismanto,SST.,M.KOM', 'Perum Bunul Asri B-20 Malang', 'laki-laki', NULL, NULL, NULL, 31, '2017-08-16 13:26:21', '2019-04-01 00:00:00'),
-(5, '196201051990031002', 'Budi Harijanto, ST., MMkom', 'Perum Giri Palma KAV.113 Malang', 'laki-laki', NULL, NULL, NULL, 33, '2017-05-13 13:26:21', '2019-04-09 00:00:00'),
-(6, '198108102005012002', 'Ariadi Retno Tri Hayati Ririd, S.Kom., M.Kom', 'Jl. Semolo Waru Elok Blok F/38 Malang', 'perempuan', NULL, NULL, NULL, 34, '2017-05-13 13:26:21', '2019-04-09 00:00:00'),
-(7, '197704242008121001', 'Gunawan Budi Prasetyo, ST., MMT', 'Bekasi', 'laki-laki', NULL, NULL, NULL, 35, '2016-05-13 13:26:21', '2019-04-09 00:00:00'),
-(8, '198007162010121002', 'Yuri Ariyanto, S.Kom., M.Kom', 'Jl. Ahila 2 9B/39 Sawojajar 2 Malang', 'laki-laki', NULL, NULL, NULL, 36, '2016-05-13 13:26:21', '2019-04-09 00:00:00'),
-(9, '197606252005012001', 'Atiqah Nurul Asri, S.Pd., M.Pd', 'Jl. Ade Irma Suryani IIIA/332 Malang', 'perempuan', NULL, NULL, NULL, 37, '2016-05-13 13:26:21', '2019-04-09 00:00:00'),
-(10, '198406102008121004', 'Imam Fahrur Rozi, ST., MT', 'Suko Timur Malang', 'laki-laki', NULL, NULL, NULL, 38, '2018-05-13 13:26:21', '2019-04-09 00:00:00'),
-(11, '197111101999031002', 'Rudy Ariyanto, ST, M.Cs', '', 'laki-laki', NULL, NULL, NULL, 39, '2018-05-13 13:26:21', '2019-04-09 00:00:00'),
-(12, '198103182010122002', 'Widaningsih, S.Psi, SH., MH', '', 'perempuan', NULL, NULL, NULL, 40, '2018-05-13 13:26:21', '2019-04-09 00:00:00'),
-(13, '198101052005011005', 'Yan Watequlis Syaifudin, ST., MMT', '', 'laki-laki', NULL, NULL, NULL, 41, '2018-05-13 13:26:21', '2019-04-09 00:00:00'),
-(14, '197305102008011010', 'Indra Dharma Wijaya, ST., MMT', 'Jl. Mayjen Panjaitan 7 RT.4 RW.1 Malang Perum Graha Pelita Asrikatan C-19 Asri', 'laki-laki', NULL, NULL, NULL, 42, '2019-05-13 13:26:21', '2019-04-09 00:00:00'),
-(15, '197903132008121002', 'Arief Prasetyo, S.Kom., M.Kom', 'Permata Jingga Blok Sawo No.11 Malang', 'laki-laki', NULL, NULL, NULL, 43, '2019-05-13 13:26:21', '2019-04-09 00:00:00'),
-(16, '198108092010121002', 'Banni Satria Andoko, S.Kom., MMSI.', 'Sulfat Rivera Residence RI No.7 Malang', 'laki-laki', NULL, NULL, NULL, 44, '2019-05-13 13:26:21', '2019-04-09 00:00:00');
+(4, '198603182012121001', 'Ridwan Rismanto,SST.,M.KOM', 'Perum Bunul Asri B-20 Malang', 'laki-laki', NULL, NULL, NULL, 31, '2017-08-16 06:26:21', '2019-04-01 00:00:00'),
+(5, '196201051990031002', 'Budi Harijanto, ST., MMkom', 'Perum Giri Palma KAV.113 Malang', 'laki-laki', NULL, NULL, NULL, 33, '2017-05-13 06:26:21', '2019-04-09 00:00:00'),
+(6, '198108102005012002', 'Ariadi Retno Tri Hayati Ririd, S.Kom., M.Kom', 'Jl. Semolo Waru Elok Blok F/38 Malang', 'perempuan', NULL, NULL, NULL, 34, '2017-05-13 06:26:21', '2019-04-09 00:00:00'),
+(7, '197704242008121001', 'Gunawan Budi Prasetyo, ST., MMT', 'Bekasi', 'laki-laki', NULL, NULL, NULL, 35, '2016-05-13 06:26:21', '2019-04-09 00:00:00'),
+(8, '198007162010121002', 'Yuri Ariyanto, S.Kom., M.Kom', 'Jl. Ahila 2 9B/39 Sawojajar 2 Malang', 'laki-laki', NULL, NULL, NULL, 36, '2016-05-13 06:26:21', '2019-04-09 00:00:00'),
+(9, '197606252005012001', 'Atiqah Nurul Asri, S.Pd., M.Pd', 'Jl. Ade Irma Suryani IIIA/332 Malang', 'perempuan', NULL, NULL, NULL, 37, '2016-05-13 06:26:21', '2019-04-09 00:00:00'),
+(10, '198406102008121004', 'Imam Fahrur Rozi, ST., MT', 'Suko Timur Malang', 'laki-laki', NULL, NULL, NULL, 38, '2018-05-13 06:26:21', '2019-04-09 00:00:00'),
+(11, '197111101999031002', 'Rudy Ariyanto, ST, M.Cs', '', 'laki-laki', NULL, NULL, NULL, 39, '2018-05-13 06:26:21', '2019-04-09 00:00:00'),
+(12, '198103182010122002', 'Widaningsih, S.Psi, SH., MH', '', 'perempuan', NULL, NULL, NULL, 40, '2018-05-13 06:26:21', '2019-04-09 00:00:00'),
+(13, '198101052005011005', 'Yan Watequlis Syaifudin, ST., MMT', '', 'laki-laki', NULL, NULL, NULL, 41, '2018-05-13 06:26:21', '2019-04-09 00:00:00'),
+(14, '197305102008011010', 'Indra Dharma Wijaya, ST., MMT', 'Jl. Mayjen Panjaitan 7 RT.4 RW.1 Malang Perum Graha Pelita Asrikatan C-19 Asri', 'laki-laki', NULL, NULL, NULL, 42, '2019-05-13 06:26:21', '2019-04-09 00:00:00'),
+(15, '197903132008121002', 'Arief Prasetyo, S.Kom., M.Kom', 'Permata Jingga Blok Sawo No.11 Malang', 'laki-laki', NULL, NULL, NULL, 43, '2019-05-13 06:26:21', '2019-04-09 00:00:00'),
+(16, '198108092010121002', 'Banni Satria Andoko, S.Kom., MMSI.', 'Sulfat Rivera Residence RI No.7 Malang', 'laki-laki', NULL, NULL, NULL, 44, '2019-05-13 06:26:21', '2019-04-09 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_hasil_kuisioner`
+-- Table structure for table `tabel_hasil_kuisioner`
 --
 
 CREATE TABLE `tabel_hasil_kuisioner` (
   `id_hasil_kuisioner` int(30) NOT NULL,
   `id_mahasiswa` int(30) NOT NULL,
   `id_matkul` int(30) NOT NULL,
+  `id_dosen` int(11) NOT NULL,
   `id_kuisioner` int(11) NOT NULL,
   `nilai` int(11) NOT NULL,
   `waktu_edit` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `tabel_hasil_kuisioner`
---
-
-INSERT INTO `tabel_hasil_kuisioner` (`id_hasil_kuisioner`, `id_mahasiswa`, `id_matkul`, `id_kuisioner`, `nilai`, `waktu_edit`) VALUES
-(1, 33, 2, 1, 1, '2019-05-16 09:34:50'),
-(2, 33, 2, 2, 1, '2019-05-16 09:34:50'),
-(3, 33, 2, 3, 1, '2019-05-16 09:34:50'),
-(4, 33, 2, 4, 1, '2019-05-16 09:34:51'),
-(5, 33, 2, 5, 1, '2019-05-16 09:34:51'),
-(6, 33, 2, 6, 1, '2019-05-16 09:34:51'),
-(7, 33, 2, 7, 1, '2019-05-16 09:34:51'),
-(8, 33, 2, 8, 1, '2019-05-16 09:34:51'),
-(9, 33, 2, 9, 1, '2019-05-16 09:34:51'),
-(10, 33, 2, 10, 1, '2019-05-16 09:34:51'),
-(11, 33, 2, 11, 1, '2019-05-16 09:34:51'),
-(12, 33, 2, 12, 1, '2019-05-16 09:34:51'),
-(13, 33, 2, 13, 1, '2019-05-16 09:34:51'),
-(14, 33, 2, 14, 1, '2019-05-16 09:34:51'),
-(15, 33, 2, 15, 1, '2019-05-16 09:34:51'),
-(16, 33, 2, 16, 1, '2019-05-16 09:34:51'),
-(17, 33, 2, 17, 1, '2019-05-16 09:34:51'),
-(18, 33, 2, 18, 1, '2019-05-16 09:34:51'),
-(19, 33, 2, 19, 1, '2019-05-16 09:34:51'),
-(20, 33, 2, 20, 1, '2019-05-16 09:34:51'),
-(21, 33, 2, 21, 1, '2019-05-16 09:34:51');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_info`
+-- Table structure for table `tabel_info`
 --
 
 CREATE TABLE `tabel_info` (
@@ -236,12 +210,12 @@ CREATE TABLE `tabel_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_info`
+-- Dumping data for table `tabel_info`
 --
 
 INSERT INTO `tabel_info` (`id_info`, `judul`, `isi`, `tipe`, `waktu_publish`, `waktu_perubahan`) VALUES
 (1, '2 Dosen dikirim ke Jepang', 'Dikarenakan dosen bernama : \r\n- Pak Yan \r\n- Pak Rosa \r\n- Pak Vipkas \r\nsedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi untuk meminta tugas. \r\n\r\nTerima Kasih...', 'pengumuman', '2019-04-11 03:00:00', '0000-00-00 00:00:00'),
-(2, 'Workshop Pembuatan Dokumen Kurikulum Oleh 3 Dosen', 'Pada hari Selasa, 29 Januari 2019 Jurusan Teknologi Informasi (JTI) menggelar kegiatan Workshop Pembuatan Dokumen Kurikulum yang diikuti oleh seluruh dosen JTI. Acara ini diadakan di Ruang Meeting Dosen Sipil Lantai 4, Politeknik Negeri Malang.\r\n\r\nWorkshop ini menghadirkan pembicara dari Universitas Negeri Malang, Dr. Ir. Sya’ad Patmanthara, M.Pd. Tujuan dari diadakannya workshop ini adalah para dosen dapat membuat Rencana Perkuliahan Semester (RPS),  kontrak perkuliahan dan rubik penilaian untuk semester genap tahun ajaran 2018-2019 dengan lebih baik. Acara yang berlangsung dari pukul 08.00 – 16.00 WIB berlangsung tertib dan lancar.', 'berita', '2019-04-11 07:00:00', '0000-00-00 00:00:00'),
+(2, 'Workshop Pembuatan Dokumen Kurikulum Oleh 3 Dosen', 'Pada hari Selasa, 29 Januari 2019 Jurusan Teknologi Informasi (JTI) menggelar kegiatan Workshop Pembuatan Dokumen Kurikulum yang diikuti oleh seluruh dosen JTI. Acara ini diadakan di Ruang Meeting Dosen Sipil Lantai 4, Politeknik Negeri Malang.\r\n\r\nWorkshop ini menghadirkan pembicara dari Universitas Negeri Malang, Dr. Ir. Syaâ€™ad Patmanthara, M.Pd. Tujuan dari diadakannya workshop ini adalah para dosen dapat membuat Rencana Perkuliahan Semester (RPS),  kontrak perkuliahan dan rubik penilaian untuk semester genap tahun ajaran 2018-2019 dengan lebih baik. Acara yang berlangsung dari pukul 08.00 â€“ 16.00 WIB berlangsung tertib dan lancar.', 'berita', '2019-04-11 07:00:00', '0000-00-00 00:00:00'),
 (3, 'Pengumuman Laporan Akhir dan Skripsi 2018/2019', '1. Pendaftaran untuk usulan dosen pembimbing sudah dibuka\r\n2. Pendaftaran usulan dosen pembimbing berakhir pada tanggal 26 November 2018 pukul 11.00\r\n3. Pengumuman dosen pembimbing dilaksanakan antara tanggal 27-29 November 2018\r\n4. Pendaftaran sidang proposal dan upload proposal dilaksanakan tanggal 29 November-3 Desember 2018\r\n5. Ujian proposal dilaksanakan mulai tanggal 4 Desember 2018', 'pengumuman', '2019-04-11 07:00:00', '0000-00-00 00:00:00'),
 (4, 'PSS (Pelaksanaan Sertifikasi Sektor) thn. 2018 untuk Mahasiswa Jurusan TI', 'PSS merupakan program hibah dari BNSP untuk melakukan sertifikasi kompetensi terhadap mahasiswa. Dan pada tahun 2018 ini, Polinema melalui LSP P1 Polinema, mendapatkan program tersebut dan sebagai tindak lanjutnya wajib melakukan sertifikasi terhadap mahasiswa Polinema. Berkenaan dengan hal tersebut, jurusan TI mendapatkan kuota mahasiswa sejumlah 340 orang untuk diikutkan program PSS tersebut.', 'berita', '2019-04-11 06:00:00', '0000-00-00 00:00:00'),
 (5, 'Update Pembimbing Proposal LA', 'Setelah melalui berbagai pertimbangan dan koreksi oleh panitia, maka update terbaru Pembimbing Proposal LA sebagai berikut:', 'pengumuman', '2019-04-11 03:00:00', '0000-00-00 00:00:00');
@@ -249,7 +223,7 @@ INSERT INTO `tabel_info` (`id_info`, `judul`, `isi`, `tipe`, `waktu_publish`, `w
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_info_beasiswa`
+-- Table structure for table `tabel_info_beasiswa`
 --
 
 CREATE TABLE `tabel_info_beasiswa` (
@@ -262,7 +236,7 @@ CREATE TABLE `tabel_info_beasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_info_beasiswa`
+-- Dumping data for table `tabel_info_beasiswa`
 --
 
 INSERT INTO `tabel_info_beasiswa` (`id_beasiswa`, `judul`, `isi`, `link`, `waktu_publish`, `waktu_berakhir`) VALUES
@@ -271,7 +245,7 @@ INSERT INTO `tabel_info_beasiswa` (`id_beasiswa`, `judul`, `isi`, `link`, `waktu
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_jadwal`
+-- Table structure for table `tabel_jadwal`
 --
 
 CREATE TABLE `tabel_jadwal` (
@@ -288,7 +262,7 @@ CREATE TABLE `tabel_jadwal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_jadwal`
+-- Dumping data for table `tabel_jadwal`
 --
 
 INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_ruang`, `id_kelas`, `id_semester`, `id_dosen`, `id_matkul`, `hari`, `jam_mulai`, `jam_selesai`, `waktu_edit`) VALUES
@@ -301,7 +275,7 @@ INSERT INTO `tabel_jadwal` (`id_jadwal`, `id_ruang`, `id_kelas`, `id_semester`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_kelas`
+-- Table structure for table `tabel_kelas`
 --
 
 CREATE TABLE `tabel_kelas` (
@@ -312,7 +286,7 @@ CREATE TABLE `tabel_kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_kelas`
+-- Dumping data for table `tabel_kelas`
 --
 
 INSERT INTO `tabel_kelas` (`id_kelas`, `kode_kelas`, `id_prodi`, `tingkat`) VALUES
@@ -327,7 +301,7 @@ INSERT INTO `tabel_kelas` (`id_kelas`, `kode_kelas`, `id_prodi`, `tingkat`) VALU
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_khs`
+-- Table structure for table `tabel_khs`
 --
 
 CREATE TABLE `tabel_khs` (
@@ -341,30 +315,20 @@ CREATE TABLE `tabel_khs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_khs`
+-- Dumping data for table `tabel_khs`
 --
 
 INSERT INTO `tabel_khs` (`id_khs`, `id_mahasiswa`, `id_kelas`, `id_semester`, `id_matkul`, `nilai`, `waktu_edit`) VALUES
-(1, 33, 4, 7, 1, 3.5, '2019-04-09 00:00:00'),
-(2, 33, 4, 7, 2, 4, '2019-04-09 00:00:00'),
-(3, 33, 4, 7, 4, 3.2, '2019-04-09 00:00:00'),
-(4, 33, 4, 7, 6, 3, '2019-04-09 00:00:00'),
-(5, 34, 4, 7, 1, 3, '2019-04-11 00:00:00'),
-(6, 33, 4, 6, 1, 3.7, '0000-00-00 00:00:00'),
-(7, 33, 4, 4, 5, 3.3, '0000-00-00 00:00:00'),
-(8, 33, 4, 6, 5, 3.3, '0000-00-00 00:00:00'),
-(9, 33, 4, 6, 3, 3, '0000-00-00 00:00:00'),
-(10, 33, 4, 6, 2, 3.1, '0000-00-00 00:00:00'),
-(13, 33, 4, 4, 7, 3.4, '0000-00-00 00:00:00'),
-(14, 33, 4, 4, 4, 3.5, '0000-00-00 00:00:00'),
-(15, 33, 4, 5, 2, 3.4, '0000-00-00 00:00:00'),
-(16, 33, 4, 5, 6, 3.5, '0000-00-00 00:00:00'),
-(17, 33, 4, 5, 7, 3.7, '0000-00-00 00:00:00');
+(1, 33, 4, 7, 1, 90, '2019-04-09 00:00:00'),
+(2, 33, 4, 7, 2, 80, '2019-04-09 00:00:00'),
+(3, 33, 4, 7, 4, 70, '2019-04-09 00:00:00'),
+(4, 33, 4, 7, 6, 75, '2019-04-09 00:00:00'),
+(5, 33, 4, 7, 3, 80, '2019-04-09 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_komentar`
+-- Table structure for table `tabel_komentar`
 --
 
 CREATE TABLE `tabel_komentar` (
@@ -376,7 +340,7 @@ CREATE TABLE `tabel_komentar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_komentar`
+-- Dumping data for table `tabel_komentar`
 --
 
 INSERT INTO `tabel_komentar` (`id_komentar`, `id_info`, `id_user`, `isi`, `waktu`) VALUES
@@ -389,7 +353,7 @@ INSERT INTO `tabel_komentar` (`id_komentar`, `id_info`, `id_user`, `isi`, `waktu
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_kompen`
+-- Table structure for table `tabel_kompen`
 --
 
 CREATE TABLE `tabel_kompen` (
@@ -405,7 +369,7 @@ CREATE TABLE `tabel_kompen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_kompen`
+-- Dumping data for table `tabel_kompen`
 --
 
 INSERT INTO `tabel_kompen` (`id_kompen`, `id_mahasiswa`, `id_dosen`, `id_semester`, `jumlah_jam`, `waktu`, `id_pekerjaan_kompen`, `waktu_verifikasi`, `status_verifikasi`) VALUES
@@ -414,7 +378,7 @@ INSERT INTO `tabel_kompen` (`id_kompen`, `id_mahasiswa`, `id_dosen`, `id_semeste
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_krs`
+-- Table structure for table `tabel_krs`
 --
 
 CREATE TABLE `tabel_krs` (
@@ -428,7 +392,7 @@ CREATE TABLE `tabel_krs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_krs`
+-- Dumping data for table `tabel_krs`
 --
 
 INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gambar_krs`, `id_semester`, `status_verifikasi`, `waktu_edit`) VALUES
@@ -465,7 +429,7 @@ INSERT INTO `tabel_krs` (`id_krs`, `id_mahasiswa`, `status_daftar_ulang`, `gamba
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_kuisioner`
+-- Table structure for table `tabel_kuisioner`
 --
 
 CREATE TABLE `tabel_kuisioner` (
@@ -475,7 +439,7 @@ CREATE TABLE `tabel_kuisioner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_kuisioner`
+-- Dumping data for table `tabel_kuisioner`
 --
 
 INSERT INTO `tabel_kuisioner` (`id_kuisioner`, `kriteria`, `status_aktif`) VALUES
@@ -504,7 +468,7 @@ INSERT INTO `tabel_kuisioner` (`id_kuisioner`, `kriteria`, `status_aktif`) VALUE
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_mahasiswa`
+-- Table structure for table `tabel_mahasiswa`
 --
 
 CREATE TABLE `tabel_mahasiswa` (
@@ -525,44 +489,44 @@ CREATE TABLE `tabel_mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_mahasiswa`
+-- Dumping data for table `tabel_mahasiswa`
 --
 
 INSERT INTO `tabel_mahasiswa` (`id_mahasiswa`, `id_prodi`, `id_kelas`, `id_semester`, `nim`, `nama`, `alamat`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `foto`, `waktu_edit`, `id_user`, `waktu_tambah`) VALUES
-(33, 3, 4, 7, '1741720144', 'Abdallah Darussalam Candra', 'Perum Graha Kota Asri Blok D-1 No. 9 Jl. Muharto V', 'laki-laki', 'Sumenep', '1999-10-30', NULL, '2019-04-04 00:00:00', 2, '2017-05-13 13:32:33'),
-(34, 3, 4, 7, '1741720008', 'Adn Maulidya Handah Putri', 'Jl. Klampok No. 97-A', 'perempuan', 'Malang', '1999-06-25', NULL, '2019-04-04 00:00:00', 3, '2017-05-13 13:32:33'),
-(35, 3, 4, 7, '1741720040', 'Aldihamda Sulthon Fuad Prajakusuma', 'Jl. Jatirejo', 'laki-laki', 'Trenggalek', '1998-06-26', NULL, '2019-04-04 00:00:00', 4, '2017-05-13 13:32:33'),
-(36, 3, 4, 7, '1741720043', 'Amin Anis Kuddah', 'Jl. Segara 186', 'laki-laki', 'Pamekasan', '1999-09-27', NULL, '2019-04-04 00:00:00', 5, '2017-05-13 13:32:33'),
-(37, 3, 4, 7, '1741720086', 'Chintya Puspa Dewi', 'Dsn. Dadapan', 'perempuan', 'Malang', '1999-05-27', NULL, '2019-04-04 00:00:00', 6, '2017-05-13 13:32:33'),
-(38, 3, 4, 7, '1741720053', 'Dimas Shella Charlinawati', 'Dsn. Dander', 'perempuan', 'Jember', '1999-07-04', NULL, '2019-04-04 00:00:00', 7, '2017-05-13 13:32:33'),
-(39, 3, 4, 7, '1741720054', 'Ermi Pristiyaningrum', 'Dsn. Banca\'an', 'perempuan', 'Tulungagung', '1998-12-06', NULL, '2019-04-04 00:00:00', 8, '2017-05-13 13:32:33'),
-(40, 3, 4, 7, '1741720045', 'Fardhan Ardhi Ramadhan', 'Jl. Titas Asri X Blok H No. 12', 'laki-laki', 'Malang', '1999-01-16', NULL, '2019-04-04 00:00:00', 9, '2017-05-13 13:32:33'),
-(41, 3, 4, 7, '1741720026', 'Galang Yudha Pratama', 'Perum Joyo Grand Blok A No. 8', 'laki-laki', 'Malang', '1998-10-27', NULL, '2019-04-04 00:00:00', 10, '2017-05-13 13:32:33'),
-(42, 3, 4, 7, '1741720088', 'Greggy Gianini Firmansyah', 'Jl. Gading No. 38', 'laki-laki', 'Malang', '1999-03-22', NULL, '2019-04-04 00:00:00', 11, '2017-05-13 13:32:33'),
-(43, 3, 4, 7, '1741720192', 'Hafizh Dias Ramadhan', 'Perum Bumi Mondoroko Raya AC-9', 'laki-laki', 'Malang', '1999-01-13', NULL, '2019-04-04 00:00:00', 12, '2017-05-13 13:32:33'),
-(44, 3, 4, 7, '1741720058', 'Haryo Bagus Setyawan', 'Jl. Ksatrian Dalam No. 15-A', 'laki-laki', 'Medan', '1999-08-31', NULL, '2019-04-04 00:00:00', 13, '2017-05-13 13:32:33'),
-(45, 3, 4, 7, '1741720032', 'Hesti Anisa Reski', 'Jl. Gang TengaH No. 41', 'perempuan', 'Malang', '1998-12-19', NULL, '2019-04-04 00:00:00', 14, '2017-05-13 13:32:33'),
-(46, 3, 4, 7, '1741720018', 'Ika Puspa Fairuz Wiwanata', 'Jl. Kesatrian No. 6', 'perempuan', 'Surakarta', '1999-08-21', NULL, '2019-04-04 00:00:00', 15, '2017-05-13 13:32:33'),
-(47, 3, 4, 7, '1741720011', 'Ilham Nuswantoro Aji', 'Jl. Kh. Achmad Dahlan 11 No.65', 'laki-laki', 'Pasuruan', '2000-04-10', NULL, '2019-04-04 00:00:00', 16, '2017-05-13 13:32:33'),
-(48, 3, 4, 7, '1741720027', 'Leni Saputri', 'Suwayuwo Kulon Embong RT.01 RW.03', 'perempuan', 'Pasuruan', '1999-07-09', NULL, '2019-04-04 00:00:00', 17, '2017-05-13 13:32:33'),
-(49, 3, 4, 7, '1741720031', 'Muhammad Aliyul Murtadlo', 'Dsn. Kedawong', 'laki-laki', 'Jombang', '1999-06-04', NULL, '2019-04-04 00:00:00', 18, '2017-05-13 13:32:33'),
-(50, 3, 4, 7, '1741720114', 'Okta Chandika Salsabila', 'Jl. Ahmad Yani No.191', 'perempuan', 'Malang', '1999-10-20', NULL, '2019-04-04 00:00:00', 19, '2017-05-13 13:32:33'),
-(51, 3, 4, 7, '1741720049', 'Panji Awwaludi Dzikriawan', 'Dsn. Bebe\'an Lor', 'laki-laki', 'Pasuruan', '1999-04-30', NULL, '2019-04-04 00:00:00', 20, '2017-05-13 13:32:33'),
-(52, 3, 4, 7, '1741720061', 'Rahardhiyan Wahyu Putra', 'Dsn. Sambiroto', 'laki-laki', 'Sidoarjo', '1999-06-06', NULL, '2019-04-04 00:00:00', 21, '2017-05-13 13:32:33'),
-(53, 3, 4, 7, '1741720112', 'Reffan Pandu Amirulloh', 'Sukarsid', 'laki-laki', 'Malang', '1998-11-13', NULL, '2019-04-04 00:00:00', 22, '2017-05-13 13:32:33'),
-(54, 3, 4, 7, '1741720160', 'Reza Ariestya Putra', 'Jl. Katu No. 6', 'laki-laki', 'Jakarta', '1998-04-19', NULL, '2019-04-04 00:00:00', 23, '2017-05-13 13:32:33'),
-(55, 3, 4, 7, '1741720111', 'Septa Kusumaningtyas', 'Jl. Sumber Bangun D-76', 'perempuan', 'Malang', '1998-09-07', NULL, '2019-04-04 00:00:00', 24, '2017-05-13 13:32:33'),
-(56, 3, 4, 7, '1741720196', 'Septian Caesar Floresko', 'Perum Sekarsari Indah B-28', 'laki-laki', 'Manggarai', '1998-09-09', NULL, '2019-04-04 00:00:00', 25, '2017-05-13 13:32:33'),
-(57, 3, 4, 7, '1741720158', 'Sulthan Rafif', 'Jl. Gondosuli No.2', 'laki-laki', 'Malang', '1999-09-05', NULL, '2019-04-04 00:00:00', 26, '2017-05-13 13:32:33'),
-(58, 3, 4, 7, '1741720081', 'Syahdanny Alhamda', 'Jl. Raya Slamet Wiroto', 'laki-laki', 'Malang', '1998-10-11', NULL, '2019-04-04 00:00:00', 27, '2017-05-13 13:32:33'),
-(59, 3, 4, 7, '1741720203', 'Vian Satria Maulana Navalino', 'Perum Arjuna Gumilang A-3', 'laki-laki', 'Jakarta', '1999-06-29', NULL, '2019-04-04 00:00:00', 28, '2017-05-13 13:32:33'),
-(60, 3, 4, 7, '1741720076', 'Vicko Handika Nanda Firdiansyah', 'Jl. Panjaitan No. 1', 'laki-laki', 'Malang', '1998-07-14', NULL, '2019-04-04 00:00:00', 29, '2017-05-13 13:32:33'),
-(61, 3, 4, 7, '1741720036', 'Wiji Prabowo', 'Dsn. Tlogosari', 'laki-laki', 'Pasuruan ', '1999-10-04', NULL, '2019-04-04 00:00:00', 30, '2017-05-13 13:32:33');
+(33, 3, 4, 7, '1741720144', 'Abdallah Darussalam Candra', 'Perum Graha Kota Asri Blok D-1 No. 9 Jl. Muharto V', 'laki-laki', 'Sumenep', '1999-10-30', NULL, '2019-04-04 00:00:00', 2, '2017-05-13 06:32:33'),
+(34, 3, 4, 7, '1741720008', 'Adn Maulidya Handah Putri', 'Jl. Klampok No. 97-A', 'perempuan', 'Malang', '1999-06-25', NULL, '2019-04-04 00:00:00', 3, '2017-05-13 06:32:33'),
+(35, 3, 4, 7, '1741720040', 'Aldihamda Sulthon Fuad Prajakusuma', 'Jl. Jatirejo', 'laki-laki', 'Trenggalek', '1998-06-26', NULL, '2019-04-04 00:00:00', 4, '2017-05-13 06:32:33'),
+(36, 3, 4, 7, '1741720043', 'Amin Anis Kuddah', 'Jl. Segara 186', 'laki-laki', 'Pamekasan', '1999-09-27', NULL, '2019-04-04 00:00:00', 5, '2017-05-13 06:32:33'),
+(37, 3, 4, 7, '1741720086', 'Chintya Puspa Dewi', 'Dsn. Dadapan', 'perempuan', 'Malang', '1999-05-27', NULL, '2019-04-04 00:00:00', 6, '2017-05-13 06:32:33'),
+(38, 3, 4, 7, '1741720053', 'Dimas Shella Charlinawati', 'Dsn. Dander', 'perempuan', 'Jember', '1999-07-04', NULL, '2019-04-04 00:00:00', 7, '2017-05-13 06:32:33'),
+(39, 3, 4, 7, '1741720054', 'Ermi Pristiyaningrum', 'Dsn. Banca\'an', 'perempuan', 'Tulungagung', '1998-12-06', NULL, '2019-04-04 00:00:00', 8, '2017-05-13 06:32:33'),
+(40, 3, 4, 7, '1741720045', 'Fardhan Ardhi Ramadhan', 'Jl. Titas Asri X Blok H No. 12', 'laki-laki', 'Malang', '1999-01-16', NULL, '2019-04-04 00:00:00', 9, '2017-05-13 06:32:33'),
+(41, 3, 4, 7, '1741720026', 'Galang Yudha Pratama', 'Perum Joyo Grand Blok A No. 8', 'laki-laki', 'Malang', '1998-10-27', NULL, '2019-04-04 00:00:00', 10, '2017-05-13 06:32:33'),
+(42, 3, 4, 7, '1741720088', 'Greggy Gianini Firmansyah', 'Jl. Gading No. 38', 'laki-laki', 'Malang', '1999-03-22', NULL, '2019-04-04 00:00:00', 11, '2017-05-13 06:32:33'),
+(43, 3, 4, 7, '1741720192', 'Hafizh Dias Ramadhan', 'Perum Bumi Mondoroko Raya AC-9', 'laki-laki', 'Malang', '1999-01-13', NULL, '2019-04-04 00:00:00', 12, '2017-05-13 06:32:33'),
+(44, 3, 4, 7, '1741720058', 'Haryo Bagus Setyawan', 'Jl. Ksatrian Dalam No. 15-A', 'laki-laki', 'Medan', '1999-08-31', NULL, '2019-04-04 00:00:00', 13, '2017-05-13 06:32:33'),
+(45, 3, 4, 7, '1741720032', 'Hesti Anisa Reski', 'Jl. Gang TengaH No. 41', 'perempuan', 'Malang', '1998-12-19', NULL, '2019-04-04 00:00:00', 14, '2017-05-13 06:32:33'),
+(46, 3, 4, 7, '1741720018', 'Ika Puspa Fairuz Wiwanata', 'Jl. Kesatrian No. 6', 'perempuan', 'Surakarta', '1999-08-21', NULL, '2019-04-04 00:00:00', 15, '2017-05-13 06:32:33'),
+(47, 3, 4, 7, '1741720011', 'Ilham Nuswantoro Aji', 'Jl. Kh. Achmad Dahlan 11 No.65', 'laki-laki', 'Pasuruan', '2000-04-10', NULL, '2019-04-04 00:00:00', 16, '2017-05-13 06:32:33'),
+(48, 3, 4, 7, '1741720027', 'Leni Saputri', 'Suwayuwo Kulon Embong RT.01 RW.03', 'perempuan', 'Pasuruan', '1999-07-09', NULL, '2019-04-04 00:00:00', 17, '2017-05-13 06:32:33'),
+(49, 3, 4, 7, '1741720031', 'Muhammad Aliyul Murtadlo', 'Dsn. Kedawong', 'laki-laki', 'Jombang', '1999-06-04', NULL, '2019-04-04 00:00:00', 18, '2017-05-13 06:32:33'),
+(50, 3, 4, 7, '1741720114', 'Okta Chandika Salsabila', 'Jl. Ahmad Yani No.191', 'perempuan', 'Malang', '1999-10-20', NULL, '2019-04-04 00:00:00', 19, '2017-05-13 06:32:33'),
+(51, 3, 4, 7, '1741720049', 'Panji Awwaludi Dzikriawan', 'Dsn. Bebe\'an Lor', 'laki-laki', 'Pasuruan', '1999-04-30', NULL, '2019-04-04 00:00:00', 20, '2017-05-13 06:32:33'),
+(52, 3, 4, 7, '1741720061', 'Rahardhiyan Wahyu Putra', 'Dsn. Sambiroto', 'laki-laki', 'Sidoarjo', '1999-06-06', NULL, '2019-04-04 00:00:00', 21, '2017-05-13 06:32:33'),
+(53, 3, 4, 7, '1741720112', 'Reffan Pandu Amirulloh', 'Sukarsid', 'laki-laki', 'Malang', '1998-11-13', NULL, '2019-04-04 00:00:00', 22, '2017-05-13 06:32:33'),
+(54, 3, 4, 7, '1741720160', 'Reza Ariestya Putra', 'Jl. Katu No. 6', 'laki-laki', 'Jakarta', '1998-04-19', NULL, '2019-04-04 00:00:00', 23, '2017-05-13 06:32:33'),
+(55, 3, 4, 7, '1741720111', 'Septa Kusumaningtyas', 'Jl. Sumber Bangun D-76', 'perempuan', 'Malang', '1998-09-07', NULL, '2019-04-04 00:00:00', 24, '2017-05-13 06:32:33'),
+(56, 3, 4, 7, '1741720196', 'Septian Caesar Floresko', 'Perum Sekarsari Indah B-28', 'laki-laki', 'Manggarai', '1998-09-09', NULL, '2019-04-04 00:00:00', 25, '2017-05-13 06:32:33'),
+(57, 3, 4, 7, '1741720158', 'Sulthan Rafif', 'Jl. Gondosuli No.2', 'laki-laki', 'Malang', '1999-09-05', NULL, '2019-04-04 00:00:00', 26, '2017-05-13 06:32:33'),
+(58, 3, 4, 7, '1741720081', 'Syahdanny Alhamda', 'Jl. Raya Slamet Wiroto', 'laki-laki', 'Malang', '1998-10-11', NULL, '2019-04-04 00:00:00', 27, '2017-05-13 06:32:33'),
+(59, 3, 4, 7, '1741720203', 'Vian Satria Maulana Navalino', 'Perum Arjuna Gumilang A-3', 'laki-laki', 'Jakarta', '1999-06-29', NULL, '2019-04-04 00:00:00', 28, '2017-05-13 06:32:33'),
+(60, 3, 4, 7, '1741720076', 'Vicko Handika Nanda Firdiansyah', 'Jl. Panjaitan No. 1', 'laki-laki', 'Malang', '1998-07-14', NULL, '2019-04-04 00:00:00', 29, '2017-05-13 06:32:33'),
+(61, 3, 4, 7, '1741720036', 'Wiji Prabowo', 'Dsn. Tlogosari', 'laki-laki', 'Pasuruan ', '1999-10-04', NULL, '2019-04-04 00:00:00', 30, '2017-05-13 06:32:33');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_matkul`
+-- Table structure for table `tabel_matkul`
 --
 
 CREATE TABLE `tabel_matkul` (
@@ -573,22 +537,22 @@ CREATE TABLE `tabel_matkul` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_matkul`
+-- Dumping data for table `tabel_matkul`
 --
 
 INSERT INTO `tabel_matkul` (`id_matkul`, `nama`, `sks`, `jam`) VALUES
-(1, 'Manajemen Proyek', 4, 2),
-(2, 'Analisis Dan Desain Berorientasi Objek', 6, 2),
-(3, 'Sistem Manajemen Basisdata', 0, 2),
-(4, 'Proyek 1', 0, 2),
-(5, 'Komputasi Kognitif', 0, 0),
-(6, 'Sistem Informasi', 0, 0),
-(7, 'Pemrograman Web Lanjut', 0, 0);
+(1, 'Manajemen Proyek', 2, 4),
+(2, 'Analisis Dan Desain Berorientasi Objek', 3, 6),
+(3, 'Sistem Manajemen Basisdata', 3, 6),
+(4, 'Proyek 1', 3, 8),
+(5, 'Komputasi Kognitif', 2, 4),
+(6, 'Sistem Informasi', 2, 4),
+(7, 'Pemrograman Web Lanjut', 3, 6);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_notifikasi`
+-- Table structure for table `tabel_notifikasi`
 --
 
 CREATE TABLE `tabel_notifikasi` (
@@ -600,30 +564,30 @@ CREATE TABLE `tabel_notifikasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_notifikasi`
+-- Dumping data for table `tabel_notifikasi`
 --
 
 INSERT INTO `tabel_notifikasi` (`id_notifikasi`, `isi`, `waktu`, `status_dibaca`, `id_user`) VALUES
-(1, 'Anda telah mengganti foto profil', '2019-05-14 06:00:00', 'sudah', 2),
-(2, 'Anda telah mengganti password', '2019-05-13 11:00:00', 'sudah', 2),
-(3, 'Anda telah mempunyai pesan dari admin', '2019-05-15 03:00:00', 'sudah', 2),
-(4, 'Anda telah mempunyai pesan dari admin', '2019-05-15 09:00:00', 'belum', 3),
-(5, 'Anda telah mengganti foto profil', '2019-05-13 06:00:00', 'sudah', 3),
-(6, 'Ruang kelas pada jam 12.50-16.00 dipindahkan ke ruang LPJ 03 Lantai 7', '2019-05-15 03:36:05', 'belum', 2),
-(7, 'Anda telah mempunyai pesan dari admin', '2019-05-15 03:36:46', 'belum', 2),
-(8, 'Anda telah mengganti password', '2019-05-15 03:37:07', 'belum', 3),
-(9, 'Anda mempunyai berita baru: 2 Dosen dikirim ke Jepang', '2019-05-15 03:38:09', 'belum', 2),
-(10, 'Anda mendapatkan pesan dari Abdallah Darussalam Candra', '2019-05-15 03:41:09', 'sudah', 32),
-(11, 'Abdallah Darussalam Candra telah mengomentari berita 2 Dosen dikirim ke Jepang', '2019-05-15 03:41:56', 'sudah', 32),
-(12, 'Galang Yudha Pratama telah mengajukan kompensasi kepada Anda', '2019-05-15 03:44:07', 'sudah', 31),
-(13, 'Anda telah mengkonfirmasi kompensasi dari Galang Yudha Pratama', '2019-05-15 03:44:36', 'belum', 31),
-(14, 'Anda telah mengganti foto profil', '2019-05-15 03:45:23', 'sudah', 31),
-(15, 'Anda telah memesan ruangan LPJ 03', '2019-05-15 03:46:35', 'belum', 31);
+(1, 'Anda telah mengganti foto profil', '2019-05-13 23:00:00', 'sudah', 2),
+(2, 'Anda telah mengganti password', '2019-05-13 04:00:00', 'sudah', 2),
+(3, 'Anda telah mempunyai pesan dari admin', '2019-05-14 20:00:00', 'sudah', 2),
+(4, 'Anda telah mempunyai pesan dari admin', '2019-05-15 02:00:00', 'belum', 3),
+(5, 'Anda telah mengganti foto profil', '2019-05-12 23:00:00', 'sudah', 3),
+(6, 'Ruang kelas pada jam 12.50-16.00 dipindahkan ke ruang LPJ 03 Lantai 7', '2019-05-14 20:36:05', 'belum', 2),
+(7, 'Anda telah mempunyai pesan dari admin', '2019-05-14 20:36:46', 'belum', 2),
+(8, 'Anda telah mengganti password', '2019-05-14 20:37:07', 'belum', 3),
+(9, 'Anda mempunyai berita baru: 2 Dosen dikirim ke Jepang', '2019-05-14 20:38:09', 'belum', 2),
+(10, 'Anda mendapatkan pesan dari Abdallah Darussalam Candra', '2019-05-14 20:41:09', 'sudah', 32),
+(11, 'Abdallah Darussalam Candra telah mengomentari berita 2 Dosen dikirim ke Jepang', '2019-05-14 20:41:56', 'sudah', 32),
+(12, 'Galang Yudha Pratama telah mengajukan kompensasi kepada Anda', '2019-05-14 20:44:07', 'sudah', 31),
+(13, 'Anda telah mengkonfirmasi kompensasi dari Galang Yudha Pratama', '2019-05-14 20:44:36', 'belum', 31),
+(14, 'Anda telah mengganti foto profil', '2019-05-14 20:45:23', 'sudah', 31),
+(15, 'Anda telah memesan ruangan LPJ 03', '2019-05-14 20:46:35', 'belum', 31);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_pekerjaan_kompen`
+-- Table structure for table `tabel_pekerjaan_kompen`
 --
 
 CREATE TABLE `tabel_pekerjaan_kompen` (
@@ -635,7 +599,7 @@ CREATE TABLE `tabel_pekerjaan_kompen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_pekerjaan_kompen`
+-- Dumping data for table `tabel_pekerjaan_kompen`
 --
 
 INSERT INTO `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`, `id_dosen`, `nama`, `kuota`, `id_semester`) VALUES
@@ -648,7 +612,7 @@ INSERT INTO `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`, `id_dosen`, `nama`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_prodi`
+-- Table structure for table `tabel_prodi`
 --
 
 CREATE TABLE `tabel_prodi` (
@@ -658,7 +622,7 @@ CREATE TABLE `tabel_prodi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_prodi`
+-- Dumping data for table `tabel_prodi`
 --
 
 INSERT INTO `tabel_prodi` (`id_prodi`, `nama`, `kode`) VALUES
@@ -668,7 +632,7 @@ INSERT INTO `tabel_prodi` (`id_prodi`, `nama`, `kode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_reply_komentar`
+-- Table structure for table `tabel_reply_komentar`
 --
 
 CREATE TABLE `tabel_reply_komentar` (
@@ -679,7 +643,7 @@ CREATE TABLE `tabel_reply_komentar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_reply_komentar`
+-- Dumping data for table `tabel_reply_komentar`
 --
 
 INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `isi`, `id_komentar`, `waktu`) VALUES
@@ -690,7 +654,7 @@ INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `isi`, `id_komentar`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- Table structure for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 
 CREATE TABLE `tabel_riwayat_peminjam_kelas_kosong` (
@@ -705,7 +669,7 @@ CREATE TABLE `tabel_riwayat_peminjam_kelas_kosong` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- Dumping data for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 
 INSERT INTO `tabel_riwayat_peminjam_kelas_kosong` (`id_riwayat_peminjam_kelas_kosong`, `id_ruang`, `peminjam`, `hari`, `waktu_mulai`, `waktu_selesai`, `waktu_pinjam`, `waktu_checkout`) VALUES
@@ -714,7 +678,7 @@ INSERT INTO `tabel_riwayat_peminjam_kelas_kosong` (`id_riwayat_peminjam_kelas_ko
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_ruang`
+-- Table structure for table `tabel_ruang`
 --
 
 CREATE TABLE `tabel_ruang` (
@@ -724,7 +688,7 @@ CREATE TABLE `tabel_ruang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_ruang`
+-- Dumping data for table `tabel_ruang`
 --
 
 INSERT INTO `tabel_ruang` (`id_ruang`, `kode`, `lantai`) VALUES
@@ -738,7 +702,7 @@ INSERT INTO `tabel_ruang` (`id_ruang`, `kode`, `lantai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_ruang_dipinjam`
+-- Table structure for table `tabel_ruang_dipinjam`
 --
 
 CREATE TABLE `tabel_ruang_dipinjam` (
@@ -754,7 +718,7 @@ CREATE TABLE `tabel_ruang_dipinjam` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_semester`
+-- Table structure for table `tabel_semester`
 --
 
 CREATE TABLE `tabel_semester` (
@@ -763,7 +727,7 @@ CREATE TABLE `tabel_semester` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_semester`
+-- Dumping data for table `tabel_semester`
 --
 
 INSERT INTO `tabel_semester` (`id_semester`, `semester`) VALUES
@@ -777,7 +741,7 @@ INSERT INTO `tabel_semester` (`id_semester`, `semester`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_status_mahasiswa`
+-- Table structure for table `tabel_status_mahasiswa`
 --
 
 CREATE TABLE `tabel_status_mahasiswa` (
@@ -786,7 +750,7 @@ CREATE TABLE `tabel_status_mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tabel_status_mahasiswa`
+-- Dumping data for table `tabel_status_mahasiswa`
 --
 
 INSERT INTO `tabel_status_mahasiswa` (`id_status_mahasiswa`, `keterangan`) VALUES
@@ -801,7 +765,7 @@ INSERT INTO `tabel_status_mahasiswa` (`id_status_mahasiswa`, `keterangan`) VALUE
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_task`
+-- Table structure for table `tabel_task`
 --
 
 CREATE TABLE `tabel_task` (
@@ -813,7 +777,7 @@ CREATE TABLE `tabel_task` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_task`
+-- Dumping data for table `tabel_task`
 --
 
 INSERT INTO `tabel_task` (`id_task`, `pekerjaan`, `kuota`, `id_dosen`, `status`) VALUES
@@ -826,7 +790,7 @@ INSERT INTO `tabel_task` (`id_task`, `pekerjaan`, `kuota`, `id_dosen`, `status`)
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_user`
+-- Table structure for table `tabel_user`
 --
 
 CREATE TABLE `tabel_user` (
@@ -837,7 +801,7 @@ CREATE TABLE `tabel_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `tabel_user`
+-- Dumping data for table `tabel_user`
 --
 
 INSERT INTO `tabel_user` (`id_user`, `username`, `password`, `level`) VALUES
@@ -891,7 +855,7 @@ INSERT INTO `tabel_user` (`id_user`, `username`, `password`, `level`) VALUES
 --
 
 --
--- Indeks untuk tabel `tabel_absensi`
+-- Indexes for table `tabel_absensi`
 --
 ALTER TABLE `tabel_absensi`
   ADD PRIMARY KEY (`id_absensi`),
@@ -900,21 +864,21 @@ ALTER TABLE `tabel_absensi`
   ADD KEY `id_semester` (`id_semester`);
 
 --
--- Indeks untuk tabel `tabel_admin`
+-- Indexes for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   ADD PRIMARY KEY (`id_admin`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_attachment`
+-- Indexes for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   ADD PRIMARY KEY (`id_attachment`),
   ADD KEY `id_info` (`id_info`);
 
 --
--- Indeks untuk tabel `tabel_chat`
+-- Indexes for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
   ADD PRIMARY KEY (`id_chat`),
@@ -923,35 +887,36 @@ ALTER TABLE `tabel_chat`
   ADD KEY `penerima_2` (`penerima`);
 
 --
--- Indeks untuk tabel `tabel_dosen`
+-- Indexes for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   ADD PRIMARY KEY (`id_dosen`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_hasil_kuisioner`
+-- Indexes for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
   ADD PRIMARY KEY (`id_hasil_kuisioner`),
   ADD KEY `id_dosen` (`id_matkul`),
   ADD KEY `id_mahasiswa` (`id_mahasiswa`),
-  ADD KEY `id_kuisoner` (`id_kuisioner`);
+  ADD KEY `id_kuisoner` (`id_kuisioner`),
+  ADD KEY `id_dosen_2` (`id_dosen`);
 
 --
--- Indeks untuk tabel `tabel_info`
+-- Indexes for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
   ADD PRIMARY KEY (`id_info`);
 
 --
--- Indeks untuk tabel `tabel_info_beasiswa`
+-- Indexes for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   ADD PRIMARY KEY (`id_beasiswa`);
 
 --
--- Indeks untuk tabel `tabel_jadwal`
+-- Indexes for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
   ADD PRIMARY KEY (`id_jadwal`),
@@ -962,14 +927,14 @@ ALTER TABLE `tabel_jadwal`
   ADD KEY `id_matkul` (`id_matkul`);
 
 --
--- Indeks untuk tabel `tabel_kelas`
+-- Indexes for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   ADD PRIMARY KEY (`id_kelas`),
   ADD KEY `id_prodi` (`id_prodi`);
 
 --
--- Indeks untuk tabel `tabel_khs`
+-- Indexes for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
   ADD PRIMARY KEY (`id_khs`),
@@ -979,7 +944,7 @@ ALTER TABLE `tabel_khs`
   ADD KEY `id_matkul` (`id_matkul`);
 
 --
--- Indeks untuk tabel `tabel_komentar`
+-- Indexes for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   ADD PRIMARY KEY (`id_komentar`),
@@ -987,7 +952,7 @@ ALTER TABLE `tabel_komentar`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_kompen`
+-- Indexes for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   ADD PRIMARY KEY (`id_kompen`),
@@ -997,7 +962,7 @@ ALTER TABLE `tabel_kompen`
   ADD KEY `id_pekerjaan_kompen` (`id_pekerjaan_kompen`);
 
 --
--- Indeks untuk tabel `tabel_krs`
+-- Indexes for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   ADD PRIMARY KEY (`id_krs`),
@@ -1005,13 +970,13 @@ ALTER TABLE `tabel_krs`
   ADD KEY `id_semester` (`id_semester`);
 
 --
--- Indeks untuk tabel `tabel_kuisioner`
+-- Indexes for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
   ADD PRIMARY KEY (`id_kuisioner`);
 
 --
--- Indeks untuk tabel `tabel_mahasiswa`
+-- Indexes for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   ADD PRIMARY KEY (`id_mahasiswa`),
@@ -1021,20 +986,20 @@ ALTER TABLE `tabel_mahasiswa`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_matkul`
+-- Indexes for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
   ADD PRIMARY KEY (`id_matkul`);
 
 --
--- Indeks untuk tabel `tabel_notifikasi`
+-- Indexes for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   ADD PRIMARY KEY (`id_notifikasi`),
   ADD KEY `id_mahasiswa` (`id_user`);
 
 --
--- Indeks untuk tabel `tabel_pekerjaan_kompen`
+-- Indexes for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   ADD PRIMARY KEY (`id_pekerjaan_kompen`),
@@ -1042,20 +1007,20 @@ ALTER TABLE `tabel_pekerjaan_kompen`
   ADD KEY `id_semester` (`id_semester`);
 
 --
--- Indeks untuk tabel `tabel_prodi`
+-- Indexes for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
   ADD PRIMARY KEY (`id_prodi`);
 
 --
--- Indeks untuk tabel `tabel_reply_komentar`
+-- Indexes for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   ADD PRIMARY KEY (`id_reply_komentar`),
   ADD KEY `id_komentar` (`id_komentar`);
 
 --
--- Indeks untuk tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- Indexes for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   ADD PRIMARY KEY (`id_riwayat_peminjam_kelas_kosong`),
@@ -1063,13 +1028,13 @@ ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   ADD KEY `peminjam` (`peminjam`);
 
 --
--- Indeks untuk tabel `tabel_ruang`
+-- Indexes for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   ADD PRIMARY KEY (`id_ruang`);
 
 --
--- Indeks untuk tabel `tabel_ruang_dipinjam`
+-- Indexes for table `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   ADD PRIMARY KEY (`id_ruang_dipinjam`),
@@ -1077,208 +1042,208 @@ ALTER TABLE `tabel_ruang_dipinjam`
   ADD KEY `id_ruang` (`id_ruang`);
 
 --
--- Indeks untuk tabel `tabel_semester`
+-- Indexes for table `tabel_semester`
 --
 ALTER TABLE `tabel_semester`
   ADD PRIMARY KEY (`id_semester`);
 
 --
--- Indeks untuk tabel `tabel_status_mahasiswa`
+-- Indexes for table `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   ADD PRIMARY KEY (`id_status_mahasiswa`);
 
 --
--- Indeks untuk tabel `tabel_task`
+-- Indexes for table `tabel_task`
 --
 ALTER TABLE `tabel_task`
   ADD PRIMARY KEY (`id_task`),
   ADD KEY `id_dosen` (`id_dosen`);
 
 --
--- Indeks untuk tabel `tabel_user`
+-- Indexes for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_absensi`
+-- AUTO_INCREMENT for table `tabel_absensi`
 --
 ALTER TABLE `tabel_absensi`
   MODIFY `id_absensi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_admin`
+-- AUTO_INCREMENT for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   MODIFY `id_admin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_attachment`
+-- AUTO_INCREMENT for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   MODIFY `id_attachment` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_chat`
+-- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
   MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_dosen`
+-- AUTO_INCREMENT for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   MODIFY `id_dosen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_hasil_kuisioner`
+-- AUTO_INCREMENT for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
-  MODIFY `id_hasil_kuisioner` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_hasil_kuisioner` int(30) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_info`
+-- AUTO_INCREMENT for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
   MODIFY `id_info` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_info_beasiswa`
+-- AUTO_INCREMENT for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   MODIFY `id_beasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_jadwal`
+-- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
-  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_kelas`
+-- AUTO_INCREMENT for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   MODIFY `id_kelas` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_khs`
+-- AUTO_INCREMENT for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
-  MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_komentar`
+-- AUTO_INCREMENT for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   MODIFY `id_komentar` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_kompen`
+-- AUTO_INCREMENT for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   MODIFY `id_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_krs`
+-- AUTO_INCREMENT for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_kuisioner`
+-- AUTO_INCREMENT for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
   MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_mahasiswa`
+-- AUTO_INCREMENT for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   MODIFY `id_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_matkul`
+-- AUTO_INCREMENT for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
   MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_notifikasi`
+-- AUTO_INCREMENT for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   MODIFY `id_notifikasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_pekerjaan_kompen`
+-- AUTO_INCREMENT for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   MODIFY `id_pekerjaan_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_prodi`
+-- AUTO_INCREMENT for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
   MODIFY `id_prodi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_reply_komentar`
+-- AUTO_INCREMENT for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   MODIFY `id_reply_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- AUTO_INCREMENT for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   MODIFY `id_riwayat_peminjam_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_ruang`
+-- AUTO_INCREMENT for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   MODIFY `id_ruang` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_ruang_dipinjam`
+-- AUTO_INCREMENT for table `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_semester`
+-- AUTO_INCREMENT for table `tabel_semester`
 --
 ALTER TABLE `tabel_semester`
   MODIFY `id_semester` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_status_mahasiswa`
+-- AUTO_INCREMENT for table `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   MODIFY `id_status_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_task`
+-- AUTO_INCREMENT for table `tabel_task`
 --
 ALTER TABLE `tabel_task`
   MODIFY `id_task` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tabel_user`
+-- AUTO_INCREMENT for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
   MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tabel_absensi`
+-- Constraints for table `tabel_absensi`
 --
 ALTER TABLE `tabel_absensi`
   ADD CONSTRAINT `tabel_absensi_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1286,40 +1251,41 @@ ALTER TABLE `tabel_absensi`
   ADD CONSTRAINT `tabel_absensi_ibfk_3` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_admin`
+-- Constraints for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   ADD CONSTRAINT `tabel_admin_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_attachment`
+-- Constraints for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   ADD CONSTRAINT `tabel_attachment_ibfk_1` FOREIGN KEY (`id_info`) REFERENCES `tabel_info` (`id_info`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_chat`
+-- Constraints for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
   ADD CONSTRAINT `tabel_chat_ibfk_1` FOREIGN KEY (`pengirim`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_chat_ibfk_2` FOREIGN KEY (`penerima`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_dosen`
+-- Constraints for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   ADD CONSTRAINT `tabel_dosen_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_hasil_kuisioner`
+-- Constraints for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
   ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_2` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_3` FOREIGN KEY (`id_kuisioner`) REFERENCES `tabel_kuisioner` (`id_kuisioner`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_4` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_4` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tabel_hasil_kuisioner_ibfk_5` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_jadwal`
+-- Constraints for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
   ADD CONSTRAINT `tabel_jadwal_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `tabel_kelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1329,13 +1295,13 @@ ALTER TABLE `tabel_jadwal`
   ADD CONSTRAINT `tabel_jadwal_ibfk_5` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_kelas`
+-- Constraints for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   ADD CONSTRAINT `tabel_kelas_ibfk_1` FOREIGN KEY (`id_prodi`) REFERENCES `tabel_prodi` (`id_prodi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_khs`
+-- Constraints for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
   ADD CONSTRAINT `tabel_khs_ibfk_1` FOREIGN KEY (`id_kelas`) REFERENCES `tabel_kelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1344,14 +1310,14 @@ ALTER TABLE `tabel_khs`
   ADD CONSTRAINT `tabel_khs_ibfk_5` FOREIGN KEY (`id_matkul`) REFERENCES `tabel_matkul` (`id_matkul`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_komentar`
+-- Constraints for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   ADD CONSTRAINT `tabel_komentar_ibfk_1` FOREIGN KEY (`id_info`) REFERENCES `tabel_info` (`id_info`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_komentar_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_kompen`
+-- Constraints for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   ADD CONSTRAINT `tabel_kompen_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1360,7 +1326,7 @@ ALTER TABLE `tabel_kompen`
   ADD CONSTRAINT `tabel_kompen_ibfk_4` FOREIGN KEY (`id_pekerjaan_kompen`) REFERENCES `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_krs`
+-- Constraints for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   ADD CONSTRAINT `tabel_krs_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `tabel_mahasiswa` (`id_mahasiswa`),
@@ -1368,7 +1334,7 @@ ALTER TABLE `tabel_krs`
   ADD CONSTRAINT `tabel_krs_ibfk_3` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`);
 
 --
--- Ketidakleluasaan untuk tabel `tabel_mahasiswa`
+-- Constraints for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   ADD CONSTRAINT `tabel_mahasiswa_ibfk_1` FOREIGN KEY (`id_prodi`) REFERENCES `tabel_prodi` (`id_prodi`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -1377,40 +1343,40 @@ ALTER TABLE `tabel_mahasiswa`
   ADD CONSTRAINT `tabel_mahasiswa_ibfk_4` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_notifikasi`
+-- Constraints for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   ADD CONSTRAINT `tabel_notifikasi_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `tabel_pekerjaan_kompen`
+-- Constraints for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   ADD CONSTRAINT `tabel_pekerjaan_kompen_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_pekerjaan_kompen_ibfk_2` FOREIGN KEY (`id_semester`) REFERENCES `tabel_semester` (`id_semester`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_reply_komentar`
+-- Constraints for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   ADD CONSTRAINT `tabel_reply_komentar_ibfk_1` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_riwayat_peminjam_kelas_kosong`
+-- Constraints for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   ADD CONSTRAINT `tabel_riwayat_peminjam_kelas_kosong_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_riwayat_peminjam_kelas_kosong_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_ruang_dipinjam`
+-- Constraints for table `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `tabel_ruang` (`id_ruang`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tabel_ruang_dipinjam_ibfk_2` FOREIGN KEY (`peminjam`) REFERENCES `tabel_user` (`id_user`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tabel_task`
+-- Constraints for table `tabel_task`
 --
 ALTER TABLE `tabel_task`
   ADD CONSTRAINT `tabel_task_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;

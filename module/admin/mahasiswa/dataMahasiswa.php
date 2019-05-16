@@ -318,39 +318,49 @@
                                             $result = mysqli_query($con, $query);
                                             
                                                 $index = 1;
-                                                
-                                                while($row = mysqli_fetch_assoc($result)){
-                                                    // $id_delete = $row["id_user"];
-                                                    // $id = $row["id_mahasiswa"];
-
-                                                
+                                             
+                                                if(mysqli_num_rows($result) > 0){
+                                                    while($row = mysqli_fetch_assoc($result)){
+                                                        // $id_delete = $row["id_user"];
+                                                        // $id = $row["id_mahasiswa"];
+    
+                                                    
+                                                    ?>
+                                                        <tr id="<?php echo $row["id_mahasiswa"] ?>" class="itemDataMahasiswa">
+                                                            <td><?php echo $index; ?></td>
+                                                            <td class="usernameMahasiswa"><?php echo $row["username"]; ?></td>
+                                                            <td class="passwordMahasiswa">**********</td>
+                                                            <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo ($row['foto'] == null)? 'avatar.jpeg' : $row['foto'] ; ?>" style="width:50px;height:50px;border-radius:50%;"></td>
+                                                            <td class="nimMahasiswa"><?php echo $row["nim"]; ?></td>
+                                                            <td class="namaMahasiswa"><?php echo $row["nama_mahasiswa"]; ?></td>
+                                                            <td class="tempatLahirMahasiswa"><?php echo $row["tempat_lahir"]; ?></td>
+                                                            <td class="tanggalLahirMahasiswa"><?php echo date("d M Y", strtotime($row["tanggal_lahir"])) ?></td>
+                                                            <td class="jenisKelaminMahasiswa"><?php echo $row["jenis_kelamin"]; ?></td>
+                                                            <td class="alamatMahasiswa"><?php echo $row["alamat"]; ?></td>
+                                                            <td class="namaProdiMahasiswa"><?php echo $row["nama_prodi"];?></td>
+                                                            <td class="kodeKelasMahasiswa"><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?></td>
+    
+                                                            <td>
+                                                            <a id_userEdit="<?php echo $row["id_user"]; ?>"
+                                                        id_mahasiswaEdit="<?php echo $row["id_mahasiswa"]; ?>" class='btn btn-primary btn-edit ml-2 edit-mahasiswa-admin' data-toggle='modal' data-target='#modalEditAdminMahasiswa'>Edit</a>
+                                                                                
+                                                            </td>
+                                                            <td>
+                                                            <a id_user="<?php echo $row["id_user"]; ?>"
+                                                        id_mahasiswa="<?php echo $row["id_mahasiswa"]; ?>" class='btn btn-danger btn-hapus hapus-mahasiswa-admin ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
+                                                                 
+                                                            </td>    
+                                                        </tr>
+                                                        <?php $index++;
+                                                    }
+                                                    ?>
+                                                <?php    
+                                                }  else{
                                                 ?>
-                                                    <tr id="<?php echo $row["id_mahasiswa"] ?>" class="itemDataMahasiswa">
-                                                        <td><?php echo $index; ?></td>
-                                                        <td class="usernameMahasiswa"><?php echo $row["username"]; ?></td>
-                                                        <td class="passwordMahasiswa">**********</td>
-                                                        <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo ($row['foto'] == null)? 'avatar.jpeg' : $row['foto'] ; ?>" style="width:50px;height:50px;border-radius:50%;"></td>
-                                                        <td class="nimMahasiswa"><?php echo $row["nim"]; ?></td>
-                                                        <td class="namaMahasiswa"><?php echo $row["nama_mahasiswa"]; ?></td>
-                                                        <td class="tempatLahirMahasiswa"><?php echo $row["tempat_lahir"]; ?></td>
-                                                        <td class="tanggalLahirMahasiswa"><?php echo date("d M Y", strtotime($row["tanggal_lahir"])) ?></td>
-                                                        <td class="jenisKelaminMahasiswa"><?php echo $row["jenis_kelamin"]; ?></td>
-                                                        <td class="alamatMahasiswa"><?php echo $row["alamat"]; ?></td>
-                                                        <td class="namaProdiMahasiswa"><?php echo $row["nama_prodi"];?></td>
-                                                        <td class="kodeKelasMahasiswa"><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?></td>
-
-                                                        <td>
-                                                        <a id_userEdit="<?php echo $row["id_user"]; ?>"
-                                                    id_mahasiswaEdit="<?php echo $row["id_mahasiswa"]; ?>" class='btn btn-primary btn-edit ml-2 edit-mahasiswa-admin' data-toggle='modal' data-target='#modalEditAdminMahasiswa'>Edit</a>
-                                                                            
-                                                        </td>
-                                                        <td>
-                                                        <a id_user="<?php echo $row["id_user"]; ?>"
-                                                    id_mahasiswa="<?php echo $row["id_mahasiswa"]; ?>" class='btn btn-danger btn-hapus hapus-mahasiswa-admin ml-2' data-toggle='modal' data-target='#modalHapusDataMahasiswa'>Hapus</a>
-                                                             
-                                                        </td>    
-                                                    </tr>
-                                                    <?php $index++;
+                                                    <div>
+                                                        <p>Data mahasiswa tidak tersedia</p>
+                                                    </div>
+                                                <?php
                                                 }
                                                 ?>
                                     </tbody>

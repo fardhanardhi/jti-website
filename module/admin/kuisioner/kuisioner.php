@@ -135,7 +135,7 @@
           <div class="row mt-3 scrollbar scrollbar-x" style="overflow:auto" id="dataDosenKuisioner">
             <div class="col-md-12 d-flex text-center justify-content-center">
             <?php
-              $resultKuisioner=kuisioner($con, date("Y"), 7);
+              $resultKuisioner=kuisioner($con, date("Y"), 4);
               
               if (mysqli_num_rows($resultKuisioner) > 0){
               ?>

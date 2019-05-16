@@ -38,6 +38,20 @@ function minKelas($con){
 // Edit Absensi
 if(isset($_POST["submitAbsen"])){
   mysqli_query($con, "update tabel_absensi set sakit='$_POST[sakit]', ijin='$_POST[ijin]', alpa='$_POST[alpa]' where id_absensi=$_POST[submitAbsen]");
+  
+  if($_POST["alpa"] < 16){
+    mysqli_query($con, "update tabel_absensi set id_status_mahasiswa='7' where id_absensi=$_POST[submitAbsen]");
+  }elseif($_POST["alpa"] >= 16 && $_POST["alpa"] < 22){
+    mysqli_query($con, "update tabel_absensi set id_status_mahasiswa='1' where id_absensi=$_POST[submitAbsen]");
+  }elseif($_POST["alpa"] >= 22 && $_POST["alpa"] < 52){
+    mysqli_query($con, "update tabel_absensi set id_status_mahasiswa='2' where id_absensi=$_POST[submitAbsen]");
+  }elseif($_POST["alpa"] >= 52){
+    mysqli_query($con, "update tabel_absensi set id_status_mahasiswa='3' where id_absensi=$_POST[submitAbsen]");
+  }
+
+  $jumlah=$_POST["sakit"]+$_POST["ijin"]+$_POST["alpa"];
+  mysqli_query($con, "update tabel_absensi set jumlah=$jumlah where id_absensi='$_POST[submitAbsen]'");
+
 }
 
 // Kompen
@@ -78,7 +92,7 @@ function kompenSemester($con, $id_mahasiswa, $id_semester){
   $resultKompenSemester = mysqli_query($con, $kompenSemester);
   if(mysqli_num_rows($resultKompenSemester)>0){
     $rowKompenSemester=mysqli_fetch_assoc($resultKompenSemester);
-    return $rowKompenSemester["kompenSemester"];
+    return $rowKompenSemester["kompenSemester"]*2;
   }
   else{
     return 0;
@@ -86,15 +100,25 @@ function kompenSemester($con, $id_mahasiswa, $id_semester){
 }
 
 function totalKompen($con, $id_mahasiswa){
-  $totalKompen="select sum(a.alpa) as totalKompen from tabel_absensi a, tabel_mahasiswa b where a.id_mahasiswa=b.id_mahasiswa and a.id_mahasiswa=$id_mahasiswa";
+  $mahasiswa=mysqli_fetch_assoc(mysqli_query($con, "select id_semester from tabel_mahasiswa where id_mahasiswa='$id_mahasiswa'"));
+  $id_semester=$mahasiswa["id_semester"];
+  $kompenSemester=kompenSemester($con, $id_mahasiswa, $id_semester);
+
+  $totalKompen="select sum(a.alpa) as totalKompen from tabel_absensi a, tabel_mahasiswa b where a.id_mahasiswa=b.id_mahasiswa and a.id_mahasiswa=$id_mahasiswa and a.id_semester not in (select id_semester from tabel_mahasiswa where id_mahasiswa=$id_mahasiswa)";
   $resultTotalKompen = mysqli_query($con, $totalKompen);
+
   if(mysqli_num_rows($resultTotalKompen)>0){
     $rowTotalKompen=mysqli_fetch_assoc($resultTotalKompen);
-    return $rowTotalKompen["totalKompen"];
+    if($rowTotalKompen["totalKompen"]==NULL){
+      $hasilTotalKompen=0;
+    }else{
+      $hasilTotalKompen=$rowTotalKompen["totalKompen"]*4;
+    }
   }
   else{
-    return 0;
+    $hasilTotalKompen=0;
   }
+  return $kompenSemester+$hasilTotalKompen;
 }
 
 function kompenSelesai($con, $id_mahasiswa){
@@ -390,7 +414,8 @@ if(isset($_POST["edit_kompen"])){
     $rowEditKompen=mysqli_fetch_assoc($resultEditKompen);
       
       $output="";
-      $output.="
+      $output.="      
+      <input type='hidden' id='totalKompen' value='".totalKompen($con, $rowEditKompen["id_mahasiswa"])."'>
       <input type='hidden' name='id_semester' id='id_semesterPekerjaan' value='$rowEditKompen[id_semester]'>
       <div class='row px-5'>
         <div class='col-md-3'>NIM</div>
@@ -465,6 +490,7 @@ if(isset($_POST["edit_kompen"])){
         </div>
         <div class='col-md-3'>
           <small class='text-danger d-none peringatanJam' id='peringatanJam'>*Masukkan Total Jam Kompensasi</small>
+          <small class='text-danger d-none peringatanJamLebih' id='peringatanJamLebih'>*Jam Melebihi Total Kompensasi</small>
         </div>
       </div>
       <div class='row px-5 mt-3 d-flex justify-content-end'>

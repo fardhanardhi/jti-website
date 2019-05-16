@@ -248,10 +248,17 @@ function validasiJenis(input) {
 function validasiJam(input) {
   if (input.value == "" || input.value == 0) {
     document.getElementById("peringatanJam").classList.remove("d-none");
+    document.getElementById("peringatanJamLebih").classList.add("d-none");
+    input.classList.add("border-danger");
+    return false;
+  } else if (input.value > document.getElementById("totalKompen").value) {
+    document.getElementById("peringatanJam").classList.add("d-none");
+    document.getElementById("peringatanJamLebih").classList.remove("d-none");
     input.classList.add("border-danger");
     return false;
   } else {
     document.getElementById("peringatanJam").classList.add("d-none");
+    document.getElementById("peringatanJamLebih").classList.add("d-none");
     input.classList.remove("border-danger");
     return true;
   }

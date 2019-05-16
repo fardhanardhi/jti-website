@@ -127,8 +127,20 @@ if(isset($_POST["id_dosen"])){
   }
 }
 
+function belumMengisiKuisioner($con, $id_mahasiswa){  
+  $totalMatkulBelum=mysqli_query($con, "select count(distinct(a.id_matkul)) as matkul from tabel_jadwal a, tabel_matkul b, tabel_mahasiswa c where a.id_matkul=b.id_matkul and a.id_kelas=c.id_kelas and c.id_mahasiswa='$id_mahasiswa' and a.id_matkul not in (select distinct(id_matkul) from tabel_hasil_kuisioner where id_mahasiswa='$id_mahasiswa')");
+  $rowTotalMatkulBelum=mysqli_fetch_assoc($totalMatkulBelum);
+  return $rowTotalMatkulBelum["matkul"];
+}
+
+function totalKuisioner($con, $id_mahasiswa){
+  $totalMatkul=mysqli_query($con, "select count(distinct(a.id_matkul)) as matkul from tabel_jadwal a, tabel_matkul b, tabel_mahasiswa c where a.id_matkul=b.id_matkul and a.id_kelas=c.id_kelas and c.id_mahasiswa='$id_mahasiswa'");
+  $rowTotalMatkul=mysqli_fetch_assoc($totalMatkul);
+  return $rowTotalMatkul["matkul"];
+}
+
 if(isset($_POST["lihatPerKelas"])){
-  $query="select distinct(a.id_mahasiswa),b.nim, b.nama, count(distinct a.id_kuisioner) as 'telahMengisi' from tabel_hasil_kuisioner a, tabel_mahasiswa b, tabel_kelas c where a.id_mahasiswa=b.id_mahasiswa and b.id_kelas=b.id_kelas and b.id_kelas=$_POST[lihatPerKelas] group by a.id_mahasiswa";
+  $query="select distinct(a.id_mahasiswa),b.nim, b.nama from tabel_hasil_kuisioner a, tabel_mahasiswa b, tabel_kelas c where a.id_mahasiswa=b.id_mahasiswa and b.id_kelas=b.id_kelas and b.id_kelas=$_POST[lihatPerKelas] group by a.id_mahasiswa";
   $result=mysqli_query($con, $query);
 
   $querySemuaKuisioner="select count(id_kuisioner) as 'semuaKuisioner' from tabel_kuisioner";
@@ -151,14 +163,14 @@ if(isset($_POST["lihatPerKelas"])){
       <?php
       $no=1;
       while($row=mysqli_fetch_assoc($result)){
-        $belumMengisi=$rowSemuaKuisioner["semuaKuisioner"]-$row["telahMengisi"];
+        $belumMengisi=$rowSemuaKuisioner["semuaKuisioner"];
         ?>
         <tr>
           <td><?php echo $no; ?></td>
           <td><?php echo $row["nim"]; ?></td>
           <td><?php echo $row["nama"]; ?></td>
-          <td><?php echo $row["telahMengisi"]; ?></td>
-          <td><?php echo $belumMengisi; ?></td>
+          <td><?php echo totalKuisioner($con, $row["id_mahasiswa"])-belumMengisiKuisioner($con, $row["id_mahasiswa"])?></td>
+          <td><?php echo belumMengisiKuisioner($con, $row["id_mahasiswa"]); ?></td>
         </tr>
         <?php
         $no++;
@@ -279,3 +291,20 @@ if(isset($_POST["tambahIsi"]) || isset($_POST["editIsi"]) || isset($_POST["hapus
     header('location:../module/index.php?module=' . $_GET["module"]);
   }
 }
+?>
+<script>
+$(".lihat-detail").click(function() {
+    var id_dosen = $(this).attr("id");
+
+    $.ajax({
+      url: "../process/proses_kuisioner.php",
+      method: "post",
+      data: { namaDosen: id_dosen },
+      success: function(data) {
+        $("#id_dosen").val(id_dosen);
+        $("#judul").html(data);
+        $("#modalLihatHasil").modal("show");
+      }
+    });
+  });
+</script>
