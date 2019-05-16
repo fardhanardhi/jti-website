@@ -1,6 +1,9 @@
 <?php
 include "../config/connection.php";
 
+function mhsLogin($con){  
+  return $mhs=mysqli_query($con, "select * from tabel_mahasiswa where id_user='$_SESSION[id]'");
+}
 function kuisioner($con, $tahun, $semester)
 {
   $kuisioner = "select distinct(a.id_dosen), b.*, b.nama as namaDosen, c.id_semester, d.* from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c, tabel_semester d where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and c.id_semester=d.id_semester and YEAR(a.waktu_edit)=$tahun and c.id_semester=$semester";
