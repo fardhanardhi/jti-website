@@ -100,8 +100,8 @@ if(isset($_POST["kirimKuisioner"])){
         $kuisioner= $_POST['id_kuisioner'.$i];   
         $nilai= $_POST['nilai'.$i];   
         $waktu=date('Y-m-d H:i:s'); 
-        mysqli_query($con, "INSERT INTO tabel_hasil_kuisioner (id_mahasiswa, id_dosen, id_kuisioner, nilai, waktu_edit)
-        VALUES ('$idMhs', '$_POST[id_dosen]', $kuisioner, $nilai, '$waktu')");
+        mysqli_query($con, "INSERT INTO tabel_hasil_kuisioner (id_mahasiswa, id_matkul, id_kuisioner, nilai, waktu_edit)
+        VALUES ('$idMhs', '$_POST[id_matkul]', $kuisioner, $nilai, '$waktu')");
       
         $i++;
       }

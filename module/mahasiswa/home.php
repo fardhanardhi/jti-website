@@ -2,7 +2,23 @@
 include "../config/connection.php";
 include "../process/proses_homeMahasiswa.php";
 
-$queryUser = "SELECT a.id_dosen, b.nama dosen, c.nama matkul FROM tabel_jadwal a INNER JOIN tabel_dosen b ON a.id_dosen = b.id_dosen INNER JOIN tabel_matkul c ON a.id_matkul = c.id_matkul where b.id_dosen not in (select distinct(id_dosen) from tabel_hasil_kuisioner where id_mahasiswa='$_SESSION[id]')";
+$queryUser = 
+  "SELECT 
+    a.id_matkul, b.nama dosen, c.nama matkul 
+  FROM 
+    tabel_jadwal a 
+  INNER JOIN 
+    tabel_dosen b ON a.id_dosen = b.id_dosen 
+  INNER JOIN 
+    tabel_matkul c ON a.id_matkul = c.id_matkul
+  INNER JOIN 
+    tabel_mahasiswa d ON a.id_kelas = d.id_kelas
+  where a.id_matkul not in (select id_matkul 
+  from 
+    tabel_hasil_kuisioner 
+  where id_mahasiswa=
+    (select id_mahasiswa from tabel_mahasiswa where id_user='$_SESSION[id]'))
+    and a.id_kelas=d.id_kelas and d.id_user='$_SESSION[id]'";
 $resultUser = mysqli_query($con, $queryUser);
 $rowUser = mysqli_fetch_assoc($resultUser);
 
@@ -74,7 +90,7 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                     <div class="pilihan-dosen">
                       <strong><label for="nama-dosen" class="nama-dosen">Dosen Pengajar dan Mata Kuliah :
                         </label></strong>
-                      <select name="id_dosen" id="nama-dosen" class="p-1 ">
+                      <select name="id_matkul" id="nama-dosen" class="p-1 ">
                         <option selected disable>---</option>
                         <?php 
                           $resultDosenKuisioner=dosenKuisioner($con); 
@@ -82,7 +98,7 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                           {
                             while($rowDosenKuisioner=mysqli_fetch_assoc($resultUser))
                             {
-                              if($rowDosenKuisioner["id_dosen"] == $_POST["id_dosen"])
+                              if($rowDosenKuisioner["id_matkul"] == $_POST["id_matkul"])
                               {
                                 $selected = "selected";
                               }
@@ -91,7 +107,7 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                                 $selected = "";
                               }
                             ?>
-                            <option <?php echo $selected; ?> value="<?php echo $rowDosenKuisioner["id_dosen"];?>">
+                            <option <?php echo $selected; ?> value="<?php echo $rowDosenKuisioner["id_matkul"];?>">
                               <?php echo $rowDosenKuisioner["dosen"]." (".$rowDosenKuisioner["matkul"].")";?>
                             </option>
                             <?php
