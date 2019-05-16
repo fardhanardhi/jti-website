@@ -9,6 +9,8 @@
     margin-top: 1em;
 }
 
+/* Kompen Bar */
+
 #dosenKrs .tambah-pekerjaan-kompen{
     background-color: #40407a;
     color: white;
@@ -19,3 +21,106 @@
     color: white;
     border-radius: 20px;
 }
+
+#dosenKrs .tambah-pekerjaan-kompen{
+    background-color: #40407a;
+    color: white;
+}
+  
+#dosenKrs .submit-kompen-dosen{
+    background-color: #3AAC5F;
+    color: white;
+}
+  
+#dosenKrs .judul {
+    font-size: 1.2em;
+}
+  
+#dosenKrs #exampleModalCenter {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+  
+#dosenKrs .close {
+    padding-right: 0.5em;
+}
+  
+#dosenKrs .tambahkan-modal{
+    background-color: #3AAC5F;
+    color: white;
+    border-radius: 40px;
+}
+  
+#dosenKrs .tambahkan-modal-parent{
+    padding-right: 4em;
+}
+  
+#dosenKrs .kompen-submit-btn{
+    background-color: #3AAC5F;
+    color: white;
+    border-radius: 20px;
+}
+  
+#dosenKrs td.nomor-kompen{
+    width: 0.3em;
+}
+  
+#dosenKrs td.deskripsi-kompen{
+    width: 15em;
+}
+
+#dosenKrs td.pilihan-kompen{
+    width: 0.3em;
+}
+
+#dosenKrs .isi-ada > table {
+    white-space: nowrap;
+}
+  
+#dosenKrs .dropdown-kompen {
+    margin-top: 0.7em;
+}
+  
+#dosenKrs .dropdown-kompen::before{
+    /* position: relative;
+    border-width: 0px 8px 10px 8px;
+    border-style: solid;
+     */
+    right: 0em;
+    border-color: rgb(216, 208, 208) transparent;
+}
+  
+/* #dosenHomepage .data-kompen-ada{
+    
+    height: 20em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+} */
+  
+#dosenKrs #hapusKompen {
+    background-color: rgba(32, 32, 32, 0.86);
+}
+  
+#dosenKrs .isiHapusKompen {
+    padding-top: 3em;
+    padding-bottom: 2em;
+}
+  
+#dosenKrs .btn-tidak {
+    padding: 0em 1.5em 0em 1.5em;
+    margin-right: 5em;
+    background-color: #CF212A;
+    color: white;
+}
+  
+#dosenKrs .btn-iya {
+    padding: 0em 1.5em 0em 1.5em;
+    margin-left: 5em;
+    background-color: #3AAC5F;
+    color: white;
+}
+  
+#dosenKrs .tombolAksiHapusKompen{
+    padding-bottom: 2em;
+}
+  
+  
