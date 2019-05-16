@@ -78,9 +78,22 @@ function replyKomentar($con, $id_komentar)
 
 function dosenKuisioner($con)
 {
-  $dosenKuisioner = "SELECT id_dosen FROM tabel_jadwal";
+  $dosenKuisioner = 
+  "SELECT 
+    a.id_matkul, b.nama dosen, c.nama matkul 
+  FROM 
+    tabel_jadwal a 
+  INNER JOIN 
+    tabel_dosen b ON a.id_dosen = b.id_dosen 
+  INNER JOIN 
+    tabel_matkul c ON a.id_matkul = c.id_matkul
+  INNER JOIN 
+    tabel_mahasiswa d ON a.id_kelas = d.id_kelas
+  where a.id_matkul not in 
+    (select id_matkul from tabel_hasil_kuisioner where id_mahasiswa=(select id_mahasiswa from tabel_mahasiswa where id_user='$_SESSION[id]'))
+  and a.id_kelas=d.id_kelas and d.id_user='$_SESSION[id]'";
 
-  $resultDosenKuisioner = mysqli_query ($con, $dosenKuisioner);
+  $resultDosenKuisioner = mysqli_query($con, $dosenKuisioner);
   return $resultDosenKuisioner;
 }
 
@@ -88,8 +101,11 @@ if(isset($_POST["kirimKuisioner"])){
   session_start();
 
   if($_GET["module"] == "home" && $_GET["act"]=="tambah"){
-    $idMhs = mysqli_fetch_assoc(mysqli_query($con, "SELECT id_mahasiswa FROM tabel_mahasiswa WHERE id_user = $_SESSION[id]"));
+    $idMhs = mysqli_fetch_assoc(mysqli_query($con, "SELECT id_mahasiswa FROM tabel_mahasiswa WHERE id_user = $_SESSION[id]"));    
     $idMhs=$idMhs["id_mahasiswa"];
+
+    $id_dosen = mysqli_fetch_assoc(mysqli_query($con, "SELECT id_dosen FROM tabel_jadwal a, tabel_matkul b, tabel_mahasiswa c WHERE a.id_matkul=b.id_matkul and a.id_kelas=c.id_kelas and a.id_semester=c.id_semester and a.id_matkul='$_POST[id_matkul]' and c.id_mahasiswa='$idMhs'"));
+    $id_dosen=$id_dosen["id_dosen"];
 
     $resultIsiKuis=mysqli_query($con, "select * from tabel_kuisioner");
     if(mysqli_num_rows($resultIsiKuis)>0)
@@ -100,8 +116,8 @@ if(isset($_POST["kirimKuisioner"])){
         $kuisioner= $_POST['id_kuisioner'.$i];   
         $nilai= $_POST['nilai'.$i];   
         $waktu=date('Y-m-d H:i:s'); 
-        mysqli_query($con, "INSERT INTO tabel_hasil_kuisioner (id_mahasiswa, id_matkul, id_kuisioner, nilai, waktu_edit)
-        VALUES ('$idMhs', '$_POST[id_matkul]', $kuisioner, $nilai, '$waktu')");
+        mysqli_query($con, "INSERT INTO tabel_hasil_kuisioner (id_mahasiswa, id_matkul, id_dosen, id_kuisioner, nilai, waktu_edit)
+        VALUES ('$idMhs', '$_POST[id_matkul]', '$id_dosen', $kuisioner, $nilai, '$waktu')");
       
         $i++;
       }

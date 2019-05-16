@@ -2,26 +2,6 @@
 include "../config/connection.php";
 include "../process/proses_homeMahasiswa.php";
 
-$queryUser = 
-  "SELECT 
-    a.id_matkul, b.nama dosen, c.nama matkul 
-  FROM 
-    tabel_jadwal a 
-  INNER JOIN 
-    tabel_dosen b ON a.id_dosen = b.id_dosen 
-  INNER JOIN 
-    tabel_matkul c ON a.id_matkul = c.id_matkul
-  INNER JOIN 
-    tabel_mahasiswa d ON a.id_kelas = d.id_kelas
-  where a.id_matkul not in (select id_matkul 
-  from 
-    tabel_hasil_kuisioner 
-  where id_mahasiswa=
-    (select id_mahasiswa from tabel_mahasiswa where id_user='$_SESSION[id]'))
-    and a.id_kelas=d.id_kelas and d.id_user='$_SESSION[id]'";
-$resultUser = mysqli_query($con, $queryUser);
-$rowUser = mysqli_fetch_assoc($resultUser);
-
 $queryIsiKuis = "SELECT * FROM tabel_kuisioner";
 $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
 
@@ -94,20 +74,12 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                         <option selected disable>---</option>
                         <?php 
                           $resultDosenKuisioner=dosenKuisioner($con); 
-                          if(mysqli_num_rows($resultDosenKuisioner))
+                          if(mysqli_num_rows($resultDosenKuisioner)>0)
                           {
-                            while($rowDosenKuisioner=mysqli_fetch_assoc($resultUser))
+                            while($rowDosenKuisioner=mysqli_fetch_assoc($resultDosenKuisioner))
                             {
-                              if($rowDosenKuisioner["id_matkul"] == $_POST["id_matkul"])
-                              {
-                                $selected = "selected";
-                              }
-                              else
-                              {
-                                $selected = "";
-                              }
                             ?>
-                            <option <?php echo $selected; ?> value="<?php echo $rowDosenKuisioner["id_matkul"];?>">
+                            <option value="<?php echo $rowDosenKuisioner["id_matkul"];?>">
                               <?php echo $rowDosenKuisioner["dosen"]." (".$rowDosenKuisioner["matkul"].")";?>
                             </option>
                             <?php
