@@ -43,7 +43,7 @@ switch ($level) {
 }
 
 // Melihat status pembayaran ukt
-$queryStatus = "SELECT tk.status_daftar_ulang FROM tabel_krs tk,tabel_mahasiswa tm
+$queryStatus = "SELECT MAX(tk.id_semester),tk.status_daftar_ulang FROM tabel_krs tk,tabel_mahasiswa tm
                 where tk.id_mahasiswa = tm.id_mahasiswa
                 and tm.id_user = $idUser";
 $resultStatus = mysqli_query($con, $queryStatus);
@@ -85,13 +85,13 @@ if ($level != 'admin') {
               <p class="mt-3">HOME</p>
             </div>
               <?php
-              if ($level == "mahasiswa" || $statusPembayaran == "Sudah") { ?>
+              if ($level == "mahasiswa" && $statusPembayaran == "Sudah") { ?>
                 <div onclick="location.href='index.php?module=jadwal';" class="navigation-menu col-md-3 col-lg-2 my-1">
                   <img src="../img/navigation/jadwalKuliah.svg">
                   <p class="mt-3">JADWAL KULIAH</p>
                 </div>
               <?php
-              } elseif ($level == "mahasiswa" || $statusPembayaran == "Belum") { ?>
+              } elseif ($level == "mahasiswa" && $statusPembayaran == "Belum") { ?>
                 <div onclick="location.href='index.php?module=krs';" class="navigation-menu col-md-3 col-lg-2 my-1">
                   <img src="../img/navigation/jadwalKuliah.svg">
                   <p class="mt-3">JADWAL KULIAH</p>
