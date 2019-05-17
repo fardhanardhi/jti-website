@@ -41,6 +41,7 @@
   <script src="../js/adminJadwalKuliah.js"></script>
   <script src="../js/mahasiswaKelasKosong.js"></script>
   <script src="../js/dosenKompen.js"></script>
+  <script src="../js/dosenHome.js"></script>
   <?php
   if ($level == "admin") {
     ?>

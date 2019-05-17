@@ -68,13 +68,13 @@ $statusDaftarUlang = '';
                         if(($resultVerifikasi["status_daftar_ulang"] == "Sudah") && ($resultVerifikasi["status_verifikasi"] == "Belum"))
                         {
                     ?>
-                            <div class="col-md-12 p-1 text-center alert alert-danger alert-dismissible fade show" role="alert">
-                                <p>Belum Terverifikasi oleh DPA  <?php echo $row["status_daftar_ulang"]; ?></p>
-                            
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
+                    <div class="col-md-12 p-1 text-center alert alert-danger alert-dismissible fade show" role="alert">
+                        <p>Belum Terverifikasi oleh DPA <?php echo $row["status_daftar_ulang"]; ?></p>
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <!-- end if -->
                     <?php } 
                         else 
@@ -123,11 +123,11 @@ $statusDaftarUlang = '';
                         {
                         ?>
                     <button type="button" class="btn btn-success float-right">Kirim ke DPA &nbsp&nbsp<i
-                        class="fas fa-arrow-circle-up"></i></button>
+                            class="fas fa-arrow-circle-up"></i></button>
                     <?php }
                     } ?>
                 </form>
-                
+
 
 
                 <br><br>
