@@ -26,6 +26,17 @@ function jadwalKuliahCariSemester($con,$prodi,$kelas,$semester)
     return $resultJadwalKuliahCariSemester;
 }
 
+function jadwalKuliahCariStatusVerifikasi($con, $idMahasiswa, $semester)
+{
+    $jadwalKuliahCariStatusVerifikasi = "select distinct * from tabel_jadwal tj,tabel_krs tk
+    where tj.id_semester = tk.id_semester
+    and tk.id_mahasiswa = $idMahasiswa
+    and tj.id_semester = $semester";
+
+    $resultJadwalKuliahCariStatusVerifikasi = mysqli_query($con,$jadwalKuliahCariStatusVerifikasi);
+    return $resultJadwalKuliahCariStatusVerifikasi;
+}
+
 function semester($con)
 {
     $semester = "select * from tabel_semester";
