@@ -19,8 +19,8 @@ function ambilJadwalDosen($con, $idUser){
 }
 
 function tampilTaskDosen($con, $idUser){
- $queryTask = "SELECT tt.id_task, tt.pekerjaan, tt.kuota FROM tabel_task tt INNER JOIN tabel_dosen td
-               ON tt.id_dosen = td.id_dosen WHERE td.id_user = '$idUser'";
+ $queryTask = "SELECT td.id_dosen, tt.id_task, tt.pekerjaan, tt.kuota FROM tabel_task tt INNER JOIN tabel_dosen td
+               ON tt.id_dosen = td.id_dosen WHERE td.id_user = '$idUser' AND tt.status='1'";
  $resultQueryTask = mysqli_query($con, $queryTask);
  return $resultQueryTask;
 }
@@ -32,7 +32,13 @@ function ambilIdDosen($con, $idUser){
  return $resultFinal["id_dosen"];
 }
 
-if(isset($_POST["tambahTask"]) || isset($_POST["editIsi"]) || isset($_POST["hapusTask"])){
+function SumbitKompenDosen($con, $idDosenKompen, $idTask){
+  $queryDosenKompen = "UPDATE tabel_task SET status='0' 
+                      where id_dosen='$idDosenKompen' AND id_task='$idTask'";
+  $resultQueryDosenKompen = mysqli_query($con,$queryDosenKompen);
+}
+
+if(isset($_POST["tambahTask"]) || isset($_POST["submitKompenDosen"]) || isset($_POST["hapusTask"])){
 
  if($_GET["module"]=="home" && $_GET["act"]=="tambah"){
    $result=ambilIdDosen($con,$_POST["idDosen"]);
@@ -47,6 +53,66 @@ if(isset($_POST["tambahTask"]) || isset($_POST["editIsi"]) || isset($_POST["hapu
    mysqli_query($con, $hapusTask);
    header('location:../module/index.php?module=' . $_GET["module"]);
  }
+
+ else if($_GET["module"]=="home" && $_GET["act"]=="sumbitTask"){
+  SumbitKompenDosen($con, $_POST['idDsnSubmitKmpn'], $_POST['idTask'] );
+  header('location:../module/index.php?module=' . $_GET["module"]);
+  }
 }
 
+
+?>
+
+<?php
+if(isset($_POST["kompenDosenSumbit"])){
+  // $resultQueryDosenKompen=SumbitKompenDosen($con, $_POST['idDosenKmpn'], $_POST["idTaskKmpn"]);
+  $resultQueryTask= tampilTaskDosen($con, $idUser);
+  $index=1;
+  if (mysqli_num_rows($resultQueryTask) > 0){
+    while ($row = mysqli_fetch_assoc($resultQueryTask)) {
+      ?>
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-1 my-auto">
+          <?= $index ?>.
+          <input type="hidden" id="idDsnSubmitKmpn" value="<?= $row['id_dosen']?>">
+          <input type="hidden" id="idTask" value="<?= $row['id_task']?>">
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-12">
+                <?= $row["pekerjaan"]?>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                kuota: <?= $row["kuota"]?> mahasiswa
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 my-auto">
+        <button type="submit" class="btn btn-success kompen-submit-btn" id="submitKompenDosen">Submit</button>
+      </div>
+      <div class="col-md-auto my-auto">
+        <div class="dropdown">
+          <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
+          <div class="dropdown-kompen dropdown-menu">
+            <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen<?= $row["id_task"]?>"><i class="far fa-trash-alt"></i> Hapus</a>
+          </div>
+        </div>
+      </div>
+    
+      <?php
+    }
+  }else{
+      ?>
+      <div class="text-center">
+        <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+        <p class="text-muted">Tidak ada beasiswa pada "<?php echo tampilTanggal(formatTanggalBeasiswa($_POST["tanggal"]));?>"</p>
+      </div>
+      <?php
+  }
+}
 ?>

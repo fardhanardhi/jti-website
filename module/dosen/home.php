@@ -130,14 +130,16 @@
                 while ($row = mysqli_fetch_assoc($resultQueryTask)) {
             ?>
 
-                <form action="">
+                <form action="../process/proses_dosenHome.php?module=home&act=sumbitTask" method="post">
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="row">
+                      <div class="row" id="kolomTask">
                         <div class="col-md-7">
                           <div class="row">
                             <div class="col-md-1 my-auto">
                             <?= $index ?>.
+                            <input type="hidden" name="idDsnSubmitKmpn" id="idDsnSubmitKmpn" value="<?= $row['id_dosen']?>">
+                            <input type="hidden" name="idTask" id="idTask" value="<?= $row['id_task']?>">
                             </div>
                             <div class="col-md-9">
                               <div class="row">
@@ -154,7 +156,7 @@
                           </div>
                         </div>
                         <div class="col-md-3 my-auto">
-                          <button type="submit" class="btn btn-success kompen-submit-btn">Submit</button>
+                          <button type="submit" class="btn btn-success kompen-submit-btn" id="submitKompenDosen" name="submitKompenDosen">Submit</button>
                         </div>
                         <div class="col-md-auto my-auto">
                           <div class="dropdown">
