@@ -43,8 +43,8 @@
                                                             <label class="col-sm-2 col-form-label">Kelas</label>
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_kelas"
-                                                                    name="id_kelas">
-                                                                    <option selected disabled>Pilih Kelas</option>
+                                                                    name="id_kelas" required>
+                                                                    <option value="" selected disabled>Pilih Kelas</option>
                                                                     <?php 
                                                                     $resultKelas=kelas($con); 
                                                                     if(mysqli_num_rows($resultKelas))
@@ -66,8 +66,8 @@
                                                             <label class="col-sm-2 col-form-label">Hari</label>
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="hari"
-                                                                    name="hari">
-                                                                    <option selected disabled>Pilih Hari</option>
+                                                                    name="hari" required>
+                                                                    <option value="" selected disabled>Pilih Hari</option>
                                                                     <option value="Senin">Senin</option>
                                                                     <option value="Selasa">Selasa</option>
                                                                     <option value="Rabu">Rabu</option>
@@ -80,8 +80,8 @@
                                                             <label class="col-sm-2 col-form-label">Jam</label>
                                                             <div class="col-sm-5">
                                                                 <select class="semester custom-select" id="jam_mulai"
-                                                                    name="jam_mulai">
-                                                                    <option selected disabled>Mulai</option>
+                                                                    name="jam_mulai" required>
+                                                                    <option value="" selected disabled>Mulai</option>
                                                                     <option value="07:00:00">07.00</option>
                                                                     <option value="07:50:00">07.50</option>
                                                                     <option value="08:30:00">08.30</option>
@@ -115,8 +115,8 @@
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <select class="semester custom-select" id="jam_selesai"
-                                                                        name="jam_selesai">
-                                                                    <option selected disabled>Berakhir</option>
+                                                                        name="jam_selesai" required>
+                                                                    <option value="" selected disabled>Berakhir</option>
                                                                     <option value="07:45:00">07.45</option>
                                                                     <option value="07:50:00">07.50</option>
                                                                     <option value="08:30:00">08.30</option>
@@ -151,8 +151,8 @@
                                                             <label class="col-sm-2 col-form-label">Semester</label>
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_semester"
-                                                                    name="id_semester">
-                                                                    <option selected disabled>Pilih Semester</option>
+                                                                    name="id_semester" required>
+                                                                    <option value="" selected disabled>Pilih Semester</option>
                                                                     <?php 
                                                                     $resultSemester=semester($con); 
                                                                     if(mysqli_num_rows($resultSemester))
@@ -174,8 +174,8 @@
                                                             <label class="col-sm-2 col-form-label">Mata Kuliah</label>
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_matkul"
-                                                                    name="id_matkul">
-                                                                    <option selected disabled>Pilih Mata Kuliah</option>
+                                                                    name="id_matkul" required>
+                                                                    <option value="" selected disabled>Pilih Mata Kuliah</option>
                                                                     <?php 
                                                                     $resultMatkul=matkul($con); 
                                                                     if(mysqli_num_rows($resultMatkul))
@@ -197,8 +197,8 @@
                                                             <label class="col-sm-2 col-form-label">Ruangan</label>
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_ruang"
-                                                                    name="id_ruang">
-                                                                    <option selected disabled>Pilih Ruangan</option>
+                                                                    name="id_ruang" required>
+                                                                    <option value="" selected disabled>Pilih Ruangan</option>
                                                                     <?php 
                                                                     $resultRuang=ruang($con); 
                                                                     if(mysqli_num_rows($resultRuang))
@@ -220,8 +220,8 @@
                                                                 Pengajar</label>
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_dosen"
-                                                                    name="id_dosen">
-                                                                    <option selected disabled>Pilih Dosen Pengajar
+                                                                    name="id_dosen" required>
+                                                                    <option value="" selected disabled>Pilih Dosen Pengajar
                                                                     </option>
                                                                     <?php 
                                                                     $resultDosen=dosen($con); 

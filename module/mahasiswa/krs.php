@@ -24,6 +24,7 @@ $idMahasiswaUser = $rowUser["id_mahasiswa"];
 
 $row = 0;
 $statusVerifikasi = '';
+$statusDaftarUlang = '';
 
 ?>
 
@@ -55,19 +56,33 @@ $statusVerifikasi = '';
 
         <div class="col-md-9 p-0">
             <div class="m-2 p-3 bg-white rounded shadow-sm">
-                <h6 class="border-bottom border-gray pb-2 mb-2">SEMESTER 4 (2019/2020) | <?php echo $namaProdiUser; ?> -
+                <h6 class="border-bottom border-gray pb-2 mb-2"><?php echo $namaProdiUser; ?> -
                     <?php echo $kodeProdiUser; ?>-<?php echo $tingkatUser; echo $kodeKelasUser; ?></h6>
                 <center>
-                    <?php 
-                    if($row != 0)
-                    {
-                    ?>
-                    <div class="warna-card col-md-12 mt-3 p-2">
-                        <p class="card-title">Belum terverifikasi oleh DPA</p>
-                    </div>
+                    <!-- jika sudah terverifikasi -->
                     <?php
-                    }
+                    if(isset($_POST["cariKrs"]))
+                    { 
+                        $queryVerifikasi = krsCariStatusVerifikasi($con,$idMahasiswaUser,$_POST["semester"]);
+                        $resultVerifikasi = mysqli_fetch_assoc($queryVerifikasi);
+                        if(($resultVerifikasi["status_daftar_ulang"] == "Sudah") && ($resultVerifikasi["status_verifikasi"] == "Belum"))
+                        {
                     ?>
+                            <div class="col-md-12 p-1 text-center alert alert-danger alert-dismissible fade show" role="alert">
+                                <p>Belum Terverifikasi oleh DPA  <?php echo $row["status_daftar_ulang"]; ?></p>
+                            
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                    <!-- end if -->
+                    <?php } 
+                        else 
+                        {
+
+                        }
+                    } 
+                ?>
                 </center>
                 <div class="media text-muted pt-3">
                     <p class="media-body pb-3 mb-0 small lh-125">
@@ -102,17 +117,19 @@ $statusVerifikasi = '';
                     </select>
                     <button type="submit" name="cariKrs" class="tmbl-filter btn btn-success ml-2">Filter</button>
                     <?php
-                    if($statusVerifikasi == "Belum")
-                    {
-                    ?>
+                    if(isset($_POST["cariKrs"]))
+                    { 
+                        if(($resultVerifikasi["status_daftar_ulang"] == "Sudah") && ($resultVerifikasi["status_verifikasi"] == "Belum"))
+                        {
+                        ?>
                     <button type="button" class="btn btn-success float-right">Kirim ke DPA &nbsp&nbsp<i
                         class="fas fa-arrow-circle-up"></i></button>
-                    <?php
-                    }
-                    ?>
+                    <?php }
+                    } ?>
                 </form>
-
                 
+
+
                 <br><br>
                 <?php
                 if(isset($_POST["cariKrs"]))
@@ -120,6 +137,7 @@ $statusVerifikasi = '';
                     $resultKrs = krsCariSemester($con,$idMahasiswaUser,$_POST["semester"]);
                     $row = mysqli_fetch_assoc($resultKrs);
                     $statusVerifikasi = $row["status_verifikasi"];
+                    $statusDaftarUlang = $row["status_daftar_ulang"];
                 }
                 ?>
 
@@ -127,21 +145,21 @@ $statusVerifikasi = '';
                 if($row["status_daftar_ulang"] == "Sudah")
                 {
                 ?>
-                    <img src="../attachment/img/krs.png" width="100%" alt="">
+                <img src="../attachment/img/krs.png" width="100%" alt="">
                 <?php
                 }
                 else if($row["status_daftar_ulang"] == "Belum")
                 {
                 ?>
-                    <center>
-                        <div class="warna-card col-md-12 border border-danger mt-3">
-                            <div class="teks card-body" style="position: center">
-                                <!-- <p class="card-title">| <img src="../img/navigation/icon.svg"></a> Informasi|</p> -->
-                                <p class="card-title">| <i class="fas fa-info"></i> Informasi |</p>
-                                <p class="card-text" style="color:#950101">*Tidak dapat menampilkan data*</p>
-                                <p class="card-text">- Mahasiswa wajib membayar UKT sebelum masa KRS</p>
-                            </div>
-                    </center>
+                <center>
+                    <div class="warna-card col-md-12 border border-danger mt-3">
+                        <div class="teks card-body" style="position: center">
+                            <!-- <p class="card-title">| <img src="../img/navigation/icon.svg"></a> Informasi|</p> -->
+                            <p class="card-title">| <i class="fas fa-info"></i> Informasi |</p>
+                            <p class="card-text" style="color:#950101">*Tidak dapat menampilkan data*</p>
+                            <p class="card-text">- Mahasiswa wajib membayar UKT sebelum masa KRS</p>
+                        </div>
+                </center>
                 <?php
                 }
                 else
