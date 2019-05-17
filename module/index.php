@@ -386,7 +386,7 @@ if ($level != 'admin') {
             <input type="hidden" id="passwordModal" value="<?php echo $item["password"]?>">
             <div class="row">
               <div class="col-md-12">
-                <center><img src="../attachment/img/avatar.jpeg" id="fotoPrev" height="150px" width="150px" class="rounded-circle" /></center>
+                <center><img src="../attachment/img/<?php echo ($rowUser['foto'] == null)? 'avatar.jpeg' : $rowUser['foto'] ; ?>" id="fotoPrev" height="150px" width="150px" class="rounded-circle" /></center>
                 <br>
                 <center><?php echo ($namaUser); ?></center>
                 <br>
@@ -397,7 +397,7 @@ if ($level != 'admin') {
                     <label class="col-md-3" for="foto">Ganti Foto</label>
                     <div class="input-group col-md-9">
                       <label for="foto" class="file form-control text-secondary" id="label-file">
-                        <input type="file" class="form-control shadow-none" id="foto" name="foto" onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);" accept="image/*" required>
+                        <input type="file" class="form-control shadow-none" id="foto" name="foto" onblur="reset_Blank(); reset_Size(); reset_Check();" onchange="preview_image(event);" accept="image/*">
                         <span class="file-custom" id="browse"></span>
                       </label>
                     </div>

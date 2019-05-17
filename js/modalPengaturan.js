@@ -2,13 +2,13 @@
 /** punya nya modal pengaturan */ 
 
 function Coba() {
-    var foto = document.getElementById("foto").value;
+   
     var passwordLama = document.getElementById("passwordLama").value;
     var passwordBaru = document.getElementById("passwordBaru").value;
     var konfirmasiPassword = document.getElementById("konfirmasiPassword").value;
   
     if (
-      foto == "" ||
+     
       passwordLama == "" ||
       passwordBaru == "" ||
       konfirmasiPassword == ""
@@ -16,7 +16,7 @@ function Coba() {
       document.getElementById("Blank").innerHTML =
         "* Terdapat kolom yang belum diisi";
     } else if (
-      foto != "" ||
+     
       passwordLama != "" ||
       passwordBaru != "" ||
       konfirmasiPassword != ""
