@@ -4,7 +4,6 @@ $("#datepickerSearchBerita").datepicker({ format: "yyyy/mm/dd" });
 $(document).on("click", ".hasilSearchBerita", function(e) {
   e.preventDefault();
   var d = $(this).data("idinfo");
-  alert(d);
 
   $.ajax({
     url: "../process/proses_homeMahasiswa.php",
