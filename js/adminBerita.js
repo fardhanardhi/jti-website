@@ -5,6 +5,8 @@ function Beritacharcountupdate(beritacount){
 	document.getElementById("Bercharcount").innerHTML = lng + '/500';
 }
 
+$( "#datepicker" ).datepicker({format: "yyyy-mm-dd"});
+
 // KHS MODAL LIHAT
 $(".detail-berita").click(function () {
 	var id_info = $(this).attr("data-info");
@@ -20,5 +22,20 @@ $(".detail-berita").click(function () {
 		$("#modalPreview").modal("show");
 	  }
 	});
+	});
+
+	$("#adminCariBerita").click(function() {
+		var tanggal = $("#tanggalBerita").val();
+		console.log("tanggaaaaaal: ", tanggal);
+
+
+    $.ajax({
+      url: "../process/proses_berita.php",
+      method: "post",
+      data: { adminCariBerita: true, tanggal: tanggal },
+      success: function(data) {
+        $("#tabelBerita").html(data);
+      }
+    });
   });
 
