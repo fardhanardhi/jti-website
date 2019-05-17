@@ -223,14 +223,13 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
 
               </div>
             </div>
-            <div class="form-group border-bottom border-gray">
-              <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
-            </div>
-            <div class="media-body pb-3 mb-0 small lh-125">
-              <div class="isi-mhs">
-                <?php
-                $resultKomentar = komentar($con, $id_info);
-                if (mysqli_num_rows($resultKomentar) > 0) {
+            <?php
+            $resultKomentar = komentar($con, $id_info);
+            if (mysqli_num_rows($resultKomentar) > 0) {
+              ?>
+              <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <div class="isi-mhs">
+                  <?php
                   while ($row = mysqli_fetch_assoc($resultKomentar)) {
                     ?>
                     <div class="col mt-3">
@@ -258,11 +257,18 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                     </div>
                   <?php
                 }
-              }
-              ?>
-
+                ?>
+                </div>
               </div>
+            <?php
+          }
+          ?>
+
+            <div class="form-group">
+              <textarea class="form-control border-0 input-komentar" data-idinfo="<?php echo $id_info ?>" data-iduser="<?php echo $idUser ?>" rows="auto" placeholder="Tulis Komentar..."></textarea>
+
             </div>
+
           </div>
         <?php
       }
