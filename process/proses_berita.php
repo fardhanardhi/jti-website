@@ -8,6 +8,20 @@ function tampilBerita($con)
     return $resultTampilBerita;
 }
 
+function cariBerita($con, $tanggal)
+{
+    $haha = formatTanggalBerita($tanggal);
+    $tampilCariBerita="SELECT * from tabel_info WHERE waktu_publish LIKE '$haha%'";
+    $resultTampilCariBerita=mysqli_query($con, $tampilCariBerita);
+    return $resultTampilCariBerita;
+}
+
+function formatTanggalBerita($tanggal){
+    $date1=strtr($tanggal,'/','-');
+    $newFormat=date('Y-m-d',strtotime($date1));
+    return $newFormat;
+  }
+
 function tampilBeritaModal($con)
 {
     $tampilBeritaModal="select a.id_info , a.judul, a.isi, a.tipe, a.waktu, a.*, 
@@ -25,12 +39,7 @@ function tampilFile($con, $id_info){
     return $resultTampilFile;
 }
 
-function beritaCari($con, $tanggal)
-{
-    $beritaCari="select * from tabel_info";
-    $resultBeritaCari=mysqli_query($con, $beritaCari);
-    return $resultBeritaCari;
-}
+
 
 function jumlahKomentar($con, $id_info){
     $jumlahKomentar = "select (b.id_info + c.id_komentar) as komentar , a.*, b.*, c.*
@@ -135,5 +144,55 @@ if(isset($_POST["tampilDetailInfo"]))
     $no++; 
 }
 // MODAL BERITA LIHAT END
+?>
 
+<!-- Post cari -->
+<?php
+if(isset($_POST["adminCariBerita"])){
+  $resultTampilBerita=cariBerita($con,formatTanggalBerita($_POST["tanggal"]));
+  $index=1;
+  if (mysqli_num_rows($resultTampilBerita) > 0){
+    ?>
+    <table class="table table-striped table-bordered">
+        <thead class="text-center">
+            <tr class="p-2">
+                <th>No</th>
+                <th id="beritaBerita">Berita</th>
+                <th>Tanggal Pembuatan</th>
+                <th>Tanggal Perubahan</th>
+                <th>Komentar</th>
+                <th colspan="2">Proses</th>
+            </tr>
+        </thead>
+        <tbody class="text-center m-auto">
+              <?php
+            while ($row = mysqli_fetch_assoc($resultTampilBerita)) {
+                ?>
+              <tr>
+                <td><?= $index?></td>
+                <td class="text-left detail-berita" data-toggle="modal" data-target="#modalPreview" data-info="<?php echo $row["id_info"];?>"><?php echo $row["judul"];?></td>
+                <td><?= date('d F Y', strtotime($row["waktu_publish"]));?></td>
+                <td><?= date('d F Y', strtotime($row["waktu_perubahan"]));?></td>
+                <td><?php echo jumlahKomentar($con, $row["id_info"]); ?></td>
+                <td><button class=" tmbl-table btn btn-danger" type="button"
+                    class="pratinjau btn" data-toggle="modal" data-target="#hapus<?= $index?>"
+                    class="hapus">Hapus</button></td>
+            </tr>
+                <?php
+            $index++;
+            }
+                ?>
+                                              
+        </tbody>
+    </table>
+    <?php
+  }else{
+      ?>
+      <div class="text-center">
+        <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
+        <p class="text-muted">Tidak ada berita pada "<?php echo formatTanggalBerita($_POST["tanggal"]);?>"</p>
+      </div>
+      <?php
+  }
+}
 ?>

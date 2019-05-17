@@ -80,31 +80,34 @@
                         </div>
                     </div>
                     <br>
-                    <form class="form-inline ml-4">
-                        <i class="fas fa-search mr-2"></i>
-                        <div class="col-2">
+                    
+                    <div class="cari mt-2">
+                        <div class="form-inline">
+                            <i class="fas fa-search mr-2"></i>
+                            <div class="col-2">
                                 <div class="input-group date " id="datepicker">
-                                    <input type="text" class="form-control" value="12/02/2012">
-                                    <div class="input-group-addon tgl">
+                                    <input type="text" class="form-control"  id="tanggalBerita" placeholder="<?= date("d-m-Y") ?>">
+                                    <div class="input-group-addon">
                                         <span>
                                             <i class="far fa-calendar-alt"></i>
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" class="tmbl-filter btn btn-success ml-3" value="Cari" name="cariBeritaTanggal">
-                    </form>
-                    <div class="scrolltable">
+                                <button class="btn btn-success cari-btn" id="adminCariBerita">Cari</button>
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="scrolltable" id="tabelBerita">
                     <?php
-                        if(isset($_POST["cariBeritaTanggal"])){
-                            $result=beritaCari($con, $_POST["tanggal"]);
-                            }else{
-                            $result = tampilBerita($con);
-                            }
-                            if(mysqli_num_rows($result) > 0){
+                      $resultTampilBerita=tampilBerita($con);
+                      $index=1;
+                      if (mysqli_num_rows($resultTampilBerita) > 0){
                         ?>
-                        <table class="table table-striped table-bordered text-center mt-3">
-                            <thead>
+                        <table class="table table-striped table-bordered mt-3">
+                            <thead class="text-center">
                                 <tr class="p-2">
                                     <th>No</th>
                                     <th id="beritaBerita">Berita</th>
@@ -114,72 +117,51 @@
                                     <th colspan="2">Proses</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                            <?php 
-                                if(mysqli_num_rows($result) > 0){
-                                $no=1;
-                                while($row = mysqli_fetch_assoc($result)){
-                                    if(jumlahKomentar($con, $row["id_info"])!=0){
+                            <tbody class="text-center m-auto">
+                                  <?php
+                                while ($row = mysqli_fetch_assoc($resultTampilBerita)) {
                                     ?>
-                                <tr>
-                                    <td><?php echo $no;?></td>
-                                    <td class="text-left detail-berita" data-toggle="modal" data-target="#modalPreview" data-info="<?php echo $row["id_info"];?>"><?php echo $row["judul"];?></td>
-                                    <td><?= date('d F Y', strtotime($row["waktu_publish"]));?></td>
-                                    <td><?= date('d F Y', strtotime($row["waktu_perubahan"]));?></td>
-                                    <td><?php echo jumlahKomentar($con, $row["id_info"]); ?></td>
-                                    
-                                    <td><button class=" tmbl-table btn btn-danger" type="button"
-                                            class="pratinjau btn" data-toggle="modal" data-target="#hapus"
+                                  <tr>
+                                      <td><?= $index?></td>
+                                      <td class="text-left detail-berita" data-toggle="modal" data-target="#modalPreview" data-info="<?php echo $row["id_info"];?>"><?php echo $row["judul"];?></td>
+                                      <td><?= date('d F Y', strtotime($row["waktu_publish"]));?></td>
+                                      <td><?= date('d F Y', strtotime($row["waktu_perubahan"]));?></td>
+                                      <td><?php echo jumlahKomentar($con, $row["id_info"]); ?></td>
+
+                                      <td><button class=" tmbl-table btn btn-danger" type="button"
+                                            class="pratinjau btn" data-toggle="modal" data-target="#hapus<?= $row["id_info"]?>"
                                             class="hapus">Hapus</button></td>
-                                </tr>
-                                <?php
-                                } else if(jumlahKomentar($con, $row["id_info"])==0){
+                                  </tr>
+                                    <?php
+                                $index++;
+                                }
                                     ?>
-                                    <tr>
-                                    <td><?php echo $no;?></td>
-                                    <td class="text-left detail-berita" data-toggle="modal" data-target="#modalPreview" data-info="<?php echo $row["id_info"];?>"><?php echo $row["judul"];?></td>
-                                    <td><?= date('d F Y', strtotime($row["waktu_publish"]));?></td>
-                                    <td><?= date('d F Y', strtotime($row["waktu_perubahan"]));?></td>
-                                    <td><?php echo jumlahKomentar($con, $row["id_info"]); ?></td>
-                                    
-                                    <td><button class=" tmbl-table btn btn-danger" type="button"
-                                            class="pratinjau btn" data-toggle="modal" data-target="#hapus"
-                                            class="hapus">Hapus</button></td>
-                                </tr>
-                                <?php
-                                }
-                                $no++;
-                                }
-                                ?>
-                                </tbody>
-                                <?php 
-                                }else{
-                                ?>
-                                <div class='text-center'>
-                                    <img src='../img/magnifier.svg' alt='pencarian' class='p-3'>
-                                    <p class='text-muted'>Tidak ada berita pada "03 juni 2019"</p>
-                                </div>
-                                <?php
-                                }
-                                ?>
+																	                                
+                            </tbody>
                         </table>
                         <?php
-                                    } else{
-                                    ?>
-                                    <div class="text-center">
-                                        <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-                                        <p class="text-muted">Data Mahasiswa Per-Kelas Tidak Ditemukan</p>
-                                    </div>
-                                    <?php
-                                    }
-                                    ?>
-                    </div>   
+                        }else{
+                          ?>
+                          <div class="text-center">
+                            <p class="text-muted">Data beasiswa kosong</p>
+                          </div>
+                          <?php
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Modal Hapus -->
-    <div class="modal fade hapusBerita-modal" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapusTitle" aria-hidden="true" data-backdrop="false">
+    <?php
+		$resultTampilBerita=tampilBerita($con);
+		$index=1;
+		if (mysqli_num_rows($resultTampilBerita) > 0){
+			while ($row = mysqli_fetch_assoc($resultTampilBerita)) {
+        $idBerita = $row["id_info"];
+	?>
+    <div class="modal fade hapusBerita-modal" id="hapus<?= $row["id_info"]?>" tabindex="-1" role="dialog" aria-labelledby="hapus<?= $index?>Title" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content konten-modal">
                 <div class="modal-body ">
@@ -192,6 +174,11 @@
             </div>
         </div>
     </div>
+    <?php
+			$index++;
+			}
+		}
+    	?>
 
        <!-- Modal preview -->
 <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-backdrop="true">
