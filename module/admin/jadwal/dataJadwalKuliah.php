@@ -44,7 +44,8 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_kelas"
                                                                     name="id_kelas" required>
-                                                                    <option value="" selected disabled>Pilih Kelas</option>
+                                                                    <option value="" selected disabled>Pilih Kelas
+                                                                    </option>
                                                                     <?php 
                                                                     $resultKelas=kelas($con); 
                                                                     if(mysqli_num_rows($resultKelas))
@@ -67,7 +68,8 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="hari"
                                                                     name="hari" required>
-                                                                    <option value="" selected disabled>Pilih Hari</option>
+                                                                    <option value="" selected disabled>Pilih Hari
+                                                                    </option>
                                                                     <option value="Senin">Senin</option>
                                                                     <option value="Selasa">Selasa</option>
                                                                     <option value="Rabu">Rabu</option>
@@ -115,7 +117,7 @@
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <select class="semester custom-select" id="jam_selesai"
-                                                                        name="jam_selesai" required>
+                                                                    name="jam_selesai" required>
                                                                     <option value="" selected disabled>Berakhir</option>
                                                                     <option value="07:45:00">07.45</option>
                                                                     <option value="07:50:00">07.50</option>
@@ -152,7 +154,8 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_semester"
                                                                     name="id_semester" required>
-                                                                    <option value="" selected disabled>Pilih Semester</option>
+                                                                    <option value="" selected disabled>Pilih Semester
+                                                                    </option>
                                                                     <?php 
                                                                     $resultSemester=semester($con); 
                                                                     if(mysqli_num_rows($resultSemester))
@@ -175,7 +178,8 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_matkul"
                                                                     name="id_matkul" required>
-                                                                    <option value="" selected disabled>Pilih Mata Kuliah</option>
+                                                                    <option value="" selected disabled>Pilih Mata Kuliah
+                                                                    </option>
                                                                     <?php 
                                                                     $resultMatkul=matkul($con); 
                                                                     if(mysqli_num_rows($resultMatkul))
@@ -198,7 +202,8 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_ruang"
                                                                     name="id_ruang" required>
-                                                                    <option value="" selected disabled>Pilih Ruangan</option>
+                                                                    <option value="" selected disabled>Pilih Ruangan
+                                                                    </option>
                                                                     <?php 
                                                                     $resultRuang=ruang($con); 
                                                                     if(mysqli_num_rows($resultRuang))
@@ -221,7 +226,8 @@
                                                             <div class="col-sm-10">
                                                                 <select class="semester custom-select" id="id_dosen"
                                                                     name="id_dosen" required>
-                                                                    <option value="" selected disabled>Pilih Dosen Pengajar
+                                                                    <option value="" selected disabled>Pilih Dosen
+                                                                        Pengajar
                                                                     </option>
                                                                     <?php 
                                                                     $resultDosen=dosen($con); 
@@ -389,7 +395,7 @@
                 <div class="container-fluid p-0" id="edit-jadwalKuliah">
 
                 </div>
-            </div>
+        </div>
         </form>
     </div>
 </div>
