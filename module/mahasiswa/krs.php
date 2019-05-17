@@ -117,12 +117,15 @@ $statusDaftarUlang = '';
                     </select>
                     <button type="submit" name="cariKrs" class="tmbl-filter btn btn-success ml-2">Filter</button>
                     <?php
-                    if(($resultVerifikasi["status_daftar_ulang"] == "Sudah") && ($resultVerifikasi["status_verifikasi"] == "Belum"))
-                    {
-                    ?>
+                    if(isset($_POST["cariKrs"]))
+                    { 
+                        if(($resultVerifikasi["status_daftar_ulang"] == "Sudah") && ($resultVerifikasi["status_verifikasi"] == "Belum"))
+                        {
+                        ?>
                     <button type="button" class="btn btn-success float-right">Kirim ke DPA &nbsp&nbsp<i
                         class="fas fa-arrow-circle-up"></i></button>
-                    <?php } ?>
+                    <?php }
+                    } ?>
                 </form>
                 
 
