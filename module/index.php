@@ -6,7 +6,8 @@ include "../process/proses_modalPengaturan.php";
 $level = $_SESSION['level'];
 $idUser = $_SESSION['id'];
 
-$queryModalPengaturan = "SELECT * FROM tabel_user WHERE id_user = '$idUser';";
+
+$queryModalPengaturan = "SELECT * FROM tabel_user WHERE id_user = '$idUser'";
 $resultModalPengaturan = mysqli_query($con, $queryModalPengaturan);
 
 $item = '';
@@ -383,7 +384,7 @@ if ($level != 'admin') {
             </button>
             <h5 class="modal-title text-center">Pengaturan</h5>
             <hr class="pl-4 pr-4 bg-dark">
-            <input type="hidden" id="passwordModal" value="<?php echo $item["password"]?>">
+            <input type="text" id="passwordModal" value="<?php echo $item['password']?>">
             <div class="row">
               <div class="col-md-12">
                 <center><img src="../attachment/img/<?php echo ($rowUser['foto'] == null)? 'avatar.jpeg' : $rowUser['foto'] ; ?>" id="fotoPrev" height="150px" width="150px" class="rounded-circle" /></center>
@@ -405,7 +406,7 @@ if ($level != 'admin') {
                   <div class="form-group row">
                     <label class="col-md-3" for="passwordLama">Password Lama</label>
                     <div class="input-group col-md-9">
-                      <input type="password" id="passwordLama" placeholder="Password Lama" name="passwordLama" onblur="reset_Blank();" class="form-control border-right-0 shadow-none" required>
+                      <input type="password" id="passwordLama" placeholder="Password Lama" name="passwordLama" onblur="reset_Blank();" class="form-control border-right-0 shadow-none">
                       <div class="input-group-append">
                         <span class="far fa-eye form-control" id="eyeA" onclick="showPasswordLama();"></span>
                       </div>
@@ -414,7 +415,7 @@ if ($level != 'admin') {
                   <div class="form-group row">
                     <label class="col-md-3" for="passwordBaru">Password Baru</label>
                     <div class="input-group col-md-9">
-                      <input type="password" class="form-control border-right-0 shadow-none" id="passwordBaru" placeholder="Password Baru" name="passwordBaru" onblur="reset_Blank();" required>
+                      <input type="password" class="form-control border-right-0 shadow-none" id="passwordBaru" placeholder="Password Baru" name="passwordBaru" onblur="reset_Blank();">
                       <div class="input-group-append">
                         <span class="far fa-eye form-control" id="eyeB" onclick="showPasswordBaru();"></span>
                       </div>
@@ -423,7 +424,7 @@ if ($level != 'admin') {
                   <div class="form-group row">
                     <label class="col-md-3" for="konfirmasiPassword">Konfirmasi Password</label>
                     <div class="input-group col-md-9">
-                      <input type="password" class="form-control border-right-0 shadow-none" id="konfirmasiPassword" placeholder="Konfirmasi Password" name="konfirmasiPassword" onblur="reset_Blank();" required>
+                      <input type="password" class="form-control border-right-0 shadow-none" id="konfirmasiPassword" placeholder="Konfirmasi Password" name="konfirmasiPassword" onblur="reset_Blank();">
                       <div class="input-group-append">
                         <span class="far fa-eye form-control" id="eyeC" onclick="showPasswordKonfirmasi();"></span>
                       </div>
@@ -438,7 +439,7 @@ if ($level != 'admin') {
                   </div>
                   <div class="col-sm-3"></div>
                   <div class="col-sm-9">
-                      <button type="submit" class="btn btn-success" name="update" onclick="Coba(); showFilesSize(event); cekPasword(event); checkFoto();">Simpan</button>
+                      <button type="submit" class="btn btn-success" name="update" onclick="showFilesSize(event);">Simpan</button>
                   </div>
                 </form>
               </div>
