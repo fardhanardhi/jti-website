@@ -24,7 +24,7 @@
             <div class="row">
                 <label class="col-form-label">Kelas</label>
                 <div class="col-sm-1">
-                    <select class="form-control form-control-sm" name="kelas" id="kelasCari">
+                    <select class="form-control w-auto form-control-sm" name="kelas" id="kelasCari">
                         <?php
                         $resultKelas=kelas($con);
                         if(mysqli_num_rows($resultKelas)){
@@ -57,8 +57,8 @@
             </div>
 
             <div class="row pt-2 mt-2 pl-0 scrollbar" id="mencariKelas">
-                <? $resultKelasData=kelasData($con, minKelas($con));
-                if (mysqli_num_rows($resultKelasData) > 0)
+                <?php $resultKelasData=kelasData($con, minKelas($con));
+                if(mysqli_num_rows($resultKelasData) > 0)
                 {?>
                     <table class="table table-striped table-bordered text-center">
                         <thead>
@@ -92,12 +92,14 @@
                 <?php
                 } 
                 else
-                {?>
+                {
+                  ?>
                   <div class="text-center">
                     <p class="text-muted">Data Kosong</p>
                   </div>
                 <?php
-                }?>
+                }
+                ?>
 
             </div>
           </div>

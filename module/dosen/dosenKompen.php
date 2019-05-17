@@ -53,72 +53,82 @@ include "../process/proses_dosenKompen.php";
         <div class="media text-muted pt-3">
           <div class="media-body pb-3 mb-0 small lh-125">
             <div class="isi">
-
-              <table class="table table-bordered text-center">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>NIM</th>
-                    <th>Nama Mahasiswa</th>
-                    <th>Kelas</th>
-                    <th>Pratinjau</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                    $queryKompen ="select a.nim, a.nama,  b.kode, c.kode_kelas, c.tingkat, d.id_mahasiswa, d.id_kompen, d.status_verifikasi from  tabel_mahasiswa a inner join tabel_prodi b on a.id_prodi = b.id_prodi inner join tabel_kelas c on a.id_kelas = c.id_kelas
-                    inner join tabel_kompen d on a.id_mahasiswa = d.id_mahasiswa";
-                    $result = mysqli_query($con, $queryKompen);
-                    $index = 1;
-                    while($row = mysqli_fetch_assoc($result)){
-                      
-                      if($row["status_verifikasi"] == "sudah terverifikasi"){
-
-                      
-                  ?>
-                    <tr class="Sudah-konfirmasi">
-                  <?php
-                      } else{
-                    
-                  ?>
-                     <tr class="Belum-konfirmasi">
-                  <?php
-                      } 
-                  ?>
-                      <td><?php echo $index; ?></td>
-                      <td><?php echo $row["nim"]; ?></td>
-                      <td><?php echo $row["nama"]; ?></td>
-                      <td><?=$row['kode'].' - '.$row['tingkat'].$row['kode_kelas']?></td>
-                      <td><button type="button" class="pratinjau btn detail-kompen" data-id="<?php echo $row["id_kompen"];?>" data-toggle="modal" data-target="#modalLihat">Lihat</button></td>
+            <?php
+              $queryKompen ="select a.nim, a.nama,  b.kode, c.kode_kelas, c.tingkat, d.id_mahasiswa, d.id_kompen, d.status_verifikasi from  tabel_mahasiswa a inner join tabel_prodi b on a.id_prodi = b.id_prodi inner join tabel_kelas c on a.id_kelas = c.id_kelas
+              inner join tabel_kompen d on a.id_mahasiswa = d.id_mahasiswa where d.id_dosen =(select id_dosen from tabel_dosen where id_user='$_SESSION[id]')";
+              $result = mysqli_query($con, $queryKompen);
+              
+              if(mysqli_num_rows($result)>0){
+                ?>
+                <table class="table table-bordered text-center">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>NIM</th>
+                      <th>Nama Mahasiswa</th>
+                      <th>Kelas</th>
+                      <th>Pratinjau</th>
                     </tr>
-                  <?php $index++;
-                    }
-                  ?>
-                </tbody>
-              </table>
-              <div class="form-group row">
-                <strong><label class="col-xl-1">Keterangan:</label></strong>
-                <div class="col-sm-5">
-                  <div class="row">
-                    <div class="col-sm-1">
-                      <div class="box1">
-                      </div><br>
-                    </div>
-                    <div class="col-sm-5">
-                      Sudah dikonfirmasi
-                    </div>
-                  </div>  
-                  <div class="row">
-                    <div class="col-sm-1">
-                      <div class="box2">
-                      </div><br>
-                    </div>
-                    <div class="col-sm-5">
-                    Belum dikonfirmasi
-                    </div>
-                  </div> 
+                  </thead>
+                  <tbody>
+                    <?php
+                      $index = 1;
+                      while($row = mysqli_fetch_assoc($result)){
+                        
+                        if($row["status_verifikasi"] == "sudah terverifikasi"){
+  
+                        
+                    ?>
+                      <tr class="Sudah-konfirmasi">
+                    <?php
+                        } else{
+                      
+                    ?>
+                       <tr class="Belum-konfirmasi">
+                    <?php
+                        } 
+                    ?>
+                        <td><?php echo $index; ?></td>
+                        <td><?php echo $row["nim"]; ?></td>
+                        <td><?php echo $row["nama"]; ?></td>
+                        <td><?=$row['kode'].' - '.$row['tingkat'].$row['kode_kelas']?></td>
+                        <td><button type="button" class="pratinjau btn detail-kompen" data-id="<?php echo $row["id_kompen"];?>" data-toggle="modal" data-target="#modalLihat">Lihat</button></td>
+                      </tr>
+                    <?php $index++;
+                      }
+                    ?>
+                  </tbody>
+                </table>
+                <div class="form-group row">
+                  <strong><label class="col-xl-1">Keterangan:</label></strong>
+                  <div class="col-sm-5">
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <div class="box1">
+                        </div><br>
+                      </div>
+                      <div class="col-sm-5">
+                        Sudah dikonfirmasi
+                      </div>
+                    </div>  
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <div class="box2">
+                        </div><br>
+                      </div>
+                      <div class="col-sm-5">
+                      Belum dikonfirmasi
+                      </div>
+                    </div> 
+                  </div>
                 </div>
-              </div>
+                <?php
+              }else{
+                ?>
+                <div class="text-center text-muted mt-5 mb-2">Data Kompen Kosong</div>
+                <?php
+              }
+              ?>
             </div>
           </div>
         </div>

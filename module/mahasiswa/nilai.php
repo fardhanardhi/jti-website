@@ -13,6 +13,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 $namaUser = $rowUser["nama"];
 $nimUser = $rowUser["nim"];
 $prodiUser = $rowUser["prodi"];
+$id_semester=$rowUser["id_semester"];
 
 ?>
 
@@ -68,21 +69,18 @@ $prodiUser = $rowUser["prodi"];
                 <p>Indeks Prestasi Semester: <?php 
                 if(isset($_POST["filter"])){
                     $ipSemester = indeksSemesterFix($con, $idUser, $_POST["semester"]);
+                    $result=filterKhs($con, $idUser, $_POST["semester"]);
                     echo $ipSemester;
                 }
                 else
                 { 
-                    echo 0;
+                    $ipSemester = indeksSemesterFix($con, $idUser, $id_semester);
+                    echo $ipSemester;
+                    $result = khs($con, $idUser);
                 }; ?> </p>
                 <p>Indeks Prestasi Kumulatif: <?php echo indeksSemesterKumulatif($con, $idUser);?></p>
 
                 <?php
-                if(isset($_POST["filter"])){
-                    $result=filterKhs($con, $idUser, $_POST["semester"]);
-                }else{
-                    $result = khs($con, $idUser);
-                    $ipSemester = 0;
-                }
 
                 if(mysqli_num_rows($result) > 0){
                     ?>
@@ -108,7 +106,7 @@ $prodiUser = $rowUser["prodi"];
                                     <td><?php echo $row["nama"];?></td>
                                     <td><?php echo $row["sks"];?></td>
                                     <td><?php echo $row["jam"];?></td>
-                                    <td><?php echo $row["nilai"];?></td>
+                                    <td><?php echo grade($row["nilai"]);?></td>
                                 </tr>
                             <?php
                             }

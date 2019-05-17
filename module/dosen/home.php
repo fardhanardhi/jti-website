@@ -110,7 +110,7 @@
     </div>
     <!-- Kompen Mahasiswa -->
     <div class="col-md-3 p-0 ">
-      <div class="sticky-sidebar sticky-top">
+      <div class="sticky-sidebar sticky-top mt-2">
         <div class="kompen-bar m-2 p-3 bg-white rounded shadow-sm my-auto">
           <h6 class="border-bottom border-gray pb-2 mb-0 judul">KOMPEN MAHASISWA</h6>
           <div class="media text-muted pt-3">
