@@ -33,8 +33,8 @@ function ambilIdDosen($con, $idUser){
 }
 
 function SumbitKompenDosen($con, $idDosenKompen, $idTask){
-  $queryDosenKompen = "UPDATE tabel_task SET status='0' 
-                      where id_dosen='$idDosenKompen' AND id_task='$idTask'";
+  $queryDosenKompen = "UPDATE tabel_pekerjaan_kompen SET status_kompen='0' 
+                      where id_dosen='$idDosenKompen' AND id_pekerjaan_kompen='$idTask'";
   $resultQueryDosenKompen = mysqli_query($con,$queryDosenKompen);
 }
 
@@ -42,14 +42,14 @@ if(isset($_POST["tambahTask"]) || isset($_POST["submitKompenDosen"]) || isset($_
 
  if($_GET["module"]=="home" && $_GET["act"]=="tambah"){
    $result=ambilIdDosen($con,$_POST["idDosen"]);
-   $tambahTaskQuery= "INSERT INTO tabel_task (pekerjaan, kuota, id_dosen)  
-                   VALUES ('$_POST[taskPekerjaan]','$_POST[kuotaMhs]', $result)";
+   $tambahTaskQuery= "INSERT INTO tabel_pekerjaan_kompen (nama, kuota, id_dosen, id_semester)  
+                   VALUES ('$_POST[taskPekerjaan]','$_POST[kuotaMhs]', $result, $_POST[semesterKompen])";
    mysqli_query($con, $tambahTaskQuery);
    header('location:../module/index.php?module=' . $_GET["module"]);
  }
  
  else if($_GET["module"]=="home" && $_GET["act"]=="hapus"){
-   $hapusTask="DELETE FROM tabel_task WHERE id_task='$_POST[idTask]'";
+   $hapusTask="DELETE FROM tabel_pekerjaan_kompen WHERE id_pekerjaan_kompen='$_POST[idTask]'";
    mysqli_query($con, $hapusTask);
    header('location:../module/index.php?module=' . $_GET["module"]);
  }
