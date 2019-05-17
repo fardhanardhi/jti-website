@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 17, 2019 at 09:20 PM
--- Server version: 5.7.26-0ubuntu0.19.04.1
--- PHP Version: 7.2.17-0ubuntu0.19.04.1
+-- Generation Time: May 17, 2019 at 11:49 PM
+-- Server version: 5.7.26-0ubuntu0.18.04.1
+-- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -636,6 +636,7 @@ INSERT INTO `tabel_prodi` (`id_prodi`, `nama`, `kode`) VALUES
 
 CREATE TABLE `tabel_reply_komentar` (
   `id_reply_komentar` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `isi` text NOT NULL,
   `id_komentar` int(11) NOT NULL,
   `waktu` datetime NOT NULL
@@ -645,10 +646,10 @@ CREATE TABLE `tabel_reply_komentar` (
 -- Dumping data for table `tabel_reply_komentar`
 --
 
-INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `isi`, `id_komentar`, `waktu`) VALUES
-(1, 'Jangan lupa untuk minta tugasnya', 2, '2019-04-12 00:00:00'),
-(2, 'Semangat juga ', 3, '2019-04-13 02:00:00'),
-(3, 'Jangan lupa untuk minta tugasnya', 4, '2019-04-13 03:00:00');
+INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `id_user`, `isi`, `id_komentar`, `waktu`) VALUES
+(1, 16, 'Jangan lupa untuk minta tugasnya', 2, '2019-04-12 00:00:00'),
+(2, 13, 'Semangat juga ', 3, '2019-04-13 02:00:00'),
+(3, 18, 'Jangan lupa untuk minta tugasnya', 4, '2019-04-13 03:00:00');
 
 -- --------------------------------------------------------
 
@@ -1017,7 +1018,8 @@ ALTER TABLE `tabel_prodi`
 --
 ALTER TABLE `tabel_reply_komentar`
   ADD PRIMARY KEY (`id_reply_komentar`),
-  ADD KEY `id_komentar` (`id_komentar`);
+  ADD KEY `id_komentar` (`id_komentar`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tabel_riwayat_peminjam_kelas_kosong`
@@ -1331,7 +1333,8 @@ ALTER TABLE `tabel_pekerjaan_kompen`
 -- Constraints for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
-  ADD CONSTRAINT `tabel_reply_komentar_ibfk_1` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tabel_reply_komentar_ibfk_1` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tabel_reply_komentar_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_riwayat_peminjam_kelas_kosong`
