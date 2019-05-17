@@ -45,3 +45,18 @@
 #jadwal .warna-verifikasi {
     background-color: #A5FBA5;
 }
+
+#jadwal .alert-success {
+    color: black;
+    background-color: #A4FC9F;
+    border-color: #A4FC9F;
+    height: 35px;
+}
+
+#jadwal .alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .3rem 1.25rem;
+    color: inherit;
+}

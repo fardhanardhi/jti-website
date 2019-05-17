@@ -18,4 +18,15 @@ function krsCariSemester($con,$idMahasiswa,$semester)
     $resultKrsCariSemester = mysqli_query($con,$krsCariSemester);
     return $resultKrsCariSemester;
 }
+
+function krsCariStatusVerifikasi($con, $idMahasiswa, $semester)
+{
+    $krsCariStatusVerifikasi = "select * from tabel_krs
+    where id_semester = $semester
+    and id_mahasiswa = $idMahasiswa";
+
+    $resultKrsCariStatusVerifikasi = mysqli_query($con,$krsCariStatusVerifikasi);
+    return $resultKrsCariStatusVerifikasi;
+}
+
 ?>

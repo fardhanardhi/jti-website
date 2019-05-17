@@ -22,3 +22,18 @@
     font-size: 12px;
     line-height: normal;
 }
+
+#krs .alert-danger {
+    color: white;
+    background-color: #CF212A;
+    border-color: #CF212A;
+    height: 35px;
+}
+
+#krs .alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .3rem 1.25rem;
+    color: inherit;
+}

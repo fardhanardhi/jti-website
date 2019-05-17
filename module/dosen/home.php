@@ -19,7 +19,7 @@
           while ($row = mysqli_fetch_assoc($resultTampilProfilDosen)) {
         ?>
                 <div class="d-flex justify-content-center">
-                  <img src="../attachment/img/avatar.jpeg" alt="dosen"
+                  <img src="../attachment/img/<?php echo ($row['foto'] == null)? 'avatar.jpeg' : $row['foto'] ; ?>" alt="dosen"
                     style="width:150px;height:150px;border-radius:50%;">
                 </div>
                 <div class="data-dosen text-center">
@@ -110,7 +110,7 @@
     </div>
     <!-- Kompen Mahasiswa -->
     <div class="col-md-3 p-0 ">
-      <div class="sticky-sidebar sticky-top">
+      <div class="sticky-sidebar sticky-top mt-2">
         <div class="kompen-bar m-2 p-3 bg-white rounded shadow-sm my-auto">
           <h6 class="border-bottom border-gray pb-2 mb-0 judul">KOMPEN MAHASISWA</h6>
           <div class="media text-muted pt-3">

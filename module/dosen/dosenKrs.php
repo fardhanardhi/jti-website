@@ -20,7 +20,7 @@
                                 while($row = mysqli_fetch_assoc($resultnyaTampilProfilDosen)){
                             ?>
                                 <div class="d-flex justify-content-center">
-                                    <img src="../attachment/img/avatar.jpeg" alt="dosen"
+                                    <img src="../attachment/img/<?php echo ($row['foto'] == null)? 'avatar.jpeg' : $row['foto'] ; ?>" alt="dosen"
                                         style="width:150px;height:150px;border-radius:50%;">
                                 </div>
                                 <div class="data-dosen text-center">
