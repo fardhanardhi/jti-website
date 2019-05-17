@@ -59,13 +59,13 @@ $kelasUser = $rowUser["id_kelas"];
           if($resultVerifikasi["status_verifikasi"] == "Sudah")
           {
           ?>
-          <div class="col-md-12 p-1 text-center alert alert-success alert-dismissible fade show" role="alert">
-              <p>Sudah Terverifikasi oleh DPA</p>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          <!-- end if -->
+        <div class="col-md-12 p-1 text-center alert alert-success alert-dismissible fade show" role="alert">
+          <p>Sudah Terverifikasi oleh DPA</p>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- end if -->
         <?php } else {}
         } ?>
         <form action="?module=jadwal" class="p-0 m-0" method="post">
