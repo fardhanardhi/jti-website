@@ -144,45 +144,39 @@ function minSemester($con){
 }
 
 //FungsiGrade
-function grade($nilai)
+function nindex($nilai)
 {
     if ($nilai > 80 )
     { 
-        $grade='A';
         $nindex = 4;
     } 
     else if (($nilai > 70) && ($nilai <= 80))
     { 
-        $grade='B+';
         $nindex = 3.5;
     } 
     else if (($nilai > 65) && ($nilai <= 70))
     { 
-        $grade='B';
         $nindex = 3.00;
     }
     else if (($nilai > 60) && ($nilai <= 65))
     { 
-        $grade='C+';
         $nindex = 2.30;
     }
     else if (($nilai > 50) && ($nilai <= 60))
     { 
-        $grade='C';
         $nindex = 2.00;
     }
     else if (($nilai > 40) && ($nilai <= 50))
     { 
-        $grade='D';
         $nindex = 1.00;
     }
     else if ($nilai <= 40)
     { 
-        $grade='E';
+        // $grade='E';
         $nindex = 0.00;
     }
 
- return $grade;
+ return $nindex;
 }
 
 // Modal KHS LIHAT
@@ -260,7 +254,7 @@ if(isset($_POST["tampilDetailMhs"]) && isset($_POST["tampilDetailSemester"]))
                             <td><?php echo $row1["nm_matkul"];?></td>
                             <td><?php echo $row1["sks"];?></td>
                             <td><?php echo $row1["jam"];?></td>
-                            <td><?php echo grade($row1["nilai"]);?></td>
+                            <td><?php echo nindex($row1["nilai"]);?></td>
                         </tr>
                         <?php
                         } else{
@@ -456,153 +450,107 @@ if(isset($_POST["updateNilaiMhs"]) && isset($_POST["updateNilaiSemester"]))
     $no++;
 }
 // MODAL KHS UPLOAD END
+if(isset($_POST["update"])){
+
+    session_start();
+    if($_GET["module"] == "khs" && $_GET["act"]=="edit"){
+
+        $resultMatkul=mysqli_query($con, "
+            select a.*, b.nama as nm_mahasiswa, b.nim, c.nama as nm_matkul from tabel_khs a, tabel_mahasiswa b, tabel_matkul c where a.id_mahasiswa = b.id_mahasiswa and a.id_matkul=c.id_matkul and a.id_mahasiswa='$_POST[id_mahasiswa]' and a.id_semester='$_POST[id_semester]'");
+
+        if(mysqli_num_rows($resultMatkul)>0)
+        {
+            $i = 1;
+            while($rowMatkul=mysqli_fetch_assoc($resultMatkul))
+            {
+                $id_khs = $_POST['id_khs'.$i];
+                $nilai= $_POST['nilai'.$i];   
+                $waktu=date('Y-m-d H:i:s'); 
+                mysqli_query($con, "UPDATE tabel_khs SET nilai='$nilai', waktu_edit='$waktu' 
+                WHERE id_khs = '$id_khs'");
+
+            $i++;
+            }
+      }
+      header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+  }
 
 // Modal KHS EDIT
 if(isset($_POST["editNilaimhs"]) && isset($_POST["editNilaiSemester"]))
 {
+    session_start();
     $id_mahasiswa = $_POST['editNilaimhs'];
     $id_semester = $_POST['editNilaiSemester'];
 
-    $editNilaiMahasiswa="
-    select distinct(a.id_mahasiswa), a.*, a.nim, 
-    a.nama as nm_mahasiswa, c.*, d.id_kelas, e.*, e.semester, f.*
-    from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f
-    where a.id_kelas = d.id_kelas
-    and d.id_kelas = f.id_kelas
-    and a.id_semester = e.id_semester
-    and e.id_semester = f.id_semester
-    and c.id_matkul = f.id_matkul 
-    and a.id_semester = $id_semester
-    and a.id_mahasiswa = $id_mahasiswa group by a.id_mahasiswa";
+    $editNilaiMahasiswa="select * from tabel_mahasiswa where id_mahasiswa='$id_mahasiswa' and id_semester='$id_semester'";
 
     $resultEditNilaiMahasiswa = mysqli_query($con, $editNilaiMahasiswa);
     
-    if(mysqli_num_rows($resultEditNilaiMahasiswa) == 0){}
-        else{
-            $no = 1;
-            while ($row = mysqli_fetch_assoc($resultEditNilaiMahasiswa)) {
-                ?> 
+    if(mysqli_num_rows($resultEditNilaiMahasiswa) > 0){
+        $rowEditNilaiMahasiswa=mysqli_fetch_assoc($resultEditNilaiMahasiswa)
+        ?> 
+        <form action="../process/proses_khs.php?module=khs&act=edit" method="post" id="EditNilai">
+            <div class="modal-body">
+                <input type="hidden" name="id_mahasiswa" value="<?= $rowEditNilaiMahasiswa["id_mahasiswa"]?>">
+                <input type="hidden" name="id_semester" value="<?= $rowEditNilaiMahasiswa["id_semester"]?>">
+                <div class="isi-modaLihat row">
+                    <div class="col-md-1"><p>Nama</p> </div>
+                    <div class="col-md-auto"><p>:</p></div>
+                    <div class="col-md-8"><p><?php echo $rowEditNilaiMahasiswa["nama"]; ?></p></div>      
+                </div>
+                <div class="isi-modaLihat row">
+                    <div class="col-md-1"><p>NIM</p></div>
+                    <div class="col-md-auto"><p>:</p></div>
+                    <div class="col-md-8"><p><?php echo $rowEditNilaiMahasiswa["nim"]; ?></p></div>      
+                </div>
                 
-                    <div class="modal-body">
-                        <div class="isi-modaLihat">
-                            <p>Nama : <?php echo $row["nm_mahasiswa"]; ?></p>
-                            <p>Nim : <?php echo $row["nim"]; ?></p>                                    
-                        </div>   
-                <?php
-
-                 $editNilaiMhs="
-                 select distinct(c.id_matkul), a.id_mahasiswa, a.*, c.*, d.* ,e.*, e.semester, f.*, g.*, h.*, c.nama as nm_matkul
-                from tabel_mahasiswa a, tabel_matkul c, tabel_kelas d, tabel_semester e, tabel_jadwal f, tabel_khs g, tabel_prodi h
-                where a.id_kelas = d.id_kelas
-                and d.id_kelas = f.id_kelas
-                and h.id_prodi = d.id_prodi
-                and a.id_semester = e.id_semester
-                and a.id_semester = f.id_semester
-                and c.id_matkul = f.id_matkul
-                and g.id_matkul = f.id_matkul 
-                and g.id_mahasiswa = a.id_mahasiswa
-                and g.id_semester = $id_semester
-                and g.id_mahasiswa = $id_mahasiswa";
-             
-                $resultEditNilaiMhs = mysqli_query($con, $editNilaiMhs);
-                if(mysqli_num_rows($resultEditNilaiMhs)){
-                ?>       
-                <form action="">     
                 <div class="border-bottom border-gray">
                     <div class="row">
                         <div class="col-sm-6">
                         </div>
                         <div class="col-sm-6">
                             <div class="row isi-modaLihat">
-                                <p>Edit Data Nilai Mahasiswa</p>
-                                <!-- <p class="col">A</p>
-                                <p class="col">B+</p>
-                                <p class="col">B</p>
-                                <p class="col">C+</p>
-                                <p class="col">C</p>
-                                <p class="col">D</p>
-                                <p class="col">E</p> -->
+                                <p>Nilai Mahasiswa</p>
                             </div>
                         </div>
-                     </div>
+                    </div>
                 </div>
-                <!-- Modal isi-->
-                <div>
-                    <?php 
-                    $index=1;
-                    while($row1 = mysqli_fetch_assoc($resultEditNilaiMhs)){
-                        if($row1["nilai"] !=0){
+                <?php    
+                $editNilai=mysqli_query($con, "
+                    select a.*, b.nama as nm_mahasiswa, b.nim, c.nama as nm_matkul from tabel_khs a, tabel_mahasiswa b, tabel_matkul c where a.id_mahasiswa = b.id_mahasiswa and a.id_matkul=c.id_matkul and a.id_mahasiswa='$id_mahasiswa' and a.id_semester='$id_semester'");
+
+                if(mysqli_num_rows($editNilai)>0){
+                    $i = 1;
+                    while ($row1 = mysqli_fetch_assoc($editNilai)) {
                     ?>
-                     <div class="row isi-modaLihat">
+                    <div class="row isi-modaLihat">
                         <div class="col-sm-6">
+                            <input type="hidden" name="id_khs<?=$i?>" value="<?=$row1["id_khs"]?>">
                             <p><?php echo $row1["nm_matkul"];?></p>
                         </div>
                         <div class="col-sm-6">
                             <div class="row">
                             <div class="form-group row">
                                     <div class="col-md-12">
-                                        <input type="number" min="0" max="100" class="form-control" name="nilai" value="<?php echo $row1["nilai"] ?>"></small>
+                                        <input type="number" min="0" max="100" class="form-control" name="nilai<?=$i?>" value="<?php echo $row1["nilai"] ?>"></small>
                                     </div>
-                                 </div>
-                                <!-- <div class="col"><input type="radio" name="nilai" value="nilai1" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai2" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai3" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai4" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div> -->
+                                    </div>
                             </div>
                         </div>
                     </div>
                     <?php
-                    } else if($row1["nilai"] !=0){
-                    ?>
-                    <div class="row isi-modaLihat">
-                        <div class="col-sm-6">
-                            <p><?php echo $row1["nm_matkul"];?></p>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="row">
-                            <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <input type="number" min="0" max="100" class="form-control" name="nilai" value="<?php echo $row1["nilai"] ?>"></small>
-                                    </div>
-                                 </div>
-                                <!-- <div class="col"><input type="radio" name="nilai" value="nilai1" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai2" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai3" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai4" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div>
-                                <div class="col"><input type="radio" name="nilai" value="nilai5" /></div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <?php
+                    $i++;
                     }
-                        $index++;
-                    }
-                    ?>
-                    </div>
-                    <!-- Modal isi End-->
-                    </div>
-                    <!-- Modal body End-->
-
-                    <div class="modal-footer">
-                        <button type="button" class="tmbl-kirim btn btn-success float-right">Kirim</button>
-                    </div>
-                    </form>
-                    <?php
-                    }
-                    ?>
-                </div>
-                <?php
-            }
-            ?>
-        </div>
+                }
+                ?>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="tmbl-kirim btn btn-success float-right" name="update">Kirim</button>
+            </div>
+        </form>
         <?php
     }
-    $no++;
 }
 
 // MODAL KHS EDIT END
