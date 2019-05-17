@@ -19,8 +19,8 @@ function ambilJadwalDosen($con, $idUser){
 }
 
 function tampilTaskDosen($con, $idUser){
- $queryTask = "SELECT td.id_dosen, tt.id_task, tt.pekerjaan, tt.kuota FROM tabel_task tt INNER JOIN tabel_dosen td
-               ON tt.id_dosen = td.id_dosen WHERE td.id_user = '$idUser' AND tt.status='1'";
+ $queryTask = "SELECT td.id_dosen, tpk.id_pekerjaan_kompen, tpk.nama, tpk.kuota FROM tabel_pekerjaan_kompen tpk INNER JOIN tabel_dosen td
+               ON tpk.id_dosen = td.id_dosen WHERE td.id_user = '$idUser' AND tpk.status_kompen='1'";
  $resultQueryTask = mysqli_query($con, $queryTask);
  return $resultQueryTask;
 }

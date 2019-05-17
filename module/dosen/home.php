@@ -139,12 +139,12 @@
                             <div class="col-md-1 my-auto">
                             <?= $index ?>.
                             <input type="hidden" name="idDsnSubmitKmpn" id="idDsnSubmitKmpn" value="<?= $row['id_dosen']?>">
-                            <input type="hidden" name="idTask" id="idTask" value="<?= $row['id_task']?>">
+                            <input type="hidden" name="idTask" id="idTask" value="<?= $row['id_pekerjaan_kompen']?>">
                             </div>
                             <div class="col-md-9">
                               <div class="row">
                                 <div class="col-md-12">
-                                  <?= $row["pekerjaan"]?>
+                                  <?= $row["nama"]?>
                                 </div>
                               </div>
                               <div class="row">
@@ -162,7 +162,7 @@
                           <div class="dropdown">
                             <a data-toggle="dropdown"><i class="fa fa-ellipsis-v fa-2x waves-effect"></i></a>
                             <div class="dropdown-kompen dropdown-menu">
-                              <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen<?= $row["id_task"]?>"><i class="far fa-trash-alt"></i> Hapus</a>
+                              <a class="dropdown-item" data-toggle="modal" data-target="#hapusKompen<?= $row["id_pekerjaan_kompen"]?>"><i class="far fa-trash-alt"></i> Hapus</a>
                             </div>
                           </div>
                         </div>
@@ -203,8 +203,8 @@
             if (mysqli_num_rows($resultQueryTask) > 0) {
               while ($row = mysqli_fetch_assoc($resultQueryTask)) {
               ?>
-              <div class="modal fade hapusKompen-modal" id="hapusKompen<?= $row["id_task"]?>" tabindex="-1" role="dialog" 
-              aria-labelledby="hapusKompen<?= $row["id_task"]?>Title" aria-hidden="true" data-backdrop="false">
+              <div class="modal fade hapusKompen-modal" id="hapusKompen<?= $row["id_pekerjaan_kompen"]?>" tabindex="-1" role="dialog" 
+              aria-labelledby="hapusKompen<?= $row["id_pekerjaan_kompen"]?>Title" aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                   <div class="modal-content konten-modal">
                     <div class="modal-body ">
@@ -212,7 +212,7 @@
                       <div class="tombolAksiHapusKompen text-center">
                       <form action="../process/proses_dosenHome.php?module=home&act=hapus" method="post">
                         <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                        <input type="hidden" name="idTask" value="<?= $row["id_task"]?>">
+                        <input type="hidden" name="idTask" value="<?= $row["id_pekerjaan_kompen"]?>">
                         <input type="submit" class="btn btn-iya" name="hapusTask" value="Ya">
                       </form>
                       </div>
