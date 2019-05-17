@@ -167,28 +167,60 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                 <div class="isi-mhs">
                   <?php echo $row["isi"]; ?>
                 </div>
-                <div class="photos">
-                  <div class="row">
-                    <?php
-                    $resultAttachment = attachment($con, $row["id_info"]);
-                    if (mysqli_num_rows($resultAttachment) > 0) {
+                <?php
+                $resultAttachment = attachment($con, $row["id_info"]);
+                $resultAttachment2 = attachment($con, $row["id_info"]);
+                if (mysqli_num_rows($resultAttachment) > 0) {
+                  ?>
+                  <div class="photos">
+                    <div class="row">
+                      <?php
                       while ($row = mysqli_fetch_assoc($resultAttachment)) {
+                        if ($row["tipe"] == "gambar") {
+                          ?>
+                          <div class="col-md-6 p-2">
+                            <div class="image">
+                              <a href="../attachment/img/<?php echo $row['file']; ?>" data-toggle="lightbox" data-gallery="mixedgallery<?php echo $row['id_info']; ?>">
+                                <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row['file']; ?>" alt="<?php echo $row['file']; ?>">
+                              </a>
+                            </div>
+                          </div>
+
+                        <?php
+                      }
+                    }
+                    ?>
+                    </div>
+                  </div>
+
+                  <div class="files">
+                    <?php
+                    while ($row = mysqli_fetch_assoc($resultAttachment2)) {
+                      if ($row["tipe"] == "file") {
                         ?>
-                        <div class="col-md-6 p-2">
-                          <div class="image">
-                            <a href="../attachment/img/<?php echo $row['file']; ?>" data-toggle="lightbox" data-gallery="mixedgallery<?php echo $row['id_info']; ?>">
-                              <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row['file']; ?>" alt="<?php echo $row['file']; ?>">
-                            </a>
+                        <div class="row isi-download">
+                          <div class="col-md-12">
+                            <button class="btn btn-outline-dark download d-flex">
+                              <div class="col-sm-7">
+                                <a href="">
+                                  <h5>Dokumen Rahasia</h5>
+                                </a>
+                              </div>
+                              <div class="col-sm-5 text-right">
+                                <img src="../img/vector.svg" alt="Download button" class="">
+                              </div>
+                            </button>
                           </div>
                         </div>
-
                       <?php
                     }
                   }
                   ?>
-
                   </div>
-                </div>
+                <?php
+              }
+              ?>
+
               </div>
             </div>
             <div class="form-group border-bottom border-gray">
@@ -197,36 +229,31 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
             <div class="media-body pb-3 mb-0 small lh-125">
               <div class="isi-mhs">
                 <?php
-                $resultKomentar = komentar($con, $row["id_info"]);
+                $resultKomentar = komentar($con, $id_info);
                 if (mysqli_num_rows($resultKomentar) > 0) {
                   while ($row = mysqli_fetch_assoc($resultKomentar)) {
                     ?>
-                    <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
-                    <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
-                    <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
+                    <div class="col mt-3">
+                      <strong><?php echo tampilUser($con, $row["id_user"]) ?></strong>&nbsp;&nbsp;&nbsp;<span class="komen text-secondary"><?php echo $row["isi"] ?></span> <br>
+                    </div>
 
                     <div class="row komens">
-                      <div class="col-sm-8 ml-5 ">
-                        <div class="balas-komen pl-3 my-2 border-left border-dark">
+                      <div class="col ml-4 ">
+                        <div class="balas-komen mt-1 border-left border-dark">
                           <?php
                           $resultReplyKomentar = replyKomentar($con, $row["id_komentar"]);
                           if (mysqli_num_rows($resultKomentar) > 0) {
-                            while ($row = mysqli_fetch_assoc($resultKomentar)) {
+                            while ($rowKomentar = mysqli_fetch_assoc($resultReplyKomentar)) {
                               ?>
-                              <strong>Admin</strong>
-                              <span class="komen">Dosen pergi ke jepang dalam rangka sebagai perwakilan
-                                indonesia di pertemuan KTT 2019</span> <br>
+                              <div class="col pr-0 mb-1">
+                                <strong>Admin</strong>&nbsp;&nbsp;&nbsp;
+                                <span class="komen text-secondary"><?php echo $rowKomentar["isi"] ?></span>
+                              </div>
                             <?php
                           }
                         }
                         ?>
-                        </div><br>
-                        <div class="form-group border-bottom border-top border-gray">
-                          <textarea class="form-control border-0" name="" id="" rows="1" placeholder="Tulis Komentar..."></textarea>
                         </div>
-                      </div>
-                      <div class="col-sm-2">
-                        <strong>Reply</strong>
                       </div>
                     </div>
                   <?php
