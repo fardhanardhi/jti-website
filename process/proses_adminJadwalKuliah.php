@@ -299,6 +299,12 @@ if(isset($_POST["tampilDetailKelas"]) && isset($_POST["tampilDetailSemester"]))
                                             <div class='row'>
                                                 <div class='col-sm-6'>
                                                     <div class='form-group row'>
+                                                    <label class='col-sm-4'>Mata Kuliah</label>
+                                                        <div class='col-sm-8'>
+                                                            ".$rowDetailJadwalKuliah["nama_matkul"]."
+                                                        </div>
+                                                    </div>
+                                                    <div class='form-group row'>
                                                         <label class='col-sm-4'>Dosen Pengajar</label>
                                                         <div class='col-sm-8'>
                                                             ".$rowDetailJadwalKuliah["nama"]."
