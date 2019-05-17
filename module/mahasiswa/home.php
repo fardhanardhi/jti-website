@@ -245,7 +245,7 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                             while ($rowKomentar = mysqli_fetch_assoc($resultReplyKomentar)) {
                               ?>
                               <div class="col pr-0 mb-1">
-                                <strong>Admin</strong>&nbsp;&nbsp;&nbsp;
+                                <strong><?php echo tampilUser($con, $rowKomentar["id_user"]) ?></strong>&nbsp;&nbsp;&nbsp;
                                 <span class="komen text-secondary"><?php echo $rowKomentar["isi"] ?></span>
                               </div>
                             <?php
