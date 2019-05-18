@@ -394,7 +394,7 @@ if ($level != 'admin') {
           </button>
           <h5 class="modal-title text-center">Pengaturan</h5>
           <hr class="pl-4 pr-4 bg-dark">
-          <input type="text" id="passwordModal" value="<?php echo $item['password'] ?>">
+          <input type="hidden" id="passwordModal" value="<?php echo $item['password'] ?>">
           <div class="row">
             <div class="col-md-12">
               <center><img src="../attachment/img/<?php echo ($rowUser['foto'] == null) ? 'avatar.jpeg' : $rowUser['foto']; ?>" id="fotoPrev" height="150px" width="150px" class="rounded-circle" /></center>
