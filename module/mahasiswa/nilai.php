@@ -10,6 +10,7 @@ $queryUser = "SELECT a.*, b.*, c.nama as prodi FROM tabel_user a, tabel_mahasisw
 $resultUser = mysqli_query($con, $queryUser);
 $rowUser = mysqli_fetch_assoc($resultUser);
 
+$idMhsUser = $rowUser["id_mahasiswa"];
 $namaUser = $rowUser["nama"];
 $nimUser = $rowUser["nim"];
 $prodiUser = $rowUser["prodi"];
@@ -66,17 +67,17 @@ $id_semester=$rowUser["id_semester"];
                 <button type="submit" name="filter" class="tmbl-filter btn btn-success">Filter</button><br><br>
                 </form>
 
-                <p>Indeks Prestasi Semester: <?php 
+                <?php 
                 if(isset($_POST["filter"])){
-                    $ipSemester = indeksSemesterFix($con, $idUser, $_POST["semester"]);
+                    $ipSemester = khsNilai($con, $idMhsUser, $_POST["semester"]);
                     $result=filterKhs($con, $idUser, $_POST["semester"]);
-                    echo $ipSemester;
+                    echo "<p>Indeks Prestasi Semester : ".$ipSemester;
                 }
                 else
                 { 
-                    $ipSemester = indeksSemesterFix($con, $idUser, $id_semester);
-                    echo $ipSemester;
                     $result = khs($con, $idUser);
+                    $ipSemester = khsNilai($con, $idMhsUser, $id_semester);
+                    echo "<p>Indeks Prestasi Semester : ".$ipSemester;
                 }; ?> </p>
                 <p>Indeks Prestasi Kumulatif: <?php echo indeksSemesterKumulatif($con, $idUser);?></p>
 

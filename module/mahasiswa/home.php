@@ -8,7 +8,7 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
 ?>
 
 <main role="main" class="container-fluid" id="home">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-md-3 p-0 ">
       <div class="sticky-sidebar sticky-top">
         <div class="m-2 p-3 bg-white rounded shadow-sm">
@@ -142,302 +142,160 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
         </div>
       <?php
     }
+    ?>
 
-    $resultInfo = info($con);
-    if (mysqli_num_rows($resultInfo) > 0) {
-      while ($row = mysqli_fetch_assoc($resultInfo)) {
-        $id_info = $row["id_info"];
-        ?>
-          <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
-            <div class="border-bottom border-gray">
-              <div class="row">
-                <div class="col-sm-8">
-                  <div class="judul">
-                    <h5><strong><?php echo $row["judul"]; ?></strong></h5>
-                    <p><?php echo tampilTanggal($row["waktu_publish"]); ?></p>
+      <div id="infoDanPengumuman">
+        <?php
+        $resultInfo = info($con);
+        if (mysqli_num_rows($resultInfo) > 0) {
+          while ($row = mysqli_fetch_assoc($resultInfo)) {
+            $id_info = $row["id_info"];
+            ?>
+            <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
+              <div class="border-bottom border-gray">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="judul">
+                      <h5><strong><?php echo $row["judul"]; ?></strong></h5>
+                      <p><?php echo tampilTanggal($row["waktu_publish"]); ?></p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 mt-2 text-right">
+                    <span class="kategori-label badge badge-secondary px-3 py-2"><?php echo ucfirst($row["tipe"]); ?></span>
                   </div>
                 </div>
-                <div class="col-sm-4 mt-2 text-right">
-                  <span class="kategori-label badge badge-secondary px-3 py-2"><?php echo ucfirst($row["tipe"]); ?></span>
-                </div>
               </div>
-            </div>
-            <div class="media text-muted pt-3">
-              <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                <div class="isi-mhs">
-                  <?php echo $row["isi"]; ?>
-                </div>
-                <?php
-                $resultAttachment = attachment($con, $row["id_info"]);
-                $resultAttachment2 = attachment($con, $row["id_info"]);
-                if (mysqli_num_rows($resultAttachment) > 0) {
-                  ?>
-                  <div class="photos">
-                    <div class="row">
+              <div class="media text-muted pt-3">
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                  <div class="isi-mhs">
+                    <?php echo $row["isi"]; ?>
+                  </div>
+                  <?php
+                  $resultAttachment = attachment($con, $row["id_info"]);
+                  $resultAttachment2 = attachment($con, $row["id_info"]);
+                  if (mysqli_num_rows($resultAttachment) > 0) {
+                    ?>
+                    <div class="photos">
+                      <div class="row">
+                        <?php
+                        while ($row = mysqli_fetch_assoc($resultAttachment)) {
+                          if ($row["tipe"] == "gambar") {
+                            ?>
+                            <div class="col-md-6 p-2">
+                              <div class="image">
+                                <a href="../attachment/img/<?php echo $row['file']; ?>" data-toggle="lightbox" data-gallery="mixedgallery<?php echo $row['id_info']; ?>">
+                                  <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row['file']; ?>" alt="<?php echo $row['file']; ?>">
+                                </a>
+                              </div>
+                            </div>
+
+                          <?php
+                        }
+                      }
+                      ?>
+                      </div>
+                    </div>
+
+                    <div class="files">
                       <?php
-                      while ($row = mysqli_fetch_assoc($resultAttachment)) {
-                        if ($row["tipe"] == "gambar") {
+                      while ($row = mysqli_fetch_assoc($resultAttachment2)) {
+                        if ($row["tipe"] == "file") {
                           ?>
-                          <div class="col-md-6 p-2">
-                            <div class="image">
-                              <a href="../attachment/img/<?php echo $row['file']; ?>" data-toggle="lightbox" data-gallery="mixedgallery<?php echo $row['id_info']; ?>">
-                                <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row['file']; ?>" alt="<?php echo $row['file']; ?>">
-                              </a>
+                          <div class="row isi-download">
+                            <div class="col-md-12">
+                              <button class="btn btn-outline-dark download d-flex">
+                                <div class="col-sm-7">
+                                  <a href="">
+                                    <h5>Dokumen Rahasia</h5>
+                                  </a>
+                                </div>
+                                <div class="col-sm-5 text-right">
+                                  <img src="../img/vector.svg" alt="Download button" class="">
+                                </div>
+                              </button>
                             </div>
                           </div>
-
                         <?php
                       }
                     }
                     ?>
                     </div>
-                  </div>
+                  <?php
+                }
+                ?>
 
-                  <div class="files">
+                </div>
+              </div>
+              <?php
+              $resultKomentar = komentar($con, $id_info);
+              if (mysqli_num_rows($resultKomentar) > 0) {
+                ?>
+                <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                  <div class="isi-mhs">
                     <?php
-                    while ($row = mysqli_fetch_assoc($resultAttachment2)) {
-                      if ($row["tipe"] == "file") {
-                        ?>
-                        <div class="row isi-download">
-                          <div class="col-md-12">
-                            <button class="btn btn-outline-dark download d-flex">
-                              <div class="col-sm-7">
-                                <a href="">
-                                  <h5>Dokumen Rahasia</h5>
-                                </a>
-                              </div>
-                              <div class="col-sm-5 text-right">
-                                <img src="../img/vector.svg" alt="Download button" class="">
-                              </div>
-                            </button>
+                    while ($row = mysqli_fetch_assoc($resultKomentar)) {
+                      ?>
+                      <div class="komentar-item">
+
+                        <div class="col-md-12">
+                          <div class="row reply-listener">
+                            <div class="col mt-3 p-0">
+                              <strong><?php echo tampilUser($con, $row["id_user"]) ?></strong>&nbsp;&nbsp;&nbsp;<span class="komen text-secondary"><?php echo $row["isi"] ?></span> <br>
+                            </div>
+                            <div class="btn-reply-container col-auto p-0 pl-2 mt-3">
+                              <!-- <button class='col-auto'>add user</button> -->
+                            </div>
                           </div>
                         </div>
-                      <?php
-                    }
+                        <div class="col-md-12">
+                          <div class="row komens">
+                            <div class="col ml-4 ">
+                              <div class="balas-komen mt-1 border-left border-dark">
+                                <?php
+                                $resultReplyKomentar = replyKomentar($con, $row["id_komentar"]);
+                                if (mysqli_num_rows($resultKomentar) > 0) {
+                                  while ($rowKomentar = mysqli_fetch_assoc($resultReplyKomentar)) {
+                                    ?>
+                                    <div class="col pr-0 mb-1">
+                                      <strong><?php echo tampilUser($con, $rowKomentar["id_user"]) ?></strong>&nbsp;&nbsp;&nbsp;
+                                      <span class="komen text-secondary"><?php echo $rowKomentar["isi"] ?></span>
+                                    </div>
+                                  <?php
+                                }
+                              }
+                              ?>
+                                <div class='col mr-0'>
+                                  <input data-idinfo="<?php echo $id_info ?>" data-iduser="<?php echo $idUser ?>" data-idkomentar="<?php echo $row["id_komentar"] ?>" class='reply-komen-input form-control form-control-sm d-none' placeholder='Tulis balasan' type='text'>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    <?php
                   }
                   ?>
                   </div>
-                <?php
-              }
-              ?>
+                </div>
+              <?php
+            }
+            ?>
+
+              <div class="form-group">
+                <textarea class="form-control border-0 input-komentar" data-idinfo="<?php echo $id_info ?>" data-iduser="<?php echo $idUser ?>" rows="auto" placeholder="Tulis Komentar..."></textarea>
 
               </div>
-            </div>
-            <div class="form-group border-bottom border-gray">
-              <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
-            </div>
-            <div class="media-body pb-3 mb-0 small lh-125">
-              <div class="isi-mhs">
-                <?php
-                $resultKomentar = komentar($con, $id_info);
-                if (mysqli_num_rows($resultKomentar) > 0) {
-                  while ($row = mysqli_fetch_assoc($resultKomentar)) {
-                    ?>
-                    <div class="col mt-3">
-                      <strong><?php echo tampilUser($con, $row["id_user"]) ?></strong>&nbsp;&nbsp;&nbsp;<span class="komen text-secondary"><?php echo $row["isi"] ?></span> <br>
-                    </div>
 
-                    <div class="row komens">
-                      <div class="col ml-4 ">
-                        <div class="balas-komen mt-1 border-left border-dark">
-                          <?php
-                          $resultReplyKomentar = replyKomentar($con, $row["id_komentar"]);
-                          if (mysqli_num_rows($resultKomentar) > 0) {
-                            while ($rowKomentar = mysqli_fetch_assoc($resultReplyKomentar)) {
-                              ?>
-                              <div class="col pr-0 mb-1">
-                                <strong>Admin</strong>&nbsp;&nbsp;&nbsp;
-                                <span class="komen text-secondary"><?php echo $rowKomentar["isi"] ?></span>
-                              </div>
-                            <?php
-                          }
-                        }
-                        ?>
-                        </div>
-                      </div>
-                    </div>
-                  <?php
-                }
-              }
-              ?>
-
-              </div>
             </div>
-          </div>
-        <?php
+          <?php
+        }
       }
-    }
-    ?>
-
-      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
-        <div class="border-bottom border-gray">
-          <div class="row">
-            <div class="col-sm-8">
-              <div class="judul">
-                <h5><strong>5 Dosen dikirim ke Jepang</strong></h5>
-                <p>6 Maret 2019</p>
-              </div>
-            </div>
-            <div class="col-sm-4 mt-2 text-right">
-              <span class="kategori-label badge badge-secondary px-3 py-2">Pengumuman</span>
-            </div>
-          </div>
-        </div>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="isi-mhs">
-              Dikarenakan dosen bernama : <br>
-              - Pak Yan <br>
-              - Pak Rosa <br>
-              - Pak Vipkas <br>
-              sedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi
-              untuk meminta tugas. <br><br>
-              Terima Kasih...
-            </div>
-          </div>
-        </div>
-        <div class="form-group border-bottom border-gray">
-          <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
-        </div>
-        <div class="media-body pb-3 mb-0 small lh-125">
-          <div class="isi-mhs">
-            <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
-            <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
-            <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
-          </div>
-        </div>
+      ?>
       </div>
 
-      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
-        <div class="border-bottom border-gray">
-          <div class="row">
-            <div class="col-sm-8">
-              <div class="judul">
-                <h5><strong>5 Dosen dikirim ke Jepang</strong></h5>
-                <p>6 Maret 2019</p>
-              </div>
-            </div>
-            <div class="col-sm-4 mt-2 text-right">
-              <span class="kategori-label badge badge-secondary px-3 py-2">Pengumuman</span>
-            </div>
-          </div>
-        </div>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="isi-mhs">
-              Dikarenakan dosen bernama : <br>
-              - Pak Yan <br>
-              - Pak Rosa <br>
-              - Pak Vipkas <br>
-              sedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi
-              untuk meminta tugas. <br><br>
-              Terima Kasih...
-            </div>
-            <div class="photos">
-              <div class="row">
-                <div class="col-md-6 p-2">
-                  <div class="image">
-                    <a href="../attachment/img/yuri.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/yuri.png" alt="foto">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-6 p-2">
-                  <div class="image">
-                    <a href="../attachment/img/ariadi.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/ariadi.png" alt="foto">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-6 p-2">
-                  <div class="image">
-                    <a href="../attachment/img/atiqah.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/atiqah.png" alt="foto">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-6 p-2">
-                  <div class="image">
-                    <a href="../attachment/img/ridwan.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/ridwan.png" alt="foto">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-6 p-2">
-                  <div class="image">
-                    <a href="../attachment/img/yan.png" data-toggle="lightbox" data-gallery="mixedgallery">
-                      <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/yan.png" alt="foto">
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group border-bottom border-gray">
-          <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
-        </div>
-        <div class="media-body pb-3 mb-0 small lh-125">
-          <div class="isi-mhs">
-            <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
-            <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
-            <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
-          </div>
-        </div>
-      </div>
-
-      <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
-        <div class="border-bottom border-gray">
-          <div class="row">
-            <div class="col-sm-8">
-              <div class="judul">
-                <h5><strong>5 Dosen dikirim ke Jepang</strong></h5>
-                <p>6 Maret 2019</p>
-              </div>
-            </div>
-            <div class="col-sm-4 mt-2 text-right">
-              <span class="kategori-label badge badge-secondary px-3 py-2">Berita</span>
-            </div>
-          </div>
-        </div>
-        <div class="media text-muted pt-3">
-          <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <div class="isi-mhs">
-              Dikarenakan dosen bernama : <br>
-              - Pak Yan <br>
-              - Pak Rosa <br>
-              - Pak Vipkas <br>
-              sedang di tugaskan ke jepang maka kelas yang diajar oleh dosen-dosen tersebut diharap segera menghubungi
-              untuk meminta tugas. <br><br>
-              Terima Kasih... <br>
-              <div class="row isi-download">
-                <div class="col-md-12">
-                  <button class="btn btn-outline-dark download d-flex">
-                    <div class="col-sm-7">
-                      <a href="">
-                        <h5>Dokumen Rahasia</h5>
-                      </a>
-                    </div>
-                    <div class="col-sm-5 text-right">
-                      <img src="../img/vector.svg" alt="Download button" class="">
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group border-bottom border-gray">
-          <textarea class="form-control border-0" name="" id="" rows="auto" placeholder="Tulis Komentar..."></textarea>
-        </div>
-        <div class="media-body pb-3 mb-0 small lh-125">
-          <div class="isi-mhs">
-            <strong>Pak_Yan123</strong> <span class="komen">Mantappp minn ...</span> <br>
-            <strong>Veronica_imoet</strong> <span class="komen">Lanjutkan min!!!</span> <br>
-            <strong>Sabyan_Lovers</strong> <span class="komen">Terima Kasih</span> <br>
-          </div>
-        </div>
-      </div>
 
       <div class="button-back m-2 p-0 mb-3">
         <div class="row btn-back">
@@ -451,17 +309,17 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
       </div>
     </div>
 
-    <?php
-    $resultInfoBeasiswa = infoBeasiswa($con);
-    if (mysqli_num_rows($resultInfoBeasiswa) > 0) {
-      while ($row = mysqli_fetch_assoc($resultInfoBeasiswa)) {
-        $id_infoBeasiswa = $row["id_beasiswa"];
-        ?>
-        <div class="col-md-3 p-0">
-          <div class="sticky-sidebar sticky-top">
-            <div class="m-2 p-3 bg-white rounded shadow-sm">
-              <div class="beasiswa pb-3 mb-0 border-bottom border-dark">
-                <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
+    <div class="col-md-3 p-0">
+      <div class="sticky-sidebar sticky-top">
+        <div class="m-2 px-3 py-1 bg-white rounded shadow-sm">
+          <h5 class="text-center my-3"><strong>Info Beasiswa</strong></h5>
+          <?php
+          $resultInfoBeasiswa = infoBeasiswa($con);
+          if (mysqli_num_rows($resultInfoBeasiswa) > 0) {
+            while ($row = mysqli_fetch_assoc($resultInfoBeasiswa)) {
+              $id_infoBeasiswa = $row["id_beasiswa"];
+              ?>
+              <div class="beasiswa pb-2 pt-3 mb-0 border-top border-dark">
                 <h6><strong><?php echo $row["judul"]; ?></strong></h6>
                 <p class="isi-beasiswa">
                   <?php echo $row["isi"]; ?>
@@ -470,23 +328,22 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
                   <button class="check btn"><a href="<?= $row['link']; ?>" target="_blank">Cek Link</a></button>
                 </small>
               </div>
+            <?php
+          }
+        } else {
+          ?>
+            <div class="beasiswa pb-3 mb-0 ">
+              <div class="scholarship text-center mt-5 mb-5">
+                <img src="../img/scholarship.svg" alt="Scholarship" class="">
+                <br>
+                <p>Mohon maaf, untuk saat ini beasiswa belum tersedia</p>
+              </div>
             </div>
-
           <?php
         }
-      }
-      ?>
+        ?>
+        </div>
 
-        <!-- <div class="m-2 p-3 bg-white rounded shadow-sm"> 
-          <div class="beasiswa pb-3 mb-0 ">
-            <h5 class="text-center"><strong>Info Beasiswa</strong></h5>
-            <div class="scholarship text-center mt-5 mb-5">
-              <img src="../img/scholarship.svg" alt="Scholarship" class="">
-              <br>
-              <p>Mohon maaf, untuk saat ini beasiswa belum tersedia</p>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

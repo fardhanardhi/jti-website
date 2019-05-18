@@ -199,3 +199,188 @@ if (isset($_GET["searchBerita"])) {
   <?php
 }
 }
+
+// --------- kirim komentar -----------
+
+if (isset($_POST['insertKomentar'])) {
+  $id_user = $_POST['iduser'];
+  $id_info = $_POST['idinfo'];
+  $isi = $_POST['val'];
+
+  $date = date("m/d/Y h:i A");
+  $final = strtotime($date);
+  $datetimeNow = date("Y-m-d H:i:s", $final);
+
+  $sql =
+    "INSERT INTO 
+    tabel_komentar(
+      id_info,
+      id_user,
+      isi,
+      waktu
+    )
+    VALUES(
+      $id_info,
+      $id_user,
+      '$isi',
+      '$datetimeNow'
+    )";
+
+  if (mysqli_query($con, $sql)) {
+    $id = mysqli_insert_id($con);
+  } else {
+    echo "Error: " . mysqli_error($con);
+  }
+  exit();
+}
+
+
+// --------- kirim reply komentar -----------
+
+if (isset($_POST['insertReplyKomentar'])) {
+  $id_user = $_POST['iduser'];
+  $id_info = $_POST['idinfo'];
+  $id_komentar = $_POST['idkomentar'];
+  $isi = $_POST['val'];
+
+  $date = date("m/d/Y h:i A");
+  $final = strtotime($date);
+  $datetimeNow = date("Y-m-d H:i:s", $final);
+
+  $sql =
+    "INSERT INTO 
+    tabel_reply_komentar(
+      id_user,
+      isi,
+      id_komentar,
+      waktu
+    )
+    VALUES(
+      $id_user,
+      '$isi',
+      $id_komentar,
+      '$datetimeNow'
+    )";
+
+  if (mysqli_query($con, $sql)) {
+    $id = mysqli_insert_id($con);
+  } else {
+    echo "Error: " . mysqli_error($con);
+  }
+  exit();
+}
+
+
+
+
+
+
+// ---------------
+
+function queryTampilInfo($idInfo)
+{
+  $info =
+    "SELECT
+      *
+    FROM
+      tabel_info
+    WHERE
+      id_info = $idInfo
+    ";
+
+  return $info;
+}
+
+
+if (isset($_GET['hasilSearchBerita'])) {
+  $id_info = $_GET["id_info"];
+
+  $row = mysqli_fetch_assoc(mysqli_query($con, queryTampilInfo($id_info)));
+
+
+  ?>
+
+
+  <div class="m-2 p-3 mb-3 bg-white rounded shadow-sm px-4">
+    <div class="border-bottom border-gray">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="judul">
+            <h5><strong><?php echo $row["judul"]; ?></strong></h5>
+            <p><?php echo tampilTanggal($row["waktu_publish"]); ?></p>
+          </div>
+        </div>
+        <div class="col-sm-4 mt-2 text-right">
+          <span class="kategori-label badge badge-secondary px-3 py-2"><?php echo ucfirst($row["tipe"]); ?></span>
+        </div>
+      </div>
+    </div>
+    <div class="media text-muted pt-3">
+      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <div class="isi-mhs">
+          <?php echo $row["isi"]; ?>
+        </div>
+        <?php
+        $resultAttachment = attachment($con, $row["id_info"]);
+        $resultAttachment2 = attachment($con, $row["id_info"]);
+        if (mysqli_num_rows($resultAttachment) > 0) {
+          ?>
+          <div class="photos">
+            <div class="row">
+              <?php
+              while ($row = mysqli_fetch_assoc($resultAttachment)) {
+                if ($row["tipe"] == "gambar") {
+                  ?>
+                  <div class="col-md-6 p-2">
+                    <div class="image">
+                      <a href="../attachment/img/<?php echo $row['file']; ?>" data-toggle="lightbox" data-gallery="mixedgallery<?php echo $row['id_info']; ?>">
+                        <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row['file']; ?>" alt="<?php echo $row['file']; ?>">
+                      </a>
+                    </div>
+                  </div>
+
+                <?php
+              }
+            }
+            ?>
+            </div>
+          </div>
+
+          <div class="files">
+            <?php
+            while ($row = mysqli_fetch_assoc($resultAttachment2)) {
+              if ($row["tipe"] == "file") {
+                ?>
+                <div class="row isi-download">
+                  <div class="col-md-12">
+                    <button class="btn btn-outline-dark download d-flex">
+                      <div class="col-sm-7">
+                        <a href="">
+                          <h5>Dokumen Rahasia</h5>
+                        </a>
+                      </div>
+                      <div class="col-sm-5 text-right">
+                        <img src="../img/vector.svg" alt="Download button" class="">
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              <?php
+            }
+          }
+          ?>
+          </div>
+        <?php
+      }
+      ?>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+<?php
+}
