@@ -12,13 +12,13 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="pr-4 title">
-                                <a href="#"><strong>Lihat KHS</strong></a>
+                                <a href="?module=khs"><strong>Lihat KHS</strong></a>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="?module=home">Dashboard</a>
                             </li>
                             <li class="breadcrumb-item" aria-current="page">
-                                <a href="index.php?module=khs">Kartu Hasil Studi(KHS)</a>
+                                <a href="?module=khs">Kartu Hasil Studi(KHS)</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Lihat KHS
@@ -32,7 +32,7 @@
             <div class="col-md-12 p-0">
                 <div class="m-2 p-3 bg-white mb-3 rounded shadow-sm">
                     <div class="container-fluid mt-0 p-0 m-0">
-                        <h4>SEMESTER 4 (2019/2020)</h4>
+                        <h4><?= semester($con, minKelas($con)) ?></h4>
                         <hr>
                         <form action="?module=khsLihat" method="post">
                             <!-- pencarian kelas -->

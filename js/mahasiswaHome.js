@@ -4,7 +4,22 @@ $("#datepickerSearchBerita").datepicker({ format: "yyyy/mm/dd" });
 $(document).on("click", ".hasilSearchBerita", function(e) {
   e.preventDefault();
   var d = $(this).data("idinfo");
-  alert(d);
+
+  $.ajax({
+    url: "../process/proses_homeMahasiswa.php",
+    type: "GET",
+    data: {
+      hasilSearchBerita: 1,
+      id_info: d
+    },
+    success: function(response) {
+      console.log(response);
+
+      $("#infoDanPengumuman")
+        .empty()
+        .append(response);
+    }
+  });
 });
 
 $("#datepickerSearchBerita").on("changeDate", function() {

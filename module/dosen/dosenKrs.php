@@ -62,7 +62,7 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $queryKrs="SELECT tm.nama, tm.nim, tke.kode_kelas, tke.tingkat, tp.kode, tkr.status_verifikasi FROM tabel_mahasiswa tm, tabel_kelas tke, tabel_prodi tp, tabel_krs tkr WHERE tm.id_kelas = tke.id_kelas AND tm.id_prodi = tp.id_prodi AND tm.id_mahasiswa = tkr.id_mahasiswa AND status_daftar_ulang = 'Sudah';";
+                                    $queryKrs="SELECT tm.id_mahasiswa, tm.nama, tm.nim, tke.kode_kelas, tke.tingkat, tp.kode, tkr.status_verifikasi FROM tabel_mahasiswa tm, tabel_kelas tke, tabel_prodi tp, tabel_krs tkr WHERE tm.id_kelas = tke.id_kelas AND tm.id_prodi = tp.id_prodi AND tm.id_mahasiswa = tkr.id_mahasiswa AND status_daftar_ulang = 'Sudah';";
 
                                     $resultKrs = mysqli_query($con, $queryKrs);
 
@@ -71,15 +71,21 @@
                                     if(mysqli_num_rows($resultKrs) > 0){
                                         while($row = mysqli_fetch_assoc($resultKrs)){
                                             ?>
-                                    <tr>
-                                        <td><?php echo $index?></td>
-                                        <td><?php echo $row['nim']?></td>
-                                        <td><?php echo $row['nama']?></td>
-                                        <td><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?>
-                                        </td>
-                                        <td><label><input name=verifikasiDosen type="checkbox"
-                                        value="<?php echo $row["status_verifikasi"]?>"></label></td>
-                                    </tr>
+                                   
+                                      <tr>
+                                      <form action="../process/proses_krsDosen.php?module=krs&act=editVerifikasi" method="post">
+                                          <input type="hidden" name="idMahasiswa" value="<?= $row["id_mahasiswa"] ?>">
+                                          <input type="hidden" name="statusVerifikasi" value="<?= $row["status_verifikasi"] ?>">
+                                          <td><?php echo $index?></td>
+                                          <td><?php echo $row['nim']?></td>
+                                          <td><?php echo $row['nama']?></td>
+                                          <td><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?>
+                                          </td>
+                                          <td><button type="submit" class="" id="tambahVerifikasi" name="tambahVerifikasi" style="background-color: transparent; border-style:none;"><img src="../img/<?php echo ($row['status_verifikasi'] == "Sudah")? 'Checkedbox.svg' : 'Checkbox.svg' ; ?>" style="width:50px;height:50px;border-radius:50%;"></button></td>
+                                          </form>
+
+
+                                      </tr>
                                     <?php $index++;
                                             }
                                             ?>
