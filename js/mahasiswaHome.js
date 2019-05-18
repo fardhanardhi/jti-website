@@ -84,10 +84,8 @@ $(".reply-listener")
       $(replyEl)
         .parent()
         .parent()
-        .find(".balas-komen")
-        .append(
-          "<div class='col mr-0'><input class='form-control form-control-sm' id='inputsm' placeholder='Tulis balasan' type='text'></div>"
-        );
+        .find(".balas-komen .reply-komen-input")
+        .toggleClass("d-none");
     });
   })
   .mouseleave(function() {
@@ -95,3 +93,35 @@ $(".reply-listener")
       .find(".btn-reply")
       .remove();
   });
+
+$(".reply-komen-input").keydown(function(e) {
+  if (e.keyCode == 13 && !e.shiftKey) {
+    e.preventDefault();
+
+    var iduser = $(this).data("iduser");
+    var idinfo = $(this).data("idinfo");
+    var idkomentar = $(this).data("idkomentar");
+    var val = $(this).val();
+
+    // alert(iduser + "|" + idinfo + "|" + idkomentar + "|" + val);
+
+    $.ajax({
+      url: "../process/proses_homeMahasiswa.php",
+      type: "POST",
+      data: {
+        insertReplyKomentar: 1,
+        iduser: iduser,
+        idinfo: idinfo,
+        idkomentar: idkomentar,
+        val: val
+      },
+      success: function(response) {
+        location.reload();
+
+        // $("#hasilPencarianBerita")
+        //   .empty()
+        //   .append(response);
+      }
+    });
+  }
+});

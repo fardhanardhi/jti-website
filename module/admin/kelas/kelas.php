@@ -44,10 +44,7 @@
                 <label class="col-form-label">Tahun Ajaran</label>
                 <div class="col-sm-2">
                     <select class="form-control form-control-sm" name="tahunajaran">
-                        <option value="1">Tahun Ajaran</option>
-                        <option value="1">2017/2018</option>
-                        <option value="2">2018/2019</option>
-                        <option value="3">2019/2020</option>
+                        <option value="1">2018/2019</option>
                     </select>
                 </div>
               
@@ -56,7 +53,7 @@
               </div>
             </div>
 
-            <div class="row pt-2 mt-2 pl-0 scrollbar" id="mencariKelas">
+            <div class="row pt-2 mt-2 pl-0 scrollbar" id="tabelKelas">
                 <?php $resultKelasData=kelasData($con, minKelas($con));
                 if(mysqli_num_rows($resultKelasData) > 0)
                 {?>
@@ -137,12 +134,22 @@
                 <div class="form-group row mt-0">
                     <label class="col-sm-3 col-form-label">Kelas</label>
                     <div class="col-sm-4">
-                        <select class="form-control form-control-sm" name="Kelas">
-                            <option value="">Pilih</option>
-                            <option value="1">TI-1F</option>
-                            <option value="2">TI-2F</option>
-                            <option value="3">TI-3F</option>
-                        </select>
+                      <select class="form-control w-auto form-control-sm" name="kelas" id="kelasCari">
+                          <?php
+                          $resultKelas=kelas($con);
+                          if(mysqli_num_rows($resultKelas)){
+                              while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+                              ?>
+                              <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
+                              <?php
+                              }
+                          }else{
+                              ?>
+                              <option value="0">Kelas Kosong</option>
+                              <?php
+                          }
+                          ?>
+                      </select>
                     </div>
                 </div>
                 <div class="form-group row">

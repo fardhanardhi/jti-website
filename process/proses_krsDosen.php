@@ -28,6 +28,21 @@ function ambilIdDosen($con, $idUser){
     return $resultFinal["id_dosen"];
 }
 
+function verifikasiDosen($con, $idMahasiswa, $status){
+    if($status == "Belum"){
+        
+        $queryVerifikasi1 = "UPDATE tabel_krs SET status_verifikasi = 'Sudah' WHERE id_mahasiswa = '$idMahasiswa'";
+
+        $resultQueryVerifikasi1 = mysqli_query($con,$queryVerifikasi1);
+    }
+
+    else if($status == "Sudah"){
+        $queryVerifikasi2 = "UPDATE tabel_krs SET status_verifikasi = 'Belum' WHERE id_mahasiswa = '$idMahasiswa'";
+
+        $resultQueryVerifikasi2 = mysqli_query($con,$queryVerifikasi2);
+    }
+}
+
 function SumbitKompenDosen($con, $idDosenKompen, $idTask){
    
     $queryDosenKompen = "UPDATE tabel_pekerjaan_kompen SET status_kompen='0' 
@@ -37,7 +52,7 @@ function SumbitKompenDosen($con, $idDosenKompen, $idTask){
     $resultQueryDosenKompen = mysqli_query($con,$queryDosenKompen);
 }
 
-if(isset($_POST["tambahTask"]) || isset($_POST["submitKompenDosen"]) || isset($_POST["hapusTask"])){
+if(isset($_POST["tambahTask"]) || isset($_POST["submitKompenDosen"]) || isset($_POST["hapusTask"]) || isset($_POST["tambahVerifikasi"])){
     if($_GET["module"] == "krs" && $_GET["act"] == "tambah"){
 
         $result = ambilIdDosen($con, $_POST["idDosen"]);
@@ -61,6 +76,13 @@ if(isset($_POST["tambahTask"]) || isset($_POST["submitKompenDosen"]) || isset($_
 
     else if($_GET["module"]=="krs" && $_GET["act"]=="sumbitTask"){
         SumbitKompenDosen($con, $_POST['idDsnSubmitKmpn'], $_POST['idTask']);
+
+        header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+
+    else if($_GET["module"]=="krs" && $_GET["act"]=="editVerifikasi"){
+
+        verifikasiDosen($con, $_POST['idMahasiswa'], $_POST['statusVerifikasi']);
 
         header('location:../module/index.php?module=' . $_GET["module"]);
     }

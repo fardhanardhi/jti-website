@@ -233,3 +233,39 @@ if (isset($_POST['insertKomentar'])) {
   }
   exit();
 }
+
+
+// --------- kirim reply komentar -----------
+
+if (isset($_POST['insertReplyKomentar'])) {
+  $id_user = $_POST['iduser'];
+  $id_info = $_POST['idinfo'];
+  $id_komentar = $_POST['idkomentar'];
+  $isi = $_POST['val'];
+
+  $date = date("m/d/Y h:i A");
+  $final = strtotime($date);
+  $datetimeNow = date("Y-m-d H:i:s", $final);
+
+  $sql =
+    "INSERT INTO 
+    tabel_reply_komentar(
+      id_user,
+      isi,
+      id_komentar,
+      waktu
+    )
+    VALUES(
+      $id_user,
+      '$isi',
+      $id_komentar,
+      '$datetimeNow'
+    )";
+
+  if (mysqli_query($con, $sql)) {
+    $id = mysqli_insert_id($con);
+  } else {
+    echo "Error: " . mysqli_error($con);
+  }
+  exit();
+}

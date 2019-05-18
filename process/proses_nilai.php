@@ -119,7 +119,7 @@ function khsNilai($con, $id_mahasiswa, $id_semester){
   where a.id_mahasiswa = b.id_mahasiswa
   and d.id_matkul = c.id_matkul 
   and d.id_semester = e.id_semester
-  and a.id_mahasiswa = $id_mahasiswa and d.id_semester = $id_semester group by a.id_mahasiswa";
+  and a.id_mahasiswa = $id_mahasiswa and a.id_semester = $id_semester group by a.id_mahasiswa";
 
   $resultTampilKhsNilai = mysqli_query($con, $khsNilai);
   if(mysqli_num_rows($resultTampilKhsNilai)>0){
