@@ -1,6 +1,25 @@
 <?php
 include "../config/connection.php";
 
+function linkYAYAYA($Foto){
+
+    $ling = "";
+
+    if($Foto == null){
+        $ling = "../attachment/img/avatar.jpeg";
+    }
+
+    else if($Foto != null){
+        $link = "../attachment/img/";
+
+        $ling = ($link . $Foto);
+        
+    }
+
+    return $ling;    
+    
+}
+
 function tampilProdi($con){
     $prodi = "select * from tabel_prodi";
     $resultProdi = mysqli_query($con, $prodi);
@@ -341,7 +360,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                                 <label class='col-sm-3 col-form-label'>Username</label>
                                                 <div class='col-sm-9'>
                                                     <input type='text' class='form-control' placeholder='Username'
-                                                        id='usernameMahasiswaAdmin2' name='usernameMahasiswaAdmin2' value=".$rowEditMahasiswa["username"]."
+                                                        id='usernameMahasiswaAdmin2' name='usernameMahasiswaAdmin2' value='".$rowEditMahasiswa["username"]."'
                                                         required />
                                                 </div>
                                                 <div class='col-sm-3 col-form-label'></div>
@@ -353,7 +372,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                                 <label class='col-sm-3 col-form-label'>Password</label>
                                                 <div class='col-sm-9'>
                                                     <input type='password' class='form-control' placeholder='**********'
-                                                        id='passwordMahasiswaAdmin2' name='passwordMahasiswaAdmin2' value=".$rowEditMahasiswa["password"]."
+                                                        id='passwordMahasiswaAdmin2' name='passwordMahasiswaAdmin2' value='".$rowEditMahasiswa["password"]."'
                                                         required />
                                                 </div>
                                                 <div class='col-sm-3'></div>
@@ -364,7 +383,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                             <div class='form-group row'>
                                                 <label class='col-md-3 col-form-label'>Gambar</label>
                                                 <div class='input-group col-md-9'>
-                                                    <img src='../attachment/img/avatar.jpeg'
+                                                    <img src='".linkYAYAYA($rowEditMahasiswa["foto"])."'
                                                         id='fotoPrevMahasiswaAdmin2' height='150px' width='150px'>
                                                 </div>
                                                 <div class='col-md-3'></div>
