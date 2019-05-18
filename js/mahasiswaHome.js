@@ -62,3 +62,66 @@ $(".input-komentar").keydown(function(e) {
     });
   }
 });
+
+$(".reply-listener")
+  .mouseenter(function() {
+    $(this)
+      .find(".btn-reply-container")
+      .append(
+        "<strong style='cursor: pointer' class='col-auto btn-reply text-success'>Reply</strong>"
+      );
+
+    var replyEl = $(this);
+
+    $(".btn-reply").click(function() {
+      // alert(
+      //   $(replyEl)
+      //     .parent()
+      //     .parent()
+      //     .find("balas-komen")
+      //     .append("asdsafdaf")
+      // );
+      $(replyEl)
+        .parent()
+        .parent()
+        .find(".balas-komen .reply-komen-input")
+        .toggleClass("d-none");
+    });
+  })
+  .mouseleave(function() {
+    $(this)
+      .find(".btn-reply")
+      .remove();
+  });
+
+$(".reply-komen-input").keydown(function(e) {
+  if (e.keyCode == 13 && !e.shiftKey) {
+    e.preventDefault();
+
+    var iduser = $(this).data("iduser");
+    var idinfo = $(this).data("idinfo");
+    var idkomentar = $(this).data("idkomentar");
+    var val = $(this).val();
+
+    // alert(iduser + "|" + idinfo + "|" + idkomentar + "|" + val);
+
+    $.ajax({
+      url: "../process/proses_homeMahasiswa.php",
+      type: "POST",
+      data: {
+        insertReplyKomentar: 1,
+        iduser: iduser,
+        idinfo: idinfo,
+        idkomentar: idkomentar,
+        val: val
+      },
+      success: function(response) {
+        location.reload();
+
+        // $("#hasilPencarianBerita")
+        //   .empty()
+        //   .append(response);
+      }
+    });
+  }
+});
