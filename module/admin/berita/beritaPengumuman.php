@@ -124,8 +124,8 @@
                                   <tr>
                                       <td><?= $index?></td>
                                       <td class="text-left detail-berita" data-toggle="modal" data-target="#modalPreview" data-info="<?php echo $row["id_info"];?>"><?php echo $row["judul"];?></td>
-                                      <td><?= date('d F Y', strtotime($row["waktu_publish"]));?></td>
-                                      <td><?= date('d F Y', strtotime($row["waktu_perubahan"]));?></td>
+                                      <td><?= tampilTanggal($row["waktu_publish"]);?></td>
+                                      <td><?= tampilTanggal($row["waktu_perubahan"]);?></td>
                                       <td><?php echo jumlahKomentar($con, $row["id_info"]); ?></td>
 
                                       <td><button class=" tmbl-table btn btn-danger" type="button"
