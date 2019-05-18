@@ -79,7 +79,7 @@ $id_semester=$rowUser["id_semester"];
                     $ipSemester = khsNilai($con, $idMhsUser, $id_semester);
                     echo "<p>Indeks Prestasi Semester : ".$ipSemester;
                 }; ?> </p>
-                <p>Indeks Prestasi Kumulatif: <?php echo indeksSemesterKumulatif($con, $idUser);?></p>
+                <p>Indeks Prestasi Kumulatif: <?php echo indeksSemesterKumulatif($con, $idMhsUser);?></p>
 
                 <?php
 
