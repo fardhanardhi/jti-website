@@ -67,7 +67,6 @@ if(isset($_POST["adminCariBeasiswa"])){
                 <th>No</th>
                 <th>Beasiswa</th>
                 <th>Tanggal Pembuatan</th>
-                <th>Tanggal Perubahan</th>
                 <th>Batas Tanggal</th>
                 <th>Proses</th>
             </tr>
