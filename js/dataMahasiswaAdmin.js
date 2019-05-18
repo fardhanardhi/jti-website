@@ -124,7 +124,7 @@ function preview_images6(event) {
   function validasi2(){
     var usernameMahasiswaAdmin2 = document.getElementById("usernameMahasiswaAdmin2").value;
     var passwordMahasiswaAdmin2 = document.getElementById("passwordMahasiswaAdmin2").value;
-    var fileid3 = document.getElementById("fileid3").value;
+    
     var nimMahasiswaAdmin2 = document.getElementById("nimMahasiswaAdmin2").value;
     var namaMahasiswaAdmin2 = document.getElementById("namaMahasiswaAdmin2").value;
     var tempatlahirMahasiswaAdmin2 = document.getElementById("tempatlahirMahasiswaAdmin2").value;
@@ -145,14 +145,7 @@ function preview_images6(event) {
     else if(passwordMahasiswaAdmin2!=""){
         document.getElementById("passwordMahasiswaAdminBlank2").innerHTML="";
     }
-    
-    if(fileid3==""){
-        document.getElementById("fileidMahasiswaAdminBlank2").innerHTML="*Upload File Gambar";
-    }
-
-    else if(fileid3!=""){
-        document.getElementById("fileidMahasiswaAdminBlank2").innerHTML="";
-    }
+   
 
     if(nimMahasiswaAdmin2==""){
         document.getElementById("nimMahasiswaAdminBlank2").innerHTML="*Masukkan NIM";

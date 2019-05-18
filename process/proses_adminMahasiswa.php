@@ -201,37 +201,72 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
 
         // die();
 
+        if($namanya_file!=""){
+            
+            $query9 = "UPDATE tabel_user 
+            set username='$_POST[usernameMahasiswaAdmin2]',
+            password='$_POST[passwordMahasiswaAdmin2]'
+            where id_user= '$update';";
 
-        $query9 = "UPDATE tabel_user 
-        set username='$_POST[usernameMahasiswaAdmin2]',
-        password='$_POST[passwordMahasiswaAdmin2]'
-        where id_user= '$update';";
+            $query10="UPDATE tabel_mahasiswa 
+            set id_prodi = '$_POST[prodiMahasiswa2]',
+            id_semester = '$_POST[semesterMahasiswa2]',
+            id_kelas = '$_POST[kelasMahasiswa2]',
+            nim = '$_POST[nimMahasiswaAdmin2]',
+            nama = '$_POST[namaMahasiswaAdmin2]',
+            alamat = '$_POST[alamatMahasiswaAdmin2]',
+            jenis_kelamin = '$_POST[genderMahasiswaAdmin3]',
+            tempat_lahir = '$_POST[tempatlahirMahasiswaAdmin2]',
+            foto = '$namanya_file',
+            waktu_edit = curdate(),
+            tanggal_lahir = '$_POST[tahunLahirMahasiswa2]-$_POST[bulanLahirMahasiswa2]-$_POST[tanggalLahirMahasiswa2]'
+            where id_user='$update';";
 
-        $query10="UPDATE tabel_mahasiswa 
-        set id_prodi = '$_POST[prodiMahasiswa2]',
-        id_semester = '$_POST[semesterMahasiswa2]',
-        id_kelas = '$_POST[kelasMahasiswa2]',
-        nim = '$_POST[nimMahasiswaAdmin2]',
-        nama = '$_POST[namaMahasiswaAdmin2]',
-        alamat = '$_POST[alamatMahasiswaAdmin2]',
-        jenis_kelamin = '$_POST[genderMahasiswaAdmin3]',
-        tempat_lahir = '$_POST[tempatlahirMahasiswaAdmin2]',
-        foto = '$namanya_file',
-        waktu_edit = curdate(),
-        tanggal_lahir = '$_POST[tahunLahirMahasiswa2]-$_POST[bulanLahirMahasiswa2]-$_POST[tanggalLahirMahasiswa2]'
-        where id_user='$update';";
+            $query11="UPDATE tabel_absensi SET id_semester = '$_POST[semesterMahasiswa2]' WHERE id_mahasiswa='$id_mahasiswaUpdate';";
 
-        $query11="UPDATE tabel_absensi SET id_semester = '$_POST[semesterMahasiswa2]' WHERE id_mahasiswa='$id_mahasiswaUpdate';";
+            $queryUpdateKrs="UPDATE tabel_krs SET id_semester = '$_POST[semesterMahasiswa2]' WHERE id_mahasiswa='$id_mahasiswaUpdate';";
 
-        $queryUpdateKrs="UPDATE tabel_krs SET id_semester = '$_POST[semesterMahasiswa2]' WHERE id_mahasiswa='$id_mahasiswaUpdate';";
+            if(mysqli_query($con,$query9) && mysqli_query($con,$query10) && mysqli_query($con,$query11) && mysqli_query($con,$queryUpdateKrs)){
 
-        if(mysqli_query($con,$query9) && mysqli_query($con,$query10) && mysqli_query($con,$query11) && mysqli_query($con,$queryUpdateKrs)){
+                header('location:../module/index.php?module=' . $_GET["module"]);
+            }
 
-            header('location:../module/index.php?module=' . $_GET["module"]);
+            else{            
+                echo("Error description: " . mysqli_error($con));
+            }
         }
 
-        else{            
-            echo("Error description: " . mysqli_error($con));
+        else if($namanya_file == ""){
+            $query9 = "UPDATE tabel_user 
+            set username='$_POST[usernameMahasiswaAdmin2]',
+            password='$_POST[passwordMahasiswaAdmin2]'
+            where id_user= '$update';";
+
+            $query10="UPDATE tabel_mahasiswa 
+            set id_prodi = '$_POST[prodiMahasiswa2]',
+            id_semester = '$_POST[semesterMahasiswa2]',
+            id_kelas = '$_POST[kelasMahasiswa2]',
+            nim = '$_POST[nimMahasiswaAdmin2]',
+            nama = '$_POST[namaMahasiswaAdmin2]',
+            alamat = '$_POST[alamatMahasiswaAdmin2]',
+            jenis_kelamin = '$_POST[genderMahasiswaAdmin3]',
+            tempat_lahir = '$_POST[tempatlahirMahasiswaAdmin2]',
+            waktu_edit = curdate(),
+            tanggal_lahir = '$_POST[tahunLahirMahasiswa2]-$_POST[bulanLahirMahasiswa2]-$_POST[tanggalLahirMahasiswa2]'
+            where id_user='$update';";
+
+            $query11="UPDATE tabel_absensi SET id_semester = '$_POST[semesterMahasiswa2]' WHERE id_mahasiswa='$id_mahasiswaUpdate';";
+
+            $queryUpdateKrs="UPDATE tabel_krs SET id_semester = '$_POST[semesterMahasiswa2]' WHERE id_mahasiswa='$id_mahasiswaUpdate';";
+
+            if(mysqli_query($con,$query9) && mysqli_query($con,$query10) && mysqli_query($con,$query11) && mysqli_query($con,$queryUpdateKrs)){
+
+                header('location:../module/index.php?module=' . $_GET["module"]);
+            }
+
+            else{            
+                echo("Error description: " . mysqli_error($con));
+            }
         }
     }
 
@@ -336,7 +371,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                                 <div class='col-md-9'>
                                                     <br>
                                                     <input id='fileid3' type='file' name='fileid3' onchange='preview_images6(event);'  hidden
-                                                        required />
+                                                        />
                                                     <input id='buttonid3' type='button' value='Load Gambar'
                                                         class='btn btn-loading btn-primary tmbl-loading ml-2'  />
                                                 </div>
@@ -364,7 +399,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                                 <label class='col-sm-3 col-form-label'>Nama Lengkap</label>
                                                 <div class='col-sm-9'>
                                                     <input type='text' class='form-control' placeholder='Nama Mahasiswa'
-                                                        id='namaMahasiswaAdmin2' name='namaMahasiswaAdmin2' value=".$rowEditMahasiswa['nama_mahasiswa']." required />
+                                                        id='namaMahasiswaAdmin2' name='namaMahasiswaAdmin2' value='".$rowEditMahasiswa['nama_mahasiswa']."' required />
                                                 </div>
                                                 <div class='col-sm-3'></div>
                                                 <div class='col-sm-9'>
@@ -378,7 +413,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                                     <input type='text' class='form-control'
                                                         placeholder='Tempat Lahir Mahasiswa'
                                                         id='tempatlahirMahasiswaAdmin2'
-                                                        name='tempatlahirMahasiswaAdmin2' value=".$rowEditMahasiswa["tempat_lahir"]." required />
+                                                        name='tempatlahirMahasiswaAdmin2' value='".$rowEditMahasiswa["tempat_lahir"]."' required />
                                                 </div>
                                                 <div class='col-sm-3'></div>
                                                 <div class='col-sm-9'>
@@ -390,17 +425,17 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                                 <br>
                                                 <div class='col-sm-3'>
                                                     <select class='custom-select' id='tanggalLahirMahasiswa2' name='tanggalLahirMahasiswa2'>
-                                                        ".opsiTanggal($row['tanggal_lahir'])."
+                                                        ".opsiTanggal($rowEditMahasiswa['tanggal_lahir'])."
                                                     </select>
                                                 </div>
                                                 <div class='col-sm-3'>
                                                     <select class='custom-select' id='bulanLahirMahasiswa2' name='bulanLahirMahasiswa2'>
-                                                        ".opsiBulan($row['tanggal_lahir'])."
+                                                        ".opsiBulan($rowEditMahasiswa['tanggal_lahir'])."
                                                     </select>
                                                 </div>
                                                 <div class='col-sm-3'>
                                                     <select class='custom-select' id='tahunlLahirMahasiswa2' name='tahunLahirMahasiswa2'>
-                                                        ".opsiTahun($row['tanggal_lahir'])."
+                                                        ".opsiTahun($rowEditMahasiswa['tanggal_lahir'])."
                                                     </select>
                                                 </div>
                                             </div>
@@ -429,7 +464,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                                 <div class='col-sm-9'>
                                                     <input type='text' class='form-control' id='alamatMahasiswaAdmin2'
                                                         name='alamatMahasiswaAdmin2' rows='3'
-                                                        placeholder='Alamat Mahasiswa' value=".$rowEditMahasiswa["alamat"]." required></textarea>
+                                                        placeholder='Alamat Mahasiswa' value='".$rowEditMahasiswa["alamat"]."' required></textarea>
                                                 </div>
                                                 <div class='col-sm-3'></div>
                                                 <div class='col-sm-9'>
@@ -494,9 +529,6 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                         }
                                     
                                     </script>";
-
-
-
     echo $output;
 
   }else{
