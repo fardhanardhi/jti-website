@@ -34,10 +34,50 @@ function kelas($con){
     return $resultKelas;
 }
 
+function tampilKelasEdit($con){
+    
+    $kelas = "select a.*, b.* from tabel_kelas a, tabel_prodi b where a.id_prodi=b.id_prodi";
+    $resultKelas = mysqli_query($con, $kelas);
+
+    $output="";
+
+    if(mysqli_num_rows($resultKelas) > 0){
+        while($rowKelas=mysqli_fetch_assoc($resultKelas)){
+
+                $hasil= $rowKelas["kode"]." - ".$rowKelas["tingkat"].$rowKelas["kode_kelas"];
+
+                $output.="<option value='$rowKelas[id_kelas]' selected>".$hasil."</option>";
+        }
+    }
+
+    return $output;
+}
+
 function tampilSemester($con){
     $semester="select * from tabel_semester";
     $resultSemester = mysqli_query($con, $semester);
     return $resultSemester;
+}
+
+function tampilSemesterEdit($con, $id_semesterEdit){
+    $semester = "select * from tabel_semester";
+    $resultSemester = mysqli_query($con, $semester);
+
+    $output="";
+
+    if(mysqli_num_rows($resultSemester) > 0){
+        while($rowSemester=mysqli_fetch_assoc($resultSemester)){
+            if($rowSemester["id_semester"]==$id_semesterEdit){
+                $output.="<option value='$rowSemester[id_semester]' selected>".$rowSemester["semester"]."</option>";
+            }
+
+            else{
+                $output.="<option value='$rowSemester[id_semester]'>$rowSemester[semester]</option>";
+            }
+        }
+    }
+
+    return $output;
 }
 
 function tampilKelas($con, $id_kelas){
@@ -52,20 +92,10 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
 
     if($_GET["module"]=="dataMahasiswa" && $_GET["act"]=="tambah"){
 
-        // echo($_POST["passwordMahasiswaAdmin"]); 
-
-        // die();
-
          $nama_folder = "img";
          $tmp = $_FILES["fileid2"]["tmp_name"];
          $nama_file = $_FILES["fileid2"]["name"];
          move_uploaded_file($tmp, "../attachment/$nama_folder/$nama_file");
-
-        //  echo($nama_file);
-
-        //  die();
-   
-        
 
      $query1 = "INSERT INTO tabel_user (username, password, level) values (
          '$_POST[usernameMahasiswaAdmin]',
@@ -334,7 +364,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                                 <label class='col-sm-3 col-form-label'>Nama Lengkap</label>
                                                 <div class='col-sm-9'>
                                                     <input type='text' class='form-control' placeholder='Nama Mahasiswa'
-                                                        id='namaMahasiswaAdmin2' name='namaMahasiswaAdmin2' value=".$rowEditMahasiswa["nama_mahasiswa"]." required />
+                                                        id='namaMahasiswaAdmin2' name='namaMahasiswaAdmin2' value=".$rowEditMahasiswa['nama_mahasiswa']." required />
                                                 </div>
                                                 <div class='col-sm-3'></div>
                                                 <div class='col-sm-9'>
@@ -397,7 +427,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                             <div class='form-group row'>
                                                 <label class='col-sm-3 col-form-label'>Alamat</label>
                                                 <div class='col-sm-9'>
-                                                    <textarea class='form-control' id='alamatMahasiswaAdmin2'
+                                                    <input type='text' class='form-control' id='alamatMahasiswaAdmin2'
                                                         name='alamatMahasiswaAdmin2' rows='3'
                                                         placeholder='Alamat Mahasiswa' value=".$rowEditMahasiswa["alamat"]." required></textarea>
                                                 </div>
@@ -419,6 +449,9 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                             <div class='form-group row'>
                                                 <label class='col-sm-3'>Kelas</label>
                                                 <div class='col-sm-9'>
+                                                    <select class='semester custom-select' name='kelasMahasiswa2'>
+                                                        ".tampilKelasEdit($con)."
+                                                    </select>
                                                 </div>
                                                 <div class='col-sm-3'></div>
                                                 <div class='col-sm-9'>
@@ -429,6 +462,9 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                             <div class='form-group row'>
                                                             <label class='col-sm-3'>Semester</label>
                                                             <div class='col-sm-9'>
+                                                                <select class='semester custom-select' name='kelasMahasiswa2'>
+                                                                    ".tampilSemesterEdit($con,$rowEditMahasiswa["id_semester"])."
+                                                                </select>
                                                             </div>
                                                             <div class='col-sm-3'></div>
                                                             <div class='col-sm-9'>
