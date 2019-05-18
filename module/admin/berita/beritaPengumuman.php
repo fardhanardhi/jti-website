@@ -58,11 +58,11 @@ include "../process/proses_berita.php";
                                         </div>
                                         <div class="col-6 text-right d-flex justify-content-end lampir">
                                             <label for="file-input">
-                                                <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-placement="top" title="Lampirkan Gambar">
+                                                <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-placement="top" data-toggle="tooltip" data-placement="top" title="Lampirkan Gambar">
                                             </label>
                                             <input id="file-input" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" />
                                             <label for="file-input1">
-                                                <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-placement="top" title="Lampirkan File">
+                                                <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-toggle="tooltip" data-placement="top" title="Lampirkan File">
                                             </label>
                                             <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" />
                                             <strong><label for="kategori-AdBer" class="labelBerita mt-1 mr-2">Kategori :
@@ -73,6 +73,12 @@ include "../process/proses_berita.php";
                                                 <option value="rudy">Pengumuman</option>
                                             </select>
                                             <button type="submit" class="btn btn-success btn-kirim">Kirim</button>
+
+                                            <script>
+                                                $(document).ready(function(){
+                                                $('[data-toggle="tooltip"]').tooltip(); 
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
