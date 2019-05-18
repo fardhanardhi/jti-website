@@ -188,7 +188,7 @@ if (isset($_POST["insert"]) || isset($_POST["hapusMahasiswa"]) || isset($_POST["
         $update = $_POST["id_userUpdate"];
         $id_mahasiswaUpdate = $_POST["id_mahasiswaUpdate"];
 
-        //  echo($_POST["id_mahasiswaUpdate"]); 
+        // echo($id_mahasiswaUpdate); 
 
         // die();
 
@@ -298,11 +298,11 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
       
       $output="";
       $output.="      
-      <div class='row'>
+      <div class='row' id='modail'>
                                         <div class='col-sm-6'>
                                             <div class='form-group row'>
-                                                <input type='hidden' name='id_userUpdate' id='id_userEdit' >
-                                                <input type='hidden' name='id_mahasiswaUpdate' id='id_mahasiswaEdit' >               
+                                                <input type='hidden' name='id_userUpdate' value=".$rowEditMahasiswa["id_user"].">
+                                                <input type='hidden' name='id_mahasiswaUpdate' value=".$rowEditMahasiswa["id_mahasiswa"].">               
                                                 <label class='col-sm-3 col-form-label'>Username</label>
                                                 <div class='col-sm-9'>
                                                     <input type='text' class='form-control' placeholder='Username'
@@ -462,7 +462,7 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                             <div class='form-group row'>
                                                             <label class='col-sm-3'>Semester</label>
                                                             <div class='col-sm-9'>
-                                                                <select class='semester custom-select' name='kelasMahasiswa2'>
+                                                                <select class='semester custom-select' name='semesterMahasiswa2'>
                                                                     ".tampilSemesterEdit($con,$rowEditMahasiswa["id_semester"])."
                                                                 </select>
                                                             </div>
@@ -481,7 +481,21 @@ if(isset($_POST["editMahasiswa_idMahasiswa"])){
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>";
+                                    </div>
+                                    
+                                    <script>
+                                        document.getElementById('modail').addEventListener('load', setup3());
+
+                                        function setup3() {
+                                            document.getElementById('buttonid3').addEventListener('click', openDialog2);
+                                            function openDialog2() {
+                                                document.getElementById('fileid3').click();
+                                            }
+                                        }
+                                    
+                                    </script>";
+
+
 
     echo $output;
 

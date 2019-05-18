@@ -9,7 +9,7 @@
     ?>
 </head>
 
-<body onload="setup2(); setup3()">
+<body onload="setup2(); setup3();">
     <main role="main" class="container-fluid">
         <div id="dataMahasiswa" class="row">
             <div class="col-md-12 p-0">
