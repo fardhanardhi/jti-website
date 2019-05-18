@@ -42,6 +42,7 @@
   <script src="../js/mahasiswaKelasKosong.js"></script>
   <script src="../js/dosenKompen.js"></script>
   <script src="../js/dosenHome.js"></script>
+  <script src="../js/adminKelas.js"></script>
   <?php
   if ($level == "admin") {
     ?>
@@ -50,6 +51,7 @@
     <script src="../js/adminKuisioner.js"></script>
     <script src="../js/adminAbsenKompen.js"></script>
     <script src="../js/adminMatakuliah.js"></script>
+    
   <?php
 }
 ?>
