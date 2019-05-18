@@ -103,5 +103,30 @@ function grade($nilai)
  return $grade;
 }
 
+function khsNilai($con, $id_mahasiswa, $id_semester){
+  $khsNilai = "select distinct(ROUND(SUM(CASE
+  WHEN a.nilai > 80 THEN 4.00*c.sks
+  WHEN a.nilai > 70 && a.nilai <= 80 THEN 3.50*c.sks
+  WHEN a.nilai > 65 && a.nilai <= 70 THEN 3.00*c.sks
+  WHEN a.nilai > 60 && a.nilai <= 65 THEN 2.30*c.sks
+  WHEN a.nilai > 50 && a.nilai <= 60 THEN 2.00*c.sks
+  WHEN a.nilai > 40 && a.nilai <= 50 THEN 1.00*c.sks
+  ELSE
+  0.00*c.sks
+  END)/SUM(c.sks),2)) as ip , a.*, b.*, 
+  c.*, d.*, e.* from tabel_khs a,
+  tabel_mahasiswa b, tabel_matkul c, tabel_jadwal d, tabel_semester e
+  where a.id_mahasiswa = b.id_mahasiswa
+  and d.id_matkul = c.id_matkul 
+  and d.id_semester = e.id_semester
+  and a.id_mahasiswa = $id_mahasiswa and d.id_semester = $id_semester group by a.id_mahasiswa";
 
+  $resultTampilKhsNilai = mysqli_query($con, $khsNilai);
+  if(mysqli_num_rows($resultTampilKhsNilai)>0){
+      $rowKhsNilai = mysqli_fetch_assoc($resultTampilKhsNilai);
+      return $rowKhsNilai["ip"];
+  } else{
+      return 0;
+  }
+} 
 ?>
