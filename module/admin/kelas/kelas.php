@@ -116,18 +116,14 @@
                     <div class="col-sm-4">
                         <select class="form-control form-control-sm" name="tahunajaran">
                             <option value="">Tahun Ajaran</option>
-                            <option value="1">2017</option>
-                            <option value="2">2018</option>
-                            <option value="3">2019</option>
+                            <option value="1">2018</option>
                         </select>
                     </div>
                     <h2> / </h2>
                     <div class="col-sm-4">
                         <select class="form-control form-control-sm" name="tahunajaran">
                             <option value="">Tahun Ajaran</option>
-                            <option value="1">2018</option>
-                            <option value="2">2019</option>
-                            <option value="3">2020</option>
+                            <option value="1">2019</option>
                         </select>
                     </div>
                 </div>
