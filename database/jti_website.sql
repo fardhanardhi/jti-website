@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 16, 2019 at 07:10 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Host: localhost:3306
+-- Generation Time: May 17, 2019 at 11:49 PM
+-- Server version: 5.7.26-0ubuntu0.18.04.1
+-- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -595,19 +593,20 @@ CREATE TABLE `tabel_pekerjaan_kompen` (
   `id_dosen` int(30) NOT NULL,
   `nama` text NOT NULL,
   `kuota` int(11) NOT NULL,
-  `id_semester` int(11) NOT NULL
+  `id_semester` int(11) NOT NULL,
+  `status_kompen` enum('0','1') NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tabel_pekerjaan_kompen`
 --
 
-INSERT INTO `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`, `id_dosen`, `nama`, `kuota`, `id_semester`) VALUES
-(1, 8, 'Menata mouse dan keyboard di lab', 5, 7),
-(2, 8, 'Membeli kertas A4 1 pack', 5, 7),
-(3, 8, 'Membeli DDR 2 buah', 5, 7),
-(4, 8, 'Menata absensi jurusan', 5, 7),
-(5, 8, 'Menstampel kertas Portofolio untuk ujian', 5, 7);
+INSERT INTO `tabel_pekerjaan_kompen` (`id_pekerjaan_kompen`, `id_dosen`, `nama`, `kuota`, `id_semester`, `status_kompen`) VALUES
+(1, 8, 'Menata mouse dan keyboard di lab', 5, 7, '1'),
+(2, 8, 'Membeli kertas A4 1 pack', 5, 7, '1'),
+(3, 8, 'Membeli DDR 2 buah', 5, 7, '1'),
+(4, 8, 'Menata absensi jurusan', 5, 7, '1'),
+(5, 8, 'Menstampel kertas Portofolio untuk ujian', 5, 7, '1');
 
 -- --------------------------------------------------------
 
@@ -637,6 +636,7 @@ INSERT INTO `tabel_prodi` (`id_prodi`, `nama`, `kode`) VALUES
 
 CREATE TABLE `tabel_reply_komentar` (
   `id_reply_komentar` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `isi` text NOT NULL,
   `id_komentar` int(11) NOT NULL,
   `waktu` datetime NOT NULL
@@ -646,10 +646,10 @@ CREATE TABLE `tabel_reply_komentar` (
 -- Dumping data for table `tabel_reply_komentar`
 --
 
-INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `isi`, `id_komentar`, `waktu`) VALUES
-(1, 'Jangan lupa untuk minta tugasnya', 2, '2019-04-12 00:00:00'),
-(2, 'Semangat juga ', 3, '2019-04-13 02:00:00'),
-(3, 'Jangan lupa untuk minta tugasnya', 4, '2019-04-13 03:00:00');
+INSERT INTO `tabel_reply_komentar` (`id_reply_komentar`, `id_user`, `isi`, `id_komentar`, `waktu`) VALUES
+(1, 16, 'Jangan lupa untuk minta tugasnya', 2, '2019-04-12 00:00:00'),
+(2, 13, 'Semangat juga ', 3, '2019-04-13 02:00:00'),
+(3, 18, 'Jangan lupa untuk minta tugasnya', 4, '2019-04-13 03:00:00');
 
 -- --------------------------------------------------------
 
@@ -785,7 +785,8 @@ INSERT INTO `tabel_task` (`id_task`, `pekerjaan`, `kuota`, `id_dosen`, `status`)
 (2, 'Menginputkan data', 3, 4, '1'),
 (3, 'Mengangkat kursi', 5, 4, '1'),
 (4, 'Menyiapkan ruangan', 10, 4, '1'),
-(5, 'Mengambilkan makanan', 1, 4, '1');
+(5, 'Mengambilkan makanan', 1, 4, '1'),
+(6, 'fas', 22, 4, '0');
 
 -- --------------------------------------------------------
 
@@ -1017,7 +1018,8 @@ ALTER TABLE `tabel_prodi`
 --
 ALTER TABLE `tabel_reply_komentar`
   ADD PRIMARY KEY (`id_reply_komentar`),
-  ADD KEY `id_komentar` (`id_komentar`);
+  ADD KEY `id_komentar` (`id_komentar`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tabel_riwayat_peminjam_kelas_kosong`
@@ -1075,169 +1077,141 @@ ALTER TABLE `tabel_user`
 --
 ALTER TABLE `tabel_absensi`
   MODIFY `id_absensi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `tabel_admin`
 --
 ALTER TABLE `tabel_admin`
   MODIFY `id_admin` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tabel_attachment`
 --
 ALTER TABLE `tabel_attachment`
   MODIFY `id_attachment` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_chat`
 --
 ALTER TABLE `tabel_chat`
   MODIFY `id_chat` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
 --
 -- AUTO_INCREMENT for table `tabel_dosen`
 --
 ALTER TABLE `tabel_dosen`
   MODIFY `id_dosen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
 --
 -- AUTO_INCREMENT for table `tabel_hasil_kuisioner`
 --
 ALTER TABLE `tabel_hasil_kuisioner`
   MODIFY `id_hasil_kuisioner` int(30) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tabel_info`
 --
 ALTER TABLE `tabel_info`
   MODIFY `id_info` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_info_beasiswa`
 --
 ALTER TABLE `tabel_info_beasiswa`
   MODIFY `id_beasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `tabel_jadwal`
 --
 ALTER TABLE `tabel_jadwal`
-  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+  MODIFY `id_jadwal` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tabel_kelas`
 --
 ALTER TABLE `tabel_kelas`
   MODIFY `id_kelas` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT for table `tabel_khs`
 --
 ALTER TABLE `tabel_khs`
-  MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
+  MODIFY `id_khs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tabel_komentar`
 --
 ALTER TABLE `tabel_komentar`
   MODIFY `id_komentar` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_kompen`
 --
 ALTER TABLE `tabel_kompen`
   MODIFY `id_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_krs`
 --
 ALTER TABLE `tabel_krs`
   MODIFY `id_krs` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
 --
 -- AUTO_INCREMENT for table `tabel_kuisioner`
 --
 ALTER TABLE `tabel_kuisioner`
   MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
 --
 -- AUTO_INCREMENT for table `tabel_mahasiswa`
 --
 ALTER TABLE `tabel_mahasiswa`
   MODIFY `id_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
-
 --
 -- AUTO_INCREMENT for table `tabel_matkul`
 --
 ALTER TABLE `tabel_matkul`
   MODIFY `id_matkul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tabel_notifikasi`
 --
 ALTER TABLE `tabel_notifikasi`
   MODIFY `id_notifikasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
 --
 -- AUTO_INCREMENT for table `tabel_pekerjaan_kompen`
 --
 ALTER TABLE `tabel_pekerjaan_kompen`
   MODIFY `id_pekerjaan_kompen` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tabel_prodi`
 --
 ALTER TABLE `tabel_prodi`
   MODIFY `id_prodi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
   MODIFY `id_reply_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- AUTO_INCREMENT for table `tabel_riwayat_peminjam_kelas_kosong`
 --
 ALTER TABLE `tabel_riwayat_peminjam_kelas_kosong`
   MODIFY `id_riwayat_peminjam_kelas_kosong` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `tabel_ruang`
 --
 ALTER TABLE `tabel_ruang`
   MODIFY `id_ruang` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_ruang_dipinjam`
   MODIFY `id_ruang_dipinjam` int(30) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tabel_semester`
 --
 ALTER TABLE `tabel_semester`
   MODIFY `id_semester` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
 --
 -- AUTO_INCREMENT for table `tabel_status_mahasiswa`
 --
 ALTER TABLE `tabel_status_mahasiswa`
   MODIFY `id_status_mahasiswa` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tabel_task`
 --
 ALTER TABLE `tabel_task`
-  MODIFY `id_task` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id_task` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tabel_user`
 --
 ALTER TABLE `tabel_user`
   MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
 --
 -- Constraints for dumped tables
 --
@@ -1359,7 +1333,8 @@ ALTER TABLE `tabel_pekerjaan_kompen`
 -- Constraints for table `tabel_reply_komentar`
 --
 ALTER TABLE `tabel_reply_komentar`
-  ADD CONSTRAINT `tabel_reply_komentar_ibfk_1` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tabel_reply_komentar_ibfk_1` FOREIGN KEY (`id_komentar`) REFERENCES `tabel_komentar` (`id_komentar`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tabel_reply_komentar_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tabel_riwayat_peminjam_kelas_kosong`
@@ -1380,7 +1355,6 @@ ALTER TABLE `tabel_ruang_dipinjam`
 --
 ALTER TABLE `tabel_task`
   ADD CONSTRAINT `tabel_task_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `tabel_dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

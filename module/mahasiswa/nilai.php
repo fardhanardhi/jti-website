@@ -10,9 +10,11 @@ $queryUser = "SELECT a.*, b.*, c.nama as prodi FROM tabel_user a, tabel_mahasisw
 $resultUser = mysqli_query($con, $queryUser);
 $rowUser = mysqli_fetch_assoc($resultUser);
 
+$idMhsUser = $rowUser["id_mahasiswa"];
 $namaUser = $rowUser["nama"];
 $nimUser = $rowUser["nim"];
 $prodiUser = $rowUser["prodi"];
+$id_semester=$rowUser["id_semester"];
 
 ?>
 
@@ -65,24 +67,19 @@ $prodiUser = $rowUser["prodi"];
                 <button type="submit" name="filter" class="tmbl-filter btn btn-success">Filter</button><br><br>
                 </form>
 
-                <p>Indeks Prestasi Semester: <?php 
+                <?php 
                 if(isset($_POST["filter"])){
-                    $ipSemester = indeksSemesterFix($con, $idUser, $_POST["semester"]);
-                    echo $ipSemester;
+                    $ipSemester = khsNilai($con, $idMhsUser, $_POST["semester"]);
+                    $result=filterKhs($con, $idUser, $_POST["semester"]);
+                    echo "<p>Indeks Prestasi Semester : ".$ipSemester;
                 }
                 else
                 { 
-                    echo 0;
+                    $result = khs($con, $idUser);
                 }; ?> </p>
                 <p>Indeks Prestasi Kumulatif: <?php echo indeksSemesterKumulatif($con, $idUser);?></p>
 
                 <?php
-                if(isset($_POST["filter"])){
-                    $result=filterKhs($con, $idUser, $_POST["semester"]);
-                }else{
-                    $result = khs($con, $idUser);
-                    $ipSemester = 0;
-                }
 
                 if(mysqli_num_rows($result) > 0){
                     ?>
@@ -108,7 +105,7 @@ $prodiUser = $rowUser["prodi"];
                                     <td><?php echo $row["nama"];?></td>
                                     <td><?php echo $row["sks"];?></td>
                                     <td><?php echo $row["jam"];?></td>
-                                    <td><?php echo $row["nilai"];?></td>
+                                    <td><?php echo grade($row["nilai"]);?></td>
                                 </tr>
                             <?php
                             }

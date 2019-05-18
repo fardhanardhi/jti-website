@@ -127,6 +127,12 @@
     color: white;
 }
 
+#adminBerita .input-group-addon{
+    border: 0.45em solid gray;
+    background-color: gray;
+    border-radius: 0px 5px 5px 0px;
+  }
+
 #adminBerita img[title]:hover::before {
     content: attr(data-title);
     position: absolute;

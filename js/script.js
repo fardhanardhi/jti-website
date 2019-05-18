@@ -44,11 +44,6 @@ function showPassword() {
 // datepicker
 $("#datepicker").datepicker();
 
-// set tanggal ke hidden input
-$("#datepicker").on("changeDate", function() {
-  $("#my_hidden_input").val($("#datepicker").datepicker("getFormattedDate"));
-});
-
 // lightbox(preview gambar)
 $(document).on("click", '[data-toggle="lightbox"]', function(event) {
   event.preventDefault();
