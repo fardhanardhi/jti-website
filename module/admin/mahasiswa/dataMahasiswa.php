@@ -292,7 +292,7 @@
                                 <form class="form-inline">
                                     <i class="fas fa-search mr-2"></i>
                                     <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="" aria-label="Search" name="txtCariDataMahasiswa" id="txtCariDataMahasiswa">
-                                    <button class="btn btn-mencari btn-success tmbl-mencari"type="submit">Cari</button>
+                                   
                                 </form>
                             </div>
                         </div>
