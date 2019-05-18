@@ -46,10 +46,10 @@ include "../process/proses_adminMatakuliah.php";
                     </div>
                     <div class="row d-flex align-items-center">
                       <div class="col-md-4">
-                        <small class="semester">Semester : 3</small>
+                        <small class="semester"><?php echo "Jam : ".$rowMatakuliah["jam"];?></small>
                       </div>
                       <div class="col-md-4">
-                        <small class="sks"><?php echo "SKS :".$rowMatakuliah["sks"];?></small>
+                        <small class="sks"><?php echo "SKS : ".$rowMatakuliah["sks"];?></small>
                       </div>
                     </div>
                   </div>
