@@ -56,7 +56,7 @@ if(isset($_POST["tambahTask"]) || isset($_POST["submitKompenDosen"]) || isset($_
 
  else if($_GET["module"]=="home" && $_GET["act"]=="sumbitTask"){
   SumbitKompenDosen($con, $_POST['idDsnSubmitKmpn'], $_POST['idTask'] );
-  header('location:../module/index.php?module=' . $_GET["module"]);
+  // header('location:../module/index.php?module=' . $_GET["module"]);
   }
 }
 
@@ -65,7 +65,7 @@ if(isset($_POST["tambahTask"]) || isset($_POST["submitKompenDosen"]) || isset($_
 
 <?php
 if(isset($_POST["kompenDosenSumbit"])){
-  // $resultQueryDosenKompen=SumbitKompenDosen($con, $_POST['idDosenKmpn'], $_POST["idTaskKmpn"]);
+  $resultQueryDosenKompen=SumbitKompenDosen($con, $_POST['idDosenKmpn'], $_POST["idTaskKmpn"]);
   $resultQueryTask= tampilTaskDosen($con, $idUser);
   $index=1;
   if (mysqli_num_rows($resultQueryTask) > 0){
