@@ -56,7 +56,7 @@ if(isset($_POST["tambahTask"]) || isset($_POST["submitKompenDosen"]) || isset($_
 
  else if($_GET["module"]=="home" && $_GET["act"]=="sumbitTask"){
   SumbitKompenDosen($con, $_POST['idDsnSubmitKmpn'], $_POST['idTask'] );
-  // header('location:../module/index.php?module=' . $_GET["module"]);
+  header('location:../module/index.php?module=' . $_GET["module"]);
   }
 }
 
