@@ -24,16 +24,20 @@
             <div class="row">
                 <label class="col-form-label">Kelas</label>
                 <div class="col-sm-1">
-                    <select class="form-control form-control-sm" name="kelas" id="kelasCari">
+                    <select class="form-control form-control-sm" name="kelas" id="absensiCari">
                         <?php
                         $resultKelas=kelas($con);
-                        if(mysqli_num_rows($resultKelas)){
-                            while($rowKelas=mysqli_fetch_assoc($resultKelas)){
-                            ?>
-                            <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
-                            <?php
+                        if(mysqli_num_rows($resultKelas))
+                        {
+                            while($rowKelas=mysqli_fetch_assoc($resultKelas))
+                            {
+                                ?>
+                                <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
+                                <?php
                             }
-                        }else{
+                        }
+                        else
+                        {
                             ?>
                             <option value="0">Kelas Kosong</option>
                             <?php
@@ -52,11 +56,11 @@
                 </div>
               
               <div class="col-md-2">
-                <button id="cariKelas"class="btn btn-success btn-checkout text-white">Cari</button>
+                <button id="cariAbsensi" class="btn btn-success btn-checkout text-white">Cari</button>
               </div>
             </div>
 
-            <div class="row pt-2 mt-2 pl-0 scrollbar" id="mencariKelas">
+            <div class="row pt-2 mt-2 pl-0 scrollbar" id="absensi">
                 <? $resultKelasData=kelasData($con, minKelas($con));
                 if (mysqli_num_rows($resultKelasData) > 0)
                 {?>
@@ -65,10 +69,10 @@
                             <tr>
                                 <th>No.</th>
                                 <th>NIM</th>
-                                <th>Nama</th>
-                                <th>Alamat </th>
-                                <th>Jenis Kelamin</th>
-                                <th>Proses</th>
+                                <th >Nama</th>
+                                <th >Alamat </th>
+                                <th >Jenis Kelamin</th>
+                                <th >Proses</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,7 +102,6 @@
                   </div>
                 <?php
                 }?>
-
             </div>
           </div>
         </div>
