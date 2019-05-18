@@ -7,6 +7,27 @@ function tampilProdi($con){
     return $resultProdi;
 }
 
+function tampilProdiEdit($con, $id_prodiEdit){
+    $prodi = "select * from tabel_prodi";
+    $resultProdi = mysqli_query($con, $prodi);
+
+    $output="";
+
+    if(mysqli_num_rows($resultProdi) > 0){
+        while($rowProdi=mysqli_fetch_assoc($resultProdi)){
+            if($rowProdi["id_prodi"]==$id_prodiEdit){
+                $output.="<option value='$rowProdi[id_prodi]' selected>".$rowProdi["nama"]."</option>";
+            }
+
+            else{
+                $output.="<option value='$rowProdi[id_prodi]'>$rowProdi[nama]</option>";
+            }
+        }
+    }
+
+    return $output;
+}
+
 function kelas($con){
     $kelas = "select * from tabel_kelas";
     $resultKelas = mysqli_query($con, $kelas);
@@ -225,5 +246,211 @@ function opsiTahun($tanggalLahir){
       }
     }
     return $output;
+}
+
+// select tp.kode, tk.tingkat, tm.id_mahasiswa, tm.id_user, tu.username,tu.password,tm.foto,tm.nim,tm.nama as nama_mahasiswa,tm.tempat_lahir,tm.tanggal_lahir,tm.jenis_kelamin,tm.alamat,tp.nama as nama_prodi,tk.kode_kelas 
+//                                             from tabel_mahasiswa tm,tabel_prodi tp,tabel_user tu,tabel_kelas tk
+//                                             where tm.id_prodi = tp.id_prodi
+//                                             and tm.id_user = tu.id_user
+//                                             and tm.id_kelas = tk.id_kelas;
+
+
+// Modal Edit Mahasiswa
+if(isset($_POST["editMahasiswa_idMahasiswa"])){
+  $editMahasiswa = 
+  "select tu.username, tu.password, tm.id_mahasiswa, tm.id_user, tm.foto, tm.nim, tm.nama as nama_mahasiswa, tm.tempat_lahir, tm.tanggal_lahir, tm.jenis_kelamin, tm.alamat, tp.nama as nama_jurusan, tp.kode, tp.id_prodi, tk.kode_kelas, tk.tingkat, tk.id_kelas, ts.semester, ts.id_semester from tabel_user tu, tabel_mahasiswa tm, tabel_prodi tp, tabel_kelas tk, tabel_semester ts 
+  where tu.id_user = tm.id_user 
+  and tm.id_mahasiswa=$_POST[editMahasiswa_idMahasiswa] and tm.id_prodi = tp.id_prodi and tm.id_kelas = tk.id_kelas and tm.id_semester = ts.id_semester";
+  $resultEditMahasiswa = mysqli_query($con, $editMahasiswa);
+
+  if(mysqli_num_rows($resultEditMahasiswa)>0){
+    $rowEditMahasiswa=mysqli_fetch_assoc($resultEditMahasiswa);
+      
+      $output="";
+      $output.="      
+      <div class='row'>
+                                        <div class='col-sm-6'>
+                                            <div class='form-group row'>
+                                                <input type='hidden' name='id_userUpdate' id='id_userEdit' >
+                                                <input type='hidden' name='id_mahasiswaUpdate' id='id_mahasiswaEdit' >               
+                                                <label class='col-sm-3 col-form-label'>Username</label>
+                                                <div class='col-sm-9'>
+                                                    <input type='text' class='form-control' placeholder='Username'
+                                                        id='usernameMahasiswaAdmin2' name='usernameMahasiswaAdmin2' value=".$rowEditMahasiswa["username"]."
+                                                        required />
+                                                </div>
+                                                <div class='col-sm-3 col-form-label'></div>
+                                                <div class='col-sm-9'>
+                                                    <div id='usernameMahasiswaAdminBlank2' class='text-danger'></div>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                <label class='col-sm-3 col-form-label'>Password</label>
+                                                <div class='col-sm-9'>
+                                                    <input type='password' class='form-control' placeholder='**********'
+                                                        id='passwordMahasiswaAdmin2' name='passwordMahasiswaAdmin2' value=".$rowEditMahasiswa["password"]."
+                                                        required />
+                                                </div>
+                                                <div class='col-sm-3'></div>
+                                                <div class='col-sm-9'>
+                                                    <div id='passwordMahasiswaAdminBlank2' class='text-danger'></div>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                <label class='col-md-3 col-form-label'>Gambar</label>
+                                                <div class='input-group col-md-9'>
+                                                    <img src='../attachment/img/avatar.jpeg'
+                                                        id='fotoPrevMahasiswaAdmin2' height='150px' width='150px'>
+                                                </div>
+                                                <div class='col-md-3'></div>
+                                                <div class='col-md-9'>
+                                                    <br>
+                                                    <input id='fileid3' type='file' name='fileid3' onchange='preview_images6(event);'  hidden
+                                                        required />
+                                                    <input id='buttonid3' type='button' value='Load Gambar'
+                                                        class='btn btn-loading btn-primary tmbl-loading ml-2'  />
+                                                </div>
+                                                <div class='col-sm-3'></div>
+                                                <div class='col-sm-9'>
+                                                    <div id='fileidMahasiswaAdminBlank2' class='text-danger'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-sm-6'>
+                                            <div class='form-group row'>
+                                                <label class='col-sm-3 col-form-label'>NIM</label>
+                                                <div class='col-sm-9'>
+                                                    <input type='text' class='form-control' placeholder='NIM Mahasiswa'
+                                                        id='nimMahasiswaAdmin2' name='nimMahasiswaAdmin2' value='".$rowEditMahasiswa["nim"]."' required />
+                                                </div>
+                                                <div class='col-sm-3'></div>
+                                                <div class='col-sm-9'>
+                                                    <div id='nimMahasiswaAdminBlank2' class='text-danger'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                <label class='col-sm-3 col-form-label'>Nama Lengkap</label>
+                                                <div class='col-sm-9'>
+                                                    <input type='text' class='form-control' placeholder='Nama Mahasiswa'
+                                                        id='namaMahasiswaAdmin2' name='namaMahasiswaAdmin2' value=".$rowEditMahasiswa["nama_mahasiswa"]." required />
+                                                </div>
+                                                <div class='col-sm-3'></div>
+                                                <div class='col-sm-9'>
+                                                    <div id='namaMahasiswaAdminBlank2' class='text-danger'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                <label class='col-sm-3 col-form-label'>Tempat Lahir</label>
+                                                <div class='col-sm-9'>
+                                                    <input type='text' class='form-control'
+                                                        placeholder='Tempat Lahir Mahasiswa'
+                                                        id='tempatlahirMahasiswaAdmin2'
+                                                        name='tempatlahirMahasiswaAdmin2' value=".$rowEditMahasiswa["tempat_lahir"]." required />
+                                                </div>
+                                                <div class='col-sm-3'></div>
+                                                <div class='col-sm-9'>
+                                                    <div id='tempatlahirMahasiswaAdminBlank2' class='text-danger'></div>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                <label class='col-sm-3 col-form-label'>Tanggal Lahir</label>
+                                                <br>
+                                                <div class='col-sm-3'>
+                                                    <select class='custom-select' id='tanggalLahirMahasiswa2' name='tanggalLahirMahasiswa2'>
+                                                        ".opsiTanggal($row['tanggal_lahir'])."
+                                                    </select>
+                                                </div>
+                                                <div class='col-sm-3'>
+                                                    <select class='custom-select' id='bulanLahirMahasiswa2' name='bulanLahirMahasiswa2'>
+                                                        ".opsiBulan($row['tanggal_lahir'])."
+                                                    </select>
+                                                </div>
+                                                <div class='col-sm-3'>
+                                                    <select class='custom-select' id='tahunlLahirMahasiswa2' name='tahunLahirMahasiswa2'>
+                                                        ".opsiTahun($row['tanggal_lahir'])."
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                <label class='col-sm-3 col-form-label'>Jenis Kelamin</label>
+                                                <br>
+                                                <div class='col-sm-9'>
+                                                    <div class='form-check form-check-inline'>
+                                                        <label class='form-check-label' for='genderMahasiswaAdmin1'>
+                                                            <input class='mt-2' type='radio' name='genderMahasiswaAdmin3'
+                                                                id='genderMahasiswaAdmin1' value='Laki-laki' checked>
+                                                            Laki-laki
+                                                        </label>
+                                                    </div>
+                                                    <div class='form-check form-check-inline'>
+                                                        <label class='form-check-label' for='genderMahasiswaAdmin2'>
+                                                            <input class='mt-2' type='radio' name='genderMahasiswaAdmin3'
+                                                                id='genderMahasiswaAdmin2' value='Perempuan'>
+                                                            Perempuan
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                <label class='col-sm-3 col-form-label'>Alamat</label>
+                                                <div class='col-sm-9'>
+                                                    <textarea class='form-control' id='alamatMahasiswaAdmin2'
+                                                        name='alamatMahasiswaAdmin2' rows='3'
+                                                        placeholder='Alamat Mahasiswa' value=".$rowEditMahasiswa["alamat"]." required></textarea>
+                                                </div>
+                                                <div class='col-sm-3'></div>
+                                                <div class='col-sm-9'>
+                                                    <div id='alamatMahasiswaAdminBlank2' class='text-danger'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                <label class='col-sm-3'>Prodi</label>
+                                                <br>
+                                                <div class='col-sm-9'>
+                                                    <select class='semester custom-select'  name='prodiMahasiswa2'>
+                                                        ".tampilProdiEdit($con,$rowEditMahasiswa["id_prodi"])."
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                <label class='col-sm-3'>Kelas</label>
+                                                <div class='col-sm-9'>
+                                                </div>
+                                                <div class='col-sm-3'></div>
+                                                <div class='col-sm-9'>
+                                                    <div id='kelasMahasiswaAdminBlank2' class='text-danger'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='form-group row'>
+                                                            <label class='col-sm-3'>Semester</label>
+                                                            <div class='col-sm-9'>
+                                                            </div>
+                                                            <div class='col-sm-3'></div>
+                                                            <div class='col-sm-9'>
+                                                                <div id='kelasMahasiswaAdminBlank' class='text-danger'>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                            <div class='row'>
+                                                <div class='col-sm-9'></div>
+                                                <div class='col-sm-3'>
+                                                    <button type='submit' class='btn btn-tambahkan btn-success tmbl-tambahkan' name='editMahasiswa'
+                                                        onclick='validasi2(); 
+                                                                    preventDefaultAction2(event);'>Simpan</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>";
+
+    echo $output;
+
+  }else{
+    echo $output.="Data Kosong";
+  }
 }
 ?>

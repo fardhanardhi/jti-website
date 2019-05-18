@@ -272,10 +272,22 @@ $('.hapus-mahasiswa-admin').click(function () {
 $('.edit-mahasiswa-admin').click(function () {
     var id_userEdit = $(this).attr("id_userEdit");
     var id_mahasiswaEdit = $(this).attr("id_mahasiswaEdit");
-    $('#id_userEdit').val(id_userEdit);
-    $('#id_mahasiswaEdit').val(id_mahasiswaEdit);
-    $('#hapus').modal("show");
-})
+
+    $.ajax({
+        url: "../process/proses_adminMahasiswa.php",
+        method: "post",
+        data: {
+          editMahasiswa_idUser: id_userEdit,
+          editMahasiswa_idMahasiswa: id_mahasiswaEdit
+        },
+        success: function (data) {
+          $("#id_userUpdate").val(id_userEdit);
+          $("#id_mahasiswaUpdate").val(id_mahasiswaEdit);
+          $("#edit-dataMahasiswa").html(data);
+          $("#modalEditAdminMahasiswa").modal("show");
+        }
+      });
+    });
 
 $('#txtCariDataMahasiswa').keyup(function(){
 var input,
