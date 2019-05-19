@@ -189,7 +189,7 @@ if (isset($_GET["adminCariBerita"])) {
     $index = 1;
     if (mysqli_num_rows($resultTampilBerita) > 0) {
         ?>
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered mt-3">
             <thead class="text-center">
                 <tr class="p-2">
                     <th>No</th>
