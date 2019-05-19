@@ -139,7 +139,7 @@ function showFilesSizesModal()
 function erorModal(){
     var usernameDosenAdmin2 = document.getElementById("usernameDosenAdmin2").value;
     var passwordDosenAdmin2 = document.getElementById("passwordDosenAdmin2").value;
-    var fileid3 = document.getElementById("fileid3").value;
+    var filenyaModal = document.getElementById("filenyaModal").value;
     var nimDosenAdmin2 = document.getElementById("nimDosenAdmin2").value;
     var namaDosenAdmin2 = document.getElementById("namaDosenAdmin2").value;
     var tempatlahirDosenAdmin2 = document.getElementById("tempatlahirDosenAdmin2").value;
@@ -165,12 +165,12 @@ function erorModal(){
         document.getElementById("fileidDosenAdminBlank2").innerHTML="*Upload File Gambar";
     }
 
-    else if(fileid3!=""){
+    else if(filenyaModal!=""){
         document.getElementById("fileidDosenAdminBlank2").innerHTML="";
     }
 
     if(nimDosenAdmin2==""){
-        document.getElementById("nimDosenAdminBlank2").innerHTML="*Masukkan NIM";
+        document.getElementById("nimDosenAdminBlank2").innerHTML="*Masukkan NIP";
     }
 
     else if(nimDosenAdmin2!=""){
@@ -214,10 +214,164 @@ $('.hapus-dosen-admin').click(function () {
     $('#hapus').modal("show");
 })
 
+// $('.edit-dosen-admin').click(function () {
+//     var id_userUpdate = $(this).attr("id_userUpdate");
+//     var id_dosenUpdate = $(this).attr("id_dosenUpdate");
+//     $('#id_userUpdate').val(id_userUpdate);
+//     $('#id_dosenUpdate').val(id_dosenUpdate);
+//     $('#editModal').modal("show");
+// })
 $('.edit-dosen-admin').click(function () {
     var id_userUpdate = $(this).attr("id_userUpdate");
     var id_dosenUpdate = $(this).attr("id_dosenUpdate");
-    $('#id_userUpdate').val(id_userUpdate);
-    $('#id_dosenUpdate').val(id_dosenUpdate);
-    $('#editModal').modal("show");
+
+    $.ajax({
+        url: "../process/CRUD_dataDosen.php",
+        method: "post",
+        data: {
+          editDosen_idUser: id_userUpdate,
+          editDosen_idDosen: id_dosenUpdate
+        },
+        success: function (data) {
+            $('#id_userEdit').val(id_userUpdate);
+            $('#id_dosenEdit').val(id_dosenUpdate);
+            $("#edit-dataDosen").html(data);
+            $('#editModal').modal("show");
+        }
+    });
 })
+
+// edit modal
+// $('.dosen-modal-edit').click(function () {
+//     var id_userEdit = $(this).attr("id_userEdit");
+//     var id_dosenEdit = $(this).attr("id_dosenEdit");
+
+//     $.ajax({
+//         url: "../process/CRUD_dataDosen.php",
+//         method: "post",
+//         data: {
+//           editDosen_idUser: id_userEdit,
+//           editDosen_idDosen: id_DosenEdit
+//         },
+//         success: function (data) {
+//           $("#id_userUpdate").val(id_userEdit);
+//           $("#id_dosenUpdate").val(id_dosenEdit);
+//           $("#edit-dataDosen").html(data);
+//           $("#modalEditAdminDosen").modal("show");
+//         }
+//       });
+//     });
+
+// search dosen
+$('#txtCariDataDosen').keyup(function(){
+    var input,
+        filter,
+        itemDataDosen,
+    
+        usernameDosen,
+        passwordDosen,
+        fotoDosen,
+        nimDosen,
+        namaDosen,
+        tempatLahirDosen,
+        tanggalLahirDosen,
+        jenisKelaminDosen,
+        alamatDosen,
+        namaProdiDosen,
+        kodeKelasDosen,
+        i,
+        txtValueUsernameDosen,
+        txtValuePasswordDosen,
+        txtValueFotoDosen,
+        txtValueNimDosen,
+        txtValueNamaDosen,
+        txtValueTempatLahirDosen,
+        txtValueTanggalLahirDosen,
+        txtValueJenisKelaminDosen,
+        txtValueAlamatDosen,
+    
+        totalInactive,
+    
+        // halamanTidakDitemukan = document.getElementById("tidakKetemu"),
+        // tabelDataDosen = document.getElementById("dataAdminDosen");
+    
+        input = $("#txtCariDataDosen");
+    
+        filter = $(input)
+        .val()
+        .toUpperCase();
+    
+        itemDataDosen = $("#dataAdminDosen .itemDataDosen");
+    
+        for(i=0; i < itemDataDosen.length; i++){
+            usernameDosen = $(itemDataDosen[i]).find(".usernameDosen");
+            passwordDosen = $(itemDataDosen[i]).find(".passwordDosen");
+            fotoDosen = $(itemDataDosen[i]).find(".fotoDosen");
+            nimDosen = $(itemDataDosen[i]).find(".nimDosen");
+            namaDosen = $(itemDataDosen[i]).find(".namaDosen");
+            tempatLahirDosen = $(itemDataDosen[i]).find(".tempatLahirDosen");
+            tanggalLahirDosen = $(itemDataDosen[i]).find(".tanggalLahirDosen");
+            jenisKelaminDosen = $(itemDataDosen[i]).find(".jenisKelaminDosen");
+            alamatDosen = $(itemDataDosen[i]).find(".alamatDosen");
+
+            if(usernameDosen || passwordDosen || fotoDosen || nimDosen || namaDosen || tempatLahirDosen || tanggalLahirDosen || jenisKelaminDosen || alamatDosen){
+                txtValueUsernameDosen = $(usernameDosen)
+                    .text()
+                    .toUpperCase();
+                txtValuePasswordDosen = $(passwordDosen)
+                    .text()
+                    .toUpperCase();
+                txtValueFotoDosen = $(fotoDosen)
+                    .text()
+                    .toUpperCase();
+                txtValueNimDosen = $(nimDosen)
+                    .text()
+                    .toUpperCase();
+                txtValueNamaDosen = $(namaDosen)
+                    .text()
+                    .toUpperCase();
+                txtValueTempatLahirDosen = $(tempatLahirDosen)
+                    .text()
+                    .toUpperCase();
+                txtValueTanggalLahirDosen = $(tanggalLahirDosen)
+                    .text()
+                    .toUpperCase();
+                txtValueJenisKelaminDosen = $(jenisKelaminDosen)
+                    .text()
+                    .toUpperCase();
+                txtValueAlamatDosen = $(alamatDosen)
+                    .text()
+                    .toUpperCase();
+    
+                if
+                (
+                    txtValueUsernameDosen.indexOf(filter) > -1 || 
+                    txtValuePasswordDosen.indexOf(filter) > -1 || 
+                    txtValueFotoDosen.indexOf(filter) > -1 || 
+                    txtValueNimDosen.indexOf(filter) > -1 ||
+                    txtValueNamaDosen.indexOf(filter) > -1 ||
+                    txtValueTempatLahirDosen.indexOf(filter) > -1 ||
+                    txtValueTanggalLahirDosen.indexOf(filter) > -1 ||
+                    txtValueJenisKelaminDosen.indexOf(filter) > -1 ||
+                    txtValueAlamatDosen.indexOf(filter) > -1
+                )
+                {
+                    itemDataDosen[i].style.display = "";
+                }
+                else
+                {
+                    itemDataDosen[i].style.display = "none";
+                }   
+            }
+        }
+    
+        totalInactive = $("#dataAdminDosen. itemDataDosen:hidden");
+    
+        if(itemDataDosen.length == totalInactive.length){
+            document.getElementById("tidakKetemu").style.display = "block";
+        }
+    
+        else{
+            document.getElementById("tidakKetemu").style.display = "none";
+        }
+    });

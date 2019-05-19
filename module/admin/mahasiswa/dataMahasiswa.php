@@ -342,17 +342,17 @@
                                                         ?>
                                                             <tr id="<?php echo $row["id_mahasiswa"] ?>" class="itemDataMahasiswa">
                                                                 <td><?php echo $index; ?></td>
-                                                                <td class="usernameMahasiswa"><?php echo $row["username"]; ?></td>
-                                                                <td class="passwordMahasiswa">**********</td>
-                                                                <td class="fotoMahasiswa"><img src="../attachment/img/<?php echo ($row['foto'] == null)? 'avatar.jpeg' : $row['foto'] ; ?>" style="width:50px;height:50px;border-radius:50%;"></td>
-                                                                <td class="nimMahasiswa"><?php echo $row["nim"]; ?></td>
+                                                                <td class="usernameMahasiswa text-nowrap"><?php echo $row["username"]; ?></td>
+                                                                <td class="passwordMahasiswa text-nowrap">**********</td>
+                                                                <td class="fotoMahasiswa text-nowrap"><img src="../attachment/img/<?php echo ($row['foto'] == null)? 'avatar.jpeg' : $row['foto'] ; ?>" style="width:50px;height:50px;border-radius:50%;"></td>
+                                                                <td class="nimMahasiswa text-nowrap"><?php echo $row["nim"]; ?></td>
                                                                 <td class="namaMahasiswa text-nowrap"><?php echo $row["nama_mahasiswa"]; ?></td>
-                                                                <td class="tempatLahirMahasiswa"><?php echo $row["tempat_lahir"]; ?></td>
-                                                                <td class="tanggalLahirMahasiswa"><?php echo date("d M Y", strtotime($row["tanggal_lahir"])) ?></td>
-                                                                <td class="jenisKelaminMahasiswa"><?php echo $row["jenis_kelamin"]; ?></td>
-                                                                <td class="alamatMahasiswa"><?php echo $row["alamat"]; ?></td>
+                                                                <td class="tempatLahirMahasiswa text-nowrap"><?php echo $row["tempat_lahir"]; ?></td>
+                                                                <td class="tanggalLahirMahasiswa text-nowrap"><?php echo date("d M Y", strtotime($row["tanggal_lahir"])) ?></td>
+                                                                <td class="jenisKelaminMahasiswa text-nowrap"><?php echo $row["jenis_kelamin"]; ?></td>
+                                                                <td class="alamatMahasiswa text-nowrap"><?php echo $row["alamat"]; ?></td>
                                                                 <td class="namaProdiMahasiswa text-nowrap"><?php echo $row["nama_prodi"];?></td>
-                                                                <td class="kodeKelasMahasiswa"><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?></td>
+                                                                <td class="kodeKelasMahasiswa text-nowrap"><?php echo $row["kode"]; ?>-<?php echo $row["tingkat"]; echo $row["kode_kelas"] ?></td>
         
                                                                 <td>
                                                                 <a id_userEdit="<?php echo $row["id_user"]; ?>"
