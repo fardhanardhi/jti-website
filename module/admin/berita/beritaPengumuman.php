@@ -163,7 +163,7 @@ include "../process/proses_berita.php";
     $index = 1;
     if (mysqli_num_rows($resultTampilBerita) > 0) {
         while ($row = mysqli_fetch_assoc($resultTampilBerita)) {
-            $idBerita = $row["id_info"];
+            $id_info = $row["id_info"];
             ?>
             <div class="modal fade hapusBerita-modal" id="hapus<?= $row["id_info"] ?>" tabindex="-1" role="dialog" aria-labelledby="hapus<?= $index ?>Title" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -171,8 +171,11 @@ include "../process/proses_berita.php";
                         <div class="modal-body ">
                             <h5 class="isiHapusBerita text-center">Apakah Anda Yakin?</h5>
                             <div class="tombolAksiHapusBerita text-center">
-                                <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                                <button type="button" class="btn btn-iya" name="hapusBerita">Ya</button>
+                                <form action="../process/proses_berita.php?module=beritaPengumuman&act=hapus" method="post">
+                                    <input type="hidden" value="<?=$id_info?>" name="id_info">
+                                    <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
+                                    <button type="button" class="btn btn-iya" name="hapus" id="hapus">Ya</button>
+                                </form>
                             </div>
                         </div>
                     </div>

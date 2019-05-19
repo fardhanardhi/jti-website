@@ -58,7 +58,7 @@ function jumlahKomentar($con, $id_info)
 }
 
 //PROSES
-if(isset($_POST["insert"]) || isset($_POST["hapusBerita"])){
+if(isset($_POST["insert"]) || isset($_POST["hapus"])){
 
     if($_GET["module"]=="beritaPengumuman" && $_GET["act"]=="tambah"){
         $datePublish = date("Y-m-d H:i:s");
