@@ -164,7 +164,7 @@ function formatTanggal($tanggal)
 
 
 if (isset($_GET["adminCariBerita"])) {
-    $resultTampilBerita = cariBerita($con, formatTanggal($_GET["tanggal"]));
+    $resultTampilBerita = cariBerita($con, formatTanggal($_GET["tanggalBerita"]));
     $index = 1;
     if (mysqli_num_rows($resultTampilBerita) > 0) {
         ?>
@@ -203,7 +203,7 @@ if (isset($_GET["adminCariBerita"])) {
     ?>
         <div class="text-center">
             <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-            <p class="text-muted">Tidak ada berita pada "<?php echo date("d M Y", strtotime($_GET["tanggal"])); ?>"</p>
+            <p class="text-muted">Tidak ada berita pada "<?php echo date("d M Y", strtotime($_GET["tanggalBerita"])); ?>"</p>
         </div>
     <?php
 }
