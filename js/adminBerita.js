@@ -6,7 +6,7 @@ function Beritacharcountupdate(beritacount) {
 }
 
 // $("#datepicker").datepicker({ format: "yyyy/mm/dd" });
-$("#tanggalBerita").datepicker({ format: "yyyy/mm/dd" });
+$("#tanggalBerita").datepicker({ format: "yyyy-mm-dd" });
 
 // KHS MODAL LIHAT
 $(".detail-berita").click(function() {
@@ -33,7 +33,7 @@ $("#adminCariBerita").click(function() {
     method: "GET",
     data: {
       adminCariBerita: true,
-      tanggal: tanggal
+      tanggalBerita: tanggal
     },
     success: function(response) {
       $("#tabelBerita")
