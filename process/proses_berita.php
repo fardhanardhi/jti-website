@@ -57,6 +57,27 @@ function jumlahKomentar($con, $id_info)
     }
 }
 
+//PROSES
+if(isset($_POST["insert"]) || isset($_POST["hapusBerita"])){
+
+    if($_GET["module"]=="beritaPengumuman" && $_GET["act"]=="tambah"){
+        $datePublish = date("Y-m-d H:i:s");
+        $dateChange = date("Y-m-d H:i:s");
+        $queryBerita= "INSERT INTO tabel_info (judul, isi, tipe, waktu_publish, waktu_perubahan)  
+                      VALUES ('$_POST[judulBerita]','$_POST[isiBerita]','$_POST[tipeBerita]','$datePublish','$dateChange')";
+        mysqli_query($con, $queryBerita);
+        header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+    else if($_GET["module"]=="beritaPengumuman" && $_GET["act"]=="hapus"){
+        $queryBerita="DELETE FROM tabel_info WHERE id_info='$_POST[id_info]'";
+        mysqli_query($con, $queryBerita);
+        header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+}
+
+
+//END PROSES
+
 // Modal BERITA LIHAT
 if (isset($_POST["tampilDetailInfo"])) {
     $id_info = $_POST['tampilDetailInfo'];
