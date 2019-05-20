@@ -108,8 +108,9 @@ $(document).ready(function() {
 
 // Search kuisioner berdasarkan tahun dan semester
 $("#cariKuisioner").click(function() {
-  var tahun = $("#tahunKuisioner option:selected").val();
-  var semester = $("#semesterKuisioner option:selected").val();
+  var tahun, semester;
+  tahun=$("#tahunKuisioner option:selected").val();
+  semester = $("#semesterKuisioner option:selected").val();
 
   $.ajax({
     url: "../process/proses_kuisioner.php",

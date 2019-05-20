@@ -161,12 +161,15 @@
                         <td class="kelas">
                         <?php
                         $resultKelasDosen=kelasDosen($con,$row["id_dosen"]);
-                        if (mysqli_num_rows($resultKelasDosen) > 0){
+                        if (mysqli_num_rows($resultKelasDosen) == 1){
                           while($rowKelas = mysqli_fetch_assoc($resultKelasDosen)){
                               echo tampilKelas($con,$rowKelas["id_kelas"]);
                           }
-                        }
-                        else{
+                        }else if(mysqli_num_rows($resultKelasDosen) > 1){
+                          while($rowKelas = mysqli_fetch_assoc($resultKelasDosen)){
+                              echo tampilKelas($con,$rowKelas["id_kelas"]).", ";
+                          }
+                        }else{
                           echo "-";
                         }
                             ?>
@@ -185,7 +188,7 @@
             }else{
               ?>
               <div class="text-center">
-                <p class="text-muted">Data Kuisioner Kosong</p>
+                <p class="text-muted">Data Kuisioner Semester 1 Kosong</p>
               </div>
           <?php
             }

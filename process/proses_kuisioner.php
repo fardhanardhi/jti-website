@@ -28,7 +28,7 @@ function tampilSemester($con){
 
 function kelasDosen($con, $id_dosen)
 {
-  $kelasDosen = "select a.*, b.id_kelas, c.id_kelas from tabel_dosen a, tabel_jadwal b, tabel_kelas c where b.id_kelas=c.id_kelas and a.id_dosen=b.id_dosen and a.id_dosen=$id_dosen";
+  $kelasDosen = "select c.id_kelas from tabel_dosen a, tabel_jadwal b, tabel_kelas c where b.id_kelas=c.id_kelas and a.id_dosen=b.id_dosen and a.id_dosen=$id_dosen group by c.id_kelas";
   $resultKelasDosen = mysqli_query($con, $kelasDosen);
   return $resultKelasDosen;
 }
@@ -226,12 +226,15 @@ if(isset($_POST["cariKuisioner"])){
               <td class="kelas">
               <?php
               $resultKelasDosen=kelasDosen($con,$row["id_dosen"]);
-              if (mysqli_num_rows($resultKelasDosen) > 0){
+              if (mysqli_num_rows($resultKelasDosen) == 1){
                 while($rowKelas = mysqli_fetch_assoc($resultKelasDosen)){
                     echo tampilKelas($con,$rowKelas["id_kelas"]);
                 }
-              }
-              else{
+              }else if(mysqli_num_rows($resultKelasDosen) > 1){
+                while($rowKelas = mysqli_fetch_assoc($resultKelasDosen)){
+                    echo tampilKelas($con,$rowKelas["id_kelas"]).", ";
+                }
+              }else{
                 echo "-";
               }
                   ?>
@@ -246,6 +249,22 @@ if(isset($_POST["cariKuisioner"])){
           ?>
       </tbody>
     </table>
+    <script>
+    $(".lihat-detail").click(function() {
+        var id_dosen = $(this).attr("id");
+
+        $.ajax({
+          url: "../process/proses_kuisioner.php",
+          method: "post",
+          data: { namaDosen: id_dosen },
+          success: function(data) {
+            $("#id_dosen").val(id_dosen);
+            $("#judul").html(data);
+            $("#modalLihatHasil").modal("show");
+          }
+        });
+      });
+    </script>
   <?php 
   }else{
     ?>
@@ -277,7 +296,7 @@ if(isset($_POST["tambahIsi"]) || isset($_POST["editIsi"]) || isset($_POST["hapus
     if(cekStatusAktif($con)){
       $status_aktif='ya';
     }
-    mysqli_query($con, "insert into tabel_kuisioner values('','$_POST[isiKriteria]','$status_aktif')");
+    mysqli_query($con, "insert into tabel_kuisioner (kriteria, status) values ('$_POST[isiKriteria]','$status_aktif')");
     header('location:../module/index.php?module=' . $_GET["module"]);
   }
 
@@ -292,19 +311,3 @@ if(isset($_POST["tambahIsi"]) || isset($_POST["editIsi"]) || isset($_POST["hapus
   }
 }
 ?>
-<script>
-$(".lihat-detail").click(function() {
-    var id_dosen = $(this).attr("id");
-
-    $.ajax({
-      url: "../process/proses_kuisioner.php",
-      method: "post",
-      data: { namaDosen: id_dosen },
-      success: function(data) {
-        $("#id_dosen").val(id_dosen);
-        $("#judul").html(data);
-        $("#modalLihatHasil").modal("show");
-      }
-    });
-  });
-</script>
