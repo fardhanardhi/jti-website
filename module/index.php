@@ -364,7 +364,7 @@ if ($level != 'admin') {
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <!-- memberi space ditengah navbar -->
       <div class="mx-auto"></div>
-      <i class="notification-icon text-white far fa-bell" onclick="location.href='index.php?module=notifikasi';">
+      <i class="notification-icon text-white far fa-bell" onclick="location.href='index.php?module=notifikasi&act=&id=';">
 
         <!-- bagian notification bubble -->
         <span class="fas fa-circle notification-bubble"></span>

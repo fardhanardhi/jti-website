@@ -10,7 +10,7 @@ function notifikasi($con, $idUser) {
 if ($_GET['module'] == 'notifikasi' && $_GET['act'] == 'baca' && $_GET['id']) {
   $queryBaca = "UPDATE tabel_notifikasi SET status_dibaca = 'sudah' WHERE id_notifikasi = '$_GET[id]'";
   mysqli_query($con, $queryBaca);
-  header('location:../module/index.php?module=' . $_GET["module"]);
+  header('location:../module/index.php?module=' . $_GET["module"] . '&act=&id=');
 }
 
 ?>
