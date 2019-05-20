@@ -2,6 +2,7 @@
 session_start();
 include "../config/connection.php";
 include "../process/proses_modalPengaturan.php";
+include "../process/proses_jumlahNotifikasi.php";
 
 if (isset($_SESSION["id"])) {
   $level = $_SESSION['level'];
@@ -367,8 +368,19 @@ if ($level != 'admin') {
       <i class="notification-icon text-white far fa-bell" onclick="location.href='index.php?module=notifikasi&act=&id=';">
 
         <!-- bagian notification bubble -->
+        <?php
+          $jumlah = getJumlahNotifikasiBelumDibaca($con, $idUser);
+          if ($jumlah == 0) {
+            # code...
+          } else {
+        ?>
         <span class="fas fa-circle notification-bubble"></span>
-        <span class="notification-bubble-num">10</span>
+        <span class="notification-bubble-num">
+        <?=$jumlah?>
+        </span>
+        <?php
+          }
+        ?>
       </i>
 
       <div class="dropdown mr-5">
