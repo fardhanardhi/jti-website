@@ -376,7 +376,13 @@ if ($level != 'admin') {
         ?>
         <span class="fas fa-circle notification-bubble"></span>
         <span class="notification-bubble-num">
-        <?=$jumlah?>
+          <?php
+            if ($jumlah > 9) {
+              echo '9+';
+            } else {
+              echo $jumlah . '&nbsp;';
+            }
+          ?>
         </span>
         <?php
           }
