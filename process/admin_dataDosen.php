@@ -11,7 +11,7 @@ foreach ($result as $row) {
 	$data[] = $row;
 }
 
-mysqli_close($conn);
+mysqli_close($con);
 
 echo json_encode($data);
 ?>
