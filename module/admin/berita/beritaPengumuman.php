@@ -29,13 +29,13 @@ include "../process/proses_berita.php";
                             <strong>Buat Postingan Berita</strong>
                         </div>
                         <div class="card-body">
-                            <form action="" method="post" class="p-0">
+                            <form action="../process/proses_berita.php?module=beritaPengumuman&act=tambah" class="p-0" method="POST" enctype="multipart/form-data">
                                 <div class="form-group berita-utama">
-                                    <input type="text" class="form-control border-0" name="berita-utama" placeholder="Berita Utama ..." style="width=100%">
+                                    <input type="text" class="form-control border-0" name="judulBerita" placeholder="Berita Utama ..." style="width=100%">
                                 </div>
                                 <hr>
                                 <div class="form-group ketik-berita">
-                                    <textarea name="ketik-berita" id="" cols="30" rows="6" placeholder="Ketik Berita ..." maxlength="500" class="form-control border-0" oninput="Beritacharcountupdate(this.value)"></textarea>
+                                    <textarea name="isiBerita" id="" cols="30" rows="6" placeholder="Ketik Berita ..." maxlength="500" class="form-control border-0" oninput="Beritacharcountupdate(this.value)"></textarea>
                                 </div>
                                 <div class="col-md-12 p-1 alert alert-danger alert-dismissible fade show" role="alert">
                                     <p>Pak Dimas.jpg (Gagal Upload) - Kapasitas gambar lebih dari 5 Mb</p>
@@ -58,21 +58,27 @@ include "../process/proses_berita.php";
                                         </div>
                                         <div class="col-6 text-right d-flex justify-content-end lampir">
                                             <label for="file-input">
-                                                <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-placement="top" title="Lampirkan Gambar">
+                                                <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-placement="top" data-toggle="tooltip" data-placement="top" title="Lampirkan Gambar">
                                             </label>
-                                            <input id="file-input" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" />
+                                            <input id="file-input" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" name="gambar"/>
                                             <label for="file-input1">
-                                                <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-placement="top" title="Lampirkan File">
+                                                <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-toggle="tooltip" data-placement="top" title="Lampirkan File">
                                             </label>
-                                            <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" />
+                                            <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" name="file" />
                                             <strong><label for="kategori-AdBer" class="labelBerita mt-1 mr-2">Kategori :
                                                 </label>
                                             </strong>
-                                            <select name="" id="" class="mr-3 pilihKategoriBerita w-auto">
-                                                <option value="ridwan">Berita</option>
-                                                <option value="rudy">Pengumuman</option>
+                                            <select name="tipeBerita" id="tipeBerita" class="mr-3 pilihKategoriBerita w-auto">
+                                                <option value="Berita">Berita</option>
+                                                <option value="Pengumuman">Pengumuman</option>
                                             </select>
-                                            <button type="submit" class="btn btn-success btn-kirim">Kirim</button>
+                                            <button type="submit" class="btn btn-success btn-kirim" name="insert">Kirim</button>
+
+                                            <script>
+                                                $(document).ready(function(){
+                                                $('[data-toggle="tooltip"]').tooltip(); 
+                                                });
+                                            </script>
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +163,7 @@ include "../process/proses_berita.php";
     $index = 1;
     if (mysqli_num_rows($resultTampilBerita) > 0) {
         while ($row = mysqli_fetch_assoc($resultTampilBerita)) {
-            $idBerita = $row["id_info"];
+            $id_info = $row["id_info"];
             ?>
             <div class="modal fade hapusBerita-modal" id="hapus<?= $row["id_info"] ?>" tabindex="-1" role="dialog" aria-labelledby="hapus<?= $index ?>Title" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -165,8 +171,11 @@ include "../process/proses_berita.php";
                         <div class="modal-body ">
                             <h5 class="isiHapusBerita text-center">Apakah Anda Yakin?</h5>
                             <div class="tombolAksiHapusBerita text-center">
-                                <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                                <button type="button" class="btn btn-iya">Ya</button>
+                                <form action="../process/proses_berita.php?module=beritaPengumuman&act=hapus" method="post">
+                                    <input type="hidden" value="<?=$id_info?>" name="id_info">
+                                    <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
+                                    <button type="button" class="btn btn-iya" name="hapus" id="hapus">Ya</button>
+                                </form>
                             </div>
                         </div>
                     </div>

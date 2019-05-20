@@ -1,104 +1,72 @@
-#dataMahasiswa .table {
-    margin-top: 2em;
-    width: 130%;
-  }
-  
-  #dataMahasiswa .table-striped > thead > tr > th {
-    background-color: #40407a;
-    color: white;
-  }
-  
-  #dataMahasiswa .table-striped > tbody > tr:nth-child(odd) > td {
-    background-color: #ceceef;
-  }
-  
-  #dataMahasiswa .table-striped > tbody > tr:nth-child(even) > td {
-    background-color: #ececff;
-  }
-  #dataMahasiswa .table-striped > tbody > tr > td {
-    font-size: 1em;
-    padding-bottom: 1.1em;
-    padding-top: 1.1em;
-  }
-  #dataMahasiswa .tmbl-table{
-    width: 130px;
-    font-family: Lato;
-    font-size: 12px;
-  }
-  
-  #dataMahasiswa .scrolltable{
-    overflow-x: scroll;
-    width: 100%;
-    /* margin: 10px,10px,10px,10px; */
-    /* padding: 20px,20px,20px,20px; */
-  }
-  
-  /* modal */
-  #dataMahasiswa #exampleModalCenter {
-    background-color: rgba(0, 0, 0, 0.5)
-  }
-  
-  #dataMahasiswa .close {
-    padding-right: 0.5em;
-  }
+/* modal */
+#dataMahasiswa #exampleModalCenter {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-  /* modal */
-  #modalHapusDataMahasiswa {
-    background-color: rgba(0, 0, 0, 0.5)
-  }
+#dataMahasiswa .close {
+  padding-right: 0.5em;
+}
 
-  #hapusMahasiswa {
-    background-color: rgba(32, 32, 32, 0.86);
-    padding-bottom: 5em;
-  }
+/* modal */
+#modalHapusDataMahasiswa {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-  .isiHapusDataMahasiswa {
-    padding-top: 3em;
-    padding-bottom: 2em;
-  }
+#hapusMahasiswa {
+  background-color: rgba(32, 32, 32, 0.86);
+  padding-bottom: 5em;
+}
 
-  .btn-tidakdak {
-    /*padding: 0em 1.5em 0em 1.5em;*/
-    margin-right: 5em;
-    background-color: #CF212A;
-    color: white;
+.isiHapusDataMahasiswa {
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
 
-    border-radius: 10px;
-    width: 7em;
-    height: 1.8em;
-    padding: 0;
-  }
+.btn-tidakdak {
+  /*padding: 0em 1.5em 0em 1.5em;*/
+  margin-right: 5em;
+  background-color: #cf212a;
+  color: white;
 
-  .btn-iyaya {
-    /*padding: 0em 1.5em 0em 1.5em;*/
-    margin-left: 5em;
-    background-color: #3AAC5F;
-    color: white;
+  border-radius: 10px;
+  width: 7em;
+  height: 1.8em;
+  padding: 0;
+}
 
-    border-radius: 10px;
-    width: 7em;
-    height: 1.8em;
-    padding: 0;
-  }
+.btn-iyaya {
+  /*padding: 0em 1.5em 0em 1.5em;*/
+  margin-left: 5em;
+  background-color: #3aac5f;
+  color: white;
 
-  .tombolAksiHapusDataMahasiswa{
-    padding-bottom: 2em;
-  }
+  border-radius: 10px;
+  width: 7em;
+  height: 1.8em;
+  padding: 0;
+}
 
-  /* Tombol */
+.tombolAksiHapusDataMahasiswa {
+  padding-bottom: 2em;
+}
 
-  #dataMahasiswa .btn-load, .btn-loading, .btn-edit, .btn-hapus, .btn-tambahkan {
-    border-radius: 10px;
-    width: 7em;
-    height: 1.8em;
-    padding: 0;
-  }
+/* Tombol */
 
-  .btn-kumpulkan , .btn-mencari{
-    border-radius: 10px;
-    width: 8em;
-    height: 2em;
-    padding: 0;
-  }
+#dataMahasiswa .btn-load,
+.btn-loading,
+.btn-edit,
+.btn-hapus,
+.btn-tambahkan {
+  border-radius: 10px;
+  width: 7em;
+  height: 1.8em;
+  padding: 0;
+}
 
-
+.btn-kumpulkan,
+.btn-mencari {
+  border-radius: 10px;
+  width: 8em;
+  height: 2em;
+  padding: 0;
+}

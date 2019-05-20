@@ -1,3 +1,11 @@
+<?php
+
+include "../config/connection.php";
+include "../process/proses_absenKompenMhs.php";
+
+$idUser = $_SESSION['id'];
+?>
+
 <main role="main" class="container-fluid">
   <div id="kompenAbsen" class="row">
     <div class="col-md-12 p-0 ">
@@ -43,47 +51,47 @@
           </div>
         </div>
 
-          <table class="table table-striped table-bordered text-center">
-            <thead class="bg-blue text-white">
-              <tr>
-                <th scope="col">No</th>
-                <th scope="col">Tanggal</th>
-                <th scope="col">Jenis Kompensasi</th>
-                <th scope="col">Total Jam</th>
-                <th scope="col">Dosen</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>1 Januari 2019</td>
-                <td>Dosen A</td>
-                <td>2 Jam</td>
-                <td>Dosen</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>1 Januari 2019</td>
-                <td>Dosen B</td>
-                <td>3 Jam</td>
-                <td>Dosen</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>1 Januari 2019</td>
-                <td>Dosen C</td>
-                <td>8 Jam</td>
-                <td>Dosen</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>1 Januari 2019</td>
-                <td>Dosen C</td>
-                <td>8 Jam</td>
-                <td>Dosen</td>
-              </tr>
-            </tbody>
-          </table>
+        <?php $resultKelasData=semester($con);
+          if(mysqli_num_rows($resultKelasData) > 0)
+          {?>
+              <table class="table table-striped table-bordered text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Tanggal</th>
+                      <th scope="col">Jenis Kompensasi</th>
+                      <th scope="col">Total Jam</th>
+                      <th scope="col">Dosen</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <?php
+                      $index=1;
+                      while($rowKelas = mysqli_fetch_assoc($resultKelasData)){
+                      ?>
+                      <tr>
+                          <td><?php echo $index; ?></td>
+                          <td class="nimMahasiswa"><?php echo $rowKelas["waktu"]; ?></td>
+                          <td class="namaMahasiswa"><?php echo $rowKelas["nama"]; ?></td>
+                          <td class="alamatMahasiswa"><?php echo $rowKelas["jumlah_jam"]; ?></td>
+                          <td class="alamatMahasiswa"><?php echo $rowKelas["nama_dosen"]; ?></td>
+                      </tr>
+                      <?php $index++;
+                      }
+                      ?>
+                  </tbody>
+              </table>
+          <?php
+          } 
+          else
+          {
+            ?>
+            <div class="text-center">
+              <p class="text-muted">Data Kosong</p>
+            </div>
+          <?php
+          }
+          ?>
     </div>
 
 <!-- The modal pengaturan -->

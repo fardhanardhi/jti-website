@@ -33,7 +33,7 @@ $("#adminCariBerita").click(function() {
     method: "GET",
     data: {
       adminCariBerita: true,
-      tanggal: tanggal
+      tanggalBerita: tanggal
     },
     success: function(response) {
       $("#tabelBerita")

@@ -57,6 +57,27 @@ function jumlahKomentar($con, $id_info)
     }
 }
 
+//PROSES
+if(isset($_POST["insert"]) || isset($_POST["hapus"])){
+
+    if($_GET["module"]=="beritaPengumuman" && $_GET["act"]=="tambah"){
+        $datePublish = date("Y-m-d H:i:s");
+        $dateChange = date("Y-m-d H:i:s");
+        $queryBerita= "INSERT INTO tabel_info (judul, isi, tipe, waktu_publish, waktu_perubahan)  
+                      VALUES ('$_POST[judulBerita]','$_POST[isiBerita]','$_POST[tipeBerita]','$datePublish','$dateChange')";
+        mysqli_query($con, $queryBerita);
+        header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+    else if($_GET["module"]=="beritaPengumuman" && $_GET["act"]=="hapus"){
+        $queryBerita="DELETE FROM tabel_info WHERE id_info='$_POST[id_info]'";
+        mysqli_query($con, $queryBerita);
+        header('location:../module/index.php?module=' . $_GET["module"]);
+    }
+}
+
+
+//END PROSES
+
 // Modal BERITA LIHAT
 if (isset($_POST["tampilDetailInfo"])) {
     $id_info = $_POST['tampilDetailInfo'];
@@ -164,11 +185,11 @@ function formatTanggal($tanggal)
 
 
 if (isset($_GET["adminCariBerita"])) {
-    $resultTampilBerita = cariBerita($con, formatTanggal($_GET["tanggal"]));
+    $resultTampilBerita = cariBerita($con, formatTanggal($_GET["tanggalBerita"]));
     $index = 1;
     if (mysqli_num_rows($resultTampilBerita) > 0) {
         ?>
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered mt-3">
             <thead class="text-center">
                 <tr class="p-2">
                     <th>No</th>
@@ -203,7 +224,7 @@ if (isset($_GET["adminCariBerita"])) {
     ?>
         <div class="text-center">
             <img src="../img/magnifier.svg" alt="pencarian" class="p-3">
-            <p class="text-muted">Tidak ada berita pada "<?php echo date("d M Y", strtotime($_GET["tanggal"])); ?>"</p>
+            <p class="text-muted">Tidak ada berita pada "<?php echo date("d M Y", strtotime($_GET["tanggalBerita"])); ?>"</p>
         </div>
     <?php
 }

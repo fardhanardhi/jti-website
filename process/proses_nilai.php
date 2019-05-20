@@ -47,17 +47,30 @@ function indeksSemesterFix($con, $idUser, $idSemester){
   }
 }
 
-function indeksSemesterKumulatif($con, $idUser){
-    $indeksSemesterKumulatif = "select ROUND(avg(nilai),2) as indeksSemesterKumulatif from tabel_khs tk,tabel_mahasiswa tm,tabel_user tu
-    where tk.id_mahasiswa = tm.id_mahasiswa
-    and tm.id_user = tu.id_user
-    and tm.id_user = $idUser";
+function indeksSemesterKumulatif($con, $id_mahasiswa){  
+    $indeksSemesterKumulatif = "select distinct(ROUND(SUM(CASE
+    WHEN a.nilai > 80 THEN 4.00*c.sks
+    WHEN a.nilai > 70 && a.nilai <= 80 THEN 3.50*c.sks
+    WHEN a.nilai > 65 && a.nilai <= 70 THEN 3.00*c.sks
+    WHEN a.nilai > 60 && a.nilai <= 65 THEN 2.30*c.sks
+    WHEN a.nilai > 50 && a.nilai <= 60 THEN 2.00*c.sks
+    WHEN a.nilai > 40 && a.nilai <= 50 THEN 1.00*c.sks
+    ELSE
+    0.00*c.sks
+    END)/SUM(c.sks),2)) as ipk , a.*, b.*, 
+    c.*, d.*, e.* from tabel_khs a,
+    tabel_mahasiswa b, tabel_matkul c, tabel_jadwal d, tabel_semester e
+    where a.id_mahasiswa = b.id_mahasiswa
+    and d.id_matkul = c.id_matkul 
+    and d.id_semester = e.id_semester
+    and a.id_mahasiswa = $id_mahasiswa";
+    
     $resultIndeksSemesterKumulatif = mysqli_query($con, $indeksSemesterKumulatif);
     $rowIndeksSemesterKumulatif=mysqli_fetch_assoc($resultIndeksSemesterKumulatif);
-    if($rowIndeksSemesterKumulatif["indeksSemesterKumulatif"] == NULL){
+    if($rowIndeksSemesterKumulatif["ipk"] == NULL){
       return 0;
     }else{
-      return$rowIndeksSemesterKumulatif["indeksSemesterKumulatif"];
+      return$rowIndeksSemesterKumulatif["ipk"];
     }
 }
 

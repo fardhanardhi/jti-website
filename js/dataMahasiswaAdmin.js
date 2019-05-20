@@ -124,7 +124,7 @@ function preview_images6(event) {
   function validasi2(){
     var usernameMahasiswaAdmin2 = document.getElementById("usernameMahasiswaAdmin2").value;
     var passwordMahasiswaAdmin2 = document.getElementById("passwordMahasiswaAdmin2").value;
-    var fileid3 = document.getElementById("fileid3").value;
+    
     var nimMahasiswaAdmin2 = document.getElementById("nimMahasiswaAdmin2").value;
     var namaMahasiswaAdmin2 = document.getElementById("namaMahasiswaAdmin2").value;
     var tempatlahirMahasiswaAdmin2 = document.getElementById("tempatlahirMahasiswaAdmin2").value;
@@ -145,14 +145,7 @@ function preview_images6(event) {
     else if(passwordMahasiswaAdmin2!=""){
         document.getElementById("passwordMahasiswaAdminBlank2").innerHTML="";
     }
-    
-    if(fileid3==""){
-        document.getElementById("fileidMahasiswaAdminBlank2").innerHTML="*Upload File Gambar";
-    }
-
-    else if(fileid3!=""){
-        document.getElementById("fileidMahasiswaAdminBlank2").innerHTML="";
-    }
+   
 
     if(nimMahasiswaAdmin2==""){
         document.getElementById("nimMahasiswaAdminBlank2").innerHTML="*Masukkan NIM";
@@ -272,10 +265,22 @@ $('.hapus-mahasiswa-admin').click(function () {
 $('.edit-mahasiswa-admin').click(function () {
     var id_userEdit = $(this).attr("id_userEdit");
     var id_mahasiswaEdit = $(this).attr("id_mahasiswaEdit");
-    $('#id_userEdit').val(id_userEdit);
-    $('#id_mahasiswaEdit').val(id_mahasiswaEdit);
-    $('#hapus').modal("show");
-})
+
+    $.ajax({
+        url: "../process/proses_adminMahasiswa.php",
+        method: "post",
+        data: {
+          editMahasiswa_idUser: id_userEdit,
+          editMahasiswa_idMahasiswa: id_mahasiswaEdit
+        },
+        success: function (data) {
+          $("#id_userUpdate").val(id_userEdit);
+          $("#id_mahasiswaUpdate").val(id_mahasiswaEdit);
+          $("#edit-dataMahasiswa").html(data);
+          $("#modalEditAdminMahasiswa").modal("show");
+        }
+      });
+    });
 
 $('#txtCariDataMahasiswa').keyup(function(){
 var input,
@@ -308,10 +313,7 @@ var input,
     txtValueNamaProdiMahasiswa,
     txtValueKodeKelasMahasiswa,
 
-    totalInactive,
-
-    halamanTidakDitemukan = document.getElementById("tidakDapatDitemukan"),
-    tabelDataMahasiswa = document.getElementById("dataAdminMahasiswa");
+    totalInactive;
 
     input = $("#txtCariDataMahasiswa");
 
@@ -398,9 +400,9 @@ var input,
         }
     }
 
-    totalInactive = $("#dataAdminMahasiswa. itemDataMahasiswa:hidden");
+    totalInactive = $("#dataAdminMahasiswa .itemDataMahasiswa:hidden");
 
-    if(itemDataMahasiswa.length == totalInactive.length){
+    if(itemDataMahasiswa.length == totalInactive.length){        
         document.getElementById("tidakDapatDitemukan").style.display = "block";
     }
 
