@@ -217,6 +217,21 @@ if (isset($_GET["searchBerita"])) {
 // --------- kirim komentar -----------
 
 if (isset($_POST['insertKomentar'])) {
+  $sqlAdmin =
+    "SELECT
+      *
+    FROM
+      tabel_user
+    WHERE
+      id_user
+    IN(SELECT id_user from tabel_admin)
+    ";
+
+  $resultAdmin = mysqli_query($con, $sqlAdmin);
+  // $jumlahAdmin = mysqli_num_rows($resultAdmin);
+
+
+
   $id_user = $_POST['iduser'];
   $id_info = $_POST['idinfo'];
   $isi = $_POST['val'];
@@ -240,7 +255,34 @@ if (isset($_POST['insertKomentar'])) {
       '$datetimeNow'
     )";
 
+
+
+
   if (mysqli_query($con, $sql)) {
+
+    while ($rowAdmin = mysqli_fetch_assoc($resultAdmin)) {
+      $idUserAdmin = $rowAdmin['id_user'];
+      $isiNotif = 'Mahasiswa mengomentari: ' . $isi;
+
+      $sqlNotif =
+        "INSERT INTO
+      tabel_notifikasi(
+        isi,
+        waktu,
+        status_dibaca,
+        id_user
+      )
+      VALUES(
+        '$isiNotif',
+        '$datetimeNow',
+        'belum',
+        $idUserAdmin
+      )
+    ";
+
+      mysqli_query($con, $sqlNotif);
+    }
+
     $id = mysqli_insert_id($con);
   } else {
     echo "Error: " . mysqli_error($con);
