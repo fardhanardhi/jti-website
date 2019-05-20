@@ -3,14 +3,28 @@ include "../config/connection.php";
 
 function info($con)
 {
-  $info = "select * from tabel_info";
+  $info =
+    "SELECT 
+      * 
+    FROM 
+      tabel_info
+    ORDER BY
+      waktu_publish
+    DESC
+    ";
   $resultInfo = mysqli_query($con, $info);
   return $resultInfo;
 }
 
 function infoBeasiswa($con)
 {
-  $infoBerita = "SELECT * FROM tabel_info_beasiswa";
+  $infoBerita =
+    "SELECT 
+      * 
+    FROM 
+      tabel_info_beasiswa
+    ";
+
   $resultInfoBeasiswa = mysqli_query($con, $infoBerita);
   return $resultInfoBeasiswa;
 }
