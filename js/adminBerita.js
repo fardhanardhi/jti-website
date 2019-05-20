@@ -5,8 +5,8 @@ function Beritacharcountupdate(beritacount) {
   document.getElementById("Bercharcount").innerHTML = lng + "/500";
 }
 
-// $("#datepicker").datepicker({ format: "yyyy/mm/dd" });
-$("#tanggalBerita").datepicker({ format: "yyyy/mm/dd" });
+$("#datepickerCariBerita").datepicker({ format: "yyyy/mm/dd" });
+// $("#tanggalBerita").datepicker();
 
 // KHS MODAL LIHAT
 $(".detail-berita").click(function() {

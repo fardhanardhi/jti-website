@@ -85,7 +85,7 @@ include "../process/proses_berita.php";
                         <div class="form-inline">
                             <i class="fas fa-search mr-2"></i>
                             <div class="col-2">
-                                <div class="input-group date " id="datepicker">
+                                <div class="input-group date " id="datepickerCariBerita">
                                     <input type="text" class="form-control" id="tanggalBerita" placeholder="<?= date("d-m-Y") ?>">
                                     <div class="input-group-addon">
                                         <span>
