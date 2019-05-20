@@ -528,17 +528,13 @@ if(isset($_POST["ruangDipesan"])){
     <div class="text-center text-muted">Tidak ada ruangan yang dipesan</div>
     <?php
   }
-?>
-  <script>
-  $(function(){
-    $(".checkout-ruang-admin").click(function() {
-      var id_ruang_dipinjam = $(this).attr("id");
-      $("#id_ruang_dipinjam").val(id_ruang_dipinjam);
-    });
-  })
-  </script>
-<?php
 }
 
 ?>
+<script>
+  $(".checkout-ruang-admin").click(function() {
+    var id_ruang_dipinjam = $(this).attr("id");
+    $("#id_ruang_dipinjam").val(id_ruang_dipinjam);
+  });
+</script>
 

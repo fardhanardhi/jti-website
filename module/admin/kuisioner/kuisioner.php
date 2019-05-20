@@ -50,7 +50,7 @@
                                 <option value="0">Pilih Kelas</option>
                                 <?php
                                 $resultKelas=kelas($con);
-                                if(mysqli_num_rows($resultKelas)){
+                                if(mysqli_num_rows($resultKelas)>0){
                                   while($rowKelas=mysqli_fetch_assoc($resultKelas)){
                                     ?>
                                     <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
@@ -80,12 +80,12 @@
                 <!-- End Modal Lihat per Kelas -->
 
               <?php
-              if(cekStatusAktif($con)){ ?>
+              if(cekStatusAktif($con)==true){ ?>
                 <button type="button" class="btn btn-danger button mr-2" id="hentikanKuisioner">
                 Hentikan Kuisioner
                 </button>
               <?php } 
-              else if(!cekStatusAktif($con)){ ?>
+              else if(cekStatusAktif($con)==false){ ?>
                 <button type="button" class="btn btn-success button mr-2" id="aktifkanKuisioner">
                 Aktifkan Kuisioner
                 </button>
@@ -101,7 +101,7 @@
                     if(mysqli_num_rows($resultTahun)>0){
                       while($rowTahun=mysqli_fetch_assoc($resultTahun)){
                         ?>
-                        <option value="<?php echo $rowTahun["tahun"];?>"><?php echo $rowTahun["tahun"];?></option>
+                        <option value="<?php echo ($rowTahun["tahun"]+$rowTahun["tingkat"]-1);?>"><?php echo ($rowTahun["tahun"]+$rowTahun["tingkat"]-1)."/".($rowTahun["tahun"]+$rowTahun["tingkat"]);?></option>
                         <?php
                       }
                     }
@@ -223,7 +223,7 @@
                   <option value="0">Pilih Kelas</option>
                   <?php
                   $resultKelas=kelas($con);
-                  if(mysqli_num_rows($resultKelas)){
+                  if(mysqli_num_rows($resultKelas)>0){
                     while($rowKelas=mysqli_fetch_assoc($resultKelas)){
                       ?>
                       <option value="<?php echo $rowKelas["id_kelas"];?>"><?php echo tampilKelas($con,$rowKelas["id_kelas"]);?></option>
@@ -236,10 +236,10 @@
                   <option value="0">Pilih Tahun Ajaran</option>
                   <?php
                   $resultTahun=tampilTahun($con);
-                  if(mysqli_num_rows($resultTahun)){
+                  if(mysqli_num_rows($resultTahun)>0){
                     while($rowTahun=mysqli_fetch_assoc($resultTahun)){
                       ?>
-                      <option value="<?php echo $rowTahun["tahun"];?>"><?php echo $rowTahun["tahun"];?></option>
+                      <option value="<?php echo ($rowTahun["tahun"]+$rowTahun["tingkat"]-1);?>"><?php echo ($rowTahun["tahun"]+$rowTahun["tingkat"]-1)."/".($rowTahun["tahun"]+$rowTahun["tingkat"]);?></option>
                       <?php
                     }
                   }
@@ -249,7 +249,7 @@
                     <option value="0">Pilih Semester</option>
                     <?php
                       $resultSemester=tampilSemester($con);
-                      if(mysqli_num_rows($resultSemester)){
+                      if(mysqli_num_rows($resultSemester)>0){
                         while($rowSemester=mysqli_fetch_assoc($resultSemester)){
                           ?>
                           <option value="<?php echo $rowSemester["id_semester"];?>"><?php echo $rowSemester["semester"];?></option>

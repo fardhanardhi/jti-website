@@ -24,7 +24,7 @@ $(document).ready(function() {
         tahun: $("#tahun").val(),
         semester: $("#semester").val()
       },
-      success: function(data) {
+      success: function(data) {        
         $("#tableDataKuisionerDosen").html(data);
         $("#modalLihatHasil").modal("show");
       }

@@ -3,15 +3,35 @@ include "../config/connection.php";
 
 function kuisioner($con, $tahun, $semester)
 {
-  $kuisioner = "select distinct(a.id_dosen), b.*, b.nama as namaDosen, c.id_semester, d.* from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c, tabel_semester d where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and c.id_semester=d.id_semester and YEAR(a.waktu_edit)=$tahun and c.id_semester=$semester";
+  $kuisioner = "select distinct(a.id_dosen), b.*, b.nama as namaDosen, c.id_semester, d.* from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c, tabel_semester d, tabel_kelas e where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and c.id_semester=d.id_semester and c.id_kelas=e.id_kelas and (YEAR(c.waktu_tambah)+e.tingkat-1)=$tahun and c.id_semester=$semester";
   $resultKuisioner = mysqli_query($con, $kuisioner);
   return $resultKuisioner;
 }
 
 function tampilTahun($con){
-  $tahun="select distinct(YEAR(waktu_edit)) as tahun from tabel_hasil_kuisioner order by waktu_edit desc limit 5";
+  $tahun="select distinct(YEAR(a.waktu_tambah)) as tahun, b.tingkat from tabel_mahasiswa a, tabel_kelas b where a.id_kelas=b.id_kelas order by waktu_tambah desc limit 5";
   $resultTahun = mysqli_query($con, $tahun);
   return $resultTahun;
+}
+
+function tahunAkademik($con, $mahasiswa, $semester){
+  $mhs=mysqli_query($con, "select a.*, b.tingkat from tabel_mahasiswa a, tabel_kelas b where a.id_kelas=b.id_kelas and a.id_mahasiswa=$mahasiswa");
+  $semester=mysqli_query($con, "select * from tabel_semester where id_semester=$semester");
+  $rowSemester=mysqli_fetch_assoc($semester);
+
+  if(mysqli_num_rows($mhs)>0){
+      $rowMhs=mysqli_fetch_assoc($mhs);
+      $semester=$rowSemester["semester"];
+      $tingkat=$rowMhs["tingkat"];
+      $tahunMasuk=date('Y', strtotime($rowMhs["waktu_tambah"]));
+      if($semester%2==0){
+          return "".($tahunMasuk+$tingkat-1)."/".($tahunMasuk+$tingkat)." Genap";
+      }else{
+          return "".($tahunMasuk+$tingkat-1)."/".($tahunMasuk+$tingkat)." Ganjil";
+      }
+  }else{
+      return " - ";
+  }
 }
 
 function kelas($con){
@@ -83,7 +103,7 @@ if(isset($_POST["namaDosen"])){
 }
 
 if(isset($_POST["id_dosen"])){
-  $query="select distinct(a.id_mahasiswa),sum(a.nilai) as totalNilai, c.*, d.* from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c, tabel_semester d where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and c.id_semester=d.id_semester and c.id_kelas=$_POST[kelas] and YEAR(a.waktu_edit)=$_POST[tahun] and c.id_semester=$_POST[semester] and a.id_dosen=$_POST[id_dosen] group by a.id_mahasiswa";
+  $query="select distinct(a.id_mahasiswa),sum(a.nilai) as totalNilai, c.*, d.* from tabel_hasil_kuisioner a, tabel_dosen b, tabel_mahasiswa c, tabel_semester d, tabel_kelas e where a.id_dosen=b.id_dosen and a.id_mahasiswa=c.id_mahasiswa and c.id_semester=d.id_semester and c.id_kelas=e.id_kelas and c.id_kelas=$_POST[kelas] and (YEAR(c.waktu_tambah)+e.tingkat-1)=$_POST[tahun] and c.id_semester=$_POST[semester] and a.id_dosen=$_POST[id_dosen] group by a.id_mahasiswa";
   $result=mysqli_query($con, $query);
 
   if(mysqli_num_rows($result)>0){
@@ -250,7 +270,7 @@ if(isset($_POST["cariKuisioner"])){
       </tbody>
     </table>
     <script>
-    $(".lihat-detail").click(function() {
+      $(".lihat-detail").click(function() {
         var id_dosen = $(this).attr("id");
 
         $.ajax({
@@ -293,7 +313,7 @@ if(isset($_POST["edit_kuisioner"])){
 if(isset($_POST["tambahIsi"]) || isset($_POST["editIsi"]) || isset($_POST["hapus"])){
   if($_GET["module"]=="kriteriaKuisioner" && $_GET["act"]=="tambah"){
     $status_aktif='tidak';
-    if(cekStatusAktif($con)){
+    if(cekStatusAktif($con)==true){
       $status_aktif='ya';
     }
     mysqli_query($con, "insert into tabel_kuisioner (kriteria, status) values ('$_POST[isiKriteria]','$status_aktif')");
