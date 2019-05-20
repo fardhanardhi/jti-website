@@ -9,7 +9,7 @@ function kuisioner($con, $tahun, $semester)
 }
 
 function tampilTahun($con){
-  $tahun="select distinct(YEAR(a.waktu_tambah)) as tahun, b.tingkat from tabel_mahasiswa a, tabel_kelas b where a.id_kelas=b.id_kelas order by waktu_tambah desc limit 5";
+  $tahun="select distinct(YEAR(a.waktu_tambah)) as tahun, b.tingkat from tabel_mahasiswa a, tabel_kelas b where a.id_kelas=b.id_kelas order by a.waktu_tambah desc limit 5";
   $resultTahun = mysqli_query($con, $tahun);
   return $resultTahun;
 }
