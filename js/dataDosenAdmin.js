@@ -365,7 +365,7 @@ $('#txtCariDataDosen').keyup(function(){
             }
         }
     
-        totalInactive = $("#dataAdminDosen. itemDataDosen:hidden");
+        totalInactive = $("#dataAdminDosen .itemDataDosen:hidden");
     
         if(itemDataDosen.length == totalInactive.length){
             document.getElementById("tidakKetemu").style.display = "block";

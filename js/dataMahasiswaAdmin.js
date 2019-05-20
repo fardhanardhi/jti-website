@@ -313,10 +313,7 @@ var input,
     txtValueNamaProdiMahasiswa,
     txtValueKodeKelasMahasiswa,
 
-    totalInactive,
-
-    halamanTidakDitemukan = document.getElementById("tidakDapatDitemukan"),
-    tabelDataMahasiswa = document.getElementById("dataAdminMahasiswa");
+    totalInactive;
 
     input = $("#txtCariDataMahasiswa");
 
@@ -403,9 +400,9 @@ var input,
         }
     }
 
-    totalInactive = $("#dataAdminMahasiswa. itemDataMahasiswa:hidden");
+    totalInactive = $("#dataAdminMahasiswa .itemDataMahasiswa:hidden");
 
-    if(itemDataMahasiswa.length == totalInactive.length){
+    if(itemDataMahasiswa.length == totalInactive.length){        
         document.getElementById("tidakDapatDitemukan").style.display = "block";
     }
 

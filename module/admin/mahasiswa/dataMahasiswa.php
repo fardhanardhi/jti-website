@@ -300,7 +300,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="scrollbar scrollbar-x" id="dataAdminMahasiswa" style="overflow:auto; max-height:100vh;">
-                                    <table class="table table-striped table-bordered text-center">
+                                    <table class="table table-striped table-bordered text-center itemDataMahasiswa">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -380,10 +380,10 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div id="tidakDapatDitemukan" style="display:none" class="col-12 mt-5 text-center">
-                                    <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
-                                    <p>Data yang anda cari tidak dapat ditemukan</h>
-                                </div>
+                            <div id="tidakDapatDitemukan" style="display:none" class="col-12 mt-5 text-center">
+                                <i class="fas fa-search mb-3" style="font-size: 5em;"></i>
+                                <p>Data yang anda cari tidak dapat ditemukan</h>
+                            </div>
                         </div>
                     </div>
                 </div>
