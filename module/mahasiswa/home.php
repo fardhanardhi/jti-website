@@ -295,18 +295,6 @@ $resultIsiKuis = mysqli_query($con, $queryIsiKuis);
       }
       ?>
       </div>
-
-
-      <div class="button-back m-2 p-0 mb-3">
-        <div class="row btn-back">
-          <div class="col-sm-6 text-left ">
-            <button class="shadow-sm back btn pl-1"><a href="#">&xlarr; &#124; Berita Lama</a></button>
-          </div>
-          <div class="col-sm-6 d-block text-right ">
-            <button class="shadow-sm back btn pl-1"><a href="#">Berita Baru &#124; &rarr; </a></button>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="col-md-3 p-0">
