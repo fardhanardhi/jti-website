@@ -19,14 +19,6 @@
   <!-- chartjs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
-  <script>
-    jQuery(document).ready(function($) {
-      $(".baca-notifikasi").click(function() {
-        window.location = $(this).data("href");
-      });
-    });
-  </script>
-
   <script src="../js/script.js"></script>
   <script src="../js/mahasiswaHome.js"></script>
   <script src="../js/modalPengaturan.js"></script>
@@ -43,6 +35,7 @@
   <script src="../js/dosenKompen.js"></script>
   <script src="../js/dosenHome.js"></script>
   <script src="../js/adminKelas.js"></script>
+  <script src="../js/bacaNotifikasi.js"></script>
   <?php
   if ($level == "admin") {
     ?>
