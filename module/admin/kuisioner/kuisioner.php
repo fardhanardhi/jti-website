@@ -98,7 +98,7 @@
                   <option value="0">Pilih Tahun Ajaran</option>
                   <?php
                     $resultTahun=tampilTahun($con);
-                    if(mysqli_num_rows($resultTahun)){
+                    if(mysqli_num_rows($resultTahun)>0){
                       while($rowTahun=mysqli_fetch_assoc($resultTahun)){
                         ?>
                         <option value="<?php echo $rowTahun["tahun"];?>"><?php echo $rowTahun["tahun"];?></option>
@@ -111,7 +111,7 @@
                   <option value="0">Pilih Semester</option>
                    <?php
                     $resultSemester=tampilSemester($con);
-                    if(mysqli_num_rows($resultSemester)){
+                    if(mysqli_num_rows($resultSemester)>0){
                       while($rowSemester=mysqli_fetch_assoc($resultSemester)){
                         ?>
                         <option value="<?php echo $rowSemester["id_semester"];?>"><?php echo $rowSemester["semester"];?></option>
