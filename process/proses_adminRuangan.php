@@ -187,7 +187,7 @@ if(isset($_POST["pesan"]) || isset($_POST["tambahRuang"]) || isset($_POST["hapus
     header('location:../module/index.php?module=' . $_GET["module"]);
   }
   else if($_GET["module"]=="ruang" && $_GET["act"]=="tambah"){
-    mysqli_query($con, "insert into tabel_ruang (kode, lantai) values ($_POST[kode]','$_POST[lantai]')");
+    mysqli_query($con, "insert into tabel_ruang (kode, lantai) values ('$_POST[kode]','$_POST[lantai]')");
     header('location:../module/index.php?module=' . $_GET["module"]);
   }
   else if($_GET["module"]=="ruang" && $_GET["act"]=="hapus"){
@@ -528,15 +528,17 @@ if(isset($_POST["ruangDipesan"])){
     <div class="text-center text-muted">Tidak ada ruangan yang dipesan</div>
     <?php
   }
+?>
+  <script>
+  $(function(){
+    $(".checkout-ruang-admin").click(function() {
+      var id_ruang_dipinjam = $(this).attr("id");
+      $("#id_ruang_dipinjam").val(id_ruang_dipinjam);
+    });
+  })
+  </script>
+<?php
 }
 
 ?>
-<script>
-$(function(){
-  $(".checkout-ruang-admin").click(function() {
-    var id_ruang_dipinjam = $(this).attr("id");
-    $("#id_ruang_dipinjam").val(id_ruang_dipinjam);
-  });
-})
-</script>
 
