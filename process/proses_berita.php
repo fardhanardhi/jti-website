@@ -3,7 +3,7 @@ include "../config/connection.php";
 
 function tampilBerita($con)
 {
-    $tampilBerita = "select * from tabel_info";
+    $tampilBerita = "SELECT * FROM tabel_info";
     $resultTampilBerita = mysqli_query($con, $tampilBerita);
     return $resultTampilBerita;
 }
@@ -15,25 +15,25 @@ function tampilTanggal($tanggal)
 
 function cariBerita($con, $tanggal)
 {
-    $tampilCariBerita = "SELECT * from tabel_info WHERE waktu_publish LIKE '$tanggal%'";
+    $tampilCariBerita = "SELECT * FROM tabel_info WHERE waktu_publish LIKE '$tanggal%'";
     $resultTampilCariBerita = mysqli_query($con, $tampilCariBerita);
     return $resultTampilCariBerita;
 }
 
 function tampilBeritaModal($con)
 {
-    $tampilBeritaModal = "select a.id_info , a.judul, a.isi, a.tipe, a.waktu, a.*, 
-    b.id_attachment, b.tipe, b.file from tabel_info a, tabel_attachment b
-    where a.id_attachment = b.id_attachment group by a.id_info";
+    $tampilBeritaModal = "SELECT a.id_info , a.judul, a.isi, a.tipe, a.waktu, a.*, 
+    b.id_attachment, b.tipe, b.file FROM tabel_info a, tabel_attachment b
+    WHERE a.id_attachment = b.id_attachment GROUP BY a.id_info";
     $resultTampilBeritaModal = mysqli_query($con, $tampilBeritaModal);
     return $resultTampilBeritaModal;
 }
 
 function tampilFile($con, $id_info)
 {
-    $tampilFile = "select a.*, b.* from tabel_info a, tabel_attachment b
-    where a.id_info = b.id_info
-    and b.id_info = $id_info";
+    $tampilFile = "SELECT a.*, b.* FROM tabel_info a, tabel_attachment b
+    WHERE a.id_info = b.id_info
+    AND b.id_info = $id_info";
     $resultTampilFile = mysqli_query($con, $resultTampilFile);
     return $resultTampilFile;
 }
@@ -42,11 +42,11 @@ function tampilFile($con, $id_info)
 
 function jumlahKomentar($con, $id_info)
 {
-    $jumlahKomentar = "select (b.id_info + c.id_komentar) as komentar , a.*, b.*, c.*
-    from tabel_info a, tabel_komentar b, tabel_reply_komentar c where 
-    a.id_info = b.id_info
-    and b.id_komentar = c.id_komentar
-    and b.id_info = $id_info group by a.id_info";
+    $jumlahKomentar = "SELECT (b.id_info + c.id_komentar) AS komentar , a.*, b.*, c.*
+    FROM tabel_info a, tabel_komentar b, tabel_reply_komentar c 
+    WHERE a.id_info = b.id_info
+    AND b.id_komentar = c.id_komentar
+    AND b.id_info = $id_info GROUP BY a.id_info";
 
     $resultJumlahKomentar = mysqli_query($con, $jumlahKomentar);
     if (mysqli_num_rows($resultJumlahKomentar) > 0) {
@@ -58,20 +58,98 @@ function jumlahKomentar($con, $id_info)
 }
 
 //PROSES
-if(isset($_POST["insert"]) || isset($_POST["hapus"])){
+if(isset($_POST["insert"]))
+{
 
-    if($_GET["module"]=="beritaPengumuman" && $_GET["act"]=="tambah"){
+    if($_GET["module"]=="beritaPengumuman" && $_GET["act"]=="tambah")
+    {
+        $count_files_img = count($_FILES['gambar']['name']);
+        $count_files_doc = count($_FILES['file']['name']);
+
+        // echo $error;    
+        // echo '<br>';
+
+        // print_r($_FILES['gambar']);
+        // echo '<br>';
+        // print_r($_FILES['file']);
+        // echo '<br>';
+        // // echo $count_files_img . " " . $count_files_doc;
+        // die();
+
+        $nama_folder_img = "img";
+        $nama_folder_doc = "file";
+
+        $format_img = array("jpg", "jpeg", "png");
+        $format_doc = array("doc", "docx", "pdf", "xls", "ppt", "zip");
+        
+        // $tmp = $_FILES["gambar"]["tmp_name"];
+        // $nama_file = $_FILES["gambar"]["name"];
+        // move_uploaded_file($tmp, "../attachment/$nama_folder/$nama_file");
+
         $datePublish = date("Y-m-d H:i:s");
         $dateChange = date("Y-m-d H:i:s");
+        $gambar = "Gambar";
+        $file = "File";
         $queryBerita= "INSERT INTO tabel_info (judul, isi, tipe, waktu_publish, waktu_perubahan)  
                       VALUES ('$_POST[judulBerita]','$_POST[isiBerita]','$_POST[tipeBerita]','$datePublish','$dateChange')";
-        mysqli_query($con, $queryBerita);
+        if(mysqli_query($con, $queryBerita))
+        {
+            $id_info1 = "SELECT MAX(id_info) FROM tabel_info";
+            if(mysqli_query($con, $id_info1))
+            {
+                $resultid = mysqli_query($con, $id_info1);
+                if(mysqli_num_rows($resultid) == 1)
+                {
+                   while ($row2 = mysqli_fetch_assoc($resultid)) {
+                       
+                       $realID = $row2['MAX(id_info)'];
+
+                       for ($i=0; $i < $count_files_img; $i++) { 
+                            $error = $_FILES["gambar"]["error"][$i];
+                            $tmp = $_FILES["gambar"]["tmp_name"][$i];
+                            $nama_file = $_FILES["gambar"]["name"][$i];
+                            move_uploaded_file($tmp, "../attachment/$nama_folder_img/$nama_file");
+
+                            $queryGambar="INSERT INTO tabel_attachment (tipe, `file`, id_info)
+                                VALUES ('$gambar', '$nama_file', '$realID')";
+                            if ($error == 0) {
+                                # code...
+                                mysqli_query($con, $queryGambar);
+                            }
+                       }
+                       for ($i=0; $i < $count_files_doc; $i++) { 
+                            $error = $_FILES["file"]["error"][$i];
+                            $tmp = $_FILES["file"]["tmp_name"][$i];
+                            $nama_file = $_FILES["file"]["name"][$i];
+                            move_uploaded_file($tmp, "../attachment/$nama_folder_doc/$nama_file");
+
+                            $queryFile="INSERT INTO tabel_attachment (tipe, `file`, id_info)
+                                VALUES ('$file', '$nama_file', '$realID')";
+                            if ($error == 0) {
+                                # code...
+                                mysqli_query($con, $queryFile);
+                            }
+                       }
+                   }
+                }
+                header('location:../module/index.php?module=' . $_GET["module"]);
+            }
+            
+        }            
+    }
+}
+
+if (isset($_POST['hapus'])) {
+    $queryDelete1="DELETE FROM tabel_info WHERE id_info='$_POST[id_info]';";
+    $queryDelete2="DELETE FROM tabel_attachment WHERE id_info='$_POST[id_info]';";
+
+    if(mysqli_query($con, $queryDelete1) && mysqli_query($con, $queryDelete2))
+    {
         header('location:../module/index.php?module=' . $_GET["module"]);
     }
-    else if($_GET["module"]=="beritaPengumuman" && $_GET["act"]=="hapus"){
-        $queryBerita="DELETE FROM tabel_info WHERE id_info='$_POST[id_info]'";
-        mysqli_query($con, $queryBerita);
-        header('location:../module/index.php?module=' . $_GET["module"]);
+    else
+    {
+    echo("Error description: " . mysqli_error($con));
     }
 }
 
@@ -82,7 +160,7 @@ if(isset($_POST["insert"]) || isset($_POST["hapus"])){
 if (isset($_POST["tampilDetailInfo"])) {
     $id_info = $_POST['tampilDetailInfo'];
 
-    $detailBerita = "select * from tabel_info where id_info = $id_info group by id_info";
+    $detailBerita = "SELECT * FROM tabel_info WHERE id_info = $id_info GROUP BY id_info";
     $resultDetailBerita = mysqli_query($con, $detailBerita);
 
     if (mysqli_num_rows($resultDetailBerita) == 0) { } else {
@@ -110,13 +188,15 @@ if (isset($_POST["tampilDetailInfo"])) {
             if (mysqli_num_rows($resultTampilDataFile)) {
                 $index = 1;
                 while ($row1 = mysqli_fetch_assoc($resultTampilDataFile)) {
-                    if ($row1["tipe"] != "gambar") {
+                    if ($row1["tipe"] == "file") {
                         ?>
                         <button class="btn btn-outline-dark download d-flex">
                             <div class="col-sm-7">
-                                <a href="">
-                                    <h6 class="mt-1">Dokumen Rahasia</h6>
-                                </a>
+                                <h6>
+                                    <a href="">
+                                        <?php echo $row1['file']; ?>
+                                    </a>
+                                </h6>
                             </div>
                         </button>
                     <?php

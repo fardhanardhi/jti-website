@@ -60,11 +60,11 @@ include "../process/proses_berita.php";
                                             <label for="file-input">
                                                 <img src="../img/imgUpload.svg" alt="Image Upload" class="mr-3" data-placement="top" data-toggle="tooltip" data-placement="top" title="Lampirkan Gambar">
                                             </label>
-                                            <input id="file-input" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" name="gambar"/>
+                                            <input id="file-input" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer; display: none " name="gambar[]" multiple="true"/>
                                             <label for="file-input1">
                                                 <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-toggle="tooltip" data-placement="top" title="Lampirkan File">
                                             </label>
-                                            <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" name="file" />
+                                            <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" name="file[]" />
                                             <strong><label for="kategori-AdBer" class="labelBerita mt-1 mr-2">Kategori :
                                                 </label>
                                             </strong>
@@ -174,7 +174,7 @@ include "../process/proses_berita.php";
                                 <form action="../process/proses_berita.php?module=beritaPengumuman&act=hapus" method="post">
                                     <input type="hidden" value="<?=$id_info?>" name="id_info">
                                     <button type="button" class="btn btn-tidak" data-dismiss="modal">Tidak</button>
-                                    <button type="button" class="btn btn-iya" name="hapus" id="hapus">Ya</button>
+                                    <input type="submit" class="btn btn-iya" name="hapus" id="hapus" value="Ya">
                                 </form>
                             </div>
                         </div>
