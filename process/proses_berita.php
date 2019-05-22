@@ -204,9 +204,11 @@ if (isset($_POST["tampilDetailInfo"])) {
                     ?>
                         <div class="photos">
                             <div class="row">
-                                <div class="col-md-6 p-2">
+                                <div class="col-md-12 p-2">
+                                    <div class="col-md-4">
                                     <div class="image">
                                         <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row1['file']; ?>" alt="<?php echo $row1['file']; ?>" width="150px" ; height="150px" ;>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -226,9 +228,13 @@ if (isset($_POST["tampilDetailInfo"])) {
                         </button>
                         <div class="photos">
                             <div class="row">
-                                <div class="col-md-6 p-2">
+                                <div class="col-md-12 p-2">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
                                     <div class="image">
                                         <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row1['file']; ?>" alt="<?php echo $row1['file']; ?>" width="150px" ; height="150px" ;>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
