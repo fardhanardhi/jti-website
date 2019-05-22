@@ -122,7 +122,7 @@ include "../process/proses_dashboardAdmin.php";
           <div class="row d-flex justify-content-center align-items-center border-bottom border-gray py-2">
             <div class="col-md-1 text-center"><?=$index?></div>
             <div class="col-md-2">
-              <img src="../<?=$rowHasilKuisioner['foto']?>" alt="foto dosen" style="width: 60px;" class="rounded-circle">
+              <img src="../attachment/img/<?=$rowHasilKuisioner['foto']?>" alt="foto dosen" style="width: 60px;" class="rounded-circle">
             </div>
             <div class="col-md-7">
               <h6 class="mb-0"><?=$rowHasilKuisioner['nama']?></h6>
@@ -155,7 +155,7 @@ include "../process/proses_dashboardAdmin.php";
         ?>
           <div class="row d-flex justify-content-center align-items-center border-bottom border-gray py-2">
             <div class="col-md-2">
-              <img src="../<?=$rowMahasiswaSp['foto']?>" alt="foto dosen" style="width: 60px;" class="rounded-circle">
+              <img src="../attachment/img/<?=$rowMahasiswaSp['foto']?>" alt="foto dosen" style="width: 60px;" class="rounded-circle">
             </div>
             <div class="col-md-8">
               <h6 class="mb-0"><?=$rowMahasiswaSp['nama']?></h6>
