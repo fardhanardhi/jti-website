@@ -414,7 +414,7 @@ if(isset($_POST["updateNilaiMhs"]) && isset($_POST["updateNilaiSemester"]))
                                 <div class="row">
                                     <div class="form-group row">
                                         <div class="col">
-                                        <input type="number" min="0" max="100" class="form-control" name="nilai<?=$i?>" placeholder="Nilai..">
+                                        <input type="number" min="0" max="100" class="form-control" name="nilai<?=$i?>" placeholder="Nilai.." required>
                                     </div>
                                 </div>
                             </div>
@@ -529,7 +529,7 @@ if(isset($_POST["editNilaimhs"]) && isset($_POST["editNilaiSemester"]))
                             <div class="row">
                             <div class="form-group row">
                                     <div class="col-md-12">
-                                        <input type="number" min="0" max="100" class="form-control" name="nilai<?=$i?>" value="<?php echo $row1["nilai"] ?>"></small>
+                                        <input type="number" min="0" max="100" class="form-control" name="nilai<?=$i?>" value="<?php echo $row1["nilai"] ?>" required>
                                     </div>
                                     </div>
                             </div>
