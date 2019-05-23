@@ -88,6 +88,8 @@ if(isset($_POST["insert"]))
 
         $datePublish = date("Y-m-d H:i:s");
         $dateChange = date("Y-m-d H:i:s");
+        $filegagal = false;
+        $max_files_size = 5 * 1024 * 1024;
         $gambar = "Gambar";
         $file = "File";
         $queryBerita= "INSERT INTO tabel_info (judul, isi, tipe, waktu_publish, waktu_perubahan)  
@@ -108,12 +110,31 @@ if(isset($_POST["insert"]))
                             $error = $_FILES["gambar"]["error"][$i];
                             $tmp = $_FILES["gambar"]["tmp_name"][$i];
                             $nama_file = $_FILES["gambar"]["name"][$i];
-                            move_uploaded_file($tmp, "../attachment/$nama_folder_img/$nama_file");
+                            
 
-                            $queryGambar="INSERT INTO tabel_attachment (tipe, `file`, id_info)
-                                VALUES ('$gambar', '$nama_file', '$realID')";
-                            if ($error == 0) {
-                                # code...
+                            
+                            if ($error == 0) 
+                            {
+                                if(!in_array($_FILES["gambar"]["size"],$max_files_size))
+                                {
+                                    $error.="Kapasitas Lebih Dari 5 MB<br>";
+                                    $filegagal=true;
+                                    echo "<script>$error</script>";
+                                }
+                                if(!$filegagal AND move_uploaded_file($tmp, "../attachment/$nama_folder_img/$nama_file"))
+                                { 
+                                    $queryGambar="INSERT INTO tabel_attachment (tipe, `file`, id_info)
+                                    VALUES ('$gambar', '$nama_file', '$realID')";
+                                    
+                                    if(mysqli_query($con, $queryGambar))
+                                    {
+                                        header('location:../module/index.php?module=' . $_GET["module"]);
+                                    }else
+                                    {
+                                        $error=urlencode("Data tidak berhasil ditambahkan");
+                                        header('location:../module/index.php?module=' . $_GET["module"] . '?error=  $error');
+                                    }
+                                }
                                 mysqli_query($con, $queryGambar);
                             }
                        }
@@ -185,7 +206,7 @@ if (isset($_POST["tampilDetailInfo"])) {
             $tampilDataFile = "select a.*, b.* from tabel_info a, tabel_attachment b
             where a.id_info = b.id_info and b.id_info = $id_info";
             $resultTampilDataFile = mysqli_query($con, $tampilDataFile);
-            if (mysqli_num_rows($resultTampilDataFile)) {
+            if (mysqli_num_rows($resultTampilDataFile) > 0) {
                 $index = 1;
                 while ($row1 = mysqli_fetch_assoc($resultTampilDataFile)) {
                     if ($row1["tipe"] == "file") {
@@ -198,7 +219,11 @@ if (isset($_POST["tampilDetailInfo"])) {
                                     </a>
                                 </h6>
                             </div>
+                            <div class="col-sm-5 text-right">
+                                  <img src="../img/vector.svg" alt="Download button" class="">
+                            </div>
                         </button>
+                        <br>
                     <?php
                 } else if ($row1["tipe"] == "gambar") {
                     ?>
@@ -229,8 +254,6 @@ if (isset($_POST["tampilDetailInfo"])) {
                         <div class="photos">
                             <div class="row">
                                 <div class="col-md-12 p-2">
-                                    <div class="col-md-6">
-                                    </div>
                                     <div class="col-md-6">
                                     <div class="image">
                                         <img class="img img-fluid img-responsive full-width cursor" src="../attachment/img/<?php echo $row1['file']; ?>" alt="<?php echo $row1['file']; ?>" width="150px" ; height="150px" ;>

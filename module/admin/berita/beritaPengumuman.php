@@ -64,7 +64,7 @@ include "../process/proses_berita.php";
                                             <label for="file-input1">
                                                 <img src="../img/fileUpload.svg" alt="File Upload" class="mr-3" data-toggle="tooltip" data-placement="top" title="Lampirkan File">
                                             </label>
-                                            <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" name="file[]" />
+                                            <input id="file-input1" type="file" onchange="readURL(this,'Picture')" style="cursor: pointer;  display: none" name="file[]" multiple="true"/>
                                             <strong><label for="kategori-AdBer" class="labelBerita mt-1 mr-2">Kategori :
                                                 </label>
                                             </strong>
